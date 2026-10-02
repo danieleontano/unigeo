@@ -1,0 +1,40 @@
+---
+import { getCollection, getEntry } from "astro:content";
+import Base from "@/layouts/Base.astro";
+import { Quiz } from "@/components/Quiz";
+import { percorso } from "@/lib/percorsi";
+
+export async function getStaticPaths() {
+  const quiz = await getCollection("quiz");
+  return quiz.map((q) => {
+    const [materia, slug] = q.id.split("/");
+    return { params: { materia, slug }, props: { quiz: q } };
+  });
+}
+
+const { quiz } = Astro.props;
+const lezione = await getEntry("lezioni", quiz.id);
+if (!lezione) throw new Error(`Quiz senza lezione: ${quiz.id}`);
+const materia = await getEntry("materie", lezione.data.materia);
+if (!materia) throw new Error(`Materia sconosciuta: ${lezione.data.materia}`);
+const [m, slug] = quiz.id.split("/");
+const percorsoLezione = `/materie/${m}/lezioni/${slug}`;
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+---
+
+<Base titolo={`Quiz · ${lezione.data.titolo}`} colore={materia.data.colore}>
+  <p class="sans text-xs font-semibold uppercase tracking-[0.2em] text-materia">
+    <a href={percorso(percorsoLezione)}>{materia.data.nome} · Lezione {lezione.data.numero}</a>
+  </p>
+  <div class="mt-3">
+    <Quiz
+      client:load
+      idLezione={quiz.id}
+      titolo={lezione.data.titolo}
+      colore={materia.data.colore}
+      domande={quiz.data.domande}
+      percorsoLezione={percorsoLezione}
+      base={base}
+    />
+  </div>
+</Base>

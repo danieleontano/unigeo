@@ -8,9 +8,11 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro check && astro build",
+    "build": "astro check && tsx scripts/verifica-ref.ts && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "verifica": "tsx scripts/verifica-ref.ts",
+    "converti": "tsx scripts/html2md.ts"
   },
   "allowScripts": {
     "esbuild": true

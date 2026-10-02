@@ -1,0 +1,100 @@
+{
+  "lezione": "geologia-1/lez05-2026-10-02-classificare-le-rocce-magmatiche",
+  "domande": [
+    {
+      "id": "q1",
+      "tipo": "scelta",
+      "testo": "Campione olocristallino, leucocratico, con quarzo ben visibile e feldspati alcalini colorati che prevalgono sul plagioclasio bianco. Che roccia è?",
+      "opzioni": ["Granodiorite", "Granito", "Tonalite", "Diorite"],
+      "corretta": 1,
+      "spiegazione": "Il quarzo visibile porta nel triangolo superiore (sovrassatura); la prevalenza degli alcalini sul plagioclasio esclude granodiorite e tonalite.",
+      "ref": "#in-aula-il-ragionamento-sui-campioni"
+    },
+    {
+      "id": "q2",
+      "tipo": "verofalso",
+      "testo": "Nel diagramma di Streckeisen quarzo e feldspatoidi possono coesistere nella stessa roccia.",
+      "corretta": false,
+      "spiegazione": "Q e F si escludono: il 100% di Q è in cima, lo 0% sulla linea A–P. Sotto quella linea non c'è quarzo, sopra non ci sono feldspatoidi.",
+      "ref": "#il-protocollo-con-i-diagrammi-triangolari"
+    },
+    {
+      "id": "q3",
+      "tipo": "aperta",
+      "testo": "Spiega perché un fuso che lascia cristallizzare quarzo era sovrassaturo in silice.",
+      "soluzione": "Tutti i minerali hanno preso dal fuso la silice che potevano mettere nel reticolo; quella avanzata ha cristallizzato come quarzo. Se vedo quarzo, la silice era in abbondanza.",
+      "ref": "#il-protocollo-con-i-diagrammi-triangolari"
+    },
+    {
+      "id": "q4",
+      "tipo": "abbinamento",
+      "testo": "Abbina la roccia al femico che la distingue (stesse proporzioni di Q, A e P).",
+      "coppie": [["Diorite", "anfibolo"], ["Gabbro", "pirosseno"], ["Anortosite", "quasi solo plagioclasio"]],
+      "ref": "#il-protocollo-con-i-diagrammi-triangolari"
+    },
+    {
+      "id": "q5",
+      "tipo": "scelta",
+      "testo": "Quando si usa il triangolo olivina / ortopirosseno / clinopirosseno invece di Streckeisen?",
+      "opzioni": ["Quando la roccia è effusiva", "Quando i femici sono almeno il 90%", "Quando non si vede quarzo", "Quando l'indice di colore è mesocratico"],
+      "corretta": 1,
+      "spiegazione": "La prima cosa da valutare è la percentuale di femici: da 90% in su si è nelle ultrafemiche e si usa il triangolo di olivina e pirosseni.",
+      "ref": "#il-protocollo-con-i-diagrammi-triangolari"
+    },
+    {
+      "id": "q6",
+      "tipo": "scelta",
+      "testo": "Una roccia con olivina tra il 40 e il 90% si chiama…",
+      "opzioni": ["Dunite", "Pirossenite", "Peridotite", "Komatiite"],
+      "corretta": 2,
+      "spiegazione": "Dunite ≥ 90% di olivina, peridotite 40–90%, pirossenite < 40%. La komatiite è l'equivalente effusivo della peridotite.",
+      "ref": "#il-protocollo-con-i-diagrammi-triangolari"
+    },
+    {
+      "id": "q7",
+      "tipo": "verofalso",
+      "testo": "La regola del 20%: se il quarzo si vede a occhio nudo, si assume che sia almeno il 20% della roccia.",
+      "corretta": true,
+      "spiegazione": "Sotto il 20% il quarzo non si vede a occhio nudo: lo si troverà in sezione sottile. Sopra: roccia sovrassatura.",
+      "ref": "#il-protocollo-con-i-diagrammi-triangolari"
+    },
+    {
+      "id": "q8",
+      "tipo": "aperta",
+      "testo": "Perché una roccia effusiva senza fenocristalli non si può classificare sul campione a mano?",
+      "soluzione": "Con tessitura micro o criptocristallina non ci sono cristalli su cui ragionare: si usa al più l'indice di colore. Il nome rigoroso arriva solo dall'analisi di laboratorio.",
+      "ref": "#le-effusive"
+    },
+    {
+      "id": "q9",
+      "tipo": "scelta",
+      "testo": "Ossidiana, pomice e scoria si distinguono per…",
+      "opzioni": ["La granulometria dei frammenti", "La quantità di vescicole", "Il contenuto in quarzo", "L'indice di colore"],
+      "corretta": 1,
+      "spiegazione": "Sono vetrose non frammentarie: ossidiana quasi senza vescicole, pomice con vescicole ≥ 50% del volume (galleggia), scoria sotto il 50%.",
+      "ref": "#le-rocce-vetrose"
+    },
+    {
+      "id": "q10",
+      "tipo": "abbinamento",
+      "testo": "Abbina la classe granulometrica delle piroclastiti alla dimensione.",
+      "coppie": [["Blocchi e bombe", "> 64 mm"], ["Lapilli", "2–64 mm"], ["Ceneri", "< 2 mm"]],
+      "ref": "#le-rocce-vetrose"
+    },
+    {
+      "id": "q11",
+      "tipo": "verofalso",
+      "testo": "Il campo della riolite nello Streckeisen per le effusive coincide con quello del granito.",
+      "corretta": true,
+      "spiegazione": "La riolite è l'equivalente effusivo del granito: stesso campo, tessitura diversa (porfirica, con fenocristalli in una pasta di fondo).",
+      "ref": "#in-aula-il-ragionamento-sui-campioni"
+    },
+    {
+      "id": "q12",
+      "tipo": "aperta",
+      "testo": "Perché un'effusiva porfirica vescicolare con cristalli bianchi non è una scoria?",
+      "soluzione": "Una scoria non ha fenocristalli. Se ci sono cristalli bianchi è porfirica: si usa lo Streckeisen per le effusive e, se i bianchi sono feldspatoidi globulari, si va nel triangolo inferiore (tefriti).",
+      "ref": "#in-aula-il-ragionamento-sui-campioni"
+    }
+  ]
+}

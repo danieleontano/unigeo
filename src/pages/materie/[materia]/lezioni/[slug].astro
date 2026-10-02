@@ -3,7 +3,8 @@ import { getEntry, render } from "astro:content";
 import Base from "@/layouts/Base.astro";
 import { percorso } from "@/lib/percorsi";
 import { dataLunga } from "@/lib/date";
-import { lezioniDi, materiaDiLezione, percorsoLezione, slugDiLezione } from "@/lib/contenuti";
+import { contaDefinizioni, lezioniDi, materiaDiLezione, percorsoLezione, percorsoQuiz, quizDisponibili, slugDiLezione } from "@/lib/contenuti";
+import { AzioniLezione } from "@/components/AzioniLezione";
 
 export async function getStaticPaths() {
   const lezioni = await lezioniDi();
@@ -23,6 +24,8 @@ if (!materia) throw new Error(`Materia sconosciuta: ${lezione.data.materia}`);
 const { Content, headings } = await render(lezione);
 const sezioni = headings.filter((h) => h.depth === 2);
 const d = lezione.data;
+const haQuiz = (await quizDisponibili()).has(lezione.id);
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 ---
 
 <Base titolo={`${d.titolo} · ${materia.data.nome}`} colore={materia.data.colore}>
@@ -58,6 +61,15 @@ const d = lezione.data;
   <article class="appunti">
     <Content />
   </article>
+
+  <AzioniLezione
+    client:load
+    idLezione={lezione.id}
+    haQuiz={haQuiz}
+    percorsoQuiz={percorsoQuiz(lezione)}
+    percorsoFlashcard={contaDefinizioni(lezione) > 0 ? `/flashcard/${materia.id}` : null}
+    base={base}
+  />
 
   <nav class="sans mt-10 flex justify-between gap-4 border-t border-line pt-4 text-sm print:hidden">
     {precedente ? (
