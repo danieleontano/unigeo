@@ -1,0 +1,9 @@
+{
+  "slug": "geologia-1",
+  "nome": "Geologia 1",
+  "colore": "#B5552A",
+  "icona": "geologia-1.svg",
+  "docenti": ["Laura Federico", "Michele Piazza"],
+  "moduli": ["Modulo 1 · Geologia strutturale", "Modulo 2 · Geologia stratigrafica"],
+  "esame": "Unico per i due moduli, pratica (3 campioni) poi orale. Appelli da giugno."
+}

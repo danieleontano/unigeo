@@ -53,3 +53,114 @@ h1, h2, h3, h4, .sans {
   color: var(--color-slate);
   letter-spacing: -0.01em;
 }
+
+/* ---------- Indice della lezione ---------- */
+.indice {
+  counter-reset: sez;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+}
+.indice li {
+  counter-increment: sez;
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.3rem 0;
+  border-bottom: 1px dotted var(--color-line);
+}
+.indice li::before {
+  content: counter(sez, decimal-leading-zero);
+  font-weight: 600;
+  color: var(--color-materia);
+  min-width: 1.6rem;
+}
+.indice a { color: var(--color-ink); text-decoration: none; }
+.indice a:hover { color: var(--color-materia); }
+
+/* ---------- Corpo degli appunti (stesso registro degli HTML di partenza) ---------- */
+.appunti {
+  counter-reset: sez;
+  font-size: 1.02rem;
+  line-height: 1.55;
+}
+.appunti h2 {
+  counter-increment: sez;
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin: 2.25rem 0 0.5rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+  scroll-margin-top: 3.5rem;
+}
+.appunti h2::before {
+  content: counter(sez, decimal-leading-zero);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  color: var(--color-materia);
+}
+.appunti h2:first-child { margin-top: 0; }
+.appunti h3 { margin: 1.5rem 0 0.35rem; font-size: 1.05rem; font-weight: 600; color: var(--color-materia); scroll-margin-top: 3.5rem; }
+.appunti h4 { margin: 1rem 0 0.25rem; font-size: 0.95rem; font-weight: 600; }
+.appunti p { margin: 0 0 0.7rem; }
+.appunti ul, .appunti ol { margin: 0 0 0.8rem; padding-left: 1.25rem; }
+.appunti li { margin-bottom: 0.3rem; }
+.appunti li::marker { color: var(--color-materia); }
+.appunti em { color: var(--color-slate); }
+.appunti a { color: var(--color-materia); }
+.appunti hr { border: 0; border-top: 1px solid var(--color-line); margin: 1.5rem 0; }
+.appunti sup { color: var(--color-moss); font-family: var(--font-sans); font-size: 0.7em; font-weight: 600; }
+
+.appunti table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0.5rem 0 1rem;
+  font-size: 0.92rem;
+  display: block;
+  overflow-x: auto;
+}
+.appunti th {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-align: left;
+  color: var(--color-muted);
+  border-bottom: 1.5px solid var(--color-slate);
+  padding: 0.35rem 0.5rem;
+  font-weight: 600;
+}
+.appunti td { padding: 0.45rem 0.5rem; border-bottom: 1px solid var(--color-line); vertical-align: top; }
+.appunti td:first-child { font-family: var(--font-sans); font-weight: 600; font-size: 0.85rem; color: var(--color-slate); }
+
+.appunti .box {
+  border-left: 2px solid var(--color-ochre);
+  padding: 0.2rem 0 0.2rem 0.9rem;
+  margin: 0.9rem 0 1rem;
+}
+.appunti .box .lab {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--color-ochre);
+  margin-bottom: 0.25rem;
+}
+.appunti .box p { margin-bottom: 0.4rem; }
+.appunti .box p:last-child { margin-bottom: 0; }
+.appunti .box.exam { border-color: var(--color-materia); }
+.appunti .box.exam .lab { color: var(--color-materia); }
+.appunti .box.draw { border-color: var(--color-slate); }
+.appunti .box.draw .lab { color: var(--color-slate); }
+.appunti .box.warn { border-color: var(--color-moss); }
+.appunti .box.warn .lab { color: var(--color-moss); }
+
+.appunti img, .appunti svg.figura { display: block; max-width: 100%; height: auto; margin: 0.75rem auto; }
+.appunti .didascalia, .appunti figcaption { font-size: 0.85rem; color: var(--color-muted); text-align: center; font-style: italic; margin: -0.25rem 0 1rem; }
+.appunti dl { display: grid; grid-template-columns: 1fr; gap: 0.25rem 1rem; margin: 0.5rem 0 1rem; }
+@media (min-width: 640px) { .appunti dl { grid-template-columns: 9rem 1fr; } }
+.appunti dt { font-family: var(--font-sans); font-size: 0.85rem; font-weight: 600; color: var(--color-slate); }
+.appunti dd { margin: 0 0 0.4rem; }

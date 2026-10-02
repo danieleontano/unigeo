@@ -1,0 +1,50 @@
+---
+import { getCollection, getEntry, render } from "astro:content";
+import Base from "@/layouts/Base.astro";
+import { percorso } from "@/lib/percorsi";
+import { dataLunga } from "@/lib/date";
+
+export async function getStaticPaths() {
+  const lezioni = await getCollection("lezioni");
+  return lezioni.map((l) => {
+    const [materia, slug] = l.id.split("/");
+    return { params: { materia, slug }, props: { lezione: l } };
+  });
+}
+
+const { lezione } = Astro.props;
+const materia = await getEntry("materie", lezione.data.materia);
+if (!materia) throw new Error(`Materia sconosciuta: ${lezione.data.materia}`);
+const { Content, headings } = await render(lezione);
+const sezioni = headings.filter((h) => h.depth === 2);
+const d = lezione.data;
+---
+
+<Base titolo={`${d.titolo} · ${materia.data.nome}`} colore={materia.data.colore}>
+  <header class="mb-6 border-b border-slate pb-4">
+    <a href={percorso(`/materie/${materia.id}`)} class="sans text-xs font-semibold uppercase tracking-[0.2em] text-materia">
+      {materia.data.nome}{d.modulo && ` · ${d.modulo}`}
+    </a>
+    <h1 class="mt-1 text-2xl font-semibold leading-tight">Lezione {d.numero} · {d.titolo}</h1>
+    <p class="mt-1.5 text-sm text-muted">
+      <b class="font-semibold text-ink">{dataLunga(d.data)}</b>
+      {d.docente && <> · {d.docente}</>}
+      {d.fonte && <> · {d.fonte}</>}
+    </p>
+    {d.nota && <p class="mt-2 text-sm text-muted">{d.nota}</p>}
+  </header>
+
+  {sezioni.length > 1 && (
+    <nav class="mb-6 print:hidden">
+      <ol class="indice">
+        {sezioni.map((s) => (
+          <li><a href={`#${s.slug}`}>{s.text}</a></li>
+        ))}
+      </ol>
+    </nav>
+  )}
+
+  <article class="appunti">
+    <Content />
+  </article>
+</Base>
