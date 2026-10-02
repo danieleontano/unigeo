@@ -79,3 +79,12 @@ due settimane di fila salta, il problema non è nel codice.
   stanno in `public/pdf/<materia>/`. Rapporto per Claude chat in
   `materiale/RAPPORTO-CONVERSIONE.md`. Nel dev server gli `<img>` SVG hanno
   `naturalWidth` 0 anche se visibili: verificare a occhio, non via JS.
+- 2026-10-03 · Commit 4-7, l'app: pagine di lettura (materie, elenco a righe
+  strette con filtro, lezione con PDF e prev/next, pagina libri), stato in
+  localStorage (`unigeo.stato.v1`, negozio come Cirulla), ripasso a 5 scatole,
+  quiz a 4 tipi con `scripts/verifica-ref.ts` nella build, flashcard dai
+  `:::definizione` (fronte = il grassetto con cui il blocco comincia, altrimenti
+  l'etichetta). Le isole React ricevono «schede» già pronte da Astro
+  (`lib/schede.ts`), non rileggono le collection. Dopo un `npm install` il dev
+  server va riavviato con `node_modules/.vite` cancellata, altrimenti React
+  carica due versioni del runtime JSX (`_jsxDEV is not a function`).

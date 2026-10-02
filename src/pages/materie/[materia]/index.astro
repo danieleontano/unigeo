@@ -2,7 +2,7 @@
 import Base from "@/layouts/Base.astro";
 import { percorso } from "@/lib/percorsi";
 import { dataBreve } from "@/lib/date";
-import { lezioniDi, percorsoLezione, quizDisponibili, tutteLeMaterie } from "@/lib/contenuti";
+import { contaDefinizioni, lezioniDi, percorsoLezione, quizDisponibili, tutteLeMaterie } from "@/lib/contenuti";
 
 export async function getStaticPaths() {
   const materie = await tutteLeMaterie();
@@ -13,6 +13,7 @@ const { materia } = Astro.props;
 const lezioni = await lezioniDi(materia.id);
 const quiz = await quizDisponibili();
 const d = materia.data;
+const definizioni = lezioni.reduce((s, l) => s + contaDefinizioni(l), 0);
 ---
 
 <Base titolo={d.nome} colore={d.colore}>
@@ -24,6 +25,13 @@ const d = materia.data;
         {d.docenti.join(", ")}
         {d.esame && <> · {d.esame}</>}
       </p>
+      {definizioni > 0 && (
+        <p class="sans mt-2 text-xs">
+          <a href={percorso(`/flashcard/${materia.id}`)} class="rounded-md border border-line px-2 py-1 text-slate hover:bg-sand/60">
+            Flashcard · {definizioni} definizioni
+          </a>
+        </p>
+      )}
     </div>
   </header>
 

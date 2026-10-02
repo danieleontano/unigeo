@@ -1,0 +1,31 @@
+---
+import Base from "@/layouts/Base.astro";
+import { Flashcard } from "@/components/Flashcard";
+import { percorso } from "@/lib/percorsi";
+import { lezioniDi, tutteLeMaterie } from "@/lib/contenuti";
+import { carteDiLezione } from "@/lib/flashcard";
+
+export async function getStaticPaths() {
+  const materie = await tutteLeMaterie();
+  return materie.map((m) => ({ params: { materia: m.id }, props: { materia: m } }));
+}
+
+const { materia } = Astro.props;
+const lezioni = await lezioniDi(materia.id);
+const carte = lezioni.flatMap(carteDiLezione);
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+---
+
+<Base titolo={`Flashcard · ${materia.data.nome}`} colore={materia.data.colore}>
+  <p class="sans text-xs font-semibold uppercase tracking-[0.2em] text-materia">
+    <a href={percorso(`/materie/${materia.id}`)}>{materia.data.nome}</a>
+  </p>
+  <h1 class="mt-1 text-2xl font-semibold">Flashcard</h1>
+  <div class="mt-4">
+    {carte.length === 0 ? (
+      <p class="text-sm text-muted">Nessuna definizione ancora in questa materia.</p>
+    ) : (
+      <Flashcard client:load nomeMateria={materia.data.nome} colore={materia.data.colore} carte={carte} base={base} />
+    )}
+  </div>
+</Base>
