@@ -1,0 +1,51 @@
+---
+import Base from "@/layouts/Base.astro";
+import { percorso } from "@/lib/percorsi";
+import { lezioniDi, quizDisponibili, tutteLeMaterie } from "@/lib/contenuti";
+
+const materie = await tutteLeMaterie();
+const lezioni = await lezioniDi();
+const quiz = await quizDisponibili();
+
+const righe = materie.map((m) => {
+  const mie = lezioni.filter((l) => l.id.startsWith(`${m.id}/`));
+  return {
+    m,
+    lezioni: mie.length,
+    quiz: mie.filter((l) => quiz.has(l.id)).length,
+    ultima: mie.at(-1)?.data.data,
+  };
+});
+---
+
+<Base titolo="Materie">
+  <h1 class="text-2xl font-semibold">Materie</h1>
+
+  <ul class="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
+    {righe.map(({ m, lezioni, quiz }) => (
+      <li>
+        <a
+          href={percorso(`/materie/${m.id}`)}
+          class="flex items-center gap-3 rounded-xl border border-line p-3 hover:bg-sand/60"
+          style={`--materia:${m.data.colore}`}
+        >
+          <img src={percorso(`/icone/${m.data.icona}`)} alt="" width="40" height="40" class="h-10 w-10 shrink-0" />
+          <span class="min-w-0 flex-1">
+            <span class="sans block truncate font-semibold text-slate">{m.data.nome}</span>
+            <span class="block truncate text-sm text-muted">
+              {m.data.docenti.length ? m.data.docenti.join(", ") : "Docente da definire"}
+            </span>
+          </span>
+          <span class="sans flex shrink-0 gap-1.5 text-xs">
+            <span class="rounded-full bg-sand px-2 py-0.5 text-slate">{lezioni} lez.</span>
+            {quiz > 0 && <span class="rounded-full bg-sand px-2 py-0.5 text-slate">{quiz} quiz</span>}
+          </span>
+        </a>
+      </li>
+    ))}
+  </ul>
+
+  <p class="mt-8 text-sm text-muted">
+    <a href={percorso("/pagine/libri-di-testo")} class="text-materia underline-offset-2 hover:underline">Libri di testo del primo anno</a>
+  </p>
+</Base>

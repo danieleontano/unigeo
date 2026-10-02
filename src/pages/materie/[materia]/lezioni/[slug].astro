@@ -1,18 +1,23 @@
 ---
-import { getCollection, getEntry, render } from "astro:content";
+import { getEntry, render } from "astro:content";
 import Base from "@/layouts/Base.astro";
 import { percorso } from "@/lib/percorsi";
 import { dataLunga } from "@/lib/date";
+import { lezioniDi, materiaDiLezione, percorsoLezione, slugDiLezione } from "@/lib/contenuti";
 
 export async function getStaticPaths() {
-  const lezioni = await getCollection("lezioni");
-  return lezioni.map((l) => {
-    const [materia, slug] = l.id.split("/");
-    return { params: { materia, slug }, props: { lezione: l } };
-  });
+  const lezioni = await lezioniDi();
+  return lezioni.map((l, i) => ({
+    params: { materia: materiaDiLezione(l), slug: slugDiLezione(l) },
+    props: {
+      lezione: l,
+      precedente: lezioni.slice(0, i).reverse().find((x) => materiaDiLezione(x) === materiaDiLezione(l)) ?? null,
+      successiva: lezioni.slice(i + 1).find((x) => materiaDiLezione(x) === materiaDiLezione(l)) ?? null,
+    },
+  }));
 }
 
-const { lezione } = Astro.props;
+const { lezione, precedente, successiva } = Astro.props;
 const materia = await getEntry("materie", lezione.data.materia);
 if (!materia) throw new Error(`Materia sconosciuta: ${lezione.data.materia}`);
 const { Content, headings } = await render(lezione);
@@ -32,6 +37,12 @@ const d = lezione.data;
       {d.fonte && <> · {d.fonte}</>}
     </p>
     {d.nota && <p class="mt-2 text-sm text-muted">{d.nota}</p>}
+    {(d.pdf || d.dispense.length > 0) && (
+      <p class="sans mt-3 flex flex-wrap gap-x-4 gap-y-1 text-xs print:hidden">
+        {d.pdf && <a href={percorso(d.pdf)} class="text-materia hover:underline">PDF della lezione</a>}
+        {d.dispense.map((x) => <a href={percorso(x.file)} class="text-materia hover:underline">Dispensa · {x.titolo}</a>)}
+      </p>
+    )}
   </header>
 
   {sezioni.length > 1 && (
@@ -47,4 +58,19 @@ const d = lezione.data;
   <article class="appunti">
     <Content />
   </article>
+
+  <nav class="sans mt-10 flex justify-between gap-4 border-t border-line pt-4 text-sm print:hidden">
+    {precedente ? (
+      <a href={percorso(percorsoLezione(precedente))} class="min-w-0 text-muted hover:text-slate">
+        <span class="block text-xs">← Lezione {precedente.data.numero}</span>
+        <span class="block truncate">{precedente.data.titolo}</span>
+      </a>
+    ) : <span />}
+    {successiva ? (
+      <a href={percorso(percorsoLezione(successiva))} class="min-w-0 text-right text-muted hover:text-slate">
+        <span class="block text-xs">Lezione {successiva.data.numero} →</span>
+        <span class="block truncate">{successiva.data.titolo}</span>
+      </a>
+    ) : <span />}
+  </nav>
 </Base>

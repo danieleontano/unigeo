@@ -1,0 +1,89 @@
+---
+import Base from "@/layouts/Base.astro";
+import { percorso } from "@/lib/percorsi";
+import { dataBreve } from "@/lib/date";
+import { lezioniDi, percorsoLezione, quizDisponibili, tutteLeMaterie } from "@/lib/contenuti";
+
+export async function getStaticPaths() {
+  const materie = await tutteLeMaterie();
+  return materie.map((m) => ({ params: { materia: m.id }, props: { materia: m } }));
+}
+
+const { materia } = Astro.props;
+const lezioni = await lezioniDi(materia.id);
+const quiz = await quizDisponibili();
+const d = materia.data;
+---
+
+<Base titolo={d.nome} colore={d.colore}>
+  <header class="flex items-start gap-3">
+    <img src={percorso(`/icone/${d.icona}`)} alt="" width="48" height="48" class="h-12 w-12 shrink-0" />
+    <div class="min-w-0">
+      <h1 class="text-2xl font-semibold leading-tight">{d.nome}</h1>
+      <p class="mt-0.5 text-sm text-muted">
+        {d.docenti.join(", ")}
+        {d.esame && <> · {d.esame}</>}
+      </p>
+    </div>
+  </header>
+
+  {lezioni.length === 0 ? (
+    <p class="mt-8 text-muted">Nessuna lezione ancora. Si aggiunge un file in <code class="sans text-sm">content/{materia.id}/lezioni/</code>.</p>
+  ) : (
+    <section class="mt-6">
+      <div class="mb-2 flex items-center gap-2">
+        <input
+          id="filtro"
+          type="search"
+          placeholder="Cerca nelle lezioni"
+          class="sans w-full rounded-lg border border-line px-3 py-1.5 text-sm outline-none focus:border-slate"
+          autocomplete="off"
+        />
+        <button id="ordine" type="button" class="sans shrink-0 rounded-lg border border-line px-2.5 py-1.5 text-xs text-muted hover:text-slate" title="Inverti l'ordine">
+          <span data-asc>1 → {lezioni.length}</span><span data-desc hidden>{lezioni.length} → 1</span>
+        </button>
+      </div>
+      <ol id="lezioni" class="divide-y divide-line border-y border-line">
+        {lezioni.map((l) => (
+          <li data-testo={`${l.data.numero} ${l.data.titolo} ${l.data.docente ?? ""} ${l.data.tag.join(" ")}`.toLowerCase()}>
+            <a href={percorso(percorsoLezione(l))} class="flex items-center gap-3 py-1.5 hover:bg-sand/60">
+              <span class="sans w-7 shrink-0 text-right text-xs font-semibold text-materia">{String(l.data.numero).padStart(2, "0")}</span>
+              <span class="min-w-0 flex-1 truncate">{l.data.titolo}</span>
+              {quiz.has(l.id) && <span class="sans shrink-0 text-[10px] font-semibold uppercase tracking-wider text-materia" title="Quiz disponibile">Q</span>}
+              <span class="sans w-20 shrink-0 text-right text-xs tabular-nums text-muted">{dataBreve(l.data.data)}</span>
+            </a>
+          </li>
+        ))}
+      </ol>
+      <p id="vuoto" class="mt-4 text-sm text-muted" hidden>Nessuna lezione corrisponde.</p>
+    </section>
+  )}
+</Base>
+
+<script>
+  // Filtro «tutte le parole, in qualunque ordine» e inversione dell'ordine:
+  // vanilla, niente isola React per una lista di dieci righe.
+  const filtro = document.getElementById("filtro") as HTMLInputElement | null;
+  const lista = document.getElementById("lezioni");
+  const vuoto = document.getElementById("vuoto");
+  const ordine = document.getElementById("ordine");
+
+  filtro?.addEventListener("input", () => {
+    const parole = filtro.value.toLowerCase().split(/\s+/).filter(Boolean);
+    let visibili = 0;
+    lista?.querySelectorAll<HTMLLIElement>("li").forEach((li) => {
+      const testo = li.dataset.testo ?? "";
+      const ok = parole.every((p) => testo.includes(p));
+      li.hidden = !ok;
+      if (ok) visibili++;
+    });
+    if (vuoto) vuoto.hidden = visibili > 0;
+  });
+
+  ordine?.addEventListener("click", () => {
+    if (!lista) return;
+    const righe = Array.from(lista.children).reverse();
+    righe.forEach((r) => lista.appendChild(r));
+    ordine.querySelectorAll<HTMLElement>("[data-asc],[data-desc]").forEach((s) => (s.hidden = !s.hidden));
+  });
+</script>

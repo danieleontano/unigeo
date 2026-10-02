@@ -66,7 +66,14 @@ td.addRule("h2", {
   replacement: (_c, nodo) => {
     const e = el(nodo);
     Array.from(e.querySelectorAll("span.n")).forEach((s) => s.parentNode?.removeChild(s));
-    return `\n\n## ${inline(e.innerHTML)}\n\n`;
+    // Un sottotitolo in grigio dentro l'h2 («· annuale · Briguglio») diventa
+    // una riga in corsivo sotto il titolo.
+    let coda = "";
+    Array.from(e.querySelectorAll("span[style]")).forEach((s) => {
+      coda = inline(s.innerHTML).replace(/^·\s*/, "");
+      s.parentNode?.removeChild(s);
+    });
+    return `\n\n## ${inline(e.innerHTML)}\n\n${coda ? `*${coda}*\n\n` : ""}`;
   },
 });
 
@@ -103,7 +110,9 @@ td.addRule("box", {
   filter: (nodo) => nodo.nodeName === "DIV" && el(nodo).classList.contains("box"),
   replacement: (_c, nodo) => {
     const e = el(nodo);
-    const classe = Array.from(e.classList).find((k) => k in ETICHETTE_PREDEFINITE) ?? "warn";
+    // Il tipo dichiarato è quello di node-html-parser, ma a runtime il nodo è
+    // del DOM di turndown: si legge l'attributo, che esiste in tutti e due.
+    const classe = (e.getAttribute("class") ?? "").split(/\s+/).find((k: string) => k in ETICHETTE_PREDEFINITE) ?? "warn";
     let [nome, predefinita] = ETICHETTE_PREDEFINITE[classe];
     const lab = e.querySelector(".lab");
     let etichetta = lab ? inline(lab.innerHTML) : predefinita;
@@ -326,12 +335,32 @@ function convertiLezione(file: string): boolean {
   return true;
 }
 
-mkdirSync(PUBLIC_PDF, { recursive: true });
-const saltati: string[] = [];
-for (const f of readdirSync(SORGENTE).filter((f) => f.endsWith(".html")).sort()) {
-  if (!convertiLezione(f)) saltati.push(f);
+// Pagine sciolte (non lezioni): stessa intestazione, frontmatter più corto.
+function convertiPagina(file: string) {
+  const slug = file.replace(/\.html$/, "");
+  const body = parse(readFileSync(join(SORGENTE, file), "utf8"), { comment: false }).querySelector("body")!;
+  const titolo = testoPulito(body.querySelector(".hd h1"));
+  const sottotitolo = testoPulito(body.querySelector(".hd .m"));
+  const nota = testoPulito(body.querySelector("p.legend"));
+  const cartella = join(CONTENT, "pagine");
+  mkdirSync(cartella, { recursive: true });
+  ctx = { file, slug, cartella, figure: 0 };
+  body.querySelectorAll(".hd, p.legend, .runhead, .foot, style").forEach((e) => e.remove());
+  const corpo = td
+    .turndown(body.innerHTML)
+    .replace(/\n{3,}/g, "\n\n")
+    .replace(/[ \t]+$/gm, "")
+    .replace(/^(\s*)-   /gm, "$1- ")
+    .trim();
+  writeFileSync(join(cartella, `${slug}.md`), "---\n" + yaml("titolo", titolo) + yaml("sottotitolo", sottotitolo) + yaml("nota", nota) + "---\n\n" + corpo + "\n");
+  console.log(`✓ pagine/${slug}`);
 }
-if (saltati.length) console.log(`Non lezioni, saltati: ${saltati.join(", ")}`);
+
+mkdirSync(PUBLIC_PDF, { recursive: true });
+for (const f of readdirSync(SORGENTE).filter((f) => f.endsWith(".html")).sort()) {
+  if (filtroMateria && filtroMateria !== "pagine" && !f.startsWith(filtroMateria)) continue;
+  if (!convertiLezione(f)) convertiPagina(f);
+}
 
 const segnalazioni = [...new Set(rapporto)];
 const testoRapporto =

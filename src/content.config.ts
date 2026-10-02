@@ -70,5 +70,15 @@ const materie = defineCollection({
   }),
 });
 
-export const collections = { lezioni, quiz, materie };
+// Pagine sciolte (libri di testo, …): Markdown con lo stesso dialetto delle lezioni.
+const pagine = defineCollection({
+  loader: glob({ pattern: "pagine/*.md", base: "./content", generateId: ({ entry }) => entry.split("/").pop()!.replace(/\.md$/, "") }),
+  schema: z.object({
+    titolo: z.string(),
+    sottotitolo: z.string().optional(),
+    nota: z.string().optional(),
+  }),
+});
+
+export const collections = { lezioni, quiz, materie, pagine };
 export type Domanda = z.infer<typeof domanda>;

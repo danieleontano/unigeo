@@ -1,0 +1,28 @@
+---
+import { getCollection, render } from "astro:content";
+import Base from "@/layouts/Base.astro";
+
+export async function getStaticPaths() {
+  const pagine = await getCollection("pagine");
+  return pagine.map((p) => ({ params: { slug: p.id }, props: { pagina: p } }));
+}
+
+const { pagina } = Astro.props;
+const { Content, headings } = await render(pagina);
+const sezioni = headings.filter((h) => h.depth === 2);
+const d = pagina.data;
+---
+
+<Base titolo={d.titolo}>
+  <header class="mb-6 border-b border-slate pb-4">
+    <h1 class="text-2xl font-semibold leading-tight">{d.titolo}</h1>
+    {d.sottotitolo && <p class="mt-1.5 text-sm text-muted">{d.sottotitolo}</p>}
+    {d.nota && <p class="mt-2 text-sm text-muted">{d.nota}</p>}
+  </header>
+  {sezioni.length > 1 && (
+    <nav class="mb-6 print:hidden">
+      <ol class="indice">{sezioni.map((s) => <li><a href={`#${s.slug}`}>{s.text}</a></li>)}</ol>
+    </nav>
+  )}
+  <article class="appunti"><Content /></article>
+</Base>
