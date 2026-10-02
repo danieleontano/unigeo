@@ -88,3 +88,9 @@ due settimane di fila salta, il problema non è nel codice.
   (`lib/schede.ts`), non rileggono le collection. Dopo un `npm install` il dev
   server va riavviato con `node_modules/.vite` cancellata, altrimenti React
   carica due versioni del runtime JSX (`_jsxDEV is not a function`).
+- 2026-10-03 · Commit 8, PWA: `@vite-pwa/astro` non supporta Astro 7, quindi
+  service worker scritto a mano in `public/sw.js` (asset cache-first, pagine
+  network-first con ripiego in cache) e `public/manifest.webmanifest`; si
+  registra solo in produzione (`import.meta.env.PROD` nel layout). Icona
+  `icone/app-512.png` rasterizzata dall'SVG di Geologia 1 via canvas nel browser.
+  Fase 1 della roadmap completa salvo il punto 7 (i quiz veri li scrive Daniele).

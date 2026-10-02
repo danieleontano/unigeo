@@ -1,0 +1,19 @@
+{
+  "name": "UniGeo · appunti e ripasso",
+  "short_name": "UniGeo",
+  "description": "Appunti, quiz e flashcard del primo anno di Scienze Geologiche.",
+  "lang": "it",
+  "start_url": "/unigeo/",
+  "scope": "/unigeo/",
+  "display": "standalone",
+  "background_color": "#F4EEE3",
+  "theme_color": "#B5552A",
+  "icons": [
+    {
+      "src": "/unigeo/icone/app-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

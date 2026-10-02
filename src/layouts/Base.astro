@@ -25,6 +25,8 @@ const attuale = Astro.url.pathname.replace(import.meta.env.BASE_URL.replace(/\/$
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content={colore ?? "#3e4a52"} />
     <link rel="icon" type="image/svg+xml" href={percorso("/favicon.svg")} />
+    <link rel="apple-touch-icon" href={percorso("/icone/app-512.png")} />
+    <link rel="manifest" href={percorso("/manifest.webmanifest")} />
     <title>{titolo} · UniGeo</title>
     {descrizione && <meta name="description" content={descrizione} />}
   </head>
@@ -57,5 +59,10 @@ const attuale = Astro.url.pathname.replace(import.meta.env.BASE_URL.replace(/\/$
     <footer class="mx-auto w-full max-w-3xl px-4 pb-6 font-sans text-xs text-muted print:hidden">
       <a href={percorso("/impostazioni")} class="hover:text-slate">Impostazioni</a>
     </footer>
+    {import.meta.env.PROD && (
+      <script is:inline define:vars={{ sw: percorso("/sw.js"), scope: percorso("/") }}>
+        if ("serviceWorker" in navigator) navigator.serviceWorker.register(sw, { scope }).catch(() => {});
+      </script>
+    )}
   </body>
 </html>

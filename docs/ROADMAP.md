@@ -13,6 +13,11 @@
 
 Fine fase 1: usarla per una settimana senza toccare il codice.
 
+**Stato al 03/10/2026:** punti 1-6, 8, 9 fatti e pubblicati su
+https://danieleontano.github.io/unigeo/ (più PWA installabile e offline).
+Resta il punto 7: i quiz veri li scrive Daniele con Claude chat; nel repo c'è
+un quiz di prova sulla lezione 5 di Geologia 1, da sostituire.
+
 ## Fase 2 — solo se la fase 1 viene usata davvero
 - Ricerca full-text (Pagefind, statico).
 - Vista "formulario" per materia: tutte le definizioni in una pagina.
