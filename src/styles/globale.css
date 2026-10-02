@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+/* Caratteri self-hosted: niente chiamate a Google Fonts, funziona offline. */
+@import "@fontsource/caladea/400.css";
+@import "@fontsource/caladea/400-italic.css";
+@import "@fontsource/caladea/700.css";
+@import "@fontsource/poppins/400.css";
+@import "@fontsource/poppins/500.css";
+@import "@fontsource/poppins/600.css";
+
+/* I token sono quelli degli appunti HTML: stesso quaderno, stessi colori.
+   --materia cambia per pagina (la pagina della lezione lo imposta inline). */
+@theme {
+  --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Caladea", Georgia, serif;
+
+  --color-ink: #23282c;
+  --color-muted: #6b7378;
+  --color-line: #ddd5c7;
+  --color-sand: #f4eee3;
+  --color-slate: #3e4a52;
+  --color-ochre: #c9a227;
+  --color-moss: #6f8f5e;
+
+  --color-geologia-1: #b5552a;
+  --color-paleontologia: #1f6f78;
+  --color-geografia-fisica: #3f6e3a;
+  --color-chimica: #6a4c93;
+  --color-matematica: #3e4a52;
+
+  --color-materia: var(--materia, #3e4a52);
+}
+
+:root {
+  --materia: #3e4a52;
+}
+
+html {
+  background: #fff;
+  color: var(--color-ink);
+  font-family: var(--font-serif);
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+}
+
+h1, h2, h3, h4, .sans {
+  font-family: var(--font-sans);
+  color: var(--color-slate);
+  letter-spacing: -0.01em;
+}

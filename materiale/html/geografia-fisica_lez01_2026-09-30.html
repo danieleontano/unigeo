@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>Geografia fisica e cartografia — Lezione 1</title>
+<style>
+  @page { size: A4; margin: 20mm 18mm 22mm 18mm; }
+  :root{
+    --terra:#3F6E3A; --ochre:#C9A227; --slate:#3E4A52; --sand:#F4EEE3;
+    --ink:#23282C; --muted:#6B7378; --line:#DDD5C7; --moss:#6F8F5E;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:#fff;color:var(--ink);
+    font-family:"Caladea","TeX Gyre Pagella",Georgia,serif;font-size:10.6pt;line-height:1.45}
+  h1,h2,h3,h4,.sans{font-family:"Poppins","TeX Gyre Heros",Arial,sans-serif}
+  .page{}
+  
+
+  /* ---------- cover ---------- */
+  .cover{padding:0;background:var(--sand);display:flex;flex-direction:column}
+  .strata{height:78mm;position:relative;overflow:hidden}
+  .strata div{position:absolute;left:0;right:0}
+  .cover-body{padding:14mm 18mm 0 18mm;flex:1}
+  .kicker{font-family:Poppins;font-size:9pt;letter-spacing:.22em;text-transform:uppercase;color:var(--terra);font-weight:600}
+  .cover h1{font-size:34pt;line-height:1.05;margin:6mm 0 3mm 0;color:var(--slate);font-weight:600;letter-spacing:-.01em}
+  .cover h2{font-size:14pt;font-weight:400;color:var(--ink);margin:0 0 10mm 0}
+  .meta{display:grid;grid-template-columns:1fr 1fr;gap:4mm 10mm;font-size:10pt;border-top:1px solid var(--line);padding-top:6mm;max-width:150mm}
+  .meta b{display:block;font-family:Poppins;font-size:8pt;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:600;margin-bottom:1mm}
+  .cover-foot{padding:0 18mm 14mm 18mm;font-size:9pt;color:var(--muted)}
+  .toc{margin-top:10mm;max-width:150mm}
+  .toc h3{font-size:9pt;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin:0 0 3mm 0;font-weight:600}
+  .toc ol{margin:0;padding:0;list-style:none;counter-reset:t}
+  .toc li{counter-increment:t;display:flex;gap:4mm;padding:1.6mm 0;border-bottom:1px dotted var(--line);font-size:10.5pt}
+  .toc li::before{content:counter(t,decimal-leading-zero);font-family:Poppins;font-weight:600;color:var(--terra);min-width:8mm}
+
+  /* ---------- content ---------- */
+  .runhead{position:absolute;top:9mm;left:18mm;right:18mm;display:flex;justify-content:space-between;font-family:Poppins;font-size:7.5pt;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .runhead span:last-child{color:var(--terra);font-weight:600}
+  section h2{font-size:15pt;color:var(--slate);margin:0 0 2mm 0;font-weight:600;letter-spacing:-.01em;display:flex;align-items:baseline;gap:4mm}
+  section h2 .n{font-size:10pt;color:var(--terra);font-weight:600;letter-spacing:.1em}
+  .lead{color:var(--muted);font-style:italic;margin:0 0 4mm 0}
+  h3{font-size:11.5pt;color:var(--terra);margin:6mm 0 1.5mm 0;font-weight:600}
+  h4{font-size:10pt;color:var(--slate);margin:3.5mm 0 1mm 0;font-weight:600}
+  p{margin:0 0 2.6mm 0;text-align:justify;hyphens:auto}
+  ul{margin:0 0 3mm 0;padding-left:5mm}
+  li{margin-bottom:1.2mm}
+  li::marker{color:var(--terra)}
+  em.t{font-style:italic;color:var(--slate)}
+  .two{columns:2;column-gap:8mm}
+  .two h3:first-child{margin-top:0}
+
+  /* callouts */
+  .box{border-left:2px solid var(--ochre);background:none;padding:1mm 0 1mm 4mm;margin:3mm 0 3.5mm 0;break-inside:avoid}
+  .box .lab{font-family:Poppins;font-size:7.5pt;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--ochre);margin-bottom:1mm}
+  .box p{margin-bottom:1.5mm}
+  .box p:last-child{margin-bottom:0}
+  .box.def{border-color:var(--ochre)}
+  .box.exam{border-color:var(--terra)} .box.exam .lab{color:var(--terra)}
+  .box.draw{border-color:var(--slate)} .box.draw .lab{color:var(--slate)}
+  .box.warn{border-color:var(--moss)} .box.warn .lab{color:var(--moss)}
+
+  .kv{display:grid;grid-template-columns:38mm 1fr;gap:1.5mm 4mm;margin:2mm 0 4mm 0;font-size:10pt}
+  .kv dt{font-family:Poppins;font-size:8.5pt;font-weight:600;color:var(--slate);padding-top:.6mm}
+  .kv dd{margin:0}
+
+  table{width:100%;border-collapse:collapse;margin:2mm 0 4mm 0;font-size:9.6pt;break-inside:avoid}
+  th{font-family:Poppins;font-size:8pt;text-transform:uppercase;letter-spacing:.1em;text-align:left;color:var(--muted);border-bottom:1.5px solid var(--slate);padding:1.5mm 2mm;font-weight:600}
+  td{padding:1.8mm 2mm;border-bottom:1px solid var(--line);vertical-align:top}
+  td:first-child{font-family:Poppins;font-weight:600;font-size:8.8pt;color:var(--slate)}
+
+  .q{color:var(--moss);font-family:Poppins;font-size:8pt;font-weight:600;vertical-align:super}
+  .foot{position:absolute;bottom:9mm;left:18mm;right:18mm;display:flex;justify-content:space-between;font-family:Poppins;font-size:7.5pt;color:var(--muted)}
+  .pnum{font-weight:600;color:var(--slate)}
+
+  /* rock cycle figure */
+  .cycle{margin:3mm auto 4mm auto;display:block;width:150mm}
+  .caption{font-size:8.8pt;color:var(--muted);text-align:center;margin:-1mm 0 4mm 0;font-style:italic}
+  .checklist li{list-style:none;position:relative;padding-left:6mm}
+  .checklist li::before{content:"";position:absolute;left:0;top:1.1mm;width:3.2mm;height:3.2mm;border:1.3px solid var(--terra);border-radius:.6mm}
+
+  .hd{display:flex;align-items:flex-start;gap:5mm;border-bottom:1.5px solid var(--slate);padding-bottom:4mm;margin-bottom:6mm}
+  .hd svg{flex:0 0 14mm;width:14mm;height:14mm}
+  .hd .k{font-family:Poppins;font-size:8pt;letter-spacing:.2em;text-transform:uppercase;color:var(--terra);font-weight:600}
+  .hd h1{font-family:Poppins;font-size:20pt;line-height:1.1;margin:1mm 0 1.5mm 0;color:var(--slate);font-weight:600}
+  .hd .m{font-size:9.5pt;color:var(--muted)}
+  .hd .m b{color:var(--ink);font-weight:600}
+  .legend{font-size:8.8pt;color:var(--muted);margin:0 0 6mm 0}
+</style>
+<style>section h2{break-after:avoid;margin-top:9mm} .page:first-child section h2{margin-top:0} h2[style]{margin-top:9mm !important} h3,h4{break-after:avoid} .box,table,dl.kv{break-inside:avoid} .lead{break-after:avoid}</style>
+</head>
+<body>
+<div class="hd">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M12,62 C18,30 70,18 88,40 C98,56 80,84 50,86 C26,88 8,80 12,62Z" fill="none" stroke="#C9A227" stroke-width="2"/>
+<path d="M24,60 C28,40 66,32 78,46 C86,58 72,76 50,77 C34,78 21,72 24,60Z" fill="none" stroke="#C9A227" stroke-width="2"/>
+<path d="M36,58 C38,48 60,44 66,52 C70,60 62,68 50,68 C42,68 35,65 36,58Z" fill="none" stroke="#C9A227" stroke-width="2"/>
+<polygon points="50,8 56,50 50,56 44,50" fill="#3F6E3A"/><polygon points="50,92 56,50 50,44 44,50" fill="#9AA3A8"/>
+<polygon points="8,50 50,44 56,50 50,56" fill="#9AA3A8"/><polygon points="92,50 50,44 44,50 50,56" fill="#9AA3A8"/>
+<text x="50" y="7" text-anchor="middle" font-size="9" font-family="Poppins" font-weight="700" fill="#3F6E3A">N</text>
+</svg>
+  <div>
+    <div class="k">Geografia fisica e cartografia · 6 CFU · I semestre</div>
+    <h1>Lezione 1 · Presentazione del corso</h1>
+    <div class="m"><b>Mercoledì 30 settembre 2026</b> · prof. Pierluigi Brandolini · Scienze Geologiche, primo anno · UniGe, a.a. 2026/27 · Appunti dalla registrazione audio e dalle slide "introduzione"</div>
+  </div>
+</div>
+<p class="legend">Contatti: brando@unige.it · tel. 010 353 8282 · DISTAV, Corso Europa 26, II piano, ufficio 2-27. Materiale su Aulaweb, pubblicato alla fine di ogni ciclo di lezioni. Le note <strong>[ndr]</strong> sono precisazioni mie.</p>
+
+<div class="page">
+<section>
+  <h2><span class="n">01</span>Come funziona il corso</h2>
+  <p class="lead">Un corso da 6 CFU, solo nel primo semestre. Si parte dalla cartografia, che serve a tutto il resto.</p>
+
+  <h3>Orari e aule</h3>
+  <table>
+    <tr><th></th><th>Fino al 31 ottobre</th><th>Dal 2 novembre</th></tr>
+    <tr><td>Lunedì</td><td>16–18 · CT.09</td><td>16–18 · CT.09</td></tr>
+    <tr><td>Mercoledì</td><td>9–11 · CT.09 e 14–16 · B1.01</td><td>16–18 · B1.01</td></tr>
+    <tr><td>Giovedì</td><td>14–16 · CT.09</td><td>16–18 · CT.09</td></tr>
+  </table>
+  <ul>
+    <li>Niente gruppi: <strong>tutte le lezioni del calendario valgono per tutti</strong>.</li>
+    <li><strong>Giovedì 1 ottobre la lezione è annullata.</strong> Prossima lezione: <strong>lunedì 5 ottobre, 16–18, CT.09</strong>.</li>
+    <li>Le lezioni finiscono prima di Natale o subito dopo, prima della pausa esami di metà gennaio.</li>
+    <li>L'idea del prof: iniziare puntuali e fare un'ora e mezza piena, per poi chiudere un po' prima. "Non scappate a prendere i treni", soprattutto i levantini.</li>
+    <li>Il prof ha chiesto una chat di classe per comunicare in fretta, anche per le escursioni.</li>
+  </ul>
+
+  <h3>Obiettivi</h3>
+  <p>La geografia fisica, con il supporto della cartografia, deve dare le basi per <strong>leggere il paesaggio</strong> e capirne l'evoluzione, analizzando le relazioni tra <strong>atmosfera, litosfera e idrosfera</strong> e l'influenza dell'uomo su queste componenti e sul modellamento del paesaggio. In pratica: saper leggere le carte topografiche per interpretare e misurare le forme del terreno, e collegare i fenomeni atmosferici alla distribuzione dei climi.</p>
+  <p>Perché si parte dalla carta: se non sai usare una carta non puoi andare sul terreno a fare un rilevamento, che sia geologico, geomorfologico, idrogeologico, petrografico o mineralogico. La carta topografica è la base su cui poi si costruiscono tutte le carte tematiche (geologiche, geomorfologiche, idrogeologiche). E il confronto tra carte di epoche diverse, anche di 100–200 anni fa, permette di ricostruire l'evoluzione del paesaggio: frane, linea di costa che arretra per erosione o avanza per l'apporto dei fiumi, e così via.</p>
+
+  <div class="box warn">
+    <div class="lab">Carta a mano, prima del GIS</div>
+    <p>I <strong>GIS</strong> (Geographic Information Systems, sistemi informativi geografici) sono i software con cui lavora chiunque si occupi di territorio: geologi, ingegneri, architetti. Ci si caricano carte <strong>georeferenziate</strong>, cioè con ogni punto associato alle sue coordinate e alla quota, su cui si calcolano distanze, superfici, pendenze e si costruiscono modelli tridimensionali del terreno. In questo corso però si lavora "come una volta", a mano. Non è inutile: se non si capiscono i principi, si fanno gli stessi errori anche sul software. Al programma bisogna dare le informazioni giuste e fare le domande giuste.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">02</span>Il programma</h2>
+  <h3>Cartografia (fino a fine ottobre)</h3>
+  <ul>
+    <li>Carte e <strong>concetto di scala</strong>, numerica e grafica.</li>
+    <li>Le <strong>proiezioni geografiche</strong>; forma e dimensioni della Terra. Serve anche per capire cosa chiede un GIS quando domanda "che sistema di riferimento usi?": dipende dalla forma e dalle dimensioni della Terra adottate per costruire quella carta.</li>
+    <li>Il <strong>simbolismo cartografico</strong> e i principi di costruzione di una carta.</li>
+    <li>La posizione di un punto: il reticolato geografico, <strong>coordinate geografiche, chilometriche e polari</strong>. Il prof ha insistito: è uno dei punti chiave, e le due coordinate vengono spesso confuse. Bisogna saper leggere le coordinate di un punto sulla carta e, al contrario, trovare sulla carta il punto di cui si hanno le coordinate: "se sbagliate il punto, fate il sondaggio nel posto sbagliato".</li>
+    <li><strong>Nord geografico, nord magnetico, nord reticolato</strong> e declinazione magnetica.</li>
+    <li>Classificazione delle carte.</li>
+    <li>Rappresentazione del rilievo: le <strong>curve di livello</strong> (isoipse) e il <strong>profilo topografico</strong>.</li>
+    <li>Il sistema cartografico internazionale <strong>UTM</strong> e la produzione cartografica italiana.</li>
+  </ul>
+  <h3>Geografia fisica (da novembre)</h3>
+  <ul>
+    <li>Composizione e struttura verticale dell'atmosfera.</li>
+    <li>Tempo atmosferico e clima.</li>
+    <li>Radiazione solare e variazioni spaziali e stagionali del riscaldamento.</li>
+    <li>Pressione atmosferica, venti, circolazione atmosferica generale.</li>
+    <li>Umidità, evaporazione, condensazione, precipitazioni.</li>
+    <li>Masse d'aria, fronti, perturbazioni.</li>
+    <li>Classificazione dei climi e il clima in Italia.</li>
+    <li>Cenni sul sistema marino e sulle acque continentali (si approfondiscono negli anni successivi).</li>
+  </ul>
+</section>
+
+<section>
+  <h2><span class="n">03</span>Cartografia: un'anteprima</h2>
+  <h3>Le carte che si useranno</h3>
+  <p>Carte topografiche IGMI al <strong>25.000</strong> e carte tecniche regionali (<strong>CTR</strong> della Regione Liguria) al 10.000 e 5.000. Nelle slide anche esempi di carte nautiche, catastali e uno stralcio della carta geomorfologica del Promontorio di Portofino al 5.000.</p>
+  <div class="box def">
+    <div class="lab">Definizioni</div>
+    <p><strong>IGMI</strong>: Istituto Geografico Militare Italiano, "IGM" per confidenza. Ha prodotto la cartografia di tutto il territorio italiano a partire dall'Unità d'Italia. Oggi l'aggiornamento è passato in gran parte alle Regioni, con le carte tecniche regionali. <strong>[ndr]</strong> L'istituto prende il nome di Istituto Topografico Militare nel 1872 e diventa Istituto Geografico Militare nel 1882.</p>
+    <p><strong>Curve di livello</strong> (isoipse): linee che uniscono punti alla stessa quota. È il metodo di rappresentazione del rilievo usato da circa un secolo. Dall'andamento delle curve e dalle quote assegnate si ricostruisce la forma del terreno: valli, crinali, versanti più o meno inclinati, zone pianeggianti.</p>
+    <p><strong>Profilo topografico</strong> (sezione topografica): un diagramma cartesiano con le distanze sull'asse x e le quote sull'asse y, che ricostruisce l'andamento del rilievo tra un punto A e un punto B.</p>
+  </div>
+  <svg class="cycle" viewBox="0 20 640 210" xmlns="http://www.w3.org/2000/svg" font-family="Poppins, Arial, sans-serif"><ellipse cx="150" cy="110" rx="114" ry="76" fill="none" stroke="#8A6A4A" stroke-width="1"/><text x="40" y="108" font-size="7" fill="#8A6A4A">100</text><ellipse cx="156" cy="110" rx="92" ry="62" fill="none" stroke="#8A6A4A" stroke-width="1"/><text x="68" y="108" font-size="7" fill="#8A6A4A">200</text><ellipse cx="162" cy="110" rx="71" ry="47" fill="none" stroke="#8A6A4A" stroke-width="1"/><text x="95" y="108" font-size="7" fill="#8A6A4A">300</text><ellipse cx="168" cy="110" rx="49" ry="33" fill="none" stroke="#8A6A4A" stroke-width="1"/><text x="123" y="108" font-size="7" fill="#8A6A4A">400</text><ellipse cx="174" cy="110" rx="28" ry="18" fill="none" stroke="#8A6A4A" stroke-width="1.6"/><text x="150" y="108" font-size="7" fill="#8A6A4A">500</text><text x="174" y="114" text-anchor="middle" font-size="8" fill="#23282C">▲ 523</text><line x1="32" y1="110" x2="290" y2="110" stroke="#B5552A" stroke-width="1.3" stroke-dasharray="4 3"/><text x="28" y="113" text-anchor="end" font-size="9" font-weight="700" fill="#B5552A">A</text><text x="294" y="113" font-size="9" font-weight="700" fill="#B5552A">B</text><text x="150" y="222" text-anchor="middle" font-size="8.5" fill="#3E4A52">carta: isoipse (equidistanza 100 m)</text><line x1="340" y1="200" x2="620" y2="200" stroke="#6B7378"/><line x1="340" y1="200" x2="340" y2="40" stroke="#6B7378"/><line x1="337" y1="200.0" x2="620" y2="200.0" stroke="#DDD5C7" stroke-width=".6"/><text x="335" y="203.0" text-anchor="end" font-size="7" fill="#6B7378">0</text><line x1="337" y1="170.0" x2="620" y2="170.0" stroke="#DDD5C7" stroke-width=".6"/><text x="335" y="173.0" text-anchor="end" font-size="7" fill="#6B7378">100</text><line x1="337" y1="140.0" x2="620" y2="140.0" stroke="#DDD5C7" stroke-width=".6"/><text x="335" y="143.0" text-anchor="end" font-size="7" fill="#6B7378">200</text><line x1="337" y1="110.0" x2="620" y2="110.0" stroke="#DDD5C7" stroke-width=".6"/><text x="335" y="113.0" text-anchor="end" font-size="7" fill="#6B7378">300</text><line x1="337" y1="80.0" x2="620" y2="80.0" stroke="#DDD5C7" stroke-width=".6"/><text x="335" y="83.0" text-anchor="end" font-size="7" fill="#6B7378">400</text><line x1="337" y1="50.0" x2="620" y2="50.0" stroke="#DDD5C7" stroke-width=".6"/><text x="335" y="53.0" text-anchor="end" font-size="7" fill="#6B7378">500</text><path d="M340.0,182.0 L344.3,170.0 L374.3,140.0 L404.2,110.0 L434.2,80.0 L464.2,50.0 L494.1,43.1 L524.1,50.0 L541.0,80.0 L557.9,110.0 L574.9,140.0 L591.8,170.0 L620.0,182.0" fill="none" stroke="#3F6E3A" stroke-width="2"/><circle cx="340.0" cy="182.0" r="2" fill="#3F6E3A"/><circle cx="344.3" cy="170.0" r="2" fill="#3F6E3A"/><circle cx="374.3" cy="140.0" r="2" fill="#3F6E3A"/><circle cx="404.2" cy="110.0" r="2" fill="#3F6E3A"/><circle cx="434.2" cy="80.0" r="2" fill="#3F6E3A"/><circle cx="464.2" cy="50.0" r="2" fill="#3F6E3A"/><circle cx="494.1" cy="43.1" r="2" fill="#3F6E3A"/><circle cx="524.1" cy="50.0" r="2" fill="#3F6E3A"/><circle cx="541.0" cy="80.0" r="2" fill="#3F6E3A"/><circle cx="557.9" cy="110.0" r="2" fill="#3F6E3A"/><circle cx="574.9" cy="140.0" r="2" fill="#3F6E3A"/><circle cx="591.8" cy="170.0" r="2" fill="#3F6E3A"/><circle cx="620.0" cy="182.0" r="2" fill="#3F6E3A"/><text x="480.0" y="214" text-anchor="middle" font-size="8" fill="#6B7378">distanza lungo A–B (x)</text><text x="314" y="120.0" text-anchor="middle" font-size="8" fill="#6B7378" transform="rotate(-90 314 120.0)">quota in m (y)</text><text x="480.0" y="222" text-anchor="middle" font-size="8.5" fill="#3E4A52">profilo topografico, su carta millimetrata</text></svg>
+  <p class="caption">Dalle isoipse al profilo: si riportano le intersezioni della traccia A–B con le curve e le si unisce. È uno dei primi esercizi del corso.</p>
+  <p>L'obiettivo è arrivare a guardare la carta "come una fotografia dall'aereo", vedendo il terreno in tre dimensioni. È anche il modo di preparare un'uscita: prima di andare sul terreno si studia la carta, si decide dove rilevare, si individuano strade e sentieri.</p>
+
+  <h3>Pendenza e inclinazione</h3>
+  <p>Due grandezze diverse. L'<strong>inclinazione</strong> si esprime in gradi (un piano orizzontale è a 0°, una parete verticale a 90°). La <strong>pendenza</strong> si esprime in percentuale. Contano molto per il geologo: la pendenza è un fattore predisponente all'<strong>instabilità di un versante</strong>. Una frana non avviene in pianura, avviene su un versante, perché la gravità tende a portare il materiale verso il basso.</p>
+
+  <h3>Distanze e aree: la carta è piatta, il terreno no</h3>
+  <svg class="cycle" viewBox="0 20 640 205" xmlns="http://www.w3.org/2000/svg" font-family="Poppins, Arial, sans-serif"><rect x="20" y="30" width="600" height="150" fill="#F4EEE3"/><path d="M60,160 L150,150 L230,90 L290,60 L350,85 L430,140 L520,150 L580,120 L580,180 L60,180Z" fill="#D9C9A3"/><path d="M60,160 L150,150 L230,90 L290,60 L350,85 L430,140 L520,150 L580,120" fill="none" stroke="#3F6E3A" stroke-width="2.5"/><line x1="60" y1="200" x2="580" y2="200" stroke="#B5552A" stroke-width="2.2"/><line x1="60" y1="160" x2="60" y2="205" stroke="#6B7378" stroke-dasharray="3 3"/><line x1="580" y1="120" x2="580" y2="205" stroke="#6B7378" stroke-dasharray="3 3"/><circle cx="60" cy="160" r="4" fill="#23282C"/><circle cx="580" cy="120" r="4" fill="#23282C"/><text x="52" y="152" text-anchor="end" font-size="10" font-weight="700" fill="#23282C">A</text><text x="590" y="114" font-size="10" font-weight="700" fill="#23282C">B</text><text x="320" y="218" text-anchor="middle" font-size="9" font-weight="600" fill="#B5552A">distanza planimetrica: quella che si misura sulla carta (proiettata sul piano)</text><text x="300" y="48" text-anchor="middle" font-size="9" font-weight="600" fill="#3F6E3A">distanza reale: lungo il terreno, sempre maggiore dove ci sono versanti</text><text x="130" y="175" font-size="8" fill="#6B7378">pianura: le due coincidono</text></svg>
+  <p>Sulla carta si misura la distanza <strong>planimetrica</strong>, cioè proiettata sul piano, e la si converte con la scala (10 cm su una carta al 10.000 fanno 1 km). Coincide con quella reale solo in pianura. Se tra A e B c'è un versante da salire e scendere, la distanza che percorreresti è maggiore, e la si può calcolare dal profilo topografico: magari da 1 km si passa a 1,3. Stesso discorso per le aree: un bacino che sulla carta misura 5 km², se è articolato in valli e versanti, in realtà può arrivare a 6–7 km². I GIS invece, lavorando sul modello tridimensionale, danno direttamente la distanza reale.</p>
+
+  <h3>La carta di Rapallo</h3>
+  <p>Il prof ha dato a ciascuno 4 fotocopie che insieme compongono una tavoletta IGM. Si numerano <strong>1, 2, 3, 4 in senso orario</strong> partendo da quella in alto a sinistra. Vanno portate <strong>sempre</strong> alle lezioni di cartografia. È una carta rilevata circa 80 anni fa: morfologia e soprattutto uso del suolo sono diversi da oggi, e per la didattica il prof la preferisce alle carte nuove, che si basano sugli stessi principi.</p>
+  <div class="box def">
+    <div class="lab">Riferimenti della carta</div>
+    <p><strong>Carta d'Italia 1:25.000, Foglio 83, Quadrante II, Tavoletta SO: "Rapallo"</strong> · Serie M891, Edizione 2 · IGMI.</p>
+    <p>"M891" è la sigla della <strong>Serie 25/V</strong> dell'IGM, le vecchie "tavolette": 3545 carte al 25.000 che coprono tutta l'Italia, rilevate in gran parte per via aerofotogrammetrica, con isoipse a equidistanza di 25 m, proiezione Gauss-Boaga, produzione e aggiornamento conclusi nel 1990. Ogni tavoletta misura 5' in latitudine per 7'30" in longitudine, circa 96 km².</p>
+    <p>Come si legge la sigla: il <strong>Foglio</strong> (qui 83) si divide in 4 <strong>Quadranti</strong> al 50.000 numerati I–IV; ogni quadrante si divide in 4 <strong>Tavolette</strong> al 25.000 indicate con NE, SE, SO, NO.</p>
+    <p>Dove trovarla: nel catalogo IGM (igmi.org) la <em>083 II-SO (Rapallo)</em> è in vendita come riproduzione in bianco e nero di un'edizione del 1933. Le carte IGM al 25.000 si consultano gratis anche dal Geoportale Nazionale, pure in QGIS tramite servizio WMS (wms.pcn.minambiente.it). Nella cartografia regionale la tavoletta "Rapallo" non esiste: la zona sta nella carta "Chiavari", perché cambia il taglio dei fogli.</p>
+  </div>
+  <p>Per la cartografia regionale si può usare il Geoportale della Regione Liguria, con carte topografiche dal 5.000 al 100.000 e carte geologiche scaricabili in formato digitale. L'archivio cartaceo è anche disponibile in dipartimento.</p>
+</section>
+
+<section>
+  <h2><span class="n">04</span>Geografia fisica: un'anteprima</h2>
+  <div class="box exam">
+    <div class="lab">Errore da non fare</div>
+    <p><strong>Tempo atmosferico non è clima.</strong> "Oggi è sereno, poco ventoso, 20 gradi": questo è il tempo, cioè le condizioni del momento, descritte dagli <strong>elementi atmosferici</strong> (temperatura, precipitazioni, umidità, vento, pressione). Il <strong>clima</strong> è quello che si ottiene quando queste condizioni si ripetono nelle stagioni e negli anni in una certa area. "Il clima di oggi", come si sente in televisione, non ha senso.</p>
+  </div>
+  <p>La Liguria non ha un clima ma tanti: più mite sulla costa, diverso nell'entroterra e in quota. L'Italia, dal Trentino alla Sicilia, ha una grande escursione di latitudine, e Alpi e Appennini fanno da confine tra regioni climatiche diverse.</p>
+  <p>I legami da avere in testa fin da subito:</p>
+  <ul>
+    <li><strong>Temperatura → pressione</strong>: zone più calde hanno pressioni al suolo più basse, zone più fredde pressioni più alte.</li>
+    <li><strong>Pressione → vento</strong>: il vento nasce da una differenza di pressione, e l'aria si sposta dalle alte verso le basse pressioni. Da qui la circolazione atmosferica generale.</li>
+    <li><strong>Umidità → condensazione → precipitazioni</strong>, che non sono solo pioggia. La quantità di precipitazioni negli anni distingue climi umidi, secchi, aridi.</li>
+    <li><strong>Masse d'aria calde e fredde → fronti → perturbazioni e cicloni</strong>. Quelli delle medie latitudini ci interessano da vicino; quelli tropicali sono più energetici. Si parla di "tropicalizzazione" del Mediterraneo, perché i nostri cicloni extratropicali cominciano ad assumere caratteristiche quasi tropicali.</li>
+  </ul>
+  <p>Il clima condiziona poi il modellamento del rilievo: sarà il tema di Geomorfologia il prossimo anno. E l'uomo interviene in modo sempre più pesante: l'espansione degli insediamenti in aree dove non si sarebbe dovuto costruire aumenta i rischi alluvionali e da frana.</p>
+</section>
+
+<section>
+  <h2><span class="n">05</span>Esercitazioni ed esame</h2>
+  <h3>Le esercitazioni</h3>
+  <p>In aula, con carte IGMI al 25.000 e CTR al 10.000 e 5.000. Riconoscere le curve di livello e le forme del rilievo, costruire profili topografici, determinare la quota di un punto, calcolare pendenza e inclinazione, misurare distanze e aree alle diverse scale, calcolare coordinate geografiche e chilometriche (UTM, Gauss-Boaga). Per la geografia fisica, meno quantitativa, qualche calcolo su dati meteorologici e climatici.</p>
+
+  <h3>L'esame</h3>
+  <ul>
+    <li><strong>Scritto</strong>: domande sugli argomenti, calcoli (coordinate, pendenza e inclinazione di un versante, aree, distanze), sezioni topografiche per la cartografia; grafici e disegni schematici per la geografia fisica. Superato con almeno <strong>18/30</strong>.</li>
+    <li><strong>Orale</strong>: discussione dello scritto e domande su altri argomenti del corso. Si può fare nello stesso appello dello scritto o in quelli successivi.</li>
+    <li>Voto finale: <strong>media aritmetica</strong> tra scritto e orale.</li>
+    <li>Appelli: 2 nella sessione invernale (gennaio–febbraio), 4 in quella estiva (giugno, luglio, settembre).</li>
+  </ul>
+  <div class="box exam">
+    <div class="lab">La strada consigliata: le prove in itinere</div>
+    <p>Per chi frequenta lo scritto si può sostituire con <strong>due prove</strong>: una di <strong>cartografia</strong>, a inizio novembre, finita quella parte, e una di <strong>geografia fisica</strong>, verso la fine delle lezioni. Vanno superate <strong>entrambe con almeno 18</strong>: non si compensa un 30 con un 10. La loro media è la base del voto finale, che si chiude con un breve orale (una decina di minuti, un paio di domande) in uno dei due appelli di gennaio–febbraio. Il prof prevede anche un recupero. In sostanza, seguendo e facendo le prove si arriva all'esame già fatto al 75–80%.</p>
+  </div>
+
+  <h3>Libri di testo</h3>
+  <ul>
+    <li>T. L. McKnight, D. Hess, <em>Geografia fisica. Comprendere il paesaggio</em>, ed. italiana a cura di F. Dramis, Piccin, 2005.</li>
+    <li>A. N. Strahler, <em>Geografia fisica</em>, Piccin, 1984.</li>
+    <li>U. Sauro, M. Meneghel, A. Bondesan, B. Castiglioni, <em>Dalla carta topografica al paesaggio</em>, ZetaBeta, 2005.</li>
+  </ul>
+</section>
+
+<section>
+  <h2><span class="n">06</span>Da fare</h2>
+  <ul class="checklist">
+    <li>Iscriversi al corso su Aulaweb (il prof l'ha attivato in aula) e far iscrivere chi non c'era.</li>
+    <li>Numerare le 4 fotocopie della carta di Rapallo (1-2-3-4 in senso orario dall'alto a sinistra) e portarle sempre.</li>
+    <li>Da lunedì 5 ottobre, portare sempre l'astuccio: matita, gomma, temperino, righello, <strong>due squadrette</strong>, <strong>matite colorate blu e rossa</strong> (blu per il reticolo idrografico, rosso per i crinali; <strong>niente biro</strong>, perché se sbagli non si cancella), qualche foglio di <strong>carta millimetrata</strong>, calcolatrice scientifica (va bene quella del telefono, serve per la trigonometria di pendenze e inclinazioni).</li>
+    <li>Fissare la differenza tra tempo atmosferico e clima.</li>
+  </ul>
+  <h3>Prossima lezione</h3>
+  <p>Lunedì 5 ottobre, 16–18, CT.09. Si comincia la cartografia, carta alla mano: cos'è una carta topografica e il concetto di scala.</p>
+</section>
+</div>
+
+</body></html>

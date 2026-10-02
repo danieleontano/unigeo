@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>Geologia 1 — Lezione 3</title>
+<style>
+  @page { size: A4; margin: 20mm 18mm 22mm 18mm; }
+  :root{
+    --terra:#B5552A; --ochre:#C9A227; --slate:#3E4A52; --sand:#F4EEE3;
+    --ink:#23282C; --muted:#6B7378; --line:#DDD5C7; --moss:#6F8F5E;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:#fff;color:var(--ink);
+    font-family:"Caladea","TeX Gyre Pagella",Georgia,serif;font-size:10.6pt;line-height:1.45}
+  h1,h2,h3,h4,.sans{font-family:"Poppins","TeX Gyre Heros",Arial,sans-serif}
+  .page{}
+  
+
+  /* ---------- cover ---------- */
+  .cover{padding:0;background:var(--sand);display:flex;flex-direction:column}
+  .strata{height:78mm;position:relative;overflow:hidden}
+  .strata div{position:absolute;left:0;right:0}
+  .cover-body{padding:14mm 18mm 0 18mm;flex:1}
+  .kicker{font-family:Poppins;font-size:9pt;letter-spacing:.22em;text-transform:uppercase;color:var(--terra);font-weight:600}
+  .cover h1{font-size:34pt;line-height:1.05;margin:6mm 0 3mm 0;color:var(--slate);font-weight:600;letter-spacing:-.01em}
+  .cover h2{font-size:14pt;font-weight:400;color:var(--ink);margin:0 0 10mm 0}
+  .meta{display:grid;grid-template-columns:1fr 1fr;gap:4mm 10mm;font-size:10pt;border-top:1px solid var(--line);padding-top:6mm;max-width:150mm}
+  .meta b{display:block;font-family:Poppins;font-size:8pt;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:600;margin-bottom:1mm}
+  .cover-foot{padding:0 18mm 14mm 18mm;font-size:9pt;color:var(--muted)}
+  .toc{margin-top:10mm;max-width:150mm}
+  .toc h3{font-size:9pt;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin:0 0 3mm 0;font-weight:600}
+  .toc ol{margin:0;padding:0;list-style:none;counter-reset:t}
+  .toc li{counter-increment:t;display:flex;gap:4mm;padding:1.6mm 0;border-bottom:1px dotted var(--line);font-size:10.5pt}
+  .toc li::before{content:counter(t,decimal-leading-zero);font-family:Poppins;font-weight:600;color:var(--terra);min-width:8mm}
+
+  /* ---------- content ---------- */
+  .runhead{position:absolute;top:9mm;left:18mm;right:18mm;display:flex;justify-content:space-between;font-family:Poppins;font-size:7.5pt;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .runhead span:last-child{color:var(--terra);font-weight:600}
+  section h2{font-size:15pt;color:var(--slate);margin:0 0 2mm 0;font-weight:600;letter-spacing:-.01em;display:flex;align-items:baseline;gap:4mm}
+  section h2 .n{font-size:10pt;color:var(--terra);font-weight:600;letter-spacing:.1em}
+  .lead{color:var(--muted);font-style:italic;margin:0 0 4mm 0}
+  h3{font-size:11.5pt;color:var(--terra);margin:6mm 0 1.5mm 0;font-weight:600}
+  h4{font-size:10pt;color:var(--slate);margin:3.5mm 0 1mm 0;font-weight:600}
+  p{margin:0 0 2.6mm 0;text-align:justify;hyphens:auto}
+  ul{margin:0 0 3mm 0;padding-left:5mm}
+  li{margin-bottom:1.2mm}
+  li::marker{color:var(--terra)}
+  em.t{font-style:italic;color:var(--slate)}
+  .two{columns:2;column-gap:8mm}
+  .two h3:first-child{margin-top:0}
+
+  /* callouts */
+  .box{border-left:2px solid var(--ochre);background:none;padding:1mm 0 1mm 4mm;margin:3mm 0 3.5mm 0;break-inside:avoid}
+  .box .lab{font-family:Poppins;font-size:7.5pt;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--ochre);margin-bottom:1mm}
+  .box p{margin-bottom:1.5mm}
+  .box p:last-child{margin-bottom:0}
+  .box.def{border-color:var(--ochre)}
+  .box.exam{border-color:var(--terra)} .box.exam .lab{color:var(--terra)}
+  .box.draw{border-color:var(--slate)} .box.draw .lab{color:var(--slate)}
+  .box.warn{border-color:var(--moss)} .box.warn .lab{color:var(--moss)}
+
+  .kv{display:grid;grid-template-columns:38mm 1fr;gap:1.5mm 4mm;margin:2mm 0 4mm 0;font-size:10pt}
+  .kv dt{font-family:Poppins;font-size:8.5pt;font-weight:600;color:var(--slate);padding-top:.6mm}
+  .kv dd{margin:0}
+
+  table{width:100%;border-collapse:collapse;margin:2mm 0 4mm 0;font-size:9.6pt;break-inside:avoid}
+  th{font-family:Poppins;font-size:8pt;text-transform:uppercase;letter-spacing:.1em;text-align:left;color:var(--muted);border-bottom:1.5px solid var(--slate);padding:1.5mm 2mm;font-weight:600}
+  td{padding:1.8mm 2mm;border-bottom:1px solid var(--line);vertical-align:top}
+  td:first-child{font-family:Poppins;font-weight:600;font-size:8.8pt;color:var(--slate)}
+
+  .q{color:var(--moss);font-family:Poppins;font-size:8pt;font-weight:600;vertical-align:super}
+  .foot{position:absolute;bottom:9mm;left:18mm;right:18mm;display:flex;justify-content:space-between;font-family:Poppins;font-size:7.5pt;color:var(--muted)}
+  .pnum{font-weight:600;color:var(--slate)}
+
+  /* rock cycle figure */
+  .cycle{margin:3mm auto 4mm auto;display:block;width:150mm}
+  .caption{font-size:8.8pt;color:var(--muted);text-align:center;margin:-1mm 0 4mm 0;font-style:italic}
+  .checklist li{list-style:none;position:relative;padding-left:6mm}
+  .checklist li::before{content:"";position:absolute;left:0;top:1.1mm;width:3.2mm;height:3.2mm;border:1.3px solid var(--terra);border-radius:.6mm}
+
+  .hd{display:flex;align-items:flex-start;gap:5mm;border-bottom:1.5px solid var(--slate);padding-bottom:4mm;margin-bottom:6mm}
+  .hd svg{flex:0 0 14mm;width:14mm;height:14mm}
+  .hd .k{font-family:Poppins;font-size:8pt;letter-spacing:.2em;text-transform:uppercase;color:var(--terra);font-weight:600}
+  .hd h1{font-family:Poppins;font-size:20pt;line-height:1.1;margin:1mm 0 1.5mm 0;color:var(--slate);font-weight:600}
+  .hd .m{font-size:9.5pt;color:var(--muted)}
+  .hd .m b{color:var(--ink);font-weight:600}
+  .legend{font-size:8.8pt;color:var(--muted);margin:0 0 6mm 0}
+</style>
+<style>section h2{break-after:avoid;margin-top:9mm} .page:first-child section h2{margin-top:0} h2[style]{margin-top:9mm !important} h3,h4{break-after:avoid} .box,table,dl.kv{break-inside:avoid} .lead{break-after:avoid}</style>
+</head>
+<body>
+<div class="hd">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <path d="M14,62 C8,42 26,22 50,20 C72,18 92,32 90,54 C88,74 68,84 46,84 C28,84 18,76 14,62 Z" fill="#B5552A"/>
+  <path d="M22,58 C20,44 34,30 52,29 C68,28 82,38 80,54 C78,68 64,76 48,76 C34,76 24,70 22,58 Z" fill="#C9A227" opacity=".85"/>
+  <path d="M30,55 C30,46 40,38 52,38 C62,38 72,44 70,54 C68,63 60,68 50,68 C40,68 30,64 30,55 Z" fill="#3E4A52" opacity=".9"/>
+  <path d="M24,52 L82,46" stroke="#F4EEE3" stroke-width="2" opacity=".7"/>
+  <path d="M28,62 L80,58" stroke="#F4EEE3" stroke-width="1.6" opacity=".5"/>
+  </svg>
+  <div>
+    <div class="k">Geologia 1 · Modulo 2 · Geologia stratigrafica</div>
+    <h1>Lezione 3 · I minerali nelle rocce</h1>
+    <div class="m"><b>Lunedì 28 settembre 2026</b> · prof. Michele Piazza · Scienze Geologiche, primo anno · UniGe, a.a. 2026/27 · Appunti dalla registrazione audio e dalle slide "2. I minerali nelle rocce"</div>
+  </div>
+</div>
+<p class="legend">Lezione non seguita di persona: ricostruita solo da audio e slide. Le note <strong>[ndr]</strong> sono correzioni o precisazioni mie; il simbolo <span class="q">?</span> segna i punti in cui l'audio non era chiaro. La registrazione si interrompe alla dolomite: anidrite e gesso vengono solo dalle slide.</p>
+
+<div class="page">
+<section>
+  <h2><span class="n">01</span>Perché i minerali, e quali</h2>
+  <p class="lead">Non è mineralogia (quella parte a novembre, con la sistematica nel secondo semestre). Qui i minerali servono solo come costituenti delle rocce: riconoscerli per riconoscere, classificare e collocare la roccia.</p>
+  <p>Le rocce sono fatte di cristalli di minerali, di frammenti di cristalli e, per le sedimentarie, di componenti che vengono dalla biosfera (i fossili), che però si conservano quasi sempre come parti mineralizzate. Il docente l'ha annunciata come la lezione "noiosa": dalla prossima si comincia con le rocce magmatiche.</p>
+
+  <div class="box def">
+    <div class="lab">Definizione</div>
+    <p><strong>Minerale</strong>: sostanza solida cristallina naturale, generalmente inorganica, con una specifica composizione chimica.</p>
+    <p><em>Solida</em>, niente gas o liquidi. <em>Naturale</em>, esclusi i prodotti di sintesi (i diamanti artificiali). <em>Cristallina</em>, cioè con un <strong>reticolo cristallino</strong>: atomi o ioni disposti secondo un modello geometrico ordinato e periodico, caratteristico di ogni minerale. <em>Generalmente inorganica</em>. <em>Composizione chimica specifica</em>, esprimibile con una formula precisa (anche lunghissima).</p>
+    <p>Tutti i minerali sono solidi, ma non tutti i solidi sono minerali: quelli senza struttura ordinata e periodica sono <strong>vetrosi</strong> o <strong>amorfi</strong> (al massimo un ordine locale e disordinato).</p>
+  </div>
+
+  <h3>Come crescono i cristalli</h3>
+  <p>Un cristallo nasce da un nucleo microscopico e cresce secondo superfici piane naturali, le <strong>facce</strong>, dettate dal reticolo. Lasciato libero cresce uguale a se stesso e ha la forma che il reticolo prevede. Quando incontra vincoli (altri cristalli, poco spazio, cristallizzazione troppo rapida) la crescita si ferma del tutto o in parte e la forma si deforma. Spesso i cristalli si uniscono in aggregati detti <strong>granuli</strong>, in cui solo pochi individui hanno facce ben sviluppate.</p>
+
+  <div class="box warn">
+    <div class="lab">Aspettative realistiche</div>
+    <p>Nelle rocce non si trovano i bei cristalli da collezione. Si trovano minerali comuni, spesso piccoli e malformati. E anche una bella vena mineralizzata, di solito, non dice nulla sulla roccia.</p>
+  </div>
+
+  <h3>I minerali da conoscere</h3>
+  <p>Ne esistono moltissimi, ma per il riconoscimento sistematico delle rocce ne bastano una <strong>trentina</strong>. In ordine di importanza per gruppo:</p>
+  <table>
+    <tr><th>Gruppo</th><th>Gruppo chimico</th><th>Quelli che useremo</th></tr>
+    <tr><td>Silicati</td><td>[SiO₄]⁴⁻ con altri elementi. I più abbondanti</td><td>quarzo, feldspati alcalini, plagioclasi, feldspatoidi, olivina, anfiboli, pirosseni, granati, epidoto, e i fillosilicati mica bianca, mica nera, serpentino, clorite</td></tr>
+    <tr><td>Carbonati</td><td>[CO₃]²⁻ con Ca e/o Mg</td><td>calcite, dolomite. Fondamentali nel processo sedimentario</td></tr>
+    <tr><td>Solfati</td><td>[SO₄]²⁻, qui con il calcio</td><td>anidrite e gesso: due modi di presentarsi del solfato di calcio, anidro e idrato</td></tr>
+    <tr><td>Ossidi</td><td>O + elemento metallico</td><td>magnetite, spinello, ematite, rutilo. Solo accessori, non li cercheremo</td></tr>
+    <tr><td>Solfuri</td><td>S²⁻ + elementi metallici</td><td>pirite. Solo accessorio</td></tr>
+  </table>
+  <p>I pirosseni non si distinguono in orto- e clino- a livello macroscopico: si dice "pirosseno" e basta (la distinzione arriva a Mineralogia).</p>
+</section>
+
+<section>
+  <h2><span class="n">02</span>Le sette proprietà da osservare</h2>
+  <p class="lead">Si valutano a occhio nudo o con la lente 10×, con la punta al widia e con l'acido cloridrico al 10%. Durezza vera, peso specifico e proprietà magnetiche, ottiche ed elettriche richiedono strumenti: sono cose da Mineralogia.</p>
+
+  <h3>1 · Abito e tessitura</h3>
+  <p>Come si presenta esternamente il cristallo, in base a quanto si sono potute sviluppare le facce.</p>
+  <svg class="cycle" viewBox="0 0 640 165" xmlns="http://www.w3.org/2000/svg" font-family="Poppins, Arial, sans-serif"><g><rect x="10" y="20" width="190" height="110" rx="4" fill="#F4E3D2" stroke="#DDD5C7"/><rect x="33" y="50.0" width="44" height="20.0" fill="#3E4A52" stroke="#23282C" transform="rotate(10 55 60)"/><rect x="122" y="81.81818181818181" width="36" height="16.363636363636363" fill="#3E4A52" stroke="#23282C" transform="rotate(5 140 90)"/><rect x="88" y="49.54545454545455" width="24" height="10.909090909090908" fill="#3E4A52" stroke="#23282C" transform="rotate(-5 100 55)"/><text x="105" y="146" text-anchor="middle" font-size="9.5" font-weight="600" fill="#B5552A">Idiomorfo (euedrale)</text><text x="105" y="158" text-anchor="middle" font-size="8" fill="#3E4A52">cresce libero nel fuso: tutte le facce</text></g><g transform="translate(215,0)"><rect x="10" y="20" width="190" height="110" rx="4" fill="#F4E3D2" stroke="#DDD5C7"/><polygon points="30,45 90,40 95,70 70,95 35,90" fill="#3E4A52" stroke="#23282C"/><polygon points="90,40 165,50 170,100 95,110 70,95 95,70" fill="#C9A227" stroke="#23282C"/><rect x="40" y="96" width="30" height="24" fill="#D6C7B0" stroke="#23282C"/><text x="105" y="146" text-anchor="middle" font-size="9.5" font-weight="600" fill="#B5552A">Ipidiomorfo (subedrale)</text><text x="105" y="158" text-anchor="middle" font-size="8" fill="#3E4A52">solo alcune facce: si è toccato con i vicini</text></g><g transform="translate(430,0)"><rect x="10" y="20" width="190" height="110" rx="4" fill="#F4E3D2" stroke="#DDD5C7"/><rect x="25" y="35" width="55" height="26" fill="#3E4A52" stroke="#23282C" transform="rotate(-10 52 48)"/><rect x="120" y="40" width="60" height="24" fill="#3E4A52" stroke="#23282C" transform="rotate(8 150 52)"/><rect x="60" y="85" width="50" height="24" fill="#3E4A52" stroke="#23282C" transform="rotate(15 85 97)"/><path d="M10,20 L200,20 L200,130 L10,130Z M28,34 L80,26 L85,55 L32,62Z" fill="none"/><polygon points="85,30 118,36 116,70 84,80 70,65 86,55" fill="#E9E4DA" stroke="#23282C" stroke-width=".8"/><polygon points="116,70 150,66 185,70 190,120 112,122 112,102 108,85" fill="#E9E4DA" stroke="#23282C" stroke-width=".8"/><polygon points="14,70 70,65 84,80 58,86 55,125 14,126" fill="#E9E4DA" stroke="#23282C" stroke-width=".8"/><text x="105" y="146" text-anchor="middle" font-size="9.5" font-weight="600" fill="#B5552A">Allotriomorfo (anedrale)</text><text x="105" y="158" text-anchor="middle" font-size="8" fill="#3E4A52">arriva ultimo e riempie lo spazio rimasto</text></g></svg>
+  <p class="caption">In un magma che cristallizza, chi cristallizza per primo ha tutto il fuso a disposizione e cresce con la sua forma; chi arriva per ultimo prende la forma dello spazio rimasto.</p>
+  <ul>
+    <li><strong>Euedrale (idiomorfo)</strong>: completamente delimitato da facce cristalline, crescita non disturbata. Ha il suo abito proprio.</li>
+    <li><strong>Subedrale (ipidiomorfo)</strong>: facce solo in parte, crescita parzialmente limitata dai vicini.</li>
+    <li><strong>Anedrale (allotriomorfo)</strong>: nessuna faccia, crescita completamente limitata. Non ha il suo abito.</li>
+  </ul>
+  <p>Alcuni minerali sono tipicamente allotriomorfi (il quarzo, i plagioclasi), altri tendono a essere idiomorfi: dipende dall'ordine di cristallizzazione.</p>
+  <p><strong>Tessitura</strong>, cioè come sono disposti i cristalli: <em>radiale</em> (a raggiera da un punto), <em>a feltro</em> (intrecciati), <em>foliata</em> (sovrapposti come i fogli di un quaderno), <em>granulare</em> (cristallo contro cristallo a riempire tutto il volume).</p>
+  <p><strong>Habitus</strong>, la forma del singolo cristallo, lungo due assi: allungandosi si va da equidimensionale ad allungato-colonnare, aciculare, fibroso; appiattendosi da colonnare tozzo a tabulare, planare, micaceo; incrociando le due tendenze, laminare.</p>
+  <div class="box warn">
+    <div class="lab">Attenzione</div>
+    <p>Sulla superficie di rottura della roccia il minerale si vede quasi sempre in <strong>due dimensioni</strong>. Un tabulare può sembrare un rettangolo, un globulare un poligono. Bisogna girare il campione e ricostruire mentalmente la terza dimensione.</p>
+  </div>
+
+  <h3>2 · Lucentezza</h3>
+  <p>La capacità di riflettere la luce. <strong>Metallica</strong>, tipica di solfuri e ossidi (il cubetto di pirite). <strong>Non metallica</strong>, dei minerali trasparenti o traslucidi, che a sua volta può essere adamantina (diamante), <strong>vitrea</strong> (quarzo), <strong>sericea</strong> (come la seta, cangiante: serpentino), grassa (talco), <strong>madreperlacea</strong> (miche), resinosa (zolfo), terrosa (molto spenta). Le tre da tenere a mente sono vitrea, sericea e madreperlacea: aiutano a riconoscere quarzo, serpentino e miche.</p>
+
+  <h3>3 · Trasparenza</h3>
+  <p><strong>Opaco</strong>: non si fa attraversare dalla luce. <strong>Trasparente</strong>: si vede cosa c'è dietro, come nel vetro. <strong>Traslucido</strong>: la luce passa, ma dietro si distingue a fatica.</p>
+
+  <h3>4 · Colore</h3>
+  <p>Si valuta in luce naturale. Un minerale è <strong>incolore</strong> se non assorbe (o assorbe poco e in modo uguale) le lunghezze d'onda della luce; è colorato se ne assorbe alcune in modo selettivo. Le cause sono distorsioni del reticolo o ioni cromofori che occupano siti di altri elementi. <strong>Idiocromatici</strong>: sempre lo stesso colore. <strong>Allocromatici</strong>: colori diversi o incolori. Per questo il colore da solo raramente basta.</p>
+  <div class="box exam">
+    <div class="lab">Errore classico</div>
+    <p><strong>Incolore non vuol dire bianco.</strong> Il bianco è un colore. Incolore implica trasparenza: si vede quello che c'è sotto, come nel vetro di una finestra. È l'errore che fanno tutti all'inizio.</p>
+  </div>
+
+  <h3>5 · Durezza approssimativa</h3>
+  <p>La resistenza a essere scalfito. In Mineralogia si usa la scala di Mohs con le sue punte di durezza nota. Qui, speditivamente, bastano l'<strong>unghia</strong> e la <strong>punta al widia</strong>: si riga o non si riga.</p>
+  <svg class="cycle" viewBox="0 0 640 280" xmlns="http://www.w3.org/2000/svg" font-family="Poppins, Arial, sans-serif"><rect x="60.0" y="30" width="120.0" height="206" fill="#EFE6D6"/><text x="120.0" y="22" text-anchor="middle" font-size="8.5" font-weight="600" fill="#3E4A52">si riga con l'unghia</text><rect x="180.0" y="30" width="150.0" height="206" fill="#E6D2B4"/><text x="255.0" y="22" text-anchor="middle" font-size="8.5" font-weight="600" fill="#3E4A52">si riga con la punta al widia</text><rect x="330.0" y="30" width="270.0" height="206" fill="#D9B98F"/><text x="465.0" y="22" text-anchor="middle" font-size="8.5" font-weight="600" fill="#3E4A52">non si riga: 6 e oltre, riga il vetro</text><line x1="60.0" y1="30" x2="60.0" y2="236" stroke="#fff" stroke-width=".8"/><text x="60.0" y="248" text-anchor="middle" font-size="8" fill="#6B7378">1</text><line x1="120.0" y1="30" x2="120.0" y2="236" stroke="#fff" stroke-width=".8"/><text x="120.0" y="248" text-anchor="middle" font-size="8" fill="#6B7378">2</text><line x1="180.0" y1="30" x2="180.0" y2="236" stroke="#fff" stroke-width=".8"/><text x="180.0" y="248" text-anchor="middle" font-size="8" fill="#6B7378">3</text><line x1="240.0" y1="30" x2="240.0" y2="236" stroke="#fff" stroke-width=".8"/><text x="240.0" y="248" text-anchor="middle" font-size="8" fill="#6B7378">4</text><line x1="300.0" y1="30" x2="300.0" y2="236" stroke="#fff" stroke-width=".8"/><text x="300.0" y="248" text-anchor="middle" font-size="8" fill="#6B7378">5</text><line x1="360.0" y1="30" x2="360.0" y2="236" stroke="#fff" stroke-width=".8"/><text x="360.0" y="248" text-anchor="middle" font-size="8" fill="#6B7378">6</text><line x1="420.0" y1="30" x2="420.0" y2="236" stroke="#fff" stroke-width=".8"/><text x="420.0" y="248" text-anchor="middle" font-size="8" fill="#6B7378">7</text><line x1="480.0" y1="30" x2="480.0" y2="236" stroke="#fff" stroke-width=".8"/><text x="480.0" y="248" text-anchor="middle" font-size="8" fill="#6B7378">8</text><line x1="540.0" y1="30" x2="540.0" y2="236" stroke="#fff" stroke-width=".8"/><text x="540.0" y="248" text-anchor="middle" font-size="8" fill="#6B7378">9</text><line x1="600.0" y1="30" x2="600.0" y2="236" stroke="#fff" stroke-width=".8"/><text x="600.0" y="248" text-anchor="middle" font-size="8" fill="#6B7378">10</text><circle cx="120.0" cy="44" r="3.6" fill="#C9A227"/><text x="112.0" y="47" text-anchor="end" font-size="8.5" fill="#23282C">Gesso</text><line x1="150.0" y1="57" x2="180.0" y2="57" stroke="#3E4A52" stroke-width="6" stroke-linecap="round"/><text x="142.0" y="60" text-anchor="end" font-size="8.5" fill="#23282C">Mica nera</text><circle cx="150.0" cy="70" r="3.6" fill="#3E4A52"/><text x="142.0" y="73" text-anchor="end" font-size="8.5" fill="#23282C">Serpentino</text><circle cx="180.0" cy="83" r="3.6" fill="#3E4A52"/><text x="172.0" y="86" text-anchor="end" font-size="8.5" fill="#23282C">Mica bianca</text><circle cx="180.0" cy="96" r="3.6" fill="#B5552A"/><text x="172.0" y="99" text-anchor="end" font-size="8.5" fill="#23282C">Calcite</text><circle cx="240.0" cy="109" r="3.6" fill="#B5552A"/><text x="232.0" y="112" text-anchor="end" font-size="8.5" fill="#23282C">Dolomite</text><line x1="300.0" y1="122" x2="360.0" y2="122" stroke="#3E4A52" stroke-width="6" stroke-linecap="round"/><text x="292.0" y="125" text-anchor="end" font-size="8.5" fill="#23282C">Anfiboli</text><line x1="330.0" y1="135" x2="360.0" y2="135" stroke="#3E4A52" stroke-width="6" stroke-linecap="round"/><text x="322.0" y="138" text-anchor="end" font-size="8.5" fill="#23282C">Feldspatoidi</text><circle cx="360.0" cy="148" r="3.6" fill="#3E4A52"/><text x="352.0" y="151" text-anchor="end" font-size="8.5" fill="#23282C">Feldspati</text><line x1="360.0" y1="161" x2="420.0" y2="161" stroke="#3E4A52" stroke-width="6" stroke-linecap="round"/><text x="352.0" y="164" text-anchor="end" font-size="8.5" fill="#23282C">Pirosseni</text><line x1="360.0" y1="174" x2="420.0" y2="174" stroke="#3E4A52" stroke-width="6" stroke-linecap="round"/><text x="352.0" y="177" text-anchor="end" font-size="8.5" fill="#23282C">Epidoto</text><line x1="390.0" y1="187" x2="420.0" y2="187" stroke="#3E4A52" stroke-width="6" stroke-linecap="round"/><text x="382.0" y="190" text-anchor="end" font-size="8.5" fill="#23282C">Olivina</text><circle cx="420.0" cy="200" r="3.6" fill="#3E4A52"/><text x="412.0" y="203" text-anchor="end" font-size="8.5" fill="#23282C">Quarzo</text><circle cx="420.0" cy="213" r="3.6" fill="#3E4A52"/><text x="412.0" y="216" text-anchor="end" font-size="8.5" fill="#23282C">Granato</text><text x="330.0" y="260" text-anchor="middle" font-size="8" fill="#6B7378">durezza approssimativa (scala di Mohs)</text><text x="198.0" y="272" font-size="7.5" fill="#B5552A">● carbonati (reagiscono con HCl)</text><text x="378.0" y="272" font-size="7.5" fill="#3E4A52">● silicati</text><text x="444.0" y="272" font-size="7.5" fill="#C9A227">● solfati</text></svg>
+  <p class="caption">Le soglie della slide: unghia fino a 2, rame fino a 3, acciaio fino a 5; da 6 in su il minerale riga il vetro.</p>
+
+  <h3>6 · Sfaldatura e frattura</h3>
+  <p>Come reagisce il minerale a una sollecitazione. Con la punta lo si "stuzzica", oppure si guarda la superficie lasciata quando si è staccato il campione.</p>
+  <ul>
+    <li><strong>Sfaldatura</strong>: rottura lungo superfici piane parallele a piani cristallografici, dove i legami sono più deboli. Il pezzo che si stacca è confrontabile con quello di partenza: si ripropone la struttura del cristallo. Può essere netta, incerta o assente, in una o più direzioni.</li>
+    <li><strong>Frattura</strong>: risposta disorganizzata, nei minerali con legami uguali in tutte le direzioni. Il pezzo che si ottiene non è una copia del cristallo. <strong>Concoide</strong>: come il segno di una cucchiaiata nel budino, indica un materiale molto omogeneo. <strong>Scheggiosa</strong> o fibrosa, produce schegge. <strong>Irregolare</strong>: superficie tormentata, come quella di una martellata su un mattone.</li>
+  </ul>
+
+  <h3>7 · Reattività all'acido cloridrico</h3>
+  <p>Una goccia di HCl al 10% sul minerale. I carbonati si sciolgono e liberano CO₂, che si vede come bollicine che "friggono":</p>
+  <p style="text-align:center;font-family:Poppins;font-size:10pt">CaCO₃ + 2HCl → CaCl₂ + H₂O + CO₂</p>
+  <ul>
+    <li><strong>Calcite</strong>: reagisce vivacemente anche <strong>a freddo</strong>. È il minerale per eccellenza reattivo all'acido: un bel cristallo di calcite sotto la goccia sparisce.</li>
+    <li><strong>Dolomite</strong> e gli altri carbonati: reagiscono solo <strong>a caldo</strong>. Si scalda il campione con un accendino e poi si mette la goccia.</li>
+    <li>Una debole reazione in una roccia che non è un carbonato può dipendere da un po' di calcite dispersa.</li>
+    <li>All'inizio si mette l'acido anche sul quarzo, che è inerte, giusto per prendere la mano. Poi lo si usa solo quando ha senso, come verifica ulteriore.</li>
+  </ul>
+  <div class="box warn">
+    <div class="lab">Sicurezza</div>
+    <p>Solo acido al 10%. In commercio si trova anche al 30%: sulle mani e sugli occhi diventa pericoloso. Non comprare mai niente di più concentrato.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">03</span>Le schede dei minerali</h2>
+  <p class="lead">Da stampare o tenere sul tablet e portare alle esercitazioni e all'esame. Non vanno imparate a memoria: sono il prontuario per confrontare quello che si osserva.</p>
+
+  <h3>Silicati: i chiari</h3>
+  <h4>Quarzo</h4>
+  <p>Il minerale "infestante": si trova dappertutto, in rocce sedimentarie, magmatiche e metamorfiche. È estremamente stabile, passa da una roccia all'altra mantenendo inalterate le sue caratteristiche, e per molte classificazioni è il primo elemento che si va a guardare. Di solito <strong>allotriomorfo</strong>, perché cristallizza per ultimo e occupa lo spazio che resta; quando cresce in pace è un prisma allungato. Lucentezza <strong>vitrea</strong>: sembra un coccio di bottiglia, vetro rotto. Da trasparente a traslucido, <strong>incolore</strong> per definizione; a volte violaceo, rosato, giallino (ametista, citrino, pietre semipreziose, ma nelle rocce è raro). Durezza <strong>7</strong>: riga l'acciaio del martello. Nessuna sfaldatura: frattura concoide secondo i testi, ma spesso molto irregolare. Inerte all'HCl.</p>
+
+  <h4>Feldspato alcalino</h4>
+  <p>Prismatico tabulare, spesso <strong>idiomorfo</strong>. Lucentezza perlacea. Da opaco a trasparente: quando è pulitissimo sembra quasi trasparente, e lì si può confondere. Colore dal bianco latte al rosa, marrone chiaro, rosso. Durezza circa 6. Sfaldatura netta secondo piani paralleli, e molto spesso una <strong>geminazione</strong> ben visibile: durante la crescita le facce formano un piccolo angolo, e ruotando il campione la luce si riflette prima su una metà e poi sull'altra, come se fossero due cristalli saldati. Inerte all'HCl. Frequente in rocce magmatiche e metamorfiche, più raro nelle sedimentarie perché <strong>labile</strong>: si altera facilmente e viene distrutto lungo la storia della roccia, l'opposto del quarzo.</p>
+
+  <h4>Plagioclasi</h4>
+  <p>Parenti stretti dei feldspati alcalini. Abito prismatico tabulare, sul campione appaiono come rettangoli. Quasi sempre <strong>allotriomorfi</strong>: riempiono lo spazio lasciato dagli altri; raramente idiomorfi. Traslucidi, più raramente trasparenti. "Lucentezza bianca", colore dal bianco latte al bianco farina, a volte debolmente colorati, e con l'alterazione anche toni verdi. Durezza 6. Sono sempre geminati, ma la geminazione a occhio nudo non si vede. Sfaldano lungo piani perpendicolari. Inerti all'HCl. Magmatici e metamorfici, rari nelle sedimentarie: labili anche loro.</p>
+
+  <h4>Feldspatoidi</h4>
+  <p>Meno frequenti. Abito globulare o prismatico tozzo: poliedri a molte faccette che tendono alla sfera. Traslucidi, da vitrei a opachi o madreperlacei, dal bianco al grigiastro (incolori solo se purissimi). Durezza 5,5–6. Potenzialmente sfaldabili, ma sollecitati di solito si rompono e basta. Inerti all'HCl. Tra i minerali bianchi si riconoscono proprio perché <strong>globulari</strong>. Tipici delle rocce magmatiche; labili, quasi assenti nelle sedimentarie.</p>
+
+  <h3>Silicati: i colorati</h3>
+  <h4>Olivina</h4>
+  <p>Quella che si vede nei gioielli come peridoto. Nelle rocce spesso è un aggregato, ma la forma classica è <strong>globulare</strong> e tende all'idiomorfo. Vitrea come il quarzo, sembra anche lei un fondo di bottiglia, tendenzialmente trasparente ma <strong>mai incolore</strong>: verde scuro, <strong>verde oliva</strong>, giallastro. Da qui il nome, e da qui la distinzione facile dal quarzo. Durezza 6,5–7. Ha quasi sempre un aspetto fratturato, mentre il quarzo sembra più integro. Inerte all'HCl. È instabile fuori dalle condizioni del magma e si trasforma facilmente in altri minerali: trovarla fresca e sana è piuttosto raro.</p>
+
+  <h4>Anfiboli</h4>
+  <p>Grande gruppo, si somigliano tutti. Prismatici molto allungati, fino ad aciculari, spesso in aggregati <strong>a ciuffi radiali</strong> che partono da un punto. Piccoli: si guardano con la lente. Vitrei, da opachi a traslucidi, colore dal <strong>nero al verde al blu scuro</strong>. Durezza 5–6: delicati, con la punta tendono a rompersi. Si sfaldano perfettamente in prismi uguali a quello di partenza, ma essendo piccoli non è facile vederlo. Il riconoscimento passa soprattutto per questo abito stretto, allungato, a ciuffi. Inerti all'HCl. Magmatici e metamorfici.</p>
+
+  <h4>Pirosseni</h4>
+  <p>Parenti degli anfiboli. Spesso <strong>idiomorfi</strong>, prismatici ma <strong>tozzi</strong>, non aciculari: questo li distingue dagli anfiboli. Opachi, sempre colorati: nero, bruno, verde, a volte verde smeraldo molto brillante. Durezza 6–7. Teoricamente sfaldabili in forme prismatiche, se sani; altrimenti si rompono. Inerti all'HCl. Magmatici e metamorfici, accessori nel sedimentario. <strong>[ndr]</strong> La slide indica lucentezza "metallica": di norma i pirosseni hanno lucentezza vitrea, al massimo submetallica in alcune varietà; nell'audio il passaggio non è chiaro<span class="q">?</span>.</p>
+
+  <h4>Granati</h4>
+  <p><strong>Globulari</strong>, equidimensionali, poliedri che tendono alla sfera, spesso idiomorfi. Da vitrei a resinosi, da traslucidi a opachi. Colori molto variabili: rossastri, verdastri, bruni, comunque ben colorati. Molto duri (7): si usano come pietre dure. Nessuna sfaldatura evidente, frattura concoide. Inerti all'HCl. Magmatici e metamorfici; nel sedimentario solo come frammenti, mai con genesi sedimentaria.</p>
+
+  <h4>Epidoto</h4>
+  <p>Uno dei più difficili da riconoscere. Piccoli prismetti a volte allungati, sempre piccoli: si vedono bene solo con la lente, come puntini verdastri. Raramente trasparenti, più spesso opachi e colorati: verde, verde-giallastro, verde-brunastro, giallo, grigio, nero. Il colore dipende dalla chimica e quindi dalla giacitura (lo si vedrà nel secondo semestre). Durezza 6–7, la punta non lo riga. Sfaldatura netta secondo l'allungamento, ma su cristalli così piccoli a occhio nudo è quasi impossibile vederla. Inerte all'HCl. Magmatico e metamorfico, nel sedimentario solo come frammenti.</p>
+
+  <h3>Silicati: i fillosilicati</h3>
+  <h4>Mica bianca e mica nera</h4>
+  <p>Gruppi informali: dentro ci sono molte specie con nomi e composizioni propri (per la mica bianca tipicamente la muscovite, per la nera la biotite). Il tratto che le fa riconoscere al volo: sono prismetti fatti da <strong>innumerevoli lamelle sovrapposte</strong>, con legami debolissimi tra un foglio e l'altro. Basta l'unghia o la punta per far saltare una lamella: si sfogliano come un blocchetto, e finiscono sulle mani quando ci si lavora. Durezza circa 3 (bianca) e 2,5–3 (nera). Lucentezza madreperlacea, a tratti quasi metallica. <strong>Mica bianca</strong>: mai davvero bianca, argentea fino al giallastro quasi dorato, da trasparente a traslucida. <strong>Mica nera</strong>: da nera a marrone scuro a verde scuro, da opaca a traslucida. Dimensioni da pochi millimetri a qualche centimetro: conta che si sfogli, non quanto è grande. Inerti all'HCl. Magmatiche e metamorfiche, legate alla cristallizzazione; abbondanti come detrito nelle sedimentarie.</p>
+  <p>La foto del granito in slide li mette insieme: il vitreo trasparente è il quarzo, i bianchi sono feldspati (alcalini se idiomorfi e geminati, plagioclasi se allotriomorfi e a riempire gli spazi, come qui), i neri a lamelle sono mica nera.</p>
+
+  <h4>Serpentino</h4>
+  <p>Fillosilicato anche lui, ma le lamelle sono <strong>arrotolate</strong> su se stesse: niente effetto blocchetto, ma un abito <strong>fibroso</strong>, a aghetti radiali o a feltro. Lucentezza <strong>sericea</strong>, colori cangianti dal bianco al verde al giallastro. Opaco. Si fanno saltare via fibra per fibra. Durezza bassa (2,5): si lavora con l'unghia. Inerte all'HCl. Deriva in larga parte dall'<strong>alterazione dell'olivina</strong> nel processo metamorfico, e compare come detrito, a volte abbondante, nelle sedimentarie. In questo gruppo ci sono le specie fibrose dell'<strong>amianto</strong>, con le malattie legate alle fibre come l'asbestosi.</p>
+
+  <h4>Clorite</h4>
+  <p>Simile alle miche: fogliata, lamelle sovrapposte che si staccano. Normalmente <strong>verde</strong>, opaca, tra lucida e vitrea. Durezza di difficile valutazione, molto variabile. Inerte all'HCl.</p>
+
+  <h3>Carbonati</h3>
+  <h4>Calcite</h4>
+  <p>La più famosa e frequente. Spesso idiomorfa, tabulare o prismatica, ma molto spesso in aggregati granulari. Da traslucida a trasparente, lucentezza da vitrea a polverosa. Incolore se trasparente, poi bianca, fino al rosa. Tenera, durezza 3: la punta al widia la riga subito. Sfalda secondo le facce del romboedro. <strong>Reazione vivacissima all'HCl a freddo</strong>. Frequentissima nel processo sedimentario, presente in quello metamorfico; i carbonati magmatici sono rarissimi e legati a condizioni particolari.</p>
+
+  <h4>Dolomite</h4>
+  <p>Parente stretta della calcite: al calcio si associa e in parte si sostituisce il magnesio. Idiomorfa, da equidimensionale a tabulare, spesso granulare. Da vitrea a madreperlacea, da trasparente a traslucida (raramente lucida). Bianca, bianco-rosata, più raramente giallastra. Un po' più dura della calcite (4). Sfalda secondo il romboedro. Reagisce all'HCl <strong>solo a caldo</strong>: si scalda il campione, poi la goccia.</p>
+
+  <h3>Solfati (solo slide)</h3>
+  <h4>Anidrite</h4>
+  <p>Solfato di calcio anidro. Spesso idiomorfa, prismatica fibrosa o granulare. Lucentezza vitrea, perlacea, grassa o madreperlacea; da trasparente a traslucida; grigia, bianca o azzurra. Durezza 3. Sfalda secondo coppie di facce parallele.</p>
+  <h4>Gesso</h4>
+  <p>Solfato di calcio idrato. Spesso idiomorfo, da tabulare a fibroso, granulare. Da vitreo a perlaceo a sericeo, da traslucido a trasparente; bianco, grigio, giallastro, bruno. Durezza <strong>2</strong>: si riga con l'unghia. Sfaldabile in lame e scagliette.</p>
+  <div class="box warn">
+    <div class="lab">[ndr] Reattività all'HCl</div>
+    <p>Le slide danno anidrite e gesso come "reattivi" all'HCl. Non fanno però l'effervescenza dei carbonati: sono solfati e non liberano CO₂. Al massimo si sciolgono lentamente. Se sul campo una goccia fa le bollicine, quello è un carbonato. Da verificare con il docente cosa intende la slide.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">04</span>Il prontuario in una tabella</h2>
+  <p class="lead">Sintesi delle schede, per il confronto veloce durante le esercitazioni.</p>
+  <table style="font-size:8.4pt">
+    <tr><th>Minerale</th><th>Abito</th><th>Lucentezza · trasp.</th><th>Colore</th><th>D</th><th>Sfald. / frattura</th><th>HCl</th></tr>
+    <tr><td>Quarzo</td><td>allotriomorfo, prisma allungato</td><td>vitrea · trasp.–trasl.</td><td>incolore (viola, rosa)</td><td>7</td><td>frattura concoide</td><td>no</td></tr>
+    <tr><td>Feldsp. alcalino</td><td>idiomorfo, tabulare</td><td>perlacea · opaco–trasp.</td><td>bianco latte, rosa, rosso</td><td>6</td><td>netta, geminazioni</td><td>no</td></tr>
+    <tr><td>Plagioclasi</td><td>idio–allotriomorfo, tabulare</td><td>"bianca" · opaco–trasp.</td><td>bianco latte–crema</td><td>6</td><td>piani perpendicolari</td><td>no</td></tr>
+    <tr><td>Feldspatoidi</td><td>globulare, tozzo</td><td>vitrea–madrep. · trasl.</td><td>incolore–grigio</td><td>5,5–6</td><td>difficile</td><td>no</td></tr>
+    <tr><td>Olivina</td><td>idiomorfo, globulare</td><td>vitrea · trasp.–trasl.</td><td>verde oliva, giallastro</td><td>6,5–7</td><td>frattura concoide</td><td>no</td></tr>
+    <tr><td>Anfiboli</td><td>allungato, aciculare, radiale</td><td>vitrea · opaco–trasl.</td><td>nero, verde, blu scuro</td><td>5–6</td><td>in prismi</td><td>no</td></tr>
+    <tr><td>Pirosseni</td><td>idiomorfo, tozzo</td><td>vedi [ndr] · opaco–trasl.</td><td>nero, bruno, verde</td><td>6–7</td><td>in prismi</td><td>no</td></tr>
+    <tr><td>Granato</td><td>idiomorfo, globulare</td><td>vitrea–resinosa · trasl.–opaco</td><td>rosso, verde, bruno</td><td>7</td><td>frattura concoide</td><td>no</td></tr>
+    <tr><td>Epidoto</td><td>prismetti piccoli</td><td>vitrea · opaco–trasp.</td><td>verde, giallo, grigio, nero</td><td>6–7</td><td>secondo l'allungamento</td><td>no</td></tr>
+    <tr><td>Mica bianca</td><td>lamelle sovrapposte</td><td>madreperlacea · trasp.–trasl.</td><td>argentea–dorata</td><td>3</td><td>in lamine</td><td>no</td></tr>
+    <tr><td>Mica nera</td><td>lamelle sovrapposte</td><td>madreperlacea · opaca–trasl.</td><td>nero, marrone, verde scuro</td><td>2,5–3</td><td>in lamine</td><td>no</td></tr>
+    <tr><td>Serpentino</td><td>fibroso, radiale, a feltro</td><td>sericea · opaco</td><td>verde, bianco giallastro</td><td>2,5</td><td>in fibre</td><td>no</td></tr>
+    <tr><td>Clorite</td><td>fogliata</td><td>vitrea · trasl.</td><td>verde</td><td>var.</td><td>in lamelle</td><td>no</td></tr>
+    <tr><td>Calcite</td><td>tabulare, granulare</td><td>vitrea–polverosa · trasl.–trasp.</td><td>incolore, bianco, rosa</td><td>3</td><td>romboedro</td><td><strong>sì, a freddo</strong></td></tr>
+    <tr><td>Dolomite</td><td>equidim.–tabulare, granulare</td><td>vitrea–madrep. · trasp.–trasl.</td><td>bianca, rosa, giallastra</td><td>4</td><td>romboedro</td><td><strong>sì, a caldo</strong></td></tr>
+    <tr><td>Anidrite</td><td>fibroso, granulare</td><td>vitrea–grassa · trasp.–trasl.</td><td>grigio, bianco, azzurro</td><td>3</td><td>coppie di facce</td><td>vedi [ndr]</td></tr>
+    <tr><td>Gesso</td><td>tabulare–fibroso</td><td>vitrea–sericea · trasl.–trasp.</td><td>bianco, grigio, bruno</td><td>2</td><td>lame, scagliette</td><td>vedi [ndr]</td></tr>
+  </table>
+
+  <h3>Dove si trovano: labili e stabili</h3>
+  <p>Un filo che torna in tutte le schede. Il <strong>quarzo</strong> è stabilissimo e passa indenne da una roccia all'altra, quindi è ovunque. <strong>Feldspati, plagioclasi e feldspatoidi</strong> sono <strong>labili</strong>: si alterano e spariscono durante la storia della roccia, per questo sono rari nelle sedimentarie. <strong>Olivina</strong> è instabile appena lasciate le condizioni del magma. <strong>Granati ed epidoto</strong> sono magmatici o metamorfici e nel sedimentario compaiono solo come frammenti. <strong>Miche e serpentino</strong> finiscono spesso come detrito nelle sedimentarie. <strong>Carbonati e solfati</strong> sono di casa nel sedimentario.</p>
+</section>
+
+<section>
+  <h2><span class="n">05</span>Da fare</h2>
+  <ul class="checklist">
+    <li>Stampare le schede dei minerali (le slide) o averle sul tablet: servono alle esercitazioni e all'esame.</li>
+    <li>Procurarsi al più presto <strong>lente e punta al widia</strong>: tra una settimana si comincia con le rocce magmatiche. L'acido lo fornisce il docente in aula; martello e resto possono aspettare.</li>
+    <li>Ridisegnare la scala di durezza speditiva con i minerali al loro posto, e i tre schizzi idiomorfo / ipidiomorfo / allotriomorfo.</li>
+    <li>Fissare le due trappole: incolore non è bianco; la calcite reagisce a freddo, la dolomite solo a caldo.</li>
+    <li>Chiedere al docente (o a un compagno) il chiarimento sulla reattività di anidrite e gesso e sulla lucentezza dei pirosseni.</li>
+  </ul>
+  <h3>Prossima lezione con Piazza</h3>
+  <p>Si comincia con le rocce magmatiche.</p>
+</section>
+</div>
+
+</body></html>

@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>Paleontologia — Lezione 1</title>
+<style>
+  @page { size: A4; margin: 20mm 18mm 22mm 18mm; }
+  :root{
+    --terra:#1F6F78; --ochre:#D4A24C; --slate:#3E4A52; --sand:#F4EEE3;
+    --ink:#23282C; --muted:#6B7378; --line:#DDD5C7; --moss:#6F8F5E;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:#fff;color:var(--ink);
+    font-family:"Caladea","TeX Gyre Pagella",Georgia,serif;font-size:10.6pt;line-height:1.45}
+  h1,h2,h3,h4,.sans{font-family:"Poppins","TeX Gyre Heros",Arial,sans-serif}
+  .page{}
+  
+
+  /* ---------- cover ---------- */
+  .cover{padding:0;background:var(--sand);display:flex;flex-direction:column}
+  .strata{height:78mm;position:relative;overflow:hidden}
+  .strata div{position:absolute;left:0;right:0}
+  .cover-body{padding:14mm 18mm 0 18mm;flex:1}
+  .kicker{font-family:Poppins;font-size:9pt;letter-spacing:.22em;text-transform:uppercase;color:var(--terra);font-weight:600}
+  .cover h1{font-size:34pt;line-height:1.05;margin:6mm 0 3mm 0;color:var(--slate);font-weight:600;letter-spacing:-.01em}
+  .cover h2{font-size:14pt;font-weight:400;color:var(--ink);margin:0 0 10mm 0}
+  .meta{display:grid;grid-template-columns:1fr 1fr;gap:4mm 10mm;font-size:10pt;border-top:1px solid var(--line);padding-top:6mm;max-width:150mm}
+  .meta b{display:block;font-family:Poppins;font-size:8pt;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:600;margin-bottom:1mm}
+  .cover-foot{padding:0 18mm 14mm 18mm;font-size:9pt;color:var(--muted)}
+  .toc{margin-top:10mm;max-width:150mm}
+  .toc h3{font-size:9pt;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin:0 0 3mm 0;font-weight:600}
+  .toc ol{margin:0;padding:0;list-style:none;counter-reset:t}
+  .toc li{counter-increment:t;display:flex;gap:4mm;padding:1.6mm 0;border-bottom:1px dotted var(--line);font-size:10.5pt}
+  .toc li::before{content:counter(t,decimal-leading-zero);font-family:Poppins;font-weight:600;color:var(--terra);min-width:8mm}
+
+  /* ---------- content ---------- */
+  .runhead{position:absolute;top:9mm;left:18mm;right:18mm;display:flex;justify-content:space-between;font-family:Poppins;font-size:7.5pt;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .runhead span:last-child{color:var(--terra);font-weight:600}
+  section h2{font-size:15pt;color:var(--slate);margin:0 0 2mm 0;font-weight:600;letter-spacing:-.01em;display:flex;align-items:baseline;gap:4mm}
+  section h2 .n{font-size:10pt;color:var(--terra);font-weight:600;letter-spacing:.1em}
+  .lead{color:var(--muted);font-style:italic;margin:0 0 4mm 0}
+  h3{font-size:11.5pt;color:var(--terra);margin:6mm 0 1.5mm 0;font-weight:600}
+  h4{font-size:10pt;color:var(--slate);margin:3.5mm 0 1mm 0;font-weight:600}
+  p{margin:0 0 2.6mm 0;text-align:justify;hyphens:auto}
+  ul{margin:0 0 3mm 0;padding-left:5mm}
+  li{margin-bottom:1.2mm}
+  li::marker{color:var(--terra)}
+  em.t{font-style:italic;color:var(--slate)}
+  .two{columns:2;column-gap:8mm}
+  .two h3:first-child{margin-top:0}
+
+  /* callouts */
+  .box{border-left:2px solid var(--ochre);background:none;padding:1mm 0 1mm 4mm;margin:3mm 0 3.5mm 0;break-inside:avoid}
+  .box .lab{font-family:Poppins;font-size:7.5pt;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--ochre);margin-bottom:1mm}
+  .box p{margin-bottom:1.5mm}
+  .box p:last-child{margin-bottom:0}
+  .box.def{border-color:var(--ochre)}
+  .box.exam{border-color:var(--terra)} .box.exam .lab{color:var(--terra)}
+  .box.draw{border-color:var(--slate)} .box.draw .lab{color:var(--slate)}
+  .box.warn{border-color:var(--moss)} .box.warn .lab{color:var(--moss)}
+
+  .kv{display:grid;grid-template-columns:38mm 1fr;gap:1.5mm 4mm;margin:2mm 0 4mm 0;font-size:10pt}
+  .kv dt{font-family:Poppins;font-size:8.5pt;font-weight:600;color:var(--slate);padding-top:.6mm}
+  .kv dd{margin:0}
+
+  table{width:100%;border-collapse:collapse;margin:2mm 0 4mm 0;font-size:9.6pt;break-inside:avoid}
+  th{font-family:Poppins;font-size:8pt;text-transform:uppercase;letter-spacing:.1em;text-align:left;color:var(--muted);border-bottom:1.5px solid var(--slate);padding:1.5mm 2mm;font-weight:600}
+  td{padding:1.8mm 2mm;border-bottom:1px solid var(--line);vertical-align:top}
+  td:first-child{font-family:Poppins;font-weight:600;font-size:8.8pt;color:var(--slate)}
+
+  .q{color:var(--moss);font-family:Poppins;font-size:8pt;font-weight:600;vertical-align:super}
+  .foot{position:absolute;bottom:9mm;left:18mm;right:18mm;display:flex;justify-content:space-between;font-family:Poppins;font-size:7.5pt;color:var(--muted)}
+  .pnum{font-weight:600;color:var(--slate)}
+
+  /* rock cycle figure */
+  .cycle{margin:3mm auto 4mm auto;display:block;width:150mm}
+  .caption{font-size:8.8pt;color:var(--muted);text-align:center;margin:-1mm 0 4mm 0;font-style:italic}
+  .checklist li{list-style:none;position:relative;padding-left:6mm}
+  .checklist li::before{content:"";position:absolute;left:0;top:1.1mm;width:3.2mm;height:3.2mm;border:1.3px solid var(--terra);border-radius:.6mm}
+
+  .hd{display:flex;align-items:flex-start;gap:5mm;border-bottom:1.5px solid var(--slate);padding-bottom:4mm;margin-bottom:6mm}
+  .hd svg{flex:0 0 14mm;width:14mm;height:14mm}
+  .hd .k{font-family:Poppins;font-size:8pt;letter-spacing:.2em;text-transform:uppercase;color:var(--terra);font-weight:600}
+  .hd h1{font-family:Poppins;font-size:20pt;line-height:1.1;margin:1mm 0 1.5mm 0;color:var(--slate);font-weight:600}
+  .hd .m{font-size:9.5pt;color:var(--muted)}
+  .hd .m b{color:var(--ink);font-weight:600}
+  .legend{font-size:8.8pt;color:var(--muted);margin:0 0 6mm 0}
+</style>
+<style>section h2{break-after:avoid;margin-top:9mm} .page:first-child section h2{margin-top:0} h2[style]{margin-top:9mm !important} h3,h4{break-after:avoid} .box,table,dl.kv{break-inside:avoid} .lead{break-after:avoid}</style>
+</head>
+<body>
+<div class="hd">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M50,50 m0,-2 a2,2 0 1,1 0,4 a4,4 0 1,1 -4,-4 a7,7 0 1,1 7,-7 a11,11 0 1,1 -11,11 a15,15 0 1,1 15,-15 a20,20 0 1,1 -20,20 a26,26 0 1,1 26,-26 a33,33 0 1,1 -33,33 a40,40 0 1,1 40,-40" fill="none" stroke="#1F6F78" stroke-width="5" stroke-linecap="round"/>
+    <path d="M50,50 m0,-2 a2,2 0 1,1 0,4 a4,4 0 1,1 -4,-4 a7,7 0 1,1 7,-7 a11,11 0 1,1 -11,11 a15,15 0 1,1 15,-15 a20,20 0 1,1 -20,20 a26,26 0 1,1 26,-26 a33,33 0 1,1 -33,33 a40,40 0 1,1 40,-40" fill="none" stroke="#D4A24C" stroke-width="1.6" stroke-dasharray="1.5 5" stroke-linecap="round"/>
+  </svg>
+  <div>
+    <div class="k">Paleontologia · Corso 64866 · Scienze Geologiche</div>
+    <h1>Lezione 1 · Introduzione al corso e alla paleontologia</h1>
+    <div class="m"><b>Giovedì 24 settembre 2026</b> · aula 401 · prof. Antonino Briguglio · UniGe, a.a. 2026/27 · Appunti ricostruiti dalla registrazione audio e dalle slide "0_introduction"</div>
+  </div>
+</div>
+<p class="legend">Insegnamento mutuato con Scienze Naturali e Ambientali (per loro "Geologia e Paleontologia" 84450, modulo di geologia con la prof.ssa Paola Cianfarra). In queste note <strong>GEO</strong> = solo Scienze Geologiche, <strong>NAT</strong> = Scienze Naturali, <strong>TUTTI</strong> = lezione comune. Contatti: antonino.briguglio@unige.it, tel. 010 353 8289, ufficio al I piano del Palazzo delle Scienze (Corso Europa).</p>
+
+<div class="page">
+<section>
+  <h2><span class="n">01</span>Come funziona il corso</h2>
+  <p class="lead">Un corso, due platee, due Aulaweb. La prima ora è servita a mettere in ordine la logistica di tutto l'anno.</p>
+
+  <h3>Due corsi in uno</h3>
+  <table>
+    <tr><th></th><th>GEO (Paleontologia, 64866)</th><th>NAT (Geologia e Paleontologia, 84450)</th></tr>
+    <tr><td>CFU</td><td>9</td><td>6 (il resto è il modulo di geologia)</td></tr>
+    <tr><td>Lezione</td><td>54 ore</td><td>34 ore</td></tr>
+    <tr><td>Esercitazione</td><td>30 ore</td><td>28 ore</td></tr>
+    <tr><td>Terreno</td><td>14 ore, cioè due giorni (uno in comune con NAT)</td><td>7 ore, un giorno</td></tr>
+    <tr><td>Fine lezioni</td><td>Fine maggio (storia della vita sulla Terra)</td><td>Inizio aprile (dopo i microscopi)</td></tr>
+  </table>
+  <p>L'insegnamento nasce per Scienze Geologiche; una parte viene mutuata da Naturali, che quindi hanno meno appuntamenti e meno slide. Le lezioni marcate GEO nel calendario valgono per i CFU solo dei geologi (i naturali possono comunque venire: lezioni aperte). Ci si iscrive all'<strong>Aulaweb del proprio corso</strong> e ci si cancella dall'altro: Aulaweb è il canale ufficiale per annunci, slide e materiali.</p>
+
+  <h3>Fogli firma: a cosa servono</h3>
+  <p>Non è un corso a frequenza obbligatoria e le firme non servono a controllare chi è bravo. Servono a tre cose pratiche:</p>
+  <ul>
+    <li><strong>Sicurezza.</strong> Ai laboratori (tra 2–3 settimane) si accede solo con il corso sicurezza completo: 4 ore online + 8 ore in presenza. Le firme gli permettono di controllare chi è in regola.</li>
+    <li><strong>Turni al microscopio.</strong> Nel secondo semestre l'aula microscopi tiene 25 persone; su circa 60 iscritti, se seguono tutti servono tre turni, se seguono in cinque ne basta uno.</li>
+    <li><strong>Pullman per il terreno</strong> (aprile–maggio). Si prenota per chi frequenta davvero, non per gli iscritti: in passato si sono buttati 800 € per un pullman vuoto. Chi non è mai venuto non partecipa alle uscite.</li>
+  </ul>
+  <p>Due fogli separati, uno NAT e uno GEO: firmare una volta sola, sul foglio giusto, e non per gli amici.</p>
+
+  <h3>Orario, aula, emergenze</h3>
+  <ul>
+    <li><strong>Giovedì 9–11</strong> e <strong>venerdì 14–16</strong>, aula 401 (C4.01). Schema fisso: il giovedì la teoria su un gruppo (es. trilobiti), il venerdì due ore di esercitazione sugli stessi fossili. Se salta un giorno, la pratica scivola alla settimana dopo.</li>
+    <li>L'aula 401 permette di fare lezione anche con allerta gialla o arancione. Con <strong>allerta rossa</strong> la didattica chiude e si passa su Teams, codice canale <strong>0n5ps9z</strong>.</li>
+    <li>Slide già su Aulaweb, ma vengono aggiornate il giorno prima di ogni lezione (ogni anno riscrive metà o tre quarti del materiale): non scaricare tutto subito.</li>
+    <li>Programma completo: corsi.unige.it/off.f/2025/ins/83496. Laboratorio di paleontologia: paleolab.unige.it, @paleolab.unige (ricerca, tesi, tirocini: utile fra due anni).</li>
+    <li>Per dubbi: alzare la mano, mail, ufficio, Teams. È in ufficio tutti i giorni.</li>
+  </ul>
+
+  <h3>Il calendario (provvisorio) fino a gennaio</h3>
+  <p>Lo carica negli annunci Aulaweb tra oggi e domani. Può cambiare: se l'escursione delle matricole di Geologia 1 (metà–fine ottobre, probabilmente mercoledì o giovedì) cade di giovedì, salta una data. Il <strong>2 ottobre</strong> non c'è lezione (motivo non ricordato), l'<strong>11 dicembre</strong> nemmeno (congresso a Vienna).</p>
+  <table>
+    <tr><th>Date</th><th>Per chi</th><th>Argomento</th></tr>
+    <tr><td>24–25 set</td><td>TUTTI</td><td>Introduzione · Paleontologia e tempo</td></tr>
+    <tr><td>1 ott</td><td>TUTTI</td><td>Ambienti, paleoecologia, morfologia funzionale (2 ott: no lezione)</td></tr>
+    <tr><td>8–9 ott</td><td><strong>GEO</strong></td><td>Sistematica ed evoluzione · Biozone e fossili guida (datare le rocce coi fossili)</td></tr>
+    <tr><td>15–16 ott</td><td>TUTTI</td><td>Fossilizzazione e trasporto (tafonomia): prima esercitazione</td></tr>
+    <tr><td>22–23 ott</td><td>TUTTI</td><td>Poriferi, archeociati, celenterati</td></tr>
+    <tr><td>29–30 ott</td><td>TUTTI</td><td>Brachiopoda, Bryozoa</td></tr>
+    <tr><td>5–6 nov</td><td>TUTTI</td><td>Mollusca 1: Polyplacophora, Bivalvia</td></tr>
+    <tr><td>12–13 nov</td><td>TUTTI</td><td>Mollusca 2–3: nautiloidi, ammonoidi, coleoidi</td></tr>
+    <tr><td>19–20 nov</td><td>TUTTI</td><td>Mollusca 3: cefalopodi · Mollusca 4: Gastropoda</td></tr>
+    <tr><td>26–27 nov</td><td>TUTTI</td><td>Gastropoda · Tracce fossili</td></tr>
+    <tr><td>3–4 dic</td><td>GEO / TUTTI</td><td>Tracce fossili in chiave paleoambientale (GEO) · esercitazione tracce</td></tr>
+    <tr><td>10 dic</td><td>—</td><td>Da definire (11 dic: no lezione)</td></tr>
+    <tr><td>17–18 dic</td><td>TUTTI</td><td>Arthropoda, Ostracoda</td></tr>
+    <tr><td>7–8 gen</td><td>TUTTI</td><td>Echinodermata, Hemichordata (giovedì in AT02)</td></tr>
+    <tr><td>14–15 gen</td><td>TUTTI</td><td>Piante (giovedì in AT02)</td></tr>
+  </table>
+
+  <h3>Secondo semestre</h3>
+  <ul>
+    <li>Pausa esami da metà gennaio a fine febbraio. Da marzo <strong>microscopi</strong>: 2 ore di teoria + turni in aula microscopi. In totale 8 ore di esercitazione, ma ciascuno ne fa <strong>due</strong>, scegliendo la propria slot in una tabella esterna (9–11, 11–13, 14–16). Chi si segna e non viene finisce in lista nera.</li>
+    <li>Per NAT le "6 ore di paleontologia" a calendario del secondo semestre sono in realtà due: il venerdì è tenuto libero per le attività di terreno.</li>
+    <li>Dopo i microscopi NAT ha finito (inizio aprile). GEO continua fino a fine maggio con la <strong>storia della vita sulla Terra</strong>: dall'Archeano all'Antropocene, intervallo per intervallo, con le mappe paleogeografiche (3 CFU in più).</li>
+    <li>Uscite sul terreno ad aprile–maggio, quando il tempo lo permette. Una sarà nell'entroterra dietro Savona: una barriera corallina fossile a 500 m di quota, tra bosco e cinghiali.</li>
+  </ul>
+
+  <h3>La collezione didattica e il tutor</h3>
+  <p>Tutti i fossili che si vedono a lezione (circa 1500) stanno in armadi al <strong>piano terra del Palazzo delle Scienze</strong>, nel corridoio verso l'amministrazione vicino agli ascensori (stanze CTI 08–09). Ogni armadio ha due colonne da 18 cassetti; dentro ci sono vaschette con un cartellino e il codice del fossile, e ogni vaschetta ha la sua posizione segnata sul vassoio. Le <strong>chiavi si chiedono in ufficio</strong> (I piano, o al tutor <strong>Luca</strong>, dottorando nel laboratorio accanto, presente a tutte le esercitazioni) scrivendo prima una mail per concordare il giorno. Si può passare mezza giornata o una giornata a ripassare con i cassetti aperti: è l'opzione più utile prima dell'esame. Da febbraio vale anche per i vetrini dei microfossili, nelle aule dedicate.</p>
+  <div class="box warn">
+    <div class="lab">Regola d'oro</div>
+    <p>Ordine "quasi maniacale": ogni fossile torna nella sua vaschetta e la vaschetta nel suo cassetto. Durante le esercitazioni controllare sempre che il codice sul fossile sia quello del cartellino e del cassetto, altrimenti ci si ritrova una trilobite nel cassetto delle spugne.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">02</span>L'esame</h2>
+  <p class="lead">Orale, tre fasi in sequenza, e una domanda che torna sempre: perché?</p>
+
+  <div class="box exam">
+    <div class="lab">All'esame</div>
+    <p><strong>1. Prova di sbarramento al microscopio</strong> (dal 2° semestre in avanti è la prima domanda). Un vetrino: accendere il microscopio, mettere a fuoco con entrambi gli oculari, cambiare ingrandimento, cercare un microfossile a scelta e dire chi è, quanti milioni di anni ha, in che ambiente viveva. Tre minuti. Chi non sa mettere a fuoco o cambiare ingrandimento si alza e se ne va: la prova si perde quasi sempre per il microscopio, non per il fossile.</p>
+    <p><strong>2. Campioni macroscopici</strong>: si parte da 3 (fino a 5 se uno non lo si riconosce), 5–10 minuti ciascuno. Per ogni campione: descrizione della morfologia, nome, modalità di fossilizzazione, biologia dell'organismo, ambiente deposizionale, età; per GEO anche l'inquadramento paleogeografico.</p>
+    <p><strong>3. Domande di teoria</strong> sulle prime 5–6 lezioni (per tutti: evoluzione, genere, famiglia, omologia e analogia, processi di fossilizzazione); per GEO anche sulla parte finale, la storia della vita: data una mappa paleogeografica, riconoscere che è il Triassico e "mettere i soldatini nel posto giusto".</p>
+    <p>Durata 20–40 minuti. Prima domanda tipica: "su che libro hai studiato?", per calibrare le domande sul testo.</p>
+  </div>
+
+  <h3>Il metodo del perché</h3>
+  <p>Davanti a un sasso non si dice "è un corallo". Si dice: vedo 1, 2, 3, 4, 5 cose, queste sono tipiche dei coralli, quindi è un corallo. Se non si vedono tutti i caratteri va bene fermarsi a "corallo o spugna, perché vedo due cose comuni a entrambi". Il rischio di chi memorizza le foto è vedere la "foto 350" e dire trilobite quando ha davanti un riccio di mare. Poi la seconda domanda: <em>perché</em> è una trilobite? Non perché vivevano nel Paleozoico o nel mare, ma per la morfologia. Descrizione → nome → come si è fossilizzato → ambiente → distribuzione stratigrafica.</p>
+  <p>I fossili sono circa 1500 ma non vanno saputi genere e specie: si vedono 200–300 ammoniti per imparare i caratteri morfologici che identificano il gruppo, e all'esame se ne dà una.</p>
+
+  <h3>Appelli e prenotazioni</h3>
+  <ul>
+    <li>Appelli già inseriti: gennaio–febbraio (consiglio: andare ad assistere, per vedere come funziona), giugno, luglio, settembre; agosto forse.</li>
+    <li>Prenotazione entro 5 giorni. La data dell'appello è solo l'appello: da lì l'esame può distribuirsi su più giorni, con elenchi mandati per mail 4–5 giorni prima e slot a scelta in base agli impegni.</li>
+    <li>Quando ci si prenota, mail per fissare il ripasso sulla collezione.</li>
+  </ul>
+
+  <h3>Compitini (solo NAT, facoltativi)</h3>
+  <p>Proposta non ufficiale, già provata l'anno scorso: a ogni esercitazione una scheda con crocette e spazio per disegnare i fossili (età, ambiente, modo di vita, fossilizzazione). Due compitini, uno nella pausa gennaio–febbraio e uno a fine corso: 3 fossili con la stessa scheda, nome ed età a mano, 3 domande aperte. Chi li fa, all'esame porta solo i 3 minuti di microscopio. L'anno scorso li hanno fatti 7 su 40, tutti con voto da 28 in su. Un compitino superato si mantiene anche se non si fa l'altro. Si organizza se c'è un gruppo abbastanza numeroso.</p>
+
+  <h3>Come prepararsi</h3>
+  <ul class="checklist">
+    <li>Venire alle esercitazioni, dopo aver visto la teoria (le slide almeno).</li>
+    <li>Scegliere e leggere almeno un libro di testo.</li>
+    <li>Studiare sulla collezione didattica: appuntamento per le chiavi, aula studio, tutto in ordine sistematico.</li>
+    <li>Ripassare i vetrini in sezione sottile nelle aule dedicate.</li>
+    <li>Le slide sono immagini più che testo: bastano se si frequenta, non sostituiscono il libro per chi non frequenta.</li>
+  </ul>
+</section>
+
+<section>
+  <h2><span class="n">03</span>Libri di testo</h2>
+  <p class="lead">Nessuno è obbligatorio, uno vale l'altro; i PDF dell'80% sono su Aulaweb (cartella a tempo). Tutti sono in biblioteca e si possono sfogliare nel suo ufficio prima di scegliere.</p>
+  <table>
+    <tr><th>Testo</th><th>Note del docente</th></tr>
+    <tr><td>Benton &amp; Harper, <em>Introduction to Paleobiology and the Fossil Record</em></td><td>Il più completo, vivamente consigliato, in inglese. Copre l'80% del corso; molte immagini delle slide vengono da qui. Molto dettagliato nella parte iniziale (quattro capitoli di tafonomia contro le nostre due ore).</td></tr>
+    <tr><td>Società Paleontologica Italiana, <em>Manuale di Paleontologia</em></td><td>In italiano, recente, molto sintetico: poche pagine per gruppo, l'essenziale. Copre il 60–70%. In biblioteca, non su Aulaweb.</td></tr>
+    <tr><td>Gradstein et al., <em>Fossils and Earth Time</em> (Elsevier, 2025)</td><td>Uscito da poco, sintetico, belle immagini, autori di peso.</td></tr>
+    <tr><td>Raffi–Serpagli · Allasinaz · Malaroda</td><td>Il "vintage" in italiano, anni '70: classificazione desueta, ma Allasinaz resta ottimo per gli invertebrati. Se non si trova altro vanno bene.</td></tr>
+    <tr><td>Armstrong &amp; Brasier, <em>Microfossils</em></td><td>Per la parte al microscopio: un po' vecchiotto ma c'è tutto.</td></tr>
+    <tr><td>Taylor, Taylor &amp; Krings, <em>Paleobotany</em></td><td>Per le piante, consigliato soprattutto ai naturalisti. Lo detesta con tutto il cuore, ma è un bel libro sull'evoluzione delle piante.</td></tr>
+    <tr><td>Barsotti, Gnoli &amp; Guerrini, <em>Storia naturale del pianeta Terra</em> (2 voll.)</td><td>GEO. In italiano e recente, ma divulgativo e poco scientifico, da scuola superiore: soluzione per chi fatica con l'inglese.</td></tr>
+    <tr><td>Torsvik &amp; Cocks, <em>Earth History and Palaeogeography</em></td><td>GEO. La fonte principale delle mappe paleogeografiche della parte finale del corso.</td></tr>
+    <tr><td>Gradstein et al., <em>Geologic Time Scale 2020</em> (2 voll.)</td><td>GEO. "La Bibbia del geologo": vol. 1 i metodi di studio del tempo, vol. 2 la storia della Terra dall'Archeano all'Antropocene. Aggiornato ogni 4–5 anni.</td></tr>
+  </table>
+</section>
+
+<section>
+  <h2><span class="n">04</span>Che cos'è la paleontologia</h2>
+  <p class="lead">Definizioni dalle slide, e la mappa degli ambiti che il docente ha costruito per far vedere cosa c'è oltre questo corso.</p>
+
+  <div class="box def">
+    <div class="lab">Definizioni</div>
+    <p><strong>Paleontologia</strong>: il ramo della scienza che studia la vita nel passato. Dal greco <em>palaiós</em> (antico) + <em>óntos</em> (essere) + <em>lógos</em> (studio).</p>
+    <p><strong>Fossile</strong>: qualsiasi resto o traccia di animale o vegetale vissuto in epoche antecedenti all'attuale. Dal latino <em>fossilis</em>, "che si scava dalla terra".</p>
+    <p><strong>Body fossils</strong>: resti mineralizzati o scheletrici dell'organismo (conchiglia, osso, dente). <strong>Trace fossils</strong>: tracce dell'attività dell'organismo, senza parti dell'organismo stesso: impronte, tane, tunnel, ma anche le perforazioni (borings) fatte in un guscio altrui. Sono complementari: alcune informazioni le dà solo il corpo, altre solo la traccia. Una traccia è tale se l'organismo l'ha prodotta attivamente: l'impronta lasciata da una conchiglia che semplicemente giaceva sul fondo non è una traccia.</p>
+  </div>
+
+  <svg class="cycle" viewBox="0 0 640 300" xmlns="http://www.w3.org/2000/svg" font-family="Poppins, Arial, sans-serif">
+    <!-- base -->
+    <rect x="20" y="212" width="600" height="70" rx="6" fill="#1F6F78"/>
+    <text x="320" y="236" text-anchor="middle" fill="#fff" font-size="12.5" font-weight="600">PALEONTOLOGIA SISTEMATICA · il primo gradino, il nostro anno</text>
+    <g fill="#E6F0F1" font-size="9.5" text-anchor="middle">
+      <text x="95" y="258">Paleobotanica</text><text x="95" y="271">piante fossili</text>
+      <text x="245" y="258">Paleozoologia</text><text x="245" y="271">animali fossili</text>
+      <text x="395" y="258">Micropaleontologia</text><text x="395" y="271">protisti, alghe, batteri</text>
+      <text x="545" y="258">Paleoicnologia</text><text x="545" y="271">tracce fossili</text>
+    </g>
+    <!-- middle -->
+    <g>
+      <rect x="20" y="126" width="140" height="66" rx="6" fill="#D4A24C"/>
+      <text x="90" y="147" text-anchor="middle" font-size="11" font-weight="600" fill="#23282C">Tafonomia</text>
+      <text x="90" y="162" text-anchor="middle" font-size="8.5" fill="#23282C">come si è fossilizzato</text>
+      <text x="90" y="174" text-anchor="middle" font-size="8.5" fill="#23282C">6–8 modi diversi</text>
+      <rect x="173" y="126" width="140" height="66" rx="6" fill="#D4A24C"/>
+      <text x="243" y="147" text-anchor="middle" font-size="11" font-weight="600" fill="#23282C">Paleoecologia</text>
+      <text x="243" y="162" text-anchor="middle" font-size="8.5" fill="#23282C">organismo ↔ ambiente</text>
+      <text x="243" y="174" text-anchor="middle" font-size="8.5" fill="#23282C">che mare, quanto profondo</text>
+      <rect x="326" y="126" width="140" height="66" rx="6" fill="#D4A24C"/>
+      <text x="396" y="147" text-anchor="middle" font-size="11" font-weight="600" fill="#23282C">Paleobiologia</text>
+      <text x="396" y="162" text-anchor="middle" font-size="8.5" fill="#23282C">come viveva, si muoveva</text>
+      <text x="396" y="174" text-anchor="middle" font-size="8.5" fill="#23282C">morfologia funzionale</text>
+      <rect x="479" y="126" width="141" height="66" rx="6" fill="#D4A24C"/>
+      <text x="549" y="147" text-anchor="middle" font-size="11" font-weight="600" fill="#23282C">Biostratigrafia</text>
+      <text x="549" y="162" text-anchor="middle" font-size="8.5" fill="#23282C">datare la roccia col fossile</text>
+      <text x="549" y="174" text-anchor="middle" font-size="8.5" fill="#23282C">dove sta lo stipendio</text>
+    </g>
+    <!-- top -->
+    <g>
+      <rect x="60" y="40" width="160" height="66" rx="6" fill="#3E4A52"/>
+      <text x="140" y="61" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Paleobiogeografia</text>
+      <text x="140" y="76" text-anchor="middle" font-size="8.5" fill="#DDD5C7">distribuzione nello spazio</text>
+      <text x="140" y="88" text-anchor="middle" font-size="8.5" fill="#DDD5C7">perché il T. rex solo in N. America</text>
+      <rect x="240" y="40" width="160" height="66" rx="6" fill="#3E4A52"/>
+      <text x="320" y="61" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Paleont. ambientale</text>
+      <text x="320" y="76" text-anchor="middle" font-size="8.5" fill="#DDD5C7">conservation paleobiology</text>
+      <text x="320" y="88" text-anchor="middle" font-size="8.5" fill="#DDD5C7">ultimi 5–20 mila anni</text>
+      <rect x="420" y="40" width="160" height="66" rx="6" fill="#3E4A52"/>
+      <text x="500" y="61" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Paleont. evolutiva</text>
+      <text x="500" y="76" text-anchor="middle" font-size="8.5" fill="#DDD5C7">testare l'evoluzione</text>
+      <text x="500" y="88" text-anchor="middle" font-size="8.5" fill="#DDD5C7">sul record fossile</text>
+    </g>
+    <text x="20" y="26" font-size="8.5" fill="#6B7378">↑ ricerca e finanziamenti: si può fare solo dopo i due gradini sotto</text>
+    <text x="20" y="120" font-size="8.5" fill="#6B7378">↑ aggiungere informazioni al fossile riconosciuto</text>
+    <text x="20" y="206" font-size="8.5" fill="#6B7378">↑ prima di tutto: riconoscere chi è</text>
+  </svg>
+  <p class="caption">Gli ambiti della paleontologia come li ha ordinati il docente: dal basso verso l'alto, nulla si fa senza il gradino precedente.</p>
+
+  <h3>Due note per gradino</h3>
+  <ul>
+    <li><strong>Sistematica.</strong> È quello che fanno tutti i corsi base nel mondo, ed è lo "zoccolo duro" dell'anno. Per i naturalisti non è una ripetizione di zoologia: la diversità del record fossile è molto più ampia, e molti organismi (coralli e spugne del Paleozoico su tutti) non assomigliano a niente di quello che si è visto.</li>
+    <li><strong>Paleoecologia.</strong> Nel bosco basta guardarsi intorno; con un sasso e una foglia sopra bisogna capire se era bosco, palude, argine di fiume o roba finita in mare. Sul terreno la domanda non sarà "c'era il mare?" ma: che mare, quanto profondo, con onde o senza, quanto ossigeno, quanta luce. Coralli ramosi rotti e coralli massicci interi raccontano l'energia dell'ambiente. Le domande che un biologo marino risolve con maschera e computer da polso, qui vanno ricostruite.</li>
+    <li><strong>Paleobiologia.</strong> Come si riproduceva il T. rex, come facevano la muta le trilobiti, come nuotavano. Parte dalla morfologia funzionale.</li>
+    <li><strong>Biostratigrafia.</strong> Il grosso dei paleontologi che lavorano fa questo. Servono organismi con evoluzione rapida (cambiano specie ogni mezzo milione di anni), spesso piccoli: da qui la micropaleontologia. Un corallo dice "mare, poco profondo" ma resta uguale per 80 milioni di anni: non data. Il T. rex dice "Cretacico terminale, 65–66 Ma": troppo poco preciso per essere un fossile guida (e non è del Giurassico: <em>Jurassic Park</em> è un titolo, non una datazione).</li>
+    <li><strong>Tafonomia.</strong> Un T. rex a 2000 m di profondità è improbabile: per arrivarci dovrebbe subire una catena di eventi (piena, spiaggia, tsunami, lago, fiume, canyon sottomarino) che difficilmente lascia un fossile. Sarà la prima lezione di sistematica, perché serve per tutti i fossili dell'anno.</li>
+    <li><strong>Paleobiogeografia.</strong> La biogeografia di Wallace (la linea di Wallace tra Bali e Lombok) applicata al passato: perché il T. rex solo in Nord America, perché in Italia solo Ciro.</li>
+    <li><strong>Paleontologia ambientale.</strong> Stessa metodologia del Giurassico applicata agli ultimi 5–20 mila anni: per capire se l'area protetta di Portofino funziona, si può leggere nel record paleontologico quanta posidonia c'era 5 mila anni fa, non solo quanta ne cresce oggi. Molti finanziamenti.</li>
+    <li><strong>Paleontologia evolutiva.</strong> I link mancanti, quando è avvenuta una diversificazione, quando sono comparsi i primi batteri: si testa sul record fossile. Più teorica, meno terreno.</li>
+  </ul>
+</section>
+
+<section>
+  <h2><span class="n">05</span>Leggere un fossile: il gioco con le immagini</h2>
+  <p class="lead">La seconda ora è stata un'esercitazione mascherata. Sei immagini, e da ognuna tirare fuori tutto quello che si può.</p>
+
+  <h3>Il T. rex intero</h3>
+  <p>Vertebrato (ha vertebre, ossa). Carnivoro (denti conici, appuntiti, seghettati). Predatore attivo, non saprofago: visione frontale, ma la visione frontale da sola non basta; arti posteriori possenti (anche l'elefante li ha, però il T. rex sta su due gambe e le deve usare per tenere ferma la preda). Dalle ossa si stima la biomeccanica: quanti chilonewton reggevano gli arti per un animale di un paio di tonnellate, quindi a che velocità andava, quindi se superava il triceratopo.</p>
+  <p>Ma "il corpo è fatto per muoversi bene" è un'osservazione viziata dall'immagine: la ricostruzione l'abbiamo fatta noi. Fino a 40–50 anni fa il T. rex stava in piedi come Godzilla, con la coda appoggiata a terra: provate a farlo correre così. Cosa ha cambiato le ricostruzioni sono state le <strong>tracce fossili</strong>: negli anni '40–50 l'industria petrolifera ha finanziato l'icnologia (le tracce servono a ricostruire i reservoir) e si sono studiate migliaia di piste di grandi vertebrati. Camminate, corse, di tutto: <strong>mai un'impronta di coda</strong>, che invece lasciano varani, iguane e perfino le tartarughe sulla sabbia. Quindi la coda non toccava terra. Da lì la coda si è sollevata in tutti i musei, i chilonewton sono cambiati, il bacino pure, e finalmente il T. rex può correre. Body fossils e trace fossils sono complementari: la biomeccanica dal solo scheletro non ci sarebbe mai arrivata.</p>
+
+  <h3>Il dente isolato</h3>
+  <p>Se dal frammento riconosco l'organismo, è come avere l'organismo intero: dietro quel dente c'era tutto il T. rex, e posso rifare lo stesso ragionamento. Cambia solo la tafonomia: perché c'è il dente e non il resto? Attenzione al contesto biologico: un dente di squalo isolato è normale (gli squali ne perdono in continuazione, non serve immaginare trasporti); un dente di T. rex senza mascella racconta invece un evento, una collutazione, un morso andato male.</p>
+
+  <h3>L'impronta della conchiglia</h3>
+  <p>Non c'è la conchiglia: c'è la sua impronta. Non è una traccia fossile (l'organismo non ha fatto nulla attivamente). Sequenza necessaria: il bivalve muore su un fondale morbido e vi lascia la forma; il sedimento litifica prendendo la morfologia esterna; poi il guscio si dissolve e la roccia no. Ma sono entrambi carbonato di calcio. La differenza è mineralogica: il guscio dei bivalvi è in gran parte <strong>aragonite</strong>, forma meno stabile della calcite, che con fluidi leggermente acidi si scioglie per prima. Quanta tafonomia in un'impronta.</p>
+
+  <h3>Le orme del teropode</h3>
+  <p>Un grande teropode (7–8 metri, tipo allosauro) che si muove in una direzione. Dalla distanza tra le impronte, con formule semplici, si stima l'altezza e se camminava o correva, con la cautela che il substrato (sabbia dura, fango) può alterare la lettura. Il substrato è pieno di <strong>ripple marks</strong>, le ondulazioni che il moto ondoso crea sulla sabbia: si vedono con maschera e pinne su qualunque fondale sabbioso ligure. Le orme tagliano i ripple, quindi vengono dopo: prima il mare, poi la <strong>marea</strong> si ritira e l'animale cammina sulla piana tidale (come in Bretagna o in Nord Francia; a Rimini in bassa marea la puzza di organismi in decomposizione dà l'idea). Perché ci va? Per mangiare: non le telline, ma chi viene a mangiare le telline, cioè la catena trofica di media taglia che si concentra sui banchi esposti. Solitario o gregario? Da una pista sola non si dice; con 5–8 piste parallele sì, e ci sono siti anche in Italia. Conservazione: il sedimento fine (sabbia fina, fango) che ricopre subito crea il velo che protegge la morfologia; se la copertura è più dura del substrato, erodendo resta il controcalco.</p>
+
+  <h3>La vongola crivellata</h3>
+  <p>Una valva sola di vongola, con vermetti bianchi incrostanti e centinaia di forellini. Il compito era ricostruire la storia dall'inizio ("Sherlock, parlate col vostro Watson").</p>
+
+  <svg class="cycle" viewBox="0 0 640 190" xmlns="http://www.w3.org/2000/svg" font-family="Poppins, Arial, sans-serif">
+    <defs><marker id="ar3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#6B7378"/></marker></defs>
+    <g stroke="#6B7378" stroke-width="1.4" fill="none">
+      <line x1="100" y1="90" x2="118" y2="90" marker-end="url(#ar3)"/>
+      <line x1="206" y1="90" x2="224" y2="90" marker-end="url(#ar3)"/>
+      <line x1="312" y1="90" x2="330" y2="90" marker-end="url(#ar3)"/>
+      <line x1="418" y1="90" x2="436" y2="90" marker-end="url(#ar3)"/>
+      <line x1="524" y1="90" x2="542" y2="90" marker-end="url(#ar3)"/>
+    </g>
+    <!-- 1: vive infaunale -->
+    <g transform="translate(10,20)">
+      <rect x="0" y="80" width="88" height="40" fill="#C9B79C"/>
+      <path d="M22,105 c0,-10 10,-16 22,-16 s22,6 22,16 c0,6 -10,10 -22,10 s-22,-4 -22,-10z" fill="#F4EEE3" stroke="#3E4A52" stroke-width="1.5"/>
+      <line x1="40" y1="92" x2="36" y2="70" stroke="#1F6F78" stroke-width="2.2"/>
+      <line x1="48" y1="92" x2="52" y2="70" stroke="#1F6F78" stroke-width="2.2"/>
+      <path d="M0,68 q11,-5 22,0 t22,0 t22,0 t22,0" fill="none" stroke="#1F6F78" stroke-width="1.2"/>
+      <text x="44" y="18" text-anchor="middle" font-size="10" font-weight="600" fill="#1F6F78">1 · vive</text>
+      <text x="44" y="30" text-anchor="middle" font-size="7.5" fill="#3E4A52">infaunale, fondo argilloso</text>
+      <text x="44" y="40" text-anchor="middle" font-size="7.5" fill="#3E4A52">sifoni lunghi</text>
+    </g>
+    <!-- 2: muore, si apre -->
+    <g transform="translate(116,20)">
+      <rect x="0" y="80" width="88" height="40" fill="#C9B79C"/>
+      <path d="M44,100 c-8,-12 -26,-10 -30,2 c8,4 20,4 30,-2z" fill="#F4EEE3" stroke="#3E4A52" stroke-width="1.5"/>
+      <path d="M44,100 c8,-12 26,-10 30,2 c-8,4 -20,4 -30,-2z" fill="#F4EEE3" stroke="#3E4A52" stroke-width="1.5"/>
+      <circle cx="44" cy="100" r="2" fill="#D4A24C"/>
+      <text x="44" y="18" text-anchor="middle" font-size="10" font-weight="600" fill="#1F6F78">2 · muore</text>
+      <text x="44" y="30" text-anchor="middle" font-size="7.5" fill="#3E4A52">il muscolo si rilassa,</text>
+      <text x="44" y="40" text-anchor="middle" font-size="7.5" fill="#3E4A52">il legamento apre le valve</text>
+    </g>
+    <!-- 3: disarticola -->
+    <g transform="translate(222,20)">
+      <rect x="0" y="80" width="88" height="40" fill="#C9B79C"/>
+      <path d="M8,96 c4,-12 22,-12 28,0 c-8,4 -20,4 -28,0z" fill="#F4EEE3" stroke="#3E4A52" stroke-width="1.5"/>
+      <path d="M52,104 c4,-12 22,-12 28,0 c-8,4 -20,4 -28,0z" fill="#F4EEE3" stroke="#3E4A52" stroke-width="1.5" transform="rotate(-20 66 100)"/>
+      <path d="M10,66 q8,6 16,0 t16,0" fill="none" stroke="#1F6F78" stroke-width="1.2" marker-end="url(#ar3)"/>
+      <text x="44" y="18" text-anchor="middle" font-size="10" font-weight="600" fill="#1F6F78">3 · disarticola</text>
+      <text x="44" y="30" text-anchor="middle" font-size="7.5" fill="#3E4A52">decomposizione + energia:</text>
+      <text x="44" y="40" text-anchor="middle" font-size="7.5" fill="#3E4A52">c'era corrente</text>
+    </g>
+    <!-- 4: incrostanti -->
+    <g transform="translate(328,20)">
+      <rect x="0" y="80" width="88" height="40" fill="#C9B79C"/>
+      <path d="M22,96 c8,-16 36,-16 44,0 c-12,5 -32,5 -44,0z" fill="#F4EEE3" stroke="#3E4A52" stroke-width="1.5"/>
+      <path d="M30,86 q4,-6 8,0 q4,6 8,0" fill="none" stroke="#fff" stroke-width="2.2"/>
+      <path d="M30,86 q4,-6 8,0 q4,6 8,0" fill="none" stroke="#3E4A52" stroke-width=".8"/>
+      <text x="44" y="18" text-anchor="middle" font-size="10" font-weight="600" fill="#1F6F78">4 · unico substrato duro</text>
+      <text x="44" y="30" text-anchor="middle" font-size="7.5" fill="#3E4A52">serpulidi (anellidi)</text>
+      <text x="44" y="40" text-anchor="middle" font-size="7.5" fill="#3E4A52">incrostano la valva</text>
+    </g>
+    <!-- 5: cliona -->
+    <g transform="translate(434,20)">
+      <rect x="0" y="80" width="88" height="40" fill="#C9B79C"/>
+      <path d="M22,96 c8,-16 36,-16 44,0 c-12,5 -32,5 -44,0z" fill="#F4EEE3" stroke="#3E4A52" stroke-width="1.5"/>
+      <g fill="#3E4A52"><circle cx="32" cy="92" r="1.1"/><circle cx="38" cy="88" r="1.1"/><circle cx="45" cy="93" r="1.1"/><circle cx="51" cy="87" r="1.1"/><circle cx="56" cy="92" r="1.1"/><circle cx="42" cy="96" r="1.1"/><circle cx="50" cy="96" r="1.1"/><circle cx="35" cy="96" r="1.1"/></g>
+      <text x="44" y="18" text-anchor="middle" font-size="10" font-weight="600" fill="#1F6F78">5 · perforata</text>
+      <text x="44" y="30" text-anchor="middle" font-size="7.5" fill="#3E4A52">spugne (Cliona), fori 2 mm</text>
+      <text x="44" y="40" text-anchor="middle" font-size="7.5" fill="#3E4A52">= tracce fossili</text>
+    </g>
+    <!-- 6: rivoltata -->
+    <g transform="translate(540,20)">
+      <rect x="0" y="80" width="88" height="40" fill="#C9B79C"/>
+      <path d="M22,96 c8,16 36,16 44,0 c-12,-5 -32,-5 -44,0z" fill="#F4EEE3" stroke="#3E4A52" stroke-width="1.5"/>
+      <g fill="#3E4A52"><circle cx="35" cy="100" r="1.1"/><circle cx="44" cy="104" r="1.1"/><circle cx="53" cy="100" r="1.1"/></g>
+      <path d="M14,70 a30,14 0 0 1 60,0" fill="none" stroke="#1F6F78" stroke-width="1.2" marker-end="url(#ar3)"/>
+      <text x="44" y="18" text-anchor="middle" font-size="10" font-weight="600" fill="#1F6F78">6 · da entrambi i lati</text>
+      <text x="44" y="30" text-anchor="middle" font-size="7.5" fill="#3E4A52">fori sopra e sotto:</text>
+      <text x="44" y="40" text-anchor="middle" font-size="7.5" fill="#3E4A52">la corrente la rivoltava</text>
+    </g>
+    <text x="320" y="165" text-anchor="middle" font-size="9" fill="#3E4A52">Risultato: bivalve infaunale, morto in un ambiente fangoso senza substrati duri, con abbastanza energia da disarticolare e rivoltare la valva.</text>
+    <text x="320" y="180" text-anchor="middle" font-size="9" fill="#3E4A52">Tutto ciò che è sopra la valva è arrivato dopo la morte: i fori sono anche all'interno.</text>
+  </svg>
+  <p class="caption">La storia tafonomica della vongola, nell'ordine ricostruito in aula.</p>
+
+  <h4>I caratteri che hanno sbloccato la storia</h4>
+  <ul>
+    <li><strong>Impronte muscolari</strong> (le "gocce"): dove si attaccano i muscoli adduttori, gli unici che <em>chiudono</em> le valve. Le vongole ne hanno due, cozze, ostriche e capesante una (guardare stasera negli spaghetti allo scoglio).</li>
+    <li><strong>Legamento</strong>: organico, dietro la cerniera, tende sempre ad <em>aprire</em>. Quando il muscolo si rilassa (morte, padella) il legamento vince e le valve si aprono; poi si decompone e le valve si disarticolano.</li>
+    <li><strong>Linea palleale</strong>: corre tra le due impronte muscolari e segna il limite del mantello. La sua rientranza, il <strong>seno palleale</strong>, è dove rientrano i sifoni (inalante ed esalante) quando l'animale si chiude. Il sifone è organico e non fossilizza, ma il seno sì: <strong>più profondo il seno, più lunghi i sifoni, più infossato l'organismo</strong>. Chi vive in acqua libera (cozze, ostriche) non ha bisogno di sifoni lunghi. Qui il seno era pronunciato: infaunale, quindi substrato molle.</li>
+    <li><strong>Serpulidi</strong>: anellidi che incrostano superfici carbonatiche, i vermetti bianchi delle cozze. <strong>Cliona</strong>: spugna perforante che si scava casa in gusci e substrati calcarei, fori perfettamente circolari di circa 2 mm (troppo regolari e piccoli per essere altro). Tanti tutti insieme significa che quella valva era l'unico substrato duro disponibile.</li>
+  </ul>
+
+  <h3>Il gasteropode predato</h3>
+  <p>Storia triste: infanzia difficile e divorzio. Il <strong>foro circolare</strong>, uno solo di solito, cilindrico o leggermente conico, è opera di altri molluschi predatori (perfino cannibali) che perforano il guscio, uccidono e succhiano: lì è morto. Ma prima, sull'ornamentazione c'è una <strong>rottura a cuspidi</strong> con sotto una nuova mineralizzazione: un granchio ha rotto il guscio con le chele, l'animale si è ritirato nella columella, il granchio ha desistito e il gasteropode ha ricostruito il guscio. Un foro nella parte apicale, dove il corpo è sempre attaccato, non lascia scampo; su organismi grandi un foro nella columella può non essere letale. I fori richiedono ore di lavoro in condizioni non sicure: spesso si trovano <strong>fori incompleti</strong>, predatori che hanno rinunciato. In una collezione di gasteropodi, moderna o fossile, il 30–40% porta segni di predazione, attacco, salvezza, ricrescita: da qui partono molti lavori di paleoecologia, per 600 milioni di anni di interazioni.</p>
+
+  <div class="box draw">
+    <div class="lab">Da disegnare</div>
+    <p>Una valva di bivalve vista dall'interno con cerniera, legamento, due impronte muscolari, linea palleale e seno palleale, con accanto i sifoni. E la storia tafonomica della vongola in sei passaggi.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">06</span>Da fare</h2>
+  <ul class="checklist">
+    <li>Verificare di essere iscritto solo all'Aulaweb di Paleontologia 64866 (GEO) e di aver firmato sul foglio GEO.</li>
+    <li>Controllare lo stato del corso sicurezza (4 h online + 8 h in presenza): serve per i laboratori tra 2–3 settimane.</li>
+    <li>Salvare il codice Teams 0n5ps9z per le allerte rosse.</li>
+    <li>Scaricare le slide della lezione il giorno stesso, non tutte in anticipo.</li>
+    <li>Scegliere un libro (Benton &amp; Harper o il Manuale SPI) e guardarlo su Aulaweb prima che la cartella sparisca.</li>
+    <li>Segnare 8–9 ottobre (solo GEO: sistematica, evoluzione, biozone, fossili guida) e il salto del 2 ottobre.</li>
+    <li>Prima esercitazione vera: 15–16 ottobre, fossilizzazione e trasporto.</li>
+    <li>Rispondere al ripasso: mail per le chiavi degli armadi quando serve, sempre con anticipo.</li>
+  </ul>
+  <h3>Prossima lezione</h3>
+  <p>Venerdì 25 settembre, 14–16, aula 401: paleontologia e tempo.</p>
+</section>
+</div>
+
+</body></html>

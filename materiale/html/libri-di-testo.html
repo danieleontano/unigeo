@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>Libri di testo — I anno</title>
+<style>
+  @page { size: A4; margin: 20mm 18mm 22mm 18mm; }
+  :root{
+    --terra:#3E4A52; --ochre:#C9A227; --slate:#3E4A52; --sand:#F4EEE3;
+    --ink:#23282C; --muted:#6B7378; --line:#DDD5C7; --moss:#6F8F5E;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:#fff;color:var(--ink);
+    font-family:"Caladea","TeX Gyre Pagella",Georgia,serif;font-size:10.6pt;line-height:1.45}
+  h1,h2,h3,h4,.sans{font-family:"Poppins","TeX Gyre Heros",Arial,sans-serif}
+  .page{}
+  
+
+  /* ---------- cover ---------- */
+  .cover{padding:0;background:var(--sand);display:flex;flex-direction:column}
+  .strata{height:78mm;position:relative;overflow:hidden}
+  .strata div{position:absolute;left:0;right:0}
+  .cover-body{padding:14mm 18mm 0 18mm;flex:1}
+  .kicker{font-family:Poppins;font-size:9pt;letter-spacing:.22em;text-transform:uppercase;color:var(--terra);font-weight:600}
+  .cover h1{font-size:34pt;line-height:1.05;margin:6mm 0 3mm 0;color:var(--slate);font-weight:600;letter-spacing:-.01em}
+  .cover h2{font-size:14pt;font-weight:400;color:var(--ink);margin:0 0 10mm 0}
+  .meta{display:grid;grid-template-columns:1fr 1fr;gap:4mm 10mm;font-size:10pt;border-top:1px solid var(--line);padding-top:6mm;max-width:150mm}
+  .meta b{display:block;font-family:Poppins;font-size:8pt;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:600;margin-bottom:1mm}
+  .cover-foot{padding:0 18mm 14mm 18mm;font-size:9pt;color:var(--muted)}
+  .toc{margin-top:10mm;max-width:150mm}
+  .toc h3{font-size:9pt;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin:0 0 3mm 0;font-weight:600}
+  .toc ol{margin:0;padding:0;list-style:none;counter-reset:t}
+  .toc li{counter-increment:t;display:flex;gap:4mm;padding:1.6mm 0;border-bottom:1px dotted var(--line);font-size:10.5pt}
+  .toc li::before{content:counter(t,decimal-leading-zero);font-family:Poppins;font-weight:600;color:var(--terra);min-width:8mm}
+
+  /* ---------- content ---------- */
+  .runhead{position:absolute;top:9mm;left:18mm;right:18mm;display:flex;justify-content:space-between;font-family:Poppins;font-size:7.5pt;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .runhead span:last-child{color:var(--terra);font-weight:600}
+  section h2{font-size:15pt;color:var(--slate);margin:0 0 2mm 0;font-weight:600;letter-spacing:-.01em;display:flex;align-items:baseline;gap:4mm}
+  section h2 .n{font-size:10pt;color:var(--terra);font-weight:600;letter-spacing:.1em}
+  .lead{color:var(--muted);font-style:italic;margin:0 0 4mm 0}
+  h3{font-size:11.5pt;color:var(--terra);margin:6mm 0 1.5mm 0;font-weight:600}
+  h4{font-size:10pt;color:var(--slate);margin:3.5mm 0 1mm 0;font-weight:600}
+  p{margin:0 0 2.6mm 0;text-align:justify;hyphens:auto}
+  ul{margin:0 0 3mm 0;padding-left:5mm}
+  li{margin-bottom:1.2mm}
+  li::marker{color:var(--terra)}
+  em.t{font-style:italic;color:var(--slate)}
+  .two{columns:2;column-gap:8mm}
+  .two h3:first-child{margin-top:0}
+
+  /* callouts */
+  .box{border-left:2px solid var(--ochre);background:none;padding:1mm 0 1mm 4mm;margin:3mm 0 3.5mm 0;break-inside:avoid}
+  .box .lab{font-family:Poppins;font-size:7.5pt;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--ochre);margin-bottom:1mm}
+  .box p{margin-bottom:1.5mm}
+  .box p:last-child{margin-bottom:0}
+  .box.def{border-color:var(--ochre)}
+  .box.exam{border-color:var(--terra)} .box.exam .lab{color:var(--terra)}
+  .box.draw{border-color:var(--slate)} .box.draw .lab{color:var(--slate)}
+  .box.warn{border-color:var(--moss)} .box.warn .lab{color:var(--moss)}
+
+  .kv{display:grid;grid-template-columns:38mm 1fr;gap:1.5mm 4mm;margin:2mm 0 4mm 0;font-size:10pt}
+  .kv dt{font-family:Poppins;font-size:8.5pt;font-weight:600;color:var(--slate);padding-top:.6mm}
+  .kv dd{margin:0}
+
+  table{width:100%;border-collapse:collapse;margin:2mm 0 4mm 0;font-size:9.6pt;break-inside:avoid}
+  th{font-family:Poppins;font-size:8pt;text-transform:uppercase;letter-spacing:.1em;text-align:left;color:var(--muted);border-bottom:1.5px solid var(--slate);padding:1.5mm 2mm;font-weight:600}
+  td{padding:1.8mm 2mm;border-bottom:1px solid var(--line);vertical-align:top}
+  td:first-child{font-family:Poppins;font-weight:600;font-size:8.8pt;color:var(--slate)}
+
+  .q{color:var(--moss);font-family:Poppins;font-size:8pt;font-weight:600;vertical-align:super}
+  .foot{position:absolute;bottom:9mm;left:18mm;right:18mm;display:flex;justify-content:space-between;font-family:Poppins;font-size:7.5pt;color:var(--muted)}
+  .pnum{font-weight:600;color:var(--slate)}
+
+  /* rock cycle figure */
+  .cycle{margin:3mm auto 4mm auto;display:block;width:150mm}
+  .caption{font-size:8.8pt;color:var(--muted);text-align:center;margin:-1mm 0 4mm 0;font-style:italic}
+  .checklist li{list-style:none;position:relative;padding-left:6mm}
+  .checklist li::before{content:"";position:absolute;left:0;top:1.1mm;width:3.2mm;height:3.2mm;border:1.3px solid var(--terra);border-radius:.6mm}
+
+  .hd{display:flex;align-items:flex-start;gap:5mm;border-bottom:1.5px solid var(--slate);padding-bottom:4mm;margin-bottom:6mm}
+  .hd svg{flex:0 0 14mm;width:14mm;height:14mm}
+  .hd .k{font-family:Poppins;font-size:8pt;letter-spacing:.2em;text-transform:uppercase;color:var(--terra);font-weight:600}
+  .hd h1{font-family:Poppins;font-size:20pt;line-height:1.1;margin:1mm 0 1.5mm 0;color:var(--slate);font-weight:600}
+  .hd .m{font-size:9.5pt;color:var(--muted)}
+  .hd .m b{color:var(--ink);font-weight:600}
+  .legend{font-size:8.8pt;color:var(--muted);margin:0 0 6mm 0}
+</style>
+<style>section h2{break-after:avoid;margin-top:9mm} .page:first-child section h2{margin-top:0} h2[style]{margin-top:9mm !important} h3,h4{break-after:avoid} .box,table,dl.kv{break-inside:avoid} .lead{break-after:avoid}</style>
+<style>td{font-size:9pt} td:nth-child(3){font-family:"DejaVu Sans Mono",monospace;font-size:8.6pt;white-space:nowrap}</style></head>
+<body>
+<div class="hd">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect x="18" y="20" width="18" height="62" rx="2" fill="#B5552A"/><rect x="38" y="14" width="16" height="68" rx="2" fill="#3F6E3A"/><rect x="56" y="24" width="14" height="58" rx="2" fill="#1F6F78"/><rect x="72" y="18" width="12" height="64" rx="2" fill="#C9A227" transform="rotate(8 78 50)"/><rect x="12" y="82" width="78" height="4" fill="#3E4A52"/></svg>
+  <div>
+    <div class="k">Scienze Geologiche · primo anno · a.a. 2026/27</div>
+    <h1>Libri di testo · I semestre e annuali</h1>
+    <div class="m"><b>Aggiornato al 1 ottobre 2026</b> · dalle schede insegnamento UniGe (corsi.unige.it), dal manifesto e da quanto detto in aula dai docenti</div>
+  </div>
+</div>
+<p class="legend">Legenda stato: <b>Adottato</b> = testo di riferimento indicato dal docente · <b>Consigliato</b> = consigliato, non obbligatorio · <b>Uno a scelta</b> = il docente indica una rosa, ne basta uno · <b>Approfondimento</b> = per parti specifiche o per chi vuole andare oltre. Dove c'è più di un'edizione indico quella più recente e, tra parentesi, quella citata dal docente se diversa. Gli ISBN sono tutti ISBN-13 verificati su cataloghi e librerie, salvo dove segnato "non trovato".</p>
+
+<div class="page">
+<section>
+  <h2><span class="n">01</span>Geologia 1 <span style="font-size:10pt;color:var(--muted);font-weight:400">· annuale · Federico (Mod. 1) + Piazza (Mod. 2)</span></h2>
+  <p class="lead">Nessun testo obbligatorio: slide su Aulaweb. I libri sono consultabili nella biblioteca della Scuola di Scienze MFN.</p>
+  <table>
+    <tr><th>Testo</th><th>Editore · anno</th><th>ISBN</th><th>Stato</th></tr>
+    <tr><td>S. Marshak, <em>La Terra. Ritratto di un pianeta</em></td><td>Zanichelli, 2004</td><td>9788808076717</td><td>Consigliato (uno a scelta)</td></tr>
+    <tr><td>J. P. Grotzinger, T. H. Jordan, <em>Capire la Terra</em>, 3ª ed.</td><td>Zanichelli, 2016</td><td>9788808821232</td><td>Consigliato (uno a scelta)</td></tr>
+  </table>
+  <ul>
+    <li>Sono i testi indicati nella scheda del Modulo 1. La Federico usa le figure del <strong>Marshak</strong> nelle slide e ha detto che non è più in stampa: si trova usato o in biblioteca. Il Grotzinger–Jordan è l'alternativa ancora in commercio. Nella scheda compare anche il vecchio Press–Siever–Grotzinger–Jordan (2006), superato dall'edizione 2016.</li>
+    <li><strong>Modulo 2 (Piazza)</strong>: a lezione ha detto che i testi per la parte stratigrafica e sul tempo geologico sono sul sito del corso, difficili da comprare ma disponibili in biblioteca. Non sono riuscito a leggere la scheda 2026/27 del modulo: <strong>da controllare su corsi.unige.it o chiedere a lui</strong>.</li>
+  </ul>
+</section>
+
+<section>
+  <h2><span class="n">02</span>Paleontologia <span style="font-size:10pt;color:var(--muted);font-weight:400">· annuale · Briguglio</span></h2>
+  <p class="lead">"Nessuno è obbligatorio, uno vale l'altro". I PDF di buona parte sono su Aulaweb (cartella a tempo); tutti sono in biblioteca e si possono sfogliare nel suo ufficio.</p>
+  <h4>Manuali: ne basta uno</h4>
+  <table>
+    <tr><th>Testo</th><th>Editore · anno</th><th>ISBN</th><th>Stato</th></tr>
+    <tr><td>M. J. Benton, D. A. T. Harper, <em>Introduction to Paleobiology and the Fossil Record</em>, 2nd ed.</td><td>Wiley-Blackwell, 2020</td><td>9781119272854</td><td><strong>Uno a scelta · il più consigliato</strong></td></tr>
+    <tr><td>Società Paleontologica Italiana (a cura di), <em>Manuale di Paleontologia. Fondamenti, Applicazioni</em>, 2ª ed.</td><td>Idelson-Gnocchi, 2022 (1ª ed. 2020: 9788879477147)</td><td>9788879477789</td><td>Uno a scelta</td></tr>
+    <tr><td>F. M. Gradstein, J. Zalasiewicz, M. Williams, A. Waśkowska (eds), <em>Fossils and Earth Time</em></td><td>Elsevier, 2025</td><td>9780443290923</td><td>Uno a scelta</td></tr>
+    <tr><td>A. Allasinaz, <em>Paleontologia generale e sistematica degli invertebrati</em>, 2ª ed.</td><td>ECIG, 1991</td><td>9788875456733</td><td>Uno a scelta ("vintage", ottimo per gli invertebrati)</td></tr>
+    <tr><td>S. Raffi, E. Serpagli, <em>Introduzione alla paleontologia</em></td><td>UTET, 2003 (ed. 1993/96: 9788802046723)</td><td>9788802051444</td><td>Uno a scelta ("vintage")</td></tr>
+    <tr><td>R. Malaroda, <em>Paleontologia</em>, vol. 2 · Paleontologia sistematica: invertebrati</td><td>CEDAM, Padova</td><td>non trovato (edizione vecchia)</td><td>Uno a scelta ("vintage")</td></tr>
+  </table>
+  <h4>Per parti specifiche</h4>
+  <table>
+    <tr><th>Testo</th><th>Editore · anno</th><th>ISBN</th><th>Stato</th></tr>
+    <tr><td>H. Armstrong, M. Brasier, <em>Microfossils</em>, 2nd ed.</td><td>Blackwell, 2005</td><td>9780632052790 <span class="q">?</span></td><td>Approfondimento · microscopio</td></tr>
+    <tr><td>T. N. Taylor, E. L. Taylor, M. Krings, <em>Paleobotany</em>, 2nd ed.</td><td>Academic Press, 2009</td><td>9780123739728 <span class="q">?</span></td><td>Approfondimento · piante</td></tr>
+    <tr><td>G. Barsotti, M. Gnoli, A. Guerrini, <em>Storia naturale del pianeta Terra</em>, 2 voll.</td><td>Pacini, 2015</td><td>9788863159738</td><td>GEO · storia della vita (divulgativo, in italiano)</td></tr>
+    <tr><td>T. H. Torsvik, L. R. M. Cocks, <em>Earth History and Palaeogeography</em></td><td>Cambridge University Press, 2017</td><td>9781107105324 <span class="q">?</span></td><td>GEO · mappe paleogeografiche</td></tr>
+    <tr><td>F. M. Gradstein, J. G. Ogg, M. D. Schmitz, G. M. Ogg (eds), <em>Geologic Time Scale 2020</em>, 2 voll.</td><td>Elsevier, 2020</td><td>9780128243602</td><td>GEO · consultazione ("la Bibbia del geologo")</td></tr>
+  </table>
+  <p style="font-size:9pt;color:var(--muted)">Il Barsotti–Gnoli–Guerrini è anche venduto in PDF, a capitoli, sul sito dell'editore Pacini. <span class="q">?</span> = ISBN che conosco ma che non sono riuscito a riscontrare in questa ricerca: verificalo prima di ordinare.</p>
+</section>
+
+<section>
+  <h2><span class="n">03</span>Geografia fisica e cartografia <span style="font-size:10pt;color:var(--muted);font-weight:400">· I semestre · Brandolini</span></h2>
+  <p class="lead">Testi di riferimento dalla slide di presentazione. Slide e materiale su Aulaweb alla fine di ogni ciclo.</p>
+  <table>
+    <tr><th>Testo</th><th>Editore · anno</th><th>ISBN</th><th>Stato</th></tr>
+    <tr><td>T. L. McKnight, D. Hess, <em>Geografia fisica. Comprendere il paesaggio</em>, a cura di F. Dramis (2ª ed. anche P. Mozzi)</td><td>Piccin, 2021 (ed. 2005 citata in slide: 9788829917297)</td><td>9788829932122</td><td>Adottato (manuale, uno a scelta con Strahler)</td></tr>
+    <tr><td>A. N. Strahler, <em>Geografia fisica</em></td><td>Piccin, 1984</td><td>non trovato</td><td>Uno a scelta (vecchio)</td></tr>
+    <tr><td>U. Sauro, M. Meneghel, A. Bondesan, B. Castiglioni, <em>Dalla carta topografica al paesaggio. Atlante ragionato</em></td><td>ZetaBeta, 2004–05 · ristampa LAC 2017: 9788879144520 · LACasa della cartografia 2024: 9788894730807</td><td>9788873820529</td><td>Consigliato · parte di cartografia</td></tr>
+  </table>
+  <ul>
+    <li>Il McKnight–Hess è il manuale per la parte di geografia fisica. Il Sauro è un atlante di stralci di carte IGM e CTR commentati: utile per la parte di cartografia e per imparare a "leggere" le carte.</li>
+    <li>Il prof ha annunciato ulteriori indicazioni bibliografiche durante il corso.</li>
+  </ul>
+</section>
+
+<section>
+  <h2><span class="n">04</span>Elementi di Matematica <span style="font-size:10pt;color:var(--muted);font-weight:400">· annuale · 9 CFU</span></h2>
+  <table>
+    <tr><th>Testo</th><th>Editore · anno</th><th>ISBN</th><th>Stato</th></tr>
+    <tr><td>A. M. Bigatti, L. Robbiano, <em>Matematica di base</em>, 2ª ed.</td><td>CEA–Zanichelli, 2021 (1ª ed. 2014: 9788808187048)</td><td>9788808720139</td><td><strong>Adottato · teoria</strong></td></tr>
+    <tr><td>A. M. Bigatti, G. Tamone, <em>Matematica di base. Esercizi svolti, testi d'esame, richiami di teoria</em>, 2ª ed.</td><td>Esculapio, 2016</td><td>9788874889860</td><td>Consigliato · esercizi</td></tr>
+    <tr><td>A. M. Bigatti, G. Tamone, <em>Matematica Zero. Precorso di matematica</em></td><td>CEA–Zanichelli, 2020</td><td>9788808620262</td><td>Solo se servono i prerequisiti</td></tr>
+  </table>
+  <p style="font-size:9pt;color:var(--muted)">Dalla scheda 2025/26 (Elementi di Matematica, 91034): va bene la prima o la seconda edizione di entrambi i "Matematica di base". Bigatti insegna il corso, quindi i testi sono tagliati proprio sul programma.</p>
+</section>
+
+<section>
+  <h2><span class="n">05</span>Chimica generale ed inorganica con laboratorio <span style="font-size:10pt;color:var(--muted);font-weight:400">· I semestre · 9 CFU</span></h2>
+  <p class="lead">Qualunque testo di chimica generale e inorganica di livello universitario va bene; quelli indicati sono disponibili in prestito agli studenti.</p>
+  <table>
+    <tr><th>Testo</th><th>Editore · anno</th><th>ISBN</th><th>Stato</th></tr>
+    <tr><td>M. S. Silberberg, P. Amateis, <em>Chimica. La natura molecolare della materia e delle sue trasformazioni</em></td><td>McGraw-Hill Education, 2019</td><td>9788838695391</td><td>Uno a scelta</td></tr>
+    <tr><td>R. Chang, J. Overby et al., <em>Fondamenti di chimica generale</em></td><td>McGraw-Hill Education</td><td>non trovato</td><td>Uno a scelta</td></tr>
+  </table>
+  <p style="font-size:9pt;color:var(--muted)">Fonte: scheda dell'insegnamento 87055. La versione che sono riuscito a leggere (2022/23) cita anche un terzo testo, troncato nella pagina: <strong>controlla la scheda 2026/27</strong> e l'elenco dei libri che il docente darà in aula. Ricorda: 80% di frequenza obbligatoria in laboratorio.</p>
+</section>
+
+<section>
+  <h2><span class="n">06</span>Fuori da questa lista</h2>
+  <ul>
+    <li><strong>Fisica</strong>: nei manifesti precedenti era al 2° semestre, quindi l'ho esclusa. Nel nuovo ordinamento compare come "Fisica sperimentale con applicazioni al sistema Terra": se invece fosse annuale, dimmelo e la aggiungo.</li>
+    <li><strong>Lingua inglese</strong>: nessun libro di testo.</li>
+  </ul>
+  <h3>Priorità di acquisto, a mio parere</h3>
+  <ul class="checklist">
+    <li>Bigatti–Robbiano (teoria) e Bigatti–Tamone (esercizi): adottati, tagliati sul corso, ti servono tutto l'anno.</li>
+    <li>Un manuale di chimica generale, anche usato o in prestito.</li>
+    <li>Paleontologia: un solo manuale. Se l'inglese non ti pesa il Benton–Harper; altrimenti il Manuale SPI.</li>
+    <li>Geografia fisica: il McKnight–Hess, anche l'edizione 2005 usata.</li>
+    <li>Geologia 1: Marshak usato se lo trovi, altrimenti biblioteca.</li>
+    <li>Tutto il resto: biblioteca.</li>
+  </ul>
+</section>
+</div>
+
+</body></html>

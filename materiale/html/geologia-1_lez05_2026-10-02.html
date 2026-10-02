@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>Geologia 1 — Lezione 5</title>
+<style>
+  @page { size: A4; margin: 20mm 18mm 22mm 18mm; }
+  :root{
+    --terra:#B5552A; --ochre:#C9A227; --slate:#3E4A52; --sand:#F4EEE3;
+    --ink:#23282C; --muted:#6B7378; --line:#DDD5C7; --moss:#6F8F5E;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:#fff;color:var(--ink);
+    font-family:"Caladea","TeX Gyre Pagella",Georgia,serif;font-size:10.6pt;line-height:1.45}
+  h1,h2,h3,h4,.sans{font-family:"Poppins","TeX Gyre Heros",Arial,sans-serif}
+  .page{}
+  
+
+  /* ---------- cover ---------- */
+  .cover{padding:0;background:var(--sand);display:flex;flex-direction:column}
+  .strata{height:78mm;position:relative;overflow:hidden}
+  .strata div{position:absolute;left:0;right:0}
+  .cover-body{padding:14mm 18mm 0 18mm;flex:1}
+  .kicker{font-family:Poppins;font-size:9pt;letter-spacing:.22em;text-transform:uppercase;color:var(--terra);font-weight:600}
+  .cover h1{font-size:34pt;line-height:1.05;margin:6mm 0 3mm 0;color:var(--slate);font-weight:600;letter-spacing:-.01em}
+  .cover h2{font-size:14pt;font-weight:400;color:var(--ink);margin:0 0 10mm 0}
+  .meta{display:grid;grid-template-columns:1fr 1fr;gap:4mm 10mm;font-size:10pt;border-top:1px solid var(--line);padding-top:6mm;max-width:150mm}
+  .meta b{display:block;font-family:Poppins;font-size:8pt;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:600;margin-bottom:1mm}
+  .cover-foot{padding:0 18mm 14mm 18mm;font-size:9pt;color:var(--muted)}
+  .toc{margin-top:10mm;max-width:150mm}
+  .toc h3{font-size:9pt;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin:0 0 3mm 0;font-weight:600}
+  .toc ol{margin:0;padding:0;list-style:none;counter-reset:t}
+  .toc li{counter-increment:t;display:flex;gap:4mm;padding:1.6mm 0;border-bottom:1px dotted var(--line);font-size:10.5pt}
+  .toc li::before{content:counter(t,decimal-leading-zero);font-family:Poppins;font-weight:600;color:var(--terra);min-width:8mm}
+
+  /* ---------- content ---------- */
+  .runhead{position:absolute;top:9mm;left:18mm;right:18mm;display:flex;justify-content:space-between;font-family:Poppins;font-size:7.5pt;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .runhead span:last-child{color:var(--terra);font-weight:600}
+  section h2{font-size:15pt;color:var(--slate);margin:0 0 2mm 0;font-weight:600;letter-spacing:-.01em;display:flex;align-items:baseline;gap:4mm}
+  section h2 .n{font-size:10pt;color:var(--terra);font-weight:600;letter-spacing:.1em}
+  .lead{color:var(--muted);font-style:italic;margin:0 0 4mm 0}
+  h3{font-size:11.5pt;color:var(--terra);margin:6mm 0 1.5mm 0;font-weight:600}
+  h4{font-size:10pt;color:var(--slate);margin:3.5mm 0 1mm 0;font-weight:600}
+  p{margin:0 0 2.6mm 0;text-align:justify;hyphens:auto}
+  ul{margin:0 0 3mm 0;padding-left:5mm}
+  li{margin-bottom:1.2mm}
+  li::marker{color:var(--terra)}
+  em.t{font-style:italic;color:var(--slate)}
+  .two{columns:2;column-gap:8mm}
+  .two h3:first-child{margin-top:0}
+
+  /* callouts */
+  .box{border-left:2px solid var(--ochre);background:none;padding:1mm 0 1mm 4mm;margin:3mm 0 3.5mm 0;break-inside:avoid}
+  .box .lab{font-family:Poppins;font-size:7.5pt;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--ochre);margin-bottom:1mm}
+  .box p{margin-bottom:1.5mm}
+  .box p:last-child{margin-bottom:0}
+  .box.def{border-color:var(--ochre)}
+  .box.exam{border-color:var(--terra)} .box.exam .lab{color:var(--terra)}
+  .box.draw{border-color:var(--slate)} .box.draw .lab{color:var(--slate)}
+  .box.warn{border-color:var(--moss)} .box.warn .lab{color:var(--moss)}
+
+  .kv{display:grid;grid-template-columns:38mm 1fr;gap:1.5mm 4mm;margin:2mm 0 4mm 0;font-size:10pt}
+  .kv dt{font-family:Poppins;font-size:8.5pt;font-weight:600;color:var(--slate);padding-top:.6mm}
+  .kv dd{margin:0}
+
+  table{width:100%;border-collapse:collapse;margin:2mm 0 4mm 0;font-size:9.6pt;break-inside:avoid}
+  th{font-family:Poppins;font-size:8pt;text-transform:uppercase;letter-spacing:.1em;text-align:left;color:var(--muted);border-bottom:1.5px solid var(--slate);padding:1.5mm 2mm;font-weight:600}
+  td{padding:1.8mm 2mm;border-bottom:1px solid var(--line);vertical-align:top}
+  td:first-child{font-family:Poppins;font-weight:600;font-size:8.8pt;color:var(--slate)}
+
+  .q{color:var(--moss);font-family:Poppins;font-size:8pt;font-weight:600;vertical-align:super}
+  .foot{position:absolute;bottom:9mm;left:18mm;right:18mm;display:flex;justify-content:space-between;font-family:Poppins;font-size:7.5pt;color:var(--muted)}
+  .pnum{font-weight:600;color:var(--slate)}
+
+  /* rock cycle figure */
+  .cycle{margin:3mm auto 4mm auto;display:block;width:150mm}
+  .caption{font-size:8.8pt;color:var(--muted);text-align:center;margin:-1mm 0 4mm 0;font-style:italic}
+  .checklist li{list-style:none;position:relative;padding-left:6mm}
+  .checklist li::before{content:"";position:absolute;left:0;top:1.1mm;width:3.2mm;height:3.2mm;border:1.3px solid var(--terra);border-radius:.6mm}
+
+  .hd{display:flex;align-items:flex-start;gap:5mm;border-bottom:1.5px solid var(--slate);padding-bottom:4mm;margin-bottom:6mm}
+  .hd svg{flex:0 0 14mm;width:14mm;height:14mm}
+  .hd .k{font-family:Poppins;font-size:8pt;letter-spacing:.2em;text-transform:uppercase;color:var(--terra);font-weight:600}
+  .hd h1{font-family:Poppins;font-size:20pt;line-height:1.1;margin:1mm 0 1.5mm 0;color:var(--slate);font-weight:600}
+  .hd .m{font-size:9.5pt;color:var(--muted)}
+  .hd .m b{color:var(--ink);font-weight:600}
+  .legend{font-size:8.8pt;color:var(--muted);margin:0 0 6mm 0}
+</style>
+<style>section h2{break-after:avoid;margin-top:9mm} .page:first-child section h2{margin-top:0} h2[style]{margin-top:9mm !important} h3,h4{break-after:avoid} .box,table,dl.kv{break-inside:avoid} .lead{break-after:avoid}</style>
+</head>
+<body>
+<div class="hd">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <path d="M14,62 C8,42 26,22 50,20 C72,18 92,32 90,54 C88,74 68,84 46,84 C28,84 18,76 14,62 Z" fill="#B5552A"/>
+  <path d="M22,58 C20,44 34,30 52,29 C68,28 82,38 80,54 C78,68 64,76 48,76 C34,76 24,70 22,58 Z" fill="#C9A227" opacity=".85"/>
+  <path d="M30,55 C30,46 40,38 52,38 C62,38 72,44 70,54 C68,63 60,68 50,68 C40,68 30,64 30,55 Z" fill="#3E4A52" opacity=".9"/>
+  <path d="M24,52 L82,46" stroke="#F4EEE3" stroke-width="2" opacity=".7"/>
+  <path d="M28,62 L80,58" stroke="#F4EEE3" stroke-width="1.6" opacity=".5"/>
+  </svg>
+  <div>
+    <div class="k">Geologia 1 · Modulo 2 · Geologia stratigrafica</div>
+    <h1>Lezione 5 · Classificare le rocce magmatiche</h1>
+    <div class="m"><b>Venerdì 2 ottobre 2026</b> · prof. Michele Piazza · Scienze Geologiche, primo anno · UniGe, a.a. 2026/27 · Appunti dalla registrazione audio e dalle slide "3. Le rocce magmatiche"</div>
+  </div>
+</div>
+<p class="legend">Continua la Lezione 4. Prima ora di teoria sulla classificazione, seconda ora sui campioni passati di mano in mano. I primi minuti mancano dalla registrazione. Le note <strong>[ndr]</strong> sono correzioni o precisazioni mie.</p>
+
+<div class="page">
+<section>
+  <h2><span class="n">01</span>Una prima classificazione</h2>
+  <p class="lead">Approccio speditivo: non si pretende di piazzare il campione esattamente nel campo del diagramma, ma di dargli un nome ragionevole. L'anno prossimo, a Petrografia, lo si farà in modo rigoroso.</p>
+  <p>Lo schema della slide (da Marshak) mette in fila le rocce secondo il contenuto in silice, dalle <strong>silicee (acide)</strong> alle <strong>intermedie</strong>, alle <strong>femiche</strong>, alle <strong>ultrafemiche</strong>. Più cresce la silice, più la roccia è acida, leggera e chiara. Scendendo verso le ultrafemiche aumentano ferro, magnesio e <strong>densità</strong>, cala la silice, sale l'<strong>indice di colore</strong>. <strong>[ndr]</strong> In aula la silice è stata data "da un minimo del 40% fino al 60%". La scala di solito usata: ultrafemiche &lt; 45%, femiche 45–52%, intermedie 52–63%, silicee &gt; 63% (fino a circa il 75% nei graniti).</p>
+  <ul>
+    <li>Per ogni riga c'è un termine <strong>effusivo</strong> (micro/criptocristallino o porfirico) e il suo equivalente <strong>intrusivo</strong> (olocristallino, cristalli visibili a occhio nudo): granito–riolite, diorite–andesite, gabbro–basalto, peridotite–komatiite.</li>
+    <li>Più si va verso il silicico, più la <strong>composizione mineralogica è varia</strong>. Verso l'ultrafemico si impoverisce, fino a rocce fatte praticamente solo di olivina.</li>
+    <li>I minerali dello schema sono tutti quelli delle schede: feldspati alcalini, quarzo, plagioclasi, biotite, anfibolo, pirosseno, olivina.</li>
+    <li>Il <strong>plagioclasio</strong> ha un campo molto ampio e cambia composizione: ricco in <strong>calcio</strong> nei termini femici, ricco in <strong>sodio</strong> in quelli silicici.</li>
+  </ul>
+  <div class="box warn">
+    <div class="lab">Due avvertenze</div>
+    <p><strong>I nomi sono storici</strong> (soprattutto dell'Ottocento): non suggeriscono il tipo di roccia. Non vanno studiati a memoria: in laboratorio e all'esame si tiene sotto gli occhi il diagramma e si usa il nome del campo in cui si cade. Con l'uso ci si ricorda.</p>
+    <p><strong>L'indice di colore</strong> (leucocratico, mesocratico, melanocratico, ultrafemico) va usato con molta cautela. Un'ultrafemica dovrebbe essere la roccia più scura, ma se è fatta di olivina fresca non è poi così nera.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">02</span>Le rocce vetrose</h2>
+  <h3>Frammentarie: le piroclastiti</h3>
+  <p>Il nome "nobile" delle vetrose frammentarie è <strong>rocce piroclastiche</strong>, molto più usato di "frammentarie". Due grandi gruppi: i <strong>tufi di caduta</strong> e i <strong>tufi saldati</strong>, cioè i depositi di un flusso piroclastico che scorre lungo i versanti. Gli abitanti di Pompei sono stati travolti e sepolti da una nube piroclastica. In entrambi i casi il risultato è comunque un <strong>tufo</strong> in senso geologico.</p>
+  <div class="box exam">
+    <div class="lab">Occhio alla nomenclatura</div>
+    <p>Nel linguaggio comune "tufo" indica cose diverse. Nelle Langhe "tufo" sono le marne, rocce sedimentarie su cui stanno le vigne, che non hanno nulla a che vedere con i tufi vulcanici. Verificare sempre che si stia usando la nomenclatura scientifica.</p>
+  </div>
+  <p>Le piroclastiti nascono da un'attività vulcanica esplosiva che proietta grandi volumi di gas e frammenti di lava, sia ancora fusa (brandelli) sia già consolidata. I frammenti raffreddano rapidissimamente e ricadono (<em>fallout</em>), in atmosfera o colando lungo il cono. Per questo sono il punto di passaggio verso le sedimentarie, e si classificano con un triangolo <strong>granulometrico</strong>, come le sedimentarie clastiche:</p>
+  <table>
+    <tr><th>Classe</th><th>Dimensione</th></tr>
+    <tr><td>Blocchi e bombe</td><td>&gt; 64 mm (le bombe sono i termini più grossolani)</td></tr>
+    <tr><td>Lapilli</td><td>2–64 mm</td></tr>
+    <tr><td>Ceneri</td><td>&lt; 2 mm</td></tr>
+  </table>
+  <p style="font-size:9pt;color:var(--muted)">La registrazione si interrompe alle ceneri: la riga dei lapilli è la classe intermedia standard.</p>
+  <ul>
+    <li><strong>Ialoclastite</strong> (dall'inglese <em>hyaloclastite</em>): lava effusa in acqua, sotto un ghiacciaio o in sedimenti saturi d'acqua. L'interazione con l'acqua dà un raffreddamento rapidissimo e una contrazione: il materiale si frammenta in clasti angolosi, a spigoli vivi.</li>
+    <li><strong>Autoclastite</strong>: in generale, un fuso che si frammenta durante il consolidamento, in qualunque condizione.</li>
+  </ul>
+
+  <h3>Non frammentarie</h3>
+  <table>
+    <tr><th>Roccia</th><th>Vescicole</th><th>Note</th></tr>
+    <tr><td>Ossidiana</td><td>praticamente zero</td><td>vetro vulcanico in senso stretto: magma talmente viscoso da non cristallizzare. Frattura concoide</td></tr>
+    <tr><td>Pomice</td><td>≥ 50% del volume</td><td>lava ricchissima di gas. È così piena di vuoti che galleggia</td></tr>
+    <tr><td>Scoria</td><td>&lt; 50%</td><td>stessa origine, meno vescicolare</td></tr>
+  </table>
+  <p>Le vescicole sono il riflesso dei gas disciolti nel fuso.</p>
+</section>
+
+<section>
+  <h2><span class="n">03</span>Il protocollo con i diagrammi triangolari</h2>
+  <p>Ogni vertice è il 100% di un componente (end member); lungo ogni lato si legge la percentuale, e all'interno si incrociano le informazioni. Quest'anno le percentuali si stimano a occhio sul campione; l'anno prossimo si conteranno al microscopio.</p>
+  <svg class="cycle" viewBox="0 0 640 340" xmlns="http://www.w3.org/2000/svg" font-family="Poppins, Arial, sans-serif"><defs><marker id="af" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10z" fill="#6B7378"/></marker></defs><rect x="220" y="5" width="200" height="34" rx="5" fill="#F4EEE3" stroke="#3E4A52" stroke-width=".8"/><text x="320.0" y="19.5" text-anchor="middle" font-size="8.6" font-weight="600" fill="#23282C">1 · Tessitura</text><text x="320.0" y="30.5" text-anchor="middle" font-size="8.6"  fill="#23282C">olocristallina, porfirica, micro/cripto, vetrosa</text><path d="M270,39 L120,62" stroke="#6B7378" stroke-width="1.3" marker-end="url(#af)"/><text x="199.0" y="48.5" font-size="7.5" fill="#B5552A" font-weight="600">intrusiva (olocristallina)</text><path d="M370,39 L520,62" stroke="#6B7378" stroke-width="1.3" marker-end="url(#af)"/><text x="449.0" y="48.5" font-size="7.5" fill="#B5552A" font-weight="600">effusiva</text><rect x="20" y="62" width="200" height="34" rx="5" fill="#F4EEE3" stroke="#3E4A52" stroke-width=".8"/><text x="120.0" y="76.5" text-anchor="middle" font-size="8.6" font-weight="600" fill="#23282C">2 · Femici ≥ 90%?</text><text x="120.0" y="87.5" text-anchor="middle" font-size="8.6"  fill="#23282C">olivina + pirosseni</text><path d="M60,96 L60,118" stroke="#6B7378" stroke-width="1.3" marker-end="url(#af)"/><text x="64.0" y="105.0" font-size="7.5" fill="#B5552A" font-weight="600">sì</text><path d="M180,96 L180,118" stroke="#6B7378" stroke-width="1.3" marker-end="url(#af)"/><text x="184.0" y="105.0" font-size="7.5" fill="#B5552A" font-weight="600">no</text><rect x="5" y="118" width="110" height="40" rx="5" fill="#3E4A52" stroke="#3E4A52" stroke-width=".8"/><text x="60.0" y="130.0" text-anchor="middle" font-size="7.8" font-weight="600" fill="#fff">Triangolo</text><text x="60.0" y="141.0" text-anchor="middle" font-size="7.8"  fill="#fff">ultrafemiche</text><text x="60.0" y="152.0" text-anchor="middle" font-size="7.8"  fill="#fff">dunite · peridotite · pirossenite</text><rect x="125" y="118" width="140" height="40" rx="5" fill="#F4EEE3" stroke="#3E4A52" stroke-width=".8"/><text x="195.0" y="135.5" text-anchor="middle" font-size="8" font-weight="600" fill="#23282C">3 · Quarzo o feldspatoidi?</text><text x="195.0" y="146.5" text-anchor="middle" font-size="8"  fill="#23282C">Q e F si escludono</text><path d="M150,158 L110,182" stroke="#6B7378" stroke-width="1.3" marker-end="url(#af)"/><text x="134.0" y="168.0" font-size="7.5" fill="#B5552A" font-weight="600">Q visibile</text><path d="M195,158 L195,182" stroke="#6B7378" stroke-width="1.3" marker-end="url(#af)"/><text x="199.0" y="168.0" font-size="7.5" fill="#B5552A" font-weight="600">né Q né F</text><path d="M240,158 L280,182" stroke="#6B7378" stroke-width="1.3" marker-end="url(#af)"/><text x="264.0" y="168.0" font-size="7.5" fill="#B5552A" font-weight="600">F (bianchi globulari)</text><rect x="40" y="182" width="110" height="34" rx="5" fill="#E0B84A" stroke="#3E4A52" stroke-width=".8"/><text x="95.0" y="196.5" text-anchor="middle" font-size="7.8" font-weight="600" fill="#23282C">≥ 20% Q, sovrassatura</text><text x="95.0" y="207.5" text-anchor="middle" font-size="7.8"  fill="#23282C">triangolo superiore</text><rect x="160" y="182" width="80" height="34" rx="5" fill="#E6D2B4" stroke="#3E4A52" stroke-width=".8"/><text x="200.0" y="196.5" text-anchor="middle" font-size="7.8" font-weight="600" fill="#23282C">satura</text><text x="200.0" y="207.5" text-anchor="middle" font-size="7.8"  fill="#23282C">linea A–P</text><rect x="250" y="182" width="105" height="34" rx="5" fill="#D6C7B0" stroke="#3E4A52" stroke-width=".8"/><text x="302.5" y="196.5" text-anchor="middle" font-size="7.8" font-weight="600" fill="#23282C">sottosatura</text><text x="302.5" y="207.5" text-anchor="middle" font-size="7.8"  fill="#23282C">triangolo inferiore</text><path d="M195,216 L195,236" stroke="#6B7378" stroke-width="1.3" marker-end="url(#af)"/><rect x="90" y="236" width="210" height="34" rx="5" fill="#F4EEE3" stroke="#3E4A52" stroke-width=".8"/><text x="195.0" y="250.5" text-anchor="middle" font-size="8" font-weight="600" fill="#23282C">4 · Rapporto A / P</text><text x="195.0" y="261.5" text-anchor="middle" font-size="8"  fill="#23282C">alcalini colorati idiomorfi vs plagioclasio bianco</text><path d="M195,270 L195,290" stroke="#6B7378" stroke-width="1.3" marker-end="url(#af)"/><rect x="70" y="290" width="250" height="44" rx="5" fill="#F4EEE3" stroke="#3E4A52" stroke-width=".8"/><text x="195.0" y="304.0" text-anchor="middle" font-size="7.6" font-weight="600" fill="#23282C">5 · Campo con più nomi?</text><text x="195.0" y="315.0" text-anchor="middle" font-size="7.6"  fill="#23282C">guarda il femico accessorio</text><text x="195.0" y="326.0" text-anchor="middle" font-size="7.6"  fill="#23282C">anfibolo → diorite · pirosseno → gabbro · quasi solo plag. → anortosite</text><rect x="430" y="62" width="200" height="34" rx="5" fill="#F4EEE3" stroke="#3E4A52" stroke-width=".8"/><text x="530.0" y="76.5" text-anchor="middle" font-size="8.6" font-weight="600" fill="#23282C">Ha fenocristalli?</text><text x="530.0" y="87.5" text-anchor="middle" font-size="8.6"  fill="#23282C">(tessitura porfirica)</text><path d="M470,96 L470,118" stroke="#6B7378" stroke-width="1.3" marker-end="url(#af)"/><text x="474.0" y="105.0" font-size="7.5" fill="#B5552A" font-weight="600">sì</text><path d="M590,96 L590,118" stroke="#6B7378" stroke-width="1.3" marker-end="url(#af)"/><text x="594.0" y="105.0" font-size="7.5" fill="#B5552A" font-weight="600">no</text><rect x="410" y="118" width="130" height="60" rx="5" fill="#B5552A" stroke="#3E4A52" stroke-width=".8"/><text x="475.0" y="134.5" text-anchor="middle" font-size="7.6" font-weight="600" fill="#fff">Streckeisen effusive</text><text x="475.0" y="145.5" text-anchor="middle" font-size="7.6"  fill="#fff">sui soli fenocristalli:</text><text x="475.0" y="156.5" text-anchor="middle" font-size="7.6"  fill="#fff">quarzo → sopra (riolite…)</text><text x="475.0" y="167.5" text-anchor="middle" font-size="7.6"  fill="#fff">feldspatoidi → sotto</text><rect x="550" y="118" width="85" height="60" rx="5" fill="#9AA3A8" stroke="#3E4A52" stroke-width=".8"/><text x="592.5" y="134.5" text-anchor="middle" font-size="7.6" font-weight="600" fill="#fff">Non si classifica</text><text x="592.5" y="145.5" text-anchor="middle" font-size="7.6"  fill="#fff">a occhio nudo</text><text x="592.5" y="156.5" text-anchor="middle" font-size="7.6"  fill="#fff">solo indice di colore</text><text x="592.5" y="167.5" text-anchor="middle" font-size="7.6"  fill="#fff">→ laboratorio</text><rect x="410" y="200" width="225" height="50" rx="5" fill="#C9B79C" stroke="#3E4A52" stroke-width=".8"/><text x="522.5" y="217.0" text-anchor="middle" font-size="7.6" font-weight="600" fill="#23282C">Vetrosa?</text><text x="522.5" y="228.0" text-anchor="middle" font-size="7.6"  fill="#23282C">0 vescicole: ossidiana · ≥ 50%: pomice</text><text x="522.5" y="239.0" text-anchor="middle" font-size="7.6"  fill="#23282C">< 50%: scoria · frammentaria: piroclastite</text></svg>
+  <p class="caption">Il metodo applicato in aula a ogni campione. Le effusive si classificano in modo rigoroso solo in laboratorio: sul campione a mano si arriva al più vicino.</p>
+
+  <h3>Femici ≥ 90%: le ultrafemiche</h3>
+  <div style="display:flex;gap:6mm;align-items:center">
+    <div style="flex:1">
+      <p>Prima cosa da valutare: la percentuale di femici. Se arriva al <strong>90%</strong> o più si usa il triangolo con olivina, ortopirosseno e clinopirosseno (che a occhio nudo si ragionano insieme). Tre nomi fondamentali:</p>
+      <ul>
+        <li><strong>Dunite</strong>: olivina ≥ 90%.</li>
+        <li><strong>Peridotite</strong>: olivina tra 40 e 90%. Tra le più frequenti; equivalente effusivo la <strong>komatiite</strong>.</li>
+        <li><strong>Pirossenite</strong>: olivina &lt; 40%, dominano i pirosseni.</li>
+      </ul>
+    </div>
+    <svg class="cycle" style="width:85mm" viewBox="0 0 330 252" xmlns="http://www.w3.org/2000/svg" font-family="Poppins, Arial, sans-serif"><polygon points="160,20 40,230 280,230" fill="#F4EEE3" stroke="#23282C" stroke-width="1.4"/><line x1="148" y1="41" x2="172" y2="41" stroke="#23282C" stroke-width="1.1"/><text x="178" y="44" font-size="8" fill="#6B7378">90% Ol</text><line x1="88" y1="146" x2="232" y2="146" stroke="#23282C" stroke-width="1.1"/><text x="238" y="149" font-size="8" fill="#6B7378">40% Ol</text><line x1="158" y1="34" x2="110" y2="34" stroke="#6B7378" stroke-width=".6"/><text x="106" y="37" text-anchor="end" font-size="8.5" font-weight="700" fill="#23282C">Dunite</text><text x="160" y="94" text-anchor="middle" font-size="9.5" font-weight="700" fill="#23282C">Peridotite</text><text x="160" y="104" text-anchor="middle" font-size="7.5" fill="#3E4A52">effusiva: komatiite</text><text x="160" y="194" text-anchor="middle" font-size="9.5" font-weight="700" fill="#23282C">Pirossenite</text><text x="160" y="12" text-anchor="middle" font-size="10" font-weight="700" fill="#B5552A">Olivina</text><text x="40" y="246" text-anchor="middle" font-size="9" font-weight="700" fill="#B5552A">Ortopirosseno</text><text x="280" y="246" text-anchor="middle" font-size="9" font-weight="700" fill="#B5552A">Clinopirosseno</text></svg>
+  </div>
+
+  <h3>Femici &lt; 90%: Streckeisen per le intrusive</h3>
+  <p>Il doppio triangolo del petrografo <strong>Streckeisen</strong> ha quattro termini estremi: <strong>Q</strong> quarzo, <strong>A</strong> feldspati alcalini, <strong>P</strong> plagioclasi, <strong>F</strong> feldspatoidi. Ci entrano praticamente tutte le intrusive.</p>
+  <ul>
+    <li><strong>Q e F si escludono</strong>: il 100% di Q è in cima, lo 0% sulla linea A–P; sotto quella linea non c'è quarzo, sopra non ci sono feldspatoidi. Il resto si può mescolare in qualunque proporzione.</li>
+    <li><strong>La regola del 20%</strong>: per semplificare si assume che se il quarzo si vede, è almeno il 20% della roccia. Sotto quella soglia non lo si vede a occhio nudo; lo si troverà in sezione sottile.</li>
+    <li>Sopra il 20%: rocce <strong>sovrassature</strong> in silice. Sotto: al più <strong>sature</strong>. Scendendo nel triangolo inferiore si esce dalla saturazione e si va verso il femico.</li>
+    <li>Poi si stimano A e P, si incrociano con Q e si trova il campo (ad esempio quello dei graniti). Stessa logica nel triangolo inferiore, con i feldspatoidi (i bianchi tondeggianti) al posto del quarzo.</li>
+  </ul>
+  <div class="box def">
+    <div class="lab">Sovrassaturazione, spiegata col tavolo</div>
+    <p>Una soluzione è sovrassatura quando un soluto è più concentrato di quanto il solvente possa tenere, e quindi precipita. Nel fuso è lo stesso: c'è talmente tanta silice che <strong>tutti i minerali "si sono seduti al tavolo della silice"</strong>, ne hanno presa quanta volevano e l'hanno messa nel reticolo. Quella avanzata cristallizza come <strong>quarzo</strong>. Se vedo quarzo, la silice era in abbondanza.</p>
+  </div>
+
+  <h3>Il femico accessorio</h3>
+  <p>I femici, in questi diagrammi, sono accessori: si aggiungono e di solito non cambiano il nome. Nei graniti c'è tipicamente biotite: "ci sono anch'io", ma non aggiunge molto. Servono invece nei campi in cui cadono <strong>più nomi</strong>, come la casella di diorite, gabbro e anortosite (stesse proporzioni di Q, A e P):</p>
+  <table>
+    <tr><th>Roccia</th><th>Cosa si vede oltre al plagioclasio</th></tr>
+    <tr><td>Diorite</td><td><strong>anfibolo</strong>: prismi sottili e lunghi, aghetti, spesso a ciuffetti</td></tr>
+    <tr><td>Gabbro</td><td><strong>pirosseno</strong>: prismi tozzi e robusti</td></tr>
+    <tr><td>Anortosite</td><td>quasi solo plagioclasio, abbondante e spesso colorato (anche violaceo), con pochissima mica, anfibolo o pirosseno</td></tr>
+  </table>
+</section>
+
+<section>
+  <h2><span class="n">04</span>Le effusive</h2>
+  <div class="box exam">
+    <div class="lab">Punto fermo</div>
+    <p>Una roccia effusiva, qualunque sia la sua tessitura, si classifica in modo corretto e rigoroso <strong>solo dopo analisi di laboratorio</strong>. Sul terreno si dà un primo nome e si porta il campione in laboratorio.</p>
+  </div>
+  <ul>
+    <li>Il triangolo di Streckeisen per le effusive ha gli stessi vertici, ma si può usare a occhio solo con <strong>tessitura porfirica</strong>, ragionando sui <strong>fenocristalli</strong>: prima si cerca quarzo o feldspatoidi, poi si valuta A rispetto a P. La nomenclatura è più semplice, perché ci sono meno suddivisioni.</li>
+    <li>Con tessitura <strong>micro o criptocristallina</strong> si fa quello che si può: indice di colore, al massimo qualche microcristallo con la lente.</li>
+    <li>Nei termini femici distinguere a occhio un'<strong>andesite</strong> da un <strong>basalto</strong> è molto difficile: i fenocristalli sono quasi tutti plagioclasio. Aiuta un po' l'indice di colore (le andesiti sono più chiare), ma è molto empirico.</li>
+  </ul>
+</section>
+
+<section>
+  <h2><span class="n">05</span>In aula: il ragionamento sui campioni</h2>
+  <p class="lead">"Dovete discutere con la roccia." E non dite sì solo per far contento il prof: in laboratorio e all'esame lo farete da soli.</p>
+
+  <h4>1 · Granito</h4>
+  <p>Cristalli di dimensioni discrete: olocristallina, intrusiva. Leucocratica, tende al bianco: probabile roccia silicica, quindi femici sotto il 90% e Streckeisen. Si vede il <strong>quarzo</strong>: niente feldspatoidi, triangolo superiore, sovrassatura. Il quarzo è tutto? No, e nessuno pensa sia oltre il 60%: siamo tra il 20 e il 60%. A quel punto il quarzo "ha dato tutte le informazioni che poteva". Restano A e P: i <strong>feldspati alcalini</strong> sono tabulari, spesso idiomorfi, colorati e con la geminazione che riflette la luce "a tavole"; il <strong>plagioclasio</strong> è bianco, allotriomorfo, riempie gli spazi. Qui prevalgono gli alcalini: si escludono granodiorite e tonalite, e gli alcalini non sono così tanti da essere un granito a feldspato alcalino. È un <strong>granito</strong> (A e P circa equivalenti: monzogranito; prevalgono un po' gli alcalini: sienogranito). C'è una mica nera, probabilmente biotite: si mette nell'elenco dei minerali, ma non serve al nome. "Se diciamo che è un granito, siamo già a posto."</p>
+
+  <h4>2 · Gabbro</h4>
+  <p>Grandi cristalli, anche centimetrici: olocristallina, intrusiva. Indice di colore intermedio, non melanocratico: niente triangolo delle ultrafemiche. Non si vedono né quarzo né feldspatoidi: siamo vicini alla linea A–P (attenzione: il quarzo potrebbe esserci in cristalli troppo piccoli, se la roccia è solo satura). Feldspati alcalini non se ne vedono, solo roba bianca, quindi domina il plagioclasio: angolo P, casella di diorite, gabbro e anortosite. Il nero è troppo per un'anortosite. Il femico è <strong>tozzo e robusto</strong>, non a aghetti o ciuffetti: <strong>pirosseno</strong>, quindi <strong>gabbro</strong>. Con l'anfibolo sarebbe stata una diorite.</p>
+
+  <h4>3 · Effusiva porfirica vescicolare con feldspatoidi</h4>
+  <p>Ha le vescicole, ma anche dei <strong>cristalli bianchi</strong>: è porfirica, quindi non è una scoria (una scoria non avrebbe fenocristalli). Si usa lo Streckeisen per le effusive. Quarzo niente; si vedono <strong>feldspatoidi</strong>, bianchi e globulari: triangolo inferiore, verso il fondo, più o meno nel campo delle <strong>tefriti</strong>. "Tutto quello che possiamo fare con una roccia di questo tipo è quello."</p>
+
+  <h4>4 · Riolite</h4>
+  <p>Porfirica: grandi individui in una pasta di fondo. Tra i fenocristalli c'è il <strong>quarzo</strong>, anche se poco ("gli vogliamo bene? Sì: anche se è poco, vuol dire che siamo da qui in su"). Ci sono anche fenocristalli prismatici colorati, quindi non siamo nell'angolo del quarzo: <strong>riolite</strong>. Il campo della riolite è lo stesso del granito: la riolite è il suo <strong>equivalente effusivo</strong>.</p>
+
+  <h4>5 · Effusiva scura senza fenocristalli</h4>
+  <p>Effusiva, probabilmente femica per il colore scuro, con vescicole piccolissime. Ma <strong>non ha fenocristalli</strong>: a occhio nudo non si può classificare, ci si ferma.</p>
+</section>
+
+<section>
+  <h2><span class="n">06</span>Da fare</h2>
+  <ul class="checklist">
+    <li>Stampare o tenere sul tablet i diagrammi delle ultrafemiche e di Streckeisen (intrusive ed effusive): si usano in laboratorio e all'esame. I nomi non si studiano a memoria.</li>
+    <li>Ridisegnare il diagramma di flusso del metodo e provarlo a voce su un campione immaginario.</li>
+    <li>Fissare le coppie diorite/anfibolo, gabbro/pirosseno, anortosite/quasi solo plagioclasio.</li>
+    <li>Chi non ha ancora mandato l'attestato del corso sicurezza da 4 ore: mandarlo al prof.</li>
+    <li>Il consiglio del prof sugli esami del primo anno: dare priorità a <strong>chimica</strong> (frequentare, studiare, fare tutti i laboratori), poi matematica e fisica. Il docente di chimica è molto disponibile, "ma dovete esserci".</li>
+  </ul>
+  <h3>Prossima lezione con Piazza</h3>
+  <p>Lunedì.</p>
+</section>
+</div>
+
+</body></html>

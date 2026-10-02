@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>Paleontologia — Lezione 3</title>
+<style>
+  @page { size: A4; margin: 20mm 18mm 22mm 18mm; }
+  :root{
+    --terra:#1F6F78; --ochre:#D4A24C; --slate:#3E4A52; --sand:#F4EEE3;
+    --ink:#23282C; --muted:#6B7378; --line:#DDD5C7; --moss:#6F8F5E;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:#fff;color:var(--ink);
+    font-family:"Caladea","TeX Gyre Pagella",Georgia,serif;font-size:10.6pt;line-height:1.45}
+  h1,h2,h3,h4,.sans{font-family:"Poppins","TeX Gyre Heros",Arial,sans-serif}
+  .page{}
+  
+
+  /* ---------- cover ---------- */
+  .cover{padding:0;background:var(--sand);display:flex;flex-direction:column}
+  .strata{height:78mm;position:relative;overflow:hidden}
+  .strata div{position:absolute;left:0;right:0}
+  .cover-body{padding:14mm 18mm 0 18mm;flex:1}
+  .kicker{font-family:Poppins;font-size:9pt;letter-spacing:.22em;text-transform:uppercase;color:var(--terra);font-weight:600}
+  .cover h1{font-size:34pt;line-height:1.05;margin:6mm 0 3mm 0;color:var(--slate);font-weight:600;letter-spacing:-.01em}
+  .cover h2{font-size:14pt;font-weight:400;color:var(--ink);margin:0 0 10mm 0}
+  .meta{display:grid;grid-template-columns:1fr 1fr;gap:4mm 10mm;font-size:10pt;border-top:1px solid var(--line);padding-top:6mm;max-width:150mm}
+  .meta b{display:block;font-family:Poppins;font-size:8pt;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:600;margin-bottom:1mm}
+  .cover-foot{padding:0 18mm 14mm 18mm;font-size:9pt;color:var(--muted)}
+  .toc{margin-top:10mm;max-width:150mm}
+  .toc h3{font-size:9pt;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin:0 0 3mm 0;font-weight:600}
+  .toc ol{margin:0;padding:0;list-style:none;counter-reset:t}
+  .toc li{counter-increment:t;display:flex;gap:4mm;padding:1.6mm 0;border-bottom:1px dotted var(--line);font-size:10.5pt}
+  .toc li::before{content:counter(t,decimal-leading-zero);font-family:Poppins;font-weight:600;color:var(--terra);min-width:8mm}
+
+  /* ---------- content ---------- */
+  .runhead{position:absolute;top:9mm;left:18mm;right:18mm;display:flex;justify-content:space-between;font-family:Poppins;font-size:7.5pt;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .runhead span:last-child{color:var(--terra);font-weight:600}
+  section h2{font-size:15pt;color:var(--slate);margin:0 0 2mm 0;font-weight:600;letter-spacing:-.01em;display:flex;align-items:baseline;gap:4mm}
+  section h2 .n{font-size:10pt;color:var(--terra);font-weight:600;letter-spacing:.1em}
+  .lead{color:var(--muted);font-style:italic;margin:0 0 4mm 0}
+  h3{font-size:11.5pt;color:var(--terra);margin:6mm 0 1.5mm 0;font-weight:600}
+  h4{font-size:10pt;color:var(--slate);margin:3.5mm 0 1mm 0;font-weight:600}
+  p{margin:0 0 2.6mm 0;text-align:justify;hyphens:auto}
+  ul{margin:0 0 3mm 0;padding-left:5mm}
+  li{margin-bottom:1.2mm}
+  li::marker{color:var(--terra)}
+  em.t{font-style:italic;color:var(--slate)}
+  .two{columns:2;column-gap:8mm}
+  .two h3:first-child{margin-top:0}
+
+  /* callouts */
+  .box{border-left:2px solid var(--ochre);background:none;padding:1mm 0 1mm 4mm;margin:3mm 0 3.5mm 0;break-inside:avoid}
+  .box .lab{font-family:Poppins;font-size:7.5pt;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--ochre);margin-bottom:1mm}
+  .box p{margin-bottom:1.5mm}
+  .box p:last-child{margin-bottom:0}
+  .box.def{border-color:var(--ochre)}
+  .box.exam{border-color:var(--terra)} .box.exam .lab{color:var(--terra)}
+  .box.draw{border-color:var(--slate)} .box.draw .lab{color:var(--slate)}
+  .box.warn{border-color:var(--moss)} .box.warn .lab{color:var(--moss)}
+
+  .kv{display:grid;grid-template-columns:38mm 1fr;gap:1.5mm 4mm;margin:2mm 0 4mm 0;font-size:10pt}
+  .kv dt{font-family:Poppins;font-size:8.5pt;font-weight:600;color:var(--slate);padding-top:.6mm}
+  .kv dd{margin:0}
+
+  table{width:100%;border-collapse:collapse;margin:2mm 0 4mm 0;font-size:9.6pt;break-inside:avoid}
+  th{font-family:Poppins;font-size:8pt;text-transform:uppercase;letter-spacing:.1em;text-align:left;color:var(--muted);border-bottom:1.5px solid var(--slate);padding:1.5mm 2mm;font-weight:600}
+  td{padding:1.8mm 2mm;border-bottom:1px solid var(--line);vertical-align:top}
+  td:first-child{font-family:Poppins;font-weight:600;font-size:8.8pt;color:var(--slate)}
+
+  .q{color:var(--moss);font-family:Poppins;font-size:8pt;font-weight:600;vertical-align:super}
+  .foot{position:absolute;bottom:9mm;left:18mm;right:18mm;display:flex;justify-content:space-between;font-family:Poppins;font-size:7.5pt;color:var(--muted)}
+  .pnum{font-weight:600;color:var(--slate)}
+
+  /* rock cycle figure */
+  .cycle{margin:3mm auto 4mm auto;display:block;width:150mm}
+  .caption{font-size:8.8pt;color:var(--muted);text-align:center;margin:-1mm 0 4mm 0;font-style:italic}
+  .checklist li{list-style:none;position:relative;padding-left:6mm}
+  .checklist li::before{content:"";position:absolute;left:0;top:1.1mm;width:3.2mm;height:3.2mm;border:1.3px solid var(--terra);border-radius:.6mm}
+
+  .hd{display:flex;align-items:flex-start;gap:5mm;border-bottom:1.5px solid var(--slate);padding-bottom:4mm;margin-bottom:6mm}
+  .hd svg{flex:0 0 14mm;width:14mm;height:14mm}
+  .hd .k{font-family:Poppins;font-size:8pt;letter-spacing:.2em;text-transform:uppercase;color:var(--terra);font-weight:600}
+  .hd h1{font-family:Poppins;font-size:20pt;line-height:1.1;margin:1mm 0 1.5mm 0;color:var(--slate);font-weight:600}
+  .hd .m{font-size:9.5pt;color:var(--muted)}
+  .hd .m b{color:var(--ink);font-weight:600}
+  .legend{font-size:8.8pt;color:var(--muted);margin:0 0 6mm 0}
+</style>
+<style>section h2{break-after:avoid;margin-top:9mm} .page:first-child section h2{margin-top:0} h2[style]{margin-top:9mm !important} h3,h4{break-after:avoid} .box,table,dl.kv{break-inside:avoid} .lead{break-after:avoid}</style>
+</head>
+<body>
+<div class="hd">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M50,50 m0,-2 a2,2 0 1,1 0,4 a4,4 0 1,1 -4,-4 a7,7 0 1,1 7,-7 a11,11 0 1,1 -11,11 a15,15 0 1,1 15,-15 a20,20 0 1,1 -20,20 a26,26 0 1,1 26,-26 a33,33 0 1,1 -33,33 a40,40 0 1,1 40,-40" fill="none" stroke="#1F6F78" stroke-width="5" stroke-linecap="round"/>
+    <path d="M50,50 m0,-2 a2,2 0 1,1 0,4 a4,4 0 1,1 -4,-4 a7,7 0 1,1 7,-7 a11,11 0 1,1 -11,11 a15,15 0 1,1 15,-15 a20,20 0 1,1 -20,20 a26,26 0 1,1 26,-26 a33,33 0 1,1 -33,33 a40,40 0 1,1 40,-40" fill="none" stroke="#D4A24C" stroke-width="1.6" stroke-dasharray="1.5 5" stroke-linecap="round"/>
+  </svg>
+  <div>
+    <div class="k">Paleontologia · Corso 64866 · Scienze Geologiche</div>
+    <h1>Lezione 3 · Paleoecologia, paleoambienti e paleobiologia</h1>
+    <div class="m"><b>Giovedì 1 ottobre 2026</b> · aula 401 · prof. Antonino Briguglio · Appunti dalla registrazione audio, dalle slide "4_PALEOECOLOGIA" e dalle slide finali della lezione precedente</div>
+  </div>
+</div>
+<p class="legend">Lezione comune GEO + NAT. Le note <strong>[ndr]</strong> sono correzioni o precisazioni mie. Alcune slide mostrate in aula (tipi di piattaforma, foto di Dolomiti e Gran Sasso, una mappa paleogeografica del Cretacico) non sono nel PDF delle dispense.</p>
+
+<div class="page">
+<section>
+  <h2><span class="n">01</span>Ripasso: geocronologia e cronostratigrafia</h2>
+  <p class="lead">Riprese dalle slide finali della volta scorsa.</p>
+  <ul>
+    <li><strong>Geocronologia</strong> ("l'orologio della Terra"): indica l'età o l'intervallo di un evento, con tecniche numeriche di datazione. Esempio: l'estinzione di fine Cretacico è avvenuta <strong>66 Ma</strong>, durante l'<em>età</em> Maastrichtiana.</li>
+    <li><strong>Cronostratigrafia</strong>: tutti i metodi di datazione relativa, le relazioni temporali tra rocce, gli eventi globali usati come marker (i GSSP). Esempio: durante tutta la <em>serie</em> del Cretacico superiore i dinosauri hanno subito grandi crolli di biodiversità.</li>
+    <li>Unità, dal più grande al più piccolo: eonotema / eone · eratema / era · sistema / periodo · serie / epoca · piano / età.</li>
+  </ul>
+  <div class="box exam">
+    <div class="lab">Consiglio</div>
+    <p>Imparare l'ordine, dal più antico al più giovane, di eonotemi, eratemi, sistemi e serie. I piani sono la risoluzione più alta: per NAT non sono fondamentali, per GEO torneranno per tutti i cinque anni. Se un collega dice "sto studiando un sedimento del Miocene", tutti devono sapere che non è roba di 300 milioni di anni fa: il Miocene inizia a 23 Ma. <strong>[ndr]</strong> In aula si è sentito "e finisce attorno ai 7": il Miocene finisce a <strong>5,33 Ma</strong>; 7,25 Ma è il passaggio Tortoniano–Messiniano.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">02</span>A cosa servono i fossili</h2>
+  <p class="lead">Perché passare un intero semestre e mezzo a guardare quasi 1500 fossili. Tre grandi temi.</p>
+  <h3>1 · Evoluzione ed estinzioni</h3>
+  <p>Dai fossili si ricostruiscono i rami evolutivi e quali strategie morfologiche si sono rivelate vincenti. Ci sono organismi che hanno attraversato due, tre, quattro estinzioni di massa senza estinguersi, e altri spariti alla prima perturbazione; organismi con evoluzione rapida, che si adattano in fretta e vivono il cambiamento come un'opportunità, e altri con evoluzione lenta, che ne risentono pesantemente. Negli ultimi 500 milioni di anni ci sono esempi di tutte le categorie.</p>
+  <p>Oggi questo conta: siamo preoccupati per riscaldamento, deglaciazione, cambi delle correnti, anossia. La paleontologia guarda come gli organismi hanno reagito a glaciazioni, impatti di asteroidi, supernove, grandi eruzioni, anossie marine (che non sono fantascienza: l'Adriatico soffre periodicamente di anossia da lieve a forte). Esempio: nell'<strong>Eocene</strong> le temperature erano molto più alte di oggi, e si può usare come <strong>proxy</strong> per immaginare come reagiranno gli stessi gruppi.</p>
+  <div class="box warn">
+    <div class="lab">In escursione (aprile–maggio)</div>
+    <p>Rocce dell'Eocene medio, deposte in acque prossimali e sottili, con coralli, ricci di mare, alghe e molluschi in quantità industriale. Con gli eventi ipertermali i coralli scompaiono, crollano molluschi e alghe, e arrivano i <strong>protisti</strong> (organismi unicellulari meglio adattati) che fanno "barriere coralline senza coralli". Con l'aumento delle precipitazioni l'acqua diventa torbida e prendono il sopravvento i <strong>molluschi filtratori</strong>. <strong>[ndr]</strong> In aula "tra i 30 e i 40 milioni di anni": l'Eocene medio va da circa 48 a 38 Ma.</p>
+  </div>
+
+  <h4>L'esempio delle trilobiti</h4>
+  <p>Artropodi segmentati che camminavano sul fondale, con antenne, occhi e zampe, e che si appallottolavano come i porcellini di terra. Si sviluppano ed evolvono per tutto il <strong>Paleozoico</strong>; l'albero evolutivo per sottordini ("come tante famiglie di parenti") mostra due cose:</p>
+  <ul>
+    <li><strong>Fine Ordoviciano</strong> (~444 Ma): una forte <strong>glaciazione</strong> distrugge gli organismi degli ambienti prossimali. I tre gruppi più prossimali (Asaphida, Agnostida e Ptychopariida) si estinguono; gli altri, più profondi, sopravvivono.</li>
+    <li><strong>Verso la fine del Devoniano</strong> (non al limite Devoniano–Carbonifero): lagune, piattaforme e ambienti prossimali soffrono un crollo drammatico dell'ossigeno. Muore chi vive sul fondale; si salva un solo gruppo, fatto di forme piccole, a carapace sottile e in gran parte cavo, probabilmente capaci di "saltare" nella colonna d'acqua e uscire dalle sacche anossiche. Il ragionamento del prof: noi galleggiamo non perché nuotiamo bene, ma perché la nostra densità è simile a quella dell'acqua (un respiro e saliamo, un'espirazione e scendiamo). Le trilobiti grandi del Devoniano, fino a mezzo metro, con carapace pesante e ricco di calcite, erano più dense e stavano sul fondo; quelle piccole e leggere potevano variare la densità. La prova sta nelle <strong>tracce fossili</strong>: fino a quel momento le trilobiti ne lasciano ovunque (camminano, scavano, si infossano, si riposano, "sembra via XX Settembre sotto Natale"); dal Devoniano sommitale si trovano ancora trilobiti di quel gruppo, ma <strong>non più tracce</strong>. Hanno imparato a nuotare. Lo stesso ragionamento delle code dei dinosauri della prima lezione.</li>
+  </ul>
+
+  <h4>Le Big Five</h4>
+  <p>Immagine famosa, pubblicata a metà anni '60, che mostra il numero di famiglie marine nel Fanerozoico. Lo stesso andamento si vede in ambiente continentale e transizionale, e usando specie, generi o ordini.</p>
+  <svg class="cycle" viewBox="0 0 640 140" xmlns="http://www.w3.org/2000/svg" font-family="Poppins, Arial, sans-serif"><rect x="40" y="96" width="304" height="18" fill="#C9B79C"/><text x="192" y="109" text-anchor="middle" font-size="9" font-weight="600" fill="#fff">Paleozoico</text><rect x="344" y="96" width="196" height="18" fill="#D4A24C"/><text x="442" y="109" text-anchor="middle" font-size="9" font-weight="600" fill="#fff">Mesozoico</text><rect x="540" y="96" width="70" height="18" fill="#1F6F78"/><text x="575" y="109" text-anchor="middle" font-size="9" font-weight="600" fill="#fff">Cenozoico</text><text x="82" y="126" text-anchor="middle" font-size="7.5" fill="#6B7378">500</text><text x="188" y="126" text-anchor="middle" font-size="7.5" fill="#6B7378">400</text><text x="293" y="126" text-anchor="middle" font-size="7.5" fill="#6B7378">300</text><text x="399" y="126" text-anchor="middle" font-size="7.5" fill="#6B7378">200</text><text x="504" y="126" text-anchor="middle" font-size="7.5" fill="#6B7378">100</text><text x="610" y="126" text-anchor="middle" font-size="7.5" fill="#6B7378">0</text><text x="325.0" y="137" text-anchor="middle" font-size="7.5" fill="#6B7378">milioni di anni fa</text><line x1="141" y1="78" x2="141" y2="96" stroke="#B5552A" stroke-width="1.5"/><circle cx="141" cy="70" r="8" fill="#B5552A"/><text x="141" y="73" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">1</text><text x="152" y="68" font-size="8" font-weight="600" fill="#23282C">fine Ordoviciano</text><text x="152" y="78" font-size="7.5" fill="#3E4A52">glaciazione</text><line x1="217" y1="26" x2="217" y2="96" stroke="#B5552A" stroke-width="1.5"/><circle cx="217" cy="18" r="8" fill="#B5552A"/><text x="217" y="21" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">2</text><text x="228" y="16" font-size="8" font-weight="600" fill="#23282C">fine Devoniano</text><text x="228" y="26" font-size="7.5" fill="#3E4A52">anossia (non al limite)</text><line x1="344" y1="78" x2="344" y2="96" stroke="#B5552A" stroke-width="1.5"/><circle cx="344" cy="70" r="8" fill="#B5552A"/><text x="344" y="73" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">3</text><text x="355" y="68" font-size="8" font-weight="600" fill="#23282C">fine Permiano</text><text x="355" y="78" font-size="7.5" fill="#3E4A52">vulcanismo in Siberia · la più grave</text><line x1="398" y1="26" x2="398" y2="96" stroke="#B5552A" stroke-width="1.5"/><circle cx="398" cy="18" r="8" fill="#B5552A"/><text x="398" y="21" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">4</text><text x="409" y="16" font-size="8" font-weight="600" fill="#23282C">fine Triassico</text><text x="409" y="26" font-size="7.5" fill="#3E4A52">Carnico piovoso + apertura Atlantico</text><line x1="540" y1="78" x2="540" y2="96" stroke="#B5552A" stroke-width="1.5"/><circle cx="540" cy="70" r="8" fill="#B5552A"/><text x="540" y="73" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">5</text><text x="529" y="68" text-anchor="end" font-size="8" font-weight="600" fill="#23282C">fine Cretacico</text><text x="529" y="78" text-anchor="end" font-size="7.5" fill="#3E4A52">asteroide · non solo dinosauri</text></svg>
+  <ul>
+    <li><strong>3 · fine Permiano</strong>: la più devastante, con il crollo più importante in ambiente marino. Grandi eruzioni alle alte latitudini, in <strong>Siberia</strong>, che sconvolgono la circolazione oceanica.</li>
+    <li><strong>4 · fine Triassico</strong>: la più piccola, ma con almeno due o tre impulsi. L'<strong>evento pluviale del Carnico</strong> (il Carnico è il primo piano del Triassico superiore): piogge enormi, grandi volumi di sedimento davanti ai delta, velocità di sedimentazione altissime. Poi, a fine Triassico, si lacera il <strong>proto-Atlantico</strong>: prima piccoli mari epicontinentali, poi l'apertura vera, con risalita di materiale e chimismo mantellico che uccide chi era sopravvissuto. Un <strong>mare epicontinentale</strong> è un braccio di mare che entra sopra un continente, come l'Adriatico.</li>
+    <li><strong>5 · fine Cretacico</strong>: di importanza relativamente bassa, "nonostante Hollywood". Non è definita dall'estinzione dei grandi rettili, ma da quella di molti altri organismi che risentono peggio dell'impatto e ne segnano con più precisione il momento e la reazione a catena.</li>
+  </ul>
+  <div class="box exam">
+    <div class="lab">All'esame</div>
+    <p>Domanda tipica soprattutto per GEO, che vedrà le estinzioni una per una. Non dire che la più importante è la numero 5: è la numero 3.</p>
+  </div>
+
+  <h3>2 · Paleobiogeografia</h3>
+  <p>Sapere dove oggi si trova fossile un gruppo dice molto. Le stesse trilobiti si trovano nelle Alpi Carniche e vicino a Cagliari: oggi vicine, ma nel Paleozoico medio–superiore erano due linee di costa del Gondwana separate da un oceano. Allo stesso modo, gruppi di resti vegetali coevi trovati in continenti oggi lontanissimi dicono che allora quei continenti erano uniti.</p>
+
+  <h3>3 · Paleoambienti</h3>
+  <p>Davanti a un sasso, all'esame, bisogna raccontarne tutta la storia: chi c'è, che ambiente, come interagivano, se sono legati a un intervallo di tempo preciso.</p>
+  <div class="box def">
+    <div class="lab">L'esempio della prima slide</div>
+    <p>La ricostruzione mostra un grande "fiore" rosso: è un <strong>crinoide</strong>, antenato dei gigli di mare, del gruppo degli <strong>echinodermi</strong> (quello dei ricci di mare e delle stelle). Per tutto il Paleozoico sono loro a fare la biodiversità degli echinodermi, con una spiccata <strong>simmetria pentamera</strong> nello stelo, nella corona e nelle braccia (pinnule). Interi sono rarissimi e costosissimi: lo stelo è fatto di articoli di calcite tenuti insieme solo da materia organica, e dopo la morte si sbriciola in un tappeto di frammenti bianchi, spesso pentagonali. Rocce fatte quasi solo di questi frammenti si chiamano <strong>encriniti</strong>.</p>
+    <p>Lettura: se i frammenti sono disarticolati e fuori posizione, l'ambiente aveva alta energia, oppure qualcuno camminava sul fondale e rimescolava il sedimento (ecco la trilobite). Il crinoide è girato nella corrente: ambiente con corrente. La trilobite poggia su un <strong>corallo tabulato</strong>, corallo paleozoico senza setti, solo coloniale, che diventa gigantesco. Tabulati e rugosi sono "cugini" delle Scleractinia attuali.</p>
+  </div>
+  <p>Tra un paio di settimane, alla prima esercitazione sui <strong>principi di fossilizzazione</strong>, ci saranno circa 60 cassetti con 10–15 fossili ciascuno: non servirà riconoscere ogni organismo, ma capire come si è fossilizzato.</p>
+  <h4>La griglia di riconoscimento</h4>
+  <p>Dai libri di testo, tratta da un testo italiano del 2001: rappresenta il ragionamento d'esame. Si può partire dai <strong>dati biotici</strong> (quali fossili, profondi o superficiali, trasportati, ben o mal conservati) oppure renderli complementari ai <strong>dati abiotici</strong> (che roccia è, che struttura, superfici di sfaldatura o frattura, colore). Per questo accanto a Paleontologia ci sono le geologie, e per NAT è molto utile dare Mineralogia prima. Saper riconoscere la roccia aiuta tantissimo: su un basalto non si conserva una foglia; un "corallo carbonificato" non esiste.</p>
+</section>
+
+<section>
+  <h2><span class="n">03</span>Gli ambienti della fossilizzazione</h2>
+  <p class="lead">Ci sono ambienti che permettono una fossilizzazione molto più rapida, abbondante e accurata. La rapidità è la questione principale: un organismo si fossilizza solo se viene seppellito in fretta.</p>
+  <p>Il cinghiale morto nel bosco: la parte organica si decompone, qualcuno se lo mangia, insetti e altri si portano via il resto, le ossa vengono rotte, rosicchiate (con segni di morso, <em>bite marks</em>), disperse. Difficile trovare lo scheletro in connessione. Seppellito 5 metri sotto terra la probabilità cresce molto, ma in un bosco è un caso rarissimo. Molto più facile seppellire in fretta in <strong>ambiente marino</strong>: per questo il 90% dei fossili del corso sono marini, come in tutti i corsi base di paleontologia del mondo. Più quelli che dopo la morte <strong>arrivano</strong> in mare: tronchi e foglie (dopo una mareggiata la spiaggia è piena di tronchi).</p>
+  <p>L'ambiente marino permette un seppellimento <strong>rapido, accurato e completo</strong> (l'organismo non si disperde e non si disarticola) perché in mare aperto il sedimento è fine, fango: tomba completamente il resto e riduce l'attività batterica, fino a conservare in alcune condizioni anche le <strong>parti molli</strong>.</p>
+  <table>
+    <tr><th>Ambiente</th><th>Potenziale di fossilizzazione</th></tr>
+    <tr><td>Marino aperto</td><td>Alto: sedimento fine, seppellimento rapido. Gli oceani coprono gran parte del pianeta: per questo i fossili marini sono i più abbondanti</td></tr>
+    <tr><td>Delta fluviale</td><td>Ottimo: altissimo tasso di sedimentazione, sedimento fine. La parte del sistema fluviale che conserva meglio</td></tr>
+    <tr><td>Fiumi di pianura</td><td>Buono, ma limitato</td></tr>
+    <tr><td>Torrenti montani</td><td>Scarso: ciottoli grandi che non tombano, energia alta che rompe gusci e scheletri</td></tr>
+    <tr><td>Laghi</td><td>Alto: sedimenti fini come in mare, ma con chimismo diverso. Sono pochi rispetto agli oceani</td></tr>
+    <tr><td>Ghiacciai</td><td>Possibile (crioconservazione), ma al massimo pochi milioni di anni: un pezzo di mammut sì, il T. rex no</td></tr>
+    <tr><td>Deserti</td><td>Alto potenziale, preservazione scarsa: i processi alterano la mineralogia. Tipici i <strong>legni silicizzati</strong> (Nord America, Miocene): vento e sabbia silicea sostituiscono cellulosa e lignina con silice. Duri, belli, economici ai mercatini, ma non è più legno</td></tr>
+  </table>
+  <div class="box warn">
+    <div class="lab">Sulla definizione di fossile</div>
+    <p>Nei vecchi testi italiani "fossile" è tutto ciò che ha più di 10.000 anni. È una definizione abbandonata: gli organismi morti di recente hanno una grande valenza paleontologica, e un'intera branca, la conservation paleobiology, studia proprio quelli.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">04</span>Piattaforme continentali e carbonatiche</h2>
+  <p>La piattaforma continentale arriva di norma a 150–170 m, al massimo 200; poi la pendenza aumenta (scarpata), con pendenze di pochi gradi ma sufficienti per i fenomeni gravitativi; oltre i 3–5000 m le piane abissali, perfettamente piane. Va caratterizzata la colonna d'acqua, perché le sue caratteristiche fisico-chimiche determinano quali fossili si trovano.</p>
+  <p>Oggi le piattaforme sono le fasce turchesi lungo le coste, più il <strong>triangolo dei coralli</strong> (tra Indonesia, Filippine e Pacifico occidentale), l'area con la più alta biodiversità attuale, favorita dai mari superficiali. Nel <strong>Cretacico</strong> le piattaforme erano molto più estese: zone gonfie di organismi che producono carbonato di calcio (coralli, spugne, protozoi, molluschi, echinodermi) e che vengono seppelliti in fretta.</p>
+  <div class="box exam">
+    <div class="lab">Da ricordare</div>
+    <p>Quando si ricostruisce un paleoambiente non basta dire "è un corallo, quindi zona fotica": bisogna tener conto anche del periodo. Giurassico e Cretacico sono il massimo di estensione delle piattaforme carbonatiche.</p>
+  </div>
+  <p><strong>Conseguenza: gli idrocarburi.</strong> Enorme produzione di materia organica dentro sedimenti marini. Dove il sedimento è sabbioso c'è porosità (il serbatoio, <em>reservoir</em>); dove è argilloso l'argilla fa da tappo. L'idrocarburo, meno denso, risale finché trova una roccia impermeabile. Basta che il livello del mare oscilli per creare una "lasagna" di sabbie produttive e argille di tappo. Quelle aree oggi sono grandi riserve.</p>
+  <p>Sulla mappa del Cretacico inferiore l'Atlantico è già in parte aperto, con una dorsale, anche se non come oggi. L'India, ancora lontana, urterà l'Asia qualche decina di milioni di anni dopo; intorno a 66 Ma è dalla parte opposta rispetto al punto d'impatto dell'asteroide, e le rocce dell'India nord-occidentale di quell'età sono tutte vulcaniche, i <strong>Deccan Traps</strong> ("trap" indica abbondanti effusioni), interpretati come rimbalzo dell'impatto. L'Australia è ancora attaccata all'Antartide. L'Europa è un mosaico di piccoli oceani, mari e piattaforme carbonatiche, che continuano per buona parte del Paleocene e dell'Eocene.</p>
+  <h4>Piattaforme carbonatiche in Italia</h4>
+  <ul>
+    <li><strong>Dolomiti</strong>: una piattaforma carbonatica dal Triassico a buona parte del Giurassico. Strati più sabbiosi e più argillosi alternati, pieni di fossili che hanno prodotto il carbonato di calcio di cui sono fatte, in acque basse, ad alta energia, ben ossigenate e illuminate.</li>
+    <li><strong>Appennino</strong>, ad esempio il Gran Sasso (con la galleria e il laboratorio sotterraneo): piattaforme di decine di chilometri.</li>
+    <li><strong>Liguria di ponente</strong>: da Ventimiglia in su, Grammondo, Argentera, sopra Nizza e Mentone, i <strong>Balzi Rossi</strong> (la grotta con l'uomo preistorico scavata nel Giurassico). Rocce piene di coralli, spugne, molluschi, in poca acqua, con una sabbia bianca a granuli sferici. Sarà una tappa dell'escursione.</li>
+  </ul>
+  <h4>Tipi di piattaforma carbonatica (non nelle dispense, non essenziale per l'esame)</h4>
+  <table>
+    <tr><th>Tipo</th><th>Caratteristiche</th></tr>
+    <tr><td>Rampa</td><td>Fino a ~100 km, pendenza continua: ottima differenziazione ecologica lungo il gradiente batimetrico. Sotto costa organismi adattati a onde, energia e luce; più al largo meno luce e meno energia, ecologie diverse</td></tr>
+    <tr><td>Piattaforma s.s.</td><td>Arriva a una certa profondità e resta piatta e continua</td></tr>
+    <tr><td>Piattaforma orlata</td><td>Come sopra, resta nella zona fotica per centinaia di km, ma con un <strong>orlo</strong> (mound) biocostruito nella zona dei frangenti, con coralli robusti. L'orlo blocca le onde: dietro si formano <strong>lagune</strong> carbonatiche di decine di km, a sedimento fine e grande biodiversità</td></tr>
+    <tr><td>Epicontinentale</td><td>Migliaia di km. Esempio: il <strong>Western Interior Seaway</strong> del Nord America (in aula "Western Interior Basin"), mare superficiale ricchissimo di vita e di apporti fluviali; oggi una delle regioni a più alta produzione di idrocarburi</td></tr>
+    <tr><td>Isolata (pelagica)</td><td>In mezzo al mare, biocostruzioni enormi su un alto. Tipica dell'Italia centrale: Gran Sasso, Maiella, molte catene tra Emilia-Romagna, Toscana, Umbria, Marche</td></tr>
+  </table>
+</section>
+
+<section>
+  <h2><span class="n">05</span>Le zone del mare</h2>
+  <svg class="cycle" viewBox="0 18 640 352" xmlns="http://www.w3.org/2000/svg" font-family="Poppins, Arial, sans-serif"><defs><marker id="am" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10z" fill="#6B7378"/></marker></defs><rect x="0" y="60" width="640" height="276" fill="#E6F0F1"/><rect x="0" y="60" width="640" height="90" fill="#CFE3E5"/><path d="M0,40.0 L40,60.0 L80,69.0 L230,127.5 L250,150.0 L380,239.6 L470,287.6 L560,322.8 L640,329.2 L640,346 L0,346Z" fill="#C9B79C" stroke="#8A6A4A" stroke-width="1.5"/><rect x="0" y="30" width="40" height="30" fill="#C9B79C"/><line x1="50" y1="64.5" x2="640" y2="64.5" stroke="#1F6F78" stroke-width="1.3" stroke-dasharray="5 3"/><text x="636" y="61.5" text-anchor="end" font-size="8" font-weight="600" fill="#1F6F78">base d'onda normale ·</text><line x1="60" y1="78.0" x2="640" y2="78.0" stroke="#3E4A52" stroke-width="1.3" stroke-dasharray="5 3"/><text x="636" y="75.0" text-anchor="end" font-size="8" font-weight="600" fill="#3E4A52">base d'onda di tempesta</text><line x1="250" y1="150.0" x2="640" y2="150.0" stroke="#D4A24C" stroke-width="1.3" stroke-dasharray="4 2"/><text x="636" y="147.0" text-anchor="end" font-size="8" font-weight="600" fill="#D4A24C">fine zona fotica · limite neritico/oceanico ~200 m</text><line x1="440" y1="271.6" x2="640" y2="271.6" stroke="#B5552A" stroke-width="1.3" stroke-dasharray="6 3"/><text x="636" y="268.6" text-anchor="end" font-size="8" font-weight="600" fill="#B5552A">ACD ~4000 m: si scioglie l'aragonite (restano gli aptici calcitici)</text><line x1="500" y1="303.6" x2="640" y2="303.6" stroke="#8A2B10" stroke-width="1.3" stroke-dasharray="6 3"/><text x="636" y="300.6" text-anchor="end" font-size="8" font-weight="600" fill="#8A2B10">CCD ~5000 m: si scioglie anche la calcite</text><text x="140" y="52" text-anchor="middle" font-size="9" font-weight="700" fill="#1F6F78">NERITICO</text><text x="460" y="52" text-anchor="middle" font-size="9" font-weight="700" fill="#1F6F78">OCEANICO</text><line x1="250" y1="42" x2="250" y2="60" stroke="#1F6F78" stroke-width="1"/><text x="150" y="114" text-anchor="middle" font-size="8" fill="#23282C">piattaforma continentale</text><text x="335" y="192" text-anchor="middle" font-size="8" fill="#23282C" transform="rotate(48 335 192)">scarpata</text><text x="560" y="302" text-anchor="middle" font-size="8" fill="#23282C">piana abissale</text><text x="10" y="26" font-size="8" fill="#3E4A52">costa</text><text x="470" y="112" font-size="8" fill="#3E4A52">plancton calcareo + siliceo</text><circle cx="470" cy="120" r="2.5" fill="#fff" stroke="#3E4A52"/><circle cx="490" cy="120" r="2.5" fill="#fff" stroke="#3E4A52"/><circle cx="510" cy="120" r="2.5" fill="#fff" stroke="#3E4A52"/><circle cx="530" cy="120" r="2.5" fill="#fff" stroke="#3E4A52"/><circle cx="550" cy="120" r="2.5" fill="#fff" stroke="#3E4A52"/><path d="M510,126 L510,320" stroke="#6B7378" stroke-dasharray="2 3" marker-end="url(#am)"/><text x="516" y="256" font-size="7.5" fill="#6B7378">affondano dopo la morte</text><text x="636" y="338" text-anchor="end" font-size="7.5" fill="#8A2B10">sotto la CCD sul fondo: solo silicei</text><text x="2" y="108.0" font-size="7" fill="#6B7378">100 m</text><text x="2" y="153.0" font-size="7" fill="#6B7378">200 m</text><text x="2" y="178.6" font-size="7" fill="#6B7378">1000 m</text><text x="2" y="210.6" font-size="7" fill="#6B7378">2000 m</text><text x="2" y="242.6" font-size="7" fill="#6B7378">3000 m</text><text x="2" y="274.6" font-size="7" fill="#6B7378">4000 m</text><text x="2" y="306.6" font-size="7" fill="#6B7378">5000 m</text><text x="2" y="360" font-size="7" fill="#6B7378">scala verticale dilatata nei primi 200 m</text></svg>
+  <p class="caption">La sezione del margine marino con i limiti che servono a collocare un fossile. Scala verticale dilatata nei primi 200 m, dove si gioca quasi tutto.</p>
+
+  <h3>Neritico e oceanico</h3>
+  <p>Il dominio <strong>neritico</strong> arriva a circa 200 m e risente ancora degli apporti continentali (delta, ambienti prossimali, spiagge sommerse, piattaforme). L'<strong>oceanico</strong> li perde: produzione carbonatica per precipitazione, nessun apporto detritico. Su una rampa blanda il neritico è esteso; su una piattaforma isolata è minuscolo.</p>
+
+  <h3>La luce: perché i 200 m contano</h3>
+  <p>Entro circa 200 m, in acque cristalline, arriva la luce fotosinteticamente attiva. Lo spettro si perde con la profondità: oltre i 100 m restano verde e blu, oltre un paio di centinaia di metri il buio. Il grosso della fotosintesi avviene nei primi metri, fino a circa 100; a 200 m ci arrivano pochissimi organismi. Quindi <strong>sopra i 200 m</strong> si riconoscono bene i gruppi; <strong>sotto</strong>, dire se un fossile stava a 2000 o a 5000 m non è facile, salvo l'eccezione della CCD.</p>
+
+  <h3>Bentonico e pelagico</h3>
+  <p><strong>Dominio bentonico</strong>: tutti gli organismi che stanno sul fondale, a un metro come a 11.000. <strong>Dominio pelagico</strong>: quelli della colonna d'acqua, che nuotano attivamente (il tonno) o vengono trasportati passivamente (il plancton).</p>
+
+  <h3>La CCD</h3>
+  <div class="box def">
+    <div class="lab">Definizione</div>
+    <p><strong>Profondità di compensazione del carbonato di calcio (CCD</strong>, <em>Carbonate Compensation Depth</em>): la profondità sotto la quale, per le condizioni chimiche dell'acqua, il carbonato di calcio non precipita più e quello esistente si scioglie. Mediamente tra <strong>4000 e 5000 m</strong>; in ambienti con correnti particolari (ad esempio antartici) può risalire, raramente scende sotto i 5000.</p>
+    <p>Il carbonato di calcio esiste come <strong>calcite</strong> e come <strong>aragonite</strong>, meno stabile: l'aragonite si perde già dai ~4000 m, la calcite sicuramente dai ~5000.</p>
+  </div>
+  <ul>
+    <li>Un organismo <strong>bentonico</strong> con guscio carbonatico può vivere solo sopra i 4000 m circa: mai sotto i 5000.</li>
+    <li>Un <strong>planctonico</strong> vive nei primi metri anche sopra un fondale di 7000 m. Quando muore affonda: oltre i 5000 m il suo guscio carbonatico si scioglie in giorni o mesi, a seconda delle dimensioni.</li>
+    <li>Plancton calcareo e siliceo vivono insieme e decantano insieme. Fondale a 1000 m: si trovano entrambi. Fondale a 7000 m: <strong>solo i silicei</strong>. Non perché ci fosse solo plancton siliceo, ma perché il carbonato si è sciolto.</li>
+    <li><strong>Solo silicei</strong> → sotto la CCD. <strong>Calcarei e silicei insieme</strong>, o solo calcarei → sopra i 4–5000 m.</li>
+  </ul>
+  <div class="box warn">
+    <div class="lab">Ammoniti e aptici</div>
+    <p>Il guscio delle ammoniti è <strong>aragonitico</strong>; le due "valve" che chiudevano l'apertura, gli <strong>aptici</strong>, sono <strong>calcitici</strong>. Nell'Appennino toscano ci sono depositi formati tra 4000 e 5000 m dove si trovano solo aptici, a palate: la finestra in cui l'aragonite si è già sciolta e la calcite non ancora. C'è perfino un nome di formazione, i <strong>Calcari a Saccocoma e Aptici</strong> (<em>Saccocoma</em> è un piccolo echinoderma pelagico del Giurassico superiore. <strong>[ndr]</strong> In aula è stato descritto come "un riccio di mare pelagico": è in realtà un <strong>crinoide</strong>, cioè un giglio di mare, capace di nuotare).</p>
+    <p>Eccezioni possibili sotto la CCD: un blocco con ammoniti già fossilizzate portato giù da una frana sottomarina e subito tombato; oppure i <strong>coproliti</strong> (escrementi fossili) di grandi cetacei, che possono contenere particelle carbonatiche ben isolate dai fluidi.</p>
+  </div>
+  <div class="box exam">
+    <div class="lab">All'esame</div>
+    <p>Domanda frequente. Ma non dire che un corallo di 10 m di profondità "sta sopra la CCD": è vero, ma la risoluzione è molto più alta. Faceva fotosintesi: zona fotica, primi 100 m, al massimo 200.</p>
+  </div>
+
+  <h3>Energia e granulometria: base d'onda e di tempesta</h3>
+  <p>L'energia del moto ondoso è massima sotto costa (i cavalloni si rompono vicino a riva). Il sedimento lo registra: più i grani sono grossi, più il moto ondoso era intenso. Gradiente granulometrico: grossolano negli ambienti prossimali, sempre più fine verso il largo (le spiagge ciottolose del levante genovese contro quelle sabbiose di ponente; ma anche lì, nuotando al largo, il fondo diventa più fine e fangoso).</p>
+  <ul>
+    <li><strong>Base d'onda</strong> (normale): la profondità sotto la quale il sedimento non è interessato dal moto ondoso con tempo normale.</li>
+    <li><strong>Base d'onda di tempesta</strong>: più profonda, perché durante le tempeste il moto ondoso penetra di più. Tra le due, substrati di solito fini, toccati solo durante le tempeste.</li>
+  </ul>
+  <p>Per gli organismi <strong>infaunali</strong> (che si infossano) serve un substrato sabbioso fine: in un substrato roccioso o ciottoloso bisogna scavare il sasso.</p>
+
+  <h3>Le piane tidali: il gradiente al contrario</h3>
+  <p>Con le escursioni di marea l'energia massima non è sotto costa: la marea che sale accelera e arriva al punto più alto con energia minima, poi riscende. Quindi la parte <strong>prossimale è fangosa</strong> e la granulometria <strong>aumenta</strong> allontanandosi. Camminare in una piana di marea è "brutto: fango, puzza, ti infogni fino al ginocchio"; per salvarsi si va verso il mare. I raccoglitori di vongole dell'alto Adriatico arrivano dal mare in barca e scendono sui primi banchi sabbiosi duri, perché da terra dovrebbero attraversare l'intertidale fangoso. Finita la zona di marea, ricomincia il gradiente normale.</p>
+  <div class="box exam">
+    <div class="lab">Da ricordare</div>
+    <p>Organismo in un substrato fangoso: si può pensare a un ambiente tidale. Nel tidale il fangoso è prossimale, il sabbioso è distale.</p>
+  </div>
+
+  <h3>Mare profondo e torbiditi</h3>
+  <p>Ambienti capaci di fossili eccezionali e abbondanti, legati a sorgenti di sedimento particolari: canyon e delta che accumulano materiale finché, per uno shock sismico o perché l'angolo di riposo è superato, il sedimento parte. Questi flussi gravitativi corrono per decine o centinaia di chilometri sui fondali, e possono essere così densi (raccolgono fango e argilla dal fondo) da rompere i cavi del telegrafo, oggi quelli di comunicazione: sono le <strong>correnti di torbida</strong> (GEO ci farà almeno quattro ore). Sembrano lontane, ma la passeggiata di Nervi, il Monte Fasce, il Monte Moro, il litorale fino a Zoagli e parti del promontorio di Portofino sono fatti di sedimenti di mare profondo del <strong>Cretacico superiore</strong>, frane sottomarine sovrapposte, pieni di fossili: la "lasagna" verticalizzata vista la volta scorsa.</p>
+
+  <h3>I fattori ambientali: come leggere lo schema</h3>
+  <p>Lo schema che va dalla costa al largo disegna la luce sempre più importante con la profondità. Non indica la <strong>quantità</strong> di luce, ma quanto la luce è un <strong>fattore limitante</strong>. Sotto costa c'è tanta luce: chi la vuole la usa (coralli), chi non la vuole sta lì comunque (molluschi). In profondità la luce non c'è, e non si può mettere nulla che ne abbia bisogno. Lo stesso vale per <strong>ossigeno</strong>, <strong>cibo</strong> e <strong>salinità</strong>: sotto costa la salinità varia moltissimo (in una pozza di marea che evapora si passa dal 30‰ a circa il 40‰), e un organismo sensibile ai cambi di salinità lì non ci può stare. Un corallo "nella CCD" non è sbagliato per il carbonato, ma là sotto non c'è luce, c'è il problema del cibo e molto altro.</p>
+</section>
+
+<section>
+  <h2><span class="n">06</span>Come descrivere un organismo</h2>
+  <p class="lead">Le crocette delle schede d'esercitazione: rispondono direttamente alle domande d'esame. Ogni foglio ha sei riquadri per disegnare fino a sei fossili; di solito non ci saranno più di sei gruppi da riconoscere (per i coralli, quattro gruppi, uno per gruppo basta).</p>
+  <table>
+    <tr><th>Stile di vita</th><th>Definizione</th><th>Per chi vale</th></tr>
+    <tr><td>Planctonico</td><td>Vive nella massa d'acqua, trasportato <strong>passivamente</strong></td><td rowspan="2">Pelagici</td></tr>
+    <tr><td>Nectonico</td><td>Si sposta <strong>attivamente</strong> nella massa d'acqua (pesce, ammonite)</td></tr>
+    <tr><td>Bentonico</td><td>Vive sul fondo</td><td>poi si specifica ↓</td></tr>
+    <tr><td>· Epifaunale / infaunale / semi-infaunale</td><td>sopra il fondale / dentro il fondale / in parte dentro</td><td rowspan="2">Solo bentonici</td></tr>
+    <tr><td>· Vagile / sessile</td><td>si muove (non deve correre: la stella marina) / ancorato al substrato</td></tr>
+  </table>
+  <div class="box exam">
+    <div class="lab">Errore da evitare</div>
+    <p>Epifaunale, infaunale, sessile e vagile valgono <strong>solo per i bentonici</strong>. Dire "nectonico vagile" di un pesce o di un'ammonite è ridondante: se è nectonico si muove per definizione. Il neustonico (che vive alla superficie dell'acqua) lo si lascia stare: fossile è rarissimo.</p>
+  </div>
+  <h4>Trofismo</h4>
+  <p>Autotrofi, eterotrofi, mixotrofi. Poi il ruolo: produttore primario; sedimentivoro / limivoro / erbivoro; filtratore; sospensivoro; necrofago; predatore (e superpredatore). La piramide alimentare va da chi non ha bisogno praticamente di nulla, a chi è contento con due foglie di insalata, ai filtratori e sospensivori (epifaunali, infaunali superficiali e profondi), ai carnivori. In un campione ci possono essere più resti, un infaunale, un epifaunale e il resto di un predatore: da lì si ricostruisce l'ecologia.</p>
+  <div class="box exam">
+    <div class="lab">All'esame</div>
+    <p>Si chiede di ricostruire una <strong>catena trofica</strong> per quell'ambiente. A volte si può, a volte si ferma presto (con una sola alga rossa non si racconta tutta la storia). Quasi sempre è marina; GEO vedrà anche le piramidi continentali nella storia della vita sulla Terra.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">07</span>Dalle slide, non spiegate in aula</h2>
+  <p>Probabilmente verranno riprese più avanti. Riporto solo quello che le slide dicono esplicitamente.</p>
+  <ul>
+    <li><strong>Salinità dell'acqua</strong>: dolce &lt; 0,5‰ · salmastra 0,5–30‰ · salata 30–50‰ · salamoia &gt; 50‰.</li>
+    <li><strong>Isotopi dell'ossigeno</strong>: il rapporto tra i due isotopi stabili, <sup>16</sup>O e <sup>18</sup>O, con cui l'ossigeno precipita in carbonati e fosfati, registra in dettaglio le variazioni di temperatura dell'oceano e di volume dei ghiacci. I due effetti si separano confrontando gli isotopi in microfossili coevi planctonici e bentonici, soprattutto foraminiferi.</li>
+    <li><strong>Isotopi del carbonio</strong>: l'abbondanza relativa di <sup>12</sup>C e <sup>13</sup>C in carbonati e materia organica varia nel tempo, per i cambiamenti nei flussi del ciclo del carbonio: apporti di carbonio terrestre e ossidazione della materia organica marina in entrata, produzione e seppellimento di carbonati e materia organica marina in uscita.</li>
+  </ul>
+</section>
+
+<section>
+  <h2><span class="n">08</span>Da fare</h2>
+  <ul class="checklist">
+    <li>Imparare l'ordine di eonotemi, eratemi, sistemi e serie (GEO: anche i piani).</li>
+    <li>Memorizzare le Big Five con la causa di ciascuna, e quale è la più grave.</li>
+    <li>Ridisegnare la sezione del margine marino: neritico/oceanico, zona fotica, base d'onda e di tempesta, ACD e CCD.</li>
+    <li>Fissare il gradiente granulometrico normale e quello invertito delle piane tidali.</li>
+    <li>Ripassare la tabella degli stili di vita e il trofismo: è la griglia delle crocette delle esercitazioni.</li>
+  </ul>
+  <h3>Prossimi appuntamenti</h3>
+  <p>Venerdì 2 ottobre niente lezione. Giovedì 8 e venerdì 9 ottobre lezioni <strong>solo GEO</strong> (sistematica ed evoluzione, biozone e fossili guida). Dal 15–16 ottobre, per tutti, fossilizzazione e trasporto con la prima esercitazione sui cassetti.</p>
+</section>
+</div>
+
+</body></html>

@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>Geologia 1 — Lezione 1</title>
+<style>
+  @page { size: A4; margin: 20mm 18mm 22mm 18mm; }
+  :root{
+    --terra:#B5552A; --ochre:#C9A227; --slate:#3E4A52; --sand:#F4EEE3;
+    --ink:#23282C; --muted:#6B7378; --line:#DDD5C7; --moss:#6F8F5E;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:#fff;color:var(--ink);
+    font-family:"Caladea","TeX Gyre Pagella",Georgia,serif;font-size:10.6pt;line-height:1.45}
+  h1,h2,h3,h4,.sans{font-family:"Poppins","TeX Gyre Heros",Arial,sans-serif}
+  .page{}
+  
+
+  /* ---------- cover ---------- */
+  .cover{padding:0;background:var(--sand);display:flex;flex-direction:column}
+  .strata{height:78mm;position:relative;overflow:hidden}
+  .strata div{position:absolute;left:0;right:0}
+  .cover-body{padding:14mm 18mm 0 18mm;flex:1}
+  .kicker{font-family:Poppins;font-size:9pt;letter-spacing:.22em;text-transform:uppercase;color:var(--terra);font-weight:600}
+  .cover h1{font-size:34pt;line-height:1.05;margin:6mm 0 3mm 0;color:var(--slate);font-weight:600;letter-spacing:-.01em}
+  .cover h2{font-size:14pt;font-weight:400;color:var(--ink);margin:0 0 10mm 0}
+  .meta{display:grid;grid-template-columns:1fr 1fr;gap:4mm 10mm;font-size:10pt;border-top:1px solid var(--line);padding-top:6mm;max-width:150mm}
+  .meta b{display:block;font-family:Poppins;font-size:8pt;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:600;margin-bottom:1mm}
+  .cover-foot{padding:0 18mm 14mm 18mm;font-size:9pt;color:var(--muted)}
+  .toc{margin-top:10mm;max-width:150mm}
+  .toc h3{font-size:9pt;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin:0 0 3mm 0;font-weight:600}
+  .toc ol{margin:0;padding:0;list-style:none;counter-reset:t}
+  .toc li{counter-increment:t;display:flex;gap:4mm;padding:1.6mm 0;border-bottom:1px dotted var(--line);font-size:10.5pt}
+  .toc li::before{content:counter(t,decimal-leading-zero);font-family:Poppins;font-weight:600;color:var(--terra);min-width:8mm}
+
+  /* ---------- content ---------- */
+  .runhead{position:absolute;top:9mm;left:18mm;right:18mm;display:flex;justify-content:space-between;font-family:Poppins;font-size:7.5pt;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .runhead span:last-child{color:var(--terra);font-weight:600}
+  section h2{font-size:15pt;color:var(--slate);margin:0 0 2mm 0;font-weight:600;letter-spacing:-.01em;display:flex;align-items:baseline;gap:4mm}
+  section h2 .n{font-size:10pt;color:var(--terra);font-weight:600;letter-spacing:.1em}
+  .lead{color:var(--muted);font-style:italic;margin:0 0 4mm 0}
+  h3{font-size:11.5pt;color:var(--terra);margin:6mm 0 1.5mm 0;font-weight:600}
+  h4{font-size:10pt;color:var(--slate);margin:3.5mm 0 1mm 0;font-weight:600}
+  p{margin:0 0 2.6mm 0;text-align:justify;hyphens:auto}
+  ul{margin:0 0 3mm 0;padding-left:5mm}
+  li{margin-bottom:1.2mm}
+  li::marker{color:var(--terra)}
+  em.t{font-style:italic;color:var(--slate)}
+  .two{columns:2;column-gap:8mm}
+  .two h3:first-child{margin-top:0}
+
+  /* callouts */
+  .box{border-left:2px solid var(--ochre);background:none;padding:1mm 0 1mm 4mm;margin:3mm 0 3.5mm 0;break-inside:avoid}
+  .box .lab{font-family:Poppins;font-size:7.5pt;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--ochre);margin-bottom:1mm}
+  .box p{margin-bottom:1.5mm}
+  .box p:last-child{margin-bottom:0}
+  .box.def{border-color:var(--ochre)}
+  .box.exam{border-color:var(--terra)} .box.exam .lab{color:var(--terra)}
+  .box.draw{border-color:var(--slate)} .box.draw .lab{color:var(--slate)}
+  .box.warn{border-color:var(--moss)} .box.warn .lab{color:var(--moss)}
+
+  .kv{display:grid;grid-template-columns:38mm 1fr;gap:1.5mm 4mm;margin:2mm 0 4mm 0;font-size:10pt}
+  .kv dt{font-family:Poppins;font-size:8.5pt;font-weight:600;color:var(--slate);padding-top:.6mm}
+  .kv dd{margin:0}
+
+  table{width:100%;border-collapse:collapse;margin:2mm 0 4mm 0;font-size:9.6pt;break-inside:avoid}
+  th{font-family:Poppins;font-size:8pt;text-transform:uppercase;letter-spacing:.1em;text-align:left;color:var(--muted);border-bottom:1.5px solid var(--slate);padding:1.5mm 2mm;font-weight:600}
+  td{padding:1.8mm 2mm;border-bottom:1px solid var(--line);vertical-align:top}
+  td:first-child{font-family:Poppins;font-weight:600;font-size:8.8pt;color:var(--slate)}
+
+  .q{color:var(--moss);font-family:Poppins;font-size:8pt;font-weight:600;vertical-align:super}
+  .foot{position:absolute;bottom:9mm;left:18mm;right:18mm;display:flex;justify-content:space-between;font-family:Poppins;font-size:7.5pt;color:var(--muted)}
+  .pnum{font-weight:600;color:var(--slate)}
+
+  /* rock cycle figure */
+  .cycle{margin:3mm auto 4mm auto;display:block;width:150mm}
+  .caption{font-size:8.8pt;color:var(--muted);text-align:center;margin:-1mm 0 4mm 0;font-style:italic}
+  .checklist li{list-style:none;position:relative;padding-left:6mm}
+  .checklist li::before{content:"";position:absolute;left:0;top:1.1mm;width:3.2mm;height:3.2mm;border:1.3px solid var(--terra);border-radius:.6mm}
+
+  .hd{display:flex;align-items:flex-start;gap:5mm;border-bottom:1.5px solid var(--slate);padding-bottom:4mm;margin-bottom:6mm}
+  .hd svg{flex:0 0 14mm;width:14mm;height:14mm}
+  .hd .k{font-family:Poppins;font-size:8pt;letter-spacing:.2em;text-transform:uppercase;color:var(--terra);font-weight:600}
+  .hd h1{font-family:Poppins;font-size:20pt;line-height:1.1;margin:1mm 0 1.5mm 0;color:var(--slate);font-weight:600}
+  .hd .m{font-size:9.5pt;color:var(--muted)}
+  .hd .m b{color:var(--ink);font-weight:600}
+  .legend{font-size:8.8pt;color:var(--muted);margin:0 0 6mm 0}
+</style>
+</head>
+<body>
+<div class="hd">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <path d="M14,62 C8,42 26,22 50,20 C72,18 92,32 90,54 C88,74 68,84 46,84 C28,84 18,76 14,62 Z" fill="#B5552A"/>
+  <path d="M22,58 C20,44 34,30 52,29 C68,28 82,38 80,54 C78,68 64,76 48,76 C34,76 24,70 22,58 Z" fill="#C9A227" opacity=".85"/>
+  <path d="M30,55 C30,46 40,38 52,38 C62,38 72,44 70,54 C68,63 60,68 50,68 C40,68 30,64 30,55 Z" fill="#3E4A52" opacity=".9"/>
+  <path d="M24,52 L82,46" stroke="#F4EEE3" stroke-width="2" opacity=".7"/>
+  <path d="M28,62 L80,58" stroke="#F4EEE3" stroke-width="1.6" opacity=".5"/>
+</svg>
+  <div>
+    <div class="k">Geologia 1 · Modulo 2 · Geologia stratigrafica</div>
+    <h1>Lezione 1 · Tempo e rocce</h1>
+    <div class="m"><b>Martedì 22 settembre 2026</b> · Scienze Geologiche, primo anno · UniGe, a.a. 2026/27 · Appunti ricostruiti dalla registrazione audio</div>
+  </div>
+</div>
+<p class="legend">Modulo 1, geologia strutturale: prof.ssa Laura Federico. Modulo 2, geologia stratigrafica: prof. Michele Piazza. Materiale didattico su Aulaweb. I pochi punti ancora incerti della trascrizione sono segnati con <span class="q">?</span>.</p>
+<style>section h2{break-after:avoid;margin-top:9mm} .page:first-child section h2{margin-top:0} h2[style]{margin-top:9mm !important} h3,h4{break-after:avoid} .box,table,dl.kv{break-inside:avoid} .lead{break-after:avoid}</style><!-- ================= PAGE 1 ================= -->
+<div class="page">
+  
+  <section>
+    <h2><span class="n">01</span>Come funziona il corso e l'esame</h2>
+    <p class="lead">La prima mezz'ora è stata dedicata a regole che valgono per tutto l'anno. Vale la pena tenerle a portata di mano.</p>
+
+    <h3>Struttura del corso</h3>
+    <p>Geologia 1 è articolata in <em class="t">due moduli</em> tenuti da due docenti: il <strong>Modulo 1</strong>, di geologia strutturale, tenuto dalla prof.ssa Laura Federico, e il <strong>Modulo 2</strong>, di geologia stratigrafica, tenuto dal prof. Michele Piazza (la lezione di oggi). I due moduli raccolgono i concetti di base della geologia e vogliono portare tutti alla stessa base di cultura geologica necessaria per arrivare al secondo e terzo anno. Obiettivo dichiarato: arrivare al punto in cui questi concetti sembrano la cosa più normale del mondo.</p>
+
+    <div class="box exam">
+      <div class="lab">All'esame</div>
+      <p><strong>Esame unico</strong>: i due moduli si sostengono insieme, nella stessa sessione, mai separati. Nessuna prova intermedia, nessun compito, nessuna verifica in itinere. Gli appelli partono da <strong>giugno</strong>; il calendario esce a fine periodo didattico (indicativamente 5–8 giugno) e da lì ci si iscrive.</p>
+      <p><strong>Parte pratica</strong> (vincolante): esercizi sui temi di entrambi i moduli e <strong>riconoscimento di tre campioni di roccia</strong>, presi dallo stesso set che si usa in aula e in laboratorio. Chi non supera la pratica non accede all'orale.</p>
+      <p><strong>Parte teorica</strong> (orale): su entrambi i moduli. Se i candidati sono pochi, tutto nello stesso giorno; se sono tanti, prima tutti la pratica, poi si programma l'orale per non sovrapporsi ad altri esami.</p>
+      <p><strong>Ripasso rocce</strong>: prima di ogni tornata d'esame i docenti mettono a disposizione per 4 ore tutto il materiale usato all'esame, con assistenza, per rinfrescare il riconoscimento.</p>
+    </div>
+
+    <h3>Propedeuticità e priorità</h3>
+    <p>Geologia 1 vincola Geologia 2 (secondo anno), e tutti gli esami del primo anno vincolano quelli del terzo. Il docente è stato netto: gli ostacoli veri del percorso non sono le geologie ma <strong>matematica, fisica e chimica</strong>. Consiglio esplicito: dare priorità a queste tre, seguire tutte le esercitazioni e i sostegni, non dare nulla per scontato e chiuderle il prima possibile, così da arrivare al secondo e terzo anno con le spalle libere.</p>
+
+    <h3>Comunicazioni varie</h3>
+    <ul>
+      <li>Il docente è al suo <strong>ultimo anno di insegnamento</strong>: va in pensione il 1° novembre 2027. Si è impegnato a restare in commissione per chi ha seguito il corso con lui, anche dopo. Il collega che lo sostituirà farà le stesse cose.</li>
+      <li>Tiene la mascherina in aula per motivi personali di salute: parlerà con pause per prendere fiato, non è un segnale di attesa.</li>
+      <li><strong>Frequenza</strong>: le firme si raccolgono solo a chimica, dove serve l'80% di presenza in laboratorio per accedere all'esame. Al primo anno esiste il <em class="t">progetto matricole</em>: tutor che contattano chi smette di frequentare per capire se serve aiuto.</li>
+      <li>Parlare con i colleghi del secondo e terzo anno per le cose pratiche di gestione quotidiana (dove trovare i materiali, come funzionano le cose): semplifica la vita.</li>
+      <li><strong>Testi</strong>: i riferimenti sono indicati sul sito del corso, sia per la parte stratigrafica sia per quella sul tempo geologico. Sono testi adottati anche altrove, difficili da acquistare ma reperibili in biblioteca.</li>
+    </ul>
+  </section>
+</div>
+
+<!-- ================= PAGE 2 ================= -->
+<div class="page">
+  
+  <section>
+    <h2><span class="n">02</span>Attrezzatura da campo ed escursioni</h2>
+    <p class="lead">Dotarsi progressivamente da qui all'inizio del secondo semestre. La regola: non bello, funzionale.</p>
+
+    <table>
+      <tr><th>Oggetto</th><th>Indicazioni del docente</th></tr>
+      <tr><td>Taccuino</td><td>Formato tascabile, <strong>copertina rigida</strong>. Deve stare in tasca e resistere.</td></tr>
+      <tr><td>Martello da geologo</td><td>Peso attorno al <strong>chilo</strong> (900–1000 g): i martelli da mezzo chilo schiacciano le nocche e non servono a nulla. Acciaio dedicato, testa con punta o con taglio piatto (il piatto fa più cose). Impugnatura in legno o plastica, <strong>non in cuoio</strong>: bella, ma si rovina facilmente. Quello "da regalo" costa circa 150 €; va bene anche uno più economico purché sia un martello da geologo e non da carpentiere o muratore. Quando li avrete in mano il docente spiegherà, martello per martello, quali sono i punti pericolosi.</td></tr>
+      <tr><td>Guanti</td><td>Un paio di guanti da lavoro.</td></tr>
+      <tr><td>Rete protettiva</td><td>Una normale rete (o sacchetto a rete) in cui infilare il campione prima di colpirlo, così le schegge restano dentro. Il docente insegnerà come si usa.</td></tr>
+      <tr><td>Lente</td><td>Va tenuta <strong>vicino all'occhio</strong> e si cerca il fuoco muovendo l'oggetto, non la lente.</td></tr>
+      <tr><td>Punta per la durezza</td><td>Punta d'acciaio a durezza nota, qualunque formato: serve per il riconoscimento speditivo della durezza di rocce e minerali. Si trova a circa 5 € in una buona ferramenta; farsi consigliare dai colleghi del secondo anno.</td></tr>
+      <tr><td>Dotazioni fornite</td><td>Gilet alta visibilità e altri DPI li porta il docente (la settimana prossima); ieri verificava se la fornitura era arrivata.</td></tr>
+    </table>
+
+    <h3>Escursioni</h3>
+    <ul>
+      <li>Le uscite sono aperte a tutti; la parte sicurezza è già stata trattata.</li>
+      <li><strong>Prima escursione</strong>: ultimi giorni di ottobre, data da definire, in <strong>area protetta</strong>. Niente martello, perché lì non si può battere: servono lente, punta e taccuino, si lavora osservando.</li>
+      <li><strong>Seconda escursione</strong>: "scuola di martello". Tutti col martello, per prendere confidenza con lo strumento battendo su rocce indicate.</li>
+      <li>Ogni volta il docente dice cosa portare. Al primo anno l'uscita è sempre con un numero elevato di accompagnatori.</li>
+    </ul>
+
+    <h2 style="margin-top:8mm"><span class="n">03</span>Metodo di studio</h2>
+    <p class="lead">Poca memoria, molta tecnica, molto disegno.</p>
+
+    <div class="box draw">
+      <div class="lab">Disegnare, sempre</div>
+      <p>Tutto quello che si studia va <strong>ridisegnato a mano</strong>: bello o brutto non importa. Disegnando si è costretti a prendere coscienza di ciò che si sta facendo e si verifica di aver capito. All'esame verrà chiesto di disegnare, ad esempio il ciclo delle rocce. "Non so disegnare" non è una risposta: nessuno è disegnatore, tutti sono in grado di fare uno schizzo con gli elementi fondamentali.</p>
+    </div>
+
+    <ul>
+      <li><strong>Memoria al minimo.</strong> Non si supera un esame di riconoscimento imparando a memoria: si imparano le <em class="t">tecniche e i modi</em> con cui si procede per riconoscere una roccia e risolvere gli esercizi.</li>
+      <li><strong>Definizioni ben fatte.</strong> Una definizione precisa di un concetto vale molto, non nelle parole del docente ma con un linguaggio tecnico e scientifico. Non "una superficie tipo che…" ma "una superficie che fa questo, questo e questo".</li>
+      <li><strong>Sintesi e terminologia.</strong> Il ragionare farraginoso e le parole generiche danno l'impressione di scarsa comprensione. Questo pesa sull'intero corso di studi.</li>
+      <li><strong>Interrompere.</strong> Domande in qualsiasi momento, senza problemi. Prima di ciascun blocco il docente chiede chi ha già visto l'argomento, per regolare il passo.</li>
+    </ul>
+  </section>
+</div>
+
+<!-- ================= PAGE 3 ================= -->
+<div class="page">
+  
+  <section>
+    <h2><span class="n">04</span>La stratigrafia e i suoi concetti fondanti</h2>
+    <p class="lead">Le due cose su cui il docente ha insistito oggi: il tempo e la roccia.</p>
+
+    <div class="box def">
+      <div class="lab">Definizione</div>
+      <p><strong>Stratigrafia</strong>: branca delle scienze geologiche, tra le più antiche, che studia la <strong>collocazione nello spazio e nel tempo delle rocce e degli avvenimenti in esse registrati</strong>. "Collocazione" ha quindi una dimensione geografica (dove) e una cronologica (quando).</p>
+    </div>
+
+    <p>La stratigrafia colloca nello spazio e nel tempo tutto ciò che è successo nella storia del pianeta, e lo fa <strong>attraverso le rocce</strong>: il nostro strumento di lettura, il nostro libro, sono sempre le rocce. Se non ci sono rocce non riusciamo a lavorare. Leggiamo le rocce, le collochiamo, e di conseguenza collochiamo gli avvenimenti: geograficamente (e quindi anche paleogeograficamente) e cronologicamente.</p>
+
+    <h3>I quattro concetti di riferimento</h3>
+    <dl class="kv">
+      <dt>Successione</dt><dd>La collocazione di avvenimenti distinti nel tempo, il loro ordine. Il tempo è inteso come <strong>unico, unidirezionale e irreversibile</strong>: non torna indietro, procede sempre allo stesso modo, non parte da nessun punto e non tende a raggiungere nulla.</dd>
+      <dt>Durata</dt><dd>La quantificazione dell'intervallo di tempo durante il quale un determinato avvenimento geologico si è realizzato. Quanto tempo c'è voluto perché si compisse.</dd>
+      <dt>Contemporaneità</dt><dd>Poiché gli avvenimenti sono allineati in successione, si può valutare la sincronia: due eventi che occupano la stessa posizione nel tempo sono contemporanei, sincroni.</dd>
+      <dt>Correlazione</dt><dd>L'operazione che mette in corrispondenza unità stratigrafiche separate. Esiste in due forme, vedi sotto.</dd>
+    </dl>
+
+    <h3>Due tipi di correlazione</h3>
+    <table>
+      <tr><th>Tipo</th><th>Criterio</th><th>Definizione</th></tr>
+      <tr><td>Cronostratigrafica</td><td>Il tempo</td><td>Due unità stratigrafiche sono correlate se hanno la <strong>stessa età</strong>. È basata esclusivamente sul tempo.</td></tr>
+      <tr><td>Litostratigrafica</td><td>Il tipo di roccia</td><td>Corrispondenza tra volumi di roccia <strong>separati geograficamente</strong>, definita esclusivamente su caratteri litologici. Non tiene conto in prima istanza del tempo. Due unità sono correlate se occupano la <strong>stessa posizione nella successione stratigrafica</strong>.</td></tr>
+    </table>
+
+    <h4>A cosa serve, in pratica</h4>
+    <ul>
+      <li>Riconoscere o ricercare la posizione di un'unità di interesse in un grande bacino sedimentario (esempio: bacino padano): la stratigrafia dice cosa sta sotto e cosa sta sopra, quindi so dove cercare.</li>
+      <li>Definire un limite di età. Se cerco oggetti di interesse (scientifico, economico) di una certa età, vado a cercare solo nei luoghi che hanno quell'età, senza passare giorni a cercare ovunque.</li>
+      <li>Datare per correlazione: se un'unità di età sconosciuta è identica a una di età nota, trasferisco l'informazione di età anche senza un dato diretto. Non sempre le rocce sono disponibili a restituire direttamente l'informazione.</li>
+    </ul>
+
+    <div class="box warn">
+      <div class="lab">Nota</div>
+      <p>In molti campi della geologia applicata (terzo anno) non serve esprimere età numeriche: si ragiona in termini relativi. È uno degli approcci "cardine" che verrà imparato più avanti nel corso.</p>
+    </div>
+  </section>
+</div>
+
+<!-- ================= PAGE 4 ================= -->
+<div class="page">
+  
+  <section>
+    <h2><span class="n">05</span>Datare: il tempo geologico e le sue unità</h2>
+    <p class="lead">Datare significa collocare un evento nel fluire del tempo. Come si esprime, e perché il presente è il 1950.</p>
+
+    <h3>Il punto zero e le unità</h3>
+    <p>Le età geologiche si esprimono <strong>rispetto al presente</strong>, e per convenzione internazionale il presente è fissato al <strong>1950</strong>: il nostro righello del tempo ha lo zero lì, e da lì "in giù" esprimiamo le età. Il 1950 perché in quegli anni i grandi laboratori di datazione radiometrica raggiunsero standard condivisi: prima lo stesso campione dava valori molto diversi a Tokyo, New York o Milano; da lì i dati diventano confrontabili. Fa sorridere quando si parla di miliardi di anni, ma una misura deve essere codificata. Le età si scrivono quindi <strong>BP, before present</strong>.</p>
+
+    <div class="box def">
+      <div class="lab">Definizione</div>
+      <p><strong>Unità fondamentale</strong>: l'anno, indicato con la lettera <strong>a</strong> minuscola (l'equivalente del metro o del grammo nel SI). Le età si scrivono come <em>quantità numerica + unità + BP</em>. Dato che le età del pianeta sono grandi, si usano i multipli: <strong>ka</strong> (migliaia di anni), <strong>Ma</strong> (milioni), <strong>Ga</strong> (miliardi). Attenzione: il <em>k</em> di kilo è minuscolo.</p>
+      <p><strong>Età della Terra: 4,56 Ga BP.</strong></p>
+    </div>
+
+    <div class="box exam">
+      <div class="lab">All'esame</div>
+      <p>Evitare "50 milioni di anni fa": è il linguaggio delle riviste, non è corretto. Si dice <strong>50 Ma BP</strong>.</p>
+    </div>
+
+    <h3>Il tempo: signore assoluto</h3>
+    <p>Il tempo in geologia è il padrone di tutto: tutto rende conto al tempo. È uno <strong>scorrere uniforme e irreversibile</strong>, scollegato da ogni altro parametro, indipendente da tutto. Non ha accelerazioni, rallentamenti o soste: fluisce, punto. Non esistono eventi geologici in grado di modificarne il fluire. Una delle rappresentazioni possibili (tutte ragionevolmente incomplete) è una <strong>spirale aperta</strong> che non parte da nessun punto, non va in nessun punto e resta sempre uguale a sé stessa.</p>
+
+    <ul>
+      <li><strong>Il tempo non manca mai.</strong> Non esiste un intervallo di tempo senza qualcosa che in qualche modo lo rappresenti: non sempre rocce, magari superfici, ma il tempo c'è sempre.</li>
+      <li><strong>Non lascia traccia diretta.</strong> Il tempo si manifesta attraverso gli eventi che si sono prodotti in un certo luogo, in un certo momento, per una certa durata (dimensione geografica, collocazione temporale, durata). Lo leggiamo, lo quantifichiamo e lo comprendiamo solo indirettamente, attraverso le rocce.</li>
+      <li><strong>Il problema di fondo.</strong> Le rocce sono un sistema in continua evoluzione e i materiali che le costruiscono sono sempre gli stessi dalla formazione del pianeta (le aggiunte, meteoriti, sono minime). Ciò che arriva di nuovo tende a cancellare ciò che c'era prima: quanto più si va indietro nel tempo geologico, tanto più le informazioni sono difficili da leggere. Per gli intervalli non più accessibili sulla Terra ci si rivolge da qualche anno anche ai volumi rocciosi extraterrestri (meteoriti), che permettono di vedere rocce di intervalli non più conservati qui.</li>
+    </ul>
+
+    <div class="box draw">
+      <div class="lab">Da disegnare</div>
+      <p>La spirale aperta del tempo, con lo zero al 1950 e le età che scendono in ka / Ma / Ga BP fino a 4,56 Ga.</p>
+    </div>
+  </section>
+</div>
+
+<!-- ================= PAGE 5 ================= -->
+<div class="page">
+  
+  <section>
+    <h2><span class="n">06</span>Il ciclo delle rocce</h2>
+    <p class="lead">In geologia quasi tutti i grandi processi si organizzano in un sistema ciclico. Il primo che si approfondisce è questo.</p>
+
+    <p>Si parte da un'origine alla quale non si torna più, che dà luogo a un processo circolare che si replica nel tempo finché il pianeta è dinamico. La <strong>Luna</strong> ha seguito lo stesso percorso fino a quando si è spenta dal punto di vista dinamico: è diventata una massa inerte, interamente cristallizzata, e tutti i cicli si sono arrestati. Altri cicli che verranno studiati: il <em class="t">ciclo di Wilson</em> (Modulo 1) e, più in alto, il ciclo dei supercontinenti.</p>
+
+    <svg class="cycle" viewBox="0 0 640 385" xmlns="http://www.w3.org/2000/svg" font-family="Poppins, Arial, sans-serif">
+      <defs>
+        <marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3E4A52"/></marker>
+        <marker id="ar2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#C9A227"/></marker>
+      </defs>
+      <!-- nodes -->
+      <rect x="250" y="18" width="140" height="46" rx="6" fill="#B5552A"/>
+      <text x="320" y="38" text-anchor="middle" fill="#fff" font-size="13" font-weight="600">FUSO / MAGMA</text>
+      <text x="320" y="54" text-anchor="middle" fill="#F4EEE3" font-size="9">origine, 4,56 Ga BP</text>
+
+      <rect x="20" y="150" width="160" height="50" rx="6" fill="#3E4A52"/>
+      <text x="100" y="171" text-anchor="middle" fill="#fff" font-size="13" font-weight="600">ROCCE IGNEE</text>
+      <text x="100" y="187" text-anchor="middle" fill="#DDD5C7" font-size="8.5">intrusive · ipoabissali · effusive</text>
+
+      <rect x="440" y="150" width="180" height="50" rx="6" fill="#3E4A52"/>
+      <text x="530" y="171" text-anchor="middle" fill="#fff" font-size="12" font-weight="600">ROCCE METAMORFICHE</text>
+      <text x="530" y="187" text-anchor="middle" fill="#DDD5C7" font-size="8.5">ricristallizzazione allo stato solido</text>
+
+      <rect x="240" y="282" width="160" height="50" rx="6" fill="#C9A227"/>
+      <text x="320" y="303" text-anchor="middle" fill="#23282C" font-size="12" font-weight="600">ROCCE SEDIMENTARIE</text>
+      <text x="320" y="319" text-anchor="middle" fill="#23282C" font-size="8.5">sedimento → litificazione</text>
+
+      <!-- primo giro -->
+      <path d="M252,54 C180,72 130,108 108,148" fill="none" stroke="#3E4A52" stroke-width="2.2" marker-end="url(#ar)"/>
+      <text x="40" y="96" font-size="8.5" fill="#3E4A52">raffreddamento:</text>
+      <text x="40" y="108" font-size="8.5" fill="#3E4A52">solidificazione + cristallizzazione</text>
+
+      <path d="M120,202 C160,250 200,285 238,300" fill="none" stroke="#3E4A52" stroke-width="2.2" marker-end="url(#ar)"/>
+      <text x="40" y="262" font-size="8.5" fill="#3E4A52">alterazione · erosione</text>
+      <text x="40" y="274" font-size="8.5" fill="#3E4A52">trasporto · deposito</text>
+
+      <path d="M402,300 C440,285 480,250 520,202" fill="none" stroke="#3E4A52" stroke-width="2.2" marker-end="url(#ar)"/>
+      <text x="470" y="290" font-size="8.5" fill="#3E4A52">tettonica → in profondità</text>
+      <text x="470" y="302" font-size="8.5" fill="#3E4A52">↑ P, ↑ T, fluidi</text>
+
+      <path d="M532,148 C510,108 460,72 388,54" fill="none" stroke="#3E4A52" stroke-width="2.2" marker-end="url(#ar)"/>
+      <text x="500" y="96" font-size="8.5" fill="#3E4A52">fusione</text>
+
+      <!-- percorsi secondari -->
+      <path d="M440,158 C380,118 260,118 182,158" fill="none" stroke="#C9A227" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#ar2)"/>
+      <text x="320" y="126" text-anchor="middle" font-size="8" fill="#8a6f12">ignea → metamorfica (portata in profondità)</text>
+
+      <path d="M462,202 C420,235 380,255 345,280" fill="none" stroke="#C9A227" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#ar2)"/>
+      <text x="422" y="233" text-anchor="middle" font-size="8" fill="#8a6f12">met. esposta → erosione</text>
+
+      <path d="M262,334 C230,350 230,362 262,368 C300,374 330,370 350,360" fill="none" stroke="#C9A227" stroke-width="1.6" stroke-dasharray="5 4"/>
+      <path d="M350,360 L378,334" fill="none" stroke="#C9A227" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#ar2)"/>
+      <text x="320" y="348" text-anchor="middle" font-size="8" fill="#8a6f12" transform="translate(0,-2)">sed → sed (esposta, erosa, ridepositata)</text>
+
+      <path d="M600,150 C640,140 640,210 600,200" fill="none" stroke="#C9A227" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#ar2)"/>
+      <text x="560" y="222" font-size="8" fill="#8a6f12">met → met</text>
+
+      <!-- vietato -->
+      <path d="M320,282 L320,66" fill="none" stroke="#B5552A" stroke-width="1.4" stroke-dasharray="2 4"/>
+      <circle cx="320" cy="180" r="11" fill="#fff" stroke="#B5552A" stroke-width="1.6"/>
+      <line x1="313" y1="173" x2="327" y2="187" stroke="#B5552A" stroke-width="1.6"/>
+      <line x1="327" y1="173" x2="313" y2="187" stroke="#B5552A" stroke-width="1.6"/>
+      <text x="320" y="208" text-anchor="middle" font-size="8.5" fill="#B5552A" font-weight="600">sedimentaria → fuso: NO</text>
+      <text x="320" y="219" text-anchor="middle" font-size="7.5" fill="#B5552A">passa prima dal metamorfismo</text>
+    </svg>
+    <p class="caption">Linea continua: il "primo giro" descritto in aula. Tratteggio: i percorsi possibili una volta chiuso il primo giro.</p>
+
+    <h3>Il primo giro</h3>
+    <p>Il ciclo parte dalla prima formazione della crosta terrestre, il primo involucro rigido del pianeta, a <strong>4,56 Ga BP</strong>. Rocce così vecchie non sono mai state trovate: di quell'età abbiamo solo alcuni cristalli (zirconi, Australia occidentale) che ci dicono che allora esistevano rocce. L'intervallo di tempo corrispondente è l'<strong>Adeano</strong> (Hadean).</p>
+    <ul>
+      <li><strong>Dal fuso alle rocce ignee</strong> (o magmatiche: sono sinonimi). Il magma perde calore e <em class="t">solidifica e cristallizza</em> in maniera più o meno completa: crescono cristalli che costituiscono la struttura della roccia. In funzione dei <strong>tempi di raffreddamento</strong> escono tre tipi: <strong>intrusive</strong> (restano in profondità, raffreddano molto lentamente), <strong>effusive</strong> (vengono a giorno, dissipano calore molto velocemente), <strong>ipoabissali</strong> (via di mezzo). I tre nomi esprimono <strong>tessiture diverse</strong>, conseguenza dei tempi di raffreddamento. La classificazione dettagliata arriva tra due lezioni.</li>
+      <li><strong>Dalle ignee alle sedimentarie.</strong> Esposte agli agenti atmosferici, le rocce subiscono un processo complesso: <em class="t">alterazione, erosione, trasporto, deposito</em>. Il prodotto accumulato è un volume che chiamiamo <strong>sedimento</strong>; attraverso la litificazione diventa roccia sedimentaria.</li>
+      <li><strong>Dalle sedimentarie alle metamorfiche.</strong> La tettonica trasferisce le rocce in profondità, in condizioni di pressione, temperatura e attività dei fluidi diverse da quelle genetiche. Le rocce si riorganizzano e <em class="t">ricristallizzano allo stato solido</em>: i reticoli si aprono, crescono nuovi cristalli, senza fusione. Roccia solida → roccia solida. Questo è il <strong>metamorfismo</strong>.</li>
+      <li><strong>Dalle metamorfiche al fuso.</strong> Portate ancora più in profondità, le metamorfiche fondono e tornano a essere un fuso disponibile per generare rocce ignee. Primo giro chiuso: ma non si torna esattamente al punto di partenza, perché le condizioni del pianeta nel frattempo sono cambiate (il fuso è diverso, e in superficie ci sono ormai rocce di ogni tipo).</li>
+    </ul>
+  </section>
+</div>
+
+<!-- ================= PAGE 6 ================= -->
+<div class="page">
+  
+  <section>
+    <h3 style="margin-top:0">Dopo il primo giro: tutti i percorsi</h3>
+    <p>Chiuso il primo giro, il ciclo continua a girare e rigenerarsi: riutilizza gli stessi materiali cancellando via via le informazioni preesistenti. Fondendo una roccia, tutto ciò che conteneva viene rigenerato; in larga misura succede anche con la ricristallizzazione metamorfica. Sul pianeta coesistono fusi, ignee, sedimentarie e metamorfiche, e i prodotti interagiscono in ogni direzione:</p>
+    <ul>
+      <li>una <strong>sedimentaria</strong> esposta si altera e produce una nuova sedimentaria (resta nel mondo sedimentario);</li>
+      <li>una <strong>ignea</strong> può essere portata in profondità e diventare metamorfica;</li>
+      <li>una <strong>metamorfica</strong> esposta viene erosa e produce una sedimentaria;</li>
+      <li>una <strong>metamorfica</strong> portata a condizioni P-T-fluidi diverse rimetamorfosa e diventa un'altra metamorfica.</li>
+    </ul>
+
+    <div class="box exam">
+      <div class="lab">All'esame · la domanda trabocchetto</div>
+      <p><strong>Cosa non posso fare?</strong> Fondere direttamente una sedimentaria. Per fonderla devo portarla a un aumento molto importante di pressione e temperatura, e quindi prima sperimenterà inevitabilmente il processo metamorfico. In laboratorio si può inventare una roccia che in natura non esiste, ma noi ragioniamo in termini di rocce naturali.</p>
+    </div>
+
+    <h3>I tre controllori e il motore</h3>
+    <p>Tutti i processi del ciclo sono governati rigorosamente da <strong>pressione</strong>, <strong>temperatura</strong> e <strong>attività dei fluidi</strong>, dove il fluido più importante è l'acqua. I tre interagiscono e in larga misura si compensano l'uno con l'altro: sono i "controllori" che presiedono ogni processo che verrà studiato. Ma perché il ciclo è possibile? Perché c'è energia, c'è movimento: il pianeta è <strong>dinamico</strong>. La geodinamica mantiene in attività i processi. Se il pianeta si spegne, il ciclo delle rocce si spegne e la Terra diventa più o meno come la Luna: ciò che era metamorfico resta metamorfico, ciò che era caldo si raffredda e cristallizza, ciò che era sedimentario resta lì. Senza dinamica si spegne anche il processo sedimentario, perché non c'è più nulla che sposti le rocce (e con essa atmosfera e regimi che la alimentano).</p>
+    <p>Ogni processo litogenetico passa <strong>transizionalmente</strong> al successivo: sedimentario → metamorfico → magmatico → sedimentario. Il ciclo è ormai stabilizzato, con tutte le sue varianti, e riutilizza costantemente gli stessi materiali.</p>
+
+    <div class="box draw">
+      <div class="lab">Da disegnare</div>
+      <p>Il ciclo delle rocce completo, con i tre nodi, il fuso, i processi sulle frecce, i percorsi secondari e la freccia proibita sedimentaria → fuso. È l'esempio esplicito fatto dal docente di cosa chiederà di disegnare all'esame.</p>
+    </div>
+
+    <h2 style="margin-top:8mm"><span class="n">07</span>Cristallo, minerale, roccia e tessiture</h2>
+    <p class="lead">Tre parole che non sono sinonimi, e il primo strumento di riconoscimento.</p>
+
+    <dl class="kv">
+      <dt>Minerale</dt><dd>Solido che si presenta in forma cristallina.</dd>
+      <dt>Cristallo</dt><dd>Il modo in cui il minerale si fa vedere, si manifesta.</dd>
+      <dt>Roccia</dt><dd>Sempre un <strong>aggregato</strong>, nel senso più generale: di cristalli, di frammenti di cristalli o di pezzi di altre rocce. Esistono rocce fatte solo di cristalli di quarzo, ma resta la differenza tra l'organizzazione interna del singolo cristallo e quella della roccia.</dd>
+    </dl>
+
+    <h3>Tessiture</h3>
+    <p>La <strong>tessitura</strong> è l'aspetto dell'organizzazione interna della roccia ed è l'approccio fondamentale per riconoscerla: è la prima cosa che si guarda. È legata al processo genetico, e si distinguono due grandi categorie:</p>
+    <table>
+      <tr><th>Categoria</th><th>Rocce</th><th>Perché</th></tr>
+      <tr><td>Tessiture cristalline</td><td>Ignee e metamorfiche</td><td>Riflettono la crescita di cristalli: solidificazione con cristallizzazione più o meno completa di un fuso, o completa ricristallizzazione di una roccia preesistente.</td></tr>
+      <tr><td>Tessiture clastiche (sedimentarie)</td><td>Sedimentarie</td><td>Derivano dalla <strong>distruzione</strong> di qualcosa di precedente (alterazione ed erosione lavorano a distruggere).</td></tr>
+    </table>
+
+    <div class="box warn">
+      <div class="lab">Nomenclatura</div>
+      <p>L'uso comune dei nomi delle rocce spesso non coincide con il nome scientifico. Esempi emersi in aula: granito (ignea), calcare (sedimentaria), marmo (metamorfica). Il caso tipico, che in aula si è capito a metà<span class="q">?</span>, è "granito": nel commercio lo si usa per qualunque pietra dura, anche sedimentaria, mentre scientificamente indica solo una roccia magmatica. Da subito, nomenclatura rigorosamente scientifica.</p>
+    </div>
+  </section>
+</div>
+
+<!-- ================= PAGE 7 ================= -->
+<div class="page">
+  
+  <section>
+    <h2><span class="n">08</span>Da fare e da chiarire</h2>
+    <p class="lead">Quello che resta in sospeso dopo la prima lezione.</p>
+
+    <h3>Da fare</h3>
+    <ul class="checklist">
+      <li>Ridisegnare a mano il ciclo delle rocce (con processi sulle frecce e la freccia proibita).</li>
+      <li>Ridisegnare la spirale aperta del tempo con lo zero al 1950 e le unità a / ka / Ma / Ga BP.</li>
+      <li>Scrivere con parole proprie, in termini tecnici, le definizioni di: stratigrafia, successione, durata, contemporaneità, correlazione crono- e litostratigrafica, metamorfismo, tessitura.</li>
+      <li>Iniziare a procurarsi taccuino a copertina rigida, lente e punta per la durezza (servono già alla prima uscita). Il martello può aspettare la seconda uscita.</li>
+      <li>Verificare sul sito del corso i testi di riferimento e cercarli in biblioteca.</li>
+      <li>Fare due chiacchiere con qualcuno del secondo anno su martello, punta e organizzazione delle uscite.</li>
+      <li>Dare priorità nel piano di studio a matematica, fisica e chimica; chimica ha la frequenza obbligatoria in laboratorio (80%).</li>
+    </ul>
+
+    <h3>Rimasto in sospeso</h3>
+    <ul>
+      <li>Data esatta della prima escursione (fine ottobre) e luogo.</li>
+      <li>L'esempio conclusivo sulla nomenclatura commerciale: ricostruito per senso, non udibile bene.</li>
+    </ul>
+
+    <h3>Prossime lezioni</h3>
+    <ul>
+      <li>Tessiture, un paio di lezioni.</li>
+      <li>Rocce magmatiche e loro classificazione (tra due lezioni): perché i tre tipi si distinguono in base alle tessiture legate ai tempi di raffreddamento.</li>
+      <li>Scala del tempo geologico e metodi di datazione (con ripasso della parte sulle unità).</li>
+      <li>Modulo 1: struttura interna del pianeta, solidificazione e cristallizzazione, ciclo di Wilson.</li>
+    </ul>
+  </section>
+</div>
+
+</body></html>
