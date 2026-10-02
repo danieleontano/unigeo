@@ -69,3 +69,13 @@ due settimane di fila salta, il problema non è nel codice.
   sola riga in alto, icone per materia estratte dagli appunti in `public/icone/`,
   deploy GitHub Pages con `withastro/action`. Repo pubblico `danieleontano/unigeo`
   (Pages gratis solo sui repo pubblici).
+- 2026-10-02 · Commit 2-3, contenuti: collection `lezioni`/`quiz`/`materie` con zod;
+  Markdown col pipeline remark (`@astrojs/markdown-remark` + `remark-directive`),
+  NON il processore nativo satteri di Astro 7, perché i riquadri `:::` passano da
+  remark. Decisione di formato: i titoli `##` non portano il numero (lo mette il
+  CSS con un contatore), così gli anchor e i `ref` dei quiz sono puliti. Le 10
+  lezioni convertite con `scripts/html2md.ts`; 20 figure SVG salvate accanto ai
+  `.md`, didascalia nell'alt → `<figure>` via `remarkFigure`. I PDF originali
+  stanno in `public/pdf/<materia>/`. Rapporto per Claude chat in
+  `materiale/RAPPORTO-CONVERSIONE.md`. Nel dev server gli `<img>` SVG hanno
+  `naturalWidth` 0 anche se visibili: verificare a occhio, non via JS.

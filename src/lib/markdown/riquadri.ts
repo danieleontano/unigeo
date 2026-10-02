@@ -48,3 +48,23 @@ export function remarkRiquadri() {
     });
   };
 }
+
+// Un paragrafo fatto solo di un'immagine con testo alternativo diventa una
+// <figure> con <figcaption>: è così che le figure SVG degli appunti portano
+// la loro didascalia (il convertitore la mette nell'alt).
+export function remarkFigure() {
+  return (albero: Root) => {
+    visit(albero, "paragraph", (nodo) => {
+      if (nodo.children.length !== 1 || nodo.children[0].type !== "image") return;
+      const img = nodo.children[0];
+      if (!img.alt) return;
+      const dati = (nodo.data ??= {}) as { hName?: string };
+      dati.hName = "figure";
+      nodo.children.push({
+        type: "strong",
+        data: { hName: "figcaption" },
+        children: [{ type: "text", value: img.alt }],
+      } as never);
+    });
+  };
+}

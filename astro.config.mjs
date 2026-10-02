@@ -4,7 +4,7 @@ import react from "@astrojs/react";
 import tailwindcss from "@tailwindcss/vite";
 import { unified } from "@astrojs/markdown-remark";
 import remarkDirective from "remark-directive";
-import { remarkRiquadri } from "./src/lib/markdown/riquadri.ts";
+import { remarkFigure, remarkRiquadri } from "./src/lib/markdown/riquadri.ts";
 
 // Sito statico su GitHub Pages: https://danieleontano.github.io/unigeo/
 // `base` entra in ogni link interno: si usa sempre `percorso()` di src/lib/percorsi.ts,
@@ -25,6 +25,6 @@ export default defineConfig({
   integrations: [react()],
   vite: { plugins: [tailwindcss()] },
   markdown: {
-    processor: unified({ remarkPlugins: [remarkDirective, remarkRiquadri] }),
+    processor: unified({ remarkPlugins: [remarkDirective, remarkRiquadri, remarkFigure] }),
   },
 });
