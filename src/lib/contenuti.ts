@@ -49,3 +49,29 @@ export async function quizDisponibili(): Promise<Set<string>> {
 export function contaDefinizioni(l: Lezione): number {
   return (l.body ?? "").match(/^:::definizione/gm)?.length ?? 0;
 }
+
+import type { SchedaLezione } from "./schede";
+
+/** Le schede di tutte le lezioni, pronte da passare alle isole React. */
+export async function schedeLezioni(): Promise<SchedaLezione[]> {
+  const [materie, lezioni, quiz] = await Promise.all([tutteLeMaterie(), lezioniDi(), quizDisponibili()]);
+  const perId = new Map(materie.map((m) => [m.id, m.data]));
+  return lezioni.map((l) => {
+    const materia = materiaDiLezione(l);
+    const m = perId.get(materia);
+    return {
+      id: l.id,
+      materia,
+      nomeMateria: m?.nome ?? materia,
+      colore: m?.colore ?? "#3e4a52",
+      numero: l.data.numero,
+      titolo: l.data.titolo,
+      data: l.data.data,
+      haQuiz: quiz.has(l.id),
+      definizioni: contaDefinizioni(l),
+      percorsoLezione: percorsoLezione(l),
+      percorsoQuiz: percorsoQuiz(l),
+      percorsoFlashcard: `/flashcard/${materia}`,
+    };
+  });
+}

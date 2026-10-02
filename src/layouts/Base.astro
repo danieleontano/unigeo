@@ -51,8 +51,11 @@ const attuale = Astro.url.pathname.replace(import.meta.env.BASE_URL.replace(/\/$
         </nav>
       </div>
     </header>
-    <main class="mx-auto w-full max-w-3xl flex-1 px-4 pb-16 pt-5">
+    <main class="mx-auto w-full max-w-3xl flex-1 px-4 pb-10 pt-5">
       <slot />
     </main>
+    <footer class="mx-auto w-full max-w-3xl px-4 pb-6 font-sans text-xs text-muted print:hidden">
+      <a href={percorso("/impostazioni")} class="hover:text-slate">Impostazioni</a>
+    </footer>
   </body>
 </html>
