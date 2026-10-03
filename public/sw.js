@@ -2,7 +2,7 @@
 // senza rete (treno, aula senza campo). Niente libreria: poche righe.
 //  - asset con hash (/_astro/, font, icone, pdf): cache first, non cambiano mai;
 //  - pagine HTML: network first, con la copia in cache come ripiego.
-const VERSIONE = "unigeo-v1";
+const VERSIONE = "unigeo-v2";
 
 self.addEventListener("install", (e) => {
   e.waitUntil(self.skipWaiting());
@@ -14,7 +14,7 @@ self.addEventListener("activate", (e) => {
   );
 });
 
-const immutabile = (url) => /\/_astro\/|\/fonts?\/|\.(woff2?|svg|png|pdf|webmanifest)$/.test(url.pathname);
+const immutabile = (url) => /\/_astro\/|\/fonts?\/|\.(woff2?|svg|png|jpe?g|pdf|webmanifest)$/.test(url.pathname);
 
 self.addEventListener("fetch", (e) => {
   const { request } = e;

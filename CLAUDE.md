@@ -159,8 +159,27 @@ due settimane di fila salta, il problema non è nel codice.
   browser). TRAPPOLA CSS: i token Tailwind `--color-x: var(--x)` si risolvono
   sul `:root`; un contenitore che ridefinisce `--inchiostro` deve ridefinire
   anche `--color-inchiostro` ecc. (fatto in `.foglio` e `.campione-strato`).
-  Proposte in attesa di Daniele: «Riconosci questa pietra» con le SUE foto del
-  set di laboratorio, sismografo INGV live in home, scala del tempo ICS.
+- 2026-10-03 · Daniele ha scelto: foto da Wikimedia Commons subito, sismografo,
+  scala del tempo, frana. Costruiti:
+  · **Riconosci la pietra** (`/campionario`, `Riconosci.tsx`): 16 campioni (10
+    rocce, 6 minerali) in `content/campionario/campioni.json`; foto scaricate UNA
+    volta da `scripts/campionario.ts` (immagine principale della voce Wikipedia
+    EN, poi imageinfo su Commons; solo licenze libere; `fileCommons` forza un
+    file, `autoreFoto` corregge un autore illeggibile) in `public/campionario/`,
+    con credito in pagina. Testi «famiglia/caratteri» scritti da noi: da
+    rileggere con Daniele. Le foto del set di laboratorio si aggiungono allo
+    stesso JSON quando arrivano.
+  · **Scala del tempo** (`/tempo`): dati da `scripts/scala-tempo.ts` → Macrostrat
+    API (segue la carta ICS, CC-BY) → `content/tempo/scala.json`, nomi in
+    italiano, Adeano aggiunto come informale (4567→4031). Scala verticale
+    √età. Non scrivere età a memoria: rigenerare dallo script.
+  · **Sismografo** in Home (`Sismografo.tsx`): INGV FDSN (CORS *, formato text),
+    M≥2, box Italia, 7 giorni; ultima risposta in `unigeo.sismi.v1` per l'offline.
+    È l'UNICA chiamata di rete a runtime (eccezione voluta alla regola del kit).
+  · **Frana** (`Frana.astro`, `transition:persist`): entrando in /materie/<m>
+    gli strati crollano, `ev.loader` aspetta il crollo, dopo lo swap scivolano.
+  · Home: blocco «Laboratorio» (campionario, tempo, ispirazione); bottoni
+    dedicati in Geologia 1 e Paleontologia. SW v2 mette in cache anche i .jpg.
 - 2026-10-03 · Sync tra dispositivi: proposta Supabase gratuito offline-first,
   Daniele ha detto NO («non abbiamo più posto su Supabase»). Resta
   esporta/importa a mano; la regola «niente DB» del kit vale ancora. Da

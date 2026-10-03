@@ -5,6 +5,7 @@ import { ClientRouter } from "astro:transitions";
 import { percorso } from "@/lib/percorsi";
 import Strati from "@/components/Strati.astro";
 import Litologie from "@/components/Litologie.astro";
+import Frana from "@/components/Frana.astro";
 
 interface Props {
   titolo: string;
@@ -44,6 +45,7 @@ const attuale = Astro.url.pathname.replace(import.meta.env.BASE_URL.replace(/\/$
   </head>
   <body class="flex min-h-dvh flex-col">
     <Litologie />
+    <Frana transition:persist />
     <header class="sticky top-0 z-20 backdrop-blur print:hidden" style="background: color-mix(in srgb, var(--carta) 90%, transparent)" transition:name="barra" transition:persist>
       <div class:list={["mx-auto flex h-12 items-center justify-between px-4", largo ? "max-w-5xl" : "max-w-3xl"]}>
         <a href={percorso("/")} class="display text-[1.35rem] font-semibold tracking-tight text-inchiostro">

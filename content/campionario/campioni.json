@@ -1,0 +1,229 @@
+[
+  {
+    "id": "granito",
+    "nome": "Granito",
+    "voce": "Granite",
+    "tipo": "roccia",
+    "famiglia": "Magmatica intrusiva · acida",
+    "caratteri": "Olocristallino, grana medio-grossa, chiaro. Quarzo grigio vitreo, feldspato alcalino (spesso rosa) e plagioclasio bianco; biotite in lamelle nere.",
+    "foto": {
+      "file": "/campionario/granito.jpg",
+      "autore": "The stone gate",
+      "licenza": "CC BY-SA 4.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Bianco_Sardo_Granit_mit_polierter_Oberfl%C3%A4che.jpg"
+    }
+  },
+  {
+    "id": "diorite",
+    "nome": "Diorite",
+    "voce": "Diorite",
+    "tipo": "roccia",
+    "famiglia": "Magmatica intrusiva · intermedia",
+    "caratteri": "Olocristallino, \"sale e pepe\": plagioclasio bianco e anfibolo nero in quantità simili, quarzo scarso o assente.",
+    "foto": {
+      "file": "/campionario/diorite.jpg",
+      "autore": "Michael C. Rygel",
+      "licenza": "CC BY-SA 3.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Diorite2.tif"
+    }
+  },
+  {
+    "id": "gabbro",
+    "nome": "Gabbro",
+    "voce": "Gabbro",
+    "tipo": "roccia",
+    "famiglia": "Magmatica intrusiva · basica",
+    "caratteri": "Olocristallino, scuro, grana grossa. Plagioclasio calcico e pirosseno in prismi tozzi; niente quarzo.",
+    "foto": {
+      "file": "/campionario/gabbro.jpg",
+      "autore": "Darla Sondrol",
+      "licenza": "CC0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Gabbro_(GeoDIL_number_-_94).jpg"
+    }
+  },
+  {
+    "id": "peridotite",
+    "nome": "Peridotite",
+    "voce": "Peridotite",
+    "tipo": "roccia",
+    "famiglia": "Magmatica intrusiva · ultrafemica",
+    "caratteri": "Verde, densa, fatta soprattutto di olivina (40–90%) con pirosseni. È la roccia del mantello.",
+    "foto": {
+      "file": "/campionario/peridotite.jpg",
+      "autore": "Shannon Heinle",
+      "licenza": "CC0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Kilbourne_Hole_(GeoDIL_number_-_2302).jpg"
+    }
+  },
+  {
+    "id": "riolite",
+    "nome": "Riolite",
+    "voce": "Rhyolite",
+    "tipo": "roccia",
+    "famiglia": "Magmatica effusiva · acida",
+    "caratteri": "Equivalente effusivo del granito: chiara, spesso porfirica con fenocristalli di quarzo e feldspato in pasta di fondo fine, a volte con bande di flusso.",
+    "foto": {
+      "file": "/campionario/riolite.jpg",
+      "autore": "Benhoff",
+      "licenza": "CC BY-SA 3.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Loebejuener_porphyr_poliert.jpg"
+    }
+  },
+  {
+    "id": "andesite",
+    "nome": "Andesite",
+    "voce": "Andesite",
+    "tipo": "roccia",
+    "famiglia": "Magmatica effusiva · intermedia",
+    "caratteri": "Grigia, porfirica: fenocristalli di plagioclasio (e anfibolo o pirosseno) in una pasta di fondo afanitica.",
+    "fileCommons": "Porphyritic andesite (Boulder County, Colorado, USA).jpg",
+    "foto": {
+      "file": "/campionario/andesite.jpg",
+      "autore": "James St. John",
+      "licenza": "CC BY 2.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Porphyritic_andesite_(Boulder_County,_Colorado,_USA).jpg"
+    }
+  },
+  {
+    "id": "basalto",
+    "nome": "Basalto",
+    "voce": "Basalt",
+    "tipo": "roccia",
+    "famiglia": "Magmatica effusiva · basica",
+    "caratteri": "Scuro, a grana finissima, spesso vescicolare. Equivalente effusivo del gabbro; a volte fenocristalli di olivina.",
+    "foto": {
+      "file": "/campionario/basalto.jpg",
+      "autore": "James St. John",
+      "licenza": "CC BY 2.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Basalt_12_(48674276333).jpg"
+    }
+  },
+  {
+    "id": "ossidiana",
+    "nome": "Ossidiana",
+    "voce": "Obsidian",
+    "tipo": "roccia",
+    "famiglia": "Vetrosa non frammentaria",
+    "caratteri": "Vetro vulcanico nero e lucido, senza cristalli e quasi senza vescicole. Frattura concoide a spigoli taglienti.",
+    "foto": {
+      "file": "/campionario/ossidiana.jpg",
+      "autore": "Ji-Elle",
+      "licenza": "CC BY-SA 3.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Lipari-Obsidienne_(5).jpg"
+    },
+    "autoreFoto": "Ji-Elle"
+  },
+  {
+    "id": "pomice",
+    "nome": "Pomice",
+    "voce": "Pumice",
+    "tipo": "roccia",
+    "famiglia": "Vetrosa non frammentaria",
+    "caratteri": "Chiara e leggerissima: vescicole oltre il 50% del volume, tanto che galleggia.",
+    "foto": {
+      "file": "/campionario/pomice.jpg",
+      "autore": "User MPF on en.wikipedia",
+      "licenza": "CC BY-SA 3.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Teidepumice.jpg"
+    }
+  },
+  {
+    "id": "tufo",
+    "nome": "Tufo",
+    "voce": "Tuff",
+    "tipo": "roccia",
+    "famiglia": "Piroclastica",
+    "caratteri": "Ceneri vulcaniche consolidate: roccia porosa, tenera, spesso con frammenti di pomice e litici.",
+    "foto": {
+      "file": "/campionario/tufo.jpg",
+      "autore": "Ivan Fernanadez 1011",
+      "licenza": "CC BY-SA 4.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Guadalupe_Tuff.jpg"
+    }
+  },
+  {
+    "id": "quarzo",
+    "nome": "Quarzo",
+    "voce": "Quartz",
+    "tipo": "minerale",
+    "famiglia": "Tettosilicato · SiO₂",
+    "caratteri": "Lucentezza vitrea, durezza 7 (riga il vetro), niente sfaldatura: frattura concoide. In cristallo, prisma esagonale con punta.",
+    "foto": {
+      "file": "/campionario/quarzo.jpg",
+      "autore": "Didier Descouens",
+      "licenza": "CC BY-SA 4.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Quartz_Br%C3%A9sil.jpg"
+    }
+  },
+  {
+    "id": "olivina",
+    "nome": "Olivina",
+    "voce": "Olivine",
+    "tipo": "minerale",
+    "famiglia": "Nesosilicato · (Mg,Fe)₂SiO₄",
+    "caratteri": "Verde oliva, granulare, vitrea. Il femico che cristallizza per primo; tipico di basalti e peridotiti.",
+    "foto": {
+      "file": "/campionario/olivina.jpg",
+      "autore": "Robert M. Lavinsky",
+      "licenza": "CC BY-SA 3.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Olivine-gem7-10a.jpg"
+    }
+  },
+  {
+    "id": "biotite",
+    "nome": "Biotite",
+    "voce": "Biotite",
+    "tipo": "minerale",
+    "famiglia": "Fillosilicato · mica scura",
+    "caratteri": "Nera o bruna, in lamine elastiche che si sfogliano con l'unghia: sfaldatura basale perfetta.",
+    "foto": {
+      "file": "/campionario/biotite.jpg",
+      "autore": "Fred Kruijen",
+      "licenza": "CC BY-SA 3.0 nl",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Biotite_aggregate_-_Ochtendung,_Eifel,_Germany.jpg"
+    }
+  },
+  {
+    "id": "ortoclasio",
+    "nome": "Ortoclasio",
+    "voce": "Orthoclase",
+    "tipo": "minerale",
+    "famiglia": "Tettosilicato · feldspato alcalino",
+    "caratteri": "Bianco, rosato o carnicino, durezza 6, due sfaldature quasi ad angolo retto. Il 6 della scala di Mohs.",
+    "foto": {
+      "file": "/campionario/ortoclasio.jpg",
+      "autore": "Didier Descouens",
+      "licenza": "CC BY-SA 4.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:OrthoclaseBresil.jpg"
+    }
+  },
+  {
+    "id": "calcite",
+    "nome": "Calcite",
+    "voce": "Calcite",
+    "tipo": "minerale",
+    "famiglia": "Carbonato · CaCO₃",
+    "caratteri": "Durezza 3 (si riga col ferro), sfaldatura romboedrica perfetta, effervescenza viva con HCl diluito a freddo.",
+    "fileCommons": "CalcitePau.jpg",
+    "foto": {
+      "file": "/campionario/calcite.jpg",
+      "autore": "Didier Descouens",
+      "licenza": "CC BY-SA 4.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:CalcitePau.jpg"
+    }
+  },
+  {
+    "id": "gesso",
+    "nome": "Gesso",
+    "voce": "Gypsum",
+    "tipo": "minerale",
+    "famiglia": "Solfato · CaSO₄·2H₂O",
+    "caratteri": "Tenerissimo: si riga con l'unghia (durezza 2). Trasparente o bianco, a volte in cristalli a «coda di rondine».",
+    "foto": {
+      "file": "/campionario/gesso.jpg",
+      "autore": "Didier Descouens",
+      "licenza": "CC BY-SA 4.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Gypse_Caresse.jpg"
+    }
+  }
+]

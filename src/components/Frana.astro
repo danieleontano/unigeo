@@ -1,0 +1,68 @@
+---
+// La frana: entrando in una materia, la pagina viene coperta da strati che
+// crollano dall'alto, la materia nuova compare sotto e gli strati scivolano
+// via verso il basso. Breve (≈0,8 s), solo verso /materie/<m>, mai con
+// «riduci movimento».
+---
+
+<div id="frana" aria-hidden="true">
+  {Array.from({ length: 7 }).map((_, i) => <span style={`--i:${i}`} />)}
+</div>
+
+<style is:global>
+  #frana { position: fixed; inset: 0; z-index: 60; pointer-events: none; display: none; flex-direction: column; }
+  #frana.attiva { display: flex; }
+  #frana span {
+    flex: 1;
+    margin: -3px -4%;
+    background-color: var(--c, #3a2d23);
+    background-image: var(--grana-pietra);
+    background-size: 180px 180px;
+    border-top: 2px solid rgba(0, 0, 0, 0.35);
+    transform: translateY(-120vh) rotate(var(--r, 0deg));
+  }
+  #frana span:nth-child(1) { --c: #5a4129; --r: -2deg; }
+  #frana span:nth-child(2) { --c: #b5552a; --r: 1.5deg; }
+  #frana span:nth-child(3) { --c: #3e4a52; --r: -1deg; }
+  #frana span:nth-child(4) { --c: #1f6f78; --r: 2deg; }
+  #frana span:nth-child(5) { --c: #6a4c93; --r: -1.5deg; }
+  #frana span:nth-child(6) { --c: #3f6e3a; --r: 1deg; }
+  #frana span:nth-child(7) { --c: #2a211a; --r: -0.5deg; }
+  #frana.crolla span { animation: frana-crolla 0.42s cubic-bezier(0.55, 0, 0.9, 0.5) both; animation-delay: calc((6 - var(--i)) * 35ms); }
+  #frana.scivola span { animation: frana-scivola 0.5s cubic-bezier(0.4, 0, 0.8, 0.6) both; animation-delay: calc(var(--i) * 30ms); }
+  @keyframes frana-crolla {
+    0% { transform: translateY(-120vh) rotate(var(--r)); }
+    80% { transform: translateY(6px) rotate(calc(var(--r) * -0.4)); }
+    100% { transform: translateY(0) rotate(0deg); }
+  }
+  @keyframes frana-scivola {
+    from { transform: translateY(0) rotate(0deg); }
+    to { transform: translateY(120vh) rotate(calc(var(--r) * 3)); }
+  }
+</style>
+
+<script>
+  const frana = document.getElementById("frana")!;
+  const verso = /\/materie\/[^/]+\/?$/;
+  let attesa: Promise<void> | null = null;
+
+  document.addEventListener("astro:before-preparation", (e) => {
+    const ev = e as unknown as { to: URL; from: URL; loader: () => Promise<void> };
+    if (!verso.test(ev.to.pathname) || ev.to.pathname === ev.from.pathname) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    frana.classList.remove("scivola");
+    frana.classList.add("attiva", "crolla");
+    attesa = new Promise((ok) => setTimeout(ok, 640));
+    const caricaOriginale = ev.loader;
+    ev.loader = async () => {
+      await Promise.all([caricaOriginale(), attesa]);
+    };
+  });
+
+  document.addEventListener("astro:after-swap", () => {
+    if (!frana.classList.contains("crolla")) return;
+    frana.classList.remove("crolla");
+    frana.classList.add("scivola");
+    setTimeout(() => frana.classList.remove("attiva", "scivola"), 760);
+  });
+</script>

@@ -34,6 +34,8 @@ const nQuiz = lezioni.filter((l) => quiz.has(l.id)).length;
           {definizioni > 0 && <a href={percorso(`/flashcard/${materia.id}`)} class="bottone bottone-vuoto">Campioni · {definizioni}</a>}
           {nQuiz > 0 && <a href={percorso(`/quiz/${materia.id}`)} class="bottone bottone-vuoto">Quiz misto · {nQuiz} {nQuiz === 1 ? "lezione" : "lezioni"}</a>}
           {nQuiz > 0 && <a href={percorso(`/ripasso#${materia.id}`)} class="bottone bottone-vuoto">Ripasso</a>}
+          {materia.id === "geologia-1" && <a href={percorso("/campionario")} class="bottone bottone-vuoto">Riconosci la pietra</a>}
+          {materia.id === "paleontologia" && <a href={percorso("/tempo")} class="bottone bottone-vuoto">Scala del tempo</a>}
         </p>
       )}
     </div>
