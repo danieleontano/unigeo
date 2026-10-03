@@ -108,8 +108,11 @@ export function Lettore({ chiave, capitoli }: Props) {
 
   return (
     <>
-      {/* barra di avanzamento sotto l'header */}
-      <div className="fixed left-0 top-0 z-30 h-[3px] bg-materia transition-[width] duration-150" style={{ width: `${avanzamento * 100}%` }} aria-hidden="true" />
+      {/* barra di avanzamento in alto (telefono) e carota di lettura a sinistra (schermo largo) */}
+      <div className="fixed left-0 top-0 z-30 h-[3px] bg-materia transition-[width] duration-150 lg:hidden" style={{ width: `${avanzamento * 100}%` }} aria-hidden="true" />
+      <div className="carota hidden lg:block" aria-hidden="true" title={`Letto il ${Math.round(avanzamento * 100)}%`}>
+        <div className="riempimento" style={{ height: `${avanzamento * 100}%` }} />
+      </div>
 
       {/* barra del capitolo corrente + controlli */}
       <div className="sticky top-12 z-20 -mx-4 flex items-center gap-2 border-b border-filetto px-4 py-1.5 font-sans text-xs backdrop-blur" style={{ background: "color-mix(in srgb, var(--carta) 88%, transparent)" }}>

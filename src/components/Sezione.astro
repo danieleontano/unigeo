@@ -1,0 +1,83 @@
+---
+// La sezione geologica della home: le lezioni come strati, la più recente in
+// cima, ognuno con la litologia della sua materia, un bordo ondulato, il
+// righello del tempo a sinistra e un fossile che affiora. Scorrere è scendere.
+import { percorso } from "@/lib/percorsi";
+import { dataBreve } from "@/lib/date";
+import { materiaDiLezione, percorsoLezione, percorsoQuiz, quizDisponibili, type Lezione, type Materia } from "@/lib/contenuti";
+
+interface Props {
+  lezioni: Lezione[];
+  materie: Materia[];
+}
+const { lezioni, materie } = Astro.props;
+const quiz = await quizDisponibili();
+const perId = new Map(materie.map((m) => [m.id, m.data]));
+
+const LITOLOGIA: Record<string, string> = {
+  "geologia-1": "lit-basalto",
+  paleontologia: "lit-calcare",
+  "geografia-fisica": "lit-arenaria",
+  chimica: "lit-conglomerato",
+  matematica: "lit-marna",
+};
+const FOSSILI = ["fossile-ammonite", "fossile-trilobite", "fossile-felce", "fossile-conchiglia", "fossile-impronta", "fossile-dente"];
+const strati = [...lezioni].reverse();
+---
+
+<section class="sezione" aria-label="Le lezioni come strati, dalla più recente">
+  {strati.map((l, i) => {
+    const materia = materiaDiLezione(l);
+    const m = perId.get(materia);
+    const peso = Math.max(1, Math.min(2.2, (l.body?.length ?? 6000) / 12000));
+    const altezza = Math.round(150 * peso);
+    const fossile = FOSSILI[(i * 7 + l.data.numero) % FOSSILI.length];
+    const destra = i % 2 === 0;
+    return (
+      <div
+        class="strato"
+        style={`--materia:${m?.colore ?? "#3e4a52"};--spinta:${8 + (i % 3) * 7}px;min-height:${altezza}px`}
+      >
+        <div class="roccia" />
+        <svg class="litologia parallasse" aria-hidden="true"><rect width="100%" height="100%" fill={`url(#${LITOLOGIA[materia] ?? "lit-marna"})`} /></svg>
+        <svg class="onda" viewBox="0 0 1440 24" preserveAspectRatio="none" aria-hidden="true">
+          <path d={`M0 24 L0 ${12 + (i % 2) * 6} C 240 ${2 + (i % 3) * 4}, 480 ${20 - (i % 2) * 8}, 720 ${10 + (i % 3) * 3} S 1200 ${18 - (i % 2) * 10}, 1440 ${8 + (i % 3) * 5} L1440 24Z`} />
+        </svg>
+
+        <div class="righello" aria-hidden="true">
+          <span class="tacca" style="top:38px" />
+          <span class="data" style="top:38px">{dataBreve(l.data.data)}</span>
+        </div>
+
+        <svg
+          class="fossile"
+          style={`--misura:${110 + (i % 3) * 36}px;--rotazione:${(i % 2 ? -1 : 1) * (6 + (i % 4) * 5)}deg;--opacita-fossile:.8;${destra ? "right:3%" : "left:14%"};top:${10 + (i % 3) * 12}%`}
+          aria-hidden="true"
+        >
+          <use href={`#${fossile}`} />
+        </svg>
+
+        <div class:list={["relative mx-auto flex max-w-5xl items-center px-4 pl-14 sm:pl-16", destra ? "justify-start" : "justify-end"]} style={`min-height:${altezza}px`}>
+          <a href={percorso(percorsoLezione(l))} class="campione-strato affiora block w-full max-w-md p-4 sm:p-5">
+            <p class="etichetta" style="color:var(--materia)">{m?.nome} · Lezione {l.data.numero}</p>
+            <h3 class="mt-1 text-xl leading-tight sm:text-2xl">{l.data.titolo}</h3>
+            <p class="mt-1.5 line-clamp-2 text-sm text-grafite">{l.data.nota ?? l.data.fonte ?? ""}</p>
+            <p class="mt-3 flex flex-wrap gap-2 font-sans text-xs">
+              <span class="rounded-md border border-filetto px-2 py-1 text-grafite">Leggi</span>
+              {quiz.has(l.id) && <span class="rounded-md bg-lava px-2 py-1 font-medium text-white" data-href={percorso(percorsoQuiz(l))}>Quiz</span>}
+            </p>
+          </a>
+        </div>
+      </div>
+    );
+  })}
+
+  <div class="strato" style="--materia:#3e4a52;min-height:140px">
+    <div class="roccia" style="background:#0c0e10" />
+    <svg class="litologia" aria-hidden="true"><rect width="100%" height="100%" fill="url(#lit-basalto)" /></svg>
+    <svg class="onda" viewBox="0 0 1440 24" preserveAspectRatio="none" aria-hidden="true"><path d="M0 24 L0 14 C 300 4, 600 22, 900 10 S 1300 18, 1440 6 L1440 24Z" style="fill:#0c0e10" /></svg>
+    <div class="relative mx-auto flex h-[140px] max-w-5xl items-center px-4 pl-14 sm:pl-16">
+      <p class="etichetta affiora">Basamento · inizio del semestre, 22 settembre 2026</p>
+    </div>
+  </div>
+</section>

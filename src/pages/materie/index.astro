@@ -1,5 +1,7 @@
 ---
 import Base from "@/layouts/Base.astro";
+import Campione from "@/components/Campione.astro";
+import Inclina from "@/components/Inclina.astro";
 import Colonna from "@/components/Colonna.astro";
 import { percorso } from "@/lib/percorsi";
 import { contaDefinizioni, lezioniDi, quizDisponibili, tutteLeMaterie } from "@/lib/contenuti";
@@ -9,56 +11,43 @@ const lezioni = await lezioniDi();
 const quiz = await quizDisponibili();
 const righe = materie.map((m) => {
   const mie = lezioni.filter((l) => l.id.startsWith(`${m.id}/`));
-  return {
-    m,
-    mie,
-    nQuiz: mie.filter((l) => quiz.has(l.id)).length,
-    nDef: mie.reduce((s, l) => s + contaDefinizioni(l), 0),
-  };
+  return { m, mie, nQuiz: mie.filter((l) => quiz.has(l.id)).length, nDef: mie.reduce((s, l) => s + contaDefinizioni(l), 0) };
 });
-const massimo = Math.max(1, ...righe.map((r) => r.mie.length));
-const ALTEZZA = 220;
 ---
 
-<Base titolo="Materie" largo>
-  <p class="etichetta">Correlazione stratigrafica</p>
+<Base titolo="Materie" tema="sottosuolo" largo>
+  <p class="etichetta">La teca dei campioni</p>
   <h1 class="mt-1 text-[2rem] leading-tight">Materie</h1>
+  <p class="mt-1 font-sans text-xs text-grafite">Muovi il puntatore o inclina il telefono.</p>
 
-  {/* Le cinque colonne affiancate, allineate alla base come in una correlazione: si legge subito dove si è depositato di più. */}
-  <div class="deposita mt-8 grid grid-cols-5 gap-2 border-b border-filetto pb-3 sm:gap-4">
-    {righe.map(({ m, mie }) => (
-      <a href={percorso(`/materie/${m.id}`)} class="group flex flex-col items-center gap-2" title={m.data.nome} style={`--materia:${m.data.colore}`}>
-        <div class="flex w-full items-end" style={`height:${ALTEZZA}px`}>
-          <div class="w-full transition duration-300 group-hover:-translate-y-1">
-            <Colonna lezioni={mie} colore={m.data.colore} modo="mini" altezza={Math.round(Math.max(14, (mie.length / massimo) * ALTEZZA))} />
-          </div>
-        </div>
-        <img src={percorso(`/icone/${m.data.icona}`)} alt="" width="32" height="32" class="h-8 w-8" />
-        <span class="display text-base font-semibold text-materia">{mie.length}</span>
-      </a>
-    ))}
-  </div>
-
-  <ol class="deposita mt-2 divide-y divide-filetto">
+  <ul class="deposita mt-8 grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
     {righe.map(({ m, mie, nQuiz, nDef }) => (
       <li style={`--materia:${m.data.colore}`}>
-        <a href={percorso(`/materie/${m.id}`)} class="riga py-2.5">
-          <span class="h-9 w-2 shrink-0 rounded-sm campitura-lineato" />
-          <span class="min-w-0 flex-1">
-            <span class="block truncate text-lg leading-tight display">{m.data.nome}</span>
-            <span class="block truncate text-sm text-grafite">{m.data.docenti.length ? m.data.docenti.join(", ") : "Docente da definire"}</span>
-          </span>
-          <span class="shrink-0 text-right font-sans text-xs text-grafite">
-            <span class="display text-base font-semibold text-materia">{mie.length}</span> lez.
-            {nQuiz > 0 && <> · <span class="display text-base font-semibold text-materia">{nQuiz}</span> quiz</>}
-            {nDef > 0 && <span class="hidden sm:inline"> · <span class="display text-base font-semibold text-materia">{nDef}</span> campioni</span>}
-          </span>
+        <a href={percorso(`/materie/${m.id}`)} class="group block">
+          <div class="flex justify-center py-2">
+            <Campione colore={m.data.colore} materia={m.id} misura={200} />
+          </div>
+          <div class="mt-4 flex items-end gap-4">
+            <div class="w-10 shrink-0">
+              <Colonna lezioni={mie} colore={m.data.colore} modo="mini" altezza={Math.max(10, mie.length * 10)} />
+            </div>
+            <div class="min-w-0 flex-1">
+              <h2 class="text-xl leading-tight">{m.data.nome}</h2>
+              <p class="truncate text-sm text-grafite">{m.data.docenti.length ? m.data.docenti.join(", ") : "Docente da definire"}</p>
+              <p class="mt-1 font-sans text-xs text-grafite">
+                <span class="display text-base font-semibold text-materia">{mie.length}</span> lezioni
+                {nQuiz > 0 && <> · <span class="display text-base font-semibold text-materia">{nQuiz}</span> quiz</>}
+                {nDef > 0 && <> · <span class="display text-base font-semibold text-materia">{nDef}</span> campioni</>}
+              </p>
+            </div>
+          </div>
         </a>
       </li>
     ))}
-  </ol>
+  </ul>
 
-  <p class="mt-10 font-sans text-sm text-grafite">
+  <p class="mt-14 font-sans text-sm text-grafite">
     <a href={percorso("/pagine/libri-di-testo")} class="text-inchiostro underline decoration-filetto underline-offset-4 hover:decoration-inchiostro">Libri di testo del primo anno</a>
   </p>
+  <Inclina />
 </Base>

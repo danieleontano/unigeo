@@ -17,7 +17,7 @@ const d = materia.data;
 const definizioni = lezioni.reduce((s, l) => s + contaDefinizioni(l), 0);
 ---
 
-<Base titolo={d.nome} colore={d.colore} largo>
+<Base tema="sottosuolo" titolo={d.nome} colore={d.colore} largo>
   <header class="flex items-start gap-4">
     <img src={percorso(`/icone/${d.icona}`)} alt="" width="56" height="56" class="h-14 w-14 shrink-0" />
     <div class="min-w-0 flex-1">
@@ -72,6 +72,7 @@ const definizioni = lezioni.reduce((s, l) => s + contaDefinizioni(l), 0);
 </Base>
 
 <script>
+  function avvia() {
   const filtro = document.getElementById("filtro") as HTMLInputElement | null;
   const lista = document.getElementById("lezioni");
   const vuoto = document.getElementById("vuoto");
@@ -93,4 +94,6 @@ const definizioni = lezioni.reduce((s, l) => s + contaDefinizioni(l), 0);
     Array.from(lista.children).reverse().forEach((r) => lista.appendChild(r));
     ordine.querySelectorAll<HTMLElement>("[data-asc],[data-desc]").forEach((s) => (s.hidden = !s.hidden));
   });
+  }
+  document.addEventListener("astro:page-load", avvia);
 </script>

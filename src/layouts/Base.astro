@@ -1,18 +1,25 @@
 ---
 import "@/styles/globale.css";
+import "@/styles/sottosuolo.css";
+import { ClientRouter } from "astro:transitions";
 import { percorso } from "@/lib/percorsi";
 import Strati from "@/components/Strati.astro";
+import Litologie from "@/components/Litologie.astro";
 
 interface Props {
   titolo: string;
   descrizione?: string;
   /** Colore della materia: tinge titoli e accenti della pagina. */
   colore?: string;
-  /** Il Libro gestisce da sé larghezza e sfondo. */
+  /** Colonna larga (home, materie, Libro). */
   largo?: boolean;
+  /** «carta» per leggere (Libro, lezioni), «sottosuolo» per scoprire (home, materie, quiz…). */
+  tema?: "carta" | "sottosuolo";
+  /** Senza riga in alto né piede: la pagina fa da sé (home). */
+  nudo?: boolean;
 }
 
-const { titolo, descrizione, colore, largo = false } = Astro.props;
+const { titolo, descrizione, colore, largo = false, tema = "carta", nudo = false } = Astro.props;
 const voci = [
   { href: "/", testo: "Taccuino" },
   { href: "/materie", testo: "Materie" },
@@ -23,20 +30,22 @@ const attuale = Astro.url.pathname.replace(import.meta.env.BASE_URL.replace(/\/$
 ---
 
 <!doctype html>
-<html lang="it" style={colore ? `--materia:${colore}` : undefined}>
+<html lang="it" style={colore ? `--materia:${colore}` : undefined} data-tema={tema}>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#f6f1e7" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content={tema === "sottosuolo" ? "#111417" : "#f6f1e7"} />
     <link rel="icon" type="image/svg+xml" href={percorso("/favicon.svg")} />
     <link rel="apple-touch-icon" href={percorso("/icone/app-512.png")} />
     <link rel="manifest" href={percorso("/manifest.webmanifest")} />
     <title>{titolo} · UniGeo</title>
     {descrizione && <meta name="description" content={descrizione} />}
+    <ClientRouter />
   </head>
   <body class="flex min-h-dvh flex-col">
-    <header class="sticky top-0 z-20 bg-carta/92 backdrop-blur print:hidden">
-      <div class="mx-auto flex h-12 max-w-5xl items-center justify-between px-4">
+    <Litologie />
+    <header class="sticky top-0 z-20 backdrop-blur print:hidden" style="background: color-mix(in srgb, var(--carta) 90%, transparent)" transition:name="barra" transition:persist>
+      <div class:list={["mx-auto flex h-12 items-center justify-between px-4", largo ? "max-w-5xl" : "max-w-3xl"]}>
         <a href={percorso("/")} class="display text-[1.35rem] font-semibold tracking-tight text-inchiostro">
           Uni<span class="text-lava">Geo</span>
         </a>
@@ -58,10 +67,10 @@ const attuale = Astro.url.pathname.replace(import.meta.env.BASE_URL.replace(/\/$
       </div>
       <Strati />
     </header>
-    <main class:list={["mx-auto w-full flex-1 px-4 pb-12 pt-6", largo ? "max-w-5xl" : "max-w-3xl"]}>
+    <main class:list={["mx-auto w-full flex-1", nudo ? "max-w-none" : largo ? "max-w-5xl px-4 pb-12 pt-6" : "max-w-3xl px-4 pb-12 pt-6"]}>
       <slot />
     </main>
-    <footer class="mx-auto w-full max-w-3xl px-4 pb-6 font-sans text-xs text-grafite print:hidden">
+    <footer class:list={["mx-auto w-full px-4 pb-6 font-sans text-xs text-grafite print:hidden", largo ? "max-w-5xl" : "max-w-3xl"]}>
       <a href={percorso("/impostazioni")} class="hover:text-inchiostro">Impostazioni</a>
     </footer>
     {import.meta.env.PROD && (

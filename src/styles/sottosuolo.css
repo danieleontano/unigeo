@@ -1,0 +1,127 @@
+/* ========================================================================
+   SOTTOSUOLO — il tema scuro di home, materie, quiz, campioni, ripasso.
+   «Chiaro per leggere, scuro per scoprire» (03/10/2026).
+   Caricato dopo globale.css dal layout.
+   ======================================================================== */
+:root[data-tema="sottosuolo"] {
+  --carta: #111417;
+  --sabbia: #1b2024;
+  --inchiostro: #efe7d6;
+  --grafite: #a3abb0;
+  --filetto: #2a3136;
+  --color-lava: #e2561f;
+  --color-ocra: #d7b05a;
+  color-scheme: dark;
+}
+:root[data-tema="sottosuolo"] body {
+  background:
+    radial-gradient(1200px 600px at 50% -10%, color-mix(in srgb, var(--color-lava) 14%, transparent), transparent 70%),
+    var(--carta);
+}
+:root[data-tema="sottosuolo"] .bottone-vuoto { color: var(--inchiostro); }
+:root[data-tema="sottosuolo"] .appunti figure { background: #1b1f22; }
+:root[data-tema="sottosuolo"] .appunti th { border-bottom-color: var(--inchiostro); }
+:root[data-tema="sottosuolo"] .appunti em, :root[data-tema="sottosuolo"] .appunti td:first-child { color: #d5dde2; }
+:root[data-tema="sottosuolo"] input, :root[data-tema="sottosuolo"] select { background: var(--sabbia); color: var(--inchiostro); border-color: var(--filetto); }
+
+/* Il foglio da campo: una scheda di carta chiara appoggiata sul buio. */
+.foglio {
+  --carta: #f6f1e7; --sabbia: #eadfcb; --inchiostro: #1f2326; --grafite: #5e6568; --filetto: #d6cbb6;
+  background: var(--carta);
+  color: var(--inchiostro);
+  color-scheme: light;
+  border-radius: 0.75rem;
+  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.8), 0 1px 0 rgba(255, 255, 255, 0.35) inset;
+  position: relative;
+}
+.foglio::before {
+  content: ""; position: absolute; left: 1rem; right: 1rem; top: 0.45rem; height: 0.3rem;
+  background-image: radial-gradient(circle, rgba(0, 0, 0, 0.18) 1.6px, transparent 1.9px);
+  background-size: 14px 100%;
+}
+.foglio input { background: #fff; color: var(--inchiostro); border-color: var(--filetto); }
+
+/* ------------------------------------------------------------------------
+   Animazioni guidate dallo scroll: parallasse degli strati e affioramenti.
+   Dove non sono supportate tutto è semplicemente visibile.
+   ------------------------------------------------------------------------ */
+@keyframes affiora { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: none; } }
+@keyframes parallasse { from { transform: translateY(calc(var(--spinta, 20px) * -1)); } to { transform: translateY(var(--spinta, 20px)); } }
+@keyframes emerge { from { opacity: 0; transform: rotate(-14deg) translateY(40px) scale(0.85); } to { opacity: var(--opacita-fossile, 0.9); transform: rotate(var(--rotazione, 0deg)); } }
+@supports (animation-timeline: view()) {
+  .affiora { animation: affiora linear both; animation-timeline: view(); animation-range: entry 0% entry 65%; }
+  .parallasse { animation: parallasse linear both; animation-timeline: view(); animation-range: cover 0% cover 100%; }
+  .fossile { animation: emerge linear both; animation-timeline: view(); animation-range: entry 0% cover 45%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .affiora, .parallasse, .fossile { animation: none !important; }
+}
+
+/* ------------------------------------------------------------------------
+   La sezione geologica (home)
+   ------------------------------------------------------------------------ */
+.sezione { position: relative; isolation: isolate; overflow: hidden; }
+.strato { position: relative; color: var(--materia); }
+.strato .roccia { position: absolute; inset: 0; z-index: -2; background: color-mix(in srgb, var(--materia) 26%, var(--carta)); }
+.strato .litologia { position: absolute; inset: -40px 0; z-index: -1; width: 100%; height: calc(100% + 80px); opacity: 0.55; }
+.strato .onda { position: absolute; left: 0; right: 0; top: -22px; height: 24px; width: 100%; display: block; z-index: -1; }
+.strato .onda path { fill: color-mix(in srgb, var(--materia) 26%, var(--carta)); }
+.righello { position: absolute; left: 0; top: 0; bottom: 0; width: 2.75rem; border-right: 1px solid color-mix(in srgb, var(--inchiostro) 30%, transparent); z-index: 1; }
+.righello .tacca { position: absolute; left: 0; right: 0; height: 1px; background: color-mix(in srgb, var(--inchiostro) 45%, transparent); }
+.righello .tacca::after { content: ""; position: absolute; right: -3px; top: -2px; width: 5px; height: 5px; border-radius: 50%; background: var(--materia); }
+.righello .data { position: absolute; right: 0.5rem; top: 46px; font-family: var(--font-sans); font-size: 0.6rem; letter-spacing: 0.08em; color: var(--grafite); writing-mode: vertical-rl; transform: rotate(180deg); }
+.campione-strato { color: var(--inchiostro); background: color-mix(in srgb, var(--carta) 82%, transparent); backdrop-filter: blur(6px); border: 1px solid color-mix(in srgb, var(--materia) 45%, transparent); border-radius: 0.75rem; box-shadow: 0 20px 40px -24px rgba(0, 0, 0, 0.9); transition: transform 0.25s var(--ease-out-quint), border-color 0.25s; }
+.campione-strato:hover { transform: translateY(-3px); border-color: var(--materia); }
+.fossile { position: absolute; width: var(--misura, 110px); height: var(--misura, 110px); color: color-mix(in srgb, var(--materia) 35%, var(--inchiostro)); pointer-events: none; z-index: 0; filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.6)); }
+
+/* ------------------------------------------------------------------------
+   Campioni di roccia (materie): facce in 3D leggero, inclinazione via --rx/--ry
+   ------------------------------------------------------------------------ */
+.campione-scena { perspective: 900px; }
+.campione { transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); transform-style: preserve-3d; transition: transform 0.12s linear; will-change: transform; }
+.campione svg { filter: drop-shadow(0 26px 30px rgba(0, 0, 0, 0.6)); }
+.campione .riflesso { position: absolute; inset: 0; background: radial-gradient(circle at calc(50% + var(--ry, 0deg) * 1.5) calc(45% - var(--rx, 0deg) * 1.5), rgba(255, 255, 255, 0.22), transparent 42%); mix-blend-mode: screen; pointer-events: none; border-radius: 40%; }
+
+/* ------------------------------------------------------------------------
+   Quiz: il campione che entra girando, la crepa, il bagliore, Mohs
+   ------------------------------------------------------------------------ */
+@keyframes entra-girando { from { opacity: 0; transform: rotate(-6deg) translateY(30px) scale(0.94); } to { opacity: 1; transform: none; } }
+.entra-girando { animation: entra-girando 0.55s var(--ease-out-quint) both; }
+@keyframes crepa { 0%, 100% { transform: translateX(0); } 15% { transform: translateX(-7px) rotate(-0.6deg); } 30% { transform: translateX(6px) rotate(0.5deg); } 45% { transform: translateX(-4px); } 60% { transform: translateX(3px); } 75% { transform: translateX(-1px); } }
+.crepa { animation: crepa 0.5s ease-out both; }
+.crepa::after { content: ""; position: absolute; inset: 0; pointer-events: none; border-radius: inherit; background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 120' preserveAspectRatio='none'><path d='M10 0 L40 30 L30 60 L70 90 L60 120 M120 0 L140 40 L110 70 L150 120 M190 0 L170 50 L200 80' fill='none' stroke='%23e2561f' stroke-width='1.4' opacity='.75'/></svg>") center / 100% 100% no-repeat; animation: crepa-appare 0.6s ease-out both; }
+@keyframes crepa-appare { 0% { opacity: 0; } 30% { opacity: 1; } 100% { opacity: 0.6; } }
+@keyframes bagliore { 0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-muschio) 70%, transparent); } 100% { box-shadow: 0 0 0 22px transparent; } }
+.bagliore { animation: bagliore 0.9s ease-out both; }
+.mohs { display: grid; grid-template-columns: repeat(10, 1fr); gap: 3px; }
+.mohs span { height: 10px; border-radius: 2px; background: var(--filetto); transition: background 0.3s, transform 0.3s; }
+.mohs span.acceso { background: linear-gradient(90deg, var(--color-ocra), var(--color-lava)); transform: scaleY(1.4); }
+
+/* ------------------------------------------------------------------------
+   Cassettiera dei campioni (flashcard): cartellino da museo, giro in 3D
+   ------------------------------------------------------------------------ */
+.cassetto { background: linear-gradient(180deg, #23292e, #171b1f); border: 1px solid #343c42; border-radius: 0.9rem; box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.05), 0 24px 48px -30px rgba(0, 0, 0, 0.9); }
+.cassetto .maniglia { width: 54px; height: 6px; border-radius: 3px; background: linear-gradient(90deg, #8a7a52, #d7b05a, #8a7a52); margin: 0 auto; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.6); }
+.cartellino-scena { perspective: 1200px; }
+.cartellino { position: relative; transform-style: preserve-3d; transition: transform 0.6s var(--ease-out-quint); }
+.cartellino.girato { transform: rotateY(180deg); }
+.cartellino .faccia { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 0.6rem; }
+.cartellino .retro { transform: rotateY(180deg); }
+.cartellino-carta { background: #f6f1e7; color: #1f2326; color-scheme: light; clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 18px, 100% 100%, 0 100%); box-shadow: 0 20px 40px -24px rgba(0, 0, 0, 0.9); }
+.cartellino-carta::before { content: ""; position: absolute; left: 50%; top: 10px; width: 10px; height: 10px; border-radius: 50%; background: #111417; transform: translateX(-50%); box-shadow: inset 0 0 0 2px #d7b05a; }
+@keyframes vola-destra { to { transform: translateX(140%) rotate(16deg); opacity: 0; } }
+@keyframes vola-sinistra { to { transform: translateX(-140%) rotate(-16deg); opacity: 0; } }
+.vola-destra { animation: vola-destra 0.5s ease-in both; }
+.vola-sinistra { animation: vola-sinistra 0.5s ease-in both; }
+
+/* ------------------------------------------------------------------------
+   Carota di lettura (Libro)
+   ------------------------------------------------------------------------ */
+.carota { position: fixed; left: 10px; top: 5.5rem; bottom: 1.5rem; width: 14px; border-radius: 7px; border: 1px solid var(--color-filetto); background: color-mix(in srgb, var(--color-sabbia) 60%, transparent); overflow: hidden; z-index: 15; }
+.carota .riempimento { position: absolute; left: 0; right: 0; top: 0; background-color: color-mix(in srgb, var(--materia) 75%, transparent); background-image: repeating-linear-gradient(0deg, color-mix(in srgb, var(--inchiostro) 25%, transparent) 0 1px, transparent 1px 6px); transition: height 0.2s linear; }
+
+/* Transizioni fra pagine: le viste scorrono come strati */
+::view-transition-old(root) { animation: 0.22s ease-out both fuori; }
+::view-transition-new(root) { animation: 0.32s var(--ease-out-quint) both dentro; }
+@keyframes fuori { to { opacity: 0; transform: translateY(-10px); } }
+@keyframes dentro { from { opacity: 0; transform: translateY(14px); } }

@@ -7,7 +7,7 @@ const lezioni = await schedeLezioni();
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 ---
 
-<Base titolo="Ripasso">
+<Base tema="sottosuolo" titolo="Ripasso">
   <h1 class="text-2xl font-semibold">Ripasso</h1>
   <p class="mt-1 text-sm text-muted">Una riga per lezione con quiz: scatola, scadenza, rimanda o anticipa.</p>
   <Ripasso client:load lezioni={lezioni} base={base} />

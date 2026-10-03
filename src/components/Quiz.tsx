@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { aggiornaStato, useIdratato, useStato } from "@/lib/stato";
 import { dopoQuiz, oggiIso } from "@/lib/ripasso";
 import type { Domanda } from "@/content.config";
+import { Eruzione } from "./Eruzione";
 
 interface Props {
   idLezione: string;
@@ -23,9 +24,16 @@ function mescola<T>(xs: T[]): T[] {
   return a;
 }
 
-// Una domanda alla volta. Le sbagliate dell'ultima volta vengono per prime;
-// dopo ogni risposta la spiegazione e il link al paragrafo degli appunti;
-// alla fine il punteggio, la scatola aggiornata e le sbagliate da rifare.
+// La scala di Mohs come punteggio: la durezza della tua conoscenza.
+const MOHS = ["Talco", "Gesso", "Calcite", "Fluorite", "Apatite", "Ortoclasio", "Quarzo", "Topazio", "Corindone", "Diamante"];
+function durezza(quota: number): number {
+  return Math.max(1, Math.min(10, Math.round(quota * 10)));
+}
+
+// Il riconoscimento del campione: una domanda alla volta su un cartellino
+// che entra girando; la risposta sbagliata crepa il cartellino, quella
+// giusta lo fa risuonare. Alla fine la durezza di Mohs e, sopra l'80%,
+// l'eruzione.
 export function Quiz({ idLezione, titolo, colore, domande, percorsoLezione, base }: Props) {
   const stato = useStato();
   const idratato = useIdratato();
@@ -35,11 +43,11 @@ export function Quiz({ idLezione, titolo, colore, domande, percorsoLezione, base
   const [i, setI] = useState(0);
   const [fase, setFase] = useState<Fase>("domanda");
   const [esiti, setEsiti] = useState<Record<string, boolean>>({});
-  // risposta corrente, per tipo
   const [scelta, setScelta] = useState<number | null>(null);
   const [vf, setVf] = useState<boolean | null>(null);
   const [abbinate, setAbbinate] = useState<Record<number, string>>({});
   const [mostraSoluzione, setMostraSoluzione] = useState(false);
+  const [giro, setGiro] = useState(0);
 
   const lista = useMemo(() => {
     if (ordine) return ordine;
@@ -74,12 +82,11 @@ export function Quiz({ idLezione, titolo, colore, domande, percorsoLezione, base
 
   function avanti() {
     azzeraRisposta();
+    setGiro((g) => g + 1);
     if (i + 1 < lista.length) {
       setI(i + 1);
       setFase("domanda");
-    } else {
-      chiudi();
-    }
+    } else chiudi();
   }
 
   function chiudi() {
@@ -95,39 +102,57 @@ export function Quiz({ idLezione, titolo, colore, domande, percorsoLezione, base
   }
 
   function rifaiSbagliate() {
-    const sbagliate = lista.filter((q) => esiti[q.id] === false);
-    setOrdine(sbagliate);
+    setOrdine(lista.filter((q) => esiti[q.id] === false));
     setEsiti({});
     setI(0);
     azzeraRisposta();
+    setGiro((g) => g + 1);
     setFase("domanda");
   }
 
   const stile = { ["--materia" as string]: colore } as React.CSSProperties;
   const bottone = "sans rounded-lg px-3 py-1.5 text-sm font-medium";
-  const pieno = `${bottone} bg-materia text-white disabled:opacity-40`;
-  const vuoto = `${bottone} border border-line text-slate hover:bg-sand/60`;
+  const pieno = `${bottone} bg-lava text-white disabled:opacity-40`;
+  const vuoto = `${bottone} border border-filetto text-inchiostro hover:bg-sabbia`;
 
   if (fase === "fine") {
     const corrette = Object.values(esiti).filter(Boolean).length;
+    const quota = lista.length ? corrette / lista.length : 0;
+    const grado = durezza(quota);
     const p = stato.progress[idLezione];
     const sbagliate = lista.filter((q) => esiti[q.id] === false);
     return (
-      <div style={stile}>
-        <p className="sans text-xs font-semibold uppercase tracking-[0.18em] text-muted">Fine</p>
-        <p className="mt-2 text-3xl font-semibold text-slate">
-          {corrette} <span className="text-lg text-muted">su {lista.length}</span>
-        </p>
+      <div style={stile} className="entra-girando">
+        <Eruzione attiva={quota >= 0.8} />
+        <p className="etichetta">Durezza della conoscenza · scala di Mohs</p>
+        <div className="mt-3 flex items-end gap-4">
+          <svg viewBox="0 0 100 100" className="h-20 w-20 shrink-0" style={{ color: quota >= 0.8 ? "var(--color-ocra)" : "var(--grafite)" }} aria-hidden="true">
+            <use href="#cristallo" />
+          </svg>
+          <div className="min-w-0 flex-1">
+            <p className="display text-4xl font-semibold leading-none">
+              {grado} <span className="text-xl text-grafite">· {MOHS[grado - 1]}</span>
+            </p>
+            <p className="mt-1 font-sans text-sm text-grafite">
+              {corrette} su {lista.length} · {Math.round(quota * 100)}%
+            </p>
+          </div>
+        </div>
+        <div className="mohs mt-4" aria-hidden="true">
+          {MOHS.map((m, k) => (
+            <span key={m} className={k < grado ? "acceso" : ""} title={m} />
+          ))}
+        </div>
         {p && (
-          <p className="sans mt-1 text-sm text-muted">
+          <p className="mt-3 font-sans text-sm text-grafite">
             Scatola {p.box} · prossimo ripasso {p.nextReview.split("-").reverse().join("/")}
           </p>
         )}
         {sbagliate.length > 0 && (
-          <ul className="mt-4 divide-y divide-line border-y border-line text-sm">
+          <ul className="mt-5 divide-y divide-filetto border-y border-filetto text-sm">
             {sbagliate.map((q) => (
               <li key={q.id} className="py-1.5">
-                <span className="text-slate">{q.testo}</span>
+                <span>{q.testo}</span>
                 {q.ref && (
                   <a href={`${base}${percorsoLezione}${q.ref}`} className="sans ml-2 text-xs text-materia hover:underline">
                     appunti →
@@ -147,7 +172,7 @@ export function Quiz({ idLezione, titolo, colore, domande, percorsoLezione, base
             Torna agli appunti
           </a>
           <a href={`${base}/`} className={vuoto}>
-            Oggi
+            Taccuino
           </a>
         </div>
       </div>
@@ -155,132 +180,133 @@ export function Quiz({ idLezione, titolo, colore, domande, percorsoLezione, base
   }
 
   const giusta = esiti[d.id];
+  const classeCartellino = fase === "esito" ? (giusta ? "bagliore" : "crepa") : "entra-girando";
 
   return (
     <div style={stile}>
-      <p className="sans flex items-center justify-between text-xs text-muted">
+      <p className="sans flex items-center justify-between text-xs text-grafite">
         <span>
-          {i + 1} / {lista.length}
+          Campione {i + 1} / {lista.length}
         </span>
         <span className="truncate pl-4">{titolo}</span>
       </p>
-      <div className="mt-1 h-1 w-full rounded bg-sand">
-        <div className="h-1 rounded bg-materia" style={{ width: `${((i + (fase === "esito" ? 1 : 0)) / lista.length) * 100}%` }} />
+      <div className="mt-1 h-1 w-full rounded bg-sabbia">
+        <div className="h-1 rounded bg-materia transition-[width] duration-500" style={{ width: `${((i + (fase === "esito" ? 1 : 0)) / lista.length) * 100}%` }} />
       </div>
 
-      <p className="mt-5 text-lg leading-snug text-ink">{d.testo}</p>
+      <div key={`${d.id}-${giro}-${fase}`} className={`relative mt-5 rounded-xl border border-filetto bg-sabbia/60 p-4 sm:p-5 ${classeCartellino}`}>
+        <p className="text-lg leading-snug">{d.testo}</p>
 
-      {d.tipo === "scelta" && (
-        <ol className="mt-4 space-y-1.5">
-          {d.opzioni.map((o, k) => {
-            const stato = fase === "esito" ? (k === d.corretta ? "giusta" : k === scelta ? "sbagliata" : "") : k === scelta ? "scelta" : "";
-            return (
-              <li key={k}>
+        {d.tipo === "scelta" && (
+          <ol className="mt-4 space-y-1.5">
+            {d.opzioni.map((o, k) => {
+              const st = fase === "esito" ? (k === d.corretta ? "giusta" : k === scelta ? "sbagliata" : "") : k === scelta ? "scelta" : "";
+              return (
+                <li key={k}>
+                  <button
+                    type="button"
+                    disabled={fase === "esito"}
+                    onClick={() => setScelta(k)}
+                    className={`w-full rounded-lg border px-3 py-2 text-left text-[0.95rem] transition ${
+                      st === "giusta" ? "border-muschio bg-muschio/15" : st === "sbagliata" ? "border-lava bg-lava/15" : st === "scelta" ? "border-inchiostro bg-sabbia" : "border-filetto hover:border-grafite"
+                    }`}
+                  >
+                    {o}
+                  </button>
+                </li>
+              );
+            })}
+          </ol>
+        )}
+
+        {d.tipo === "verofalso" && (
+          <div className="mt-4 flex gap-2">
+            {[true, false].map((v) => {
+              const st = fase === "esito" ? (v === d.corretta ? "giusta" : v === vf ? "sbagliata" : "") : v === vf ? "scelta" : "";
+              return (
                 <button
+                  key={String(v)}
                   type="button"
                   disabled={fase === "esito"}
-                  onClick={() => setScelta(k)}
-                  className={`w-full rounded-lg border px-3 py-2 text-left text-[0.95rem] ${
-                    stato === "giusta" ? "border-moss bg-moss/10" : stato === "sbagliata" ? "border-materia bg-materia/10" : stato === "scelta" ? "border-slate bg-sand" : "border-line"
+                  onClick={() => setVf(v)}
+                  className={`sans flex-1 rounded-lg border px-3 py-2 text-sm font-medium transition ${
+                    st === "giusta" ? "border-muschio bg-muschio/15" : st === "sbagliata" ? "border-lava bg-lava/15" : st === "scelta" ? "border-inchiostro bg-sabbia" : "border-filetto"
                   }`}
                 >
-                  {o}
+                  {v ? "Vero" : "Falso"}
                 </button>
+              );
+            })}
+          </div>
+        )}
+
+        {d.tipo === "aperta" && (
+          <div className="mt-4">
+            {!mostraSoluzione ? (
+              <button type="button" onClick={() => setMostraSoluzione(true)} className={vuoto}>
+                Mostra la soluzione
+              </button>
+            ) : (
+              <div className="rounded-lg border border-filetto bg-carta p-3 text-[0.95rem]">{d.soluzione}</div>
+            )}
+            {mostraSoluzione && fase === "domanda" && (
+              <div className="mt-3 flex gap-2">
+                <button type="button" onClick={() => registra(true)} className={`${bottone} border border-muschio text-muschio hover:bg-muschio/15`}>
+                  La sapevo
+                </button>
+                <button type="button" onClick={() => registra(false)} className={`${bottone} border border-lava text-lava hover:bg-lava/15`}>
+                  Non la sapevo
+                </button>
+              </div>
+            )}
+          </div>
+        )}
+
+        {d.tipo === "abbinamento" && (
+          <ol className="mt-4 space-y-2">
+            {d.coppie.map((c, k) => (
+              <li key={k} className="flex items-center gap-2">
+                <span className="w-2/5 shrink-0 text-[0.95rem] font-semibold">{c[0]}</span>
+                <select
+                  disabled={fase === "esito"}
+                  value={abbinate[k] ?? ""}
+                  onChange={(e) => setAbbinate((a) => ({ ...a, [k]: e.target.value }))}
+                  className={`sans w-3/5 rounded-lg border px-2 py-1.5 text-sm ${fase === "esito" ? (abbinate[k] === c[1] ? "border-muschio" : "border-lava") : "border-filetto"}`}
+                >
+                  <option value="">…</option>
+                  {destre.map((r) => (
+                    <option key={r} value={r}>
+                      {r}
+                    </option>
+                  ))}
+                </select>
               </li>
-            );
-          })}
-        </ol>
-      )}
-
-      {d.tipo === "verofalso" && (
-        <div className="mt-4 flex gap-2">
-          {[true, false].map((v) => {
-            const stato = fase === "esito" ? (v === d.corretta ? "giusta" : v === vf ? "sbagliata" : "") : v === vf ? "scelta" : "";
-            return (
-              <button
-                key={String(v)}
-                type="button"
-                disabled={fase === "esito"}
-                onClick={() => setVf(v)}
-                className={`sans flex-1 rounded-lg border px-3 py-2 text-sm font-medium ${
-                  stato === "giusta" ? "border-moss bg-moss/10" : stato === "sbagliata" ? "border-materia bg-materia/10" : stato === "scelta" ? "border-slate bg-sand" : "border-line"
-                }`}
-              >
-                {v ? "Vero" : "Falso"}
-              </button>
-            );
-          })}
-        </div>
-      )}
-
-      {d.tipo === "aperta" && (
-        <div className="mt-4">
-          {!mostraSoluzione ? (
-            <button type="button" onClick={() => setMostraSoluzione(true)} className={vuoto}>
-              Mostra la soluzione
-            </button>
-          ) : (
-            <div className="rounded-lg border border-line bg-sand/50 p-3 text-[0.95rem]">{d.soluzione}</div>
-          )}
-          {mostraSoluzione && fase === "domanda" && (
-            <div className="mt-3 flex gap-2">
-              <button type="button" onClick={() => registra(true)} className={`${bottone} border border-moss text-moss hover:bg-moss/10`}>
-                La sapevo
-              </button>
-              <button type="button" onClick={() => registra(false)} className={`${bottone} border border-materia text-materia hover:bg-materia/10`}>
-                Non la sapevo
-              </button>
-            </div>
-          )}
-        </div>
-      )}
-
-      {d.tipo === "abbinamento" && (
-        <ol className="mt-4 space-y-2">
-          {d.coppie.map((c, k) => (
-            <li key={k} className="flex items-center gap-2">
-              <span className="w-2/5 shrink-0 text-[0.95rem] font-semibold text-slate">{c[0]}</span>
-              <select
-                disabled={fase === "esito"}
-                value={abbinate[k] ?? ""}
-                onChange={(e) => setAbbinate((a) => ({ ...a, [k]: e.target.value }))}
-                className={`sans w-3/5 rounded-lg border px-2 py-1.5 text-sm ${fase === "esito" ? (abbinate[k] === c[1] ? "border-moss bg-moss/10" : "border-materia bg-materia/10") : "border-line"}`}
-              >
-                <option value="">…</option>
-                {destre.map((r) => (
-                  <option key={r} value={r}>
-                    {r}
-                  </option>
-                ))}
-              </select>
-            </li>
-          ))}
-          {fase === "esito" && !giusta && (
-            <li className="sans text-xs text-muted">Giusto: {d.coppie.map((c) => `${c[0]} → ${c[1]}`).join(" · ")}</li>
-          )}
-        </ol>
-      )}
+            ))}
+            {fase === "esito" && !giusta && <li className="sans text-xs text-grafite">Giusto: {d.coppie.map((c) => `${c[0]} → ${c[1]}`).join(" · ")}</li>}
+          </ol>
+        )}
+      </div>
 
       {fase === "domanda" && d.tipo !== "aperta" && (
-        <div className="mt-5">
+        <div className="mt-4">
           <button
             type="button"
             onClick={conferma}
             disabled={(d.tipo === "scelta" && scelta === null) || (d.tipo === "verofalso" && vf === null) || (d.tipo === "abbinamento" && Object.keys(abbinate).length < d.coppie.length)}
             className={pieno}
           >
-            Conferma
+            Riconosci
           </button>
         </div>
       )}
 
       {fase === "esito" && (
-        <div className="mt-5 border-t border-line pt-4">
-          <p className={`sans text-xs font-semibold uppercase tracking-[0.18em] ${giusta ? "text-moss" : "text-materia"}`}>{giusta ? "Giusto" : "Sbagliato"}</p>
+        <div className="mt-4 border-t border-filetto pt-4">
+          <p className={`sans text-xs font-semibold uppercase tracking-[0.18em] ${giusta ? "text-muschio" : "text-lava"}`}>{giusta ? "Riconosciuto" : "Crepato"}</p>
           {d.spiegazione && <p className="mt-1.5 text-[0.95rem]">{d.spiegazione}</p>}
           <div className="mt-3 flex flex-wrap items-center gap-3">
             <button type="button" onClick={avanti} className={pieno}>
-              {i + 1 < lista.length ? "Avanti" : "Fine"}
+              {i + 1 < lista.length ? "Prossimo campione" : "Chiudi"}
             </button>
             {d.ref && (
               <a href={`${base}${percorsoLezione}${d.ref}`} className="sans text-sm text-materia hover:underline">

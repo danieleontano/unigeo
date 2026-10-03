@@ -6,7 +6,7 @@ import { tutteLeMaterie } from "@/lib/contenuti";
 const materie = (await tutteLeMaterie()).map((m) => ({ id: m.id, nome: m.data.nome, colore: m.data.colore }));
 ---
 
-<Base titolo="Impostazioni">
+<Base tema="sottosuolo" titolo="Impostazioni">
   <h1 class="text-2xl font-semibold">Impostazioni</h1>
   <div class="mt-5">
     <Impostazioni client:load materie={materie} />

@@ -18,8 +18,6 @@ function mescola<T>(xs: T[]): T[] {
   return a;
 }
 
-// Markdown inline minimo (grassetto, corsivo, apici) → HTML. Le definizioni
-// vengono da file nostri: niente da sanificare.
 function inlineHtml(md: string): string {
   return md
     .replace(/&/g, "&amp;")
@@ -31,9 +29,9 @@ function inlineHtml(md: string): string {
     .replace(/\n/g, " ");
 }
 
-// Fronte/retro, un tocco per girare, «La sapevo / Non la sapevo». Le non
-// sapute restano segnate nello stato della lezione (cartePendenti) e si
-// possono rifare da sole.
+// La cassettiera dei campioni: i cartellini da museo delle definizioni. Un
+// tocco gira il cartellino in 3D; «La sapevo» lo manda nel cassetto dei
+// classificati, «Non la sapevo» in quello da rivedere.
 export function Flashcard({ nomeMateria, colore, carte, base }: Props) {
   const stato = useStato();
   const idratato = useIdratato();
@@ -46,6 +44,7 @@ export function Flashcard({ nomeMateria, colore, carte, base }: Props) {
   const [mazzo, setMazzo] = useState<Carta[] | null>(null);
   const [i, setI] = useState(0);
   const [girata, setGirata] = useState(false);
+  const [uscita, setUscita] = useState<"destra" | "sinistra" | null>(null);
   const [nonSapute, setNonSapute] = useState<Carta[]>([]);
   const [finito, setFinito] = useState(false);
 
@@ -54,13 +53,14 @@ export function Flashcard({ nomeMateria, colore, carte, base }: Props) {
   const daRivedere = carte.filter((c) => pendenti.has(c.chiave));
   const stile = { ["--materia" as string]: colore } as React.CSSProperties;
   const bottone = "sans rounded-lg px-3 py-1.5 text-sm font-medium";
-  const pieno = `${bottone} bg-materia text-white`;
-  const vuoto = `${bottone} border border-line text-slate hover:bg-sand/60`;
+  const pieno = `${bottone} bg-lava text-white`;
+  const vuoto = `${bottone} border border-filetto text-inchiostro hover:bg-sabbia`;
 
   function inizia(quali: Carta[]) {
     setMazzo(mescola(quali));
     setI(0);
     setGirata(false);
+    setUscita(null);
     setNonSapute([]);
     setFinito(false);
   }
@@ -86,40 +86,47 @@ export function Flashcard({ nomeMateria, colore, carte, base }: Props) {
   }
 
   function rispondi(sapevo: boolean) {
-    if (!mazzo) return;
+    if (!mazzo || uscita) return;
     const c = mazzo[i];
-    const nuoveNonSapute = sapevo ? nonSapute : [...nonSapute, c];
-    setNonSapute(nuoveNonSapute);
-    setGirata(false);
-    if (i + 1 < mazzo.length) setI(i + 1);
-    else {
-      salvaPendenti(nuoveNonSapute, mazzo);
-      setFinito(true);
-    }
+    const nuove = sapevo ? nonSapute : [...nonSapute, c];
+    setNonSapute(nuove);
+    setUscita(sapevo ? "destra" : "sinistra");
+    window.setTimeout(() => {
+      setUscita(null);
+      setGirata(false);
+      if (i + 1 < mazzo.length) setI(i + 1);
+      else {
+        salvaPendenti(nuove, mazzo);
+        setFinito(true);
+      }
+    }, 480);
   }
 
   if (!mazzo) {
     return (
       <div style={stile} className="sans">
-        <p className="text-sm text-muted">
-          {carte.length} definizioni in {new Set(carte.map((c) => c.lezione)).size} lezioni di {nomeMateria}.
-        </p>
-        <div className="mt-4 flex flex-wrap gap-2">
-          <button type="button" onClick={() => inizia(carte)} className={pieno}>
-            Tutte
-          </button>
-          {daRivedere.length > 0 && (
-            <button type="button" onClick={() => inizia(daRivedere)} className={vuoto}>
-              Da rivedere ({daRivedere.length})
+        <div className="cassetto p-4">
+          <div className="maniglia mb-3" />
+          <p className="text-center text-sm text-grafite">
+            {carte.length} campioni in {new Set(carte.map((c) => c.lezione)).size} lezioni di {nomeMateria}.
+          </p>
+          <div className="mt-4 flex flex-wrap justify-center gap-2">
+            <button type="button" onClick={() => inizia(carte)} className={pieno}>
+              Apri il cassetto
             </button>
-          )}
+            {daRivedere.length > 0 && (
+              <button type="button" onClick={() => inizia(daRivedere)} className={vuoto}>
+                Da rivedere ({daRivedere.length})
+              </button>
+            )}
+          </div>
         </div>
-        <ul className="mt-6 divide-y divide-line border-y border-line text-sm">
+        <ul className="mt-6 divide-y divide-filetto border-y border-filetto text-sm">
           {carte.map((c) => (
             <li key={c.chiave} className="flex items-center gap-3 py-1.5">
-              <span className="min-w-0 flex-1 truncate font-serif text-ink">{c.fronte}</span>
-              <span className="shrink-0 text-xs text-muted">lez. {c.numeroLezione}</span>
-              {pendenti.has(c.chiave) && <span className="shrink-0 text-xs font-semibold text-materia">da rivedere</span>}
+              <span className="min-w-0 flex-1 truncate font-serif">{c.fronte}</span>
+              <span className="shrink-0 text-xs text-grafite">lez. {c.numeroLezione}</span>
+              {pendenti.has(c.chiave) && <span className="shrink-0 text-xs font-semibold text-lava">da rivedere</span>}
             </li>
           ))}
         </ul>
@@ -130,17 +137,17 @@ export function Flashcard({ nomeMateria, colore, carte, base }: Props) {
   if (finito) {
     const sapute = mazzo.length - nonSapute.length;
     return (
-      <div style={stile}>
-        <p className="sans text-xs font-semibold uppercase tracking-[0.18em] text-muted">Fine</p>
-        <p className="mt-2 text-3xl font-semibold text-slate">
-          {sapute} <span className="text-lg text-muted">su {mazzo.length}</span>
+      <div style={stile} className="entra-girando">
+        <p className="etichetta">Cassetto chiuso</p>
+        <p className="mt-2 text-3xl font-semibold">
+          {sapute} <span className="text-lg text-grafite">classificati su {mazzo.length}</span>
         </p>
         {nonSapute.length > 0 && (
-          <ul className="mt-4 divide-y divide-line border-y border-line text-sm">
+          <ul className="mt-4 divide-y divide-filetto border-y border-filetto text-sm">
             {nonSapute.map((c) => (
               <li key={c.chiave} className="py-1.5">
-                <span className="font-semibold text-slate">{c.fronte}</span>
-                <span className="text-muted"> · lez. {c.numeroLezione}</span>
+                <span className="font-semibold">{c.fronte}</span>
+                <span className="text-grafite"> · lez. {c.numeroLezione}</span>
               </li>
             ))}
           </ul>
@@ -148,14 +155,14 @@ export function Flashcard({ nomeMateria, colore, carte, base }: Props) {
         <div className="mt-5 flex flex-wrap gap-2">
           {nonSapute.length > 0 && (
             <button type="button" onClick={() => inizia(nonSapute)} className={pieno}>
-              Rifai quelle non sapute
+              Rifai quelli da rivedere
             </button>
           )}
           <button type="button" onClick={() => setMazzo(null)} className={vuoto}>
-            Indietro
+            Cassettiera
           </button>
           <a href={`${base}/`} className={vuoto}>
-            Oggi
+            Taccuino
           </a>
         </div>
       </div>
@@ -165,7 +172,7 @@ export function Flashcard({ nomeMateria, colore, carte, base }: Props) {
   const c = mazzo[i];
   return (
     <div style={stile}>
-      <p className="sans flex items-center justify-between text-xs text-muted">
+      <p className="sans flex items-center justify-between text-xs text-grafite">
         <span>
           {i + 1} / {mazzo.length}
         </span>
@@ -173,40 +180,49 @@ export function Flashcard({ nomeMateria, colore, carte, base }: Props) {
           lez. {c.numeroLezione} · {c.titoloLezione}
         </span>
       </p>
-      <div className="mt-1 h-1 w-full rounded bg-sand">
-        <div className="h-1 rounded bg-materia" style={{ width: `${(i / mazzo.length) * 100}%` }} />
+      <div className="mt-1 h-1 w-full rounded bg-sabbia">
+        <div className="h-1 rounded bg-materia transition-[width] duration-500" style={{ width: `${(i / mazzo.length) * 100}%` }} />
       </div>
 
-      <button
-        type="button"
-        onClick={() => setGirata((g) => !g)}
-        className="mt-5 flex min-h-56 w-full flex-col justify-center rounded-2xl border border-line bg-sand/40 p-5 text-left"
-        aria-label={girata ? "Mostra il termine" : "Mostra la definizione"}
-      >
-        {!girata ? (
-          <>
-            <span className="sans text-xs font-semibold uppercase tracking-[0.18em] text-materia">Termine</span>
-            <span className="mt-2 break-words text-2xl font-semibold text-slate">{c.fronte}</span>
-            <span className="sans mt-6 text-xs text-muted">Tocca per girare</span>
-          </>
-        ) : (
-          <>
-            <span className="sans text-xs font-semibold uppercase tracking-[0.18em] text-ochre">Definizione</span>
-            <span className="mt-2 text-[1.05rem] leading-snug" dangerouslySetInnerHTML={{ __html: inlineHtml(c.retro) }} />
-          </>
-        )}
-      </button>
-
-      {girata && (
-        <div className="mt-4 flex gap-2">
-          <button type="button" onClick={() => rispondi(true)} className={`${bottone} flex-1 border border-moss text-moss hover:bg-moss/10`}>
-            La sapevo
-          </button>
-          <button type="button" onClick={() => rispondi(false)} className={`${bottone} flex-1 border border-materia text-materia hover:bg-materia/10`}>
-            Non la sapevo
+      <div className="relative mt-5 grid grid-cols-[auto_1fr_auto] items-center gap-2">
+        <div className="sans hidden w-16 text-center text-[0.65rem] uppercase tracking-wider text-grafite sm:block">Da rivedere ←</div>
+        <div className={`cartellino-scena mx-auto w-full max-w-md ${uscita === "destra" ? "vola-destra" : uscita === "sinistra" ? "vola-sinistra" : ""}`}>
+          <button
+            type="button"
+            onClick={() => setGirata((g) => !g)}
+            className={`cartellino block min-h-64 w-full text-left ${girata ? "girato" : ""}`}
+            aria-label={girata ? "Mostra il termine" : "Mostra la definizione"}
+          >
+            <div className="faccia cartellino-carta flex flex-col justify-center p-6 pt-8">
+              <span className="sans text-[0.65rem] font-semibold uppercase tracking-[0.18em]" style={{ color: colore }}>
+                Campione n. {Number(c.chiave.split("#")[1]) + 1} · lez. {c.numeroLezione}
+              </span>
+              <span className="display mt-2 break-words text-3xl font-semibold" style={{ color: "#1f2326" }}>
+                {c.fronte}
+              </span>
+              <span className="sans mt-6 text-xs" style={{ color: "#5e6568" }}>
+                Tocca per girare il cartellino
+              </span>
+            </div>
+            <div className="faccia retro cartellino-carta flex flex-col justify-center p-6 pt-8">
+              <span className="sans text-[0.65rem] font-semibold uppercase tracking-[0.18em]" style={{ color: "#c9a227" }}>
+                Scheda
+              </span>
+              <span className="mt-2 text-[1.05rem] leading-snug" style={{ color: "#1f2326" }} dangerouslySetInnerHTML={{ __html: inlineHtml(c.retro) }} />
+            </div>
           </button>
         </div>
-      )}
+        <div className="sans hidden w-16 text-center text-[0.65rem] uppercase tracking-wider text-grafite sm:block">→ Classificati</div>
+      </div>
+
+      <div className={`mt-4 flex gap-2 transition-opacity ${girata ? "opacity-100" : "pointer-events-none opacity-0"}`}>
+        <button type="button" onClick={() => rispondi(false)} className={`${bottone} flex-1 border border-lava text-lava hover:bg-lava/15`}>
+          Non lo sapevo
+        </button>
+        <button type="button" onClick={() => rispondi(true)} className={`${bottone} flex-1 border border-muschio text-muschio hover:bg-muschio/15`}>
+          Lo sapevo
+        </button>
+      </div>
     </div>
   );
 }

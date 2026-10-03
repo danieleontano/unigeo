@@ -18,6 +18,7 @@
     }
   }
 
+  function avvia() {
   const salvate = spunteSalvate();
   document.querySelectorAll<HTMLElement>("article.appunti[data-lezione]").forEach((articolo) => {
     const id = articolo.dataset.lezione!;
@@ -36,4 +37,6 @@
       });
     });
   });
+  }
+  document.addEventListener("astro:page-load", avvia);
 </script>

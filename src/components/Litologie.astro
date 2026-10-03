@@ -1,0 +1,70 @@
+---
+// Libreria SVG condivisa: campiture litologiche (i simboli delle carte
+// geologiche: calcare a mattoni, arenaria a puntini, argilla a trattini,
+// basalto a colonne, conglomerato a ciottoli, marna a tratto-punto) e i
+// fossili. Si inserisce una volta nel layout; i pattern usano currentColor,
+// quindi prendono il colore della materia dal contenitore.
+---
+
+<svg width="0" height="0" class="absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <pattern id="lit-calcare" width="28" height="14" patternUnits="userSpaceOnUse">
+      <path d="M0 7H28 M7 0V7 M21 7V14" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".75" />
+    </pattern>
+    <pattern id="lit-arenaria" width="12" height="12" patternUnits="userSpaceOnUse">
+      <circle cx="3" cy="3" r="1.1" fill="currentColor" opacity=".8" />
+      <circle cx="9" cy="8" r="0.9" fill="currentColor" opacity=".6" />
+    </pattern>
+    <pattern id="lit-argilla" width="26" height="14" patternUnits="userSpaceOnUse">
+      <path d="M0 4H9 M13 11H22" fill="none" stroke="currentColor" stroke-width="1.2" opacity=".75" />
+    </pattern>
+    <pattern id="lit-basalto" width="30" height="40" patternUnits="userSpaceOnUse">
+      <path d="M6 0V40 M16 0V40 M26 0V40 M6 14H16 M16 26H26 M26 8H30 M0 30H6" fill="none" stroke="currentColor" stroke-width="1.2" opacity=".7" />
+    </pattern>
+    <pattern id="lit-conglomerato" width="40" height="30" patternUnits="userSpaceOnUse">
+      <ellipse cx="9" cy="9" rx="6" ry="4.5" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".75" />
+      <ellipse cx="28" cy="20" rx="7" ry="5" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".75" />
+      <circle cx="30" cy="6" r="2.2" fill="currentColor" opacity=".5" />
+      <circle cx="12" cy="24" r="1.8" fill="currentColor" opacity=".5" />
+    </pattern>
+    <pattern id="lit-marna" width="30" height="14" patternUnits="userSpaceOnUse">
+      <path d="M0 7H12" fill="none" stroke="currentColor" stroke-width="1.2" opacity=".75" />
+      <circle cx="19" cy="7" r="1.1" fill="currentColor" opacity=".8" />
+    </pattern>
+
+    <!-- Fossili: tratto, niente riempimenti pesanti. 100×100. -->
+    <symbol id="fossile-ammonite" viewBox="0 0 100 100">
+      <path d="M50,50 m0,-2 a2,2 0 1,1 0,4 a4,4 0 1,1 -4,-4 a7,7 0 1,1 7,-7 a11,11 0 1,1 -11,11 a15,15 0 1,1 15,-15 a20,20 0 1,1 -20,20 a26,26 0 1,1 26,-26 a33,33 0 1,1 -33,33 a40,40 0 1,1 40,-40" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+      <path d="M50 10 L50 18 M22 30 L28 34 M14 62 L21 60 M34 86 L37 79 M70 84 L66 78 M86 52 L80 52" stroke="currentColor" stroke-width="2" opacity=".6" />
+    </symbol>
+    <symbol id="fossile-trilobite" viewBox="0 0 100 100">
+      <path d="M50 8 C30 8 22 22 22 34 L22 70 C22 84 36 94 50 94 C64 94 78 84 78 70 L78 34 C78 22 70 8 50 8Z" fill="none" stroke="currentColor" stroke-width="3" />
+      <path d="M22 34 H78" stroke="currentColor" stroke-width="2.5" />
+      <path d="M38 34 V88 M62 34 V88" stroke="currentColor" stroke-width="2" opacity=".7" />
+      <path d="M24 44 H76 M24 54 H76 M25 64 H75 M28 74 H72 M34 83 H66" stroke="currentColor" stroke-width="1.6" opacity=".6" />
+      <circle cx="34" cy="22" r="3.5" fill="currentColor" opacity=".8" /><circle cx="66" cy="22" r="3.5" fill="currentColor" opacity=".8" />
+    </symbol>
+    <symbol id="fossile-felce" viewBox="0 0 100 100">
+      <path d="M50 94 C50 70 50 40 50 8" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+      <path d="M50 20 C40 20 32 14 28 8 M50 20 C60 20 68 14 72 8 M50 34 C38 34 28 28 22 20 M50 34 C62 34 72 28 78 20 M50 48 C36 48 26 42 18 34 M50 48 C64 48 74 42 82 34 M50 62 C36 62 26 56 18 48 M50 62 C64 62 74 56 82 48 M50 76 C38 76 30 70 24 64 M50 76 C62 76 70 70 76 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".8" />
+    </symbol>
+    <symbol id="fossile-conchiglia" viewBox="0 0 100 100">
+      <path d="M50 88 C20 70 10 48 14 30 C18 16 36 10 50 22 C64 10 82 16 86 30 C90 48 80 70 50 88Z" fill="none" stroke="currentColor" stroke-width="3" />
+      <path d="M50 88 L22 36 M50 88 L36 28 M50 88 L50 24 M50 88 L64 28 M50 88 L78 36" stroke="currentColor" stroke-width="1.8" opacity=".7" />
+      <path d="M26 56 C40 50 60 50 74 56" fill="none" stroke="currentColor" stroke-width="1.4" opacity=".5" />
+    </symbol>
+    <symbol id="fossile-impronta" viewBox="0 0 100 100">
+      <path d="M50 94 L50 40 M50 52 L22 18 M50 52 L78 18 M50 44 L36 26 M50 44 L64 26" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" />
+      <circle cx="22" cy="16" r="3" fill="currentColor" /><circle cx="78" cy="16" r="3" fill="currentColor" /><circle cx="50" cy="38" r="3" fill="currentColor" />
+    </symbol>
+    <symbol id="fossile-dente" viewBox="0 0 100 100">
+      <path d="M50 8 C58 30 70 60 86 84 C70 80 30 80 14 84 C30 60 42 30 50 8Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" />
+      <path d="M20 82 C40 76 60 76 80 82" fill="none" stroke="currentColor" stroke-width="2" opacity=".7" />
+      <path d="M22 72 L26 76 M30 60 L34 64 M38 46 L42 50 M78 72 L74 76 M70 60 L66 64 M62 46 L58 50" stroke="currentColor" stroke-width="1.6" opacity=".6" />
+    </symbol>
+    <symbol id="cristallo" viewBox="0 0 100 100">
+      <path d="M50 6 L78 34 L68 94 L32 94 L22 34Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" />
+      <path d="M22 34 H78 M50 6 L40 34 L32 94 M50 6 L60 34 L68 94 M40 34 L60 34" stroke="currentColor" stroke-width="1.6" opacity=".7" />
+    </symbol>
+  </defs>
+</svg>

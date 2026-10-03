@@ -22,7 +22,7 @@ const percorsoLezione = `/materie/${m}/lezioni/${slug}`;
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 ---
 
-<Base titolo={`Quiz · ${lezione.data.titolo}`} colore={materia.data.colore}>
+<Base tema="sottosuolo" titolo={`Quiz · ${lezione.data.titolo}`} colore={materia.data.colore}>
   <p class="sans text-xs font-semibold uppercase tracking-[0.2em] text-materia">
     <a href={percorso(percorsoLezione)}>{materia.data.nome} · Lezione {lezione.data.numero}</a>
   </p>

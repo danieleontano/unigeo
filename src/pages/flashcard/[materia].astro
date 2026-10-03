@@ -16,11 +16,11 @@ const carte = lezioni.flatMap(carteDiLezione);
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 ---
 
-<Base titolo={`Flashcard · ${materia.data.nome}`} colore={materia.data.colore}>
+<Base tema="sottosuolo" titolo={`Flashcard · ${materia.data.nome}`} colore={materia.data.colore}>
   <p class="sans text-xs font-semibold uppercase tracking-[0.2em] text-materia">
     <a href={percorso(`/materie/${materia.id}`)}>{materia.data.nome}</a>
   </p>
-  <h1 class="mt-1 text-2xl font-semibold">Flashcard</h1>
+  <h1 class="mt-1 text-[2rem] leading-tight">Campioni</h1>
   <div class="mt-4">
     {carte.length === 0 ? (
       <p class="text-sm text-muted">Nessuna definizione ancora in questa materia.</p>

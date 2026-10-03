@@ -50,9 +50,7 @@ export function Ripasso({ lezioni, base }: Props) {
                 {l.numero} · {l.titolo}
               </span>
             </a>
-            <span className="sans w-8 shrink-0 text-center text-xs text-muted" title="Scatola">
-              {p ? p.box : "–"}
-            </span>
+            <span className={`h-5 w-8 shrink-0 rounded-sm border border-filetto ${p ? `lito-${p.box}` : ""}`} title={p ? `Scatola ${p.box}: ${["sedimento sciolto", "sedimento compattato", "cementazione", "roccia tenera", "roccia compatta"][p.box - 1]}` : "Mai fatta"} aria-label={p ? `Scatola ${p.box}` : "Mai fatta"} />
             <span className={`sans w-24 shrink-0 text-right text-xs tabular-nums ${scaduta ? "font-medium text-materia" : "text-muted"}`}>
               {etichettaScadenza(p, oggi)}
             </span>

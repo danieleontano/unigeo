@@ -1,8 +1,31 @@
 # UniGeo — identità visiva
 
 Brief per chi disegna e per chi costruisce. Contiene cosa deve sembrare il
-sito, perché, e i vincoli. Deciso con Daniele il 03/10/2026: base **chiara,
-carta e sabbia**; prototipo prima su home e Libro, poi si estende.
+sito, perché, e i vincoli.
+
+**Revisione del 03/10/2026 sera.** La prima pelle (carta e sabbia ovunque, movimento
+sobrio) era elegante ma piatta: Daniele vuole l'effetto wow, «sassi e altro».
+Regola nuova: **chiaro per leggere, scuro per scoprire.** Il Libro, le lezioni e le
+pagine di testo restano su carta chiara; home, materie, quiz, campioni, ripasso e da
+fare vivono nel **sottosuolo** (basalto `#111417`, avorio `#efe7d6`, lava `#e2561f`
+che brilla). Sette elementi firma, tutti costruiti:
+
+1. **Scorrere è scendere**: la home è una sezione geologica; le lezioni sono strati
+   con la litologia della materia (simboli da carta geologica), parallasse,
+   fossili che affiorano, righello del tempo a sinistra.
+2. **Campioni di roccia**: ogni materia è un sasso sfaccettato in 3D che si inclina
+   col puntatore o col giroscopio; dentro, il fossile o il cristallo della materia.
+3. **La caldera**: il vulcano del Taccuino, la camera si riempie con le domande
+   della settimana (60 = piena) ed erutta dopo un quiz sopra l'80%.
+4. **Scala di Mohs** come punteggio del quiz, da talco a diamante.
+5. **Riconoscimento del campione**: la risposta sbagliata crepa il cartellino,
+   quella giusta lo fa risuonare; alla fine l'eruzione di lapilli.
+6. **Cassettiera dei campioni**: le flashcard sono cartellini da museo che si girano
+   davvero in 3D e volano nel cassetto dei classificati o in quello da rivedere.
+7. **Transizioni tra pagine** come slittamento, **carota di lettura** nel Libro.
+
+Il resto del brief (metafora, caratteri, movimento) vale ancora; i §4 e §6 vanno
+letti con questa revisione sopra.
 
 ---
 

@@ -118,6 +118,25 @@ due settimane di fila salta, il problema non è nel codice.
   script Astro), `lib/stato.ts` solo gli hook. ATTENZIONE: il dev server tiene
   in cache il Markdown reso: dopo un cambio ai plugin remark cancellare
   `.astro`, `node_modules/.astro` e `node_modules/.vite` e riavviare.
+- 2026-10-03 · Il wow. Daniele: «cosa non capisci di capolavoro innovativo?
+  Deve essere un effetto wow, sassi e altro». Decisione: «chiaro per leggere,
+  scuro per scoprire» (tema `sottosuolo` su home, materie, quiz, campioni,
+  ripasso, da fare, impostazioni; carta su Libro, lezioni, pagine). Costruito
+  tutto in fila: `Litologie.astro` (pattern USGS-like + fossili SVG, una volta nel
+  layout, currentColor), `Sezione.astro` (home come sezione geologica: strati =
+  lezioni, parallasse e affioramenti con `animation-timeline: view()`, righello
+  del tempo, fossili), `Caldera.tsx` (camera magmatica = domande della settimana
+  su 60, eruzione se l'ultimo quiz di oggi ≥ 80%), `Campione.astro` + `Inclina`
+  (rocce sfaccettate 3D, puntatore/giroscopio), quiz come riconoscimento del
+  campione (crepa/bagliore, scala di Mohs, `Eruzione.tsx` su canvas), cassettiera
+  dei campioni con giro 3D vero, carota di lettura nel Libro, View Transitions
+  (`ClientRouter`: TUTTI gli script Astro ascoltano `astro:page-load`, non
+  girano da soli). CSS in `src/styles/sottosuolo.css` (il Bash tronca gli
+  heredoc lunghi: file grandi col tool Write). Verifica visiva: il pannello
+  browser nascosto congela le animazioni e fa fallire gli screenshot → screenshot
+  headless con Chrome (`--headless=new --screenshot --window-size=390,3400
+  --virtual-time-budget=5000`) oppure `document.getAnimations().forEach(a=>a.finish())`
+  prima dello scatto.
 - 2026-10-03 · Sync tra dispositivi: proposta Supabase gratuito offline-first,
   Daniele ha detto NO («non abbiamo più posto su Supabase»). Resta
   esporta/importa a mano; la regola «niente DB» del kit vale ancora. Da

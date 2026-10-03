@@ -1,0 +1,47 @@
+---
+// Inclinazione dei campioni: il puntatore su PC, il giroscopio sul telefono
+// (su iPhone serve un tocco per il permesso). Imposta --rx e --ry sulla scena.
+---
+
+<script>
+  function avvia() {
+    const scene = Array.from(document.querySelectorAll<HTMLElement>(".campione-scena"));
+    if (!scene.length) return;
+
+    const imposta = (s: HTMLElement, rx: number, ry: number) => {
+      s.style.setProperty("--rx", `${rx.toFixed(1)}deg`);
+      s.style.setProperty("--ry", `${ry.toFixed(1)}deg`);
+    };
+
+    scene.forEach((s) => {
+      s.addEventListener("pointermove", (e) => {
+        const r = s.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - 0.5;
+        const y = (e.clientY - r.top) / r.height - 0.5;
+        imposta(s, -y * 26, x * 26);
+      });
+      s.addEventListener("pointerleave", () => imposta(s, 0, 0));
+    });
+
+    // Giroscopio: tutte le scene seguono il telefono.
+    const daOrientamento = (e: DeviceOrientationEvent) => {
+      if (e.beta == null || e.gamma == null) return;
+      const rx = Math.max(-20, Math.min(20, (e.beta - 45) * 0.5));
+      const ry = Math.max(-20, Math.min(20, e.gamma * 0.6));
+      scene.forEach((s) => imposta(s, rx, ry));
+    };
+    const Evento = window.DeviceOrientationEvent as unknown as { requestPermission?: () => Promise<string> } | undefined;
+    if (Evento?.requestPermission) {
+      const chiedi = () => {
+        Evento.requestPermission!()
+          .then((esito) => esito === "granted" && window.addEventListener("deviceorientation", daOrientamento))
+          .catch(() => {});
+        document.removeEventListener("touchend", chiedi);
+      };
+      document.addEventListener("touchend", chiedi, { once: true });
+    } else if ("DeviceOrientationEvent" in window) {
+      window.addEventListener("deviceorientation", daOrientamento);
+    }
+  }
+  document.addEventListener("astro:page-load", avvia);
+</script>
