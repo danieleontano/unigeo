@@ -120,6 +120,8 @@ Solo acido al 10%. In commercio si trova anche al 30%: sulle mani e sugli occhi 
 
 ### Silicati: i chiari
 
+::campioni{id="quarzo,ortoclasio,plagioclasio"}
+
 #### Quarzo
 
 Il minerale "infestante": si trova dappertutto, in rocce sedimentarie, magmatiche e metamorfiche. È estremamente stabile, passa da una roccia all'altra mantenendo inalterate le sue caratteristiche, e per molte classificazioni è il primo elemento che si va a guardare. Di solito **allotriomorfo**, perché cristallizza per ultimo e occupa lo spazio che resta; quando cresce in pace è un prisma allungato. Lucentezza **vitrea**: sembra un coccio di bottiglia, vetro rotto. Da trasparente a traslucido, **incolore** per definizione; a volte violaceo, rosato, giallino (ametista, citrino, pietre semipreziose, ma nelle rocce è raro). Durezza **7**: riga l'acciaio del martello. Nessuna sfaldatura: frattura concoide secondo i testi, ma spesso molto irregolare. Inerte all'HCl.
@@ -137,6 +139,8 @@ Parenti stretti dei feldspati alcalini. Abito prismatico tabulare, sul campione 
 Meno frequenti. Abito globulare o prismatico tozzo: poliedri a molte faccette che tendono alla sfera. Traslucidi, da vitrei a opachi o madreperlacei, dal bianco al grigiastro (incolori solo se purissimi). Durezza 5,5–6. Potenzialmente sfaldabili, ma sollecitati di solito si rompono e basta. Inerti all'HCl. Tra i minerali bianchi si riconoscono proprio perché **globulari**. Tipici delle rocce magmatiche; labili, quasi assenti nelle sedimentarie.
 
 ### Silicati: i colorati
+
+::campioni{id="olivina,augite,orneblenda"}
 
 #### Olivina
 
@@ -160,6 +164,8 @@ Uno dei più difficili da riconoscere. Piccoli prismetti a volte allungati, semp
 
 ### Silicati: i fillosilicati
 
+::campioni{id="biotite,muscovite"}
+
 #### Mica bianca e mica nera
 
 Gruppi informali: dentro ci sono molte specie con nomi e composizioni propri (per la mica bianca tipicamente la muscovite, per la nera la biotite). Il tratto che le fa riconoscere al volo: sono prismetti fatti da **innumerevoli lamelle sovrapposte**, con legami debolissimi tra un foglio e l'altro. Basta l'unghia o la punta per far saltare una lamella: si sfogliano come un blocchetto, e finiscono sulle mani quando ci si lavora. Durezza circa 3 (bianca) e 2,5–3 (nera). Lucentezza madreperlacea, a tratti quasi metallica. **Mica bianca**: mai davvero bianca, argentea fino al giallastro quasi dorato, da trasparente a traslucida. **Mica nera**: da nera a marrone scuro a verde scuro, da opaca a traslucida. Dimensioni da pochi millimetri a qualche centimetro: conta che si sfogli, non quanto è grande. Inerti all'HCl. Magmatiche e metamorfiche, legate alla cristallizzazione; abbondanti come detrito nelle sedimentarie.
@@ -176,6 +182,8 @@ Simile alle miche: fogliata, lamelle sovrapposte che si staccano. Normalmente **
 
 ### Carbonati
 
+::campioni{id="calcite,dolomite"}
+
 #### Calcite
 
 La più famosa e frequente. Spesso idiomorfa, tabulare o prismatica, ma molto spesso in aggregati granulari. Da traslucida a trasparente, lucentezza da vitrea a polverosa. Incolore se trasparente, poi bianca, fino al rosa. Tenera, durezza 3: la punta al widia la riga subito. Sfalda secondo le facce del romboedro. **Reazione vivacissima all'HCl a freddo**. Frequentissima nel processo sedimentario, presente in quello metamorfico; i carbonati magmatici sono rarissimi e legati a condizioni particolari.
@@ -185,6 +193,8 @@ La più famosa e frequente. Spesso idiomorfa, tabulare o prismatica, ma molto sp
 Parente stretta della calcite: al calcio si associa e in parte si sostituisce il magnesio. Idiomorfa, da equidimensionale a tabulare, spesso granulare. Da vitrea a madreperlacea, da trasparente a traslucida (raramente lucida). Bianca, bianco-rosata, più raramente giallastra. Un po' più dura della calcite (4). Sfalda secondo il romboedro. Reagisce all'HCl **solo a caldo**: si scalda il campione, poi la goccia.
 
 ### Solfati (solo slide)
+
+::campioni{id="gesso"}
 
 #### Anidrite
 

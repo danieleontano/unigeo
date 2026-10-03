@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { aggiornaStato, useIdratato } from "@/lib/stato";
 import { oggiIso } from "@/lib/ripasso";
 import { Eruzione } from "./Eruzione";
@@ -10,6 +10,13 @@ export interface CampioneFoto {
   famiglia: string;
   caratteri: string;
   foto: { file: string; autore: string; licenza: string; pagina: string };
+  altre?: { file: string; autore: string; licenza: string; pagina: string }[];
+}
+
+// Una foto a caso tra quelle del campione: si impara la roccia, non la foto.
+function unaFoto(c: CampioneFoto): CampioneFoto {
+  const tutte = [c.foto, ...(c.altre ?? [])];
+  return { ...c, foto: tutte[Math.floor(Math.random() * tutte.length)] };
 }
 
 interface Props {
@@ -52,6 +59,14 @@ export function Riconosci({ campioni, base }: Props) {
   const [esiti, setEsiti] = useState<boolean[]>([]);
   const [filtro, setFiltro] = useState<"tutti" | "roccia" | "minerale">("tutti");
 
+  // Arrivando da un appunto (/campionario#granito) si apre il campionario su quel campione.
+  useEffect(() => {
+    const id = decodeURIComponent(location.hash.slice(1));
+    if (!id || !campioni.some((c) => c.id === id)) return;
+    setFase("sfoglia");
+    requestAnimationFrame(() => document.getElementById(id)?.scrollIntoView({ block: "center" }));
+  }, [campioni]);
+
   const pool = useMemo(() => campioni.filter((c) => filtro === "tutti" || c.tipo === filtro), [campioni, filtro]);
   const c = giro[i];
   const opzioni = useMemo(() => (c ? opzioniPer(c, campioni) : []), [c, campioni]);
@@ -63,7 +78,7 @@ export function Riconosci({ campioni, base }: Props) {
   const vuoto = `${bottone} border border-filetto text-inchiostro hover:bg-sabbia`;
 
   function inizia() {
-    setGiro(mescola(pool).slice(0, Math.min(GIRI, pool.length)));
+    setGiro(mescola(pool).slice(0, Math.min(GIRI, pool.length)).map(unaFoto));
     setI(0);
     setScelta(null);
     setEsiti([]);
@@ -101,7 +116,7 @@ export function Riconosci({ campioni, base }: Props) {
         </button>
         <ul className="mt-5 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
           {campioni.map((x) => (
-            <li key={x.id} className="vetrina overflow-hidden">
+            <li key={x.id} id={x.id} className="vetrina scroll-mt-20 overflow-hidden">
               <img src={`${base}${x.foto.file}`} alt={x.nome} loading="lazy" className="aspect-[4/3] w-full object-cover" />
               <div className="foglio rounded-none p-3 pt-4">
                 <p className="display text-lg leading-tight">{x.nome}</p>

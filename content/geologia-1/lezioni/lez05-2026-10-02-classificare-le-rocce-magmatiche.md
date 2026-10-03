@@ -58,6 +58,8 @@ Le piroclastiti nascono da un'attività vulcanica esplosiva che proietta grandi 
 | Pomice | ≥ 50% del volume | lava ricchissima di gas. È così piena di vuoti che galleggia |
 | Scoria | < 50% | stessa origine, meno vescicolare |
 
+::campioni{id="ossidiana,pomice,scoria"}
+
 Le vescicole sono il riflesso dei gas disciolti nel fuso.
 
 ## Il protocollo con i diagrammi triangolari
@@ -73,6 +75,8 @@ Prima cosa da valutare: la percentuale di femici. Se arriva al **90%** o più si
 - **Dunite**: olivina ≥ 90%.
 - **Peridotite**: olivina tra 40 e 90%. Tra le più frequenti; equivalente effusivo la **komatiite**.
 - **Pirossenite**: olivina < 40%, dominano i pirosseni.
+
+::campioni{id="dunite,peridotite,pirossenite"}
 
 ![](./lez05-2026-10-02-classificare-le-rocce-magmatiche-fig2.svg)
 
@@ -99,6 +103,8 @@ I femici, in questi diagrammi, sono accessori: si aggiungono e di solito non cam
 | Gabbro | **pirosseno**: prismi tozzi e robusti |
 | Anortosite | quasi solo plagioclasio, abbondante e spesso colorato (anche violaceo), con pochissima mica, anfibolo o pirosseno |
 
+::campioni{id="diorite,gabbro,anortosite"}
+
 ## Le effusive
 
 :::esame{etichetta="Punto fermo"}
@@ -117,17 +123,25 @@ Una roccia effusiva, qualunque sia la sua tessitura, si classifica in modo corre
 
 Cristalli di dimensioni discrete: olocristallina, intrusiva. Leucocratica, tende al bianco: probabile roccia silicica, quindi femici sotto il 90% e Streckeisen. Si vede il **quarzo**: niente feldspatoidi, triangolo superiore, sovrassatura. Il quarzo è tutto? No, e nessuno pensa sia oltre il 60%: siamo tra il 20 e il 60%. A quel punto il quarzo "ha dato tutte le informazioni che poteva". Restano A e P: i **feldspati alcalini** sono tabulari, spesso idiomorfi, colorati e con la geminazione che riflette la luce "a tavole"; il **plagioclasio** è bianco, allotriomorfo, riempie gli spazi. Qui prevalgono gli alcalini: si escludono granodiorite e tonalite, e gli alcalini non sono così tanti da essere un granito a feldspato alcalino. È un **granito** (A e P circa equivalenti: monzogranito; prevalgono un po' gli alcalini: sienogranito). C'è una mica nera, probabilmente biotite: si mette nell'elenco dei minerali, ma non serve al nome. "Se diciamo che è un granito, siamo già a posto."
 
+::campioni{id="granito"}
+
 #### 2 · Gabbro
 
 Grandi cristalli, anche centimetrici: olocristallina, intrusiva. Indice di colore intermedio, non melanocratico: niente triangolo delle ultrafemiche. Non si vedono né quarzo né feldspatoidi: siamo vicini alla linea A–P (attenzione: il quarzo potrebbe esserci in cristalli troppo piccoli, se la roccia è solo satura). Feldspati alcalini non se ne vedono, solo roba bianca, quindi domina il plagioclasio: angolo P, casella di diorite, gabbro e anortosite. Il nero è troppo per un'anortosite. Il femico è **tozzo e robusto**, non a aghetti o ciuffetti: **pirosseno**, quindi **gabbro**. Con l'anfibolo sarebbe stata una diorite.
+
+::campioni{id="gabbro"}
 
 #### 3 · Effusiva porfirica vescicolare con feldspatoidi
 
 Ha le vescicole, ma anche dei **cristalli bianchi**: è porfirica, quindi non è una scoria (una scoria non avrebbe fenocristalli). Si usa lo Streckeisen per le effusive. Quarzo niente; si vedono **feldspatoidi**, bianchi e globulari: triangolo inferiore, verso il fondo, più o meno nel campo delle **tefriti**. "Tutto quello che possiamo fare con una roccia di questo tipo è quello."
 
+::campioni{id="tefrite"}
+
 #### 4 · Riolite
 
 Porfirica: grandi individui in una pasta di fondo. Tra i fenocristalli c'è il **quarzo**, anche se poco ("gli vogliamo bene? Sì: anche se è poco, vuol dire che siamo da qui in su"). Ci sono anche fenocristalli prismatici colorati, quindi non siamo nell'angolo del quarzo: **riolite**. Il campo della riolite è lo stesso del granito: la riolite è il suo **equivalente effusivo**.
+
+::campioni{id="riolite,granito"}
 
 #### 5 · Effusiva scura senza fenocristalli
 

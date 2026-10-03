@@ -1,0 +1,81 @@
+{
+ "nota": "Concetti di base del programma di cartografia (Geografia fisica e cartografia, prof. Brandolini, a.a. 2026/27). Definizioni da manuale, da arricchire con le lezioni.",
+ "gruppi": [
+  {
+   "titolo": "Scala",
+   "concetti": [
+    { "termine": "Scala", "definizione": "Il rapporto tra una distanza misurata sulla carta e la corrispondente distanza sul terreno (proiettata sul piano orizzontale)." },
+    { "termine": "Scala numerica", "definizione": "La scala scritta come frazione: 1:25.000 vuol dire che 1 cm sulla carta vale 25.000 cm, cioè 250 m, sul terreno." },
+    { "termine": "Scala grafica", "definizione": "Un segmento graduato disegnato sulla carta che mostra a quale distanza reale corrisponde una certa lunghezza. Resta valida anche se la carta viene ingrandita o ridotta in fotocopia." },
+    { "termine": "Carta a grande scala", "definizione": "Denominatore piccolo (1:5.000, 1:10.000): rappresenta un'area piccola con molto dettaglio. «Grande scala» = frazione grande." },
+    { "termine": "Carta a piccola scala", "definizione": "Denominatore grande (1:1.000.000): rappresenta aree vaste con poco dettaglio." },
+    { "termine": "Distanza planimetrica", "definizione": "La distanza misurata sulla carta e convertita con la scala: è la distanza proiettata sul piano orizzontale, uguale a quella reale solo in pianura." }
+   ]
+  },
+  {
+   "titolo": "Forma della Terra e proiezioni",
+   "concetti": [
+    { "termine": "Geoide", "definizione": "La superficie equipotenziale del campo di gravità che coincide con il livello medio del mare prolungato sotto i continenti: la «forma vera» della Terra, irregolare." },
+    { "termine": "Ellissoide di riferimento", "definizione": "Il solido geometrico regolare, schiacciato ai poli, che approssima il geoide e su cui si fanno i calcoli cartografici." },
+    { "termine": "Datum", "definizione": "L'ellissoide più il modo in cui è orientato e fissato rispetto alla Terra: definisce il sistema di riferimento delle coordinate (es. Roma 40, ED50, WGS84)." },
+    { "termine": "Proiezione cartografica", "definizione": "Il metodo per riportare la superficie curva dell'ellissoide su un piano. Qualunque proiezione deforma qualcosa: angoli, aree o distanze." },
+    { "termine": "Proiezione conforme", "definizione": "Conserva gli angoli (e quindi le forme a piccola scala) ma deforma le aree. Esempio: Mercatore, Gauss." },
+    { "termine": "Proiezione equivalente", "definizione": "Conserva le aree ma deforma gli angoli." },
+    { "termine": "Proiezione equidistante", "definizione": "Conserva le distanze lungo certe direzioni (per esempio lungo i meridiani)." },
+    { "termine": "Proiezione di Gauss", "definizione": "Proiezione cilindrica trasversa conforme: il cilindro è tangente lungo un meridiano centrale. È la base del sistema UTM e del Gauss-Boaga italiano." }
+   ]
+  },
+  {
+   "titolo": "Posizione di un punto",
+   "concetti": [
+    { "termine": "Reticolato geografico", "definizione": "La rete di meridiani e paralleli su cui si leggono le coordinate geografiche." },
+    { "termine": "Latitudine", "definizione": "L'angolo tra la verticale del punto e il piano dell'equatore: da 0° all'equatore a 90° ai poli, Nord o Sud." },
+    { "termine": "Longitudine", "definizione": "L'angolo tra il meridiano del punto e il meridiano di riferimento (Greenwich): da 0° a 180°, Est o Ovest." },
+    { "termine": "Coordinate geografiche", "definizione": "Latitudine e longitudine, in gradi sessagesimali (° ′ ″) o decimali." },
+    { "termine": "Coordinate chilometriche (piane)", "definizione": "Distanze in metri da un'origine, su una griglia quadrata (reticolato chilometrico): Est e Nord. Si usano per UTM e Gauss-Boaga." },
+    { "termine": "Reticolato chilometrico", "definizione": "La griglia di quadrati (sulle carte al 25.000 di solito ogni 1 km) che si sovrappone alla carta per leggere le coordinate piane." },
+    { "termine": "Coordinate polari", "definizione": "La posizione di un punto data da una distanza e da un angolo (azimut) rispetto a un punto noto." },
+    { "termine": "UTM", "definizione": "Universal Transverse Mercator: il sistema internazionale che divide la Terra in 60 fusi di 6° di longitudine, ciascuno proiettato con Gauss. L'Italia sta nei fusi 32, 33 e 34." },
+    { "termine": "Gauss-Boaga", "definizione": "Il sistema cartografico nazionale italiano (datum Roma 40): proiezione di Gauss con due fusi, Ovest ed Est. È quello delle tavolette IGM." },
+    { "termine": "Falsa origine (falso Est)", "definizione": "Un valore aggiunto alle coordinate Est (500.000 m in UTM) per non avere mai coordinate negative." }
+   ]
+  },
+  {
+   "titolo": "I nord e gli angoli",
+   "concetti": [
+    { "termine": "Nord geografico", "definizione": "La direzione del meridiano verso il Polo Nord geografico." },
+    { "termine": "Nord magnetico", "definizione": "La direzione indicata dall'ago della bussola, verso il polo nord magnetico, che non coincide con quello geografico e si sposta nel tempo." },
+    { "termine": "Nord reticolato (o di quadrettatura)", "definizione": "La direzione delle linee verticali del reticolato chilometrico della carta." },
+    { "termine": "Declinazione magnetica", "definizione": "L'angolo tra nord geografico e nord magnetico in un luogo e in una data: va aggiornata con la variazione annua indicata sulla carta." },
+    { "termine": "Convergenza del meridiano", "definizione": "L'angolo tra nord geografico e nord reticolato: è zero sul meridiano centrale del fuso e cresce allontanandosi." },
+    { "termine": "Azimut", "definizione": "L'angolo di una direzione misurato in senso orario a partire dal nord, da 0° a 360°." }
+   ]
+  },
+  {
+   "titolo": "Il rilievo",
+   "concetti": [
+    { "termine": "Curve di livello (isoipse)", "definizione": "Linee che uniscono punti alla stessa quota. Dall'andamento e dalle quote si ricostruisce la forma del terreno." },
+    { "termine": "Equidistanza", "definizione": "La differenza di quota costante tra due isoipse successive. Sulle tavolette IGM al 25.000 è 25 m." },
+    { "termine": "Curve direttrici", "definizione": "Isoipse più marcate, una ogni tot (di solito ogni 4 o 5), con la quota scritta: aiutano a contare." },
+    { "termine": "Curve ausiliarie", "definizione": "Isoipse tratteggiate a metà equidistanza, usate dove il terreno è quasi piano." },
+    { "termine": "Punto quotato", "definizione": "Un punto con la quota scritta accanto (cime, selle, incroci)." },
+    { "termine": "Profilo topografico", "definizione": "Diagramma con le distanze sull'asse x e le quote sull'asse y: ricostruisce l'andamento del rilievo lungo una traccia A–B." },
+    { "termine": "Pendenza", "definizione": "Il rapporto tra dislivello e distanza orizzontale, in percentuale: (Δh / d) × 100." },
+    { "termine": "Inclinazione", "definizione": "L'angolo del versante rispetto all'orizzontale, in gradi: arctan(Δh / d). 100% di pendenza = 45°." },
+    { "termine": "Isoipse fitte / rade", "definizione": "Fitte = versante ripido; rade = versante dolce. A parità di equidistanza, più sono vicine più la pendenza è alta." },
+    { "termine": "Valle e crinale sulle isoipse", "definizione": "Le isoipse disegnano una «V»: in una valle la punta della V va verso monte, su un crinale va verso valle." }
+   ]
+  },
+  {
+   "titolo": "Carte italiane",
+   "concetti": [
+    { "termine": "IGMI", "definizione": "Istituto Geografico Militare Italiano: ha prodotto la cartografia di tutto il territorio nazionale dall'Unità d'Italia." },
+    { "termine": "Tavoletta IGM", "definizione": "La carta al 25.000 della vecchia Serie 25/V: un quarto di quadrante, 5′ di latitudine per 7′30″ di longitudine, isoipse ogni 25 m." },
+    { "termine": "Foglio, quadrante, tavoletta", "definizione": "Il Foglio al 100.000 si divide in 4 Quadranti al 50.000 (I–IV); ogni quadrante in 4 Tavolette al 25.000 (NE, SE, SO, NO)." },
+    { "termine": "CTR", "definizione": "Carta Tecnica Regionale, al 10.000 o 5.000: la cartografia di dettaglio prodotta dalle Regioni." },
+    { "termine": "Carta topografica e carta tematica", "definizione": "La topografica rappresenta il terreno (rilievo, acque, strade, centri abitati); le tematiche (geologica, geomorfologica, idrogeologica) ci aggiungono un tema sopra." },
+    { "termine": "Simbolismo cartografico", "definizione": "Segni convenzionali e colori della carta, spiegati nella legenda: azzurro per le acque, bruno per le isoipse, nero per opere e toponimi." }
+   ]
+  }
+ ]
+}

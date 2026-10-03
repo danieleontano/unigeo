@@ -2,6 +2,7 @@
 import Base from "@/layouts/Base.astro";
 import Colonna from "@/components/Colonna.astro";
 import { percorso } from "@/lib/percorsi";
+import { strumentiDi } from "@/lib/strumenti";
 import { dataBreve } from "@/lib/date";
 import { contaDefinizioni, lezioniDi, percorsoLezione, quizDisponibili, tutteLeMaterie } from "@/lib/contenuti";
 
@@ -28,14 +29,13 @@ const nQuiz = lezioni.filter((l) => quiz.has(l.id)).length;
         {d.docenti.join(", ")}
         {d.esame && <> · {d.esame}</>}
       </p>
-      {lezioni.length > 0 && (
+      {(lezioni.length > 0 || strumentiDi(materia.id).length > 0) && (
         <p class="mt-4 flex flex-wrap gap-2">
           <a href={percorso(`/materie/${materia.id}/libro`)} class="bottone bottone-materia">Apri il Libro</a>
           {definizioni > 0 && <a href={percorso(`/flashcard/${materia.id}`)} class="bottone bottone-vuoto">Campioni · {definizioni}</a>}
           {nQuiz > 0 && <a href={percorso(`/quiz/${materia.id}`)} class="bottone bottone-vuoto">Quiz misto · {nQuiz} {nQuiz === 1 ? "lezione" : "lezioni"}</a>}
           {nQuiz > 0 && <a href={percorso(`/ripasso#${materia.id}`)} class="bottone bottone-vuoto">Ripasso</a>}
-          {materia.id === "geologia-1" && <a href={percorso("/campionario")} class="bottone bottone-vuoto">Riconosci la pietra</a>}
-          {materia.id === "paleontologia" && <a href={percorso("/tempo")} class="bottone bottone-vuoto">Scala del tempo</a>}
+          {strumentiDi(materia.id).map((s) => <a href={percorso(s.href)} class="bottone bottone-vuoto">{s.titolo}</a>)}
         </p>
       )}
     </div>

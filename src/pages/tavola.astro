@@ -1,0 +1,20 @@
+---
+import Base from "@/layouts/Base.astro";
+import { Tavola, type Elemento } from "@/components/Tavola";
+import dati from "../../content/chimica/elementi.json";
+
+// «Imparare nome e simbolo degli elementi 1–30, 35–38, 47, 53–56, 78, 79»:
+// dalla lezione 1 di Chimica (02/10/2026).
+const intervallo = (a: number, b: number) => Array.from({ length: b - a + 1 }, (_, i) => a + i);
+const daSapere = [...intervallo(1, 30), ...intervallo(35, 38), 47, ...intervallo(53, 56), 78, 79];
+---
+
+<Base titolo="Tavola periodica" tema="sottosuolo" largo colore="#6A4C93">
+  <p class="etichetta">Chimica</p>
+  <h1 class="mt-1 text-[2rem] leading-tight">Tavola periodica</h1>
+  <p class="mt-1 max-w-prose text-sm text-grafite">Tocca un elemento per la scheda. Da sapere a memoria per la lezione 1: nome e simbolo di 1–30, 35–38, 47, 53–56, 78, 79.</p>
+  <div class="mt-5">
+    <Tavola client:load elementi={dati.elementi as Elemento[]} daSapere={daSapere} />
+  </div>
+  <p class="mt-8 font-sans text-[0.7rem] text-grafite">Fonte: {dati.fonte}, scaricati il {dati.scaricato.split("-").reverse().join("/")}.</p>
+</Base>

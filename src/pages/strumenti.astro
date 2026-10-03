@@ -1,0 +1,14 @@
+---
+import Base from "@/layouts/Base.astro";
+import SchedeStrumenti from "@/components/SchedeStrumenti.astro";
+import { STRUMENTI } from "@/lib/strumenti";
+---
+
+<Base titolo="Strumenti" tema="sottosuolo" largo>
+  <p class="etichetta">Il laboratorio</p>
+  <h1 class="mt-1 text-[2rem] leading-tight">Strumenti</h1>
+  <p class="mt-1 max-w-prose text-sm text-grafite">Per esercitarsi materia per materia. Crescono con le lezioni.</p>
+  <div class="mt-6">
+    <SchedeStrumenti strumenti={STRUMENTI} />
+  </div>
+</Base>

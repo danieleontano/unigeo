@@ -68,6 +68,15 @@ Regole del formato:
   Sono gli stessi riquadri degli appunti PDF già prodotti.
 - Le figure sono file `.svg` accanto alla lezione, inserite come immagine
   Markdown; la didascalia va nell'alt. Senza alt resta un'immagine nuda.
+- **Foto di rocce e minerali**: una riga `::campioni{id="granito,gabbro"}`
+  mostra le foto del campionario (`content/campionario/campioni.json`) con
+  nome, famiglia e credito, e porta alla scheda del campionario. Gli id
+  disponibili sono quelli del JSON (granito, diorite, gabbro, peridotite,
+  riolite, andesite, basalto, ossidiana, pomice, tufo, granodiorite, tonalite,
+  sienite, monzonite, anortosite, dunite, pirossenite, scoria, tefrite,
+  trachite, quarzo, olivina, biotite, ortoclasio, calcite, gesso, plagioclasio,
+  orneblenda, augite, muscovite, dolomite). Una roccia nuova si aggiunge al
+  JSON e si lancia `npx tsx scripts/campionario.ts`.
 - Niente HTML a blocchi (div, table): tutto quello che serve esiste in
   Markdown. Inline sono ammessi solo `<sup>` e `<sub>`.
 - Lo stato dei quiz e del ripasso NON sta nel Markdown: è nel browser.

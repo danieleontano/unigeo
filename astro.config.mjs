@@ -4,7 +4,8 @@ import react from "@astrojs/react";
 import tailwindcss from "@tailwindcss/vite";
 import { unified } from "@astrojs/markdown-remark";
 import remarkDirective from "remark-directive";
-import { remarkFigure, remarkRiquadri, remarkTabelleEtichettate } from "./src/lib/markdown/riquadri.ts";
+import { remarkCampioni, remarkFigure, remarkRiquadri, remarkTabelleEtichettate } from "./src/lib/markdown/riquadri.ts";
+import { fileURLToPath } from "node:url";
 
 // Sito statico su GitHub Pages: https://danieleontano.github.io/unigeo/
 // `base` entra in ogni link interno: si usa sempre `percorso()` di src/lib/percorsi.ts,
@@ -20,12 +21,20 @@ export default defineConfig({
   // "ignore": /unigeo e /unigeo/ valgono entrambi, in locale come su Pages.
   trailingSlash: "ignore",
   output: "static",
+  // La barra degli strumenti di Astro in basso nelle pagine locali: Daniele la vede e confonde.
+  devToolbar: { enabled: false },
   // Un file per pagina (materie/x.html): così «/materie/x» senza barra finale
   // viene servito da GitHub Pages senza redirect.
   build: { format: "file" },
   integrations: [react()],
   vite: { plugins: [tailwindcss()] },
   markdown: {
-    processor: unified({ remarkPlugins: [remarkDirective, remarkRiquadri, remarkFigure, remarkTabelleEtichettate] }),
+    processor: unified({ remarkPlugins: [
+      remarkDirective,
+      remarkRiquadri,
+      remarkFigure,
+      remarkTabelleEtichettate,
+      [remarkCampioni, { base: "/unigeo", dati: fileURLToPath(new URL("./content/campionario/campioni.json", import.meta.url)) }],
+    ] }),
   },
 });

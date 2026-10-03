@@ -3,7 +3,9 @@ import Base from "@/layouts/Base.astro";
 import Sezione from "@/components/Sezione.astro";
 import { Oggi } from "@/components/Oggi";
 import { Caldera } from "@/components/Caldera";
-import { Sismografo } from "@/components/Sismografo";
+import Sismografo from "@/components/Sismografo.astro";
+import SchedeStrumenti from "@/components/SchedeStrumenti.astro";
+import { STRUMENTI } from "@/lib/strumenti";
 import { percorso } from "@/lib/percorsi";
 import { dataLunga } from "@/lib/date";
 import { lezioniDi, schedeLezioni, tutteLeMaterie } from "@/lib/contenuti";
@@ -33,24 +35,13 @@ const oggi = oggiIso();
         </section>
 
         <section class="mt-7">
-          <h2 class="text-lg">Laboratorio</h2>
-          <ul class="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-3">
-            {[
-              { href: "/campionario", titolo: "Riconosci la pietra", testo: "Foto di rocce e minerali", simbolo: "cristallo" },
-              { href: "/tempo", titolo: "Scala del tempo", testo: "Eoni, ere, periodi", simbolo: "fossile-ammonite" },
-              { href: "/ispirazione", titolo: "Ispirazione", testo: "Fonti fuori corso", simbolo: "fossile-felce" },
-            ].map((s) => (
-              <li>
-                <a href={percorso(s.href)} class="group flex items-center gap-3 rounded-sm border border-filetto p-2.5 transition hover:border-inchiostro">
-                  <svg class="h-9 w-9 shrink-0 text-grafite transition group-hover:rotate-6 group-hover:text-lava" aria-hidden="true"><use href={`#${s.simbolo}`} /></svg>
-                  <span class="min-w-0">
-                    <span class="block font-sans text-sm font-semibold">{s.titolo}</span>
-                    <span class="block truncate text-xs text-grafite">{s.testo}</span>
-                  </span>
-                </a>
-              </li>
-            ))}
-          </ul>
+          <div class="flex items-baseline justify-between">
+            <h2 class="text-lg">Strumenti</h2>
+            <a href={percorso("/strumenti")} class="font-sans text-xs text-grafite hover:text-inchiostro">tutti →</a>
+          </div>
+          <div class="mt-2">
+            <SchedeStrumenti strumenti={STRUMENTI} compatto />
+          </div>
         </section>
 
       </div>
@@ -59,7 +50,7 @@ const oggi = oggiIso();
         <p class="etichetta mb-2 text-center">La caldera</p>
         <Caldera client:load />
         <div class="mt-6">
-          <Sismografo client:idle />
+          <Sismografo />
         </div>
         <p class="mt-6 text-center font-sans text-xs text-grafite">
           Gli ultimi strati depositati. <span class="text-inchiostro">Scorri per scendere.</span>

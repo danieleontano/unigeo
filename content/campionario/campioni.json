@@ -11,7 +11,8 @@
       "autore": "The stone gate",
       "licenza": "CC BY-SA 4.0",
       "pagina": "https://commons.wikimedia.org/wiki/File:Bianco_Sardo_Granit_mit_polierter_Oberfl%C3%A4che.jpg"
-    }
+    },
+    "fileCommons": "Bianco_Sardo_Granit_mit_polierter_Oberfläche.jpg"
   },
   {
     "id": "diorite",
@@ -25,7 +26,8 @@
       "autore": "Michael C. Rygel",
       "licenza": "CC BY-SA 3.0",
       "pagina": "https://commons.wikimedia.org/wiki/File:Diorite2.tif"
-    }
+    },
+    "fileCommons": "Diorite2.tif"
   },
   {
     "id": "gabbro",
@@ -39,7 +41,8 @@
       "autore": "Darla Sondrol",
       "licenza": "CC0",
       "pagina": "https://commons.wikimedia.org/wiki/File:Gabbro_(GeoDIL_number_-_94).jpg"
-    }
+    },
+    "fileCommons": "Gabbro_(GeoDIL_number_-_94).jpg"
   },
   {
     "id": "peridotite",
@@ -53,7 +56,8 @@
       "autore": "Shannon Heinle",
       "licenza": "CC0",
       "pagina": "https://commons.wikimedia.org/wiki/File:Kilbourne_Hole_(GeoDIL_number_-_2302).jpg"
-    }
+    },
+    "fileCommons": "Kilbourne_Hole_(GeoDIL_number_-_2302).jpg"
   },
   {
     "id": "riolite",
@@ -67,7 +71,8 @@
       "autore": "Benhoff",
       "licenza": "CC BY-SA 3.0",
       "pagina": "https://commons.wikimedia.org/wiki/File:Loebejuener_porphyr_poliert.jpg"
-    }
+    },
+    "fileCommons": "Loebejuener_porphyr_poliert.jpg"
   },
   {
     "id": "andesite",
@@ -96,7 +101,8 @@
       "autore": "James St. John",
       "licenza": "CC BY 2.0",
       "pagina": "https://commons.wikimedia.org/wiki/File:Basalt_12_(48674276333).jpg"
-    }
+    },
+    "fileCommons": "Basalt_12_(48674276333).jpg"
   },
   {
     "id": "ossidiana",
@@ -111,7 +117,8 @@
       "licenza": "CC BY-SA 3.0",
       "pagina": "https://commons.wikimedia.org/wiki/File:Lipari-Obsidienne_(5).jpg"
     },
-    "autoreFoto": "Ji-Elle"
+    "autoreFoto": "Ji-Elle",
+    "fileCommons": "Lipari-Obsidienne_(5).jpg"
   },
   {
     "id": "pomice",
@@ -125,7 +132,8 @@
       "autore": "User MPF on en.wikipedia",
       "licenza": "CC BY-SA 3.0",
       "pagina": "https://commons.wikimedia.org/wiki/File:Teidepumice.jpg"
-    }
+    },
+    "fileCommons": "Teidepumice.jpg"
   },
   {
     "id": "tufo",
@@ -139,6 +147,223 @@
       "autore": "Ivan Fernanadez 1011",
       "licenza": "CC BY-SA 4.0",
       "pagina": "https://commons.wikimedia.org/wiki/File:Guadalupe_Tuff.jpg"
+    },
+    "fileCommons": "Guadalupe_Tuff.jpg"
+  },
+  {
+    "id": "granodiorite",
+    "nome": "Granodiorite",
+    "voce": "Granodiorite",
+    "tipo": "roccia",
+    "famiglia": "Magmatica intrusiva · acida-intermedia",
+    "caratteri": "Come il granito, ma il plagioclasio prevale sul feldspato alcalino: più grigia. Quarzo visibile, biotite e anfibolo.",
+    "fileCommons": "Granodiorite (GeoDIL number - 25).jpg",
+    "foto": {
+      "file": "/campionario/granodiorite.jpg",
+      "autore": "Joseph H. Hartman",
+      "licenza": "CC0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Granodiorite_(GeoDIL_number_-_25).jpg"
+    }
+  },
+  {
+    "id": "tonalite",
+    "nome": "Tonalite",
+    "voce": "Tonalite",
+    "tipo": "roccia",
+    "famiglia": "Magmatica intrusiva · intermedia",
+    "caratteri": "Quarzo visibile e quasi solo plagioclasio tra i feldspati (gli alcalini meno del 10%), con anfibolo e biotite. Detta anche quarzodiorite.",
+    "fileCommons": "Bonsall Tonalite (quartz diorite) (GeoDIL number - 34).jpg",
+    "foto": {
+      "file": "/campionario/tonalite.jpg",
+      "autore": "Joseph H. Hartman",
+      "licenza": "CC0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Bonsall_Tonalite_(quartz_diorite)_(GeoDIL_number_-_34).jpg"
+    }
+  },
+  {
+    "id": "sienite",
+    "nome": "Sienite",
+    "voce": "Syenite",
+    "tipo": "roccia",
+    "famiglia": "Magmatica intrusiva · intermedia",
+    "caratteri": "Feldspato alcalino prevalente, quarzo scarso o assente (sotto il 5%), con anfibolo o pirosseno. Spesso rosata o grigia.",
+    "fileCommons": "Hornblende syenite (GeoDIL number - 54).jpg",
+    "altriFile": [
+      "Syenite (GeoDIL number - 417).jpg"
+    ],
+    "foto": {
+      "file": "/campionario/sienite.jpg",
+      "autore": "Joseph H. Hartman",
+      "licenza": "CC0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Hornblende_syenite_(GeoDIL_number_-_54).jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/sienite-2.jpg",
+        "autore": "Mike Davis",
+        "licenza": "CC0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Syenite_(GeoDIL_number_-_417).jpg"
+      }
+    ]
+  },
+  {
+    "id": "monzonite",
+    "nome": "Monzonite",
+    "voce": "Monzonite",
+    "tipo": "roccia",
+    "famiglia": "Magmatica intrusiva · intermedia",
+    "caratteri": "Feldspato alcalino e plagioclasio in quantità simili, quarzo scarso o assente; femici in quantità moderata.",
+    "fileCommons": "Monzonite (GeoDIL number - 72).jpg",
+    "altriFile": [
+      "Monzonite (GeoDIL number - 381).jpg"
+    ],
+    "foto": {
+      "file": "/campionario/monzonite.jpg",
+      "autore": "Joseph H. Hartman",
+      "licenza": "CC0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Monzonite_(GeoDIL_number_-_72).jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/monzonite-2.jpg",
+        "autore": "Mike Davis",
+        "licenza": "CC0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Monzonite_(GeoDIL_number_-_381).jpg"
+      }
+    ]
+  },
+  {
+    "id": "anortosite",
+    "nome": "Anortosite",
+    "voce": "Anorthosite",
+    "tipo": "roccia",
+    "famiglia": "Magmatica intrusiva · basica",
+    "caratteri": "Quasi solo plagioclasio, abbondante e spesso colorato (anche grigio-violaceo), con pochissima mica, anfibolo o pirosseno.",
+    "fileCommons": "Anorthosite (GeoDIL number - 136).jpg",
+    "altriFile": [
+      "Anorthosite (GeoDIL number - 453).jpg"
+    ],
+    "foto": {
+      "file": "/campionario/anortosite.jpg",
+      "autore": "Mike Davis",
+      "licenza": "CC0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Anorthosite_(GeoDIL_number_-_136).jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/anortosite-2.jpg",
+        "autore": "Nessa Eull",
+        "licenza": "CC0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Anorthosite_(GeoDIL_number_-_453).jpg"
+      }
+    ]
+  },
+  {
+    "id": "dunite",
+    "nome": "Dunite",
+    "voce": "Dunite",
+    "tipo": "roccia",
+    "famiglia": "Magmatica intrusiva · ultrafemica",
+    "caratteri": "Olivina pari o oltre il 90%: verde oliva, granulare, pesante. Il termine estremo delle ultrafemiche.",
+    "fileCommons": "Dunite (olivine peridotite) (GeoDIL number - 204).jpg",
+    "altriFile": [
+      "Peridotite (Dunite) 8.jpg"
+    ],
+    "foto": {
+      "file": "/campionario/dunite.jpg",
+      "autore": "Mike Davis",
+      "licenza": "CC0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Dunite_(olivine_peridotite)_(GeoDIL_number_-_204).jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/dunite-2.jpg",
+        "autore": "James St. John",
+        "licenza": "CC BY 2.0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Peridotite_(Dunite)_8.jpg"
+      }
+    ]
+  },
+  {
+    "id": "pirossenite",
+    "nome": "Pirossenite",
+    "voce": "Pyroxenite",
+    "tipo": "roccia",
+    "famiglia": "Magmatica intrusiva · ultrafemica",
+    "caratteri": "Dominano i pirosseni, olivina sotto il 40%: scura, verde-nerastra, cristalli tozzi.",
+    "fileCommons": "Pyroxenite (GeoDIL number - 464).jpg",
+    "altriFile": [
+      "Pyroxenite (Stillwater Complex, Neoarchean, 2.71 Ga; Beartooth Mountains, Montana, USA) (16762707716).jpg"
+    ],
+    "foto": {
+      "file": "/campionario/pirossenite.jpg",
+      "autore": "Nessa Eull",
+      "licenza": "CC0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Pyroxenite_(GeoDIL_number_-_464).jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/pirossenite-2.jpg",
+        "autore": "James St. John",
+        "licenza": "CC BY 2.0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Pyroxenite_(Stillwater_Complex,_Neoarchean,_2.71_Ga;_Beartooth_Mountains,_Montana,_USA)_(16762707716).jpg"
+      }
+    ]
+  },
+  {
+    "id": "scoria",
+    "nome": "Scoria",
+    "voce": "Scoria",
+    "tipo": "roccia",
+    "famiglia": "Vetrosa non frammentaria",
+    "caratteri": "Scura e bollosa, vescicole sotto il 50% del volume: a differenza della pomice non galleggia.",
+    "fileCommons": "Scoria (GeoDIL number - 138).jpg",
+    "foto": {
+      "file": "/campionario/scoria.jpg",
+      "autore": "Mike Davis",
+      "licenza": "CC0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Scoria_(GeoDIL_number_-_138).jpg"
+    }
+  },
+  {
+    "id": "tefrite",
+    "nome": "Tefrite",
+    "voce": "Tephrite",
+    "tipo": "roccia",
+    "famiglia": "Magmatica effusiva · con feldspatoidi",
+    "caratteri": "Effusiva scura con plagioclasio e feldspatoidi (leucite, nefelina), senza quarzo: triangolo inferiore di Streckeisen. I feldspatoidi sono i cristalli bianchi tondeggianti.",
+    "fileCommons": "Leucite nepheline tephrite (GeoDIL number - 457).jpg",
+    "altriFile": [
+      "Tephrite.jpg"
+    ],
+    "foto": {
+      "file": "/campionario/tefrite.jpg",
+      "autore": "Twyla Baker",
+      "licenza": "CC0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Leucite_nepheline_tephrite_(GeoDIL_number_-_457).jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/tefrite-2.jpg",
+        "autore": "Marek Novotňák",
+        "licenza": "CC BY-SA 4.0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Tephrite.jpg"
+      }
+    ]
+  },
+  {
+    "id": "trachite",
+    "nome": "Trachite",
+    "voce": "Trachyte",
+    "tipo": "roccia",
+    "famiglia": "Magmatica effusiva · intermedia",
+    "caratteri": "Equivalente effusivo della sienite: spesso porfirica, con fenocristalli tabulari di sanidino in una pasta di fondo grigia o chiara, ruvida al tatto.",
+    "fileCommons": "Trachyte porphyry (GeoDIL number - 77).jpg",
+    "foto": {
+      "file": "/campionario/trachite.jpg",
+      "autore": "Joseph H. Hartman",
+      "licenza": "CC0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Trachyte_porphyry_(GeoDIL_number_-_77).jpg"
     }
   },
   {
@@ -153,7 +378,8 @@
       "autore": "Didier Descouens",
       "licenza": "CC BY-SA 4.0",
       "pagina": "https://commons.wikimedia.org/wiki/File:Quartz_Br%C3%A9sil.jpg"
-    }
+    },
+    "fileCommons": "Quartz_Brésil.jpg"
   },
   {
     "id": "olivina",
@@ -167,7 +393,8 @@
       "autore": "Robert M. Lavinsky",
       "licenza": "CC BY-SA 3.0",
       "pagina": "https://commons.wikimedia.org/wiki/File:Olivine-gem7-10a.jpg"
-    }
+    },
+    "fileCommons": "Olivine-gem7-10a.jpg"
   },
   {
     "id": "biotite",
@@ -181,7 +408,8 @@
       "autore": "Fred Kruijen",
       "licenza": "CC BY-SA 3.0 nl",
       "pagina": "https://commons.wikimedia.org/wiki/File:Biotite_aggregate_-_Ochtendung,_Eifel,_Germany.jpg"
-    }
+    },
+    "fileCommons": "Biotite_aggregate_-_Ochtendung,_Eifel,_Germany.jpg"
   },
   {
     "id": "ortoclasio",
@@ -195,7 +423,8 @@
       "autore": "Didier Descouens",
       "licenza": "CC BY-SA 4.0",
       "pagina": "https://commons.wikimedia.org/wiki/File:OrthoclaseBresil.jpg"
-    }
+    },
+    "fileCommons": "OrthoclaseBresil.jpg"
   },
   {
     "id": "calcite",
@@ -224,6 +453,93 @@
       "autore": "Didier Descouens",
       "licenza": "CC BY-SA 4.0",
       "pagina": "https://commons.wikimedia.org/wiki/File:Gypse_Caresse.jpg"
+    },
+    "fileCommons": "Gypse_Caresse.jpg"
+  },
+  {
+    "id": "plagioclasio",
+    "nome": "Plagioclasio",
+    "voce": "Plagioclase",
+    "tipo": "minerale",
+    "famiglia": "Tettosilicato · feldspato calcico-sodico",
+    "caratteri": "Bianco o grigio, durezza 6, due sfaldature; sulle facce di sfaldatura sottili striature parallele (geminazione polisintetica). Calcico nelle rocce femiche, sodico nelle silicee.",
+    "fileCommons": "Labradorescent plagioclase feldspar (Marcy Anorthosite, Mesoproterozoic, 1.16 Ga; Route 3 roadcut south of Bartlett Pond, New York State, USA) 1.jpg",
+    "foto": {
+      "file": "/campionario/plagioclasio.jpg",
+      "autore": "James St. John",
+      "licenza": "CC BY 2.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Labradorescent_plagioclase_feldspar_(Marcy_Anorthosite,_Mesoproterozoic,_1.16_Ga;_Route_3_roadcut_south_of_Bartlett_Pond,_New_York_State,_USA)_1.jpg"
+    }
+  },
+  {
+    "id": "orneblenda",
+    "nome": "Orneblenda (anfibolo)",
+    "voce": "Hornblende",
+    "tipo": "minerale",
+    "famiglia": "Inosilicato a catena doppia · anfibolo",
+    "caratteri": "Nera o verde scura, in prismi allungati e sottili, a volte ad aghi; due sfaldature a circa 120°.",
+    "fileCommons": "Hornblende amphibole (31733452843).jpg",
+    "altriFile": [
+      "Hornblende (GeoDIL number - 1709).jpg"
+    ],
+    "foto": {
+      "file": "/campionario/orneblenda.jpg",
+      "autore": "James St. John",
+      "licenza": "CC BY 2.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Hornblende_amphibole_(31733452843).jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/orneblenda-2.jpg",
+        "autore": "Shannon Heinle",
+        "licenza": "CC0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Hornblende_(GeoDIL_number_-_1709).jpg"
+      }
+    ]
+  },
+  {
+    "id": "augite",
+    "nome": "Augite (pirosseno)",
+    "voce": "Augite",
+    "tipo": "minerale",
+    "famiglia": "Inosilicato a catena singola · pirosseno",
+    "caratteri": "Nera o verde scura, in prismi tozzi a sezione quasi quadrata; due sfaldature a circa 90°.",
+    "fileCommons": "Augite_Rwanda.jpg",
+    "foto": {
+      "file": "/campionario/augite.jpg",
+      "autore": "Didier Descouens",
+      "licenza": "CC BY-SA 4.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Augite_Rwanda.jpg"
+    }
+  },
+  {
+    "id": "muscovite",
+    "nome": "Muscovite",
+    "voce": "Muscovite",
+    "tipo": "minerale",
+    "famiglia": "Fillosilicato · mica chiara",
+    "caratteri": "Argentea o trasparente, in lamine elastiche sottilissime che si sfogliano con l'unghia: sfaldatura basale perfetta.",
+    "fileCommons": "Muscovite-Albite-122887.jpg",
+    "foto": {
+      "file": "/campionario/muscovite.jpg",
+      "autore": "Robert M. Lavinsky",
+      "licenza": "CC BY-SA 3.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Muscovite-Albite-122887.jpg"
+    }
+  },
+  {
+    "id": "dolomite",
+    "nome": "Dolomite",
+    "voce": "Dolomite (mineral)",
+    "tipo": "minerale",
+    "famiglia": "Carbonato · CaMg(CO₃)₂",
+    "caratteri": "Bianca o rosata, spesso in romboedri a facce curve; effervescenza debole con HCl a freddo, viva solo se polverizzata o con acido caldo.",
+    "fileCommons": "Dolomite_Luzenac.jpg",
+    "foto": {
+      "file": "/campionario/dolomite.jpg",
+      "autore": "Didier Descouens",
+      "licenza": "CC BY-SA 4.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Dolomite_Luzenac.jpg"
     }
   }
 ]

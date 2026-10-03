@@ -3,12 +3,19 @@ name: Pubblica su GitHub Pages
 on:
   push:
     branches: [main]
+  # Ogni mezz'ora: i terremoti RSNI si leggono al momento della pubblicazione.
+  schedule:
+    - cron: "7,37 * * * *"
   workflow_dispatch:
 
 permissions:
   contents: read
   pages: write
   id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
 
 jobs:
   build:

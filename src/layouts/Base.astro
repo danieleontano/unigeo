@@ -22,10 +22,10 @@ interface Props {
 
 const { titolo, descrizione, colore, largo = false, tema = "carta", nudo = false } = Astro.props;
 const voci = [
-  { href: "/", testo: "Home" },
+  { href: "/", testo: "Home", soloLargo: true },
   { href: "/materie", testo: "Materie" },
   { href: "/ripasso", testo: "Ripasso" },
-  { href: "/ispirazione", testo: "Ispirazione", corto: "Extra" },
+  { href: "/strumenti", testo: "Strumenti" },
 ];
 const attuale = Astro.url.pathname.replace(import.meta.env.BASE_URL.replace(/\/$/, ""), "") || "/";
 ---
@@ -57,12 +57,13 @@ const attuale = Astro.url.pathname.replace(import.meta.env.BASE_URL.replace(/\/$
               href={percorso(v.href)}
               class:list={[
                 "rounded-md px-1.5 py-1 transition sm:px-2.5",
-                attuale === v.href || (v.href !== "/" && attuale.startsWith(v.href))
+                v.soloLargo && "hidden sm:inline",
+                attuale === v.href || (v.href !== "/" && attuale.startsWith(v.href)) || (v.href === "/strumenti" && ["/campionario", "/qap", "/tempo", "/tavola", "/cartografia", "/ispirazione"].includes(attuale))
                   ? "bg-sabbia font-medium text-inchiostro"
                   : "text-grafite hover:text-inchiostro",
               ]}
             >
-              {v.corto ? (<><span class="sm:hidden">{v.corto}</span><span class="hidden sm:inline">{v.testo}</span></>) : v.testo}
+              {v.testo}
             </a>
           ))}
         </nav>

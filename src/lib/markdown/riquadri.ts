@@ -94,3 +94,41 @@ function testoDi(nodo: unknown): string {
   if (typeof n.value === "string") return n.value;
   return (n.children ?? []).map(testoDi).join("");
 }
+
+// ::campioni{id="granito,gabbro"} — una fila di foto dal campionario
+// (content/campionario/campioni.json), con nome, famiglia e credito. Serve a
+// mettere la foto di una roccia accanto agli appunti che ne parlano.
+import { readFileSync } from "node:fs";
+
+interface FotoCampione { file: string; autore: string; licenza: string; pagina: string }
+interface VoceCampione { id: string; nome: string; famiglia: string; foto?: FotoCampione }
+
+export function remarkCampioni(opzioni: { base: string; dati: string }) {
+  const campioni: VoceCampione[] = JSON.parse(readFileSync(opzioni.dati, "utf8"));
+  const perId = new Map(campioni.map((c) => [c.id, c]));
+  const el = (tagName: string, properties: Record<string, unknown>, children: unknown[] = []) => ({ type: "element", tagName, properties, children });
+  const testo = (value: string) => ({ type: "text", value });
+
+  return (albero: Root) => {
+    visit(albero, (nodo) => {
+      if (nodo.type !== "leafDirective") return;
+      const d = nodo as unknown as Direttiva;
+      if (d.name !== "campioni" && d.name !== "campione") return;
+      const ids = (d.attributes?.id ?? "").split(",").map((s) => s.trim()).filter(Boolean);
+      const voci = ids.map((id) => perId.get(id)).filter((c): c is VoceCampione => !!c?.foto);
+      const dati = (d.data ??= {}) as { hName?: string; hProperties?: Record<string, unknown>; hChildren?: unknown[] };
+      dati.hName = "div";
+      dati.hProperties = { className: ["campioni-foto"] };
+      dati.hChildren = voci.map((c) =>
+        el("figure", { className: ["campione-foto"] }, [
+          el("a", { href: `${opzioni.base}/campionario#${c.id}` }, [el("img", { src: `${opzioni.base}${c.foto!.file}`, alt: c.nome, loading: "lazy" })]),
+          el("figcaption", {}, [
+            el("strong", {}, [testo(c.nome)]),
+            el("span", {}, [testo(c.famiglia)]),
+            el("a", { href: c.foto!.pagina, className: ["credito"], target: "_blank", rel: "noopener noreferrer" }, [testo(`Foto: ${c.foto!.autore} · ${c.foto!.licenza}`)]),
+          ]),
+        ]),
+      );
+    });
+  };
+}

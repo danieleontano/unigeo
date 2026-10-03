@@ -180,6 +180,50 @@ due settimane di fila salta, il problema non è nel codice.
     gli strati crollano, `ev.loader` aspetta il crollo, dopo lo swap scivolano.
   · Home: blocco «Laboratorio» (campionario, tempo, ispirazione); bottoni
     dedicati in Geologia 1 e Paleontologia. SW v2 mette in cache anche i .jpg.
+- 2026-10-04 · Giro grosso, richieste di Daniele: dati sismici da RSNI (UniGe
+  DISTAV) invece che INGV; Laboratorio messo male; tavola periodica per Chimica
+  (il prof usa ptable.com); Paleontologia con la carta ICS più aggiornata,
+  esercizi base e di dettaglio, aggiornamento automatico; uno strumento per i
+  concetti di cartografia; sezione Strumenti; foto vere delle rocce degli
+  esempi; «Astro lo vedo» (era la dev toolbar in locale: spenta); «la frana non
+  la vedo» (con «riduci movimento» la saltavo: ora parte, più corta).
+  Costruito:
+  · **RSNI**: il feed RSS (`distav.unige.it/rsni/rss-man.php`, 20 eventi rivisti
+    a mano) non ha CORS → si legge IN BUILD (`lib/sismi.ts`, `Sismografo.astro`)
+    e `deploy.yml` ripubblica ogni 30 minuti (cron 7,37). INGV tolto.
+  · **Carta ICS ufficiale**: fonte = repo `i-c-stratigraphy/chart` (RDF Turtle,
+    versionato, quello che legge stratigraphy.org/chart), via jsDelivr. Script
+    `scripts/carta-ics.ts` (n3) → `content/tempo/carta-ics.json`: 179 unità con
+    nomi italiani ufficiali, età ± incertezza, GSSP, colori; le unità senza
+    etichetta si compongono come fa la carta (Superiore/Medio/Inferiore, Serie/
+    Piano del Cambriano). Versione al 04/10/2026: v2026-06 (modificata
+    20/06/2026). `carta-ics.yml` la ricontrolla ogni lunedì e committa se è
+    cambiata (il deploy a cron la pubblica). Macrostrat e `scala.json` tolti.
+    `/tempo` (`Tempo.tsx`): Carta (Fanerozoico con i piani / tutta la storia,
+    √età), Impara le basi (ordina periodi, era di appartenenza, prima/dopo),
+    Impara il dettaglio (inizio dei periodi, epoca→periodo, piano→periodo).
+  · **Tavola periodica** `/tavola`: PubChem (NIH) + nomi italiani Wikidata
+    (`scripts/tavola-periodica.ts`, posizione calcolata dal numero atomico e
+    verificata: 118 caselle distinte). Colora per categoria/stato/
+    elettronegatività, scheda, link a Ptable; esercizio sui «da sapere» della
+    lezione 1 (1–30, 35–38, 47, 53–56, 78, 79): nome↔simbolo, trova sulla tavola.
+  · **Cartografia** `/cartografia`: 46 concetti in `content/cartografia/
+    concetti.json` (dal programma di Brandolini; da manuale, da arricchire),
+    prova definizione→termine, calcolatori (distanza, pendenza/inclinazione,
+    coordinate GMS↔decimali, area) con il procedimento, allenamento con
+    problemi casuali.
+  · **QAP** `/qap` (proposta mia): triangolo di Streckeisen superiore,
+    trascinabile, nome intrusivo + effusivo (IUGS), modalità «classifica tu».
+  · **Campionario** 31 campioni (10 rocce e 5 minerali nuovi), più foto per
+    campione (`altriFile` → `altre`, il quiz ne pesca una a caso). Foto scelte
+    guardandole su un foglio di provini (Chrome headless su un HTML di
+    miniature): scartate sezioni sottili e foto con più minerali. Commons
+    risponde «too many requests» se si insiste: lo script fa pause e ritenta.
+  · **`::campioni{id="…"}`** nel Markdown: foto dal campionario dentro gli
+    appunti (lezione 5 esempi d'aula e campi QAP, lezione 3 minerali).
+  · **Strumenti** (`lib/strumenti.ts`, una lista per pagina Strumenti, Home e
+    materie); voce «Strumenti» nella barra, «Home» nascosta sul telefono (il
+    logo porta a casa).
 - 2026-10-03 · Sync tra dispositivi: proposta Supabase gratuito offline-first,
   Daniele ha detto NO («non abbiamo più posto su Supabase»). Resta
   esporta/importa a mano; la regola «niente DB» del kit vale ancora. Da

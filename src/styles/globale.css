@@ -74,7 +74,7 @@ html {
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  *:not(#frana *), *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
 
 body { margin: 0; min-height: 100dvh; }
@@ -249,3 +249,13 @@ html, .libro { transition: background 0.3s, color 0.3s; }
   .appunti td[data-etichetta]:not(:first-child)::before { content: attr(data-etichetta); display: block; font-family: var(--font-sans); font-size: 0.64rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-grafite); margin-top: 0.3rem; }
   .appunti td:empty { display: none; }
 }
+
+/* Foto dal campionario dentro gli appunti */
+.appunti .campioni-foto { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 0.6rem; margin: 0.75rem 0 1.25rem; }
+.appunti .campione-foto { margin: 0; border: 1px solid var(--color-filetto); border-radius: 0.3rem; overflow: hidden; background: #fff; counter-increment: none; padding: 0; }
+.appunti .campione-foto img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; margin: 0; }
+.appunti .campione-foto figcaption { padding: 0.35rem 0.5rem 0.45rem; font-family: var(--font-sans); font-size: 0.72rem; line-height: 1.3; color: var(--color-grafite); text-align: left; margin: 0; }
+.appunti .campione-foto figcaption::before { content: none; }
+.appunti .campione-foto figcaption strong { display: block; font-family: var(--font-display); font-size: 0.95rem; color: var(--inchiostro); }
+.appunti .campione-foto figcaption span { display: block; }
+.appunti .campione-foto .credito { display: block; margin-top: 0.15rem; font-size: 0.6rem; color: var(--color-grafite); text-decoration: none; }

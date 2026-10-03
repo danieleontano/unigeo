@@ -1,6 +1,5 @@
 ---
 import Base from "@/layouts/Base.astro";
-import { percorso } from "@/lib/percorsi";
 
 // Fonti vere dei geologi, fuori dal corso: si aprono in una scheda nuova.
 // Solo istituzioni e archivi noti; niente blog. Le descrizioni sono nostre.
@@ -62,10 +61,6 @@ const SEZIONI = [
   <p class="etichetta">Fuori dal corso</p>
   <h1 class="mt-1 text-[2rem] leading-tight">Ispirazione</h1>
   <p class="mt-1 max-w-prose text-sm text-grafite">Le fonti che i geologi guardano davvero. Si aprono in una scheda nuova.</p>
-  <p class="mt-4 flex flex-wrap gap-2">
-    <a href={percorso("/campionario")} class="bottone bottone-lava">Riconosci la pietra</a>
-    <a href={percorso("/tempo")} class="bottone bottone-vuoto">Scala del tempo geologico</a>
-  </p>
 
   <div class="deposita mt-8 grid grid-cols-1 gap-6 md:grid-cols-2">
     {SEZIONI.map((s) => (

@@ -1,0 +1,35 @@
+name: Aggiorna la carta ICS
+
+# Ogni lunedì controlla se la Commissione Internazionale di Stratigrafia ha
+# pubblicato una nuova versione della carta; se sì, aggiorna i dati e li
+# committa: il push fa ripartire la pubblicazione del sito.
+on:
+  schedule:
+    - cron: "17 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  aggiorna:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npx tsx scripts/carta-ics.ts
+      - name: Committa se è cambiata
+        run: |
+          if git diff --quiet content/tempo/carta-ics.json; then
+            echo "Nessuna versione nuova."
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add content/tempo/carta-ics.json
+            git commit -m "Carta ICS aggiornata alla nuova versione"
+            git push
+          fi

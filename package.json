@@ -35,10 +35,12 @@
     "zod": "^4.6.5"
   },
   "devDependencies": {
+    "@types/n3": "^1.26.4",
     "@types/node": "^24.19.1",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
     "@types/turndown": "^5.0.6",
+    "n3": "^1.26.0",
     "node-html-parser": "^9.0.4",
     "tsx": "^4.23.15",
     "turndown": "^7.2.4",
