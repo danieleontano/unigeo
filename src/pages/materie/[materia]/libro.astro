@@ -1,0 +1,105 @@
+---
+import { render } from "astro:content";
+import Base from "@/layouts/Base.astro";
+import { Lettore } from "@/components/Lettore";
+import { percorso } from "@/lib/percorsi";
+import { dataLunga } from "@/lib/date";
+import { lezioniDi, percorsoLezione, tutteLeMaterie } from "@/lib/contenuti";
+
+export async function getStaticPaths() {
+  const materie = await tutteLeMaterie();
+  const conLezioni = [];
+  for (const m of materie) {
+    const lezioni = await lezioniDi(m.id);
+    if (lezioni.length) conLezioni.push({ params: { materia: m.id }, props: { materia: m, lezioni } });
+  }
+  return conLezioni;
+}
+
+const { materia, lezioni } = Astro.props;
+const d = materia.data;
+const capitoli = await Promise.all(
+  lezioni.map(async (l) => ({ lezione: l, resa: await render(l), id: `cap-${l.data.numero}` })),
+);
+const ROMANI = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII", "XIII", "XIV", "XV", "XVI", "XVII", "XVIII", "XIX", "XX", "XXI", "XXII", "XXIII", "XXIV", "XXV", "XXVI", "XXVII", "XXVIII", "XXIX", "XXX"];
+const romano = (n: number) => ROMANI[n - 1] ?? String(n);
+---
+
+<Base titolo={`Libro · ${d.nome}`} colore={d.colore} largo>
+  <div class="libro -mx-4 -mt-6 px-4 pt-4 pb-12">
+    <Lettore client:load chiave={`unigeo.libro.${materia.id}`} capitoli={capitoli.map((c) => ({ id: c.id, numero: c.lezione.data.numero, titolo: c.lezione.data.titolo }))} />
+
+    <div class="mx-auto grid max-w-5xl grid-cols-1 gap-10 pt-6 lg:grid-cols-[1fr_220px]">
+      <div class="colonna mx-auto w-full">
+        <header class="mb-12 border-b border-filetto pb-8 text-center">
+          <img src={percorso(`/icone/${d.icona}`)} alt="" width="64" height="64" class="mx-auto h-16 w-16" />
+          <p class="etichetta mt-4">Il Libro</p>
+          <h1 class="mt-1 text-[2.4rem] leading-tight">{d.nome}</h1>
+          <p class="mt-2 text-sm text-grafite">{d.docenti.join(" · ")} · Scienze Geologiche, UniGe, a.a. 2026/27</p>
+          <p class="mt-1 font-sans text-xs text-grafite">{capitoli.length} capitoli</p>
+        </header>
+
+        {capitoli.map(({ lezione, resa, id }, i) => {
+          const l = lezione.data;
+          const Content = resa.Content;
+          return (
+            <section id={id} class="capitolo mb-16">
+              <header class="mb-8">
+                <p class="display text-center text-5xl font-light text-materia">{romano(l.numero)}</p>
+                <p class="etichetta mt-3 text-center">{dataLunga(l.data)}{l.docente && ` · ${l.docente}`}</p>
+                <h2 class="mt-2 text-center text-[1.9rem] leading-tight">{l.titolo}</h2>
+                {l.nota && <p class="mx-auto mt-4 max-w-prose text-center text-sm text-grafite">{l.nota}</p>}
+                <p class="mt-3 flex justify-center gap-4 font-sans text-xs print:hidden">
+                  <a href={percorso(percorsoLezione(lezione))} class="text-grafite hover:text-inchiostro">scheda e quiz</a>
+                  {l.pdf && <a href={percorso(l.pdf)} class="text-grafite hover:text-inchiostro">PDF</a>}
+                </p>
+              </header>
+              <article class="appunti">
+                <Content />
+              </article>
+              {i < capitoli.length - 1 && (
+                <div class="mt-14 flex items-center justify-center gap-3" aria-hidden="true">
+                  <span class="h-px w-16 bg-filetto" /><span class="h-1.5 w-1.5 rotate-45 bg-materia" /><span class="h-px w-16 bg-filetto" />
+                </div>
+              )}
+            </section>
+          );
+        })}
+      </div>
+
+      <nav class="hidden lg:block print:hidden" aria-label="Capitoli">
+        <div class="sticky top-28">
+          <p class="etichetta mb-2">Capitoli</p>
+          <ol class="indice-libro font-sans text-sm">
+            {capitoli.map(({ lezione, id }) => (
+              <li>
+                <a href={`#${id}`} data-cap={id} class="block border-l-2 border-filetto py-1 pl-3 text-grafite transition hover:text-inchiostro">
+                  <span class="display font-semibold text-materia">{romano(lezione.data.numero)}</span> · {lezione.data.titolo}
+                </a>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </nav>
+    </div>
+  </div>
+</Base>
+
+<script>
+  // L'indice a margine segue la lettura.
+  const link = Array.from(document.querySelectorAll<HTMLAnchorElement>(".indice-libro a"));
+  const oss = new IntersectionObserver(
+    (voci) => {
+      const v = voci.filter((x) => x.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
+      if (!v) return;
+      link.forEach((a) => {
+        const on = a.dataset.cap === v.target.id;
+        a.classList.toggle("text-inchiostro", on);
+        a.classList.toggle("border-materia", on);
+        a.classList.toggle("border-filetto", !on);
+      });
+    },
+    { rootMargin: "-20% 0px -70% 0px" },
+  );
+  document.querySelectorAll(".capitolo").forEach((c) => oss.observe(c));
+</script>

@@ -94,3 +94,15 @@ due settimane di fila salta, il problema non è nel codice.
   registra solo in produzione (`import.meta.env.PROD` nel layout). Icona
   `icone/app-512.png` rasterizzata dall'SVG di Geologia 1 via canvas nel browser.
   Fase 1 della roadmap completa salvo il punto 7 (i quiz veri li scrive Daniele).
+- 2026-10-03 · Identità visiva. Daniele: «visivamente deve essere un capolavoro,
+  questo è piatto», tema geologia anche nei colori, lettura continua come un
+  libro. Brief in `docs/IDENTITA-VISIVA.md` (base chiara carta e sabbia, scelta
+  sua; metafora della colonna stratigrafica; Fraunces + Caladea + Poppins; un
+  solo accento caldo, lava). Costruito: token legati a variabili CSS (`--carta`,
+  `--inchiostro`…) così il modo lettura su `:root[data-carta]` tinge tutto;
+  campiture geologiche in CSS puro; `Colonna.astro` (strati, più recente in
+  cima) e `Strati.astro` (striscia sotto la barra); home «Taccuino», Materie come
+  correlazione; **Libro** per materia (`/materie/<m>/libro`) con `Lettore.tsx`:
+  capitoli romani, capolettera, tavole numerate, Aa (zoom, colonna,
+  carta/seppia/notte), avanzamento, posizione ricordata, indice a margine.
+  Restano da ripellare: lezione singola, quiz, flashcard, ripasso, impostazioni.

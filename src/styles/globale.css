@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 /* Caratteri self-hosted: niente chiamate a Google Fonts, funziona offline. */
+@import "@fontsource-variable/fraunces/full.css";
 @import "@fontsource/caladea/400.css";
 @import "@fontsource/caladea/400-italic.css";
 @import "@fontsource/caladea/700.css";
@@ -8,19 +9,24 @@
 @import "@fontsource/poppins/500.css";
 @import "@fontsource/poppins/600.css";
 
-/* I token sono quelli degli appunti HTML: stesso quaderno, stessi colori.
-   --materia cambia per pagina (la pagina della lezione lo imposta inline). */
+/* ------------------------------------------------------------------------
+   Token — docs/IDENTITA-VISIVA.md §4-5. Base chiara «carta e sabbia», rocce
+   come colori di materia, un solo accento caldo (lava).
+   ------------------------------------------------------------------------ */
 @theme {
-  --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces Variable", Georgia, serif;
   --font-serif: "Caladea", Georgia, serif;
+  --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
 
-  --color-ink: #23282c;
-  --color-muted: #6b7378;
-  --color-line: #ddd5c7;
-  --color-sand: #f4eee3;
-  --color-slate: #3e4a52;
-  --color-ochre: #c9a227;
-  --color-moss: #6f8f5e;
+  /* carta, inchiostro, sabbia, grafite e filetto seguono il modo lettura (vedi :root[data-carta]) */
+  --color-carta: var(--carta);
+  --color-sabbia: var(--sabbia);
+  --color-inchiostro: var(--inchiostro);
+  --color-grafite: var(--grafite);
+  --color-filetto: var(--filetto);
+  --color-lava: #c2491d;
+  --color-ocra: #c9a227;
+  --color-muschio: #3f6e3a;
 
   --color-geologia-1: #b5552a;
   --color-paleontologia: #1f6f78;
@@ -29,150 +35,195 @@
   --color-matematica: #3e4a52;
 
   --color-materia: var(--materia, #3e4a52);
+
+  /* compatibilità con i nomi usati nei componenti già scritti */
+  --color-ink: var(--color-inchiostro);
+  --color-muted: var(--color-grafite);
+  --color-line: var(--color-filetto);
+  --color-sand: var(--color-sabbia);
+  --color-slate: #3e4a52;
+  --color-ochre: var(--color-ocra);
+  --color-moss: var(--color-muschio);
+
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 :root {
   --materia: #3e4a52;
+  --carta: #f6f1e7;
+  --sabbia: #eadfcb;
+  --inchiostro: #1f2326;
+  --grafite: #5e6568;
+  --filetto: #d6cbb6;
+  color-scheme: light;
 }
+:root[data-carta="seppia"] { --carta: #f1e6d0; --sabbia: #e4d5b8; --inchiostro: #3b2f22; --grafite: #6e5f4d; --filetto: #cdbb9a; }
+:root[data-carta="notte"] { --carta: #15181a; --sabbia: #1f2429; --inchiostro: #e8e1d3; --grafite: #9aa3a8; --filetto: #2c3236; color-scheme: dark; }
+:root[data-carta="notte"] .appunti figure { background: #1b1f22; }
+:root[data-carta="notte"] .appunti em, :root[data-carta="notte"] .appunti td:first-child, :root[data-carta="notte"] h1, :root[data-carta="notte"] h2, :root[data-carta="notte"] h3:not(.appunti h3), :root[data-carta="notte"] .display { color: #e8e1d3; }
+:root[data-carta="notte"] .appunti th { border-bottom-color: #e8e1d3; }
+:root[data-carta="notte"] .bottone-vuoto { color: #e8e1d3; }
 
 html {
-  background: #fff;
-  color: var(--color-ink);
+  background: var(--carta);
+  color: var(--inchiostro);
   font-family: var(--font-serif);
-  line-height: 1.5;
-  -webkit-text-size-adjust: 100%;
-}
-
-body {
-  margin: 0;
-  min-height: 100dvh;
-}
-
-h1, h2, h3, h4, .sans {
-  font-family: var(--font-sans);
-  color: var(--color-slate);
-  letter-spacing: -0.01em;
-}
-
-/* ---------- Indice della lezione ---------- */
-.indice {
-  counter-reset: sez;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  font-family: var(--font-sans);
-  font-size: 0.9rem;
-}
-.indice li {
-  counter-increment: sez;
-  display: flex;
-  gap: 0.75rem;
-  padding: 0.3rem 0;
-  border-bottom: 1px dotted var(--color-line);
-}
-.indice li::before {
-  content: counter(sez, decimal-leading-zero);
-  font-weight: 600;
-  color: var(--color-materia);
-  min-width: 1.6rem;
-}
-.indice a { color: var(--color-ink); text-decoration: none; }
-.indice a:hover { color: var(--color-materia); }
-
-/* ---------- Corpo degli appunti (stesso registro degli HTML di partenza) ---------- */
-.appunti {
-  counter-reset: sez;
-  font-size: 1.02rem;
   line-height: 1.55;
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
 }
-.appunti h2 {
-  counter-increment: sez;
-  display: flex;
-  align-items: baseline;
-  gap: 0.75rem;
-  margin: 2.25rem 0 0.5rem;
-  font-size: 1.3rem;
-  font-weight: 600;
-  scroll-margin-top: 3.5rem;
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
-.appunti h2::before {
-  content: counter(sez, decimal-leading-zero);
-  font-size: 0.8rem;
-  letter-spacing: 0.1em;
-  color: var(--color-materia);
-}
-.appunti h2:first-child { margin-top: 0; }
-.appunti h3 { margin: 1.5rem 0 0.35rem; font-size: 1.05rem; font-weight: 600; color: var(--color-materia); scroll-margin-top: 3.5rem; }
-.appunti h4 { margin: 1rem 0 0.25rem; font-size: 0.95rem; font-weight: 600; }
-.appunti p { margin: 0 0 0.7rem; }
-.appunti ul, .appunti ol { margin: 0 0 0.8rem; padding-left: 1.25rem; }
-.appunti li { margin-bottom: 0.3rem; }
-.appunti li::marker { color: var(--color-materia); }
-.appunti em { color: var(--color-slate); }
-.appunti a { color: var(--color-materia); }
-.appunti hr { border: 0; border-top: 1px solid var(--color-line); margin: 1.5rem 0; }
-.appunti sup { color: var(--color-moss); font-family: var(--font-sans); font-size: 0.7em; font-weight: 600; }
 
-.appunti table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 0.5rem 0 1rem;
-  font-size: 0.92rem;
-  display: block;
-  overflow-x: auto;
-}
-.appunti th {
-  font-family: var(--font-sans);
-  font-size: 0.72rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  text-align: left;
-  color: var(--color-muted);
-  border-bottom: 1.5px solid var(--color-slate);
-  padding: 0.35rem 0.5rem;
-  font-weight: 600;
-}
-.appunti td { padding: 0.45rem 0.5rem; border-bottom: 1px solid var(--color-line); vertical-align: top; }
-.appunti td:first-child { font-family: var(--font-sans); font-weight: 600; font-size: 0.85rem; color: var(--color-slate); }
+body { margin: 0; min-height: 100dvh; }
 
-.appunti .box {
-  border-left: 2px solid var(--color-ochre);
-  padding: 0.2rem 0 0.2rem 0.9rem;
-  margin: 0.9rem 0 1rem;
+h1, h2, h3, h4, .display {
+  font-family: var(--font-display);
+  font-variation-settings: "opsz" 72, "SOFT" 30, "WONK" 0;
+  color: var(--inchiostro);
+  letter-spacing: -0.015em;
+  font-weight: 500;
 }
-.appunti .box .lab {
+.etichetta {
   font-family: var(--font-sans);
-  font-size: 0.7rem;
+  font-size: 0.68rem;
+  font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  font-weight: 600;
-  color: var(--color-ochre);
-  margin-bottom: 0.25rem;
+  color: var(--color-grafite);
 }
-.appunti .box p { margin-bottom: 0.4rem; }
+
+/* ------------------------------------------------------------------------
+   Campiture geologiche (texture in CSS, niente immagini): lineato,
+   puntinato, tratteggio, scaglie. Il colore arriva da --materia.
+   ------------------------------------------------------------------------ */
+.campitura-lineato {
+  background-image: repeating-linear-gradient(0deg, color-mix(in srgb, var(--materia) 55%, transparent) 0 1px, transparent 1px 5px);
+}
+.campitura-puntinato {
+  background-image: radial-gradient(color-mix(in srgb, var(--materia) 70%, transparent) 0.9px, transparent 1.1px);
+  background-size: 6px 6px;
+}
+.campitura-tratteggio {
+  background-image: repeating-linear-gradient(-45deg, color-mix(in srgb, var(--materia) 60%, transparent) 0 1.5px, transparent 1.5px 7px);
+}
+.campitura-scaglie {
+  background-image: radial-gradient(circle at 50% 120%, color-mix(in srgb, var(--materia) 45%, transparent) 2px, transparent 2.6px);
+  background-size: 9px 7px;
+}
+.campitura-pieno { background-color: var(--materia); }
+
+/* Litificazione: scatola 1 = sedimento sciolto, 5 = roccia compatta */
+.lito-1 { background-image: radial-gradient(color-mix(in srgb, var(--materia) 70%, transparent) 0.8px, transparent 1px); background-size: 9px 9px; }
+.lito-2 { background-image: radial-gradient(color-mix(in srgb, var(--materia) 75%, transparent) 0.9px, transparent 1.1px); background-size: 6px 6px; }
+.lito-3 { background-image: repeating-linear-gradient(-45deg, color-mix(in srgb, var(--materia) 65%, transparent) 0 1.5px, transparent 1.5px 5px); }
+.lito-4 { background-image: repeating-linear-gradient(0deg, color-mix(in srgb, var(--materia) 70%, transparent) 0 1.5px, transparent 1.5px 4px); }
+.lito-5 { background-color: var(--materia); }
+
+/* ------------------------------------------------------------------------
+   Movimento: deposizione degli strati, dissolvenze.
+   ------------------------------------------------------------------------ */
+@keyframes deposita {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
+.deposita { animation: deposita 0.5s var(--ease-out-quint) both; }
+.deposita > * { animation: deposita 0.5s var(--ease-out-quint) both; }
+.deposita > *:nth-child(1) { animation-delay: 0.03s; }
+.deposita > *:nth-child(2) { animation-delay: 0.08s; }
+.deposita > *:nth-child(3) { animation-delay: 0.13s; }
+.deposita > *:nth-child(4) { animation-delay: 0.18s; }
+.deposita > *:nth-child(5) { animation-delay: 0.23s; }
+.deposita > *:nth-child(6) { animation-delay: 0.28s; }
+.deposita > *:nth-child(n + 7) { animation-delay: 0.33s; }
+
+/* Righe strette degli elenchi: tutta la riga è il bersaglio */
+.riga { display: flex; align-items: center; gap: 0.75rem; min-height: 2.25rem; padding: 0.25rem 0.25rem; margin: 0 -0.25rem; border-radius: 0.375rem; transition: background 0.15s; }
+.riga:hover { background: color-mix(in srgb, var(--color-sabbia) 60%, transparent); }
+
+/* Bottoni */
+.bottone { font-family: var(--font-sans); font-size: 0.85rem; font-weight: 500; border-radius: 0.5rem; padding: 0.45rem 0.85rem; line-height: 1.2; transition: transform 0.15s var(--ease-out-quint), background 0.15s; display: inline-flex; align-items: center; gap: 0.4rem; }
+.bottone:active { transform: translateY(1px); }
+.bottone-lava { background: var(--color-lava); color: #fff; }
+.bottone-lava:hover { background: color-mix(in srgb, var(--color-lava) 88%, black); }
+.bottone-materia { background: var(--materia); color: #fff; }
+.bottone-vuoto { border: 1px solid var(--color-filetto); color: var(--inchiostro); background: transparent; }
+.bottone-vuoto:hover { background: color-mix(in srgb, var(--color-sabbia) 60%, transparent); }
+
+/* ------------------------------------------------------------------------
+   Indice della lezione
+   ------------------------------------------------------------------------ */
+.indice { counter-reset: sez; margin: 0; padding: 0; list-style: none; font-family: var(--font-sans); font-size: 0.9rem; }
+.indice li { counter-increment: sez; display: flex; gap: 0.75rem; padding: 0.3rem 0; border-bottom: 1px dotted var(--color-filetto); }
+.indice li::before { content: counter(sez, decimal-leading-zero); font-family: var(--font-display); font-weight: 600; color: var(--materia); min-width: 1.6rem; }
+.indice a { color: var(--inchiostro); text-decoration: none; }
+.indice a:hover { color: var(--materia); }
+
+/* ------------------------------------------------------------------------
+   Corpo degli appunti (lezione singola e Libro)
+   ------------------------------------------------------------------------ */
+.appunti { counter-reset: sez tav; font-size: 1.04rem; line-height: 1.6; }
+.appunti h2 { counter-increment: sez; display: flex; align-items: baseline; gap: 0.75rem; margin: 2.4rem 0 0.6rem; font-size: 1.45rem; scroll-margin-top: 4rem; }
+.appunti h2::before { content: counter(sez, decimal-leading-zero); font-family: var(--font-sans); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em; color: var(--materia); }
+.appunti h2:first-child { margin-top: 0; }
+.appunti h3 { margin: 1.6rem 0 0.4rem; font-size: 1.12rem; color: var(--materia); scroll-margin-top: 4rem; font-weight: 600; }
+.appunti h4 { margin: 1.1rem 0 0.3rem; font-size: 0.98rem; font-weight: 600; }
+.appunti p { margin: 0 0 0.75rem; }
+.appunti ul, .appunti ol { margin: 0 0 0.85rem; padding-left: 1.25rem; }
+.appunti li { margin-bottom: 0.3rem; }
+.appunti li::marker { color: var(--materia); }
+.appunti em { color: #3e4a52; }
+.appunti a { color: var(--materia); }
+.appunti hr { border: 0; border-top: 1px solid var(--color-filetto); margin: 1.5rem 0; }
+.appunti sup, .appunti sub { font-family: var(--font-sans); font-size: 0.7em; font-weight: 600; color: var(--color-muschio); }
+
+.appunti table { width: 100%; border-collapse: collapse; margin: 0.5rem 0 1rem; font-size: 0.93rem; display: block; overflow-x: auto; }
+.appunti th { font-family: var(--font-sans); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; text-align: left; color: var(--color-grafite); border-bottom: 1.5px solid var(--inchiostro); padding: 0.4rem 0.5rem; font-weight: 600; }
+.appunti td { padding: 0.45rem 0.5rem; border-bottom: 1px solid var(--color-filetto); vertical-align: top; }
+.appunti td:first-child { font-family: var(--font-sans); font-weight: 600; font-size: 0.85rem; color: #3e4a52; }
+
+/* Riquadri: filetto a sinistra che diventa campitura geologica */
+.appunti .box { position: relative; padding: 0.35rem 0 0.35rem 1.1rem; margin: 1rem 0 1.1rem; }
+.appunti .box::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 5px; border-radius: 2px; background-color: var(--color-ocra); }
+.appunti .box .lab { font-family: var(--font-sans); font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; color: var(--color-ocra); margin-bottom: 0.3rem; }
+.appunti .box p { margin-bottom: 0.45rem; }
 .appunti .box p:last-child { margin-bottom: 0; }
-.appunti .box.exam { border-color: var(--color-materia); }
-.appunti .box.exam .lab { color: var(--color-materia); }
-.appunti .box.draw { border-color: var(--color-slate); }
-.appunti .box.draw .lab { color: var(--color-slate); }
-.appunti .box.warn { border-color: var(--color-moss); }
-.appunti .box.warn .lab { color: var(--color-moss); }
+.appunti .box.def::before { background-color: transparent; background-image: repeating-linear-gradient(0deg, var(--color-ocra) 0 2px, transparent 2px 5px); }
+.appunti .box.exam::before { background-color: var(--color-lava); }
+.appunti .box.exam .lab { color: var(--color-lava); }
+.appunti .box.draw::before { background-color: transparent; background-image: repeating-linear-gradient(-45deg, #3e4a52 0 2px, transparent 2px 6px); }
+.appunti .box.draw .lab { color: #3e4a52; }
+.appunti .box.warn::before { background-color: transparent; background-image: radial-gradient(var(--color-muschio) 1.2px, transparent 1.4px); background-size: 5px 5px; }
+.appunti .box.warn .lab { color: var(--color-muschio); }
 
-.appunti img, .appunti svg.figura { display: block; max-width: 100%; height: auto; margin: 0.75rem auto; }
-.appunti .didascalia, .appunti figcaption { font-size: 0.85rem; color: var(--color-muted); text-align: center; font-style: italic; margin: -0.25rem 0 1rem; }
-.appunti dl { display: grid; grid-template-columns: 1fr; gap: 0.25rem 1rem; margin: 0.5rem 0 1rem; }
-@media (min-width: 640px) { .appunti dl { grid-template-columns: 9rem 1fr; } }
-.appunti dt { font-family: var(--font-sans); font-size: 0.85rem; font-weight: 600; color: var(--color-slate); }
-.appunti dd { margin: 0 0 0.4rem; }
+/* Tavole: le figure numerate come in un trattato */
+.appunti figure { counter-increment: tav; margin: 1.25rem 0 1.5rem; padding: 0.75rem; border: 1px solid var(--color-filetto); border-radius: 0.5rem; background: #fff; }
+.appunti figure img { display: block; max-width: 100%; height: auto; margin: 0 auto; }
+.appunti figcaption { font-size: 0.86rem; color: var(--color-grafite); margin-top: 0.6rem; text-align: left; }
+.appunti figcaption::before { content: "Tav. " counter(tav) " · "; font-family: var(--font-sans); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--materia); }
+.appunti > p > img { display: block; max-width: 100%; height: auto; margin: 1rem auto; }
 
-/* ---------- Spunte delle liste «da fare» ---------- */
 .appunti li:has(> input[type="checkbox"]) { list-style: none; margin-left: -1.25rem; padding-left: 1.6rem; position: relative; }
-.appunti input[type="checkbox"] { position: absolute; left: 0; top: 0.35em; margin: 0; accent-color: var(--color-materia); }
+.appunti input[type="checkbox"] { position: absolute; left: 0; top: 0.35em; margin: 0; accent-color: var(--materia); }
 
-/* ---------- Stampa: il PDF lo fa il browser ---------- */
+/* ------------------------------------------------------------------------
+   Libro: modo lettura
+   ------------------------------------------------------------------------ */
+html, .libro { transition: background 0.3s, color 0.3s; }
+.libro .appunti { font-size: calc(1.04rem * var(--zoom, 1)); }
+.libro .colonna { max-width: calc(var(--larghezza, 42rem)); }
+
+.capitolo { scroll-margin-top: 3.5rem; }
+.capitolo .appunti > p:first-of-type::first-letter { font-family: var(--font-display); font-size: 3.4em; line-height: 0.85; float: left; margin: 0.08em 0.1em 0 0; color: var(--materia); font-weight: 600; }
+
+/* ------------------------------------------------------------------------
+   Stampa
+   ------------------------------------------------------------------------ */
 @media print {
   @page { size: A4; margin: 18mm 16mm; }
-  html { font-size: 10.5pt; }
+  html { font-size: 10.5pt; background: #fff; }
   header.sticky, nav, .print\:hidden { display: none !important; }
   main { max-width: none; padding: 0; }
   .appunti h2 { break-after: avoid; }

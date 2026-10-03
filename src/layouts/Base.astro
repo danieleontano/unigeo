@@ -1,17 +1,20 @@
 ---
 import "@/styles/globale.css";
 import { percorso } from "@/lib/percorsi";
+import Strati from "@/components/Strati.astro";
 
 interface Props {
   titolo: string;
   descrizione?: string;
-  /** Colore della materia: tinge la riga in alto e i titoli della pagina. */
+  /** Colore della materia: tinge titoli e accenti della pagina. */
   colore?: string;
+  /** Il Libro gestisce da sé larghezza e sfondo. */
+  largo?: boolean;
 }
 
-const { titolo, descrizione, colore } = Astro.props;
+const { titolo, descrizione, colore, largo = false } = Astro.props;
 const voci = [
-  { href: "/", testo: "Oggi" },
+  { href: "/", testo: "Taccuino" },
   { href: "/materie", testo: "Materie" },
   { href: "/ripasso", testo: "Ripasso" },
 ];
@@ -23,7 +26,7 @@ const attuale = Astro.url.pathname.replace(import.meta.env.BASE_URL.replace(/\/$
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content={colore ?? "#3e4a52"} />
+    <meta name="theme-color" content="#f6f1e7" />
     <link rel="icon" type="image/svg+xml" href={percorso("/favicon.svg")} />
     <link rel="apple-touch-icon" href={percorso("/icone/app-512.png")} />
     <link rel="manifest" href={percorso("/manifest.webmanifest")} />
@@ -31,20 +34,20 @@ const attuale = Astro.url.pathname.replace(import.meta.env.BASE_URL.replace(/\/$
     {descrizione && <meta name="description" content={descrizione} />}
   </head>
   <body class="flex min-h-dvh flex-col">
-    <header class="sticky top-0 z-10 border-b border-line bg-white/95 backdrop-blur print:hidden">
-      <div class="mx-auto flex h-11 max-w-3xl items-center justify-between px-4">
-        <a href={percorso("/")} class="font-sans text-sm font-semibold tracking-tight text-materia">
-          UniGeo
+    <header class="sticky top-0 z-20 bg-carta/92 backdrop-blur print:hidden">
+      <div class="mx-auto flex h-12 max-w-5xl items-center justify-between px-4">
+        <a href={percorso("/")} class="display text-[1.35rem] font-semibold tracking-tight text-inchiostro">
+          Uni<span class="text-lava">Geo</span>
         </a>
-        <nav class="flex gap-1 font-sans text-sm">
+        <nav class="flex gap-0.5 font-sans text-[0.85rem]">
           {voci.map((v) => (
             <a
               href={percorso(v.href)}
               class:list={[
-                "rounded px-2.5 py-1",
+                "rounded-md px-2.5 py-1 transition",
                 attuale === v.href || (v.href !== "/" && attuale.startsWith(v.href))
-                  ? "bg-sand font-medium text-slate"
-                  : "text-muted hover:text-slate",
+                  ? "bg-sabbia font-medium text-inchiostro"
+                  : "text-grafite hover:text-inchiostro",
               ]}
             >
               {v.testo}
@@ -52,12 +55,13 @@ const attuale = Astro.url.pathname.replace(import.meta.env.BASE_URL.replace(/\/$
           ))}
         </nav>
       </div>
+      <Strati />
     </header>
-    <main class="mx-auto w-full max-w-3xl flex-1 px-4 pb-10 pt-5">
+    <main class:list={["mx-auto w-full flex-1 px-4 pb-12 pt-6", largo ? "max-w-5xl" : "max-w-3xl"]}>
       <slot />
     </main>
-    <footer class="mx-auto w-full max-w-3xl px-4 pb-6 font-sans text-xs text-muted print:hidden">
-      <a href={percorso("/impostazioni")} class="hover:text-slate">Impostazioni</a>
+    <footer class="mx-auto w-full max-w-3xl px-4 pb-6 font-sans text-xs text-grafite print:hidden">
+      <a href={percorso("/impostazioni")} class="hover:text-inchiostro">Impostazioni</a>
     </footer>
     {import.meta.env.PROD && (
       <script is:inline define:vars={{ sw: percorso("/sw.js"), scope: percorso("/") }}>

@@ -1,0 +1,23 @@
+---
+// La striscia di strati sotto la barra: le cinque materie in proporzione
+// alle lezioni fatte. È il marchio e insieme un dato (IDENTITA-VISIVA §7).
+import { lezioniDi, tutteLeMaterie } from "@/lib/contenuti";
+
+interface Props {
+  altezza?: string;
+}
+const { altezza = "6px" } = Astro.props;
+const materie = await tutteLeMaterie();
+const lezioni = await lezioniDi();
+const conteggi = materie.map((m) => ({ m, n: lezioni.filter((l) => l.id.startsWith(`${m.id}/`)).length }));
+const totale = Math.max(1, conteggi.reduce((s, c) => s + c.n, 0));
+---
+
+<div class="flex w-full overflow-hidden" style={`height:${altezza}`} aria-hidden="true">
+  {conteggi.map(({ m, n }) => (
+    <span
+      class="h-full"
+      style={`width:${(Math.max(n, 0.4) / totale) * 100}%;--materia:${m.data.colore};background:${m.data.colore};opacity:${n ? 1 : 0.25}`}
+    />
+  ))}
+</div>

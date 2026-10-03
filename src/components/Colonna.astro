@@ -1,0 +1,54 @@
+---
+// Colonna stratigrafica: le lezioni di una materia come strati, la più recente
+// in cima. Spessore proporzionale alla lunghezza della lezione, campitura
+// che cambia a rotazione, numero della lezione come etichetta laterale.
+import { percorso } from "@/lib/percorsi";
+import { percorsoLezione, type Lezione } from "@/lib/contenuti";
+
+interface Props {
+  lezioni: Lezione[];
+  colore: string;
+  /** "verticale": colonna piena con etichette; "mini": solo gli strati. */
+  modo?: "verticale" | "mini";
+  altezza?: number;
+  attuale?: string;
+}
+const { lezioni, colore, modo = "verticale", altezza = 260, attuale } = Astro.props;
+const CAMPITURE = ["campitura-lineato", "campitura-puntinato", "campitura-tratteggio", "campitura-scaglie", "campitura-pieno"];
+const strati = [...lezioni].reverse();
+const pesi = strati.map((l) => Math.max(1, Math.min(3, (l.body?.length ?? 4000) / 9000)));
+---
+
+{modo === "mini" ? (
+  <div class="flex flex-col overflow-hidden rounded-sm" style={`height:${altezza}px;--materia:${colore}`} aria-hidden="true">
+    {strati.map((l, i) => (
+      <span class={`w-full border-b border-carta/70 last:border-0 ${CAMPITURE[(l.data.numero - 1) % CAMPITURE.length]}`} style={`flex:${pesi[i]} 1 0`} />
+    ))}
+    {strati.length === 0 && <span class="h-full w-full campitura-puntinato opacity-40" />}
+  </div>
+) : (
+  <ol class="deposita flex flex-col" style={`height:${altezza}px;--materia:${colore}`}>
+    {strati.map((l, i) => (
+      <li class="relative flex min-h-0" style={`flex:${pesi[i]} 1 0`}>
+        <a
+          href={percorso(percorsoLezione(l))}
+          class:list={[
+            "group flex w-full items-center gap-2 border-b border-carta/80 last:border-0",
+            attuale === l.id && "ring-2 ring-inset ring-inchiostro/70",
+          ]}
+          title={`Lezione ${l.data.numero} · ${l.data.titolo}`}
+        >
+          <span class={`h-full w-14 shrink-0 ${CAMPITURE[(l.data.numero - 1) % CAMPITURE.length]} transition group-hover:opacity-80`} />
+          <span class="display w-7 shrink-0 text-right text-sm font-semibold text-materia">{l.data.numero}</span>
+          <span class="min-w-0 flex-1 truncate text-sm">{l.data.titolo}</span>
+        </a>
+      </li>
+    ))}
+    {strati.length === 0 && <li class="etichetta flex h-full items-center pl-16">Nessuno strato</li>}
+  </ol>
+)}
+
+<style>
+  .border-carta\/80 { border-color: color-mix(in srgb, #f6f1e7 80%, transparent); }
+  .border-carta\/70 { border-color: color-mix(in srgb, #f6f1e7 70%, transparent); }
+</style>

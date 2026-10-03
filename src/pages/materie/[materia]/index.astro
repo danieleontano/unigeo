@@ -1,5 +1,6 @@
 ---
 import Base from "@/layouts/Base.astro";
+import Colonna from "@/components/Colonna.astro";
 import { percorso } from "@/lib/percorsi";
 import { dataBreve } from "@/lib/date";
 import { contaDefinizioni, lezioniDi, percorsoLezione, quizDisponibili, tutteLeMaterie } from "@/lib/contenuti";
@@ -16,61 +17,61 @@ const d = materia.data;
 const definizioni = lezioni.reduce((s, l) => s + contaDefinizioni(l), 0);
 ---
 
-<Base titolo={d.nome} colore={d.colore}>
-  <header class="flex items-start gap-3">
-    <img src={percorso(`/icone/${d.icona}`)} alt="" width="48" height="48" class="h-12 w-12 shrink-0" />
-    <div class="min-w-0">
-      <h1 class="text-2xl font-semibold leading-tight">{d.nome}</h1>
-      <p class="mt-0.5 text-sm text-muted">
+<Base titolo={d.nome} colore={d.colore} largo>
+  <header class="flex items-start gap-4">
+    <img src={percorso(`/icone/${d.icona}`)} alt="" width="56" height="56" class="h-14 w-14 shrink-0" />
+    <div class="min-w-0 flex-1">
+      <p class="etichetta">{d.moduli ? d.moduli.join(" · ") : "Materia"}</p>
+      <h1 class="mt-0.5 text-[2rem] leading-tight">{d.nome}</h1>
+      <p class="mt-1 text-sm text-grafite">
         {d.docenti.join(", ")}
         {d.esame && <> · {d.esame}</>}
       </p>
-      {definizioni > 0 && (
-        <p class="sans mt-2 text-xs">
-          <a href={percorso(`/flashcard/${materia.id}`)} class="rounded-md border border-line px-2 py-1 text-slate hover:bg-sand/60">
-            Flashcard · {definizioni} definizioni
-          </a>
+      {lezioni.length > 0 && (
+        <p class="mt-4 flex flex-wrap gap-2">
+          <a href={percorso(`/materie/${materia.id}/libro`)} class="bottone bottone-materia">Apri il Libro</a>
+          {definizioni > 0 && <a href={percorso(`/flashcard/${materia.id}`)} class="bottone bottone-vuoto">Campioni · {definizioni}</a>}
         </p>
       )}
     </div>
   </header>
 
   {lezioni.length === 0 ? (
-    <p class="mt-8 text-muted">Nessuna lezione ancora. Si aggiunge un file in <code class="sans text-sm">content/{materia.id}/lezioni/</code>.</p>
+    <p class="mt-10 text-grafite">Nessuno strato ancora. La prima lezione si aggiunge in <code class="font-sans text-sm">content/{materia.id}/lezioni/</code>.</p>
   ) : (
-    <section class="mt-6">
-      <div class="mb-2 flex items-center gap-2">
-        <input
-          id="filtro"
-          type="search"
-          placeholder="Cerca nelle lezioni"
-          class="sans w-full rounded-lg border border-line px-3 py-1.5 text-sm outline-none focus:border-slate"
-          autocomplete="off"
-        />
-        <button id="ordine" type="button" class="sans shrink-0 rounded-lg border border-line px-2.5 py-1.5 text-xs text-muted hover:text-slate" title="Inverti l'ordine">
-          <span data-asc>1 → {lezioni.length}</span><span data-desc hidden>{lezioni.length} → 1</span>
-        </button>
+    <section class="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-[320px_1fr]">
+      <div>
+        <p class="etichetta mb-2">Colonna stratigrafica</p>
+        <Colonna lezioni={lezioni} colore={d.colore} altezza={Math.max(140, lezioni.length * 44)} />
+        <p class="mt-2 font-sans text-[0.7rem] text-grafite">In cima la lezione più recente.</p>
       </div>
-      <ol id="lezioni" class="divide-y divide-line border-y border-line">
-        {lezioni.map((l) => (
-          <li data-testo={`${l.data.numero} ${l.data.titolo} ${l.data.docente ?? ""} ${l.data.tag.join(" ")}`.toLowerCase()}>
-            <a href={percorso(percorsoLezione(l))} class="flex items-center gap-3 py-1.5 hover:bg-sand/60">
-              <span class="sans w-7 shrink-0 text-right text-xs font-semibold text-materia">{String(l.data.numero).padStart(2, "0")}</span>
-              <span class="min-w-0 flex-1 truncate">{l.data.titolo}</span>
-              {quiz.has(l.id) && <span class="sans shrink-0 text-[10px] font-semibold uppercase tracking-wider text-materia" title="Quiz disponibile">Q</span>}
-              <span class="sans w-20 shrink-0 text-right text-xs tabular-nums text-muted">{dataBreve(l.data.data)}</span>
-            </a>
-          </li>
-        ))}
-      </ol>
-      <p id="vuoto" class="mt-4 text-sm text-muted" hidden>Nessuna lezione corrisponde.</p>
+
+      <div>
+        <div class="mb-2 flex items-center gap-2">
+          <input id="filtro" type="search" placeholder="Cerca nelle lezioni" class="w-full rounded-lg border border-filetto bg-white/60 px-3 py-1.5 font-sans text-sm outline-none focus:border-inchiostro" autocomplete="off" />
+          <button id="ordine" type="button" class="bottone bottone-vuoto shrink-0 text-xs" title="Inverti l'ordine">
+            <span data-asc>1 → {lezioni.length}</span><span data-desc hidden>{lezioni.length} → 1</span>
+          </button>
+        </div>
+        <ol id="lezioni" class="deposita divide-y divide-filetto border-y border-filetto">
+          {lezioni.map((l) => (
+            <li data-testo={`${l.data.numero} ${l.data.titolo} ${l.data.docente ?? ""} ${l.data.tag.join(" ")}`.toLowerCase()}>
+              <a href={percorso(percorsoLezione(l))} class="riga">
+                <span class="display w-7 shrink-0 text-right text-sm font-semibold text-materia">{String(l.data.numero).padStart(2, "0")}</span>
+                <span class="min-w-0 flex-1 truncate">{l.data.titolo}</span>
+                {quiz.has(l.id) && <span class="font-sans text-[10px] font-semibold uppercase tracking-wider text-materia shrink-0" title="Quiz disponibile">Q</span>}
+                <span class="font-sans w-20 shrink-0 text-right text-xs tabular-nums text-grafite">{dataBreve(l.data.data)}</span>
+              </a>
+            </li>
+          ))}
+        </ol>
+        <p id="vuoto" class="mt-4 text-sm text-grafite" hidden>Nessuna lezione corrisponde.</p>
+      </div>
     </section>
   )}
 </Base>
 
 <script>
-  // Filtro «tutte le parole, in qualunque ordine» e inversione dell'ordine:
-  // vanilla, niente isola React per una lista di dieci righe.
   const filtro = document.getElementById("filtro") as HTMLInputElement | null;
   const lista = document.getElementById("lezioni");
   const vuoto = document.getElementById("vuoto");
@@ -80,8 +81,7 @@ const definizioni = lezioni.reduce((s, l) => s + contaDefinizioni(l), 0);
     const parole = filtro.value.toLowerCase().split(/\s+/).filter(Boolean);
     let visibili = 0;
     lista?.querySelectorAll<HTMLLIElement>("li").forEach((li) => {
-      const testo = li.dataset.testo ?? "";
-      const ok = parole.every((p) => testo.includes(p));
+      const ok = parole.every((p) => (li.dataset.testo ?? "").includes(p));
       li.hidden = !ok;
       if (ok) visibili++;
     });
@@ -90,8 +90,7 @@ const definizioni = lezioni.reduce((s, l) => s + contaDefinizioni(l), 0);
 
   ordine?.addEventListener("click", () => {
     if (!lista) return;
-    const righe = Array.from(lista.children).reverse();
-    righe.forEach((r) => lista.appendChild(r));
+    Array.from(lista.children).reverse().forEach((r) => lista.appendChild(r));
     ordine.querySelectorAll<HTMLElement>("[data-asc],[data-desc]").forEach((s) => (s.hidden = !s.hidden));
   });
 </script>

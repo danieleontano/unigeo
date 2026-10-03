@@ -1,35 +1,69 @@
 ---
 import Base from "@/layouts/Base.astro";
+import Colonna from "@/components/Colonna.astro";
 import { Oggi } from "@/components/Oggi";
 import { percorso } from "@/lib/percorsi";
-import { dataBreve } from "@/lib/date";
-import { schedeLezioni } from "@/lib/contenuti";
+import { dataBreve, dataLunga } from "@/lib/date";
+import { lezioniDi, schedeLezioni, tutteLeMaterie } from "@/lib/contenuti";
+import { oggiIso } from "@/lib/ripasso";
 
-const lezioni = await schedeLezioni();
-const ultime = [...lezioni].sort((a, b) => b.data.localeCompare(a.data) || b.numero - a.numero).slice(0, 5);
+const schede = await schedeLezioni();
+const materie = await tutteLeMaterie();
+const lezioni = await lezioniDi();
+const ultime = [...schede].sort((a, b) => b.data.localeCompare(a.data) || b.numero - a.numero).slice(0, 5);
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const oggi = oggiIso();
 ---
 
-<Base titolo="Oggi" descrizione="Appunti e ripasso del primo anno di Scienze Geologiche.">
-  <h1 class="text-2xl font-semibold">Oggi</h1>
+<Base titolo="Taccuino" descrizione="Appunti e ripasso del primo anno di Scienze Geologiche." largo>
+  <div class="grid grid-cols-1 gap-10 lg:grid-cols-[1fr_300px]">
+    <div>
+      <p class="etichetta">Taccuino da campo</p>
+      <h1 class="mt-1 text-[2rem] leading-tight sm:text-[2.4rem]">{dataLunga(oggi)}</h1>
 
-  <section class="mt-5">
-    <h2 class="sans text-xs font-semibold uppercase tracking-[0.18em] text-muted">Da ripassare</h2>
-    <Oggi client:load lezioni={lezioni} base={base} />
-  </section>
+      <section class="mt-8">
+        <div class="flex items-baseline justify-between">
+          <h2 class="text-xl">Da ripassare</h2>
+          <a href={percorso("/ripasso")} class="font-sans text-xs text-grafite hover:text-inchiostro">tutto il calendario →</a>
+        </div>
+        <Oggi client:load lezioni={schede} base={base} />
+      </section>
 
-  <section class="mt-8">
-    <h2 class="sans text-xs font-semibold uppercase tracking-[0.18em] text-muted">Ultime lezioni</h2>
-    <ol class="mt-2 divide-y divide-line border-y border-line">
-      {ultime.map((l) => (
-        <li style={`--materia:${l.colore}`}>
-          <a href={percorso(l.percorsoLezione)} class="flex items-center gap-3 py-1.5 hover:bg-sand/60">
-            <span class="sans w-24 shrink-0 truncate text-xs font-semibold text-materia">{l.nomeMateria}</span>
-            <span class="min-w-0 flex-1 truncate">{l.numero} · {l.titolo}</span>
-            <span class="sans w-20 shrink-0 text-right text-xs tabular-nums text-muted">{dataBreve(l.data)}</span>
-          </a>
-        </li>
-      ))}
-    </ol>
-  </section>
+      <section class="mt-10">
+        <h2 class="text-xl">Ultimi strati depositati</h2>
+        <ol class="deposita mt-3 divide-y divide-filetto">
+          {ultime.map((l) => (
+            <li style={`--materia:${l.colore}`}>
+              <a href={percorso(l.percorsoLezione)} class="riga">
+                <span class="h-7 w-2 shrink-0 rounded-sm campitura-lineato" />
+                <span class="font-sans text-[0.7rem] font-semibold uppercase tracking-wider text-materia w-24 shrink-0 truncate">{l.nomeMateria}</span>
+                <span class="min-w-0 flex-1 truncate"><span class="display font-semibold text-materia">{l.numero}</span> · {l.titolo}</span>
+                <span class="font-sans text-xs tabular-nums text-grafite shrink-0">{dataBreve(l.data)}</span>
+              </a>
+            </li>
+          ))}
+        </ol>
+      </section>
+    </div>
+
+    <aside class="lg:pt-14">
+      <p class="etichetta mb-3">Le colonne</p>
+      <div class="grid grid-cols-5 gap-3 border-b border-filetto pb-3">
+        {materie.map((m) => {
+          const mie = lezioni.filter((l) => l.id.startsWith(`${m.id}/`));
+          return (
+            <a href={percorso(`/materie/${m.id}`)} class="group flex flex-col items-center gap-2" title={m.data.nome}>
+              <div class="flex h-36 w-full items-end">
+                <div class="w-full transition group-hover:-translate-y-0.5">
+                  <Colonna lezioni={mie} colore={m.data.colore} modo="mini" altezza={Math.max(14, Math.min(144, mie.length * 26))} />
+                </div>
+              </div>
+              <img src={percorso(`/icone/${m.data.icona}`)} alt="" width="28" height="28" class="h-7 w-7" />
+              <span class="display text-sm font-semibold" style={`color:${m.data.colore}`}>{mie.length}</span>
+            </a>
+          );
+        })}
+      </div>
+    </aside>
+  </div>
 </Base>
