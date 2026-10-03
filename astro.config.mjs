@@ -17,7 +17,8 @@ import { remarkFigure, remarkRiquadri } from "./src/lib/markdown/riquadri.ts";
 export default defineConfig({
   site: "https://danieleontano.github.io",
   base: "/unigeo",
-  trailingSlash: "never",
+  // "ignore": /unigeo e /unigeo/ valgono entrambi, in locale come su Pages.
+  trailingSlash: "ignore",
   output: "static",
   // Un file per pagina (materie/x.html): così «/materie/x» senza barra finale
   // viene servito da GitHub Pages senza redirect.
