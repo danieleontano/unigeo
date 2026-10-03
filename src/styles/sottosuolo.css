@@ -31,6 +31,8 @@
 /* Il foglio da campo: una scheda di carta chiara appoggiata sul buio. */
 .foglio {
   --carta: #f6f1e7; --sabbia: #eadfcb; --inchiostro: #1f2326; --grafite: #5e6568; --filetto: #d6cbb6;
+  /* i token Tailwind si risolvono dove sono dichiarati (:root): vanno ridichiarati qui */
+  --color-carta: var(--carta); --color-sabbia: var(--sabbia); --color-inchiostro: var(--inchiostro); --color-grafite: var(--grafite); --color-filetto: var(--filetto);
   background-color: var(--carta);
   background-image: var(--grana-carta);
   background-size: 220px 220px;
@@ -76,7 +78,7 @@
 .righello .tacca { position: absolute; left: 0; right: 0; height: 1px; background: color-mix(in srgb, var(--inchiostro) 45%, transparent); }
 .righello .tacca::after { content: ""; position: absolute; right: -3px; top: -2px; width: 5px; height: 5px; border-radius: 50%; background: var(--materia); }
 .righello .data { position: absolute; right: 0.5rem; top: 46px; font-family: var(--font-sans); font-size: 0.6rem; letter-spacing: 0.08em; color: var(--grafite); writing-mode: vertical-rl; transform: rotate(180deg); }
-.campione-strato { --carta: #f3ecdd; --sabbia: #e6dbc6; --inchiostro: #241e19; --grafite: #6b5f52; --filetto: #d2c5ad; color: var(--inchiostro); color-scheme: light; background-color: var(--carta); background-image: var(--grana-carta); background-size: 220px 220px; border-radius: 0.3rem; box-shadow: 0 18px 30px -18px rgba(0, 0, 0, 0.9), 0 1px 0 rgba(255, 255, 255, 0.5) inset; transform: rotate(var(--inclinazione, -0.6deg)); transition: transform 0.25s var(--ease-out-quint); }
+.campione-strato { --carta: #f3ecdd; --sabbia: #e6dbc6; --inchiostro: #241e19; --grafite: #6b5f52; --filetto: #d2c5ad; --color-carta: var(--carta); --color-sabbia: var(--sabbia); --color-inchiostro: var(--inchiostro); --color-grafite: var(--grafite); --color-filetto: var(--filetto); color: var(--inchiostro); color-scheme: light; background-color: var(--carta); background-image: var(--grana-carta); background-size: 220px 220px; border-radius: 0.3rem; box-shadow: 0 18px 30px -18px rgba(0, 0, 0, 0.9), 0 1px 0 rgba(255, 255, 255, 0.5) inset; transform: rotate(var(--inclinazione, -0.6deg)); transition: transform 0.25s var(--ease-out-quint); }
 .campione-strato::after { content: ""; position: absolute; left: 50%; top: -7px; width: 14px; height: 14px; border-radius: 50%; transform: translateX(-50%); background: radial-gradient(circle at 35% 35%, #ffe7a3, var(--color-ocra) 55%, #7a5a1c); box-shadow: 0 2px 3px rgba(0, 0, 0, 0.6); }
 .campione-strato:hover { transform: rotate(0deg) translateY(-3px); }
 .campione-strato .etichetta { color: var(--materia) !important; }

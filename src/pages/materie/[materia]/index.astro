@@ -15,6 +15,7 @@ const lezioni = await lezioniDi(materia.id);
 const quiz = await quizDisponibili();
 const d = materia.data;
 const definizioni = lezioni.reduce((s, l) => s + contaDefinizioni(l), 0);
+const nQuiz = lezioni.filter((l) => quiz.has(l.id)).length;
 ---
 
 <Base tema="sottosuolo" titolo={d.nome} colore={d.colore} largo>
@@ -31,6 +32,8 @@ const definizioni = lezioni.reduce((s, l) => s + contaDefinizioni(l), 0);
         <p class="mt-4 flex flex-wrap gap-2">
           <a href={percorso(`/materie/${materia.id}/libro`)} class="bottone bottone-materia">Apri il Libro</a>
           {definizioni > 0 && <a href={percorso(`/flashcard/${materia.id}`)} class="bottone bottone-vuoto">Campioni · {definizioni}</a>}
+          {nQuiz > 0 && <a href={percorso(`/quiz/${materia.id}`)} class="bottone bottone-vuoto">Quiz misto · {nQuiz} {nQuiz === 1 ? "lezione" : "lezioni"}</a>}
+          {nQuiz > 0 && <a href={percorso(`/ripasso#${materia.id}`)} class="bottone bottone-vuoto">Ripasso</a>}
         </p>
       )}
     </div>

@@ -1,0 +1,83 @@
+---
+import Base from "@/layouts/Base.astro";
+
+// Fonti vere dei geologi, fuori dal corso: si aprono in una scheda nuova.
+// Solo istituzioni e archivi noti; niente blog. Le descrizioni sono nostre.
+const SEZIONI = [
+  {
+    titolo: "La Terra che si muove, adesso",
+    fossile: "fossile-impronta",
+    voci: [
+      { nome: "INGV · Terremoti in Italia", url: "https://terremoti.ingv.it/", testo: "La lista ufficiale degli eventi in Italia, aggiornata in tempo reale, con mappa." },
+      { nome: "USGS · Latest Earthquakes", url: "https://earthquake.usgs.gov/earthquakes/map/", testo: "La mappa mondiale del servizio geologico americano: filtri per magnitudo e profondità." },
+      { nome: "INGV · Osservatorio Etneo", url: "https://www.ct.ingv.it/", testo: "Bollettini e aggiornamenti sull'attività dell'Etna e dello Stromboli." },
+    ],
+  },
+  {
+    titolo: "Vulcani",
+    fossile: "fossile-dente",
+    voci: [
+      { nome: "Smithsonian · Global Volcanism Program", url: "https://volcano.si.edu/", testo: "La scheda di ogni vulcano del pianeta e il rapporto settimanale delle eruzioni in corso." },
+      { nome: "INGV · Vulcani", url: "https://www.ingv.it/", testo: "Il portale dell'istituto: vulcani, terremoti, ambiente." },
+    ],
+  },
+  {
+    titolo: "La Terra vista da fuori",
+    fossile: "fossile-conchiglia",
+    voci: [
+      { nome: "NASA Earth Observatory", url: "https://earthobservatory.nasa.gov/", testo: "Un'immagine al giorno dai satelliti, spiegata: delta, ghiacciai, eruzioni, deserti." },
+      { nome: "NASA Worldview", url: "https://worldview.earthdata.nasa.gov/", testo: "I satelliti di oggi, su una mappa, con i livelli che vuoi." },
+    ],
+  },
+  {
+    titolo: "Minerali e rocce",
+    fossile: "cristallo",
+    voci: [
+      { nome: "Mindat", url: "https://www.mindat.org/", testo: "Il database dei minerali e delle località: schede, foto, proprietà, giacimenti." },
+      { nome: "Webmineral", url: "https://webmineral.com/", testo: "Dati cristallografici e fisici dei minerali, in forma di tabella." },
+    ],
+  },
+  {
+    titolo: "Carte e territorio",
+    fossile: "fossile-felce",
+    voci: [
+      { nome: "ISPRA · Carta Geologica d'Italia 1:50.000", url: "https://www.isprambiente.gov.it/Media/carg/", testo: "I fogli del progetto CARG, consultabili sulla mappa: la cartografia geologica ufficiale." },
+      { nome: "Regione Liguria · Geoportale", url: "https://geoportal.regione.liguria.it/", testo: "Le carte della Liguria: geologia, frane, idrografia. Quello che si vede in escursione." },
+      { nome: "Google Earth", url: "https://earth.google.com/", testo: "Il globo in 3D con la serie storica dei satelliti: morfologie, faglie, delta." },
+    ],
+  },
+  {
+    titolo: "Tempo profondo",
+    fossile: "fossile-ammonite",
+    voci: [
+      { nome: "International Commission on Stratigraphy · Chart", url: "https://stratigraphy.org/chart", testo: "La scala cronostratigrafica internazionale ufficiale, quella da tenere sempre sotto mano." },
+      { nome: "Paleobiology Database", url: "https://paleobiodb.org/", testo: "I fossili del mondo, dove e quando: il navigatore si esplora per periodo." },
+    ],
+  },
+];
+---
+
+<Base titolo="Ispirazione" tema="sottosuolo" largo>
+  <p class="etichetta">Fuori dal corso</p>
+  <h1 class="mt-1 text-[2rem] leading-tight">Ispirazione</h1>
+  <p class="mt-1 max-w-prose text-sm text-grafite">Le fonti che i geologi guardano davvero. Si aprono in una scheda nuova.</p>
+
+  <div class="deposita mt-8 grid grid-cols-1 gap-6 md:grid-cols-2">
+    {SEZIONI.map((s) => (
+      <section class="foglio relative p-5 pt-6">
+        <svg class="absolute right-4 top-4 h-12 w-12 opacity-30" style="color:#6b5f52" aria-hidden="true"><use href={`#${s.fossile}`} /></svg>
+        <h2 class="pr-14 text-xl leading-tight">{s.titolo}</h2>
+        <ul class="mt-3 divide-y divide-filetto">
+          {s.voci.map((v) => (
+            <li class="py-2.5">
+              <a href={v.url} target="_blank" rel="noopener noreferrer" class="group block">
+                <span class="font-sans text-sm font-semibold text-inchiostro group-hover:text-lava">{v.nome} <span class="text-grafite">↗</span></span>
+                <span class="mt-0.5 block text-sm text-grafite">{v.testo}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))}
+  </div>
+</Base>

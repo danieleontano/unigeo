@@ -1,0 +1,46 @@
+---
+import { getCollection } from "astro:content";
+import Base from "@/layouts/Base.astro";
+import { Quiz } from "@/components/Quiz";
+import { percorso } from "@/lib/percorsi";
+import { tutteLeMaterie } from "@/lib/contenuti";
+
+// Il quiz della materia: domande miste da tutte le lezioni che hanno un quiz,
+// come la prova pratica dell'esame. Non tocca le scatole delle singole
+// lezioni: resta nello storico come «materia/misto».
+export async function getStaticPaths() {
+  const materie = await tutteLeMaterie();
+  const quiz = await getCollection("quiz");
+  return materie
+    .filter((m) => quiz.some((q) => q.id.startsWith(`${m.id}/`)))
+    .map((m) => ({ params: { materia: m.id }, props: { materia: m, quiz: quiz.filter((q) => q.id.startsWith(`${m.id}/`)) } }));
+}
+
+const { materia, quiz } = Astro.props;
+const domande = [];
+for (const q of quiz) {
+  const [m, slug] = q.id.split("/");
+  for (const d of q.data.domande) domande.push({ ...d, id: `${slug}:${d.id}`, percorso: `/materie/${m}/lezioni/${slug}` });
+}
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+---
+
+<Base tema="sottosuolo" titolo={`Quiz della materia · ${materia.data.nome}`} colore={materia.data.colore}>
+  <p class="sans text-xs font-semibold uppercase tracking-[0.2em] text-materia">
+    <a href={percorso(`/materie/${materia.id}`)}>{materia.data.nome}</a>
+  </p>
+  <h1 class="mt-1 text-[1.6rem] leading-tight">Riconoscimento misto</h1>
+  <p class="mt-1 font-sans text-xs text-grafite">{domande.length} campioni da {quiz.length} {quiz.length === 1 ? "lezione" : "lezioni"}, in ordine casuale.</p>
+  <div class="mt-4">
+    <Quiz
+      client:load
+      idLezione={`${materia.id}/misto`}
+      titolo={`${materia.data.nome} · misto`}
+      colore={materia.data.colore}
+      domande={domande}
+      percorsoLezione={`/materie/${materia.id}`}
+      base={base}
+      modalita="misto"
+    />
+  </div>
+</Base>

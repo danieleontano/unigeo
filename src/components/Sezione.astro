@@ -9,8 +9,10 @@ import { materiaDiLezione, percorsoLezione, percorsoQuiz, quizDisponibili, type 
 interface Props {
   lezioni: Lezione[];
   materie: Materia[];
+  /** Quanti strati mostrare dall'alto; gli altri stanno nel basamento. */
+  limite?: number;
 }
-const { lezioni, materie } = Astro.props;
+const { lezioni, materie, limite } = Astro.props;
 const quiz = await quizDisponibili();
 const perId = new Map(materie.map((m) => [m.id, m.data]));
 
@@ -22,7 +24,9 @@ const LITOLOGIA: Record<string, string> = {
   matematica: "lit-marna",
 };
 const FOSSILI = ["fossile-ammonite", "fossile-trilobite", "fossile-felce", "fossile-conchiglia", "fossile-impronta", "fossile-dente"];
-const strati = [...lezioni].reverse();
+const tutti = [...lezioni].reverse();
+const strati = limite ? tutti.slice(0, limite) : tutti;
+const sepolti = tutti.length - strati.length;
 ---
 
 <section class="sezione" aria-label="Le lezioni come strati, dalla più recente">
@@ -77,7 +81,25 @@ const strati = [...lezioni].reverse();
     <svg class="litologia" aria-hidden="true"><rect width="100%" height="100%" fill="url(#lit-basalto)" /></svg>
     <svg class="onda" viewBox="0 0 1440 24" preserveAspectRatio="none" aria-hidden="true"><path d="M0 24 L0 14 C 300 4, 600 22, 900 10 S 1300 18, 1440 6 L1440 24Z" style="fill:#0c0e10" /></svg>
     <div class="relative mx-auto flex h-[140px] max-w-5xl items-center px-4 pl-14 sm:pl-16">
-      <p class="etichetta affiora">Basamento · inizio del semestre, 22 settembre 2026</p>
+      <p class="etichetta affiora">
+        {sepolti > 0 ? (
+          <>
+            Basamento · altri {sepolti} strati più in basso:{" "}
+            {materie
+              .filter((m) => lezioni.some((l) => l.id.startsWith(`${m.id}/`)))
+              .map((m, k) => (
+                <>
+                  {k > 0 && " · "}
+                  <a href={percorso(`/materie/${m.id}/libro`)} class="text-inchiostro underline decoration-filetto underline-offset-4 hover:decoration-inchiostro">
+                    {m.data.nome}
+                  </a>
+                </>
+              ))}
+          </>
+        ) : (
+          "Basamento · inizio del semestre, 22 settembre 2026"
+        )}
+      </p>
     </div>
   </div>
 </section>

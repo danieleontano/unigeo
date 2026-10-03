@@ -146,6 +146,21 @@ due settimane di fila salta, il problema non è nel codice.
   `.foglio` / `.campione-strato` con variabili chiare locali), cassetto di legno,
   caldera in sepia disegnata a mano, raggi dei bottoni 0.3rem, sassi desaturati.
   Regola: niente blur, niente glow, niente nero puro; ogni superficie ha una grana.
+- 2026-10-03 · Giro di Daniele: «Da fare non mi piace» → tolto (pagina, voce,
+  blocco in home; restano le caselle negli appunti e lo stato `dafare`). La
+  home si chiama Home e mostra solo gli ultimi 6 strati (`Sezione limite`), il
+  basamento rimanda ai Libri: trenta strati sarebbero un pozzo. Quiz e ripasso
+  PER MATERIA: `/quiz/<materia>` (misto, tutte le domande della materia,
+  `modalita="misto"`: va nello storico, non tocca le scatole) e `/ripasso`
+  raggruppato per materia con ancore `#<materia>`; bottoni nella pagina
+  materia. Nuova pagina **Ispirazione** («Extra» sul telefono): fonti vere
+  (INGV, USGS, Smithsonian GVP, NASA, Mindat, ISPRA CARG, ICS, PBDB), link
+  verificati il 03/10 (Smithsonian e Mindat rispondono 403 ai bot, vanno nel
+  browser). TRAPPOLA CSS: i token Tailwind `--color-x: var(--x)` si risolvono
+  sul `:root`; un contenitore che ridefinisce `--inchiostro` deve ridefinire
+  anche `--color-inchiostro` ecc. (fatto in `.foglio` e `.campione-strato`).
+  Proposte in attesa di Daniele: «Riconosci questa pietra» con le SUE foto del
+  set di laboratorio, sismografo INGV live in home, scala del tempo ICS.
 - 2026-10-03 · Sync tra dispositivi: proposta Supabase gratuito offline-first,
   Daniele ha detto NO («non abbiamo più posto su Supabase»). Resta
   esporta/importa a mano; la regola «niente DB» del kit vale ancora. Da

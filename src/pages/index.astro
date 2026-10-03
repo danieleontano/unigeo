@@ -2,12 +2,10 @@
 import Base from "@/layouts/Base.astro";
 import Sezione from "@/components/Sezione.astro";
 import { Oggi } from "@/components/Oggi";
-import { DaFare } from "@/components/DaFare";
 import { Caldera } from "@/components/Caldera";
 import { percorso } from "@/lib/percorsi";
 import { dataLunga } from "@/lib/date";
 import { lezioniDi, schedeLezioni, tutteLeMaterie } from "@/lib/contenuti";
-import { coseDaFareDi } from "@/lib/dafare";
 import { oggiIso } from "@/lib/ripasso";
 
 const schede = await schedeLezioni();
@@ -15,11 +13,9 @@ const materie = await tutteLeMaterie();
 const lezioni = await lezioniDi();
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 const oggi = oggiIso();
-const daFare = lezioni.flatMap(coseDaFareDi);
-const materieBrevi = materie.map((m) => ({ id: m.id, nome: m.data.nome, colore: m.data.colore }));
 ---
 
-<Base titolo="Taccuino" descrizione="Appunti e ripasso del primo anno di Scienze Geologiche." tema="sottosuolo" nudo>
+<Base titolo="Home" descrizione="Appunti e ripasso del primo anno di Scienze Geologiche." tema="sottosuolo" nudo>
   {/* La superficie: il taccuino appoggiato sul buio, il vulcano accanto. */}
   <section class="relative mx-auto max-w-5xl px-4 pb-16 pt-8 sm:pt-12">
     <div class="grid grid-cols-1 items-start gap-8 lg:grid-cols-[1fr_320px]">
@@ -35,29 +31,20 @@ const materieBrevi = materie.map((m) => ({ id: m.id, nome: m.data.nome, colore: 
           <Oggi client:load lezioni={schede} base={base} />
         </section>
 
-        <section class="mt-7">
-          <div class="flex items-baseline justify-between">
-            <h2 class="text-lg">Da fare</h2>
-            <a href={percorso("/da-fare")} class="font-sans text-xs text-grafite hover:text-inchiostro">tutte →</a>
-          </div>
-          <div class="mt-2">
-            <DaFare client:load voci={daFare} materie={materieBrevi} base={base} compatto limite={4} />
-          </div>
-        </section>
       </div>
 
       <aside class="deposita lg:pt-6">
         <p class="etichetta mb-2 text-center">La caldera</p>
         <Caldera client:load />
         <p class="mt-6 text-center font-sans text-xs text-grafite">
-          Sotto ci sono {lezioni.length} strati. <span class="text-inchiostro">Scorri per scendere nel semestre.</span>
+          Gli ultimi strati depositati. <span class="text-inchiostro">Scorri per scendere.</span>
         </p>
         <div class="mx-auto mt-2 h-8 w-px bg-gradient-to-b from-grafite to-transparent" aria-hidden="true" />
       </aside>
     </div>
   </section>
 
-  <Sezione lezioni={lezioni} materie={materie} />
+  <Sezione lezioni={lezioni} materie={materie} limite={6} />
 
   <section class="mx-auto max-w-5xl px-4 py-10 text-center">
     <a href={percorso("/materie")} class="bottone bottone-lava">Vai ai campioni delle materie</a>

@@ -21,10 +21,10 @@ interface Props {
 
 const { titolo, descrizione, colore, largo = false, tema = "carta", nudo = false } = Astro.props;
 const voci = [
-  { href: "/", testo: "Taccuino" },
+  { href: "/", testo: "Home" },
   { href: "/materie", testo: "Materie" },
-  { href: "/da-fare", testo: "Da fare" },
   { href: "/ripasso", testo: "Ripasso" },
+  { href: "/ispirazione", testo: "Ispirazione", corto: "Extra" },
 ];
 const attuale = Astro.url.pathname.replace(import.meta.env.BASE_URL.replace(/\/$/, ""), "") || "/";
 ---
@@ -60,7 +60,7 @@ const attuale = Astro.url.pathname.replace(import.meta.env.BASE_URL.replace(/\/$
                   : "text-grafite hover:text-inchiostro",
               ]}
             >
-              {v.testo}
+              {v.corto ? (<><span class="sm:hidden">{v.corto}</span><span class="hidden sm:inline">{v.testo}</span></>) : v.testo}
             </a>
           ))}
         </nav>

@@ -4,13 +4,17 @@ import { dopoQuiz, oggiIso } from "@/lib/ripasso";
 import type { Domanda } from "@/content.config";
 import { Eruzione } from "./Eruzione";
 
+type DomandaQuiz = Domanda & { percorso?: string };
+
 interface Props {
   idLezione: string;
   titolo: string;
   colore: string;
-  domande: Domanda[];
+  domande: DomandaQuiz[];
   percorsoLezione: string;
   base: string;
+  /** «misto»: domande da più lezioni; va nello storico ma non tocca le scatole. */
+  modalita?: "lezione" | "misto";
 }
 
 type Fase = "domanda" | "esito" | "fine";
@@ -34,12 +38,12 @@ function durezza(quota: number): number {
 // che entra girando; la risposta sbagliata crepa il cartellino, quella
 // giusta lo fa risuonare. Alla fine la durezza di Mohs e, sopra l'80%,
 // l'eruzione.
-export function Quiz({ idLezione, titolo, colore, domande, percorsoLezione, base }: Props) {
+export function Quiz({ idLezione, titolo, colore, domande, percorsoLezione, base, modalita = "lezione" }: Props) {
   const stato = useStato();
   const idratato = useIdratato();
   const sbagliatePrima = stato.progress[idLezione]?.wrongIds ?? [];
 
-  const [ordine, setOrdine] = useState<Domanda[] | null>(null);
+  const [ordine, setOrdine] = useState<DomandaQuiz[] | null>(null);
   const [i, setI] = useState(0);
   const [fase, setFase] = useState<Fase>("domanda");
   const [esiti, setEsiti] = useState<Record<string, boolean>>({});
@@ -51,6 +55,7 @@ export function Quiz({ idLezione, titolo, colore, domande, percorsoLezione, base
 
   const lista = useMemo(() => {
     if (ordine) return ordine;
+    if (modalita === "misto") return mescola(domande);
     const prima = domande.filter((d) => sbagliatePrima.includes(d.id));
     const dopo = domande.filter((d) => !sbagliatePrima.includes(d.id));
     return [...prima, ...dopo];
@@ -95,7 +100,7 @@ export function Quiz({ idLezione, titolo, colore, domande, percorsoLezione, base
     const oggi = oggiIso();
     aggiornaStato((s) => ({
       ...s,
-      progress: { ...s.progress, [idLezione]: dopoQuiz(s.progress[idLezione], corrette, lista.length, sbagliate, oggi) },
+      progress: modalita === "misto" ? s.progress : { ...s.progress, [idLezione]: dopoQuiz(s.progress[idLezione], corrette, lista.length, sbagliate, oggi) },
       history: [...s.history, { date: oggi, lesson: idLezione, correct: corrette, total: lista.length }],
     }));
     setFase("fine");
@@ -154,7 +159,7 @@ export function Quiz({ idLezione, titolo, colore, domande, percorsoLezione, base
               <li key={q.id} className="py-1.5">
                 <span>{q.testo}</span>
                 {q.ref && (
-                  <a href={`${base}${percorsoLezione}${q.ref}`} className="sans ml-2 text-xs text-materia hover:underline">
+                  <a href={`${base}${q.percorso ?? percorsoLezione}${q.ref}`} className="sans ml-2 text-xs text-materia hover:underline">
                     appunti →
                   </a>
                 )}
@@ -309,7 +314,7 @@ export function Quiz({ idLezione, titolo, colore, domande, percorsoLezione, base
               {i + 1 < lista.length ? "Prossimo campione" : "Chiudi"}
             </button>
             {d.ref && (
-              <a href={`${base}${percorsoLezione}${d.ref}`} className="sans text-sm text-materia hover:underline">
+              <a href={`${base}${d.percorso ?? percorsoLezione}${d.ref}`} className="sans text-sm text-materia hover:underline">
                 Vai al paragrafo →
               </a>
             )}
