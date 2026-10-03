@@ -16,6 +16,7 @@ const { titolo, descrizione, colore, largo = false } = Astro.props;
 const voci = [
   { href: "/", testo: "Taccuino" },
   { href: "/materie", testo: "Materie" },
+  { href: "/da-fare", testo: "Da fare" },
   { href: "/ripasso", testo: "Ripasso" },
 ];
 const attuale = Astro.url.pathname.replace(import.meta.env.BASE_URL.replace(/\/$/, ""), "") || "/";
@@ -39,12 +40,12 @@ const attuale = Astro.url.pathname.replace(import.meta.env.BASE_URL.replace(/\/$
         <a href={percorso("/")} class="display text-[1.35rem] font-semibold tracking-tight text-inchiostro">
           Uni<span class="text-lava">Geo</span>
         </a>
-        <nav class="flex gap-0.5 font-sans text-[0.85rem]">
+        <nav class="flex gap-0.5 whitespace-nowrap font-sans text-[0.78rem] sm:text-[0.85rem]">
           {voci.map((v) => (
             <a
               href={percorso(v.href)}
               class:list={[
-                "rounded-md px-2.5 py-1 transition",
+                "rounded-md px-1.5 py-1 transition sm:px-2.5",
                 attuale === v.href || (v.href !== "/" && attuale.startsWith(v.href))
                   ? "bg-sabbia font-medium text-inchiostro"
                   : "text-grafite hover:text-inchiostro",

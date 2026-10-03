@@ -1,0 +1,39 @@
+---
+// Le caselle «- [ ]» degli appunti diventano vere: si spuntano qui e la spunta
+// è la stessa della pagina «Da fare». Serve che ogni <article class="appunti">
+// porti data-lezione con l'id della lezione.
+---
+
+<script>
+  import { aggiornaStato } from "@/lib/stato-core";
+  import { oggiIso } from "@/lib/ripasso";
+
+  // Lettura iniziale diretta da localStorage; le scritture passano dal negozio.
+  function spunteSalvate(): Record<string, string> {
+    try {
+      const s = JSON.parse(localStorage.getItem("unigeo.stato.v1") ?? "null");
+      return s?.dafare ?? {};
+    } catch {
+      return {};
+    }
+  }
+
+  const salvate = spunteSalvate();
+  document.querySelectorAll<HTMLElement>("article.appunti[data-lezione]").forEach((articolo) => {
+    const id = articolo.dataset.lezione!;
+    articolo.querySelectorAll<HTMLInputElement>('input[type="checkbox"]').forEach((casella, n) => {
+      const chiave = `${id}#${n}`;
+      casella.disabled = false;
+      casella.checked = chiave in salvate;
+      casella.title = "Spunta: la ritrovi in «Da fare»";
+      casella.addEventListener("change", () => {
+        aggiornaStato((s) => {
+          const dafare = { ...(s.dafare ?? {}) };
+          if (casella.checked) dafare[chiave] = oggiIso();
+          else delete dafare[chiave];
+          return { ...s, dafare };
+        });
+      });
+    });
+  });
+</script>

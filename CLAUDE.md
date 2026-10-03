@@ -106,3 +106,15 @@ due settimane di fila salta, il problema non è nel codice.
   capitoli romani, capolettera, tavole numerate, Aa (zoom, colonna,
   carta/seppia/notte), avanzamento, posizione ricordata, indice a margine.
   Restano da ripellare: lezione singola, quiz, flashcard, ripasso, impostazioni.
+- 2026-10-03 · Leggibilità e «Da fare». Daniele: «un po' difficile da leggere,
+  la pagina dei libri quasi illeggibile». Causa: tabelle a 4 colonne in 360 px.
+  Rimedio: `remarkTabelleEtichettate` mette l'intestazione di colonna in
+  `data-etichetta` su ogni cella e sotto i 640 px la tabella si impila (una riga
+  = una scheda, etichette in maiuscoletto). Il «lead» in corsivo torna dritto in
+  grafite. Nuova sezione **Da fare**: le righe `- [ ]` delle lezioni (dettate dai
+  prof) + promemoria scritti a mano, con spunta condivisa con le caselle dentro
+  gli appunti (`SpunteVive.astro`, chiave «lezione#n» nell'ordine del testo).
+  Il negozio è stato diviso: `lib/stato-core.ts` senza React (lo importano gli
+  script Astro), `lib/stato.ts` solo gli hook. ATTENZIONE: il dev server tiene
+  in cache il Markdown reso: dopo un cambio ai plugin remark cancellare
+  `.astro`, `node_modules/.astro` e `node_modules/.vite` e riavviare.

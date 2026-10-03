@@ -231,3 +231,21 @@ html, .libro { transition: background 0.3s, color 0.3s; }
   .appunti table { display: table; }
   a { color: inherit; text-decoration: none; }
 }
+
+/* ------------------------------------------------------------------------
+   Leggibilità: attacchi di sezione e tabelle impilate sul telefono
+   ------------------------------------------------------------------------ */
+/* Il «lead» (paragrafo tutto in corsivo sotto il titolo) si legge male lungo:
+   torna dritto, in grafite, un filo più grande. */
+.appunti > p > em:only-child { font-style: normal; color: var(--color-grafite); font-size: 1.04em; }
+@media (max-width: 640px) {
+  .appunti { font-size: 1.08rem; line-height: 1.62; }
+  .appunti table, .appunti thead, .appunti tbody, .appunti tr, .appunti td { display: block; width: 100%; }
+  .appunti thead { display: none; }
+  .appunti table { border-top: 1.5px solid var(--inchiostro); overflow: visible; }
+  .appunti tr { padding: 0.65rem 0; border-bottom: 1px solid var(--color-filetto); }
+  .appunti td { border: 0; padding: 0.1rem 0; font-size: 1rem; }
+  .appunti td:first-child { font-family: var(--font-display); font-size: 1.12rem; font-weight: 600; color: var(--inchiostro); margin-bottom: 0.2rem; }
+  .appunti td[data-etichetta]:not(:first-child)::before { content: attr(data-etichetta); display: block; font-family: var(--font-sans); font-size: 0.64rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-grafite); margin-top: 0.3rem; }
+  .appunti td:empty { display: none; }
+}

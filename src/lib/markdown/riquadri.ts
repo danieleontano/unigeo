@@ -68,3 +68,29 @@ export function remarkFigure() {
     });
   };
 }
+
+// Ogni cella di tabella riceve l'intestazione della sua colonna in
+// data-etichetta: sul telefono la tabella si impila (una riga = una scheda)
+// e l'etichetta dice di che colonna era il dato. Senza, quattro colonne in
+// 360 px sono illeggibili.
+export function remarkTabelleEtichettate() {
+  return (albero: Root) => {
+    visit(albero, "table", (tabella) => {
+      const [testa, ...righe] = tabella.children;
+      if (!testa) return;
+      const etichette = testa.children.map((cella) => testoDi(cella));
+      for (const riga of righe) {
+        riga.children.forEach((cella, i) => {
+          const dati = (cella.data ??= {}) as { hProperties?: Record<string, unknown> };
+          dati.hProperties = { ...dati.hProperties, "data-etichetta": etichette[i] ?? "" };
+        });
+      }
+    });
+  };
+}
+
+function testoDi(nodo: unknown): string {
+  const n = nodo as { value?: string; children?: unknown[] };
+  if (typeof n.value === "string") return n.value;
+  return (n.children ?? []).map(testoDi).join("");
+}

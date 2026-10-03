@@ -23,10 +23,22 @@ export interface VoceStorico {
   total: number;
 }
 
+export interface Promemoria {
+  id: string;
+  testo: string;
+  /** AAAA-MM-GG di creazione. */
+  creato: string;
+  fatto?: string;
+}
+
 export interface Stato {
   progress: Record<string, Progresso>;
   history: VoceStorico[];
   settings: { materieAttive: string[] };
+  /** Spunte delle cose da fare scritte nelle lezioni: chiave «lezione#n» → giorno in cui è stata fatta. */
+  dafare?: Record<string, string>;
+  /** Cose da fare aggiunte a mano. */
+  promemoria?: Promemoria[];
 }
 
 export const INTERVALLI: Record<Box, number> = { 1: 1, 2: 3, 3: 7, 4: 14, 5: 30 };
