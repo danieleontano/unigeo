@@ -58,13 +58,13 @@ const strati = [...lezioni].reverse();
         </svg>
 
         <div class:list={["relative mx-auto flex max-w-5xl items-center px-4 pl-14 sm:pl-16", destra ? "justify-start" : "justify-end"]} style={`min-height:${altezza}px`}>
-          <a href={percorso(percorsoLezione(l))} class="campione-strato affiora block w-full max-w-md p-4 sm:p-5">
+          <a href={percorso(percorsoLezione(l))} class="campione-strato affiora block w-full max-w-md p-4 pt-5 sm:p-5 sm:pt-6" style={`--inclinazione:${destra ? -0.8 : 0.7}deg`}>
             <p class="etichetta" style="color:var(--materia)">{m?.nome} · Lezione {l.data.numero}</p>
             <h3 class="mt-1 text-xl leading-tight sm:text-2xl">{l.data.titolo}</h3>
             <p class="mt-1.5 line-clamp-2 text-sm text-grafite">{l.data.nota ?? l.data.fonte ?? ""}</p>
             <p class="mt-3 flex flex-wrap gap-2 font-sans text-xs">
-              <span class="rounded-md border border-filetto px-2 py-1 text-grafite">Leggi</span>
-              {quiz.has(l.id) && <span class="rounded-md bg-lava px-2 py-1 font-medium text-white" data-href={percorso(percorsoQuiz(l))}>Quiz</span>}
+              <span class="rounded-sm border border-filetto px-2 py-1 text-grafite">Leggi</span>
+              {quiz.has(l.id) && <span class="rounded-sm bg-lava px-2 py-1 font-medium text-white" data-href={percorso(percorsoQuiz(l))}>Quiz</span>}
             </p>
           </a>
         </div>

@@ -137,6 +137,15 @@ due settimane di fila salta, il problema non è nel codice.
   headless con Chrome (`--headless=new --screenshot --window-size=390,3400
   --virtual-time-budget=5000`) oppure `document.getAnimations().forEach(a=>a.finish())`
   prima dello scatto.
+- 2026-10-03 · «Troppo futuristico». Audit con screenshot di tutte le sezioni:
+  il registro astronave veniva da nero grafite freddo, bagliore radiale, pannelli
+  di vetro sfumato (backdrop-blur) e cassettiera grigio-metallo. Correzioni di
+  materia, non d'idea: sottosuolo = terra bagnata (`#1c1714`, avorio `#efe4d0`,
+  lava spenta `#c9552a`), grana SVG (feTurbulence) su pietra e carta, i cartellini
+  degli strati e del quiz sono CARTA appuntata con spillo d'ottone (classe
+  `.foglio` / `.campione-strato` con variabili chiare locali), cassetto di legno,
+  caldera in sepia disegnata a mano, raggi dei bottoni 0.3rem, sassi desaturati.
+  Regola: niente blur, niente glow, niente nero puro; ogni superficie ha una grana.
 - 2026-10-03 · Sync tra dispositivi: proposta Supabase gratuito offline-first,
   Daniele ha detto NO («non abbiamo più posto su Supabase»). Resta
   esporta/importa a mano; la regola «niente DB» del kit vale ancora. Da

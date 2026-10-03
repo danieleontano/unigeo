@@ -144,7 +144,7 @@ h1, h2, h3, h4, .display {
 .riga:hover { background: color-mix(in srgb, var(--color-sabbia) 60%, transparent); }
 
 /* Bottoni */
-.bottone { font-family: var(--font-sans); font-size: 0.85rem; font-weight: 500; border-radius: 0.5rem; padding: 0.45rem 0.85rem; line-height: 1.2; transition: transform 0.15s var(--ease-out-quint), background 0.15s; display: inline-flex; align-items: center; gap: 0.4rem; }
+.bottone { font-family: var(--font-sans); font-size: 0.85rem; font-weight: 500; border-radius: 0.3rem; padding: 0.45rem 0.85rem; line-height: 1.2; transition: transform 0.15s var(--ease-out-quint), background 0.15s; display: inline-flex; align-items: center; gap: 0.4rem; }
 .bottone:active { transform: translateY(1px); }
 .bottone-lava { background: var(--color-lava); color: #fff; }
 .bottone-lava:hover { background: color-mix(in srgb, var(--color-lava) 88%, black); }

@@ -33,25 +33,26 @@ export function Caldera() {
         </defs>
 
         {/* bagliore dietro la camera */}
-        <ellipse cx="120" cy="175" rx="70" ry="40" fill="#e2561f" opacity={0.15 + livello * 0.35} filter="url(#bagliore-lava)" />
+        <ellipse cx="120" cy="175" rx="70" ry="40" fill="#c9552a" opacity={0.08 + livello * 0.3} filter="url(#bagliore-lava)" />
 
         {/* il cono */}
-        <path d="M0 150 L80 40 L100 40 L120 24 L140 40 L160 40 L240 150 Z" fill="#262d33" stroke="#505b63" strokeWidth="1.5" />
-        <path d="M30 150 L95 60 L145 60 L210 150" fill="none" stroke="#3b454c" strokeWidth="1" strokeDasharray="4 6" />
-        {/* strati del cono */}
-        <path d="M60 110 L180 110 M44 132 L196 132 M78 86 L162 86" stroke="#45505a" strokeWidth="1" />
-        <rect x="0" y="150" width="240" height="60" fill="#1d2327" />
+        <path d="M0 150 L80 40 L100 40 L120 24 L140 40 L160 40 L240 150 Z" fill="#3a2d23" stroke="#8a765c" strokeWidth="1.5" strokeLinejoin="round" />
+        <path d="M30 150 L95 60 L145 60 L210 150" fill="none" stroke="#6b5a48" strokeWidth="1" strokeDasharray="4 6" />
+        {/* strati del cono, come in una sezione disegnata a mano */}
+        <path d="M60 110 C 100 106, 140 114, 180 110 M44 132 C 90 128, 150 136, 196 132 M78 86 C 110 83, 130 89, 162 86" fill="none" stroke="#7a6752" strokeWidth="1" />
+        <rect x="0" y="150" width="240" height="60" fill="#2a211a" />
+        <path d="M0 150 H240" stroke="#8a765c" strokeWidth="1" />
 
         {/* camera magmatica */}
-        <path d="M60 210 C 40 170, 60 130, 120 130 C 180 130, 200 170, 180 210 Z" fill="#0c0e10" stroke="#5a6670" strokeWidth="1.5" />
+        <path d="M60 210 C 40 170, 60 130, 120 130 C 180 130, 200 170, 180 210 Z" fill="#14100d" stroke="#8a765c" strokeWidth="1.5" />
         <g clipPath="url(#camera-clip)">
           <rect x="30" y={210 - h} width="180" height={h} fill="url(#lava-g)" style={{ transition: "y 1.2s var(--ease-out-quint), height 1.2s var(--ease-out-quint)" }} />
           {h > 6 && <ellipse cx="120" cy={210 - h} rx="60" ry="4" fill="#ffd27a" opacity="0.6" />}
         </g>
 
         {/* condotto */}
-        <path d="M112 130 L116 60 L124 60 L128 130" fill={livello > 0.5 ? "url(#lava-g)" : "#15181a"} stroke="#3a434a" strokeWidth="1" />
-        <path d="M110 40 L130 40 L124 24 L116 24 Z" fill="#111417" />
+        <path d="M112 130 L116 60 L124 60 L128 130" fill={livello > 0.5 ? "url(#lava-g)" : "#14100d"} stroke="#8a765c" strokeWidth="1" />
+        <path d="M110 40 L130 40 L124 24 L116 24 Z" fill="#14100d" stroke="#8a765c" strokeWidth="1" />
 
         {/* eruzione */}
         {erutta && (

@@ -27,7 +27,7 @@ const righe = materie.map((m) => {
           <div class="flex justify-center py-2">
             <Campione colore={m.data.colore} materia={m.id} misura={200} />
           </div>
-          <div class="mt-4 flex items-end gap-4">
+          <div class="foglio mt-2 flex items-end gap-4 p-3 pt-4">
             <div class="w-10 shrink-0">
               <Colonna lezioni={mie} colore={m.data.colore} modo="mini" altezza={Math.max(10, mie.length * 10)} />
             </div>

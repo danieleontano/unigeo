@@ -3,20 +3,24 @@
    «Chiaro per leggere, scuro per scoprire» (03/10/2026).
    Caricato dopo globale.css dal layout.
    ======================================================================== */
+:root {
+  --grana-carta: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.35 0 0 0 0 0.25 0 0 0 0 0.12 0 0 0 0.09 0'/></filter><rect width='100%' height='100%' filter='url(%23g)'/></svg>");
+  --grana-pietra: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 0.9 0 0 0 0 0.75 0 0 0 0.06 0'/></filter><rect width='100%' height='100%' filter='url(%23g)'/></svg>");
+}
 :root[data-tema="sottosuolo"] {
-  --carta: #111417;
-  --sabbia: #1b2024;
-  --inchiostro: #efe7d6;
-  --grafite: #a3abb0;
-  --filetto: #2a3136;
-  --color-lava: #e2561f;
-  --color-ocra: #d7b05a;
+  --carta: #1c1714;
+  --sabbia: #2a221d;
+  --inchiostro: #efe4d0;
+  --grafite: #a89a86;
+  --filetto: #3d322a;
+  --color-lava: #c9552a;
+  --color-ocra: #c9a24f;
   color-scheme: dark;
 }
 :root[data-tema="sottosuolo"] body {
-  background:
-    radial-gradient(1200px 600px at 50% -10%, color-mix(in srgb, var(--color-lava) 14%, transparent), transparent 70%),
-    var(--carta);
+  background-color: var(--carta);
+  background-image: var(--grana-pietra);
+  background-size: 180px 180px;
 }
 :root[data-tema="sottosuolo"] .bottone-vuoto { color: var(--inchiostro); }
 :root[data-tema="sottosuolo"] .appunti figure { background: #1b1f22; }
@@ -27,11 +31,13 @@
 /* Il foglio da campo: una scheda di carta chiara appoggiata sul buio. */
 .foglio {
   --carta: #f6f1e7; --sabbia: #eadfcb; --inchiostro: #1f2326; --grafite: #5e6568; --filetto: #d6cbb6;
-  background: var(--carta);
+  background-color: var(--carta);
+  background-image: var(--grana-carta);
+  background-size: 220px 220px;
   color: var(--inchiostro);
   color-scheme: light;
-  border-radius: 0.75rem;
-  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.8), 0 1px 0 rgba(255, 255, 255, 0.35) inset;
+  border-radius: 0.4rem;
+  box-shadow: 0 24px 40px -28px rgba(0, 0, 0, 0.9), 0 1px 0 rgba(255, 255, 255, 0.5) inset;
   position: relative;
 }
 .foglio::before {
@@ -70,8 +76,10 @@
 .righello .tacca { position: absolute; left: 0; right: 0; height: 1px; background: color-mix(in srgb, var(--inchiostro) 45%, transparent); }
 .righello .tacca::after { content: ""; position: absolute; right: -3px; top: -2px; width: 5px; height: 5px; border-radius: 50%; background: var(--materia); }
 .righello .data { position: absolute; right: 0.5rem; top: 46px; font-family: var(--font-sans); font-size: 0.6rem; letter-spacing: 0.08em; color: var(--grafite); writing-mode: vertical-rl; transform: rotate(180deg); }
-.campione-strato { color: var(--inchiostro); background: color-mix(in srgb, var(--carta) 82%, transparent); backdrop-filter: blur(6px); border: 1px solid color-mix(in srgb, var(--materia) 45%, transparent); border-radius: 0.75rem; box-shadow: 0 20px 40px -24px rgba(0, 0, 0, 0.9); transition: transform 0.25s var(--ease-out-quint), border-color 0.25s; }
-.campione-strato:hover { transform: translateY(-3px); border-color: var(--materia); }
+.campione-strato { --carta: #f3ecdd; --sabbia: #e6dbc6; --inchiostro: #241e19; --grafite: #6b5f52; --filetto: #d2c5ad; color: var(--inchiostro); color-scheme: light; background-color: var(--carta); background-image: var(--grana-carta); background-size: 220px 220px; border-radius: 0.3rem; box-shadow: 0 18px 30px -18px rgba(0, 0, 0, 0.9), 0 1px 0 rgba(255, 255, 255, 0.5) inset; transform: rotate(var(--inclinazione, -0.6deg)); transition: transform 0.25s var(--ease-out-quint); }
+.campione-strato::after { content: ""; position: absolute; left: 50%; top: -7px; width: 14px; height: 14px; border-radius: 50%; transform: translateX(-50%); background: radial-gradient(circle at 35% 35%, #ffe7a3, var(--color-ocra) 55%, #7a5a1c); box-shadow: 0 2px 3px rgba(0, 0, 0, 0.6); }
+.campione-strato:hover { transform: rotate(0deg) translateY(-3px); }
+.campione-strato .etichetta { color: var(--materia) !important; }
 .fossile { position: absolute; width: var(--misura, 110px); height: var(--misura, 110px); color: color-mix(in srgb, var(--materia) 35%, var(--inchiostro)); pointer-events: none; z-index: 0; filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.6)); }
 
 /* ------------------------------------------------------------------------
@@ -79,7 +87,7 @@
    ------------------------------------------------------------------------ */
 .campione-scena { perspective: 900px; }
 .campione { transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); transform-style: preserve-3d; transition: transform 0.12s linear; will-change: transform; }
-.campione svg { filter: drop-shadow(0 26px 30px rgba(0, 0, 0, 0.6)); }
+.campione svg { filter: saturate(0.8) contrast(1.05) drop-shadow(0 26px 30px rgba(0, 0, 0, 0.6)); }
 .campione .riflesso { position: absolute; inset: 0; background: radial-gradient(circle at calc(50% + var(--ry, 0deg) * 1.5) calc(45% - var(--rx, 0deg) * 1.5), rgba(255, 255, 255, 0.22), transparent 42%); mix-blend-mode: screen; pointer-events: none; border-radius: 40%; }
 
 /* ------------------------------------------------------------------------
@@ -100,14 +108,14 @@
 /* ------------------------------------------------------------------------
    Cassettiera dei campioni (flashcard): cartellino da museo, giro in 3D
    ------------------------------------------------------------------------ */
-.cassetto { background: linear-gradient(180deg, #23292e, #171b1f); border: 1px solid #343c42; border-radius: 0.9rem; box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.05), 0 24px 48px -30px rgba(0, 0, 0, 0.9); }
-.cassetto .maniglia { width: 54px; height: 6px; border-radius: 3px; background: linear-gradient(90deg, #8a7a52, #d7b05a, #8a7a52); margin: 0 auto; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.6); }
+.cassetto { background-color: #4a3522; background-image: repeating-linear-gradient(92deg, rgba(0, 0, 0, 0.12) 0 2px, transparent 2px 9px, rgba(255, 255, 255, 0.03) 9px 11px, transparent 11px 23px), linear-gradient(180deg, #5a4129, #3b2a1b); border: 1px solid #2a1d12; border-radius: 0.35rem; box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.08), inset 0 -3px 0 rgba(0, 0, 0, 0.35), 0 24px 40px -26px rgba(0, 0, 0, 0.95); }
+.cassetto .maniglia { width: 64px; height: 9px; border-radius: 4px; background: linear-gradient(180deg, #e2c27a, #9a7a3a 60%, #6b5120); margin: 0 auto; box-shadow: 0 2px 2px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.5); }
 .cartellino-scena { perspective: 1200px; }
 .cartellino { position: relative; transform-style: preserve-3d; transition: transform 0.6s var(--ease-out-quint); }
 .cartellino.girato { transform: rotateY(180deg); }
 .cartellino .faccia { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 0.6rem; }
 .cartellino .retro { transform: rotateY(180deg); }
-.cartellino-carta { background: #f6f1e7; color: #1f2326; color-scheme: light; clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 18px, 100% 100%, 0 100%); box-shadow: 0 20px 40px -24px rgba(0, 0, 0, 0.9); }
+.cartellino-carta { background-color: #f3ecdd; background-image: var(--grana-carta); background-size: 220px 220px; color: #241e19; color-scheme: light; clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 18px, 100% 100%, 0 100%); box-shadow: 0 20px 40px -24px rgba(0, 0, 0, 0.9); border-radius: 0.3rem; }
 .cartellino-carta::before { content: ""; position: absolute; left: 50%; top: 10px; width: 10px; height: 10px; border-radius: 50%; background: #111417; transform: translateX(-50%); box-shadow: inset 0 0 0 2px #d7b05a; }
 @keyframes vola-destra { to { transform: translateX(140%) rotate(16deg); opacity: 0; } }
 @keyframes vola-sinistra { to { transform: translateX(-140%) rotate(-16deg); opacity: 0; } }

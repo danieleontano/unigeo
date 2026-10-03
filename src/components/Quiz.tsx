@@ -194,7 +194,7 @@ export function Quiz({ idLezione, titolo, colore, domande, percorsoLezione, base
         <div className="h-1 rounded bg-materia transition-[width] duration-500" style={{ width: `${((i + (fase === "esito" ? 1 : 0)) / lista.length) * 100}%` }} />
       </div>
 
-      <div key={`${d.id}-${giro}-${fase}`} className={`relative mt-5 rounded-xl border border-filetto bg-sabbia/60 p-4 sm:p-5 ${classeCartellino}`}>
+      <div key={`${d.id}-${giro}-${fase}`} className={`foglio relative mt-5 p-4 pt-6 sm:p-5 sm:pt-7 ${classeCartellino}`}>
         <p className="text-lg leading-snug">{d.testo}</p>
 
         {d.tipo === "scelta" && (
