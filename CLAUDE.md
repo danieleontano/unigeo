@@ -118,3 +118,7 @@ due settimane di fila salta, il problema non è nel codice.
   script Astro), `lib/stato.ts` solo gli hook. ATTENZIONE: il dev server tiene
   in cache il Markdown reso: dopo un cambio ai plugin remark cancellare
   `.astro`, `node_modules/.astro` e `node_modules/.vite` e riavviare.
+- 2026-10-03 · Sync tra dispositivi: proposta Supabase gratuito offline-first,
+  Daniele ha detto NO («non abbiamo più posto su Supabase»). Resta
+  esporta/importa a mano; la regola «niente DB» del kit vale ancora. Da
+  riaprire solo con un posto in rete a costo zero diverso da Supabase.
