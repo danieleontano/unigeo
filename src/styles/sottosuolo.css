@@ -149,7 +149,10 @@
    GUSCIO (04/10/2026): menu laterale + pannelli tutti uguali, come Minerva.
    Niente più fogli sparsi: un solo tipo di superficie, in griglia.
    ======================================================================== */
-.menu { background: #1a1411; background-image: var(--grana-pietra); background-size: 180px 180px; }
+.menu {
+  --carta: #1a1411; --sabbia: #2a221d; --inchiostro: #efe4d0; --grafite: #b3a48e; --filetto: #3d322a;
+  --color-carta: var(--carta); --color-sabbia: var(--sabbia); --color-inchiostro: var(--inchiostro); --color-grafite: var(--grafite); --color-filetto: var(--filetto);
+  color: var(--inchiostro); background: #1a1411; background-image: var(--grana-pietra); background-size: 180px 180px; }
 html[data-menu-aperto] .menu { transform: translateX(0); }
 html[data-menu-aperto] #velo-menu { display: block; }
 .menu-titolo { margin: 1rem 0.6rem 0.3rem; font-size: 0.6rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #8c7e6b; }
@@ -221,3 +224,6 @@ html[data-menu-aperto] #velo-menu { display: block; }
 .text-muted { color: var(--color-grafite); }
 .border-line { border-color: var(--color-filetto); }
 .divide-line > :not(:last-child) { border-color: var(--color-filetto); }
+
+/* Usata in molti componenti come scorciatoia di font-sans. */
+.sans { font-family: var(--font-sans); }

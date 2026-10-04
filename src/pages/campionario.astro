@@ -4,12 +4,15 @@ import Testata from "@/components/Testata.astro";
 import { Riconosci, type CampioneFoto } from "@/components/Riconosci";
 import campioni from "../../content/campionario/campioni.json";
 
-const conFoto = (campioni as unknown as CampioneFoto[]).filter((c) => c.foto);
+type Grezzo = Omit<CampioneFoto, "categoria"> & { categoria?: string };
+const conFoto: CampioneFoto[] = (campioni as unknown as Grezzo[])
+  .filter((c) => c.foto)
+  .map((c) => ({ ...c, categoria: c.categoria ?? (c.tipo === "minerale" ? "Minerale" : "Roccia") }));
 const rocce = conFoto.filter((c) => c.tipo !== "minerale").length;
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 ---
 
-<Base titolo="Riconosci la pietra" colore="#B5552A">
-  <Testata occhiello="Geologia 1 · campionario" titolo="Riconosci la pietra" descrizione={`${rocce} rocce e ${conFoto.length - rocce} minerali in foto. Foto libere da Wikimedia Commons.`} simbolo="martello" colore="#B5552A" />
+<Base titolo="Riconosci la pietra" larghezza="pieno" colore="#B5552A">
+  <Testata occhiello="Geologia 1 · campionario" titolo="Riconosci la pietra" descrizione={`${rocce} rocce e ${conFoto.length - rocce} minerali in foto, da Wikimedia Commons.`} simbolo="martello" colore="#B5552A" />
   <Riconosci client:load campioni={conFoto} base={base} />
 </Base>

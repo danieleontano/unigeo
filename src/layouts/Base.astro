@@ -48,7 +48,7 @@ const LARGHEZZE = { testo: "max-w-3xl", largo: "max-w-6xl", pieno: "max-w-[1500p
         <button id="apri-menu" type="button" class="rounded-md p-1.5 text-[#f3ecdd]" aria-label="Apri il menu">
           <svg viewBox="0 0 24 24" class="h-6 w-6" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
         </button>
-        <a href={percorso("/")} class="display text-[1.2rem] font-semibold text-[#f3ecdd]">Uni<span class="text-[#e07a4a]">Geo</span></a>
+        <a href={percorso("/")} class="display text-[1.2rem] font-semibold" style="color:#f3ecdd">Uni<span class="text-[#e07a4a]">Geo</span></a>
         <span class="ml-auto truncate font-sans text-xs text-[#a89a86]">{titolo}</span>
       </header>
       <main class:list={["mx-auto w-full flex-1", nudo ? "" : `${LARGHEZZE[misura]} px-4 pb-14 pt-6 sm:px-6 lg:px-8 lg:pt-8`]}>
