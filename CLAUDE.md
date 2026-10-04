@@ -263,3 +263,17 @@ due settimane di fila salta, il problema non è nel codice.
   «chimica», bauxite residuale, kimberlite e carbonatite intrusive, lherzolite
   e harzburgite tra le intrusive, oficalce metamorfica) e pomice/scoria
   effusive anziché piroclastiche.
+- 2026-10-04 sera · Audit grafico (Daniele: «home troppo densa, il menu a
+  sinistra non mi fa impazzire, il marrone mi piace»). Guscio come Minerva:
+  nel menu solo i moduli (Home, Materie, Ripasso, Strumenti + Impostazioni),
+  riducibile a icone (html[data-menu="rail"], in localStorage); le sezioni
+  stanno nelle schede sotto l'intestazione (lib/navigazione.ts,
+  Intestazione.astro), che sulle pagine di lettura non ci sono. Testata a
+  riquadro solo per le aperture dei moduli, piana (`piana`) per strumenti,
+  quiz, flashcard, impostazioni. Home = apertura + tre scorciatoie (ripasso,
+  ultima lezione, terremoto) + materie; caldera spostata nel Ripasso,
+  sismografo e strati della Home tolti. Marrone «cuoio» (--cuoio #a8643c)
+  per voce attiva, schede, chip e testate; lava solo per le azioni. Nel
+  sottosuolo un solo carattere d'interfaccia (Poppins, 15px); il serif resta
+  alle lezioni. Tinta di testate e chip in `--tinta` (non `--materia`, che ha
+  un default ardesia su :root).

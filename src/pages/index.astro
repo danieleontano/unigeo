@@ -1,59 +1,66 @@
 ---
+// La Home, rifatta dopo l'audit del 04/10/2026: un'apertura, tre scorciatoie
+// (ripasso, ultima lezione, terremoti) e le materie. Strumenti, ripasso
+// completo e mappa hanno le loro pagine: qui non si ripetono.
 import Base from "@/layouts/Base.astro";
-import Sezione from "@/components/Sezione.astro";
-import Sismografo from "@/components/Sismografo.astro";
-import SchedeStrumenti from "@/components/SchedeStrumenti.astro";
 import SchedeMaterie from "@/components/SchedeMaterie.astro";
-import { Oggi } from "@/components/Oggi";
-import { Caldera } from "@/components/Caldera";
+import { RipassoBreve } from "@/components/RipassoBreve";
 import { Orologio } from "@/components/Orologio";
 import { percorso } from "@/lib/percorsi";
-import { lezioniDi, schedeLezioni, tutteLeMaterie } from "@/lib/contenuti";
-import { STRUMENTI } from "@/lib/strumenti";
+import { lezioniDi, percorsoLezione, schedeLezioni, tutteLeMaterie } from "@/lib/contenuti";
+import { leggiSismi } from "@/lib/sismi";
+import { dataBreve } from "@/lib/date";
 import { giorniTra, oggiIso } from "@/lib/ripasso";
 
 const schede = await schedeLezioni();
 const materie = await tutteLeMaterie();
 const lezioni = await lezioniDi();
+const sismi = await leggiSismi();
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 // Il semestre è iniziato martedì 22 settembre 2026 (prima lezione).
 const settimana = Math.max(1, Math.floor(giorniTra("2026-09-21", oggiIso()) / 7) + 1);
 const conLezioni = materie.filter((m) => lezioni.some((l) => l.id.startsWith(`${m.id}/`))).length;
+const ultima = [...lezioni].sort((a, b) => String(b.data.data).localeCompare(String(a.data.data)) || b.data.numero - a.data.numero)[0];
+const materiaUltima = ultima && materie.find((m) => ultima.id.startsWith(`${m.id}/`));
+const sisma = sismi?.eventi[0];
+const quando = (iso: string) => new Intl.DateTimeFormat("it-IT", { timeZone: "Europe/Rome", day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" }).format(new Date(iso));
+const freccia = '<svg viewBox="0 0 24 24" class="h-4 w-4 shrink-0 text-grafite transition group-hover:translate-x-0.5" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>';
 ---
 
 <Base titolo="Home" descrizione="Appunti e ripasso del primo anno di Scienze Geologiche.">
-  <section class="pannello testata" style="--materia:#c9552a">
+  <section class="pannello testata">
     <svg class="filigrana" aria-hidden="true"><use href="#strati" /></svg>
-    <Orologio client:load className="font-sans text-[0.7rem] font-semibold tracking-[0.14em] text-[#e07a4a]" />
+    <Orologio client:load className="font-sans text-[0.7rem] font-semibold tracking-[0.14em] text-[#e3b08c]" />
     <h1 class="mt-1.5 text-[2.1rem] leading-tight sm:text-[2.5rem]">Ciao, Daniele</h1>
     <p class="mt-1 text-[0.95rem] text-grafite">Settimana {settimana} del primo semestre · {lezioni.length} lezioni in {conLezioni} materie</p>
   </section>
 
-  <div class="mt-4 grid grid-cols-1 gap-4 lg:grid-cols-3">
-    <section class="pannello p-5 lg:col-span-2">
-      <div class="pannello-testa">
-        <h2 class="pannello-titolo">Da ripassare oggi</h2>
-        <a href={percorso("/ripasso")}>calendario →</a>
-      </div>
-      <Oggi client:load lezioni={schede} base={base} />
-    </section>
-    <section class="pannello p-5">
-      <h2 class="pannello-titolo">La tua settimana</h2>
-      <div class="mx-auto mt-2 max-w-[150px] lg:max-w-[180px]"><Caldera client:load /></div>
-    </section>
+  <div class="mt-4 grid grid-cols-1 gap-3 md:grid-cols-3">
+    <RipassoBreve client:load lezioni={schede} base={base} />
+
+    {ultima && (
+      <a href={percorso(percorsoLezione(ultima))} class="pannello scheda scheda-riga group !items-center" style={materiaUltima ? `--tinta:${materiaUltima.data.colore}` : undefined}>
+        <span class="chip shrink-0">{materiaUltima ? <img src={percorso(`/icone/${materiaUltima.data.icona}`)} alt="" width="22" height="22" class="h-[22px] w-[22px]" /> : null}</span>
+        <span class="min-w-0 flex-1">
+          <span class="block text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-grafite">Ultima lezione</span>
+          <span class="mt-0.5 block truncate text-[0.95rem] font-medium">{ultima.data.titolo}</span>
+          <span class="block truncate text-xs text-grafite">{materiaUltima?.data.nome} · {dataBreve(ultima.data.data)}</span>
+        </span>
+        <Fragment set:html={freccia} />
+      </a>
+    )}
+
+    <a href={percorso("/terremoti")} class="pannello scheda scheda-riga group !items-center">
+      <span class="chip shrink-0"><svg class="h-5 w-5" aria-hidden="true"><use href="#sismogramma" /></svg></span>
+      <span class="min-w-0 flex-1">
+        <span class="block text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-grafite">La Terra adesso</span>
+        <span class="mt-0.5 block truncate text-[0.95rem] font-medium">{sisma ? `M ${sisma.magnitudo.toLocaleString("it-IT")} · ${sisma.regione}` : "Terremoti nel Nord-Ovest"}</span>
+        <span class="block truncate text-xs text-grafite">{sisma ? `${quando(sisma.quando)} · rete RSNI` : "Mappa RSNI"}</span>
+      </span>
+      <Fragment set:html={freccia} />
+    </a>
   </div>
 
   <div class="sezione-titolo"><h2>Materie</h2><a href={percorso("/materie")}>tutte →</a></div>
   <SchedeMaterie />
-
-  <div class="sezione-titolo"><h2>Strumenti</h2><a href={percorso("/strumenti")}>tutti →</a></div>
-  <SchedeStrumenti strumenti={STRUMENTI.slice(0, 6)} />
-
-  <div class="sezione-titolo"><h2>La Terra adesso</h2><a href={percorso("/terremoti")}>mappa →</a></div>
-  <Sismografo />
-
-  <div class="sezione-titolo"><h2>Ultimi strati depositati</h2><a href={percorso("/materie")}>tutte le lezioni →</a></div>
-  <div class="overflow-hidden rounded-[0.85rem] border border-[#3d322a]">
-    <Sezione lezioni={lezioni} materie={materie} limite={4} />
-  </div>
 </Base>

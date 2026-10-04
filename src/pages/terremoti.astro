@@ -13,7 +13,7 @@ const ora = (iso: string) => new Intl.DateTimeFormat("it-IT", { timeZone: "Europ
 ---
 
 <Base titolo="Terremoti" larghezza="pieno">
-  <Testata
+  <Testata piana
     occhiello="La Terra adesso · RSNI UniGe-DISTAV"
     titolo="Terremoti nel Nord-Ovest"
     descrizione={dati ? `${dati.archivio.length} eventi rivisti a mano, raccolti dal ${giorno(dati.dal)}. Aggiornato alle ${ora(dati.letto)}.` : "Il feed RSNI non ha risposto: riprova tra mezz'ora."}

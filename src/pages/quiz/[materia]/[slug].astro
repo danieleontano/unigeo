@@ -24,7 +24,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 ---
 
 <Base titolo={`Quiz · ${lezione.data.titolo}`} colore={materia.data.colore} larghezza="testo">
-  <Testata occhiello={`${materia.data.nome} · Lezione ${lezione.data.numero}`} titolo={lezione.data.titolo} simbolo="ripasso" colore={materia.data.colore}>
+  <Testata piana occhiello={`${materia.data.nome} · Lezione ${lezione.data.numero}`} titolo={lezione.data.titolo} simbolo="ripasso" colore={materia.data.colore}>
     <a href={percorso(percorsoLezione)} class="bottone bottone-vuoto">Torna alla lezione</a>
   </Testata>
   <div>

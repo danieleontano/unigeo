@@ -10,7 +10,7 @@ import carta from "../../content/tempo/carta-ics.json";
 ---
 
 <Base titolo="Scala del tempo" larghezza="pieno" colore="#2E7D7A">
-  <Testata occhiello="Paleontologia · il tempo profondo" titolo="Scala del tempo geologico" descrizione={`Carta cronostratigrafica internazionale ICS v${carta.versione}, in italiano.`} simbolo="fossile-ammonite" colore="#2E7D7A" />
+  <Testata piana occhiello="Paleontologia · il tempo profondo" titolo="Scala del tempo geologico" descrizione={`Carta cronostratigrafica internazionale ICS v${carta.versione}, in italiano.`} simbolo="fossile-ammonite" colore="#2E7D7A" />
   <Tempo client:load unita={carta.unita as UnitaICS[]} versione={carta.versione} modificata={carta.modificata} />
   <p class="mt-8 max-w-prose font-sans text-[0.7rem] leading-snug text-grafite">
     Fonte: {carta.fonte}, versione {carta.versione}, controllata il {carta.scaricato.split("-").reverse().join("/")}; si aggiorna da sola quando la Commissione pubblica una

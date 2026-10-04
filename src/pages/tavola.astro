@@ -11,7 +11,7 @@ const daSapere = [...intervallo(1, 30), ...intervallo(35, 38), 47, ...intervallo
 ---
 
 <Base titolo="Tavola periodica" larghezza="pieno" colore="#6A4C93">
-  <Testata occhiello="Chimica" titolo="Tavola periodica" descrizione="Da sapere per la lezione 1: nome e simbolo di 1–30, 35–38, 47, 53–56, 78, 79." simbolo="provetta" colore="#6A4C93" />
+  <Testata piana occhiello="Chimica" titolo="Tavola periodica" descrizione="Da sapere per la lezione 1: nome e simbolo di 1–30, 35–38, 47, 53–56, 78, 79." simbolo="provetta" colore="#6A4C93" />
   <Tavola client:load elementi={dati.elementi as Elemento[]} daSapere={daSapere} />
   <p class="mt-8 font-sans text-[0.7rem] text-grafite">Fonte: {dati.fonte}, scaricati il {dati.scaricato.split("-").reverse().join("/")}.</p>
 </Base>

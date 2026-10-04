@@ -2,6 +2,7 @@
 import Base from "@/layouts/Base.astro";
 import Testata from "@/components/Testata.astro";
 import { Ripasso } from "@/components/Ripasso";
+import { Caldera } from "@/components/Caldera";
 import { schedeLezioni } from "@/lib/contenuti";
 
 const lezioni = await schedeLezioni();
@@ -10,5 +11,11 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 
 <Base titolo="Ripasso">
   <Testata occhiello="Studio" titolo="Ripasso" descrizione="Materia per materia: da sedimento sciolto a roccia compatta." simbolo="ripasso" />
-  <Ripasso client:load lezioni={lezioni} base={base} />
+  <div class="grid grid-cols-1 gap-4 lg:grid-cols-[minmax(0,1fr)_260px]">
+    <Ripasso client:load lezioni={lezioni} base={base} />
+    <aside class="pannello self-start p-5">
+      <h2 class="pannello-titolo">La tua settimana</h2>
+      <div class="mx-auto mt-3 max-w-[180px]"><Caldera client:load /></div>
+    </aside>
+  </div>
 </Base>

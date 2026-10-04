@@ -1,6 +1,10 @@
 ---
-// La testata di ogni pagina (come HeroModulo di Minerva): occhiello, titolo,
-// una riga di descrizione, eventuali azioni sotto, e il simbolo in filigrana.
+// L'apertura di una pagina, come in Minerva. Due trattamenti:
+// - riquadro (HeroModulo): per le aperture dei moduli (Home, Materie, una
+//   materia, Strumenti, Ripasso): occhiello, titolo, una riga, azioni e il
+//   simbolo in filigrana;
+// - piana (PageHeader): per le pagine interne a un modulo (gli strumenti),
+//   dove le schede in alto dicono già dove si è: titolo e una riga.
 interface Props {
   occhiello?: string;
   titolo: string;
@@ -9,14 +13,25 @@ interface Props {
   /** Immagine al posto del simbolo (icona della materia). */
   icona?: string;
   colore?: string;
+  piana?: boolean;
 }
-const { occhiello, titolo, descrizione, simbolo = "strati", icona, colore } = Astro.props;
+const { occhiello, titolo, descrizione, simbolo = "strati", icona, colore, piana = false } = Astro.props;
 ---
 
-<section class="pannello testata mb-5" style={colore ? `--materia:${colore}` : undefined}>
-  {icona ? <img src={icona} alt="" class="filigrana" /> : <svg class="filigrana" aria-hidden="true"><use href={`#${simbolo}`} /></svg>}
-  {occhiello && <p class="font-sans text-[0.68rem] font-semibold uppercase tracking-[0.16em]" style="color:color-mix(in srgb, var(--materia, #c9552a) 75%, #f3ecdd)">{occhiello}</p>}
-  <h1 class="mt-1 text-[1.9rem] leading-tight sm:text-[2.2rem]">{titolo}</h1>
-  {descrizione && <p class="mt-1 max-w-2xl text-[0.95rem] text-grafite">{descrizione}</p>}
-  {Astro.slots.has("default") && <div class="mt-4 flex flex-wrap gap-2"><slot /></div>}
-</section>
+{piana ? (
+  <header class="titolo-pagina flex flex-wrap items-end justify-between gap-3">
+    <div class="min-w-0">
+      <h1>{titolo}</h1>
+      {descrizione && <p>{descrizione}</p>}
+    </div>
+    {Astro.slots.has("default") && <div class="flex flex-wrap gap-2"><slot /></div>}
+  </header>
+) : (
+  <section class="pannello testata mb-6" style={colore ? `--tinta:${colore}` : undefined}>
+    {icona ? <img src={icona} alt="" class="filigrana" /> : <svg class="filigrana" aria-hidden="true"><use href={`#${simbolo}`} /></svg>}
+    {occhiello && <p class="font-sans text-[0.68rem] font-semibold uppercase tracking-[0.16em]" style="color:color-mix(in srgb, var(--tinta, var(--cuoio-chiaro)) 80%, #f3ecdd)">{occhiello}</p>}
+    <h1 class="mt-1 text-[1.9rem] leading-tight sm:text-[2.2rem]">{titolo}</h1>
+    {descrizione && <p class="mt-1 max-w-2xl text-[0.95rem] text-grafite">{descrizione}</p>}
+    {Astro.slots.has("default") && <div class="mt-4 flex flex-wrap gap-2"><slot /></div>}
+  </section>
+)}

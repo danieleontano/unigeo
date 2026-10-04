@@ -17,16 +17,17 @@ const quiz = await quizDisponibili();
     const nQuiz = mie.filter((l) => quiz.has(l.id)).length;
     const nDef = mie.reduce((s, l) => s + contaDefinizioni(l), 0);
     return (
-      <li style={`--materia:${m.data.colore}`}>
-        <a href={percorso(`/materie/${m.id}`)} class="pannello scheda group">
-          <div class="flex items-start gap-3">
+      <li style={`--materia:${m.data.colore};--tinta:${m.data.colore}`}>
+        <a href={percorso(`/materie/${m.id}`)} class="pannello scheda group !py-3 sm:!py-[1.1rem]">
+          <div class="flex items-center gap-3 sm:items-start">
             <span class="chip shrink-0"><img src={percorso(`/icone/${m.data.icona}`)} alt="" width="28" height="28" class="h-7 w-7" /></span>
             <div class="min-w-0">
               <p class="display text-[1.15rem] leading-tight">{m.data.nome}</p>
-              <p class="truncate text-[0.82rem] text-grafite">{m.data.docenti.length ? m.data.docenti.join(", ") : "Docente da definire"}</p>
+              <p class="hidden truncate text-[0.82rem] text-grafite sm:block">{m.data.docenti.length ? m.data.docenti.join(", ") : "Docente da definire"}</p>
             </div>
+            <span class="ml-auto shrink-0 font-sans text-xs text-grafite sm:hidden">{mie.length} lez.</span>
           </div>
-          <div class="mt-auto flex items-end justify-between gap-2 border-t border-filetto pt-2.5 font-sans text-xs text-grafite">
+          <div class="mt-auto hidden items-end sm:flex justify-between gap-2 border-t border-filetto pt-2.5 font-sans text-xs text-grafite">
             <span>
               <b class="display text-base text-inchiostro">{mie.length}</b> lez.
               {nQuiz > 0 && <> · <b class="display text-base text-inchiostro">{nQuiz}</b> quiz</>}

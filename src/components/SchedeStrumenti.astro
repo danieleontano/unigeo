@@ -16,13 +16,13 @@ const materie = new Map((await tutteLeMaterie()).map((m) => [m.id, m.data]));
   {strumenti.map((s) => {
     const m = s.materia ? materie.get(s.materia) : undefined;
     return (
-      <li style={`--materia:${m?.colore ?? "#e07a4a"}`}>
+      <li>
         <a href={percorso(s.href)} class="pannello scheda scheda-riga group">
           <span class="chip shrink-0"><svg class="h-6 w-6 transition group-hover:rotate-6" aria-hidden="true"><use href={`#${s.simbolo}`} /></svg></span>
           <div class="min-w-0">
-            <p class="font-sans text-[0.6rem] font-semibold uppercase tracking-wider" style="color:color-mix(in srgb, var(--materia) 80%, #f3ecdd)">{m?.nome.replace(" e cartografia", "") ?? "Per tutte"}</p>
+            <p class="font-sans text-[0.6rem] font-semibold uppercase tracking-wider" style="color:#9c8c78">{m?.nome.replace(" e cartografia", "") ?? "Per tutte"}</p>
             <p class="mt-0.5 font-sans text-[0.98rem] font-semibold leading-tight">{s.titolo}</p>
-            <p class="mt-1 text-[0.86rem] leading-snug text-grafite">{s.testo}</p>
+            <p class="mt-1 text-[0.84rem] leading-snug text-grafite">{s.testo}</p>
           </div>
         </a>
       </li>

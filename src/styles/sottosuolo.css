@@ -8,7 +8,7 @@
   --grana-pietra: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 0.9 0 0 0 0 0.75 0 0 0 0.06 0'/></filter><rect width='100%' height='100%' filter='url(%23g)'/></svg>");
 }
 :root[data-tema="sottosuolo"] {
-  --carta: #1c1714;
+  --carta: #1b1512;
   --sabbia: #2a221d;
   --inchiostro: #efe4d0;
   --grafite: #a89a86;
@@ -149,26 +149,61 @@
    GUSCIO (04/10/2026): menu laterale + pannelli tutti uguali, come Minerva.
    Niente più fogli sparsi: un solo tipo di superficie, in griglia.
    ======================================================================== */
+/* Rivisto il 04/10/2026 notte (audit grafico): il marrone diventa il colore
+   di casa. Cuoio per le voci attive e i chip, lava solo per le azioni. */
+:root {
+  --cuoio: #a8643c;
+  --cuoio-chiaro: #e3b08c;
+  --cuoio-velo: color-mix(in srgb, #a8643c 20%, transparent);
+}
+/* Nel sottosuolo l'interfaccia è in un carattere solo (Poppins); il serif
+   resta alle lezioni e al Libro, che sono su carta. */
+:root[data-tema="sottosuolo"] { font-family: var(--font-sans); font-size: 15px; }
+
 .menu {
-  --carta: #1a1411; --sabbia: #2a221d; --inchiostro: #efe4d0; --grafite: #b3a48e; --filetto: #3d322a;
+  --carta: #16110e; --sabbia: #2a211b; --inchiostro: #efe4d0; --grafite: #a8987f; --filetto: #2e251f;
   --color-carta: var(--carta); --color-sabbia: var(--sabbia); --color-inchiostro: var(--inchiostro); --color-grafite: var(--grafite); --color-filetto: var(--filetto);
-  color: var(--inchiostro); background: #1a1411; background-image: var(--grana-pietra); background-size: 180px 180px; }
-html[data-menu-aperto] .menu { transform: translateX(0); }
+  position: fixed; inset: 0 auto 0 0; z-index: 50; display: flex; flex-direction: column; width: 232px; flex-shrink: 0;
+  transform: translateX(-100%); visibility: hidden; transition: transform 0.2s, width 0.2s, visibility 0.2s;
+  color: var(--inchiostro); background: #16110e; background-image: var(--grana-pietra); background-size: 180px 180px;
+  border-right: 1px solid #2a211b;
+}
+@media (min-width: 1024px) {
+  .menu { position: sticky; top: 0; height: 100dvh; transform: none; visibility: visible; z-index: 30; }
+  html[data-menu="rail"] .menu { width: 68px; }
+  html[data-menu="rail"] .menu-etichetta { display: none; }
+  html[data-menu="rail"] .menu-marchio { justify-content: center; padding-inline: 0; }
+  html[data-menu="rail"] .menu-voce { justify-content: center; padding-inline: 0; }
+}
+html[data-menu-aperto] .menu { transform: translateX(0); visibility: visible; }
 html[data-menu-aperto] #velo-menu { display: block; }
-.menu-titolo { margin: 1rem 0.6rem 0.3rem; font-size: 0.6rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #8c7e6b; }
-.barra-telefono { background: color-mix(in srgb, #1a1411 92%, transparent); backdrop-filter: blur(6px); }
+.menu-marchio { display: flex; align-items: center; gap: 0.65rem; padding: 1rem 1.1rem 0.9rem; }
+.menu-voce { display: flex; align-items: center; gap: 0.75rem; padding: 0.55rem 0.8rem; border-radius: 0.65rem; font-size: 0.88rem; font-weight: 500; color: #c2b39c; transition: background 0.15s, color 0.15s; }
+.menu-voce:hover { background: rgba(255, 255, 255, 0.04); color: #f3ecdd; }
+.menu-voce[aria-current="page"] { background: var(--cuoio-velo); color: var(--cuoio-chiaro); font-weight: 600; }
+
+/* L'intestazione in cima: percorso e schede del modulo. */
+.intestazione { background: #1b1512; border-bottom: 1px solid #2e251f; }
+.tasto-testata { align-items: center; justify-content: center; width: 2.1rem; height: 2.1rem; border-radius: 0.6rem; border: 1px solid #2e251f; color: #a8987f; transition: background 0.15s, color 0.15s; }
+.tasto-testata:hover { background: rgba(255, 255, 255, 0.04); color: #f3ecdd; }
+.schede-modulo { display: flex; gap: 0.25rem; overflow-x: auto; scrollbar-width: none; padding: 0 0.75rem; font-family: var(--font-sans); font-size: 0.84rem; }
+.schede-modulo::-webkit-scrollbar { display: none; }
+@media (min-width: 640px) { .schede-modulo { padding: 0 1.25rem; } }
+.schede-modulo a { display: flex; flex-shrink: 0; align-items: center; gap: 0.45rem; padding: 0.55rem 0.7rem 0.6rem; color: #a8987f; border-bottom: 2px solid transparent; white-space: nowrap; transition: color 0.15s, border-color 0.15s; }
+.schede-modulo a:hover { color: #efe4d0; }
+.schede-modulo a[aria-current="page"] { color: #f3ecdd; font-weight: 600; border-bottom-color: var(--cuoio); }
 
 /* Il pannello: la superficie unica del sito sul fondo scuro. */
 .pannello, .foglio {
-  --carta: #2a221d; --sabbia: #352b24; --inchiostro: #efe4d0; --grafite: #b3a48e; --filetto: #46392f;
+  --carta: #241c17; --sabbia: #30261f; --inchiostro: #efe4d0; --grafite: #ad9d86; --filetto: #3b2f27;
   --color-carta: var(--carta); --color-sabbia: var(--sabbia); --color-inchiostro: var(--inchiostro); --color-grafite: var(--grafite); --color-filetto: var(--filetto);
   position: relative;
-  background: #2a221d;
+  background: #241c17;
   color: var(--inchiostro);
   color-scheme: dark;
-  border: 1px solid #3d322a;
-  border-radius: 0.85rem;
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 12px 28px -22px rgba(0, 0, 0, 0.9);
+  border: 1px solid #342a23;
+  border-radius: 0.9rem;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.035) inset;
 }
 .foglio::before { content: none; }
 .foglio input, .pannello input { background: #1f1916; color: var(--inchiostro); border-color: var(--filetto); }
@@ -181,15 +216,19 @@ html[data-menu-aperto] #velo-menu { display: block; }
 .sezione-titolo a:hover { color: var(--inchiostro); }
 
 /* Scheda uniforme di una griglia: chip con icona, titolo, una riga. */
-.scheda { display: flex; flex-direction: column; gap: 0.7rem; height: 100%; padding: 1rem 1.1rem; transition: border-color 0.15s, transform 0.15s; }
-.scheda:hover { border-color: color-mix(in srgb, var(--materia, #e07a4a) 70%, #3d322a); transform: translateY(-2px); }
-.chip { display: inline-flex; align-items: center; justify-content: center; width: 2.6rem; height: 2.6rem; border-radius: 0.65rem; color: var(--materia, #e07a4a); background: color-mix(in srgb, var(--materia, #e07a4a) 16%, transparent); }
+.scheda { display: flex; flex-direction: column; gap: 0.7rem; height: 100%; padding: 1.1rem 1.2rem; transition: border-color 0.15s, transform 0.15s, background 0.15s; }
+.scheda:hover { border-color: #5a4332; background: #281f19; transform: translateY(-2px); }
+.chip { display: inline-flex; align-items: center; justify-content: center; width: 2.5rem; height: 2.5rem; border-radius: 0.7rem; color: var(--tinta, var(--cuoio-chiaro)); background: color-mix(in srgb, var(--tinta, var(--cuoio)) 18%, transparent); }
 
 /* Testata delle pagine (come HeroModulo di Minerva). */
-.testata { position: relative; overflow: hidden; padding: 1.5rem 1.6rem; }
-.testata::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(90deg, color-mix(in srgb, var(--materia, #c9552a) 22%, transparent), transparent 65%); }
+.testata { position: relative; overflow: hidden; padding: 1.6rem 1.7rem; }
+.testata::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(90deg, color-mix(in srgb, var(--tinta, var(--cuoio)) 26%, transparent), transparent 70%); }
 .testata > * { position: relative; z-index: 1; }
-.testata .filigrana { position: absolute; right: -1.5rem; bottom: -2.5rem; width: 11rem; height: 11rem; color: var(--materia, #c9552a); opacity: 0.12; z-index: 0; }
+.testata .filigrana { position: absolute; right: -1.5rem; bottom: -2.5rem; width: 11rem; height: 11rem; color: var(--tinta, var(--cuoio-chiaro)); opacity: 0.1; z-index: 0; }
+/* Intestazione piana delle pagine interne (strumenti): titolo e una riga, niente riquadro. */
+.titolo-pagina { margin-bottom: 1.25rem; }
+.titolo-pagina h1 { font-size: 1.75rem; line-height: 1.15; }
+.titolo-pagina p { margin-top: 0.3rem; color: var(--grafite); font-size: 0.92rem; max-width: 46rem; }
 
 /* Gli strati della Home: niente più cartellini storti con lo spillo. */
 .campione-strato { transform: none !important; background: #2a221d !important; background-image: none !important; color: #efe4d0 !important; color-scheme: dark !important; border: 1px solid color-mix(in srgb, var(--materia) 55%, #3d322a) !important; border-radius: 0.75rem !important; --carta: #2a221d; --inchiostro: #efe4d0; --grafite: #b3a48e; --filetto: #46392f; --color-carta: #2a221d; --color-inchiostro: #efe4d0; --color-grafite: #b3a48e; --color-filetto: #46392f; }
@@ -206,10 +245,10 @@ html[data-menu-aperto] #velo-menu { display: block; }
 .scheda-riga { flex-direction: row; align-items: flex-start; gap: 0.85rem; }
 
 /* Interruttore segmentato compatto (come il selettore DMR/ANL di Minerva). */
-.segmentato { display: inline-flex; flex-wrap: wrap; gap: 2px; padding: 3px; border-radius: 0.6rem; background: #1f1915; border: 1px solid #3d322a; font-family: var(--font-sans); font-size: 0.82rem; }
+.segmentato { display: inline-flex; flex-wrap: wrap; gap: 2px; padding: 3px; border-radius: 0.65rem; background: #1f1814; border: 1px solid #342a23; font-family: var(--font-sans); font-size: 0.82rem; }
 .segmentato button { padding: 0.3rem 0.8rem; border-radius: 0.45rem; color: #b3a48e; transition: background 0.15s, color 0.15s; }
 .segmentato button:hover { color: #efe4d0; }
-.segmentato button[aria-pressed="true"] { background: #3a2e26; color: #f3ecdd; box-shadow: inset 0 0 0 1px #4d3e33; }
+.segmentato button[aria-pressed="true"] { background: var(--cuoio-velo); color: var(--cuoio-chiaro); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--cuoio) 45%, transparent); }
 
 /* Terremoti delle ultime 24 ore: un'onda che si allarga dal cerchio. */
 .onda-sismica { transform-box: fill-box; transform-origin: center; animation: onda-sismica 2.4s ease-out infinite; }

@@ -26,7 +26,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 ---
 
 <Base titolo={`Quiz della materia · ${materia.data.nome}`} colore={materia.data.colore} larghezza="testo">
-  <Testata occhiello={materia.data.nome} titolo="Quiz misto" descrizione={`${domande.length} domande da ${quiz.length} ${quiz.length === 1 ? "lezione" : "lezioni"}, in ordine casuale.`} simbolo="ripasso" colore={materia.data.colore} />
+  <Testata piana occhiello={materia.data.nome} titolo="Quiz misto" descrizione={`${domande.length} domande da ${quiz.length} ${quiz.length === 1 ? "lezione" : "lezioni"}, in ordine casuale.`} simbolo="ripasso" colore={materia.data.colore} />
   <div>
     <Quiz
       client:load

@@ -13,6 +13,6 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 ---
 
 <Base titolo="Riconosci la pietra" larghezza="pieno" colore="#B5552A">
-  <Testata occhiello="Geologia 1 · campionario" titolo="Riconosci la pietra" descrizione={`${rocce} rocce e ${conFoto.length - rocce} minerali in foto, da Wikimedia Commons.`} simbolo="martello" colore="#B5552A" />
+  <Testata piana occhiello="Geologia 1 · campionario" titolo="Riconosci la pietra" descrizione={`${rocce} rocce e ${conFoto.length - rocce} minerali in foto, da Wikimedia Commons.`} simbolo="martello" colore="#B5552A" />
   <Riconosci client:load campioni={conFoto} base={base} />
 </Base>

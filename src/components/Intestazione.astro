@@ -1,0 +1,54 @@
+---
+// L'intestazione in cima a ogni pagina, come in Minerva: tasto del menu,
+// percorso «Home · Modulo» e, sotto, le schede del modulo (materie o
+// strumenti). Resta ferma in cima mentre si scorre.
+import { percorso } from "@/lib/percorsi";
+import { tutteLeMaterie } from "@/lib/contenuti";
+import { moduloDi, percorsoPagina, schedeDi } from "@/lib/navigazione";
+
+interface Props {
+  /** Pagina di lettura: niente schede, intestazione bassa. */
+  lettura?: boolean;
+}
+const { lettura = false } = Astro.props;
+const attuale = percorsoPagina(Astro.url.pathname, import.meta.env.BASE_URL);
+const modulo = moduloDi(attuale);
+const materie = (await tutteLeMaterie()).map((m) => ({ id: m.id, nome: m.data.nome, colore: m.data.colore }));
+const schede = schedeDi(attuale, materie, lettura);
+---
+
+<div class="intestazione sticky top-0 z-30 print:hidden">
+  <header class="flex h-12 items-center gap-2 px-3 sm:px-5">
+    <button id="apri-menu" type="button" class="tasto-testata flex lg:hidden" aria-label="Apri il menu">
+      <svg viewBox="0 0 24 24" class="h-5 w-5" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+    </button>
+    <button id="riduci-menu" type="button" class="tasto-testata hidden lg:flex" aria-label="Riduci o allarga il menu" title="Riduci o allarga il menu">
+      <svg viewBox="0 0 24 24" class="h-[18px] w-[18px]" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8">
+        <rect x="3.5" y="4.5" width="17" height="15" rx="2.5" />
+        <path d="M9.5 4.5v15" />
+      </svg>
+    </button>
+    <p class="min-w-0 truncate font-sans text-sm text-[#9c8c78]">
+      {modulo.href === "/" ? (
+        <span class="font-medium text-[#efe4d0]">Home</span>
+      ) : (
+        <>
+          <a href={percorso("/")} class="transition hover:text-[#efe4d0]">Home</a>
+          <span class="mx-1.5 opacity-60">·</span>
+          <a href={percorso(modulo.href)} class="font-medium text-[#efe4d0]">{modulo.titolo}</a>
+        </>
+      )}
+    </p>
+    <a href={percorso("/")} class="display ml-auto text-[1.1rem] font-semibold lg:hidden" style="color:#f3ecdd">Uni<span style="color:#d98a5c">Geo</span></a>
+  </header>
+  {schede.length > 0 && (
+    <nav class="schede-modulo" aria-label={`Sezioni di ${modulo.titolo}`}>
+      {schede.map((s) => (
+        <a href={percorso(s.href)} aria-current={s.attiva ? "page" : undefined}>
+          {s.colore && <span class="h-2 w-2 shrink-0 rounded-full" style={`background:${s.colore}`} />}
+          {s.titolo}
+        </a>
+      ))}
+    </nav>
+  )}
+</div>

@@ -17,7 +17,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 ---
 
 <Base titolo={`Flashcard · ${materia.data.nome}`} colore={materia.data.colore} larghezza="testo">
-  <Testata occhiello={materia.data.nome} titolo="Flashcard" descrizione={`${carte.length} definizioni dagli appunti.`} simbolo="ripasso" colore={materia.data.colore} />
+  <Testata piana occhiello={materia.data.nome} titolo="Flashcard" descrizione={`${carte.length} definizioni dagli appunti.`} simbolo="ripasso" colore={materia.data.colore} />
   <div>
     {carte.length === 0 ? (
       <p class="text-sm text-muted">Nessuna definizione ancora in questa materia.</p>

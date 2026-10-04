@@ -8,6 +8,6 @@ const materie = (await tutteLeMaterie()).map((m) => ({ id: m.id, nome: m.data.no
 ---
 
 <Base titolo="Impostazioni" larghezza="testo">
-  <Testata titolo="Impostazioni" simbolo="ingranaggio" />
+  <Testata piana titolo="Impostazioni" simbolo="ingranaggio" />
   <Impostazioni client:load materie={materie} />
 </Base>
