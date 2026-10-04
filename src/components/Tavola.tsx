@@ -280,9 +280,9 @@ export function Tavola({ elementi, daSapere }: Props) {
   return (
     <div>
       <div className="flex flex-wrap items-center gap-2">
-        <div className="flex gap-1 rounded-sm border border-filetto p-0.5 font-sans text-sm">
+        <div className="segmentato">
           {(["tavola", "esercizio"] as Modo[]).map((m) => (
-            <button key={m} type="button" onClick={() => setModo(m)} className={`rounded-sm px-3 py-1 ${modo === m ? "bg-lava text-white" : "text-grafite hover:text-inchiostro"}`}>
+            <button key={m} type="button" onClick={() => setModo(m)} aria-pressed={modo === m}>
               {m === "tavola" ? "Tavola" : "Esercizio"}
             </button>
           ))}
@@ -294,8 +294,8 @@ export function Tavola({ elementi, daSapere }: Props) {
 
       {modo === "tavola" ? (
         <div className="mt-4">
-          <div className="mb-3 flex flex-wrap items-center gap-1 font-sans text-xs">
-            <span className="etichetta mr-1">Colora per</span>
+          <div className="mb-3 flex flex-wrap items-center gap-3 font-sans text-sm">
+            <div className="segmentato">
             {(
               [
                 ["categoria", "Categoria"],
@@ -303,11 +303,12 @@ export function Tavola({ elementi, daSapere }: Props) {
                 ["elettronegativita", "Elettronegatività"],
               ] as [Colore, string][]
             ).map(([k, n]) => (
-              <button key={k} type="button" onClick={() => setPer(k)} className={`rounded-sm border px-2 py-1 ${per === k ? "border-inchiostro bg-sabbia" : "border-filetto text-grafite"}`}>
+              <button key={k} type="button" onClick={() => setPer(k)} aria-pressed={per === k}>
                 {n}
               </button>
             ))}
-            <label className="ml-2 flex items-center gap-1.5">
+            </div>
+            <label className="flex items-center gap-1.5 text-grafite">
               <input type="checkbox" checked={soloDaSapere} onChange={(e) => setSoloDaSapere(e.target.checked)} />
               Solo quelli da sapere
             </label>

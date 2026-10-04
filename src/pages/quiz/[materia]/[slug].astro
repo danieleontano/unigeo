@@ -1,6 +1,7 @@
 ---
 import { getCollection, getEntry } from "astro:content";
 import Base from "@/layouts/Base.astro";
+import Testata from "@/components/Testata.astro";
 import { Quiz } from "@/components/Quiz";
 import { percorso } from "@/lib/percorsi";
 
@@ -22,11 +23,11 @@ const percorsoLezione = `/materie/${m}/lezioni/${slug}`;
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 ---
 
-<Base tema="sottosuolo" titolo={`Quiz · ${lezione.data.titolo}`} colore={materia.data.colore}>
-  <p class="sans text-xs font-semibold uppercase tracking-[0.2em] text-materia">
-    <a href={percorso(percorsoLezione)}>{materia.data.nome} · Lezione {lezione.data.numero}</a>
-  </p>
-  <div class="mt-3">
+<Base titolo={`Quiz · ${lezione.data.titolo}`} colore={materia.data.colore} larghezza="testo">
+  <Testata occhiello={`${materia.data.nome} · Lezione ${lezione.data.numero}`} titolo={lezione.data.titolo} simbolo="ripasso" colore={materia.data.colore}>
+    <a href={percorso(percorsoLezione)} class="bottone bottone-vuoto">Torna alla lezione</a>
+  </Testata>
+  <div>
     <Quiz
       client:load
       idLezione={quiz.id}

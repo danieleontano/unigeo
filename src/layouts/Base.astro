@@ -3,31 +3,27 @@ import "@/styles/globale.css";
 import "@/styles/sottosuolo.css";
 import { ClientRouter } from "astro:transitions";
 import { percorso } from "@/lib/percorsi";
-import Strati from "@/components/Strati.astro";
 import Litologie from "@/components/Litologie.astro";
-import Frana from "@/components/Frana.astro";
+import Menu from "@/components/Menu.astro";
 
 interface Props {
   titolo: string;
   descrizione?: string;
   /** Colore della materia: tinge titoli e accenti della pagina. */
   colore?: string;
-  /** Colonna larga (home, materie, Libro). */
+  /** Larghezza del contenuto: «testo» per leggere, «largo» (predefinito) per tutto il resto, «pieno» per gli strumenti grandi. */
+  larghezza?: "testo" | "largo" | "pieno";
+  /** Compatibilità: largo={true} = larghezza «largo». */
   largo?: boolean;
-  /** «carta» per leggere (Libro, lezioni), «sottosuolo» per scoprire (home, materie, quiz…). */
+  /** «carta» per leggere (Libro, lezioni), «sottosuolo» per tutto il resto. */
   tema?: "carta" | "sottosuolo";
-  /** Senza riga in alto né piede: la pagina fa da sé (home). */
+  /** Il contenuto si gestisce i margini da sé (home). */
   nudo?: boolean;
 }
 
-const { titolo, descrizione, colore, largo = false, tema = "carta", nudo = false } = Astro.props;
-const voci = [
-  { href: "/", testo: "Home", soloLargo: true },
-  { href: "/materie", testo: "Materie" },
-  { href: "/ripasso", testo: "Ripasso" },
-  { href: "/strumenti", testo: "Strumenti" },
-];
-const attuale = Astro.url.pathname.replace(import.meta.env.BASE_URL.replace(/\/$/, ""), "") || "/";
+const { titolo, descrizione, colore, larghezza, largo, tema = "sottosuolo", nudo = false } = Astro.props;
+const misura = larghezza ?? (largo === false ? "testo" : "largo");
+const LARGHEZZE = { testo: "max-w-3xl", largo: "max-w-6xl", pieno: "max-w-[1500px]" };
 ---
 
 <!doctype html>
@@ -35,7 +31,7 @@ const attuale = Astro.url.pathname.replace(import.meta.env.BASE_URL.replace(/\/$
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <meta name="theme-color" content={tema === "sottosuolo" ? "#111417" : "#f6f1e7"} />
+    <meta name="theme-color" content="#1a1411" />
     <link rel="icon" type="image/svg+xml" href={percorso("/favicon.svg")} />
     <link rel="apple-touch-icon" href={percorso("/icone/app-512.png")} />
     <link rel="manifest" href={percorso("/manifest.webmanifest")} />
@@ -43,39 +39,22 @@ const attuale = Astro.url.pathname.replace(import.meta.env.BASE_URL.replace(/\/$
     {descrizione && <meta name="description" content={descrizione} />}
     <ClientRouter />
   </head>
-  <body class="flex min-h-dvh flex-col">
+  <body class="min-h-dvh lg:flex">
     <Litologie />
-    <Frana transition:persist />
-    <header class="sticky top-0 z-20 backdrop-blur print:hidden" style="background: color-mix(in srgb, var(--carta) 90%, transparent)" transition:name="barra" transition:persist>
-      <div class:list={["mx-auto flex h-12 items-center justify-between px-4", largo ? "max-w-5xl" : "max-w-3xl"]}>
-        <a href={percorso("/")} class="display text-[1.35rem] font-semibold tracking-tight text-inchiostro">
-          Uni<span class="text-lava">Geo</span>
-        </a>
-        <nav class="flex gap-0.5 whitespace-nowrap font-sans text-[0.78rem] sm:text-[0.85rem]">
-          {voci.map((v) => (
-            <a
-              href={percorso(v.href)}
-              class:list={[
-                "rounded-md px-1.5 py-1 transition sm:px-2.5",
-                v.soloLargo && "hidden sm:inline",
-                attuale === v.href || (v.href !== "/" && attuale.startsWith(v.href)) || (v.href === "/strumenti" && ["/campionario", "/qap", "/tempo", "/tavola", "/cartografia", "/ispirazione"].includes(attuale))
-                  ? "bg-sabbia font-medium text-inchiostro"
-                  : "text-grafite hover:text-inchiostro",
-              ]}
-            >
-              {v.testo}
-            </a>
-          ))}
-        </nav>
-      </div>
-      <Strati />
-    </header>
-    <main class:list={["mx-auto w-full flex-1", nudo ? "max-w-none" : largo ? "max-w-5xl px-4 pb-12 pt-6" : "max-w-3xl px-4 pb-12 pt-6"]}>
-      <slot />
-    </main>
-    <footer class:list={["mx-auto w-full px-4 pb-6 font-sans text-xs text-grafite print:hidden", largo ? "max-w-5xl" : "max-w-3xl"]}>
-      <a href={percorso("/impostazioni")} class="hover:text-inchiostro">Impostazioni</a>
-    </footer>
+    <Menu />
+    <div class="flex min-h-dvh min-w-0 flex-1 flex-col">
+      {/* Barra del telefono: il menu sta nel cassetto. */}
+      <header class="barra-telefono sticky top-0 z-30 flex h-12 items-center gap-3 border-b border-black/30 px-3 lg:hidden print:hidden">
+        <button id="apri-menu" type="button" class="rounded-md p-1.5 text-[#f3ecdd]" aria-label="Apri il menu">
+          <svg viewBox="0 0 24 24" class="h-6 w-6" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+        </button>
+        <a href={percorso("/")} class="display text-[1.2rem] font-semibold text-[#f3ecdd]">Uni<span class="text-[#e07a4a]">Geo</span></a>
+        <span class="ml-auto truncate font-sans text-xs text-[#a89a86]">{titolo}</span>
+      </header>
+      <main class:list={["mx-auto w-full flex-1", nudo ? "" : `${LARGHEZZE[misura]} px-4 pb-14 pt-6 sm:px-6 lg:px-8 lg:pt-8`]}>
+        <slot />
+      </main>
+    </div>
     {import.meta.env.PROD && (
       <script is:inline define:vars={{ sw: percorso("/sw.js"), scope: percorso("/") }}>
         if ("serviceWorker" in navigator) navigator.serviceWorker.register(sw, { scope }).catch(() => {});

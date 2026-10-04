@@ -1,29 +1,29 @@
 ---
+// Griglia uniforme di schede strumento: chip con l'icona nel colore della
+// materia, titolo, una riga. Come le card dei moduli in Minerva.
 import { percorso } from "@/lib/percorsi";
 import { tutteLeMaterie } from "@/lib/contenuti";
 import type { Strumento } from "@/lib/strumenti";
 
 interface Props {
   strumenti: Strumento[];
-  /** «compatto»: due colonne anche sul telefono, senza descrizione. */
-  compatto?: boolean;
 }
-const { strumenti, compatto = false } = Astro.props;
+const { strumenti } = Astro.props;
 const materie = new Map((await tutteLeMaterie()).map((m) => [m.id, m.data]));
 ---
 
-<ul class:list={["grid gap-2", compatto ? "grid-cols-2 sm:grid-cols-3" : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"]}>
+<ul class="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-3">
   {strumenti.map((s) => {
     const m = s.materia ? materie.get(s.materia) : undefined;
     return (
-      <li style={`--materia:${m?.colore ?? "#c9552a"}`}>
-        <a href={percorso(s.href)} class:list={["group flex h-full gap-3 rounded-sm border border-filetto bg-carta/40 transition hover:-translate-y-0.5 hover:border-materia", compatto ? "items-center p-2.5" : "items-start p-3.5"]}>
-          <svg class:list={["shrink-0 text-materia transition group-hover:rotate-6", compatto ? "h-8 w-8" : "h-11 w-11"]} aria-hidden="true"><use href={`#${s.simbolo}`} /></svg>
-          <span class="min-w-0">
-            <span class="block font-sans text-[0.6rem] font-semibold uppercase tracking-wider text-materia">{m?.nome ?? "Per tutte"}</span>
-            <span class:list={["block font-sans font-semibold leading-tight", compatto ? "text-[0.85rem]" : "text-[0.95rem]"]}>{s.titolo}</span>
-            {!compatto && <span class="mt-0.5 block text-[0.85rem] leading-snug text-grafite">{s.testo}</span>}
-          </span>
+      <li style={`--materia:${m?.colore ?? "#e07a4a"}`}>
+        <a href={percorso(s.href)} class="pannello scheda scheda-riga group">
+          <span class="chip shrink-0"><svg class="h-6 w-6 transition group-hover:rotate-6" aria-hidden="true"><use href={`#${s.simbolo}`} /></svg></span>
+          <div class="min-w-0">
+            <p class="font-sans text-[0.6rem] font-semibold uppercase tracking-wider" style="color:color-mix(in srgb, var(--materia) 80%, #f3ecdd)">{m?.nome.replace(" e cartografia", "") ?? "Per tutte"}</p>
+            <p class="mt-0.5 font-sans text-[0.98rem] font-semibold leading-tight">{s.titolo}</p>
+            <p class="mt-1 text-[0.86rem] leading-snug text-grafite">{s.testo}</p>
+          </div>
         </a>
       </li>
     );

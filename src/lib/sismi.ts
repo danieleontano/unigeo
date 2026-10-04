@@ -4,6 +4,9 @@
 // qui, al momento della pubblicazione; il sito si ripubblica da solo ogni
 // mezz'ora (.github/workflows/deploy.yml), così i dati restano freschi.
 
+import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { join } from "node:path";
+
 export interface Sisma {
   id: string;
   quando: string; // ISO UTC
@@ -18,6 +21,40 @@ export interface Sisma {
 export interface Sismi {
   eventi: Sisma[];
   letto: string; // ISO dell'ultima lettura riuscita
+  /** Tutti gli eventi raccolti finora, dal più recente. */
+  archivio: Sisma[];
+  /** Da quando si raccoglie (ISO). */
+  dal: string;
+}
+
+// L'archivio: ogni build aggiunge i 20 eventi del feed a quelli già visti.
+// Il file vive in .archivio-sismi/ (fuori dal repo); su GitHub Actions passa da
+// una build all'altra con la cache (vedi deploy.yml), in locale resta su disco.
+const CARTELLA = join(process.cwd(), ".archivio-sismi");
+const ARCHIVIO = join(CARTELLA, "archivio.json");
+const GIORNI = 400;
+
+function aggiornaArchivio(nuovi: Sisma[]): { archivio: Sisma[]; dal: string } {
+  let vecchi: Sisma[] = [];
+  let dal = new Date().toISOString();
+  try {
+    const letto = JSON.parse(readFileSync(ARCHIVIO, "utf8")) as { eventi: Sisma[]; dal: string };
+    vecchi = letto.eventi;
+    dal = letto.dal;
+  } catch {
+    // primo giro, o cache persa: si riparte
+  }
+  const perId = new Map(vecchi.map((e) => [e.id, e]));
+  for (const e of nuovi) perId.set(e.id, e); // la revisione più recente vince
+  const limite = Date.now() - GIORNI * 86400000;
+  const archivio = [...perId.values()].filter((e) => Date.parse(e.quando) >= limite).sort((a, b) => b.quando.localeCompare(a.quando));
+  try {
+    mkdirSync(CARTELLA, { recursive: true });
+    writeFileSync(ARCHIVIO, JSON.stringify({ dal, eventi: archivio }));
+  } catch {
+    // in sola lettura: pazienza, si mostra quello che c'è
+  }
+  return { archivio, dal };
 }
 
 const FEED = "https://distav.unige.it/rsni/rss-man.php";
@@ -63,7 +100,7 @@ export function leggiSismi(): Promise<Sismi | null> {
       clearTimeout(t);
       if (!r.ok) return null;
       const eventi = analizza(await r.text());
-      return eventi.length ? { eventi, letto: new Date().toISOString() } : null;
+      return eventi.length ? { eventi, letto: new Date().toISOString(), ...aggiornaArchivio(eventi) } : null;
     } catch {
       return null;
     }

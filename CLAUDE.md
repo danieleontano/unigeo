@@ -228,3 +228,24 @@ due settimane di fila salta, il problema non è nel codice.
   Daniele ha detto NO («non abbiamo più posto su Supabase»). Resta
   esporta/importa a mano; la regola «niente DB» del kit vale ancora. Da
   riaprire solo con un posto in rete a costo zero diverso da Supabase.
+- 2026-10-04 · Struttura alla Minerva, su richiesta di Daniele («tanti post-it
+  messi a casaccio»): menu laterale (Menu.astro: Studio, Materie, Strumenti,
+  Impostazioni in fondo; su telefono cassetto dal tasto ☰), niente più header
+  con `transition:persist` (teneva accesa la voce sbagliata). Ogni pagina =
+  `Testata` (occhiello, titolo, una riga, azioni) + `.sezione-titolo` + griglie
+  di `.pannello` uniformi; interruttori di modo = `.segmentato`. Home con
+  «Ciao, Daniele» e orologio al secondo (Orologio.tsx). Frana TOLTA (Daniele
+  non la vedeva: non riproporla). I token `--color-*` si risolvono su :root:
+  per un colore di riga usare le classi fuori layer `.text-materia`/`.bg-materia`
+  in sottosuolo.css.
+- 2026-10-04 · Strumenti nuovi: QAPF completo a rombo (feldspatoidi sotto);
+  carta ICS «come il poster» (CartaIcs.tsx, tre blocchi, una riga per piano,
+  scheda flottante) più le viste in scala; Scala di Mohs con prova di durezza;
+  Profilo topografico (carta a isoipse generata da un seme, traccia A–B,
+  esercizio «quale profilo?» col profilo rovesciato come trappola); Terremoti:
+  mappa RSNI su carta di base fissa (scripts/mappa-nordovest.ts, Natural Earth
+  + regioni openpolis). Il feed RSNI dà solo 20 eventi: l'archivio cresce a
+  ogni build in `.archivio-sismi/`, che passa tra un deploy e l'altro con
+  actions/cache (niente DB, niente commit). Dati ICS: il Pridoli è sia serie
+  sia piano con lo stesso id e Ludlow aveva il tetto sbagliato; lo script ora
+  tiene il rango più alto e allinea i tetti ai fratelli, e lo stampa.

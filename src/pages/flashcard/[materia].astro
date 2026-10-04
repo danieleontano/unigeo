@@ -1,7 +1,7 @@
 ---
 import Base from "@/layouts/Base.astro";
+import Testata from "@/components/Testata.astro";
 import { Flashcard } from "@/components/Flashcard";
-import { percorso } from "@/lib/percorsi";
 import { lezioniDi, tutteLeMaterie } from "@/lib/contenuti";
 import { carteDiLezione } from "@/lib/flashcard";
 
@@ -16,12 +16,9 @@ const carte = lezioni.flatMap(carteDiLezione);
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 ---
 
-<Base tema="sottosuolo" titolo={`Flashcard · ${materia.data.nome}`} colore={materia.data.colore}>
-  <p class="sans text-xs font-semibold uppercase tracking-[0.2em] text-materia">
-    <a href={percorso(`/materie/${materia.id}`)}>{materia.data.nome}</a>
-  </p>
-  <h1 class="mt-1 text-[2rem] leading-tight">Campioni</h1>
-  <div class="mt-4">
+<Base titolo={`Flashcard · ${materia.data.nome}`} colore={materia.data.colore} larghezza="testo">
+  <Testata occhiello={materia.data.nome} titolo="Flashcard" descrizione={`${carte.length} definizioni dagli appunti.`} simbolo="ripasso" colore={materia.data.colore} />
+  <div>
     {carte.length === 0 ? (
       <p class="text-sm text-muted">Nessuna definizione ancora in questa materia.</p>
     ) : (

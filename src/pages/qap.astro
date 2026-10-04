@@ -1,14 +1,11 @@
 ---
 import Base from "@/layouts/Base.astro";
+import Testata from "@/components/Testata.astro";
 import { Qap } from "@/components/Qap";
 ---
 
-<Base titolo="Diagramma QAP" tema="sottosuolo" largo colore="#B5552A">
-  <p class="etichetta">Geologia 1 · lezione 5</p>
-  <h1 class="mt-1 text-[2rem] leading-tight">Il triangolo di Streckeisen</h1>
-  <p class="mt-1 max-w-prose text-sm text-grafite">Rocce magmatiche con femici sotto il 90%: quarzo, feldspati alcalini e plagioclasi riportati a 100. Parte superiore del diagramma (con quarzo); quella inferiore, con i feldspatoidi, arriverà.</p>
-  <div class="mt-5">
-    <Qap client:load />
-  </div>
-  <p class="mt-8 max-w-prose font-sans text-[0.7rem] text-grafite">Campi e nomi secondo la classificazione IUGS (Streckeisen 1976; Le Maitre et al. 2002). Per l'esame fanno fede i diagrammi dati dal docente.</p>
+<Base titolo="Diagramma QAPF" colore="#B5552A">
+  <Testata occhiello="Geologia 1 · lezione 5" titolo="Diagramma QAPF" descrizione="Rocce magmatiche con femici sotto il 90%: quarzo o feldspatoidi, feldspati alcalini e plagioclasi riportati a 100." simbolo="triangolo" colore="#B5552A" />
+  <Qap client:load />
+  <p class="mt-6 max-w-prose font-sans text-[0.7rem] text-grafite">Campi e nomi secondo la classificazione IUGS (Streckeisen 1976; Le Maitre et al. 2002). Per l'esame fanno fede i diagrammi dati dal docente.</p>
 </Base>

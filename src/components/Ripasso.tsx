@@ -43,14 +43,14 @@ export function Ripasso({ lezioni, base }: Props) {
   if (righe.length === 0) return <p className="mt-2 text-sm text-grafite">Nessuna lezione con quiz nelle materie attive.</p>;
 
   return (
-    <div className="mt-4 space-y-8">
+    <div className="grid grid-cols-1 gap-4">
       {materie.map(([materia, m]) => {
         const mie = righe.filter(({ l }) => l.materia === materia);
         const scadute = mie.filter(({ p }) => !p || p.nextReview <= oggi).length;
         return (
-          <section key={materia} id={materia} className="scroll-mt-20" style={{ ["--materia" as string]: m.colore } as React.CSSProperties}>
+          <section key={materia} id={materia} className="pannello scroll-mt-20 p-4 sm:p-5" style={{ ["--materia" as string]: m.colore } as React.CSSProperties}>
             <div className="flex items-baseline justify-between">
-              <h2 className="text-xl">{m.nome}</h2>
+              <h2 className="display text-xl">{m.nome}</h2>
               <span className="font-sans text-xs text-grafite">
                 {scadute > 0 ? (
                   <>
@@ -65,7 +65,7 @@ export function Ripasso({ lezioni, base }: Props) {
                 </a>
               </span>
             </div>
-            <ol className="mt-2 divide-y divide-filetto border-y border-filetto">
+            <ol className="mt-2 divide-y divide-filetto border-t border-filetto">
               {mie.map(({ l, p }) => {
                 const scaduta = !p || p.nextReview <= oggi;
                 return (

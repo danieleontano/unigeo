@@ -1,6 +1,8 @@
 ---
 import Base from "@/layouts/Base.astro";
 import Colonna from "@/components/Colonna.astro";
+import Testata from "@/components/Testata.astro";
+import SchedeStrumenti from "@/components/SchedeStrumenti.astro";
 import { percorso } from "@/lib/percorsi";
 import { strumentiDi } from "@/lib/strumenti";
 import { dataBreve } from "@/lib/date";
@@ -17,48 +19,35 @@ const quiz = await quizDisponibili();
 const d = materia.data;
 const definizioni = lezioni.reduce((s, l) => s + contaDefinizioni(l), 0);
 const nQuiz = lezioni.filter((l) => quiz.has(l.id)).length;
+const strumenti = strumentiDi(materia.id);
 ---
 
-<Base tema="sottosuolo" titolo={d.nome} colore={d.colore} largo>
-  <header class="flex items-start gap-4">
-    <img src={percorso(`/icone/${d.icona}`)} alt="" width="56" height="56" class="h-14 w-14 shrink-0" />
-    <div class="min-w-0 flex-1">
-      <p class="etichetta">{d.moduli ? d.moduli.join(" · ") : "Materia"}</p>
-      <h1 class="mt-0.5 text-[2rem] leading-tight">{d.nome}</h1>
-      <p class="mt-1 text-sm text-grafite">
-        {d.docenti.join(", ")}
-        {d.esame && <> · {d.esame}</>}
-      </p>
-      {(lezioni.length > 0 || strumentiDi(materia.id).length > 0) && (
-        <p class="mt-4 flex flex-wrap gap-2">
-          <a href={percorso(`/materie/${materia.id}/libro`)} class="bottone bottone-materia">Apri il Libro</a>
-          {definizioni > 0 && <a href={percorso(`/flashcard/${materia.id}`)} class="bottone bottone-vuoto">Campioni · {definizioni}</a>}
-          {nQuiz > 0 && <a href={percorso(`/quiz/${materia.id}`)} class="bottone bottone-vuoto">Quiz misto · {nQuiz} {nQuiz === 1 ? "lezione" : "lezioni"}</a>}
-          {nQuiz > 0 && <a href={percorso(`/ripasso#${materia.id}`)} class="bottone bottone-vuoto">Ripasso</a>}
-          {strumentiDi(materia.id).map((s) => <a href={percorso(s.href)} class="bottone bottone-vuoto">{s.titolo}</a>)}
-        </p>
-      )}
-    </div>
-  </header>
+<Base titolo={d.nome} colore={d.colore}>
+  <Testata occhiello={d.moduli ? d.moduli.join(" · ") : "Materia"} titolo={d.nome} descrizione={[d.docenti.join(", ") || "Docente da definire", d.esame].filter(Boolean).join(" · ")} icona={percorso(`/icone/${d.icona}`)} colore={d.colore}>
+    {lezioni.length > 0 && <a href={percorso(`/materie/${materia.id}/libro`)} class="bottone bottone-materia">Apri il Libro</a>}
+    {definizioni > 0 && <a href={percorso(`/flashcard/${materia.id}`)} class="bottone bottone-vuoto">Flashcard · {definizioni}</a>}
+    {nQuiz > 0 && <a href={percorso(`/quiz/${materia.id}`)} class="bottone bottone-vuoto">Quiz misto</a>}
+    {nQuiz > 0 && <a href={percorso(`/ripasso#${materia.id}`)} class="bottone bottone-vuoto">Ripasso</a>}
+  </Testata>
 
   {lezioni.length === 0 ? (
-    <p class="mt-10 text-grafite">Nessuno strato ancora. La prima lezione si aggiunge in <code class="font-sans text-sm">content/{materia.id}/lezioni/</code>.</p>
+    <p class="pannello p-5 text-grafite">Nessuna lezione ancora.</p>
   ) : (
-    <section class="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-[320px_1fr]">
-      <div>
-        <p class="etichetta mb-2">Colonna stratigrafica</p>
+    <section class="grid grid-cols-1 gap-4 lg:grid-cols-[280px_1fr]">
+      <div class="pannello hidden p-5 lg:block">
+        <h2 class="pannello-titolo mb-3">Colonna stratigrafica</h2>
         <Colonna lezioni={lezioni} colore={d.colore} altezza={Math.max(140, lezioni.length * 44)} />
-        <p class="mt-2 font-sans text-[0.7rem] text-grafite">In cima la lezione più recente.</p>
       </div>
 
-      <div>
+      <div class="pannello p-4 sm:p-5">
         <div class="mb-2 flex items-center gap-2">
-          <input id="filtro" type="search" placeholder="Cerca nelle lezioni" class="w-full rounded-lg border border-filetto bg-white/60 px-3 py-1.5 font-sans text-sm outline-none focus:border-inchiostro" autocomplete="off" />
-          <button id="ordine" type="button" class="bottone bottone-vuoto shrink-0 text-xs" title="Inverti l'ordine">
+          <h2 class="pannello-titolo mr-auto">Lezioni · {lezioni.length}</h2>
+          <input id="filtro" type="search" placeholder="Cerca" class="w-40 rounded-lg border border-filetto bg-transparent px-3 py-1 font-sans text-sm outline-none focus:border-grafite sm:w-56" autocomplete="off" />
+          <button id="ordine" type="button" class="bottone bottone-vuoto shrink-0 !py-1 text-xs" title="Inverti l'ordine">
             <span data-asc>1 → {lezioni.length}</span><span data-desc hidden>{lezioni.length} → 1</span>
           </button>
         </div>
-        <ol id="lezioni" class="deposita divide-y divide-filetto border-y border-filetto">
+        <ol id="lezioni" class="divide-y divide-filetto border-t border-filetto">
           {lezioni.map((l) => (
             <li data-testo={`${l.data.numero} ${l.data.titolo} ${l.data.docente ?? ""} ${l.data.tag.join(" ")}`.toLowerCase()}>
               <a href={percorso(percorsoLezione(l))} class="riga">
@@ -73,6 +62,13 @@ const nQuiz = lezioni.filter((l) => quiz.has(l.id)).length;
         <p id="vuoto" class="mt-4 text-sm text-grafite" hidden>Nessuna lezione corrisponde.</p>
       </div>
     </section>
+  )}
+
+  {strumenti.length > 0 && (
+    <>
+      <div class="sezione-titolo"><h2>Strumenti</h2></div>
+      <SchedeStrumenti strumenti={strumenti} />
+    </>
   )}
 </Base>
 

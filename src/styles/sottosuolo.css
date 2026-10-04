@@ -127,7 +127,7 @@
 /* ------------------------------------------------------------------------
    Carota di lettura (Libro)
    ------------------------------------------------------------------------ */
-.carota { position: fixed; left: 10px; top: 5.5rem; bottom: 1.5rem; width: 14px; border-radius: 7px; border: 1px solid var(--color-filetto); background: color-mix(in srgb, var(--color-sabbia) 60%, transparent); overflow: hidden; z-index: 15; }
+.carota { position: fixed; right: 10px; top: 5.5rem; bottom: 1.5rem; width: 14px; border-radius: 7px; border: 1px solid var(--color-filetto); background: color-mix(in srgb, var(--color-sabbia) 60%, transparent); overflow: hidden; z-index: 15; }
 .carota .riempimento { position: absolute; left: 0; right: 0; top: 0; background-color: color-mix(in srgb, var(--materia) 75%, transparent); background-image: repeating-linear-gradient(0deg, color-mix(in srgb, var(--inchiostro) 25%, transparent) 0 1px, transparent 1px 6px); transition: height 0.2s linear; }
 
 /* Transizioni fra pagine: le viste scorrono come strati */
@@ -144,3 +144,80 @@
 @keyframes pennino { 0%, 100% { transform: translateY(0); } 25% { transform: translateY(-2px); } 75% { transform: translateY(2px); } }
 .pennino { animation: pennino 0.18s linear infinite; transform-box: fill-box; }
 @media (prefers-reduced-motion: reduce) { .pennino { animation: none; } }
+
+/* ========================================================================
+   GUSCIO (04/10/2026): menu laterale + pannelli tutti uguali, come Minerva.
+   Niente più fogli sparsi: un solo tipo di superficie, in griglia.
+   ======================================================================== */
+.menu { background: #1a1411; background-image: var(--grana-pietra); background-size: 180px 180px; }
+html[data-menu-aperto] .menu { transform: translateX(0); }
+html[data-menu-aperto] #velo-menu { display: block; }
+.menu-titolo { margin: 1rem 0.6rem 0.3rem; font-size: 0.6rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #8c7e6b; }
+.barra-telefono { background: color-mix(in srgb, #1a1411 92%, transparent); backdrop-filter: blur(6px); }
+
+/* Il pannello: la superficie unica del sito sul fondo scuro. */
+.pannello, .foglio {
+  --carta: #2a221d; --sabbia: #352b24; --inchiostro: #efe4d0; --grafite: #b3a48e; --filetto: #46392f;
+  --color-carta: var(--carta); --color-sabbia: var(--sabbia); --color-inchiostro: var(--inchiostro); --color-grafite: var(--grafite); --color-filetto: var(--filetto);
+  position: relative;
+  background: #2a221d;
+  color: var(--inchiostro);
+  color-scheme: dark;
+  border: 1px solid #3d322a;
+  border-radius: 0.85rem;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 12px 28px -22px rgba(0, 0, 0, 0.9);
+}
+.foglio::before { content: none; }
+.foglio input, .pannello input { background: #1f1916; color: var(--inchiostro); border-color: var(--filetto); }
+:root[data-tema="sottosuolo"] body { background-image: none; }
+
+/* Etichetta di sezione sopra una griglia (come «Moduli» in Minerva). */
+.sezione-titolo { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin: 2rem 0 0.7rem; }
+.sezione-titolo h2 { font-family: var(--font-sans); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--grafite); }
+.sezione-titolo a { font-family: var(--font-sans); font-size: 0.75rem; color: var(--grafite); }
+.sezione-titolo a:hover { color: var(--inchiostro); }
+
+/* Scheda uniforme di una griglia: chip con icona, titolo, una riga. */
+.scheda { display: flex; flex-direction: column; gap: 0.7rem; height: 100%; padding: 1rem 1.1rem; transition: border-color 0.15s, transform 0.15s; }
+.scheda:hover { border-color: color-mix(in srgb, var(--materia, #e07a4a) 70%, #3d322a); transform: translateY(-2px); }
+.chip { display: inline-flex; align-items: center; justify-content: center; width: 2.6rem; height: 2.6rem; border-radius: 0.65rem; color: var(--materia, #e07a4a); background: color-mix(in srgb, var(--materia, #e07a4a) 16%, transparent); }
+
+/* Testata delle pagine (come HeroModulo di Minerva). */
+.testata { position: relative; overflow: hidden; padding: 1.5rem 1.6rem; }
+.testata::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(90deg, color-mix(in srgb, var(--materia, #c9552a) 22%, transparent), transparent 65%); }
+.testata > * { position: relative; z-index: 1; }
+.testata .filigrana { position: absolute; right: -1.5rem; bottom: -2.5rem; width: 11rem; height: 11rem; color: var(--materia, #c9552a); opacity: 0.12; z-index: 0; }
+
+/* Gli strati della Home: niente più cartellini storti con lo spillo. */
+.campione-strato { transform: none !important; background: #2a221d !important; background-image: none !important; color: #efe4d0 !important; color-scheme: dark !important; border: 1px solid color-mix(in srgb, var(--materia) 55%, #3d322a) !important; border-radius: 0.75rem !important; --carta: #2a221d; --inchiostro: #efe4d0; --grafite: #b3a48e; --filetto: #46392f; --color-carta: #2a221d; --color-inchiostro: #efe4d0; --color-grafite: #b3a48e; --color-filetto: #46392f; }
+.campione-strato::after { content: none !important; }
+.campione-strato:hover { transform: translateY(-3px) !important; }
+
+/* Titolo interno di un pannello: stessa etichetta delle sezioni. Serve una classe
+   fuori dai layer perché la regola globale su h2 (font display) vince sulle utility. */
+.pannello-titolo { font-family: var(--font-sans); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--grafite); }
+.pannello-testa { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; }
+.pannello-testa a { font-family: var(--font-sans); font-size: 0.75rem; color: var(--grafite); }
+.pannello-testa a:hover { color: var(--inchiostro); }
+/* Scheda orizzontale: chip a sinistra, testo a destra (strumenti). */
+.scheda-riga { flex-direction: row; align-items: flex-start; gap: 0.85rem; }
+
+/* Interruttore segmentato compatto (come il selettore DMR/ANL di Minerva). */
+.segmentato { display: inline-flex; flex-wrap: wrap; gap: 2px; padding: 3px; border-radius: 0.6rem; background: #1f1915; border: 1px solid #3d322a; font-family: var(--font-sans); font-size: 0.82rem; }
+.segmentato button { padding: 0.3rem 0.8rem; border-radius: 0.45rem; color: #b3a48e; transition: background 0.15s, color 0.15s; }
+.segmentato button:hover { color: #efe4d0; }
+.segmentato button[aria-pressed="true"] { background: #3a2e26; color: #f3ecdd; box-shadow: inset 0 0 0 1px #4d3e33; }
+
+/* Terremoti delle ultime 24 ore: un'onda che si allarga dal cerchio. */
+.onda-sismica { transform-box: fill-box; transform-origin: center; animation: onda-sismica 2.4s ease-out infinite; }
+@keyframes onda-sismica { from { transform: scale(1); opacity: 0.9; } to { transform: scale(3.2); opacity: 0; } }
+
+/* I token --color-* si risolvono su :root: un --materia messo su una riga non
+   arriverebbe a text-materia. Queste versioni fuori dai layer leggono la
+   variabile sull'elemento stesso, quindi il colore della riga vince. */
+.text-materia { color: var(--materia); }
+.bg-materia { background-color: var(--materia); }
+.border-materia { border-color: var(--materia); }
+.text-muted { color: var(--color-grafite); }
+.border-line { border-color: var(--color-filetto); }
+.divide-line > :not(:last-child) { border-color: var(--color-filetto); }

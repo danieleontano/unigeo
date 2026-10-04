@@ -26,7 +26,7 @@ const ROMANI = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI
 const romano = (n: number) => ROMANI[n - 1] ?? String(n);
 ---
 
-<Base titolo={`Libro · ${d.nome}`} colore={d.colore} largo>
+<Base tema="carta" titolo={`Libro · ${d.nome}`} colore={d.colore} largo>
   <div class="libro -mx-4 -mt-6 px-4 pt-4 pb-12">
     <Lettore client:load chiave={`unigeo.libro.${materia.id}`} capitoli={capitoli.map((c) => ({ id: c.id, numero: c.lezione.data.numero, titolo: c.lezione.data.titolo }))} />
 

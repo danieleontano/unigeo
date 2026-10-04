@@ -38,13 +38,13 @@ const forte = dati?.eventi.reduce((m, e) => (e.magnitudo > m.magnitudo ? e : m),
     <svg viewBox={`0 0 ${W} ${H}`} class="mt-2 h-16 w-full" preserveAspectRatio="none" aria-hidden="true">
       <defs>
         <pattern id="carta-sismo" width="20" height="10" patternUnits="userSpaceOnUse">
-          <path d="M20 0V10M0 10H20" stroke="#d2c5ad" stroke-width="0.6" />
+          <path d="M20 0V10M0 10H20" stroke="#46392f" stroke-width="0.6" />
         </pattern>
       </defs>
       <rect width={W} height={H} fill="url(#carta-sismo)" />
-      <polyline points={punti} fill="none" stroke="#6b5f52" stroke-width="0.8" />
+      <polyline points={punti} fill="none" stroke="#8c7e6b" stroke-width="0.8" />
       {picchi.map((p) => (
-        <path d={`M${p.x - 4} ${H / 2} L${p.x - 2} ${H / 2 - p.a} L${p.x} ${H / 2 + p.a * 0.8} L${p.x + 2} ${H / 2 - p.a * 0.5} L${p.x + 4} ${H / 2}`} fill="none" stroke={p.m >= 2.5 ? "#c9552a" : "#241e19"} stroke-width="1">
+        <path d={`M${p.x - 4} ${H / 2} L${p.x - 2} ${H / 2 - p.a} L${p.x} ${H / 2 + p.a * 0.8} L${p.x + 2} ${H / 2 - p.a * 0.5} L${p.x + 4} ${H / 2}`} fill="none" stroke={p.m >= 2.5 ? "#e07a4a" : "#efe4d0"} stroke-width="1">
           <title>{p.titolo}</title>
         </path>
       ))}

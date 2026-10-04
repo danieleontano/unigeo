@@ -1,0 +1,41 @@
+---
+// Griglia uniforme delle materie: icona della materia nel chip, nome,
+// docenti, e in basso lezioni, quiz e ultima lezione. Usata in Home e Materie.
+import { percorso } from "@/lib/percorsi";
+import { dataBreve } from "@/lib/date";
+import { contaDefinizioni, lezioniDi, quizDisponibili, tutteLeMaterie } from "@/lib/contenuti";
+
+const materie = await tutteLeMaterie();
+const lezioni = await lezioniDi();
+const quiz = await quizDisponibili();
+---
+
+<ul class="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-3">
+  {materie.map((m) => {
+    const mie = lezioni.filter((l) => l.id.startsWith(`${m.id}/`));
+    const ultima = mie.at(-1);
+    const nQuiz = mie.filter((l) => quiz.has(l.id)).length;
+    const nDef = mie.reduce((s, l) => s + contaDefinizioni(l), 0);
+    return (
+      <li style={`--materia:${m.data.colore}`}>
+        <a href={percorso(`/materie/${m.id}`)} class="pannello scheda group">
+          <div class="flex items-start gap-3">
+            <span class="chip shrink-0"><img src={percorso(`/icone/${m.data.icona}`)} alt="" width="28" height="28" class="h-7 w-7" /></span>
+            <div class="min-w-0">
+              <p class="display text-[1.15rem] leading-tight">{m.data.nome}</p>
+              <p class="truncate text-[0.82rem] text-grafite">{m.data.docenti.length ? m.data.docenti.join(", ") : "Docente da definire"}</p>
+            </div>
+          </div>
+          <div class="mt-auto flex items-end justify-between gap-2 border-t border-filetto pt-2.5 font-sans text-xs text-grafite">
+            <span>
+              <b class="display text-base text-inchiostro">{mie.length}</b> lez.
+              {nQuiz > 0 && <> · <b class="display text-base text-inchiostro">{nQuiz}</b> quiz</>}
+              {nDef > 0 && <> · <b class="display text-base text-inchiostro">{nDef}</b> def.</>}
+            </span>
+            <span class="truncate text-right">{ultima ? `ultima ${dataBreve(ultima.data.data).slice(0, 5)}` : "nessuna lezione"}</span>
+          </div>
+        </a>
+      </li>
+    );
+  })}
+</ul>

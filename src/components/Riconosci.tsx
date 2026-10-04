@@ -139,10 +139,9 @@ export function Riconosci({ campioni, base }: Props) {
         <p className="text-[0.95rem]">
           {GIRI} foto, quattro nomi. Come la prova pratica: guarda tessitura, colore, cristalli, vescicole.
         </p>
-        <div className="mt-4 flex flex-wrap items-center gap-2 font-sans text-xs">
-          <span className="etichetta mr-1">Campioni</span>
+        <div className="segmentato mt-4">
           {(["tutti", "roccia", "minerale"] as const).map((f) => (
-            <button key={f} type="button" onClick={() => setFiltro(f)} className={`rounded-sm border px-2 py-1 ${filtro === f ? "border-inchiostro bg-sabbia" : "border-filetto"}`}>
+            <button key={f} type="button" onClick={() => setFiltro(f)} aria-pressed={filtro === f}>
               {f === "tutti" ? `Tutti (${campioni.length})` : f === "roccia" ? `Rocce (${campioni.filter((x) => x.tipo === "roccia").length})` : `Minerali (${campioni.filter((x) => x.tipo === "minerale").length})`}
             </button>
           ))}

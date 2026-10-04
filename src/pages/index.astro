@@ -1,68 +1,59 @@
 ---
 import Base from "@/layouts/Base.astro";
 import Sezione from "@/components/Sezione.astro";
-import { Oggi } from "@/components/Oggi";
-import { Caldera } from "@/components/Caldera";
 import Sismografo from "@/components/Sismografo.astro";
 import SchedeStrumenti from "@/components/SchedeStrumenti.astro";
-import { STRUMENTI } from "@/lib/strumenti";
+import SchedeMaterie from "@/components/SchedeMaterie.astro";
+import { Oggi } from "@/components/Oggi";
+import { Caldera } from "@/components/Caldera";
+import { Orologio } from "@/components/Orologio";
 import { percorso } from "@/lib/percorsi";
-import { dataLunga } from "@/lib/date";
 import { lezioniDi, schedeLezioni, tutteLeMaterie } from "@/lib/contenuti";
-import { oggiIso } from "@/lib/ripasso";
+import { STRUMENTI } from "@/lib/strumenti";
+import { giorniTra, oggiIso } from "@/lib/ripasso";
 
 const schede = await schedeLezioni();
 const materie = await tutteLeMaterie();
 const lezioni = await lezioniDi();
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
-const oggi = oggiIso();
+// Il semestre è iniziato martedì 22 settembre 2026 (prima lezione).
+const settimana = Math.max(1, Math.floor(giorniTra("2026-09-21", oggiIso()) / 7) + 1);
+const conLezioni = materie.filter((m) => lezioni.some((l) => l.id.startsWith(`${m.id}/`))).length;
 ---
 
-<Base titolo="Home" descrizione="Appunti e ripasso del primo anno di Scienze Geologiche." tema="sottosuolo" nudo>
-  {/* La superficie: il taccuino appoggiato sul buio, il vulcano accanto. */}
-  <section class="relative mx-auto max-w-5xl px-4 pb-16 pt-8 sm:pt-12">
-    <div class="grid grid-cols-1 items-start gap-8 lg:grid-cols-[1fr_320px]">
-      <div class="foglio deposita p-5 pt-6 sm:p-7 sm:pt-8">
-        <p class="etichetta">Taccuino da campo</p>
-        <h1 class="mt-1 text-[1.9rem] leading-tight sm:text-[2.3rem]">{dataLunga(oggi)}</h1>
+<Base titolo="Home" descrizione="Appunti e ripasso del primo anno di Scienze Geologiche.">
+  <section class="pannello testata" style="--materia:#c9552a">
+    <svg class="filigrana" aria-hidden="true"><use href="#strati" /></svg>
+    <Orologio client:load className="font-sans text-[0.7rem] font-semibold tracking-[0.14em] text-[#e07a4a]" />
+    <h1 class="mt-1.5 text-[2.1rem] leading-tight sm:text-[2.5rem]">Ciao, Daniele</h1>
+    <p class="mt-1 text-[0.95rem] text-grafite">Settimana {settimana} del primo semestre · {lezioni.length} lezioni in {conLezioni} materie</p>
+  </section>
 
-        <section class="mt-6">
-          <div class="flex items-baseline justify-between">
-            <h2 class="text-lg">Da ripassare</h2>
-            <a href={percorso("/ripasso")} class="font-sans text-xs text-grafite hover:text-inchiostro">calendario →</a>
-          </div>
-          <Oggi client:load lezioni={schede} base={base} />
-        </section>
-
-        <section class="mt-7">
-          <div class="flex items-baseline justify-between">
-            <h2 class="text-lg">Strumenti</h2>
-            <a href={percorso("/strumenti")} class="font-sans text-xs text-grafite hover:text-inchiostro">tutti →</a>
-          </div>
-          <div class="mt-2">
-            <SchedeStrumenti strumenti={STRUMENTI} compatto />
-          </div>
-        </section>
-
+  <div class="mt-4 grid grid-cols-1 gap-4 lg:grid-cols-3">
+    <section class="pannello p-5 lg:col-span-2">
+      <div class="pannello-testa">
+        <h2 class="pannello-titolo">Da ripassare oggi</h2>
+        <a href={percorso("/ripasso")}>calendario →</a>
       </div>
+      <Oggi client:load lezioni={schede} base={base} />
+    </section>
+    <section class="pannello p-5">
+      <h2 class="pannello-titolo">La tua settimana</h2>
+      <div class="mx-auto mt-2 max-w-[150px] lg:max-w-[180px]"><Caldera client:load /></div>
+    </section>
+  </div>
 
-      <aside class="deposita lg:pt-6">
-        <p class="etichetta mb-2 text-center">La caldera</p>
-        <Caldera client:load />
-        <div class="mt-6">
-          <Sismografo />
-        </div>
-        <p class="mt-6 text-center font-sans text-xs text-grafite">
-          Gli ultimi strati depositati. <span class="text-inchiostro">Scorri per scendere.</span>
-        </p>
-        <div class="mx-auto mt-2 h-8 w-px bg-gradient-to-b from-grafite to-transparent" aria-hidden="true" />
-      </aside>
-    </div>
-  </section>
+  <div class="sezione-titolo"><h2>Materie</h2><a href={percorso("/materie")}>tutte →</a></div>
+  <SchedeMaterie />
 
-  <Sezione lezioni={lezioni} materie={materie} limite={6} />
+  <div class="sezione-titolo"><h2>Strumenti</h2><a href={percorso("/strumenti")}>tutti →</a></div>
+  <SchedeStrumenti strumenti={STRUMENTI.slice(0, 6)} />
 
-  <section class="mx-auto max-w-5xl px-4 py-10 text-center">
-    <a href={percorso("/materie")} class="bottone bottone-lava">Vai ai campioni delle materie</a>
-  </section>
+  <div class="sezione-titolo"><h2>La Terra adesso</h2><a href={percorso("/terremoti")}>mappa →</a></div>
+  <Sismografo />
+
+  <div class="sezione-titolo"><h2>Ultimi strati depositati</h2><a href={percorso("/materie")}>tutte le lezioni →</a></div>
+  <div class="overflow-hidden rounded-[0.85rem] border border-[#3d322a]">
+    <Sezione lezioni={lezioni} materie={materie} limite={4} />
+  </div>
 </Base>

@@ -1,0 +1,10 @@
+---
+import Base from "@/layouts/Base.astro";
+import Testata from "@/components/Testata.astro";
+import { Profilo } from "@/components/Profilo";
+---
+
+<Base titolo="Profilo topografico" larghezza="pieno" colore="#3F6E3A">
+  <Testata occhiello="Geografia fisica e cartografia" titolo="Profilo topografico" descrizione="Dalle isoipse al profilo: traccia A–B, tagli con le curve, esagerazione verticale." simbolo="isoipse" colore="#3F6E3A" />
+  <Profilo client:load />
+</Base>

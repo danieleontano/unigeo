@@ -1,0 +1,90 @@
+---
+// Il menu laterale (come in Minerva): fisso a sinistra sul computer, a
+// cassetto sul telefono (si apre dal tasto ☰ della barra in alto). Voci:
+// Studio, Materie con il loro colore, Strumenti, Impostazioni in fondo.
+// Si ridisegna a ogni pagina, quindi la voce attiva è sempre quella giusta.
+import { percorso } from "@/lib/percorsi";
+import { lezioniDi, tutteLeMaterie } from "@/lib/contenuti";
+import { STRUMENTI } from "@/lib/strumenti";
+
+const materie = await tutteLeMaterie();
+const lezioni = await lezioniDi();
+const attuale = Astro.url.pathname.replace(import.meta.env.BASE_URL.replace(/\/$/, ""), "").replace(/\.html$/, "").replace(/\/$/, "") || "/";
+const attiva = (href: string, esatta = false) => (href === "/" || esatta ? attuale === href : attuale === href || attuale.startsWith(href + "/"));
+
+const studio = [
+  { href: "/", titolo: "Home", simbolo: "casa" },
+  { href: "/ripasso", titolo: "Ripasso", simbolo: "ripasso" },
+  { href: "/materie", titolo: "Tutte le materie", simbolo: "strati" },
+];
+const voce = "flex items-center gap-2.5 rounded-md px-2.5 py-1.5 text-[0.86rem] transition";
+const accesa = "bg-white/10 font-medium text-[#f3ecdd]";
+const spenta = "text-[#c9bba4] hover:bg-white/5 hover:text-[#f3ecdd]";
+---
+
+<div id="velo-menu" class="fixed inset-0 z-40 hidden bg-black/50 lg:hidden" aria-hidden="true"></div>
+<aside
+  id="menu"
+  class="menu fixed inset-y-0 left-0 z-50 flex w-[248px] -translate-x-full flex-col border-r border-black/40 transition-transform duration-200 lg:sticky lg:top-0 lg:h-dvh lg:translate-x-0 print:hidden"
+  aria-label="Menu"
+>
+  <a href={percorso("/")} class="flex items-center gap-2.5 px-4 pb-3 pt-4">
+    <img src={percorso("/icone/geologia-1.svg")} alt="" width="34" height="34" class="h-[34px] w-[34px]" />
+    <span class="leading-tight">
+      <span class="display block text-[1.3rem] font-semibold text-[#f3ecdd]">Uni<span class="text-[#e07a4a]">Geo</span></span>
+      <span class="block font-sans text-[0.62rem] tracking-wide text-[#a89a86]">Scienze Geologiche · 1° anno</span>
+    </span>
+  </a>
+
+  <nav class="flex-1 overflow-y-auto px-2.5 pb-3 font-sans">
+    <p class="menu-titolo">Studio</p>
+    {studio.map((v) => (
+      <a href={percorso(v.href)} class:list={[voce, attiva(v.href, v.href === "/materie") ? accesa : spenta]}>
+        <svg class="h-[18px] w-[18px] shrink-0 opacity-80" aria-hidden="true"><use href={`#${v.simbolo}`} /></svg>
+        {v.titolo}
+      </a>
+    ))}
+
+    <p class="menu-titolo">Materie</p>
+    {materie.map((m) => {
+      const n = lezioni.filter((l) => l.id.startsWith(`${m.id}/`)).length;
+      return (
+        <a href={percorso(`/materie/${m.id}`)} class:list={[voce, attiva(`/materie/${m.id}`) || attuale.startsWith(`/quiz/${m.id}`) || attuale.startsWith(`/flashcard/${m.id}`) ? accesa : spenta]}>
+          <span class="h-2.5 w-2.5 shrink-0 rounded-sm" style={`background:${m.data.colore}`} />
+          <span class="min-w-0 flex-1 truncate">{m.data.nome.replace(" e cartografia", "")}</span>
+          <span class="tabular-nums text-[0.7rem] opacity-60">{n}</span>
+        </a>
+      );
+    })}
+
+    <p class="menu-titolo">Strumenti</p>
+    {STRUMENTI.map((s) => {
+      const m = materie.find((x) => x.id === s.materia);
+      return (
+        <a href={percorso(s.href)} class:list={[voce, attiva(s.href) ? accesa : spenta]}>
+          <svg class="h-[18px] w-[18px] shrink-0" style={`color:${m?.data.colore ?? "#e07a4a"}`} aria-hidden="true"><use href={`#${s.simbolo}`} /></svg>
+          <span class="truncate">{s.titolo}</span>
+        </a>
+      );
+    })}
+  </nav>
+
+  <div class="border-t border-white/10 px-2.5 py-2.5 font-sans">
+    <a href={percorso("/impostazioni")} class:list={[voce, attiva("/impostazioni") ? accesa : spenta]}>
+      <svg class="h-[18px] w-[18px] shrink-0 opacity-80" aria-hidden="true"><use href="#ingranaggio" /></svg>
+      Impostazioni
+    </a>
+  </div>
+</aside>
+
+<script>
+  function avvia() {
+    const html = document.documentElement;
+    const chiudi = () => html.removeAttribute("data-menu-aperto");
+    document.getElementById("apri-menu")?.addEventListener("click", () => html.setAttribute("data-menu-aperto", ""));
+    document.getElementById("velo-menu")?.addEventListener("click", chiudi);
+    document.querySelectorAll("#menu a").forEach((a) => a.addEventListener("click", chiudi));
+  }
+  document.addEventListener("astro:page-load", avvia);
+  document.addEventListener("astro:after-swap", () => document.documentElement.removeAttribute("data-menu-aperto"));
+</script>

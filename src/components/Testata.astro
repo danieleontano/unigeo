@@ -1,0 +1,22 @@
+---
+// La testata di ogni pagina (come HeroModulo di Minerva): occhiello, titolo,
+// una riga di descrizione, eventuali azioni sotto, e il simbolo in filigrana.
+interface Props {
+  occhiello?: string;
+  titolo: string;
+  descrizione?: string;
+  simbolo?: string;
+  /** Immagine al posto del simbolo (icona della materia). */
+  icona?: string;
+  colore?: string;
+}
+const { occhiello, titolo, descrizione, simbolo = "strati", icona, colore } = Astro.props;
+---
+
+<section class="pannello testata mb-5" style={colore ? `--materia:${colore}` : undefined}>
+  {icona ? <img src={icona} alt="" class="filigrana" /> : <svg class="filigrana" aria-hidden="true"><use href={`#${simbolo}`} /></svg>}
+  {occhiello && <p class="font-sans text-[0.68rem] font-semibold uppercase tracking-[0.16em]" style="color:color-mix(in srgb, var(--materia, #c9552a) 75%, #f3ecdd)">{occhiello}</p>}
+  <h1 class="mt-1 text-[1.9rem] leading-tight sm:text-[2.2rem]">{titolo}</h1>
+  {descrizione && <p class="mt-1 max-w-2xl text-[0.95rem] text-grafite">{descrizione}</p>}
+  {Astro.slots.has("default") && <div class="mt-4 flex flex-wrap gap-2"><slot /></div>}
+</section>

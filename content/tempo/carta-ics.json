@@ -4,7 +4,7 @@
  "modificata": "2026-06-20",
  "fonte": "International Commission on Stratigraphy · International Chronostratigraphic Chart (github.com/i-c-stratigraphy/chart)",
  "pdf": "https://stratigraphy.org/chart",
- "scaricato": "2026-10-03",
+ "scaricato": "2026-10-04",
  "unita": [
   {
    "id": "Phanerozoic",
@@ -1715,6 +1715,21 @@
    "sigla": "S"
   },
   {
+   "id": "Pridoli",
+   "livello": "epoca",
+   "nome": "Pridoli",
+   "inglese": "Pridoli",
+   "sopra": "Silurian",
+   "da": 422.7,
+   "daErrore": 1.6,
+   "a": 419.62,
+   "aErrore": 1.36,
+   "gssp": true,
+   "colore": "#E6F5E1",
+   "ordine": 119,
+   "sigla": "S4"
+  },
+  {
    "id": "Ludlow",
    "livello": "epoca",
    "nome": "Ludlow",
@@ -1722,42 +1737,12 @@
    "sopra": "Silurian",
    "da": 426.7,
    "daErrore": 1.5,
-   "a": 419.62,
-   "aErrore": 1.36,
+   "a": 422.7,
+   "aErrore": 1.6,
    "gssp": true,
    "colore": "#BFE6CF",
    "ordine": 122,
    "sigla": "S3"
-  },
-  {
-   "id": "Pridoli",
-   "livello": "eta",
-   "nome": "Pridoli",
-   "inglese": "Pridoli",
-   "sopra": "Silurian",
-   "da": 422.7,
-   "daErrore": 1.6,
-   "a": 419.62,
-   "aErrore": 1.36,
-   "gssp": true,
-   "colore": "#E6F5E1",
-   "ordine": 119,
-   "sigla": "S4"
-  },
-  {
-   "id": "Pridoli",
-   "livello": "epoca",
-   "nome": "Pridoli",
-   "inglese": "Pridoli",
-   "sopra": "Silurian",
-   "da": 422.7,
-   "daErrore": 1.6,
-   "a": 419.62,
-   "aErrore": 1.36,
-   "gssp": true,
-   "colore": "#E6F5E1",
-   "ordine": 119,
-   "sigla": "S4"
   },
   {
    "id": "Ludfordian",

@@ -1,5 +1,6 @@
 ---
 import Base from "@/layouts/Base.astro";
+import Testata from "@/components/Testata.astro";
 import { Tempo, type UnitaICS } from "@/components/Tempo";
 import carta from "../../content/tempo/carta-ics.json";
 
@@ -8,12 +9,9 @@ import carta from "../../content/tempo/carta-ics.json";
 // controlla ogni settimana se ne è uscita una versione nuova.
 ---
 
-<Base titolo="Scala del tempo" tema="sottosuolo" largo>
-  <p class="etichetta">Paleontologia · il tempo profondo</p>
-  <h1 class="mt-1 text-[2rem] leading-tight">Scala del tempo geologico</h1>
-  <div class="mt-5">
-    <Tempo client:load unita={carta.unita as UnitaICS[]} versione={carta.versione} modificata={carta.modificata} />
-  </div>
+<Base titolo="Scala del tempo" larghezza="pieno" colore="#2E7D7A">
+  <Testata occhiello="Paleontologia · il tempo profondo" titolo="Scala del tempo geologico" descrizione={`Carta cronostratigrafica internazionale ICS v${carta.versione}, in italiano.`} simbolo="fossile-ammonite" colore="#2E7D7A" />
+  <Tempo client:load unita={carta.unita as UnitaICS[]} versione={carta.versione} modificata={carta.modificata} />
   <p class="mt-8 max-w-prose font-sans text-[0.7rem] leading-snug text-grafite">
     Fonte: {carta.fonte}, versione {carta.versione}, controllata il {carta.scaricato.split("-").reverse().join("/")}; si aggiorna da sola quando la Commissione pubblica una
     nuova versione. Nomi italiani della carta ufficiale. Per l'esame fa fede la carta in

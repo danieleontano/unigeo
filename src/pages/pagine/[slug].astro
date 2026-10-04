@@ -13,7 +13,7 @@ const sezioni = headings.filter((h) => h.depth === 2);
 const d = pagina.data;
 ---
 
-<Base titolo={d.titolo}>
+<Base tema="carta" larghezza="testo" titolo={d.titolo}>
   <header class="mb-6 border-b border-slate pb-4">
     <h1 class="text-2xl font-semibold leading-tight">{d.titolo}</h1>
     {d.sottotitolo && <p class="mt-1.5 text-sm text-muted">{d.sottotitolo}</p>}

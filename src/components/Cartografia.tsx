@@ -381,9 +381,9 @@ export function Cartografia({ gruppi }: Props) {
   ];
   return (
     <div>
-      <div className="flex flex-wrap gap-1 rounded-sm border border-filetto p-0.5 font-sans text-sm">
+      <div className="segmentato">
         {MODI.map((m) => (
-          <button key={m.id} type="button" onClick={() => setModo(m.id)} className={`rounded-sm px-3 py-1 ${modo === m.id ? "bg-lava text-white" : "text-grafite hover:text-inchiostro"}`}>
+          <button key={m.id} type="button" onClick={() => setModo(m.id)} aria-pressed={modo === m.id}>
             {m.nome}
           </button>
         ))}

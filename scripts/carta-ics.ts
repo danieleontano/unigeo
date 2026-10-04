@@ -119,6 +119,29 @@ for (const q of store.getQuads(null, n("gts", "rank"), null, null)) {
     sigla: uno(s, n("skos", "notation"))?.value,
   });
 }
+// Il Pridoli è sia serie sia piano (non ha piani propri) e compare due volte
+// con lo stesso id: si tiene il rango più alto.
+const RANGHI = ["supereone", "eone", "era", "periodo", "sottoperiodo", "epoca", "eta"];
+const perId = new Map<string, (typeof unita)[number]>();
+for (const u of unita) {
+  const gia = perId.get(u.id);
+  if (!gia || RANGHI.indexOf(u.livello) < RANGHI.indexOf(gia.livello)) perId.set(u.id, u);
+}
+unita.length = 0;
+unita.push(...perId.values());
+// Tra fratelli dello stesso livello il tetto del più antico è la base del più
+// giovane: dove il file non torna (Ludlow finiva a 419,62 come il Pridoli) si
+// allinea e lo si dice.
+for (const u of unita) {
+  const piuGiovane = unita
+    .filter((x) => x.sopra === u.sopra && x.livello === u.livello && x.id !== u.id && x.da !== undefined && u.da !== undefined && x.da < u.da)
+    .sort((x, y) => y.da! - x.da!)[0];
+  if (piuGiovane && u.a !== piuGiovane.da) {
+    console.log(`Corretto il tetto di ${u.id}: ${u.a} → ${piuGiovane.da} (base di ${piuGiovane.id})`);
+    u.a = piuGiovane.da;
+    u.aErrore = piuGiovane.daErrore;
+  }
+}
 unita.sort((x, y) => (x.a ?? 0) - (y.a ?? 0) || (y.da ?? 0) - (x.da ?? 0));
 
 // Versione e data di modifica dichiarate nel file

@@ -1,8 +1,8 @@
 ---
 import { getCollection } from "astro:content";
 import Base from "@/layouts/Base.astro";
+import Testata from "@/components/Testata.astro";
 import { Quiz } from "@/components/Quiz";
-import { percorso } from "@/lib/percorsi";
 import { tutteLeMaterie } from "@/lib/contenuti";
 
 // Il quiz della materia: domande miste da tutte le lezioni che hanno un quiz,
@@ -25,13 +25,9 @@ for (const q of quiz) {
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 ---
 
-<Base tema="sottosuolo" titolo={`Quiz della materia · ${materia.data.nome}`} colore={materia.data.colore}>
-  <p class="sans text-xs font-semibold uppercase tracking-[0.2em] text-materia">
-    <a href={percorso(`/materie/${materia.id}`)}>{materia.data.nome}</a>
-  </p>
-  <h1 class="mt-1 text-[1.6rem] leading-tight">Riconoscimento misto</h1>
-  <p class="mt-1 font-sans text-xs text-grafite">{domande.length} campioni da {quiz.length} {quiz.length === 1 ? "lezione" : "lezioni"}, in ordine casuale.</p>
-  <div class="mt-4">
+<Base titolo={`Quiz della materia · ${materia.data.nome}`} colore={materia.data.colore} larghezza="testo">
+  <Testata occhiello={materia.data.nome} titolo="Quiz misto" descrizione={`${domande.length} domande da ${quiz.length} ${quiz.length === 1 ? "lezione" : "lezioni"}, in ordine casuale.`} simbolo="ripasso" colore={materia.data.colore} />
+  <div>
     <Quiz
       client:load
       idLezione={`${materia.id}/misto`}

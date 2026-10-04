@@ -1,5 +1,6 @@
 ---
 import Base from "@/layouts/Base.astro";
+import Testata from "@/components/Testata.astro";
 
 // Fonti vere dei geologi, fuori dal corso: si aprono in una scheda nuova.
 // Solo istituzioni e archivi noti; niente blog. Le descrizioni sono nostre.
@@ -57,16 +58,13 @@ const SEZIONI = [
 ];
 ---
 
-<Base titolo="Ispirazione" tema="sottosuolo" largo>
-  <p class="etichetta">Fuori dal corso</p>
-  <h1 class="mt-1 text-[2rem] leading-tight">Ispirazione</h1>
-  <p class="mt-1 max-w-prose text-sm text-grafite">Le fonti che i geologi guardano davvero. Si aprono in una scheda nuova.</p>
-
-  <div class="deposita mt-8 grid grid-cols-1 gap-6 md:grid-cols-2">
+<Base titolo="Ispirazione">
+  <Testata occhiello="Fuori dal corso" titolo="Ispirazione" descrizione="Le fonti che i geologi guardano davvero. Si aprono in una scheda nuova." simbolo="fossile-ammonite" />
+  <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
     {SEZIONI.map((s) => (
-      <section class="foglio relative p-5 pt-6">
+      <section class="pannello relative p-5">
         <svg class="absolute right-4 top-4 h-12 w-12 opacity-30" style="color:#6b5f52" aria-hidden="true"><use href={`#${s.fossile}`} /></svg>
-        <h2 class="pr-14 text-xl leading-tight">{s.titolo}</h2>
+        <h2 class="pannello-titolo pr-14">{s.titolo}</h2>
         <ul class="mt-3 divide-y divide-filetto">
           {s.voci.map((v) => (
             <li class="py-2.5">

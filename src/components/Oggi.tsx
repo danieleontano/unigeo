@@ -36,12 +36,12 @@ export function Oggi({ lezioni, base }: Props) {
       ) : daFare.length === 0 ? (
         <p className="mt-2 text-sm text-muted">Niente in scadenza. Le flashcard valgono sempre.</p>
       ) : (
-        <ol className="mt-2 divide-y divide-line border-y border-line">
+        <ol className="mt-2 divide-y divide-line border-t border-line">
           {daFare.map((l) => {
             const p = stato.progress[l.id];
             return (
               <li key={l.id} style={{ ["--materia" as string]: l.colore }}>
-                <a href={`${base}${l.percorsoQuiz}`} className="flex items-center gap-3 py-1.5 hover:bg-sand/60">
+                <a href={`${base}${l.percorsoQuiz}`} className="flex items-center gap-3 rounded-md px-1 py-1.5 hover:bg-white/5">
                   <span className="sans w-24 shrink-0 truncate text-xs font-semibold text-materia">{l.nomeMateria}</span>
                   <span className="min-w-0 flex-1 truncate">
                     {l.numero} · {l.titolo}

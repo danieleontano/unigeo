@@ -1,0 +1,15 @@
+---
+import Base from "@/layouts/Base.astro";
+import Testata from "@/components/Testata.astro";
+import { Mohs } from "@/components/Mohs";
+import campioni from "../../content/campionario/campioni.json";
+
+// Le foto vengono dal campionario: un minerale con lo stesso id ha la sua foto.
+const foto = Object.fromEntries((campioni as { id: string; foto?: { file: string } }[]).filter((c) => c.foto).map((c) => [c.id, c.foto!.file]));
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+---
+
+<Base titolo="Scala di Mohs" colore="#B5552A">
+  <Testata occhiello="Geologia 1 · minerali" titolo="Scala di Mohs" descrizione="Dieci minerali di riferimento e le prove di durezza da laboratorio." simbolo="cristallo" colore="#B5552A" />
+  <Mohs client:load foto={foto} base={base} />
+</Base>

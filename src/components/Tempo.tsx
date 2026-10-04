@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { aggiornaStato } from "@/lib/stato";
 import { oggiIso } from "@/lib/ripasso";
+import { CartaUfficiale } from "@/components/CartaIcs";
 
 export interface UnitaICS {
   id: string;
@@ -57,8 +58,7 @@ const COLONNE = [
   { livello: "eta", nome: "Età / Piano" },
 ] as const;
 
-function Carta({ unita, onScegli, scelta }: { unita: UnitaICS[]; onScegli: (u: UnitaICS) => void; scelta?: UnitaICS }) {
-  const [vista, setVista] = useState<"fanerozoico" | "tutto">("fanerozoico");
+function Carta({ unita, onScegli, scelta, vista }: { unita: UnitaICS[]; onScegli: (u: UnitaICS) => void; scelta?: UnitaICS; vista: "fanerozoico" | "tutto" }) {
   const MAX = vista === "fanerozoico" ? 538.8 : 4567;
   const H = vista === "fanerozoico" ? 2600 : 2200;
   const y = (t: number) => (Math.sqrt(Math.min(t, MAX)) / Math.sqrt(MAX)) * H;
@@ -67,13 +67,6 @@ function Carta({ unita, onScegli, scelta }: { unita: UnitaICS[]; onScegli: (u: U
 
   return (
     <div>
-      <div className="mb-3 flex gap-1 font-sans text-xs">
-        {(["fanerozoico", "tutto"] as const).map((v) => (
-          <button key={v} type="button" onClick={() => setVista(v)} className={`rounded-sm border px-2.5 py-1 ${vista === v ? "border-inchiostro bg-sabbia" : "border-filetto text-grafite"}`}>
-            {v === "fanerozoico" ? "Fanerozoico, con i piani" : "Tutta la storia, 4,567 Ga"}
-          </button>
-        ))}
-      </div>
       <div className="overflow-hidden rounded-sm border border-filetto">
         <div className="grid border-b border-filetto font-sans text-[0.6rem] uppercase tracking-wider text-grafite" style={{ gridTemplateColumns: `40px repeat(${colonne.length}, 1fr)` }}>
           <span className="px-1 py-1.5">Ma</span>
@@ -134,7 +127,7 @@ function Scheda({ u, perId }: { u?: UnitaICS; perId: Map<string, UnitaICS> }) {
   const figli = [...perId.values()].filter((x) => x.sopra === u.id).sort((a, b) => (a.a ?? 0) - (b.a ?? 0));
   const LIV: Record<string, string> = { supereone: "Supereone", eone: "Eone", era: "Era", periodo: "Periodo", sottoperiodo: "Sottoperiodo", epoca: "Epoca", eta: "Età (piano)" };
   return (
-    <div key={u.id} className="foglio entra-girando p-4 pt-6">
+    <div key={u.id} className="pannello entra-girando p-4 pr-8">
       <p className="etichetta">{LIV[u.livello]}</p>
       <p className="display mt-1 flex items-center gap-2 text-2xl leading-tight">
         <span className="inline-block h-4 w-4 shrink-0 rounded-sm border border-black/20" style={{ background: u.colore }} />
@@ -368,6 +361,8 @@ export function Tempo({ unita, versione, modificata }: Props) {
   const [modo, setModo] = useState<Modo>("carta");
   const perId = useMemo(() => new Map(unita.map((u) => [u.id, u])), [unita]);
   const [scelta, setScelta] = useState<UnitaICS | undefined>(() => perId.get("Holocene"));
+  const [aperta, setAperta] = useState(false);
+  const [vista, setVista] = useState<"ufficiale" | "fanerozoico" | "tutto">("ufficiale");
 
   const MODI: { id: Modo; nome: string }[] = [
     { id: "carta", nome: "Carta" },
@@ -378,9 +373,9 @@ export function Tempo({ unita, versione, modificata }: Props) {
   return (
     <div>
       <div className="flex flex-wrap items-center gap-2">
-        <div className="flex gap-1 rounded-sm border border-filetto p-0.5 font-sans text-sm">
+        <div className="segmentato">
           {MODI.map((m) => (
-            <button key={m.id} type="button" onClick={() => setModo(m.id)} className={`rounded-sm px-3 py-1 ${modo === m.id ? "bg-lava text-white" : "text-grafite hover:text-inchiostro"}`}>
+            <button key={m.id} type="button" onClick={() => setModo(m.id)} aria-pressed={modo === m.id}>
               {m.nome}
             </button>
           ))}
@@ -393,11 +388,27 @@ export function Tempo({ unita, versione, modificata }: Props) {
 
       <div className="mt-5">
         {modo === "carta" && (
-          <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_300px]">
-            <Carta unita={unita} onScegli={setScelta} scelta={scelta} />
-            <aside className="lg:sticky lg:top-20 lg:self-start">
-              <Scheda u={scelta} perId={perId} />
-            </aside>
+          <div>
+            <div className="segmentato mb-4">
+              {(["ufficiale", "fanerozoico", "tutto"] as const).map((v) => (
+                <button key={v} type="button" onClick={() => setVista(v)} aria-pressed={vista === v}>
+                  {v === "ufficiale" ? "Come il poster ICS" : v === "fanerozoico" ? "In scala: Fanerozoico" : "In scala: 4,567 Ga"}
+                </button>
+              ))}
+            </div>
+            {vista === "ufficiale" ? (
+              <CartaUfficiale unita={unita} onScegli={(u) => (setScelta(u), setAperta(true))} scelta={aperta ? scelta : undefined} />
+            ) : (
+              <div className="mx-auto max-w-3xl">
+                <Carta vista={vista} unita={unita} onScegli={(u) => (setScelta(u), setAperta(true))} scelta={aperta ? scelta : undefined} />
+              </div>
+            )}
+            {aperta && scelta && (
+              <aside className="fixed bottom-3 right-3 z-40 max-h-[70vh] w-[min(360px,calc(100vw-1.5rem))] overflow-y-auto rounded-[0.85rem] shadow-[0_18px_50px_rgba(0,0,0,.55)]">
+                <button type="button" onClick={() => setAperta(false)} className="absolute right-2 top-2 z-10 rounded-md px-2 py-0.5 font-sans text-lg leading-none text-grafite hover:text-inchiostro" aria-label="Chiudi la scheda">×</button>
+                <Scheda u={scelta} perId={perId} />
+              </aside>
+            )}
           </div>
         )}
         {modo === "base" && <Esercizi key="base" unita={unita} livello="base" />}

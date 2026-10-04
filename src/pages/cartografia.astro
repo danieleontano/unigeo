@@ -1,15 +1,12 @@
 ---
 import Base from "@/layouts/Base.astro";
+import Testata from "@/components/Testata.astro";
 import { Cartografia } from "@/components/Cartografia";
 import dati from "../../content/cartografia/concetti.json";
 ---
 
-<Base titolo="Cartografia" tema="sottosuolo" largo colore="#3F6E3A">
-  <p class="etichetta">Geografia fisica e cartografia</p>
-  <h1 class="mt-1 text-[2rem] leading-tight">Cartografia di base</h1>
-  <p class="mt-1 max-w-prose text-sm text-grafite">I concetti del programma e i calcoli dello scritto: scala, distanze, pendenza e inclinazione, coordinate, aree.</p>
-  <div class="mt-5">
-    <Cartografia client:load gruppi={dati.gruppi} />
-  </div>
+<Base titolo="Cartografia" colore="#3F6E3A">
+  <Testata occhiello="Geografia fisica e cartografia" titolo="Cartografia di base" descrizione="I concetti del programma e i calcoli dello scritto: scala, distanze, pendenza e inclinazione, coordinate, aree." simbolo="bussola" colore="#3F6E3A" />
+  <Cartografia client:load gruppi={dati.gruppi} />
   <p class="mt-8 max-w-prose font-sans text-[0.7rem] text-grafite">{dati.nota} I concetti si aggiungono in <code>content/cartografia/concetti.json</code>.</p>
 </Base>

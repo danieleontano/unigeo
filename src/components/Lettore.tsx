@@ -115,7 +115,7 @@ export function Lettore({ chiave, capitoli }: Props) {
       </div>
 
       {/* barra del capitolo corrente + controlli */}
-      <div className="sticky top-12 z-20 -mx-4 flex items-center gap-2 border-b border-filetto px-4 py-1.5 font-sans text-xs backdrop-blur" style={{ background: "color-mix(in srgb, var(--carta) 88%, transparent)" }}>
+      <div className="sticky top-12 lg:top-0 z-20 -mx-4 flex items-center gap-2 border-b border-filetto px-4 py-1.5 font-sans text-xs backdrop-blur" style={{ background: "color-mix(in srgb, var(--carta) 88%, transparent)" }}>
         <button type="button" onClick={() => vai(idx - 1)} disabled={idx <= 0} className="bottone bottone-vuoto px-2 py-1 disabled:opacity-30" aria-label="Capitolo precedente">
           ←
         </button>
@@ -135,7 +135,7 @@ export function Lettore({ chiave, capitoli }: Props) {
       </div>
 
       {aperto && (
-        <div className="sticky top-[5.3rem] z-20 -mx-4 border-b border-filetto px-4 py-3 font-sans text-xs" style={{ background: "var(--carta)" }}>
+        <div className="sticky top-[5.3rem] lg:top-[2.3rem] z-20 -mx-4 border-b border-filetto px-4 py-3 font-sans text-xs" style={{ background: "var(--carta)" }}>
           <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
             <div className="flex items-center gap-1">
               <span className="etichetta mr-1">Testo</span>

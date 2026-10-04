@@ -1,9 +1,10 @@
 ---
 import Base from "@/layouts/Base.astro";
+import Testata from "@/components/Testata.astro";
 import Campione from "@/components/Campione.astro";
 import Inclina from "@/components/Inclina.astro";
-import Colonna from "@/components/Colonna.astro";
 import { percorso } from "@/lib/percorsi";
+import { dataBreve } from "@/lib/date";
 import { contaDefinizioni, lezioniDi, quizDisponibili, tutteLeMaterie } from "@/lib/contenuti";
 
 const materie = await tutteLeMaterie();
@@ -15,39 +16,29 @@ const righe = materie.map((m) => {
 });
 ---
 
-<Base titolo="Materie" tema="sottosuolo" largo>
-  <p class="etichetta">La teca dei campioni</p>
-  <h1 class="mt-1 text-[2rem] leading-tight">Materie</h1>
-  <p class="mt-1 font-sans text-xs text-grafite">Muovi il puntatore o inclina il telefono.</p>
+<Base titolo="Materie">
+  <Testata occhiello="Primo anno · primo semestre" titolo="Materie" descrizione={`${lezioni.length} lezioni in ${materie.length} materie.`} simbolo="strati">
+    <a href={percorso("/pagine/libri-di-testo")} class="bottone bottone-vuoto">Libri di testo</a>
+  </Testata>
 
-  <ul class="deposita mt-8 grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+  <ul class="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
     {righe.map(({ m, mie, nQuiz, nDef }) => (
       <li style={`--materia:${m.data.colore}`}>
-        <a href={percorso(`/materie/${m.id}`)} class="group block">
-          <div class="flex justify-center py-2">
-            <Campione colore={m.data.colore} materia={m.id} misura={200} />
-          </div>
-          <div class="foglio mt-2 flex items-end gap-4 p-3 pt-4">
-            <div class="w-10 shrink-0">
-              <Colonna lezioni={mie} colore={m.data.colore} modo="mini" altezza={Math.max(10, mie.length * 10)} />
-            </div>
-            <div class="min-w-0 flex-1">
-              <h2 class="text-xl leading-tight">{m.data.nome}</h2>
-              <p class="truncate text-sm text-grafite">{m.data.docenti.length ? m.data.docenti.join(", ") : "Docente da definire"}</p>
-              <p class="mt-1 font-sans text-xs text-grafite">
-                <span class="display text-base font-semibold text-materia">{mie.length}</span> lezioni
-                {nQuiz > 0 && <> · <span class="display text-base font-semibold text-materia">{nQuiz}</span> quiz</>}
-                {nDef > 0 && <> · <span class="display text-base font-semibold text-materia">{nDef}</span> campioni</>}
-              </p>
-            </div>
+        <a href={percorso(`/materie/${m.id}`)} class="pannello scheda group items-center !gap-2 !pb-3 text-center">
+          <div class="flex justify-center pt-2"><Campione colore={m.data.colore} materia={m.id} misura={150} /></div>
+          <p class="display mt-1 text-[1.25rem] leading-tight">{m.data.nome}</p>
+          <p class="w-full truncate text-[0.82rem] text-grafite">{m.data.docenti.length ? m.data.docenti.join(", ") : "Docente da definire"}</p>
+          <div class="mt-auto flex w-full items-end justify-between gap-2 border-t border-filetto pt-2.5 font-sans text-xs text-grafite">
+            <span>
+              <b class="display text-base text-inchiostro">{mie.length}</b> lez.
+              {nQuiz > 0 && <> · <b class="display text-base text-inchiostro">{nQuiz}</b> quiz</>}
+              {nDef > 0 && <> · <b class="display text-base text-inchiostro">{nDef}</b> def.</>}
+            </span>
+            <span class="truncate">{mie.at(-1) ? `ultima ${dataBreve(mie.at(-1)!.data.data).slice(0, 5)}` : "nessuna lezione"}</span>
           </div>
         </a>
       </li>
     ))}
   </ul>
-
-  <p class="mt-14 font-sans text-sm text-grafite">
-    <a href={percorso("/pagine/libri-di-testo")} class="text-inchiostro underline decoration-filetto underline-offset-4 hover:decoration-inchiostro">Libri di testo del primo anno</a>
-  </p>
   <Inclina />
 </Base>

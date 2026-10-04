@@ -1,0 +1,26 @@
+---
+import Base from "@/layouts/Base.astro";
+import Testata from "@/components/Testata.astro";
+import { Terremoti, type Mappa } from "@/components/Terremoti";
+import { leggiSismi } from "@/lib/sismi";
+import mappa from "../../content/terremoti/mappa.json";
+
+// I dati si leggono alla pubblicazione (il feed RSNI non ha CORS); il sito si
+// ripubblica ogni mezz'ora e l'archivio cresce a ogni giro (lib/sismi.ts).
+const dati = await leggiSismi();
+const giorno = (iso: string) => new Intl.DateTimeFormat("it-IT", { timeZone: "Europe/Rome", day: "numeric", month: "long", year: "numeric" }).format(new Date(iso));
+const ora = (iso: string) => new Intl.DateTimeFormat("it-IT", { timeZone: "Europe/Rome", hour: "2-digit", minute: "2-digit" }).format(new Date(iso));
+---
+
+<Base titolo="Terremoti" larghezza="pieno">
+  <Testata
+    occhiello="La Terra adesso · RSNI UniGe-DISTAV"
+    titolo="Terremoti nel Nord-Ovest"
+    descrizione={dati ? `${dati.archivio.length} eventi rivisti a mano, raccolti dal ${giorno(dati.dal)}. Aggiornato alle ${ora(dati.letto)}.` : "Il feed RSNI non ha risposto: riprova tra mezz'ora."}
+    simbolo="sismogramma"
+  >
+    <a href="https://distav.unige.it/rsni/" target="_blank" rel="noopener noreferrer" class="bottone bottone-vuoto">Sito RSNI ↗</a>
+  </Testata>
+  {dati && <Terremoti client:load mappa={mappa as Mappa} eventi={dati.archivio.slice(0, 1500)} letto={dati.letto} />}
+  <p class="mt-6 max-w-prose font-sans text-[0.7rem] text-grafite">Dati: Rete Sismica regionale dell'Italia Nord-Occidentale (UniGe-DISTAV), ultimi eventi rivisti manualmente. Carta: {mappa.fonte}.</p>
+</Base>
