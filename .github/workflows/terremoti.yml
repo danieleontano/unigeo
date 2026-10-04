@@ -1,0 +1,39 @@
+name: Archivio terremoti
+
+# Ogni due ore aggiunge all'archivio (content/terremoti/archivio.json) gli
+# eventi del feed RSNI, che ne tiene solo 20. Se ce ne sono di nuovi fa un
+# commit: Vercel ripubblica il sito da solo. Gli eventi tra un giro e l'altro
+# la mappa li prende in diretta da api/sismi.ts.
+on:
+  schedule:
+    - cron: "23 */2 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: archivio-terremoti
+  cancel-in-progress: false
+
+jobs:
+  archivio:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+      - run: node scripts/archivio-sismi.ts
+      - name: Committa se ci sono eventi nuovi
+        run: |
+          if git diff --quiet content/terremoti/archivio.json; then
+            echo "Niente di nuovo."
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add content/terremoti/archivio.json
+            git commit -m "Archivio terremoti aggiornato"
+            git pull --rebase
+            git push
+          fi

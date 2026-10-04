@@ -1,5 +1,5 @@
-import { useMemo, useState } from "react";
-import type { Sisma } from "@/lib/sismi";
+import { useEffect, useMemo, useState } from "react";
+import type { Sisma } from "@/lib/rsni";
 
 // La mappa dei terremoti RSNI: carta di base dell'Italia nord-occidentale
 // (scripts/mappa-nordovest.ts) con gli eventi dell'archivio. Cerchio grande =
@@ -34,7 +34,25 @@ const raggio = (m: number) => 2.5 + Math.max(0, m + 0.5) * 2.6;
 const fmt = (iso: string, opz: Intl.DateTimeFormatOptions) => new Intl.DateTimeFormat("it-IT", { timeZone: "Europe/Rome", ...opz }).format(new Date(iso));
 const quandoBreve = (iso: string) => fmt(iso, { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
 
-export function Terremoti({ mappa, eventi, letto }: { mappa: Mappa; eventi: Sisma[]; letto: string }) {
+export function Terremoti({ mappa, eventi: iniziali, letto: lettoIniziale, base }: { mappa: Mappa; eventi: Sisma[]; letto: string; base: string }) {
+  // Su Vercel la funzione /api/sismi dà gli eventi arrivati dopo la
+  // pubblicazione; altrove (GitHub Pages, in locale) non c'è e si resta così.
+  const [eventi, setEventi] = useState(iniziali);
+  const [letto, setLetto] = useState(lettoIniziale);
+  const [inDiretta, setInDiretta] = useState(false);
+  useEffect(() => {
+    fetch(`${base}/api/sismi`)
+      .then((r) => (r.ok ? r.json() : null))
+      .then((d: { letto: string; eventi: Sisma[] } | null) => {
+        if (!d?.eventi?.length) return;
+        const perId = new Map(iniziali.map((e) => [e.id, e]));
+        for (const e of d.eventi) perId.set(e.id, e);
+        setEventi([...perId.values()].sort((a, b) => b.quando.localeCompare(a.quando)));
+        setLetto(d.letto);
+        setInDiretta(true);
+      })
+      .catch(() => {});
+  }, [base, iniziali]);
   const [periodo, setPeriodo] = useState<Periodo>("30");
   const [minimo, setMinimo] = useState(0);
   const [scelto, setScelto] = useState<string | null>(null);
@@ -77,6 +95,11 @@ export function Terremoti({ mappa, eventi, letto }: { mappa: Mappa; eventi: Sism
             </button>
           ))}
         </div>
+        {inDiretta && (
+          <span className="flex items-center gap-1.5 font-sans text-xs text-grafite">
+            <span className="h-2 w-2 rounded-full bg-[#6f9a62]" /> in diretta dalla RSNI
+          </span>
+        )}
         <div className="segmentato">
           {[0, 1, 2].map((m) => (
             <button key={m} type="button" onClick={() => setMinimo(m)} aria-pressed={minimo === m}>

@@ -7,24 +7,28 @@ import remarkDirective from "remark-directive";
 import { remarkCampioni, remarkFigure, remarkRiquadri, remarkTabelleEtichettate } from "./src/lib/markdown/riquadri.ts";
 import { fileURLToPath } from "node:url";
 
-// Sito statico su GitHub Pages: https://danieleontano.github.io/unigeo/
-// `base` entra in ogni link interno: si usa sempre `percorso()` di src/lib/percorsi.ts,
+// Sito statico. Su Vercel (variabile VERCEL presente in build) vive alla
+// radice; su GitHub Pages sotto /unigeo. `base` entra in ogni link interno: si usa sempre `percorso()` di src/lib/percorsi.ts,
 // mai un href scritto a mano che parte da "/".
 //
 // Markdown: Astro 7 di default usa il suo processore nativo (satteri), che non
 // esegue plugin remark. Qui si tiene il pipeline remark/rehype perché i riquadri
 // `:::definizione` passano da remark-directive, e gli id dei titoli li genera
 // Astro con github-slugger (gli stessi che i quiz usano nei `ref`).
+const SU_VERCEL = Boolean(process.env.VERCEL);
+const BASE = SU_VERCEL ? "/" : "/unigeo";
+const SITO = SU_VERCEL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL ?? "unigeo.vercel.app"}` : "https://danieleontano.github.io";
+
 export default defineConfig({
-  site: "https://danieleontano.github.io",
-  base: "/unigeo",
-  // "ignore": /unigeo e /unigeo/ valgono entrambi, in locale come su Pages.
+  site: SITO,
+  base: BASE,
+  // "ignore": con e senza barra finale valgono entrambi.
   trailingSlash: "ignore",
   output: "static",
   // La barra degli strumenti di Astro in basso nelle pagine locali: Daniele la vede e confonde.
   devToolbar: { enabled: false },
   // Un file per pagina (materie/x.html): così «/materie/x» senza barra finale
-  // viene servito da GitHub Pages senza redirect.
+  // viene servito senza redirect (su Vercel con cleanUrls, vedi vercel.json).
   build: { format: "file" },
   integrations: [react()],
   vite: { plugins: [tailwindcss()] },
@@ -34,7 +38,7 @@ export default defineConfig({
       remarkRiquadri,
       remarkFigure,
       remarkTabelleEtichettate,
-      [remarkCampioni, { base: "/unigeo", dati: fileURLToPath(new URL("./content/campionario/campioni.json", import.meta.url)) }],
+      [remarkCampioni, { base: BASE === "/" ? "" : BASE, dati: fileURLToPath(new URL("./content/campionario/campioni.json", import.meta.url)) }],
     ] }),
   },
 });

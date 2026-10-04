@@ -4,7 +4,7 @@ Appunti dinamici per il primo anno di Scienze Geologiche (UniGe, a.a. 2026/27):
 lezioni in Markdown, quiz, flashcard e ripasso spaziato. Sito statico, niente
 database, stato personale nel browser.
 
-Sito: https://danieleontano.github.io/unigeo/
+Sito: su Vercel (radice), copia su https://danieleontano.github.io/unigeo/ finché Pages resta acceso.
 
 ```bash
 npm install

@@ -3,14 +3,14 @@
   "short_name": "UniGeo",
   "description": "Appunti, quiz e flashcard del primo anno di Scienze Geologiche.",
   "lang": "it",
-  "start_url": "/unigeo/",
-  "scope": "/unigeo/",
+  "start_url": "./",
+  "scope": "./",
   "display": "standalone",
-  "background_color": "#F4EEE3",
-  "theme_color": "#B5552A",
+  "background_color": "#1B1512",
+  "theme_color": "#1B1512",
   "icons": [
     {
-      "src": "/unigeo/icone/app-512.png",
+      "src": "icone/app-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"

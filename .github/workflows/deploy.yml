@@ -3,9 +3,6 @@ name: Pubblica su GitHub Pages
 on:
   push:
     branches: [main]
-  # Ogni mezz'ora: i terremoti RSNI si leggono al momento della pubblicazione.
-  schedule:
-    - cron: "7,37 * * * *"
   workflow_dispatch:
 
 permissions:
@@ -22,22 +19,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
-      # Lo storico dei terremoti RSNI: il feed dà solo gli ultimi 20 eventi,
-      # ogni build li aggiunge all'archivio che passa da una build all'altra
-      # nella cache di Actions (niente database, niente commit).
-      - uses: actions/cache/restore@v6
-        with:
-          path: .archivio-sismi
-          key: sismi-${{ github.run_id }}
-          restore-keys: sismi-
       - uses: withastro/action@v6
         with:
           node-version: 24
-      - uses: actions/cache/save@v6
-        if: always()
-        with:
-          path: .archivio-sismi
-          key: sismi-${{ github.run_id }}
 
   deploy:
     needs: build

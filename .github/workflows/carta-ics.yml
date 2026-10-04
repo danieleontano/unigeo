@@ -2,7 +2,7 @@ name: Aggiorna la carta ICS
 
 # Ogni lunedì controlla se la Commissione Internazionale di Stratigrafia ha
 # pubblicato una nuova versione della carta; se sì, aggiorna i dati e li
-# committa: il push fa ripartire la pubblicazione del sito.
+# committa: Vercel ripubblica il sito da solo.
 on:
   schedule:
     - cron: "17 6 * * 1"

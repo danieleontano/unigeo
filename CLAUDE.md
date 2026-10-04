@@ -28,10 +28,12 @@ strumento personale, va tenuto piccolo.
   e `node_modules/astro/templates/content/types.d.ts`. Server di sviluppo:
   `npx astro dev --background` (poi `astro dev status | logs | stop`).
 - TypeScript resta alla 6: `@astrojs/check` non accetta la 7.
-- Il sito vive sotto `/unigeo` (GitHub Pages): ogni link interno passa da
-  `percorso()` di `src/lib/percorsi.ts`, mai un href che parte da "/".
+- Il sito vive alla radice su Vercel e sotto `/unigeo` su GitHub Pages e in
+  locale (astro.config.mjs guarda la variabile VERCEL): ogni link interno passa
+  da `percorso()` di `src/lib/percorsi.ts`, mai un href che parte da "/".
 - Contenuti in `content/` con frontmatter; schema in docs/CONTENT_FORMAT.md.
-- Nessuna dipendenza da servizi esterni. Nessuna chiamata API a runtime.
+- Nessuna dipendenza da servizi esterni. Unica chiamata a runtime: la funzione
+  Vercel `api/sismi.ts` (feed RSNI in diretta, cache CDN 5 minuti).
 
 ## Struttura cartelle
 ```
@@ -277,3 +279,12 @@ due settimane di fila salta, il problema non è nel codice.
   sottosuolo un solo carattere d'interfaccia (Poppins, 15px); il serif resta
   alle lezioni. Tinta di testate e chip in `--tinta` (non `--materia`, che ha
   un default ardesia su :root).
+- 2026-10-04 sera · Verso Vercel (piano Hobby, gratis). Base condizionale
+  (radice su Vercel, /unigeo su Pages), manifest e service worker relativi,
+  vercel.json con cleanUrls (le pagine sono .html, build.format "file").
+  Terremoti: archivio nel repo (content/terremoti/archivio.json), allungato
+  ogni due ore dal workflow «Archivio terremoti» con un commit solo se ci sono
+  eventi nuovi; in mezzo la mappa legge api/sismi.ts (funzione Vercel nella
+  cartella api/, accanto al sito statico). Niente cron di Vercel: su Hobby
+  uno al giorno al massimo. Il deploy su Pages non ha più il cron ogni 30
+  minuti; si spegne quando Vercel è confermato.

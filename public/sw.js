@@ -2,7 +2,7 @@
 // senza rete (treno, aula senza campo). Niente libreria: poche righe.
 //  - asset con hash (/_astro/, font, icone, pdf): cache first, non cambiano mai;
 //  - pagine HTML: network first, con la copia in cache come ripiego.
-const VERSIONE = "unigeo-v2";
+const VERSIONE = "unigeo-v3";
 
 self.addEventListener("install", (e) => {
   e.waitUntil(self.skipWaiting());
@@ -45,7 +45,8 @@ self.addEventListener("fetch", (e) => {
         const inCache = await cache.match(request);
         if (inCache) return inCache;
         if (request.mode === "navigate") {
-          const home = await cache.match(new URL("/unigeo/", self.location.origin).toString());
+          // La home è la radice del service worker: /unigeo/ su Pages, / su Vercel.
+          const home = await cache.match(self.registration.scope);
           if (home) return home;
         }
         return new Response("Sei senza rete e questa pagina non è ancora stata aperta.", {
