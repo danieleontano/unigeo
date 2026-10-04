@@ -52,9 +52,10 @@ export function Impostazioni({ materie }: Props) {
   const lezioniSeguite = Object.keys(stato.progress).length;
 
   return (
-    <div className="sans text-sm">
-      <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-muted">Materie attive</h2>
-      <ul className="mt-2 divide-y divide-line border-y border-line">
+    <div className="sans grid grid-cols-1 gap-4 text-sm">
+      <section className="pannello p-4 sm:p-5">
+      <h2 className="pannello-titolo">Materie attive</h2>
+      <ul className="mt-2 divide-y divide-line border-t border-line">
         {materie.map((m) => (
           <li key={m.id}>
             <label className="flex cursor-pointer items-center gap-3 py-1.5">
@@ -69,24 +70,27 @@ export function Impostazioni({ materie }: Props) {
           </li>
         ))}
       </ul>
+      </section>
 
-      <h2 className="mt-8 text-xs font-semibold uppercase tracking-[0.18em] text-muted">Stato</h2>
+      <section className="pannello p-4 sm:p-5">
+      <h2 className="pannello-titolo">I tuoi dati</h2>
       <p className="mt-2 text-muted">
         {lezioniSeguite} lezioni con progressi · {stato.history.length} quiz fatti
       </p>
       <div className="mt-3 flex flex-wrap gap-2">
-        <button type="button" onClick={esporta} className="rounded-lg border border-line px-3 py-1.5 hover:bg-sand/60">
+        <button type="button" onClick={esporta} className="rounded-md border border-line px-3 py-1.5 hover:bg-white/5">
           Esporta JSON
         </button>
-        <button type="button" onClick={() => file.current?.click()} className="rounded-lg border border-line px-3 py-1.5 hover:bg-sand/60">
+        <button type="button" onClick={() => file.current?.click()} className="rounded-md border border-line px-3 py-1.5 hover:bg-white/5">
           Importa JSON
         </button>
         <input ref={file} type="file" accept="application/json,.json" className="hidden" onChange={(e) => importa(e.target.files?.[0])} />
-        <button type="button" onClick={azzera} className="rounded-lg border border-line px-3 py-1.5 text-muted hover:text-slate">
+        <button type="button" onClick={azzera} className="rounded-md border border-line px-3 py-1.5 text-muted hover:text-lava">
           Azzera
         </button>
       </div>
       {esito && <p className="mt-3 text-muted">{esito}</p>}
+      </section>
     </div>
   );
 }

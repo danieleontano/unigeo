@@ -121,7 +121,7 @@ export function Flashcard({ nomeMateria, colore, carte, base }: Props) {
             )}
           </div>
         </div>
-        <ul className="mt-6 divide-y divide-filetto border-y border-filetto text-sm">
+        <ul className="pannello mt-4 divide-y divide-filetto px-4 py-1 text-sm">
           {carte.map((c) => (
             <li key={c.chiave} className="flex items-center gap-3 py-1.5">
               <span className="min-w-0 flex-1 truncate font-serif">{c.fronte}</span>
