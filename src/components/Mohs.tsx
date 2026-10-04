@@ -32,21 +32,43 @@ const ALTRI: Minerale[] = [
   { id: "grafite", nome: "Grafite", durezza: [1, 2], formula: "C" },
   { id: "zolfo", nome: "Zolfo", durezza: [1.5, 2.5], formula: "S" },
   { id: "muscovite", nome: "Muscovite", durezza: [2, 2.5] },
-  { id: "salgemma", nome: "Salgemma (halite)", durezza: [2.5, 2.5], formula: "NaCl" },
+  { id: "halite", nome: "Halite (salgemma)", durezza: [2.5, 2.5], formula: "NaCl" },
+  { id: "clorite", nome: "Clorite", durezza: [2, 2.5] },
+  { id: "cinabro", nome: "Cinabro", durezza: [2, 2.5], formula: "HgS" },
+  { id: "rame", nome: "Rame nativo", durezza: [2.5, 3], formula: "Cu" },
   { id: "galena", nome: "Galena", durezza: [2.5, 2.75], formula: "PbS" },
   { id: "biotite", nome: "Biotite", durezza: [2.5, 3] },
   { id: "barite", nome: "Barite", durezza: [3, 3.5], formula: "BaSO₄" },
+  { id: "anidrite", nome: "Anidrite", durezza: [3, 3.5], formula: "CaSO₄" },
   { id: "dolomite", nome: "Dolomite", durezza: [3.5, 4], formula: "CaMg(CO₃)₂" },
+  { id: "aragonite", nome: "Aragonite", durezza: [3.5, 4], formula: "CaCO₃" },
+  { id: "azzurrite", nome: "Azzurrite", durezza: [3.5, 4], formula: "Cu₃(CO₃)₂(OH)₂" },
+  { id: "calcopirite", nome: "Calcopirite", durezza: [3.5, 4], formula: "CuFeS₂" },
+  { id: "sfalerite", nome: "Sfalerite", durezza: [3.5, 4], formula: "ZnS" },
+  { id: "siderite", nome: "Siderite", durezza: [3.75, 4.25], formula: "FeCO₃" },
   { id: "malachite", nome: "Malachite", durezza: [3.5, 4], formula: "Cu₂CO₃(OH)₂" },
   { id: "orneblenda", nome: "Orneblenda (anfibolo)", durezza: [5, 6] },
   { id: "augite", nome: "Augite (pirosseno)", durezza: [5.5, 6] },
+  { id: "goethite", nome: "Goethite", durezza: [5, 5.5], formula: "FeO(OH)" },
+  { id: "nefelina", nome: "Nefelina", durezza: [5.5, 6] },
+  { id: "leucite", nome: "Leucite", durezza: [5.5, 6], formula: "KAlSi₂O₆" },
+  { id: "sodalite", nome: "Sodalite", durezza: [5.5, 6] },
+  { id: "diopside", nome: "Diopside (pirosseno)", durezza: [5.5, 6.5], formula: "CaMgSi₂O₆" },
+  { id: "opale", nome: "Opale", durezza: [5.5, 6.5], formula: "SiO₂·nH₂O" },
   { id: "magnetite", nome: "Magnetite", durezza: [5.5, 6.5], formula: "Fe₃O₄" },
   { id: "ematite", nome: "Ematite", durezza: [5.5, 6.5], formula: "Fe₂O₃" },
   { id: "plagioclasio", nome: "Plagioclasio", durezza: [6, 6.5] },
   { id: "pirite", nome: "Pirite", durezza: [6, 6.5], formula: "FeS₂" },
+  { id: "microclino", nome: "Microclino", durezza: [6, 6.5], formula: "KAlSi₃O₈" },
+  { id: "rutilo", nome: "Rutilo", durezza: [6, 6.5], formula: "TiO₂" },
+  { id: "epidoto", nome: "Epidoto", durezza: [6, 7] },
+  { id: "calcedonio", nome: "Calcedonio", durezza: [6.5, 7], formula: "SiO₂" },
   { id: "olivina", nome: "Olivina", durezza: [6.5, 7], formula: "(Mg,Fe)₂SiO₄" },
-  { id: "granato", nome: "Granato", durezza: [6.5, 7.5] },
+  { id: "almandino", nome: "Granato (almandino)", durezza: [7, 7.5] },
+  { id: "andalusite", nome: "Andalusite", durezza: [6.5, 7.5], formula: "Al₂SiO₅" },
+  { id: "staurolite", nome: "Staurolite", durezza: [7, 7.5] },
   { id: "tormalina", nome: "Tormalina", durezza: [7, 7.5] },
+  { id: "zircone", nome: "Zircone", durezza: [7.5, 7.5], formula: "ZrSiO₄" },
   { id: "berillo", nome: "Berillo", durezza: [7.5, 8], formula: "Be₃Al₂Si₆O₁₈" },
 ];
 
@@ -162,7 +184,10 @@ function Scala({ foto, base }: { foto: Foto; base: string }) {
 }
 
 function Prova({ foto, base }: { foto: Foto; base: string }) {
-  const genera = () => mescola([...SCALA.filter((m) => m.durezza[0] < 10), ...ALTRI]).slice(0, 8);
+  // Si prova sui minerali che hanno la foto nel campionario, come in laboratorio.
+  const tutti = [...SCALA.filter((m) => m.durezza[0] < 10), ...ALTRI];
+  const conFoto = tutti.filter((m) => foto[m.id]);
+  const genera = () => mescola(conFoto.length >= 8 ? conFoto : tutti).slice(0, 8);
   const [serie, setSerie] = useState(genera);
   const [i, setI] = useState(0);
   const [prove, setProve] = useState<string[]>([]);

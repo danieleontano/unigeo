@@ -572,5 +572,2945 @@
       "licenza": "CC BY-SA 4.0",
       "pagina": "https://commons.wikimedia.org/wiki/File:Dolomite_Luzenac.jpg"
     }
+  },
+  {
+    "id": "conglomerato",
+    "nome": "Conglomerato",
+    "voce": "Conglomerate (geology)",
+    "tipo": "roccia",
+    "categoria": "Sedimentaria clastica",
+    "famiglia": "Sedimentaria clastica · ruditica",
+    "caratteri": "Ciottoli e ghiaia arrotondati (oltre 2 mm) cementati in una matrice più fine. Gli spigoli smussati indicano un trasporto lungo.",
+    "fileCommons": "Conglomerate (GeoDIL number - 10).jpg",
+    "altriFile": [
+      "Conglomerate (GeoDIL number - 466).jpg"
+    ],
+    "foto": {
+      "file": "/campionario/conglomerato.jpg",
+      "autore": "Dexter Perkins",
+      "licenza": "CC0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Conglomerate_(GeoDIL_number_-_10).jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/conglomerato-2.jpg",
+        "autore": "Darla Sondrol",
+        "licenza": "CC0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Conglomerate_(GeoDIL_number_-_466).jpg"
+      }
+    ]
+  },
+  {
+    "id": "breccia",
+    "nome": "Breccia",
+    "voce": "Breccia",
+    "tipo": "roccia",
+    "categoria": "Sedimentaria clastica",
+    "famiglia": "Sedimentaria clastica · ruditica",
+    "caratteri": "Come il conglomerato, ma con clasti spigolosi: trasporto breve o nullo (frane, detrito di versante).",
+    "fileCommons": "Chert breccia (GeoDIL number - 836).jpg",
+    "altriFile": [
+      "Limestone breccia or brecciated limestone (Maxville Limestone, Middle to Upper Mississippian; likely derived from a quarry in southwestern Muskingum County, Ohio, USA) 5 (33053063582).jpg"
+    ],
+    "foto": {
+      "file": "/campionario/breccia.jpg",
+      "autore": "Nessa Eull",
+      "licenza": "CC0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Chert_breccia_(GeoDIL_number_-_836).jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/breccia-2.jpg",
+        "autore": "James St. John",
+        "licenza": "CC BY 2.0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Limestone_breccia_or_brecciated_limestone_(Maxville_Limestone,_Middle_to_Upper_Mississippian;_likely_derived_from_a_quarry_in_southwestern_Muskingum_County,_Ohio,_USA)_5_(33053063582).jpg"
+      }
+    ]
+  },
+  {
+    "id": "arenaria",
+    "nome": "Arenaria",
+    "voce": "Sandstone",
+    "tipo": "roccia",
+    "categoria": "Sedimentaria clastica",
+    "famiglia": "Sedimentaria clastica · arenitica",
+    "caratteri": "Granuli di sabbia (1/16–2 mm) visibili con la lente, cementati da silice, calcite od ossidi di ferro. Ruvida al tatto; colore secondo granuli e cemento.",
+    "fileCommons": "Sandstone (GeoDIL number - 11).jpg",
+    "altriFile": [
+      "Berea Sandstone (GeoDIL number - 236).jpg"
+    ],
+    "foto": {
+      "file": "/campionario/arenaria.jpg",
+      "autore": "Darla Sondrol",
+      "licenza": "CC0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Sandstone_(GeoDIL_number_-_11).jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/arenaria-2.jpg",
+        "autore": "Darla Sondrol",
+        "licenza": "CC0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Berea_Sandstone_(GeoDIL_number_-_236).jpg"
+      }
+    ]
+  },
+  {
+    "id": "arcose",
+    "nome": "Arcose",
+    "voce": "Arkose",
+    "tipo": "roccia",
+    "categoria": "Sedimentaria clastica",
+    "famiglia": "Sedimentaria clastica · arenitica",
+    "caratteri": "Arenaria con oltre il 25% di feldspato, spesso rosata: granuli di quarzo e feldspato poco arrotondati, da graniti erosi a breve distanza.",
+    "fileCommons": "Arkose (GeoDIL number - 473).jpg",
+    "altriFile": [
+      "Arkose with K-feldspar (pinkish-orangish) and quartz (gray) grains.jpg"
+    ],
+    "foto": {
+      "file": "/campionario/arcose.jpg",
+      "autore": "Nessa Eull",
+      "licenza": "CC0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Arkose_(GeoDIL_number_-_473).jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/arcose-2.jpg",
+        "autore": "James St. John",
+        "licenza": "CC BY 2.0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Arkose_with_K-feldspar_(pinkish-orangish)_and_quartz_(gray)_grains.jpg"
+      }
+    ]
+  },
+  {
+    "id": "grovacca",
+    "nome": "Grovacca",
+    "voce": "Greywacke",
+    "tipo": "roccia",
+    "categoria": "Sedimentaria clastica",
+    "famiglia": "Sedimentaria clastica · arenitica",
+    "caratteri": "Arenaria scura, grigia o verdastra, mal classata: granuli angolosi di quarzo, feldspato e frammenti di roccia in abbondante matrice fine. Tipica delle torbiditi.",
+    "fileCommons": "Graywacke (GeoDIL number - 477).jpg",
+    "altriFile": [
+      "Graywacke (16176003404).jpg"
+    ],
+    "foto": {
+      "file": "/campionario/grovacca.jpg",
+      "autore": "Nessa Eull",
+      "licenza": "CC0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Graywacke_(GeoDIL_number_-_477).jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/grovacca-2.jpg",
+        "autore": "James St. John",
+        "licenza": "CC BY 2.0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Graywacke_(16176003404).jpg"
+      }
+    ]
+  },
+  {
+    "id": "siltite",
+    "nome": "Siltite",
+    "voce": "Siltstone",
+    "tipo": "roccia",
+    "categoria": "Sedimentaria clastica",
+    "famiglia": "Sedimentaria clastica · pelitica",
+    "caratteri": "Grana tra 1/256 e 1/16 mm: i granuli non si vedono ma si sentono, al tatto è appena ruvida. Spesso in strati sottili.",
+    "fileCommons": "Vasquez Fm. (siltstone) (GeoDIL number - 238).jpg",
+    "altriFile": [
+      "Carbonaceous siltstone (Price Formation, Lower Mississippian; Cloyds Mountain roadcut, Valley Coalfield, Virginia, USA) (29849104913).jpg"
+    ],
+    "foto": {
+      "file": "/campionario/siltite.jpg",
+      "autore": "Mike Davis",
+      "licenza": "CC0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Vasquez_Fm._(siltstone)_(GeoDIL_number_-_238).jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/siltite-2.jpg",
+        "autore": "James St. John",
+        "licenza": "CC BY 2.0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Carbonaceous_siltstone_(Price_Formation,_Lower_Mississippian;_Cloyds_Mountain_roadcut,_Valley_Coalfield,_Virginia,_USA)_(29849104913).jpg"
+      }
+    ]
+  },
+  {
+    "id": "argillite",
+    "nome": "Argillite",
+    "voce": "Mudstone",
+    "tipo": "roccia",
+    "categoria": "Sedimentaria clastica",
+    "famiglia": "Sedimentaria clastica · pelitica",
+    "caratteri": "Grana finissima, nessun granulo visibile né percepibile al tatto: liscia e tenera. Grigia, nera se ricca di materia organica, rossa se ossidata; se si divide in lamine sottili è un'argillite fissile (shale).",
+    "fileCommons": "Mudstone (GeoDIL number - 9).jpg",
+    "foto": {
+      "file": "/campionario/argillite.jpg",
+      "autore": "Dexter Perkins",
+      "licenza": "CC0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Mudstone_(GeoDIL_number_-_9).jpg"
+    }
+  },
+  {
+    "id": "calcare-micritico",
+    "nome": "Calcare micritico",
+    "voce": "Micrite",
+    "tipo": "roccia",
+    "categoria": "Sedimentaria chimica",
+    "famiglia": "Sedimentaria carbonatica · fango calcareo",
+    "caratteri": "Grana finissima e compatta, nessun granulo visibile, frattura concoide o scheggiosa; bianco, grigio o nocciola. Effervesce vivacemente con HCl.",
+    "fileCommons": "Micritic limestone (Fork Tree Limestone, Lower Cambrian; Old Sellicks Hill Road, Fleurieu Peninsula, South Australia) 2.jpg",
+    "altriFile": [
+      "Lithographic limestone (GeoDIL number - 485).jpg"
+    ],
+    "foto": {
+      "file": "/campionario/calcare-micritico.jpg",
+      "autore": "James St. John",
+      "licenza": "CC BY 2.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Micritic_limestone_(Fork_Tree_Limestone,_Lower_Cambrian;_Old_Sellicks_Hill_Road,_Fleurieu_Peninsula,_South_Australia)_2.jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/calcare-micritico-2.jpg",
+        "autore": "Nessa Eull",
+        "licenza": "CC0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Lithographic_limestone_(GeoDIL_number_-_485).jpg"
+      }
+    ]
+  },
+  {
+    "id": "calcare-oolitico",
+    "nome": "Calcare oolitico",
+    "voce": "Oolite",
+    "tipo": "roccia",
+    "categoria": "Sedimentaria chimica",
+    "famiglia": "Sedimentaria carbonatica · ooidi",
+    "caratteri": "Fatto di ooidi: sferette di 0,25–2 mm a lamine concentriche di carbonato, cresciute in acque basse e agitate. Effervesce con HCl.",
+    "fileCommons": "Oolitic limestone (Salem Limestone, Middle Mississippian; southern Indiana, USA) 1.jpg",
+    "altriFile": [
+      "Oolitic limestone (GeoDIL number - 297).jpg"
+    ],
+    "foto": {
+      "file": "/campionario/calcare-oolitico.jpg",
+      "autore": "James St. John",
+      "licenza": "CC BY-SA 4.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Oolitic_limestone_(Salem_Limestone,_Middle_Mississippian;_southern_Indiana,_USA)_1.jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/calcare-oolitico-2.jpg",
+        "autore": "Mike Davis",
+        "licenza": "CC0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Oolitic_limestone_(GeoDIL_number_-_297).jpg"
+      }
+    ]
+  },
+  {
+    "id": "calcare-fossilifero",
+    "nome": "Calcare fossilifero",
+    "voce": "Limestone",
+    "tipo": "roccia",
+    "categoria": "Sedimentaria organogena",
+    "famiglia": "Sedimentaria carbonatica · bioclastica",
+    "caratteri": "Gusci o frammenti di organismi (crinoidi, brachiopodi, coralli, molluschi) riconoscibili a occhio, legati da cemento calcitico o fango carbonatico. Effervesce con HCl.",
+    "fileCommons": "Encrinite (crinoidal limestone) (Ft. Payne Limestone, Lower Mississippian; Lake Cumberland, Kentucky, USA) 15 (34827481795).jpg",
+    "altriFile": [
+      "Encrinite (crinoidal limestone) (Ft. Payne Limestone, Lower Mississippian; Lake Cumberland, Kentucky, USA) 19 (36658044432).jpg"
+    ],
+    "foto": {
+      "file": "/campionario/calcare-fossilifero.jpg",
+      "autore": "James St. John",
+      "licenza": "CC BY 2.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Encrinite_(crinoidal_limestone)_(Ft._Payne_Limestone,_Lower_Mississippian;_Lake_Cumberland,_Kentucky,_USA)_15_(34827481795).jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/calcare-fossilifero-2.jpg",
+        "autore": "James St. John",
+        "licenza": "CC BY 2.0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Encrinite_(crinoidal_limestone)_(Ft._Payne_Limestone,_Lower_Mississippian;_Lake_Cumberland,_Kentucky,_USA)_19_(36658044432).jpg"
+      }
+    ]
+  },
+  {
+    "id": "coquina",
+    "nome": "Lumachella",
+    "voce": "Coquina",
+    "tipo": "roccia",
+    "categoria": "Sedimentaria organogena",
+    "famiglia": "Sedimentaria carbonatica · bioclastica",
+    "caratteri": "Accumulo poco cementato di conchiglie intere o rotte, poroso e friabile: si vedono quasi solo gusci. Effervesce con HCl.",
+    "fileCommons": "Coquina (Anastasia Formation, Quaternary; Florida, USA) (16612338949).jpg",
+    "altriFile": [
+      "Coquina (GeoDIL number - 487).jpg"
+    ],
+    "foto": {
+      "file": "/campionario/coquina.jpg",
+      "autore": "James St. John",
+      "licenza": "CC BY 2.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Coquina_(Anastasia_Formation,_Quaternary;_Florida,_USA)_(16612338949).jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/coquina-2.jpg",
+        "autore": "Nessa Eull",
+        "licenza": "CC0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Coquina_(GeoDIL_number_-_487).jpg"
+      }
+    ]
+  },
+  {
+    "id": "dolomia",
+    "nome": "Dolomia",
+    "voce": "Dolomite (rock)",
+    "tipo": "roccia",
+    "categoria": "Sedimentaria chimica",
+    "famiglia": "Sedimentaria carbonatica · dolomitica",
+    "caratteri": "Fatta di dolomite: simile a un calcare, ma con HCl diluito reagisce appena, e solo sulla polvere. Spesso a grana zuccherina, grigio chiara o giallastra in alterazione.",
+    "fileCommons": "Dolostone (Knox Dolomite, Upper Cambrian; Warren County core, Ohio, USA) 5.jpg",
+    "foto": {
+      "file": "/campionario/dolomia.jpg",
+      "autore": "James St. John",
+      "licenza": "CC BY-SA 4.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Dolostone_(Knox_Dolomite,_Upper_Cambrian;_Warren_County_core,_Ohio,_USA)_5.jpg"
+    }
+  },
+  {
+    "id": "travertino",
+    "nome": "Travertino",
+    "voce": "Travertine",
+    "tipo": "roccia",
+    "categoria": "Sedimentaria chimica",
+    "famiglia": "Sedimentaria carbonatica · continentale",
+    "caratteri": "Calcare deposto da acque sorgive ricche di CO₂: bianco-nocciola, a bande irregolari con cavità allungate, a volte con impronte di vegetali. Effervesce con HCl.",
+    "fileCommons": "Travertine (GeoDIL number - 704).jpg",
+    "altriFile": [
+      "Travertine (GeoDIL number - 697).jpg"
+    ],
+    "foto": {
+      "file": "/campionario/travertino.jpg",
+      "autore": "Darla Sondrol",
+      "licenza": "CC0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Travertine_(GeoDIL_number_-_704).jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/travertino-2.jpg",
+        "autore": "Nessa Eull",
+        "licenza": "CC0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Travertine_(GeoDIL_number_-_697).jpg"
+      }
+    ]
+  },
+  {
+    "id": "selce",
+    "nome": "Selce",
+    "voce": "Chert",
+    "tipo": "roccia",
+    "categoria": "Sedimentaria chimica",
+    "famiglia": "Sedimentaria silicea",
+    "caratteri": "Silice microcristallina compatta: riga il vetro, frattura concoide a spigoli taglienti, aspetto ceroso. Grigia o nera, in noduli o liste nei calcari; non reagisce con HCl.",
+    "fileCommons": "Chert (Delaware Limestone, Middle Devonian; central Ohio, USA) 3.jpg",
+    "altriFile": [
+      "Flint (GeoDIL number - 690).jpg"
+    ],
+    "foto": {
+      "file": "/campionario/selce.jpg",
+      "autore": "James St. John",
+      "licenza": "CC BY 2.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Chert_(Delaware_Limestone,_Middle_Devonian;_central_Ohio,_USA)_3.jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/selce-2.jpg",
+        "autore": "Shannon Heinle",
+        "licenza": "CC0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Flint_(GeoDIL_number_-_690).jpg"
+      }
+    ]
+  },
+  {
+    "id": "radiolarite",
+    "nome": "Radiolarite (diaspro)",
+    "voce": "Radiolarite",
+    "tipo": "roccia",
+    "categoria": "Sedimentaria organogena",
+    "famiglia": "Sedimentaria silicea · da radiolari",
+    "caratteri": "Selce formata da gusci di radiolari, in strati sottili rossi o verdi separati da veli argillosi; durissima, frattura concoide. In Liguria: Diaspri del Monte Alpe (Val Graveglia).",
+    "fileCommons": "Mookaite (Windalia Radiolarite Formation, Lower Cretaceous; Western Australia) 35.jpg",
+    "altriFile": [
+      "Jasper (GeoDIL number - 2520).jpg"
+    ],
+    "foto": {
+      "file": "/campionario/radiolarite.jpg",
+      "autore": "James St. John",
+      "licenza": "CC BY 2.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Mookaite_(Windalia_Radiolarite_Formation,_Lower_Cretaceous;_Western_Australia)_35.jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/radiolarite-2.jpg",
+        "autore": "Darla Sondrol",
+        "licenza": "CC0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Jasper_(GeoDIL_number_-_2520).jpg"
+      }
+    ]
+  },
+  {
+    "id": "gesso-roccia",
+    "nome": "Gesso (roccia)",
+    "voce": "Gypsum",
+    "tipo": "roccia",
+    "categoria": "Sedimentaria chimica",
+    "famiglia": "Sedimentaria evaporitica · solfato",
+    "caratteri": "Roccia fatta di gesso: si riga con l'unghia e non effervesce con HCl. Massiccia e granulare (alabastro) o a grandi cristalli geminati (gesso selenitico).",
+    "fileCommons": "Rock gypsum (gyprock) 2.jpg",
+    "altriFile": [
+      "Gypsum (alabaster) (GeoDIL number - 628).jpg"
+    ],
+    "foto": {
+      "file": "/campionario/gesso-roccia.jpg",
+      "autore": "James St. John",
+      "licenza": "CC BY 2.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Rock_gypsum_(gyprock)_2.jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/gesso-roccia-2.jpg",
+        "autore": "Darla Sondrol",
+        "licenza": "CC0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Gypsum_(alabaster)_(GeoDIL_number_-_628).jpg"
+      }
+    ]
+  },
+  {
+    "id": "salgemma",
+    "nome": "Salgemma",
+    "voce": "Halite",
+    "tipo": "roccia",
+    "categoria": "Sedimentaria chimica",
+    "famiglia": "Sedimentaria evaporitica · cloruro",
+    "caratteri": "Roccia di halite: cristallina, incolore, bianca o rosata, sapore salato, si scioglie in acqua; sfaldatura cubica.",
+    "fileCommons": "Rock salt (halitite) 3 (16656328090).jpg",
+    "altriFile": [
+      "Rock salt (Arapien Formation, Middle Jurassic; Redmond Salt Mine, near Redmond, Utah, USA) 1.jpg"
+    ],
+    "foto": {
+      "file": "/campionario/salgemma.jpg",
+      "autore": "James St. John",
+      "licenza": "CC BY 2.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Rock_salt_(halitite)_3_(16656328090).jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/salgemma-2.jpg",
+        "autore": "James St. John",
+        "licenza": "CC BY 2.0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Rock_salt_(Arapien_Formation,_Middle_Jurassic;_Redmond_Salt_Mine,_near_Redmond,_Utah,_USA)_1.jpg"
+      }
+    ]
+  },
+  {
+    "id": "lignite",
+    "nome": "Lignite",
+    "voce": "Lignite",
+    "tipo": "roccia",
+    "categoria": "Sedimentaria organogena",
+    "famiglia": "Sedimentaria organogena · carbone",
+    "caratteri": "Carbone giovane, bruno: leggero, opaco o poco lucente, spesso con struttura legnosa ancora riconoscibile; seccando si fessura.",
+    "fileCommons": "Lignite coal (Tertiary; western USA).jpg",
+    "altriFile": [
+      "Lignite coal (Fort Union Formation, Paleocene; Bowman area, North Dakota, USA) 19.jpg"
+    ],
+    "foto": {
+      "file": "/campionario/lignite.jpg",
+      "autore": "James St. John",
+      "licenza": "CC BY 2.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Lignite_coal_(Tertiary;_western_USA).jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/lignite-2.jpg",
+        "autore": "James St. John",
+        "licenza": "CC BY 2.0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Lignite_coal_(Fort_Union_Formation,_Paleocene;_Bowman_area,_North_Dakota,_USA)_19.jpg"
+      }
+    ]
+  },
+  {
+    "id": "litantrace",
+    "nome": "Litantrace",
+    "voce": "Bituminous coal",
+    "tipo": "roccia",
+    "categoria": "Sedimentaria organogena",
+    "famiglia": "Sedimentaria organogena · carbone",
+    "caratteri": "Carbone nero a bande alternate lucide e opache, fragile, sporca le dita. Più carbonio della lignite, meno dell'antracite.",
+    "fileCommons": "Bituminous Coal (Washington Coal, Upper Pennsylvanian).jpg",
+    "altriFile": [
+      "Bituminous coal (GeoDIL number - 501).jpg"
+    ],
+    "foto": {
+      "file": "/campionario/litantrace.jpg",
+      "autore": "James St. John",
+      "licenza": "CC BY 2.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Bituminous_Coal_(Washington_Coal,_Upper_Pennsylvanian).jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/litantrace-2.jpg",
+        "autore": "Nessa Eull",
+        "licenza": "CC0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Bituminous_coal_(GeoDIL_number_-_501).jpg"
+      }
+    ]
+  },
+  {
+    "id": "antracite",
+    "nome": "Antracite",
+    "voce": "Anthracite",
+    "tipo": "roccia",
+    "categoria": "Sedimentaria organogena",
+    "famiglia": "Sedimentaria organogena · carbone",
+    "caratteri": "Il carbone più ricco di carbonio: nero, lucentezza quasi metallica, duro e pulito al tatto, frattura concoide.",
+    "fileCommons": "Anthracite coal (Pennsylvanian; Hazelton, Pennsylvania, USA) 6.jpg",
+    "altriFile": [
+      "Anthracite coal (GeoDIL number - 897).jpg"
+    ],
+    "foto": {
+      "file": "/campionario/antracite.jpg",
+      "autore": "James St. John",
+      "licenza": "CC BY 2.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Anthracite_coal_(Pennsylvanian;_Hazelton,_Pennsylvania,_USA)_6.jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/antracite-2.jpg",
+        "autore": "Darla Sondrol",
+        "licenza": "CC0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Anthracite_coal_(GeoDIL_number_-_897).jpg"
+      }
+    ]
+  },
+  {
+    "id": "stromatolite",
+    "nome": "Stromatolite",
+    "voce": "Stromatolite",
+    "tipo": "roccia",
+    "categoria": "Sedimentaria organogena",
+    "famiglia": "Sedimentaria carbonatica · biocostruita",
+    "caratteri": "Calcare a lamine sottili ondulate o a cupola, costruite da tappeti microbici (cianobatteri) che intrappolano il sedimento. Tra le più antiche tracce di vita.",
+    "fileCommons": "Stromatolithe Paléoarchéen - MNHT.PAL.2009.10.1.jpg",
+    "altriFile": [
+      "Stromatolites, Belt Supergroup, Glacier National Park.jpg"
+    ],
+    "foto": {
+      "file": "/campionario/stromatolite.jpg",
+      "autore": "Didier Descouens",
+      "licenza": "CC BY-SA 4.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Stromatolithe_Pal%C3%A9oarch%C3%A9en_-_MNHT.PAL.2009.10.1.jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/stromatolite-2.jpg",
+        "autore": "James St. John",
+        "licenza": "CC BY 2.0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Stromatolites,_Belt_Supergroup,_Glacier_National_Park.jpg"
+      }
+    ]
+  },
+  {
+    "id": "diatomite",
+    "nome": "Diatomite",
+    "voce": "Diatomaceous earth",
+    "tipo": "roccia",
+    "categoria": "Sedimentaria organogena",
+    "famiglia": "Sedimentaria silicea · da diatomee",
+    "caratteri": "Bianca, leggerissima, porosa e friabile, sporca le dita: è fatta di gusci silicei di diatomee. Non reagisce con HCl.",
+    "fileCommons": "Diatomite (Monterey Formation, Miocene; diatomite quarry just south of Lompoc, California, USA) (16843717495).jpg",
+    "altriFile": [
+      "Diatomite (Sisquoc Formation, Miocene-Pliocene; Palos Colorados Quarry, California, USA) 3.jpg"
+    ],
+    "foto": {
+      "file": "/campionario/diatomite.jpg",
+      "autore": "James St. John",
+      "licenza": "CC BY 2.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Diatomite_(Monterey_Formation,_Miocene;_diatomite_quarry_just_south_of_Lompoc,_California,_USA)_(16843717495).jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/diatomite-2.jpg",
+        "autore": "James St. John",
+        "licenza": "CC BY 2.0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Diatomite_(Sisquoc_Formation,_Miocene-Pliocene;_Palos_Colorados_Quarry,_California,_USA)_3.jpg"
+      }
+    ]
+  },
+  {
+    "id": "creta",
+    "nome": "Creta",
+    "voce": "Chalk",
+    "tipo": "roccia",
+    "categoria": "Sedimentaria organogena",
+    "famiglia": "Sedimentaria carbonatica · da nannofossili",
+    "caratteri": "Calcare bianco, tenero, poroso, che sporca le dita: è fatto quasi solo di coccoliti. Effervesce con HCl.",
+    "fileCommons": "Chalk (GeoDIL number - 298).jpg",
+    "altriFile": [
+      "Chalk (GeoDIL number - 680).jpg"
+    ],
+    "foto": {
+      "file": "/campionario/creta.jpg",
+      "autore": "Mike Davis",
+      "licenza": "CC0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Chalk_(GeoDIL_number_-_298).jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/creta-2.jpg",
+        "autore": "Twyla Baker",
+        "licenza": "CC0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Chalk_(GeoDIL_number_-_680).jpg"
+      }
+    ]
+  },
+  {
+    "id": "bauxite",
+    "nome": "Bauxite",
+    "voce": "Bauxite",
+    "tipo": "roccia",
+    "categoria": "Sedimentaria chimica",
+    "famiglia": "Sedimentaria residuale · alluminio",
+    "caratteri": "Rosso-bruna o giallastra, terrosa, spesso a piccoli noduli tondeggianti (pisoliti): residuo di alterazione tropicale ricco di idrossidi di alluminio.",
+    "fileCommons": "Bauxite (GeoDIL number - 156).jpg",
+    "altriFile": [
+      "Pisolitic bauxite (mine near Boddington, Western Australia) 5.jpg"
+    ],
+    "foto": {
+      "file": "/campionario/bauxite.jpg",
+      "autore": "Darla Sondrol",
+      "licenza": "CC0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Bauxite_(GeoDIL_number_-_156).jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/bauxite-2.jpg",
+        "autore": "James St. John",
+        "licenza": "CC BY 2.0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Pisolitic_bauxite_(mine_near_Boddington,_Western_Australia)_5.jpg"
+      }
+    ]
+  },
+  {
+    "id": "bif",
+    "nome": "Formazione di ferro a bande",
+    "voce": "Banded iron formation",
+    "tipo": "roccia",
+    "categoria": "Sedimentaria chimica",
+    "famiglia": "Sedimentaria chimica · ferrifera",
+    "caratteri": "Bande alternate di ossidi di ferro (ematite, magnetite) grigio-metallici e di selce o diaspro rosso. Quasi tutte più antiche di 1,8 miliardi di anni.",
+    "fileCommons": "Jaspilite banded iron formation (BIF) (Negaunee Iron-Formation, Paleoproterozoic, 1.874 or 2.11 Ga; Jasper Knob, Ishpeming, Michigan, USA) 3 (32557268112).jpg",
+    "altriFile": [
+      "BIF ventifact (limonite-magnetite banded iron formation, Archean; Ferris Dune Field, Windy Gap, Wyoming, USA) 2 (25475973503).jpg"
+    ],
+    "foto": {
+      "file": "/campionario/bif.jpg",
+      "autore": "James St. John",
+      "licenza": "CC BY 2.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Jaspilite_banded_iron_formation_(BIF)_(Negaunee_Iron-Formation,_Paleoproterozoic,_1.874_or_2.11_Ga;_Jasper_Knob,_Ishpeming,_Michigan,_USA)_3_(32557268112).jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/bif-2.jpg",
+        "autore": "James St. John",
+        "licenza": "CC BY 2.0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:BIF_ventifact_(limonite-magnetite_banded_iron_formation,_Archean;_Ferris_Dune_Field,_Windy_Gap,_Wyoming,_USA)_2_(25475973503).jpg"
+      }
+    ]
+  },
+  {
+    "id": "ardesia",
+    "nome": "Ardesia",
+    "voce": "Slate",
+    "tipo": "roccia",
+    "categoria": "Metamorfica",
+    "famiglia": "Metamorfica · foliata, basso grado",
+    "caratteri": "Grigio scura o nera, grana finissima; si divide in lastre piane e sottili (clivaggio ardesiaco). In Liguria si cava in Val Fontanabuona (ardesia di Lavagna).",
+    "fileCommons": "Gray slate (GeoDIL number - 15).jpg",
+    "altriFile": [
+      "Green slate (GeoDIL number - 422).jpg"
+    ],
+    "foto": {
+      "file": "/campionario/ardesia.jpg",
+      "autore": "Dexter Perkins",
+      "licenza": "CC0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Gray_slate_(GeoDIL_number_-_15).jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/ardesia-2.jpg",
+        "autore": "Mike Davis",
+        "licenza": "CC0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Green_slate_(GeoDIL_number_-_422).jpg"
+      }
+    ]
+  },
+  {
+    "id": "fillade",
+    "nome": "Fillade",
+    "voce": "Phyllite",
+    "tipo": "roccia",
+    "categoria": "Metamorfica",
+    "famiglia": "Metamorfica · foliata, basso grado",
+    "caratteri": "Grana ancora fine, ma superfici di scistosità con lucentezza sericea, satinata, spesso ondulate: miche e clorite troppo piccole per vederle.",
+    "fileCommons": "Phyllite (GeoDIL number - 423).jpg",
+    "altriFile": [
+      "Phyllite (Littleton Formation, Devonian; Chicken Yard Line, between Springfield & Charlestown, Vermont, USA) 6.jpg"
+    ],
+    "foto": {
+      "file": "/campionario/fillade.jpg",
+      "autore": "Mike Davis",
+      "licenza": "CC0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Phyllite_(GeoDIL_number_-_423).jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/fillade-2.jpg",
+        "autore": "James St. John",
+        "licenza": "CC BY 2.0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Phyllite_(Littleton_Formation,_Devonian;_Chicken_Yard_Line,_between_Springfield_%26_Charlestown,_Vermont,_USA)_6.jpg"
+      }
+    ]
+  },
+  {
+    "id": "micascisto",
+    "nome": "Micascisto",
+    "voce": "Schist",
+    "tipo": "roccia",
+    "categoria": "Metamorfica",
+    "famiglia": "Metamorfica · scistosa, medio grado",
+    "caratteri": "Lamelle di mica (muscovite, biotite) visibili e allineate, con quarzo; spesso porfiroblasti di granato o staurolite. Si sfoglia lungo piani luccicanti.",
+    "fileCommons": "Mica schist (Manhattan Schist, late Neoproterozoic; Manhattan Island, New York City, New York State, USA) (14882194417).jpg",
+    "altriFile": [
+      "Mica schist (GeoDIL number - 425).jpg",
+      "Garnet schist (Late Cretaceous, 89-90 Ma; Garnet Ledge, about 12 km north of Wrangell, southeastern Alaska, USA) 6 (49072981306).jpg"
+    ],
+    "foto": {
+      "file": "/campionario/micascisto.jpg",
+      "autore": "James St. John",
+      "licenza": "CC BY 2.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Mica_schist_(Manhattan_Schist,_late_Neoproterozoic;_Manhattan_Island,_New_York_City,_New_York_State,_USA)_(14882194417).jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/micascisto-2.jpg",
+        "autore": "Mike Davis",
+        "licenza": "CC0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Mica_schist_(GeoDIL_number_-_425).jpg"
+      },
+      {
+        "file": "/campionario/micascisto-3.jpg",
+        "autore": "James St. John",
+        "licenza": "CC BY 2.0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Garnet_schist_(Late_Cretaceous,_89-90_Ma;_Garnet_Ledge,_about_12_km_north_of_Wrangell,_southeastern_Alaska,_USA)_6_(49072981306).jpg"
+      }
+    ]
+  },
+  {
+    "id": "cloritoscisto",
+    "nome": "Scisto verde (cloritoscisto)",
+    "voce": "Greenschist",
+    "tipo": "roccia",
+    "categoria": "Metamorfica",
+    "famiglia": "Metamorfica · scistosa, basso grado",
+    "caratteri": "Verde, tenero, un po' untuoso: clorite con epidoto, actinolite e albite. Deriva da basalti o gabbri; dà il nome alla facies degli scisti verdi.",
+    "fileCommons": "Chlorite schist (GeoDIL number - 428).jpg",
+    "altriFile": [
+      "Chlorite schist (Pelona Schist, Cretaceous or Paleocene (?); San Antonio Canyon, San Gabiel Mountains, California, USA) 49.jpg"
+    ],
+    "foto": {
+      "file": "/campionario/cloritoscisto.jpg",
+      "autore": "Mike Davis",
+      "licenza": "CC0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Chlorite_schist_(GeoDIL_number_-_428).jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/cloritoscisto-2.jpg",
+        "autore": "James St. John",
+        "licenza": "CC BY 2.0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Chlorite_schist_(Pelona_Schist,_Cretaceous_or_Paleocene_(%3F);_San_Antonio_Canyon,_San_Gabiel_Mountains,_California,_USA)_49.jpg"
+      }
+    ]
+  },
+  {
+    "id": "scisto-blu",
+    "nome": "Scisto a glaucofane",
+    "voce": "Blueschist",
+    "tipo": "roccia",
+    "categoria": "Metamorfica",
+    "famiglia": "Metamorfica · alta pressione, bassa temperatura",
+    "caratteri": "Grigio-azzurro o blu-violaceo per l'anfibolo sodico glaucofane, spesso con epidoto, lawsonite e granato. Si forma nelle zone di subduzione.",
+    "fileCommons": "Blueschist (Santa Catalina Island, offshore California, USA) 1.jpg",
+    "altriFile": [
+      "Blueschist (Porter Creek, Sonoma County, California, USA) 1.jpg"
+    ],
+    "foto": {
+      "file": "/campionario/scisto-blu.jpg",
+      "autore": "James St. John",
+      "licenza": "CC BY 2.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Blueschist_(Santa_Catalina_Island,_offshore_California,_USA)_1.jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/scisto-blu-2.jpg",
+        "autore": "James St. John",
+        "licenza": "CC BY 2.0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Blueschist_(Porter_Creek,_Sonoma_County,_California,_USA)_1.jpg"
+      }
+    ]
+  },
+  {
+    "id": "gneiss",
+    "nome": "Gneiss",
+    "voce": "Gneiss",
+    "tipo": "roccia",
+    "categoria": "Metamorfica",
+    "famiglia": "Metamorfica · foliata, alto grado",
+    "caratteri": "Grana medio-grossa a bande alternate chiare (quarzo, feldspati) e scure (biotite, anfibolo); meno fissile di uno scisto.",
+    "fileCommons": "Metapelitic gneiss (GeoDIL number - 518).jpg",
+    "altriFile": [
+      "L-tectonite gneiss (Precambrian; Uxbridge, Massachusetts, USA) 3 - 53324151920.jpg"
+    ],
+    "foto": {
+      "file": "/campionario/gneiss.jpg",
+      "autore": "Dexter Perkins",
+      "licenza": "CC0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Metapelitic_gneiss_(GeoDIL_number_-_518).jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/gneiss-2.jpg",
+        "autore": "James St. John",
+        "licenza": "CC BY 2.0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:L-tectonite_gneiss_(Precambrian;_Uxbridge,_Massachusetts,_USA)_3_-_53324151920.jpg"
+      }
+    ]
+  },
+  {
+    "id": "augengneiss",
+    "nome": "Gneiss occhiadino",
+    "voce": "Augen gneiss",
+    "tipo": "roccia",
+    "categoria": "Metamorfica",
+    "famiglia": "Metamorfica · foliata, alto grado",
+    "caratteri": "Grandi cristalli di feldspato a forma di occhio avvolti da una foliazione ricca di mica: in genere un granito deformato (ortogneiss).",
+    "fileCommons": "Augen gneiss 5.jpg",
+    "altriFile": [
+      "Augen gneiss (GeoDIL number - 338).jpg"
+    ],
+    "foto": {
+      "file": "/campionario/augengneiss.jpg",
+      "autore": "James St. John",
+      "licenza": "CC BY 2.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Augen_gneiss_5.jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/augengneiss-2.jpg",
+        "autore": "Darla Sondrol",
+        "licenza": "CC0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Augen_gneiss_(GeoDIL_number_-_338).jpg"
+      }
+    ]
+  },
+  {
+    "id": "marmo",
+    "nome": "Marmo",
+    "voce": "Marble",
+    "tipo": "roccia",
+    "categoria": "Metamorfica",
+    "famiglia": "Metamorfica · non foliata, carbonatica",
+    "caratteri": "Calcite (o dolomite) ricristallizzata in granuli a mosaico, grana zuccherina; si riga col coltello. Se calcitico effervesce con HCl. Deriva da calcari e dolomie.",
+    "fileCommons": "White marble (GeoDIL number - 509).jpg",
+    "altriFile": [
+      "Marble (GeoDIL number - 506).jpg"
+    ],
+    "foto": {
+      "file": "/campionario/marmo.jpg",
+      "autore": "Nessa Eull",
+      "licenza": "CC0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:White_marble_(GeoDIL_number_-_509).jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/marmo-2.jpg",
+        "autore": "Nessa Eull",
+        "licenza": "CC0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Marble_(GeoDIL_number_-_506).jpg"
+      }
+    ]
+  },
+  {
+    "id": "quarzite",
+    "nome": "Quarzite",
+    "voce": "Quartzite",
+    "tipo": "roccia",
+    "categoria": "Metamorfica",
+    "famiglia": "Metamorfica · non foliata, silicea",
+    "caratteri": "Granuli di quarzo saldati: la roccia si rompe attraverso i granuli. Riga il vetro, aspetto zuccherino o vitreo, non reagisce con HCl. Deriva da arenarie quarzose.",
+    "fileCommons": "Quartzite (Sioux Quartzite, Paleoproterozoic, 1.65 to 1.70 Ga; city of Sioux Falls, Transcontinental Arch, South Dakota, USA) 3.jpg",
+    "altriFile": [
+      "Quartzite (GeoDIL number - 328).jpg"
+    ],
+    "foto": {
+      "file": "/campionario/quarzite.jpg",
+      "autore": "James St. John",
+      "licenza": "CC BY 2.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Quartzite_(Sioux_Quartzite,_Paleoproterozoic,_1.65_to_1.70_Ga;_city_of_Sioux_Falls,_Transcontinental_Arch,_South_Dakota,_USA)_3.jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/quarzite-2.jpg",
+        "autore": "Mike Davis",
+        "licenza": "CC0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Quartzite_(GeoDIL_number_-_328).jpg"
+      }
+    ]
+  },
+  {
+    "id": "anfibolite",
+    "nome": "Anfibolite",
+    "voce": "Amphibolite",
+    "tipo": "roccia",
+    "categoria": "Metamorfica",
+    "famiglia": "Metamorfica · medio-alto grado, femica",
+    "caratteri": "Verde-nera, fatta di anfibolo (orneblenda) in prismi allineati e plagioclasio chiaro, spesso con granato. Deriva da basalti o gabbri.",
+    "fileCommons": "Amphibolite (GeoDIL number - 433).jpg",
+    "altriFile": [
+      "Amphibolite (Precambrian; Warrensburg, Adirondack Mountains, New York State, USA) 2.jpg"
+    ],
+    "foto": {
+      "file": "/campionario/anfibolite.jpg",
+      "autore": "Nessa Eull",
+      "licenza": "CC0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Amphibolite_(GeoDIL_number_-_433).jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/anfibolite-2.jpg",
+        "autore": "James St. John",
+        "licenza": "CC BY 2.0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Amphibolite_(Precambrian;_Warrensburg,_Adirondack_Mountains,_New_York_State,_USA)_2.jpg"
+      }
+    ]
+  },
+  {
+    "id": "serpentinite",
+    "nome": "Serpentinite",
+    "voce": "Serpentinite",
+    "tipo": "roccia",
+    "categoria": "Metamorfica",
+    "famiglia": "Metamorfica · da rocce ultrafemiche",
+    "caratteri": "Verde, da chiaro a quasi nero, spesso venata; superfici lucide e saponose. Deriva da peridotiti idratate; molto diffusa in Liguria (Gruppo di Voltri, ofioliti del Levante).",
+    "fileCommons": "Serpentinite (Neoarchean; Red Lodge Chromite District, Beartooth Mountains, Montana, USA) 13.jpg",
+    "altriFile": [
+      "Serpentinite (Red Lodge Chromite District, Precambrian; Rock Creek Canyon, Beartooth Mountains, Montana, USA) (31406130555).jpg"
+    ],
+    "foto": {
+      "file": "/campionario/serpentinite.jpg",
+      "autore": "James St. John",
+      "licenza": "CC BY 2.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Serpentinite_(Neoarchean;_Red_Lodge_Chromite_District,_Beartooth_Mountains,_Montana,_USA)_13.jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/serpentinite-2.jpg",
+        "autore": "James St. John",
+        "licenza": "CC BY 2.0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Serpentinite_(Red_Lodge_Chromite_District,_Precambrian;_Rock_Creek_Canyon,_Beartooth_Mountains,_Montana,_USA)_(31406130555).jpg"
+      }
+    ]
+  },
+  {
+    "id": "eclogite",
+    "nome": "Eclogite",
+    "voce": "Eclogite",
+    "tipo": "roccia",
+    "categoria": "Metamorfica",
+    "famiglia": "Metamorfica · altissima pressione",
+    "caratteri": "Granati rossi in una matrice verde di onfacite (pirosseno sodico): densa e vistosa. Da basalti o gabbri subdotti in profondità; affiora nel Gruppo di Voltri.",
+    "fileCommons": "Eclogite (Late Silurian to Early Devonian, ~400-423 Ma; Almenningen, Vestland, Norway) 16.jpg",
+    "altriFile": [
+      "Eclogite (Late Silurian to Early Devonian, ~400-423 Ma; Nordfjord area, Sogn og Fjordane County, Norway) 4 (14911296258).jpg"
+    ],
+    "foto": {
+      "file": "/campionario/eclogite.jpg",
+      "autore": "James St. John",
+      "licenza": "CC BY 2.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Eclogite_(Late_Silurian_to_Early_Devonian,_~400-423_Ma;_Almenningen,_Vestland,_Norway)_16.jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/eclogite-2.jpg",
+        "autore": "James St. John",
+        "licenza": "CC BY 2.0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Eclogite_(Late_Silurian_to_Early_Devonian,_~400-423_Ma;_Nordfjord_area,_Sogn_og_Fjordane_County,_Norway)_4_(14911296258).jpg"
+      }
+    ]
+  },
+  {
+    "id": "migmatite",
+    "nome": "Migmatite",
+    "voce": "Migmatite",
+    "tipo": "roccia",
+    "categoria": "Metamorfica",
+    "famiglia": "Metamorfica · fusione parziale",
+    "caratteri": "Roccia mista: bande o chiazze chiare granitiche (leucosoma) alternate a parti scure ricche di biotite, spesso piegate in modo irregolare.",
+    "fileCommons": "Migmatite (Archean, ~ 3.524 Ga; Minnesota, USA) 2 (49156026641).jpg",
+    "altriFile": [
+      "Migmatite filone aplitico.jpg"
+    ],
+    "foto": {
+      "file": "/campionario/migmatite.jpg",
+      "autore": "James St. John",
+      "licenza": "CC BY 2.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Migmatite_(Archean,_~_3.524_Ga;_Minnesota,_USA)_2_(49156026641).jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/migmatite-2.jpg",
+        "autore": "Bramfab",
+        "licenza": "CC BY-SA 4.0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Migmatite_filone_aplitico.jpg"
+      }
+    ]
+  },
+  {
+    "id": "cornubianite",
+    "nome": "Cornubianite",
+    "voce": "Hornfels",
+    "tipo": "roccia",
+    "categoria": "Metamorfica",
+    "famiglia": "Metamorfica · di contatto",
+    "caratteri": "Compatta, grana fine, scura, dura e tenace, senza foliazione; si rompe in schegge a spigoli vivi. Si forma attorno alle intrusioni magmatiche.",
+    "fileCommons": "Hornfels (GeoDIL number - 502).jpg",
+    "altriFile": [
+      "Spotted hornfels 7.jpg"
+    ],
+    "foto": {
+      "file": "/campionario/cornubianite.jpg",
+      "autore": "Nessa Eull",
+      "licenza": "CC0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Hornfels_(GeoDIL_number_-_502).jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/cornubianite-2.jpg",
+        "autore": "James St. John",
+        "licenza": "CC BY 2.0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Spotted_hornfels_7.jpg"
+      }
+    ]
+  },
+  {
+    "id": "metagabbro",
+    "nome": "Metagabbro",
+    "voce": "Ophiolite",
+    "tipo": "roccia",
+    "categoria": "Metamorfica",
+    "famiglia": "Metamorfica · da rocce femiche",
+    "caratteri": "Gabbro trasformato: conserva la grana grossa, ma il pirosseno è sostituito da anfibolo o clorite verde e il plagioclasio da albite ed epidoto. Comune nelle ofioliti liguri.",
+    "fileCommons": "Métagabbro du Queyras Alpes.jpg",
+    "altriFile": [
+      "Metagabbro glaucophane queyras hauges alpes.jpg"
+    ],
+    "foto": {
+      "file": "/campionario/metagabbro.jpg",
+      "autore": "User:WeFt",
+      "licenza": "CC BY-SA 3.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:M%C3%A9tagabbro_du_Queyras_Alpes.jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/metagabbro-2.jpg",
+        "autore": "Max.kit",
+        "licenza": "CC BY-SA 4.0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Metagabbro_glaucophane_queyras_hauges_alpes.jpg"
+      }
+    ]
+  },
+  {
+    "id": "oficalce",
+    "nome": "Oficalce",
+    "voce": "Ophicalcite",
+    "tipo": "roccia",
+    "categoria": "Metamorfica",
+    "famiglia": "Ofiolitica · breccia di serpentinite e calcite",
+    "caratteri": "Clasti di serpentinite verde scuro in una rete di vene e cemento di calcite bianca o rossa. Tipica delle ofioliti liguri: il Rosso di Levanto è un'oficalce.",
+    "fileCommons": "Ophicalcite, aosta valley - i.jpg",
+    "altriFile": [
+      "Marmo rosso di Levanto.JPG"
+    ],
+    "foto": {
+      "file": "/campionario/oficalce.jpg",
+      "autore": "Lysippos",
+      "licenza": "CC BY-SA 3.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Ophicalcite,_aosta_valley_-_i.jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/oficalce-2.jpg",
+        "autore": "Nrykko",
+        "licenza": "Public domain",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Marmo_rosso_di_Levanto.JPG"
+      }
+    ]
+  },
+  {
+    "id": "skarn",
+    "nome": "Skarn",
+    "voce": "Skarn",
+    "tipo": "roccia",
+    "categoria": "Metamorfica",
+    "famiglia": "Metamorfica · di contatto, metasomatica",
+    "caratteri": "Si forma tra un'intrusione e un calcare: silicati di calcio vistosi come granato bruno-rosso, diopside verde, epidoto, wollastonite; a volte solfuri.",
+    "fileCommons": "Garnet wollastonite skarn (GeoDIL number - 16).jpg",
+    "altriFile": [
+      "Skarn (tactite) (GeoDIL number - 511).jpg"
+    ],
+    "foto": {
+      "file": "/campionario/skarn.jpg",
+      "autore": "Dexter Perkins",
+      "licenza": "CC0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Garnet_wollastonite_skarn_(GeoDIL_number_-_16).jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/skarn-2.jpg",
+        "autore": "Nessa Eull",
+        "licenza": "CC0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Skarn_(tactite)_(GeoDIL_number_-_511).jpg"
+      }
+    ]
+  },
+  {
+    "id": "milonite",
+    "nome": "Milonite",
+    "voce": "Mylonite",
+    "tipo": "roccia",
+    "categoria": "Metamorfica",
+    "famiglia": "Metamorfica · dinamica, zone di taglio",
+    "caratteri": "Grana finissima per deformazione duttile: foliazione fitta e regolare con porfiroclasti residui di feldspato a forma di occhio.",
+    "fileCommons": "Mylonite (Rockbridge County, Virginia, USA) 2 (43725476500).jpg",
+    "altriFile": [
+      "Mylonite (GeoDIL number - 512).jpg"
+    ],
+    "foto": {
+      "file": "/campionario/milonite.jpg",
+      "autore": "James St. John",
+      "licenza": "CC BY 2.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Mylonite_(Rockbridge_County,_Virginia,_USA)_2_(43725476500).jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/milonite-2.jpg",
+        "autore": "Nessa Eull",
+        "licenza": "CC0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Mylonite_(GeoDIL_number_-_512).jpg"
+      }
+    ]
+  },
+  {
+    "id": "steatite",
+    "nome": "Steatite (pietra ollare)",
+    "voce": "Soapstone",
+    "tipo": "roccia",
+    "categoria": "Metamorfica",
+    "famiglia": "Metamorfica · da rocce ultrafemiche",
+    "caratteri": "Fatta soprattutto di talco: si riga con l'unghia, saponosa al tatto, grigio-verde. Si lavora facilmente.",
+    "fileCommons": "Soapstone (GeoDIL number - 437).jpg",
+    "altriFile": [
+      "Soapstone 1 (14805103732).jpg"
+    ],
+    "foto": {
+      "file": "/campionario/steatite.jpg",
+      "autore": "Nessa Eull",
+      "licenza": "CC0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Soapstone_(GeoDIL_number_-_437).jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/steatite-2.jpg",
+        "autore": "James St. John",
+        "licenza": "CC BY 2.0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Soapstone_1_(14805103732).jpg"
+      }
+    ]
+  },
+  {
+    "id": "pegmatite",
+    "nome": "Pegmatite",
+    "voce": "Pegmatite",
+    "tipo": "roccia",
+    "categoria": "Magmatica intrusiva",
+    "famiglia": "Magmatica intrusiva · filoniana, acida",
+    "caratteri": "Grana grossissima: cristalli centimetrici o più grandi di quarzo, feldspato e mica, spesso con tormalina nera, granato o berillo.",
+    "fileCommons": "Pegmatite with arsenopyrite (GeoDIL number - 1128).jpg",
+    "altriFile": [
+      "Graphic granite (runite) (Ruggles Pegmatite, New Hampshire Plutonic Series, Devonian; Ruggles Pegmatite Mine, western New Hampshire, USA) (14815960350).jpg"
+    ],
+    "foto": {
+      "file": "/campionario/pegmatite.jpg",
+      "autore": "Darla Sondrol",
+      "licenza": "CC0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Pegmatite_with_arsenopyrite_(GeoDIL_number_-_1128).jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/pegmatite-2.jpg",
+        "autore": "James St. John",
+        "licenza": "CC BY 2.0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Graphic_granite_(runite)_(Ruggles_Pegmatite,_New_Hampshire_Plutonic_Series,_Devonian;_Ruggles_Pegmatite_Mine,_western_New_Hampshire,_USA)_(14815960350).jpg"
+      }
+    ]
+  },
+  {
+    "id": "aplite",
+    "nome": "Aplite",
+    "voce": "Aplite",
+    "tipo": "roccia",
+    "categoria": "Magmatica intrusiva",
+    "famiglia": "Magmatica intrusiva · filoniana, acida",
+    "caratteri": "Chiara, a grana fine e uniforme, zuccherina: quasi solo quarzo e feldspato, pochissimi minerali scuri. In filoni che tagliano i graniti.",
+    "fileCommons": "Aplite (GeoDIL number - 372).jpg",
+    "altriFile": [
+      "Aplite (Boulder County, Colorado, USA) - 52188530803.jpg"
+    ],
+    "foto": {
+      "file": "/campionario/aplite.jpg",
+      "autore": "Mike Davis",
+      "licenza": "CC0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Aplite_(GeoDIL_number_-_372).jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/aplite-2.jpg",
+        "autore": "James St. John",
+        "licenza": "CC BY 2.0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Aplite_(Boulder_County,_Colorado,_USA)_-_52188530803.jpg"
+      }
+    ]
+  },
+  {
+    "id": "lamprofiro",
+    "nome": "Lamprofiro",
+    "voce": "Lamprophyre",
+    "tipo": "roccia",
+    "categoria": "Magmatica intrusiva",
+    "famiglia": "Magmatica intrusiva · filoniana",
+    "caratteri": "Filone scuro e porfirico: fenocristalli solo di minerali femici (biotite, anfibolo, pirosseno); i feldspati stanno solo nella pasta di fondo.",
+    "fileCommons": "Lamprophyre (GeoDIL number - 203).jpg",
+    "altriFile": [
+      "Microdiamondiferous ultrapotassic minette (Akluilâk Dike System, Paleoproterozoic, 1.832 Ga; Gibson Lake area, Central Churchill Province, northern Canada) 2.jpg"
+    ],
+    "foto": {
+      "file": "/campionario/lamprofiro.jpg",
+      "autore": "Mike Davis",
+      "licenza": "CC0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Lamprophyre_(GeoDIL_number_-_203).jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/lamprofiro-2.jpg",
+        "autore": "James St. John",
+        "licenza": "CC BY 2.0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Microdiamondiferous_ultrapotassic_minette_(Akluil%C3%A2k_Dike_System,_Paleoproterozoic,_1.832_Ga;_Gibson_Lake_area,_Central_Churchill_Province,_northern_Canada)_2.jpg"
+      }
+    ]
+  },
+  {
+    "id": "sienite-nefelinica",
+    "nome": "Sienite nefelinica",
+    "voce": "Nepheline syenite",
+    "tipo": "roccia",
+    "categoria": "Magmatica intrusiva",
+    "famiglia": "Magmatica intrusiva · con feldspatoidi",
+    "caratteri": "Grana grossa, chiara o grigia: feldspato alcalino e nefelina (grigia, lucentezza grassa), mai quarzo; spesso con sodalite blu.",
+    "fileCommons": "Nepheline Syenite (GeoDIL number - 31).jpg",
+    "altriFile": [
+      "Nepheline syenite (Wausau Syenite Complex, Mesoproterozoic; Wausau, Wisconsin, USA) 2.jpg"
+    ],
+    "foto": {
+      "file": "/campionario/sienite-nefelinica.jpg",
+      "autore": "Joseph H. Hartman",
+      "licenza": "CC0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Nepheline_Syenite_(GeoDIL_number_-_31).jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/sienite-nefelinica-2.jpg",
+        "autore": "James St. John",
+        "licenza": "CC BY 2.0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Nepheline_syenite_(Wausau_Syenite_Complex,_Mesoproterozoic;_Wausau,_Wisconsin,_USA)_2.jpg"
+      }
+    ]
+  },
+  {
+    "id": "dolerite",
+    "nome": "Dolerite (diabase)",
+    "voce": "Diabase",
+    "tipo": "roccia",
+    "categoria": "Magmatica intrusiva",
+    "famiglia": "Magmatica intrusiva · ipoabissale, basica",
+    "caratteri": "Composizione del basalto, ma grana fine-media visibile: listelli di plagioclasio chiaro tra pirosseni scuri (tessitura ofitica). Forma filoni e sill.",
+    "fileCommons": "Diabase (GeoDIL number - 137).jpg",
+    "altriFile": [
+      "Diabase (GeoDIL number - 454).jpg"
+    ],
+    "foto": {
+      "file": "/campionario/dolerite.jpg",
+      "autore": "Mike Davis",
+      "licenza": "CC0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Diabase_(GeoDIL_number_-_137).jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/dolerite-2.jpg",
+        "autore": "Nessa Eull",
+        "licenza": "CC0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Diabase_(GeoDIL_number_-_454).jpg"
+      }
+    ]
+  },
+  {
+    "id": "lherzolite",
+    "nome": "Lherzolite",
+    "voce": "Lherzolite",
+    "tipo": "roccia",
+    "categoria": "Magmatica intrusiva",
+    "famiglia": "Magmatica intrusiva · ultrafemica, peridotite",
+    "caratteri": "Olivina verde-oliva con ortopirosseno bruno e clinopirosseno verde smeraldo (cromodiopside): la roccia tipo del mantello superiore.",
+    "fileCommons": "Spinel lherzolite - Neoproterozoic-aged xenolith in Pleistocene basalt (Mt. Leura Complex, Newer Volcanics Province; Mt. Leura, southwestern Victoria, southeastern Australia) (15004354575).jpg",
+    "altriFile": [
+      "Lherzolite mantle xenolith in basalt (Afton Basalt Flow Upper Pleistocene, 15-20 ka; Kilbourne Hole Crater, Aden-Afton Basalt Field, Potrillo Volcanic Field, southwestern New Mexico, USA) (15013320336).jpg"
+    ],
+    "foto": {
+      "file": "/campionario/lherzolite.jpg",
+      "autore": "James St. John",
+      "licenza": "CC BY 2.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Spinel_lherzolite_-_Neoproterozoic-aged_xenolith_in_Pleistocene_basalt_(Mt._Leura_Complex,_Newer_Volcanics_Province;_Mt._Leura,_southwestern_Victoria,_southeastern_Australia)_(15004354575).jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/lherzolite-2.jpg",
+        "autore": "James St. John",
+        "licenza": "CC BY 2.0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Lherzolite_mantle_xenolith_in_basalt_(Afton_Basalt_Flow_Upper_Pleistocene,_15-20_ka;_Kilbourne_Hole_Crater,_Aden-Afton_Basalt_Field,_Potrillo_Volcanic_Field,_southwestern_New_Mexico,_USA)_(15013320336).jpg"
+      }
+    ]
+  },
+  {
+    "id": "harzburgite",
+    "nome": "Harzburgite",
+    "voce": "Harzburgite",
+    "tipo": "roccia",
+    "categoria": "Magmatica intrusiva",
+    "famiglia": "Magmatica intrusiva · ultrafemica, peridotite",
+    "caratteri": "Peridotite di olivina e ortopirosseno, quasi senza clinopirosseno: mantello impoverito dall'estrazione di magma basaltico.",
+    "fileCommons": "Harzburgite (Stillwater Complex, Neoarchean, 2.71 Ga; Beartooth Mountains, Montana, USA) (16601144800).jpg",
+    "foto": {
+      "file": "/campionario/harzburgite.jpg",
+      "autore": "James St. John",
+      "licenza": "CC BY 2.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Harzburgite_(Stillwater_Complex,_Neoarchean,_2.71_Ga;_Beartooth_Mountains,_Montana,_USA)_(16601144800).jpg"
+    }
+  },
+  {
+    "id": "kimberlite",
+    "nome": "Kimberlite",
+    "voce": "Kimberlite",
+    "tipo": "roccia",
+    "categoria": "Magmatica intrusiva",
+    "famiglia": "Magmatica · ultrafemica, in camini (pipe)",
+    "caratteri": "Verde-bluastra o grigia, spesso brecciata, con noduli di olivina e frammenti del mantello. Risale da grandi profondità e porta i diamanti.",
+    "fileCommons": "Kimberlite (Premier Kimberlite Pipe, Mesoproterozoic, ~1.2 Ga; Premier Mine, near Cullinan, South Africa) 8.jpg",
+    "altriFile": [
+      "Ison Creek Kimberlite (Elliott County Peridotite, Late Cretaceous, 75 Ma; west of Stephens, Elliott County, Kentucky, USA) 20 (48383056141).jpg"
+    ],
+    "foto": {
+      "file": "/campionario/kimberlite.jpg",
+      "autore": "James St. John",
+      "licenza": "CC BY 2.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Kimberlite_(Premier_Kimberlite_Pipe,_Mesoproterozoic,_~1.2_Ga;_Premier_Mine,_near_Cullinan,_South_Africa)_8.jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/kimberlite-2.jpg",
+        "autore": "James St. John",
+        "licenza": "CC BY 2.0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Ison_Creek_Kimberlite_(Elliott_County_Peridotite,_Late_Cretaceous,_75_Ma;_west_of_Stephens,_Elliott_County,_Kentucky,_USA)_20_(48383056141).jpg"
+      }
+    ]
+  },
+  {
+    "id": "carbonatite",
+    "nome": "Carbonatite",
+    "voce": "Carbonatite",
+    "tipo": "roccia",
+    "categoria": "Magmatica intrusiva",
+    "famiglia": "Magmatica intrusiva · carbonatica",
+    "caratteri": "Roccia magmatica fatta per oltre metà di carbonati (calcite, dolomite): sembra un marmo ed effervesce con HCl, ma contiene apatite e magnetite.",
+    "fileCommons": "Calciocarbonatite (sovite) (Panda Hill Carbonatite, Early Cretaceous; ~113 Ma; Panda Hill, southwestern Tanzania, eastern Africa) (14636059059).jpg",
+    "altriFile": [
+      "Carbonatite (Tororo Carbonatite Complex, Middle Eocene, 40 Ma; south of Tororo, Uganda, eastern Africa).jpg"
+    ],
+    "foto": {
+      "file": "/campionario/carbonatite.jpg",
+      "autore": "James St. John",
+      "licenza": "CC BY 2.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Calciocarbonatite_(sovite)_(Panda_Hill_Carbonatite,_Early_Cretaceous;_~113_Ma;_Panda_Hill,_southwestern_Tanzania,_eastern_Africa)_(14636059059).jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/carbonatite-2.jpg",
+        "autore": "James St. John",
+        "licenza": "CC BY 2.0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Carbonatite_(Tororo_Carbonatite_Complex,_Middle_Eocene,_40_Ma;_south_of_Tororo,_Uganda,_eastern_Africa).jpg"
+      }
+    ]
+  },
+  {
+    "id": "fonolite",
+    "nome": "Fonolite",
+    "voce": "Phonolite",
+    "tipo": "roccia",
+    "categoria": "Magmatica effusiva",
+    "famiglia": "Magmatica effusiva · con feldspatoidi",
+    "caratteri": "Grigio-verdastra, compatta, si divide in lastre che percosse risuonano; feldspato alcalino e feldspatoidi (nefelina, leucite), niente quarzo.",
+    "fileCommons": "Phonolite (GeoDIL number - 32).jpg",
+    "altriFile": [
+      "Rock sample Phonolite Addi Amyuq.jpg"
+    ],
+    "foto": {
+      "file": "/campionario/fonolite.jpg",
+      "autore": "Joseph H. Hartman",
+      "licenza": "CC0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Phonolite_(GeoDIL_number_-_32).jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/fonolite-2.jpg",
+        "autore": "Jan Nyssen",
+        "licenza": "CC BY-SA 4.0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Rock_sample_Phonolite_Addi_Amyuq.jpg"
+      }
+    ]
+  },
+  {
+    "id": "dacite",
+    "nome": "Dacite",
+    "voce": "Dacite",
+    "tipo": "roccia",
+    "categoria": "Magmatica effusiva",
+    "famiglia": "Magmatica effusiva · acida-intermedia",
+    "caratteri": "Grigia o rosata, porfirica: fenocristalli di plagioclasio, quarzo, biotite o anfibolo in pasta di fondo fine. Equivalente effusivo della granodiorite.",
+    "fileCommons": "Dacite (GeoDIL number - 90).jpg",
+    "altriFile": [
+      "Pinkish-reddish porphyritic dacite (Upper Pleistocene, 27 ka; Devastated Area, Lassen Volcano National Park, California, USA) 9.jpg"
+    ],
+    "foto": {
+      "file": "/campionario/dacite.jpg",
+      "autore": "Twyla Baker",
+      "licenza": "CC0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Dacite_(GeoDIL_number_-_90).jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/dacite-2.jpg",
+        "autore": "James St. John",
+        "licenza": "CC BY 2.0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Pinkish-reddish_porphyritic_dacite_(Upper_Pleistocene,_27_ka;_Devastated_Area,_Lassen_Volcano_National_Park,_California,_USA)_9.jpg"
+      }
+    ]
+  },
+  {
+    "id": "komatiite",
+    "nome": "Komatiite",
+    "voce": "Komatiite",
+    "tipo": "roccia",
+    "categoria": "Magmatica effusiva",
+    "famiglia": "Magmatica effusiva · ultrafemica",
+    "caratteri": "Lava ultrafemica quasi solo archeana, verde scura; tipica la tessitura a spinifex: lunghe lame incrociate di olivina da raffreddamento rapido.",
+    "fileCommons": "Spinifex komatiite sill in cumulate komatiite lava flow (Upper Komatiitic Unit, Kidd-Munro Assemblage, Neoarchean, 2.711-2.717 Ga; Pyke Hill, near the Potter Mine, east of Timmins, Ontario, Canada) 26 (40876556263).jpg",
+    "altriFile": [
+      "Spinifex komatiite sill in cumulate komatiite lava flow (Upper Komatiitic Unit, Kidd-Munro Assemblage, Neoarchean, 2.711-2.717 Ga; Pyke Hill, near the Potter Mine, east of Timmins, Ontario, Canada) 41 (32899339397).jpg"
+    ],
+    "foto": {
+      "file": "/campionario/komatiite.jpg",
+      "autore": "James St. John",
+      "licenza": "CC BY 2.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Spinifex_komatiite_sill_in_cumulate_komatiite_lava_flow_(Upper_Komatiitic_Unit,_Kidd-Munro_Assemblage,_Neoarchean,_2.711-2.717_Ga;_Pyke_Hill,_near_the_Potter_Mine,_east_of_Timmins,_Ontario,_Canada)_26_(40876556263).jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/komatiite-2.jpg",
+        "autore": "James St. John",
+        "licenza": "CC BY 2.0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Spinifex_komatiite_sill_in_cumulate_komatiite_lava_flow_(Upper_Komatiitic_Unit,_Kidd-Munro_Assemblage,_Neoarchean,_2.711-2.717_Ga;_Pyke_Hill,_near_the_Potter_Mine,_east_of_Timmins,_Ontario,_Canada)_41_(32899339397).jpg"
+      }
+    ]
+  },
+  {
+    "id": "lava-a-cuscino",
+    "nome": "Lava a cuscino",
+    "voce": "Pillow lava",
+    "tipo": "roccia",
+    "categoria": "Magmatica effusiva",
+    "famiglia": "Magmatica effusiva · basica, sottomarina",
+    "caratteri": "Basalto in corpi tondeggianti a cuscino con crosta vetrosa scura, raffreddati in acqua. Frequenti nelle ofioliti liguri.",
+    "fileCommons": "Pillow Lava - geograph.org.uk - 7546458.jpg",
+    "altriFile": [
+      "Pillow lava on Gwddw Llanddwyn - geograph.org.uk - 2223238.jpg"
+    ],
+    "foto": {
+      "file": "/campionario/lava-a-cuscino.jpg",
+      "autore": "Anne Burgess",
+      "licenza": "CC BY-SA 2.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Pillow_Lava_-_geograph.org.uk_-_7546458.jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/lava-a-cuscino-2.jpg",
+        "autore": "Jeff Buck",
+        "licenza": "CC BY-SA 2.0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Pillow_lava_on_Gwddw_Llanddwyn_-_geograph.org.uk_-_2223238.jpg"
+      }
+    ]
+  },
+  {
+    "id": "ignimbrite",
+    "nome": "Ignimbrite",
+    "voce": "Ignimbrite",
+    "tipo": "roccia",
+    "categoria": "Magmatica piroclastica",
+    "famiglia": "Piroclastica · da flusso",
+    "caratteri": "Deposito di flusso piroclastico: cenere e pomici, spesso saldate in lenti scure appiattite (fiamme), con frammenti litici sparsi.",
+    "fileCommons": "Greenish welded tuff (Tertiary; Blue Point Quarry, Jawbone Canyon, Kern County, California, USA) 27.jpg",
+    "altriFile": [
+      "Ignimbrite.jpg"
+    ],
+    "foto": {
+      "file": "/campionario/ignimbrite.jpg",
+      "autore": "James St. John",
+      "licenza": "CC BY 2.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Greenish_welded_tuff_(Tertiary;_Blue_Point_Quarry,_Jawbone_Canyon,_Kern_County,_California,_USA)_27.jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/ignimbrite-2.jpg",
+        "autore": "No machine-readable author provided. Siim assumed (based on copyright claims).",
+        "licenza": "CC BY-SA 3.0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Ignimbrite.jpg"
+      }
+    ]
+  },
+  {
+    "id": "lapilli",
+    "nome": "Lapilli",
+    "voce": "Lapilli",
+    "tipo": "roccia",
+    "categoria": "Magmatica piroclastica",
+    "famiglia": "Piroclastica · da caduta",
+    "caratteri": "Piroclasti da 2 a 64 mm, spesso scuri e vescicolari, sciolti o debolmente cementati.",
+    "fileCommons": "Volcanic lapilli (7 March 2021 eruption of Mt. Etna, eastern Sicily) 2.jpg",
+    "altriFile": [
+      "Basaltic lapilli (Ascension Island, Atlantic Ocean).jpg"
+    ],
+    "foto": {
+      "file": "/campionario/lapilli.jpg",
+      "autore": "James St. John",
+      "licenza": "CC BY 2.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Volcanic_lapilli_(7_March_2021_eruption_of_Mt._Etna,_eastern_Sicily)_2.jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/lapilli-2.jpg",
+        "autore": "James St. John",
+        "licenza": "CC BY 2.0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Basaltic_lapilli_(Ascension_Island,_Atlantic_Ocean).jpg"
+      }
+    ]
+  },
+  {
+    "id": "bomba-vulcanica",
+    "nome": "Bomba vulcanica",
+    "voce": "Volcanic bomb",
+    "tipo": "roccia",
+    "categoria": "Magmatica piroclastica",
+    "famiglia": "Piroclastica · piroclasto oltre 64 mm",
+    "caratteri": "Lanciata ancora fusa: forma a fuso o a mandorla per la rotazione in volo, crosta scura spesso fessurata «a crosta di pane».",
+    "fileCommons": "Volcanic bomb (basaltic andesite) (Upper Pleistocene, 71 ka; SP Crater cinder cone, Coconino County, Arizona, USA) 4 (31245320881).jpg",
+    "altriFile": [
+      "Basalt Volcanic Bomb from Eldfell volcano on Heimaey in Iceland - Smithsonian Rock Sample NMNH-EO 045268.jpg"
+    ],
+    "foto": {
+      "file": "/campionario/bomba-vulcanica.jpg",
+      "autore": "James St. John",
+      "licenza": "CC BY 2.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Volcanic_bomb_(basaltic_andesite)_(Upper_Pleistocene,_71_ka;_SP_Crater_cinder_cone,_Coconino_County,_Arizona,_USA)_4_(31245320881).jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/bomba-vulcanica-2.jpg",
+        "autore": "Andoni Alvarez, Smithsonian Institution",
+        "licenza": "CC0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Basalt_Volcanic_Bomb_from_Eldfell_volcano_on_Heimaey_in_Iceland_-_Smithsonian_Rock_Sample_NMNH-EO_045268.jpg"
+      }
+    ]
+  },
+  {
+    "id": "microclino",
+    "nome": "Microclino",
+    "voce": "Microcline",
+    "tipo": "minerale",
+    "categoria": "Minerale",
+    "famiglia": "Tettosilicato · feldspato alcalino · KAlSi₃O₈",
+    "caratteri": "Feldspato potassico bianco, rosa o verde-azzurro (amazzonite); due sfaldature quasi ad angolo retto, durezza 6. Comune nei graniti e nelle pegmatiti.",
+    "fileCommons": "Microcline-36859.jpg",
+    "altriFile": [
+      "Microcline (GeoDIL number - 2382).jpg"
+    ],
+    "foto": {
+      "file": "/campionario/microclino.jpg",
+      "autore": "Robert M. Lavinsky",
+      "licenza": "CC BY-SA 3.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Microcline-36859.jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/microclino-2.jpg",
+        "autore": "Darla Sondrol",
+        "licenza": "CC0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Microcline_(GeoDIL_number_-_2382).jpg"
+      }
+    ]
+  },
+  {
+    "id": "sanidino",
+    "nome": "Sanidino",
+    "voce": "Sanidine",
+    "tipo": "minerale",
+    "categoria": "Minerale",
+    "famiglia": "Tettosilicato · feldspato alcalino di alta temperatura",
+    "caratteri": "Feldspato potassico delle lave: cristalli tabulari limpidi, incolori o bianchi, vitrei, spesso geminati. Tipico di trachiti e rioliti.",
+    "fileCommons": "Sanidine.jpg",
+    "altriFile": [
+      "Sanidine-243308.jpg"
+    ],
+    "foto": {
+      "file": "/campionario/sanidino.jpg",
+      "autore": "Didier Descouens",
+      "licenza": "CC BY-SA 4.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Sanidine.jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/sanidino-2.jpg",
+        "autore": "Robert M. Lavinsky",
+        "licenza": "CC BY-SA 3.0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Sanidine-243308.jpg"
+      }
+    ]
+  },
+  {
+    "id": "albite",
+    "nome": "Albite",
+    "voce": "Albite",
+    "tipo": "minerale",
+    "categoria": "Minerale",
+    "famiglia": "Tettosilicato · plagioclasio sodico · NaAlSi₃O₈",
+    "caratteri": "Plagioclasio sodico: bianco, in cristalli tabulari o lamine (cleavelandite); sottili striature di geminazione sulle facce di sfaldatura. Durezza 6–6,5.",
+    "fileCommons": "Albite-122806.jpg",
+    "altriFile": [
+      "Albite (GeoDIL number - 2917).jpg"
+    ],
+    "foto": {
+      "file": "/campionario/albite.jpg",
+      "autore": "Robert M. Lavinsky",
+      "licenza": "CC BY-SA 3.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Albite-122806.jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/albite-2.jpg",
+        "autore": "Shannon Heinle",
+        "licenza": "CC0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Albite_(GeoDIL_number_-_2917).jpg"
+      }
+    ]
+  },
+  {
+    "id": "labradorite",
+    "nome": "Labradorite",
+    "voce": "Labradorite",
+    "tipo": "minerale",
+    "categoria": "Minerale",
+    "famiglia": "Tettosilicato · plagioclasio calcico-sodico",
+    "caratteri": "Plagioclasio grigio scuro che, girato alla luce, mostra riflessi iridescenti blu, verdi o dorati (labradorescenza).",
+    "fileCommons": "Labradorite (Wiborg Batholith, 1633 Ma; Kymi Province, Finland) 4.jpg",
+    "altriFile": [
+      "Labradorite (GeoDIL number - 2380).jpg"
+    ],
+    "foto": {
+      "file": "/campionario/labradorite.jpg",
+      "autore": "James St. John",
+      "licenza": "CC BY 2.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Labradorite_(Wiborg_Batholith,_1633_Ma;_Kymi_Province,_Finland)_4.jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/labradorite-2.jpg",
+        "autore": "Darla Sondrol",
+        "licenza": "CC0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Labradorite_(GeoDIL_number_-_2380).jpg"
+      }
+    ]
+  },
+  {
+    "id": "leucite",
+    "nome": "Leucite",
+    "voce": "Leucite",
+    "tipo": "minerale",
+    "categoria": "Minerale",
+    "famiglia": "Tettosilicato · feldspatoide · KAlSi₂O₆",
+    "caratteri": "Cristalli bianco-grigi a icositetraedro (24 facce), quasi sferici, in lave povere di silice; tipica dei vulcani laziali e del Vesuvio.",
+    "fileCommons": "Leucite-Orthoclase-d06-40a.jpg",
+    "altriFile": [
+      "Leucite (GeoDIL number - 2946).jpg"
+    ],
+    "foto": {
+      "file": "/campionario/leucite.jpg",
+      "autore": "Robert M. Lavinsky",
+      "licenza": "CC BY-SA 3.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Leucite-Orthoclase-d06-40a.jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/leucite-2.jpg",
+        "autore": "Shannon Heinle",
+        "licenza": "CC0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Leucite_(GeoDIL_number_-_2946).jpg"
+      }
+    ]
+  },
+  {
+    "id": "nefelina",
+    "nome": "Nefelina",
+    "voce": "Nepheline",
+    "tipo": "minerale",
+    "categoria": "Minerale",
+    "famiglia": "Tettosilicato · feldspatoide",
+    "caratteri": "Grigia o verdastra, lucentezza grassa, sfaldatura scarsa; mai insieme al quarzo. Nelle sieniti nefeliniche e nelle fonoliti.",
+    "fileCommons": "Nepheline (GeoDIL number - 2443).jpg",
+    "altriFile": [
+      "Nepheline (GeoDIL number - 2941).jpg"
+    ],
+    "foto": {
+      "file": "/campionario/nefelina.jpg",
+      "autore": "Shannon Heinle",
+      "licenza": "CC0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Nepheline_(GeoDIL_number_-_2443).jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/nefelina-2.jpg",
+        "autore": "Shannon Heinle",
+        "licenza": "CC0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Nepheline_(GeoDIL_number_-_2941).jpg"
+      }
+    ]
+  },
+  {
+    "id": "sodalite",
+    "nome": "Sodalite",
+    "voce": "Sodalite",
+    "tipo": "minerale",
+    "categoria": "Minerale",
+    "famiglia": "Tettosilicato · feldspatoide",
+    "caratteri": "Blu intenso, spesso con venature bianche, massiva, vitrea; durezza 5,5–6. Ricorda il lapislazzuli, ma senza pirite dorata.",
+    "fileCommons": "Sodalite (GeoDIL number - 2371).jpg",
+    "altriFile": [
+      "Sodalite (Poços de Caldas Alkaline Complex, Late Cretaceous, 76-78 Ma; Poços de Caldas Plateau, Brazil) 1.jpg"
+    ],
+    "foto": {
+      "file": "/campionario/sodalite.jpg",
+      "autore": "Darla Sondrol",
+      "licenza": "CC0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Sodalite_(GeoDIL_number_-_2371).jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/sodalite-2.jpg",
+        "autore": "James St. John",
+        "licenza": "CC BY 2.0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Sodalite_(Po%C3%A7os_de_Caldas_Alkaline_Complex,_Late_Cretaceous,_76-78_Ma;_Po%C3%A7os_de_Caldas_Plateau,_Brazil)_1.jpg"
+      }
+    ]
+  },
+  {
+    "id": "almandino",
+    "nome": "Granato (almandino)",
+    "voce": "Almandine",
+    "tipo": "minerale",
+    "categoria": "Minerale",
+    "famiglia": "Nesosilicato · granato · Fe₃Al₂(SiO₄)₃",
+    "caratteri": "Rosso scuro o bruno-violaceo, in cristalli a dodecaedro o icositetraedro; durezza 7–7,5, senza sfaldatura. Tipico dei micascisti.",
+    "fileCommons": "Almandine garnet 1.jpg",
+    "altriFile": [
+      "Almandine-190166.jpg"
+    ],
+    "foto": {
+      "file": "/campionario/almandino.jpg",
+      "autore": "James St. John",
+      "licenza": "CC BY 2.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Almandine_garnet_1.jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/almandino-2.jpg",
+        "autore": "Robert M. Lavinsky",
+        "licenza": "CC BY-SA 3.0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Almandine-190166.jpg"
+      }
+    ]
+  },
+  {
+    "id": "tormalina",
+    "nome": "Tormalina (sciorlo)",
+    "voce": "Schorl",
+    "tipo": "minerale",
+    "categoria": "Minerale",
+    "famiglia": "Ciclosilicato · tormalina",
+    "caratteri": "Prismi neri allungati, a sezione triangolare arrotondata, con facce fittamente striate per lungo; durezza 7, senza sfaldatura. Comune nelle pegmatiti.",
+    "fileCommons": "Schorl (GeoDIL number - 1848).jpg",
+    "altriFile": [
+      "Schorl-207266.jpg"
+    ],
+    "foto": {
+      "file": "/campionario/tormalina.jpg",
+      "autore": "Shannon Heinle",
+      "licenza": "CC0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Schorl_(GeoDIL_number_-_1848).jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/tormalina-2.jpg",
+        "autore": "Robert M. Lavinsky",
+        "licenza": "CC BY-SA 3.0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Schorl-207266.jpg"
+      }
+    ]
+  },
+  {
+    "id": "zircone",
+    "nome": "Zircone",
+    "voce": "Zircon",
+    "tipo": "minerale",
+    "categoria": "Minerale",
+    "famiglia": "Nesosilicato · ZrSiO₄",
+    "caratteri": "Piccoli prismi chiusi da piramidi, bruni o rossastri, lucentezza adamantina; durezza 7,5. Resistentissimo: si usa per datare le rocce (U-Pb).",
+    "fileCommons": "Zircon-79652.jpg",
+    "altriFile": [
+      "Zircon (GeoDIL number - 255).jpg"
+    ],
+    "foto": {
+      "file": "/campionario/zircone.jpg",
+      "autore": "Robert M. Lavinsky",
+      "licenza": "CC BY-SA 3.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Zircon-79652.jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/zircone-2.jpg",
+        "autore": "Shannon Heinle",
+        "licenza": "CC0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Zircon_(GeoDIL_number_-_255).jpg"
+      }
+    ]
+  },
+  {
+    "id": "staurolite",
+    "nome": "Staurolite",
+    "voce": "Staurolite",
+    "tipo": "minerale",
+    "categoria": "Minerale",
+    "famiglia": "Nesosilicato · Fe-Al",
+    "caratteri": "Prismi bruni opachi, spesso geminati a croce, nei micascisti di medio grado; durezza 7–7,5.",
+    "fileCommons": "Staurolite (GeoDIL number - 838).jpg",
+    "altriFile": [
+      "Staurolite schist (Keivy Schist; Mt. Ploskaya, Kola Peninsula, Russia) 11.jpg"
+    ],
+    "foto": {
+      "file": "/campionario/staurolite.jpg",
+      "autore": "Shannon Heinle",
+      "licenza": "CC0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Staurolite_(GeoDIL_number_-_838).jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/staurolite-2.jpg",
+        "autore": "James St. John",
+        "licenza": "CC BY 2.0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Staurolite_schist_(Keivy_Schist;_Mt._Ploskaya,_Kola_Peninsula,_Russia)_11.jpg"
+      }
+    ]
+  },
+  {
+    "id": "cianite",
+    "nome": "Cianite",
+    "voce": "Kyanite",
+    "tipo": "minerale",
+    "categoria": "Minerale",
+    "famiglia": "Nesosilicato · Al₂SiO₅",
+    "caratteri": "Lame allungate azzurre. Durezza diversa con la direzione: si riga col coltello lungo l'allungamento, non di traverso. Polimorfo di alta pressione.",
+    "fileCommons": "Kyanite (GeoDIL number - 940).jpg",
+    "altriFile": [
+      "Kyanite (GeoDIL number - 384).jpg"
+    ],
+    "foto": {
+      "file": "/campionario/cianite.jpg",
+      "autore": "Twyla Baker",
+      "licenza": "CC0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Kyanite_(GeoDIL_number_-_940).jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/cianite-2.jpg",
+        "autore": "Shannon Heinle",
+        "licenza": "CC0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Kyanite_(GeoDIL_number_-_384).jpg"
+      }
+    ]
+  },
+  {
+    "id": "sillimanite",
+    "nome": "Sillimanite",
+    "voce": "Sillimanite",
+    "tipo": "minerale",
+    "categoria": "Minerale",
+    "famiglia": "Nesosilicato · Al₂SiO₅",
+    "caratteri": "Polimorfo di alta temperatura: aghi o fasci fibrosi bianchi o grigi, lucentezza sericea. Negli gneiss di alto grado.",
+    "fileCommons": "Sillimanite (GeoDIL number - 385).jpg",
+    "altriFile": [
+      "Sillimanite schist (GeoDIL number - 364).jpg"
+    ],
+    "foto": {
+      "file": "/campionario/sillimanite.jpg",
+      "autore": "Shannon Heinle",
+      "licenza": "CC0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Sillimanite_(GeoDIL_number_-_385).jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/sillimanite-2.jpg",
+        "autore": "Darla Sondrol",
+        "licenza": "CC0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Sillimanite_schist_(GeoDIL_number_-_364).jpg"
+      }
+    ]
+  },
+  {
+    "id": "andalusite",
+    "nome": "Andalusite",
+    "voce": "Andalusite",
+    "tipo": "minerale",
+    "categoria": "Minerale",
+    "famiglia": "Nesosilicato · Al₂SiO₅",
+    "caratteri": "Polimorfo di bassa pressione: prismi a sezione quasi quadrata, rosati o bruni; nella chiastolite la sezione mostra una croce scura di inclusioni carboniose.",
+    "fileCommons": "Chiastolite andalusite 1 (47363026992).jpg",
+    "altriFile": [
+      "Andalusite-65654.jpg"
+    ],
+    "foto": {
+      "file": "/campionario/andalusite.jpg",
+      "autore": "James St. John",
+      "licenza": "CC BY 2.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Chiastolite_andalusite_1_(47363026992).jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/andalusite-2.jpg",
+        "autore": "Robert M. Lavinsky",
+        "licenza": "CC BY-SA 3.0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Andalusite-65654.jpg"
+      }
+    ]
+  },
+  {
+    "id": "epidoto",
+    "nome": "Epidoto",
+    "voce": "Epidote",
+    "tipo": "minerale",
+    "categoria": "Minerale",
+    "famiglia": "Sorosilicato · Ca-Al-Fe",
+    "caratteri": "Verde pistacchio, in prismi striati o aggregati; durezza 6–7, vitreo. Comune negli scisti verdi e nelle rocce di basso grado.",
+    "fileCommons": "Epidote Madagascar.jpg",
+    "altriFile": [
+      "Epidote (GeoDIL number - 1025).jpg"
+    ],
+    "foto": {
+      "file": "/campionario/epidoto.jpg",
+      "autore": "Didier Descouens",
+      "licenza": "CC BY 4.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Epidote_Madagascar.jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/epidoto-2.jpg",
+        "autore": "Darla Sondrol",
+        "licenza": "CC0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Epidote_(GeoDIL_number_-_1025).jpg"
+      }
+    ]
+  },
+  {
+    "id": "clorite",
+    "nome": "Clorite",
+    "voce": "Chlorite group",
+    "tipo": "minerale",
+    "categoria": "Minerale",
+    "famiglia": "Fillosilicato · gruppo della clorite",
+    "caratteri": "Verde scuro, in lamine flessibili ma non elastiche (le miche lo sono), tenera, un po' untuosa. Dà il colore agli scisti verdi.",
+    "fileCommons": "Clinochlore-225077.jpg",
+    "altriFile": [
+      "Clinochlore-usa12c.jpg"
+    ],
+    "foto": {
+      "file": "/campionario/clorite.jpg",
+      "autore": "Robert M. Lavinsky",
+      "licenza": "CC BY-SA 3.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Clinochlore-225077.jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/clorite-2.jpg",
+        "autore": "Robert M. Lavinsky",
+        "licenza": "CC BY-SA 3.0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Clinochlore-usa12c.jpg"
+      }
+    ]
+  },
+  {
+    "id": "talco",
+    "nome": "Talco",
+    "voce": "Talc",
+    "tipo": "minerale",
+    "categoria": "Minerale",
+    "famiglia": "Fillosilicato · Mg₃Si₄O₁₀(OH)₂",
+    "caratteri": "Durezza 1: si riga con l'unghia. Saponoso al tatto, bianco, verde chiaro o grigio, lucentezza perlacea.",
+    "fileCommons": "Talc (GeoDIL number - 2343).jpg",
+    "altriFile": [
+      "Talc-121776.jpg"
+    ],
+    "foto": {
+      "file": "/campionario/talco.jpg",
+      "autore": "Shannon Heinle",
+      "licenza": "CC0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Talc_(GeoDIL_number_-_2343).jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/talco-2.jpg",
+        "autore": "Robert M. Lavinsky",
+        "licenza": "CC BY-SA 3.0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Talc-121776.jpg"
+      }
+    ]
+  },
+  {
+    "id": "crisotilo",
+    "nome": "Crisotilo (serpentino fibroso)",
+    "voce": "Chrysotile",
+    "tipo": "minerale",
+    "categoria": "Minerale",
+    "famiglia": "Fillosilicato · serpentino",
+    "caratteri": "Fibre sottili, flessibili e setose, bianco-verdi o dorate, in vene nelle serpentiniti. È un amianto: non va sfregato né frantumato.",
+    "fileCommons": "Chrysotile (GeoDIL number - 2639).jpg",
+    "altriFile": [
+      "Chrysotile asbestos vein sinuosity 9.jpg"
+    ],
+    "foto": {
+      "file": "/campionario/crisotilo.jpg",
+      "autore": "Nessa Eull",
+      "licenza": "CC0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Chrysotile_(GeoDIL_number_-_2639).jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/crisotilo-2.jpg",
+        "autore": "James St. John",
+        "licenza": "CC BY 2.0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Chrysotile_asbestos_vein_sinuosity_9.jpg"
+      }
+    ]
+  },
+  {
+    "id": "glaucofane",
+    "nome": "Glaucofane",
+    "voce": "Glaucophane",
+    "tipo": "minerale",
+    "categoria": "Minerale",
+    "famiglia": "Inosilicato · anfibolo sodico",
+    "caratteri": "Prismi o aghi blu-grigi o blu-lavanda, con le sfaldature dell'anfibolo a circa 120°; il minerale degli scisti blu.",
+    "fileCommons": "Glaucophane bleu de Groix.jpg",
+    "altriFile": [
+      "Glaucophane (GeoDIL number - 1712).jpg"
+    ],
+    "foto": {
+      "file": "/campionario/glaucofane.jpg",
+      "autore": "Didier Descouens",
+      "licenza": "CC BY-SA 4.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Glaucophane_bleu_de_Groix.jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/glaucofane-2.jpg",
+        "autore": "Shannon Heinle",
+        "licenza": "CC0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Glaucophane_(GeoDIL_number_-_1712).jpg"
+      }
+    ]
+  },
+  {
+    "id": "actinolite",
+    "nome": "Actinolite",
+    "voce": "Actinolite",
+    "tipo": "minerale",
+    "categoria": "Minerale",
+    "famiglia": "Inosilicato · anfibolo calcico",
+    "caratteri": "Prismi aciculari verdi, spesso in fasci raggiati; sfaldature a circa 120°. Negli scisti verdi; la varietà fibrosa è un amianto.",
+    "fileCommons": "Actinolite (GeoDIL number - 1706).jpg",
+    "altriFile": [
+      "Actinolite Portugal.jpg"
+    ],
+    "foto": {
+      "file": "/campionario/actinolite.jpg",
+      "autore": "Shannon Heinle",
+      "licenza": "CC0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Actinolite_(GeoDIL_number_-_1706).jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/actinolite-2.jpg",
+        "autore": "Didier Descouens",
+        "licenza": "CC BY-SA 4.0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Actinolite_Portugal.jpg"
+      }
+    ]
+  },
+  {
+    "id": "tremolite",
+    "nome": "Tremolite",
+    "voce": "Tremolite",
+    "tipo": "minerale",
+    "categoria": "Minerale",
+    "famiglia": "Inosilicato · anfibolo calcico-magnesiaco",
+    "caratteri": "Bianca o grigia, in prismi allungati o fasci fibrosi; nei marmi dolomitici metamorfosati.",
+    "fileCommons": "Tremolite Campolungo.jpg",
+    "altriFile": [
+      "Tremolite (GeoDIL number - 1703).jpg"
+    ],
+    "foto": {
+      "file": "/campionario/tremolite.jpg",
+      "autore": "Didier Descouens",
+      "licenza": "CC BY-SA 4.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Tremolite_Campolungo.jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/tremolite-2.jpg",
+        "autore": "Shannon Heinle",
+        "licenza": "CC0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Tremolite_(GeoDIL_number_-_1703).jpg"
+      }
+    ]
+  },
+  {
+    "id": "diopside",
+    "nome": "Diopside",
+    "voce": "Diopside",
+    "tipo": "minerale",
+    "categoria": "Minerale",
+    "famiglia": "Inosilicato · pirosseno · CaMgSi₂O₆",
+    "caratteri": "Prismi tozzi verde chiaro o verde bottiglia, due sfaldature quasi ad angolo retto; durezza 5,5–6,5. In marmi, skarn e peridotiti.",
+    "fileCommons": "Diopside-jmix07-156a.jpg",
+    "altriFile": [
+      "Chrome diopside and quartz (GeoDIL number - 990).jpg"
+    ],
+    "foto": {
+      "file": "/campionario/diopside.jpg",
+      "autore": "Robert M. Lavinsky",
+      "licenza": "CC BY-SA 3.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Diopside-jmix07-156a.jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/diopside-2.jpg",
+        "autore": "Twyla Baker",
+        "licenza": "CC0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Chrome_diopside_and_quartz_(GeoDIL_number_-_990).jpg"
+      }
+    ]
+  },
+  {
+    "id": "enstatite",
+    "nome": "Enstatite",
+    "voce": "Enstatite",
+    "tipo": "minerale",
+    "categoria": "Minerale",
+    "famiglia": "Inosilicato · ortopirosseno · MgSiO₃",
+    "caratteri": "Ortopirosseno grigio-verde o bruno; la varietà bronzite ha riflessi bronzei sulle facce di sfaldatura. Comune nelle peridotiti.",
+    "fileCommons": "Enstatite-83152.jpg",
+    "altriFile": [
+      "Bronzite-Lingoutte-Université de Strasbourg.jpg"
+    ],
+    "foto": {
+      "file": "/campionario/enstatite.jpg",
+      "autore": "Robert M. Lavinsky",
+      "licenza": "CC BY-SA 3.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Enstatite-83152.jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/enstatite-2.jpg",
+        "autore": "Ji-Elle",
+        "licenza": "CC BY-SA 3.0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Bronzite-Lingoutte-Universit%C3%A9_de_Strasbourg.jpg"
+      }
+    ]
+  },
+  {
+    "id": "topazio",
+    "nome": "Topazio",
+    "voce": "Topaz",
+    "tipo": "minerale",
+    "categoria": "Minerale",
+    "famiglia": "Nesosilicato · Al₂SiO₄(F,OH)₂",
+    "caratteri": "Durezza 8; prismi a facce striate, incolori, gialli o azzurri, con una sfaldatura basale perfetta. Nelle pegmatiti.",
+    "fileCommons": "Topaz-162729.jpg",
+    "altriFile": [
+      "Topaz (GeoDIL number - 263).jpg"
+    ],
+    "foto": {
+      "file": "/campionario/topazio.jpg",
+      "autore": "Robert M. Lavinsky",
+      "licenza": "CC BY-SA 3.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Topaz-162729.jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/topazio-2.jpg",
+        "autore": "Shannon Heinle",
+        "licenza": "CC0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Topaz_(GeoDIL_number_-_263).jpg"
+      }
+    ]
+  },
+  {
+    "id": "corindone",
+    "nome": "Corindone",
+    "voce": "Corundum",
+    "tipo": "minerale",
+    "categoria": "Minerale",
+    "famiglia": "Ossido · Al₂O₃",
+    "caratteri": "Durezza 9; prismi esagonali tozzi o a botte, grigi, bruni, rossi (rubino) o blu (zaffiro); pesante.",
+    "fileCommons": "Corundum (GeoDIL number - 1433).jpg",
+    "altriFile": [
+      "Corundum (GeoDIL number - 1438).jpg"
+    ],
+    "foto": {
+      "file": "/campionario/corindone.jpg",
+      "autore": "Darla Sondrol",
+      "licenza": "CC0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Corundum_(GeoDIL_number_-_1433).jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/corindone-2.jpg",
+        "autore": "Nessa Eull",
+        "licenza": "CC0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Corundum_(GeoDIL_number_-_1438).jpg"
+      }
+    ]
+  },
+  {
+    "id": "apatite",
+    "nome": "Apatite",
+    "voce": "Apatite",
+    "tipo": "minerale",
+    "categoria": "Minerale",
+    "famiglia": "Fosfato · Ca₅(PO₄)₃(F,Cl,OH)",
+    "caratteri": "Prismi esagonali verdi, gialli, azzurri o bruni; durezza 5 (riferimento della scala di Mohs). Accessorio in quasi tutte le rocce magmatiche.",
+    "fileCommons": "Apatite-(CaF)-261814.jpg",
+    "altriFile": [
+      "Apatite (Ontario, Canada) 1.jpg"
+    ],
+    "foto": {
+      "file": "/campionario/apatite.jpg",
+      "autore": "Robert M. Lavinsky",
+      "licenza": "CC BY-SA 3.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Apatite-(CaF)-261814.jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/apatite-2.jpg",
+        "autore": "James St. John",
+        "licenza": "CC BY 2.0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Apatite_(Ontario,_Canada)_1.jpg"
+      }
+    ]
+  },
+  {
+    "id": "fluorite",
+    "nome": "Fluorite",
+    "voce": "Fluorite",
+    "tipo": "minerale",
+    "categoria": "Minerale",
+    "famiglia": "Alogenuro · CaF₂",
+    "caratteri": "Cubi od ottaedri viola, verdi, gialli o incolori; durezza 4, sfaldatura ottaedrica perfetta; spesso fluorescente agli UV.",
+    "fileCommons": "Fluorite (GeoDIL number - 178).jpg",
+    "altriFile": [
+      "Fluorite (GeoDIL number - 179).jpg"
+    ],
+    "foto": {
+      "file": "/campionario/fluorite.jpg",
+      "autore": "Darla Sondrol",
+      "licenza": "CC0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Fluorite_(GeoDIL_number_-_178).jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/fluorite-2.jpg",
+        "autore": "Darla Sondrol",
+        "licenza": "CC0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Fluorite_(GeoDIL_number_-_179).jpg"
+      }
+    ]
+  },
+  {
+    "id": "barite",
+    "nome": "Barite",
+    "voce": "Baryte",
+    "tipo": "minerale",
+    "categoria": "Minerale",
+    "famiglia": "Solfato · BaSO₄",
+    "caratteri": "Bianca, gialla o azzurrina, in cristalli tabulari o rosette; colpisce il peso (densità 4,5). Durezza 3–3,5.",
+    "fileCommons": "Barite Sardaigne.jpg",
+    "altriFile": [
+      "Baryte-286319.jpg"
+    ],
+    "foto": {
+      "file": "/campionario/barite.jpg",
+      "autore": "Didier Descouens",
+      "licenza": "CC BY-SA 4.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Barite_Sardaigne.jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/barite-2.jpg",
+        "autore": "Robert M. Lavinsky",
+        "licenza": "CC BY-SA 3.0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Baryte-286319.jpg"
+      }
+    ]
+  },
+  {
+    "id": "anidrite",
+    "nome": "Anidrite",
+    "voce": "Anhydrite",
+    "tipo": "minerale",
+    "categoria": "Minerale",
+    "famiglia": "Solfato · CaSO₄",
+    "caratteri": "Gesso senz'acqua: bianca, grigia o azzurrina, massiva o granulare; più dura del gesso (3–3,5), tre sfaldature ad angolo retto. Nelle evaporiti.",
+    "fileCommons": "Anhydrite (GeoDIL number - 587).jpg",
+    "altriFile": [
+      "Anhydrite-308132.jpg"
+    ],
+    "foto": {
+      "file": "/campionario/anidrite.jpg",
+      "autore": "Darla Sondrol",
+      "licenza": "CC0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Anhydrite_(GeoDIL_number_-_587).jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/anidrite-2.jpg",
+        "autore": "Robert M. Lavinsky",
+        "licenza": "CC BY-SA 3.0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Anhydrite-308132.jpg"
+      }
+    ]
+  },
+  {
+    "id": "halite",
+    "nome": "Halite (salgemma)",
+    "voce": "Halite",
+    "tipo": "minerale",
+    "categoria": "Minerale",
+    "famiglia": "Alogenuro · NaCl",
+    "caratteri": "Cubi incolori o bianchi, sfaldatura cubica; sapore salato, si scioglie in acqua, durezza 2,5. Forma i giacimenti di salgemma.",
+    "fileCommons": "Halite-251628.jpg",
+    "foto": {
+      "file": "/campionario/halite.jpg",
+      "autore": "Robert M. Lavinsky",
+      "licenza": "CC BY-SA 3.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Halite-251628.jpg"
+    }
+  },
+  {
+    "id": "aragonite",
+    "nome": "Aragonite",
+    "voce": "Aragonite",
+    "tipo": "minerale",
+    "categoria": "Minerale",
+    "famiglia": "Carbonato · CaCO₃ ortorombico",
+    "caratteri": "Polimorfo della calcite: prismi aciculari, gruppi raggiati o geminati pseudoesagonali; effervesce con HCl ma non ha la sfaldatura romboedrica.",
+    "fileCommons": "Aragonite-rut157b.jpg",
+    "altriFile": [
+      "Aragonite Salsigne France.jpg"
+    ],
+    "foto": {
+      "file": "/campionario/aragonite.jpg",
+      "autore": "Robert M. Lavinsky",
+      "licenza": "CC BY-SA 3.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Aragonite-rut157b.jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/aragonite-2.jpg",
+        "autore": "Didier Descouens",
+        "licenza": "CC BY-SA 4.0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Aragonite_Salsigne_France.jpg"
+      }
+    ]
+  },
+  {
+    "id": "siderite",
+    "nome": "Siderite",
+    "voce": "Siderite",
+    "tipo": "minerale",
+    "categoria": "Minerale",
+    "famiglia": "Carbonato · FeCO₃",
+    "caratteri": "Romboedri bruno-giallastri o bruni, spesso a facce curve; pesante per un carbonato. Con HCl reagisce solo in polvere o a caldo.",
+    "fileCommons": "Siderite-lw34a.jpg",
+    "altriFile": [
+      "Siderite late 1800s Redruth.jpg"
+    ],
+    "foto": {
+      "file": "/campionario/siderite.jpg",
+      "autore": "Robert M. Lavinsky",
+      "licenza": "CC BY-SA 3.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Siderite-lw34a.jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/siderite-2.jpg",
+        "autore": "Didier Descouens",
+        "licenza": "CC BY-SA 4.0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Siderite_late_1800s_Redruth.jpg"
+      }
+    ]
+  },
+  {
+    "id": "magnesite",
+    "nome": "Magnesite",
+    "voce": "Magnesite",
+    "tipo": "minerale",
+    "categoria": "Minerale",
+    "famiglia": "Carbonato · MgCO₃",
+    "caratteri": "Bianca, compatta e porcellanacea, frattura concoide; con HCl freddo quasi non reagisce. Frequente in vene nelle serpentiniti alterate.",
+    "fileCommons": "Magnesite (Windous Magnesite Deposit, Tertiary; Westvaco Chlorine Products mine, southwest of Ely, Nevada, USA) 7.jpg",
+    "altriFile": [
+      "Magnesite (GeoDIL number - 887).jpg"
+    ],
+    "foto": {
+      "file": "/campionario/magnesite.jpg",
+      "autore": "James St. John",
+      "licenza": "CC BY 2.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Magnesite_(Windous_Magnesite_Deposit,_Tertiary;_Westvaco_Chlorine_Products_mine,_southwest_of_Ely,_Nevada,_USA)_7.jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/magnesite-2.jpg",
+        "autore": "Dexter Perkins",
+        "licenza": "CC0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Magnesite_(GeoDIL_number_-_887).jpg"
+      }
+    ]
+  },
+  {
+    "id": "malachite",
+    "nome": "Malachite",
+    "voce": "Malachite",
+    "tipo": "minerale",
+    "categoria": "Minerale",
+    "famiglia": "Carbonato di rame · Cu₂CO₃(OH)₂",
+    "caratteri": "Verde intenso, in masse mammellonari a bande concentriche chiare e scure; effervesce con HCl. Nell'alterazione dei giacimenti di rame.",
+    "fileCommons": "Malachite (GeoDIL number - 768).jpg",
+    "altriFile": [
+      "Malachite (GeoDIL number - 770).jpg"
+    ],
+    "foto": {
+      "file": "/campionario/malachite.jpg",
+      "autore": "Darla Sondrol",
+      "licenza": "CC0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Malachite_(GeoDIL_number_-_768).jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/malachite-2.jpg",
+        "autore": "Darla Sondrol",
+        "licenza": "CC0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Malachite_(GeoDIL_number_-_770).jpg"
+      }
+    ]
+  },
+  {
+    "id": "azzurrite",
+    "nome": "Azzurrite",
+    "voce": "Azurite",
+    "tipo": "minerale",
+    "categoria": "Minerale",
+    "famiglia": "Carbonato di rame · Cu₃(CO₃)₂(OH)₂",
+    "caratteri": "Blu intenso, in cristalli tabulari o aggregati, spesso con malachite verde; effervesce con HCl.",
+    "fileCommons": "Azurite-209771.jpg",
+    "altriFile": [
+      "Azurite (GeoDIL number - 760).jpg"
+    ],
+    "foto": {
+      "file": "/campionario/azzurrite.jpg",
+      "autore": "Robert M. Lavinsky",
+      "licenza": "CC BY-SA 3.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Azurite-209771.jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/azzurrite-2.jpg",
+        "autore": "Darla Sondrol",
+        "licenza": "CC0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Azurite_(GeoDIL_number_-_760).jpg"
+      }
+    ]
+  },
+  {
+    "id": "magnetite",
+    "nome": "Magnetite",
+    "voce": "Magnetite",
+    "tipo": "minerale",
+    "categoria": "Minerale",
+    "famiglia": "Ossido · Fe₃O₄",
+    "caratteri": "Nera, lucentezza metallica, spesso in ottaedri; attratta dalla calamita. Striscio nero, durezza 5,5–6,5.",
+    "fileCommons": "Magnetite-163278.jpg",
+    "altriFile": [
+      "Magnetite (GeoDIL number - 1393).jpg"
+    ],
+    "foto": {
+      "file": "/campionario/magnetite.jpg",
+      "autore": "Robert M. Lavinsky",
+      "licenza": "CC BY-SA 3.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Magnetite-163278.jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/magnetite-2.jpg",
+        "autore": "Darla Sondrol",
+        "licenza": "CC0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Magnetite_(GeoDIL_number_-_1393).jpg"
+      }
+    ]
+  },
+  {
+    "id": "ematite",
+    "nome": "Ematite",
+    "voce": "Hematite",
+    "tipo": "minerale",
+    "categoria": "Minerale",
+    "famiglia": "Ossido · Fe₂O₃",
+    "caratteri": "Grigio acciaio metallica (specularite) o rosso terrosa; lo striscio è sempre rosso-bruno. Non magnetica.",
+    "fileCommons": "Hematite-260076.jpg",
+    "altriFile": [
+      "Hematite (GeoDIL number - 1308).jpg"
+    ],
+    "foto": {
+      "file": "/campionario/ematite.jpg",
+      "autore": "Robert M. Lavinsky",
+      "licenza": "CC BY-SA 3.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Hematite-260076.jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/ematite-2.jpg",
+        "autore": "Darla Sondrol",
+        "licenza": "CC0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Hematite_(GeoDIL_number_-_1308).jpg"
+      }
+    ]
+  },
+  {
+    "id": "goethite",
+    "nome": "Goethite (limonite)",
+    "voce": "Goethite",
+    "tipo": "minerale",
+    "categoria": "Minerale",
+    "famiglia": "Idrossido · FeO(OH)",
+    "caratteri": "Bruno-nera, in masse mammellonari a struttura fibroso-raggiata o terrosa (limonite); striscio giallo-bruno.",
+    "fileCommons": "Goethite-200509.jpg",
+    "altriFile": [
+      "Limonite and goethite (GeoDIL number - 150).jpg"
+    ],
+    "foto": {
+      "file": "/campionario/goethite.jpg",
+      "autore": "Robert M. Lavinsky",
+      "licenza": "CC BY-SA 3.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Goethite-200509.jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/goethite-2.jpg",
+        "autore": "Darla Sondrol",
+        "licenza": "CC0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Limonite_and_goethite_(GeoDIL_number_-_150).jpg"
+      }
+    ]
+  },
+  {
+    "id": "pirite",
+    "nome": "Pirite",
+    "voce": "Pyrite",
+    "tipo": "minerale",
+    "categoria": "Minerale",
+    "famiglia": "Solfuro · FeS₂",
+    "caratteri": "Cubi o pentagonododecaedri giallo ottone a facce striate, metallica; durezza 6–6,5, non si riga col coltello; striscio nero-verdastro.",
+    "fileCommons": "Pyrite (Colorado, USA) (18951795729).jpg",
+    "altriFile": [
+      "Pyrite (Huanzala Mine, Peru) 1 (18952108619).jpg"
+    ],
+    "foto": {
+      "file": "/campionario/pirite.jpg",
+      "autore": "James St. John",
+      "licenza": "CC BY 2.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Pyrite_(Colorado,_USA)_(18951795729).jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/pirite-2.jpg",
+        "autore": "James St. John",
+        "licenza": "CC BY 2.0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Pyrite_(Huanzala_Mine,_Peru)_1_(18952108619).jpg"
+      }
+    ]
+  },
+  {
+    "id": "calcopirite",
+    "nome": "Calcopirite",
+    "voce": "Chalcopyrite",
+    "tipo": "minerale",
+    "categoria": "Minerale",
+    "famiglia": "Solfuro · CuFeS₂",
+    "caratteri": "Giallo ottone più carico della pirite, spesso con patina iridescente; si riga col coltello (durezza 3,5–4); striscio nero-verdastro.",
+    "fileCommons": "Chalcopyrite-65649.jpg",
+    "altriFile": [
+      "Chalcopyrite-159401.jpg"
+    ],
+    "foto": {
+      "file": "/campionario/calcopirite.jpg",
+      "autore": "Robert M. Lavinsky",
+      "licenza": "CC BY-SA 3.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Chalcopyrite-65649.jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/calcopirite-2.jpg",
+        "autore": "Robert M. Lavinsky",
+        "licenza": "CC BY-SA 3.0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Chalcopyrite-159401.jpg"
+      }
+    ]
+  },
+  {
+    "id": "galena",
+    "nome": "Galena",
+    "voce": "Galena",
+    "tipo": "minerale",
+    "categoria": "Minerale",
+    "famiglia": "Solfuro · PbS",
+    "caratteri": "Grigio piombo, metallica, sfaldatura cubica perfetta; pesantissima (densità 7,5) e tenera (2,5). Principale minerale del piombo.",
+    "fileCommons": "Galena (GeoDIL number - 979).jpg",
+    "altriFile": [
+      "Galena (GeoDIL number - 1082).jpg"
+    ],
+    "foto": {
+      "file": "/campionario/galena.jpg",
+      "autore": "Darla Sondrol",
+      "licenza": "CC0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Galena_(GeoDIL_number_-_979).jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/galena-2.jpg",
+        "autore": "Nessa Eull",
+        "licenza": "CC0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Galena_(GeoDIL_number_-_1082).jpg"
+      }
+    ]
+  },
+  {
+    "id": "sfalerite",
+    "nome": "Sfalerite (blenda)",
+    "voce": "Sphalerite",
+    "tipo": "minerale",
+    "categoria": "Minerale",
+    "famiglia": "Solfuro · ZnS",
+    "caratteri": "Bruna, gialla o nera, lucentezza resinosa o adamantina, sfaldatura perfetta in sei direzioni; striscio bruno chiaro. Principale minerale dello zinco.",
+    "fileCommons": "Sphalerite-118750.jpg",
+    "altriFile": [
+      "Sphalerite (GeoDIL number - 1020).jpg"
+    ],
+    "foto": {
+      "file": "/campionario/sfalerite.jpg",
+      "autore": "Robert M. Lavinsky",
+      "licenza": "CC BY-SA 3.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Sphalerite-118750.jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/sfalerite-2.jpg",
+        "autore": "Darla Sondrol",
+        "licenza": "CC0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Sphalerite_(GeoDIL_number_-_1020).jpg"
+      }
+    ]
+  },
+  {
+    "id": "cinabro",
+    "nome": "Cinabro",
+    "voce": "Cinnabar",
+    "tipo": "minerale",
+    "categoria": "Minerale",
+    "famiglia": "Solfuro · HgS",
+    "caratteri": "Rosso vermiglio, pesante, tenero (2–2,5); striscio rosso scarlatto. Principale minerale del mercurio.",
+    "fileCommons": "Cinnabar-d6c.jpg",
+    "altriFile": [
+      "Cinnabar (New Almaden, California, USA) (18824306236).jpg"
+    ],
+    "foto": {
+      "file": "/campionario/cinabro.jpg",
+      "autore": "Robert M. Lavinsky",
+      "licenza": "CC BY-SA 3.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Cinnabar-d6c.jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/cinabro-2.jpg",
+        "autore": "James St. John",
+        "licenza": "CC BY 2.0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Cinnabar_(New_Almaden,_California,_USA)_(18824306236).jpg"
+      }
+    ]
+  },
+  {
+    "id": "zolfo",
+    "nome": "Zolfo",
+    "voce": "Sulfur",
+    "tipo": "minerale",
+    "categoria": "Minerale",
+    "famiglia": "Elemento nativo · S",
+    "caratteri": "Giallo limone, in cristalli bipiramidali o croste; tenero (2), fragile, brucia con fiamma blu e odore pungente.",
+    "fileCommons": "Sulfur (Italy) 1.jpg",
+    "altriFile": [
+      "Sulfur-russ-19d.jpg"
+    ],
+    "foto": {
+      "file": "/campionario/zolfo.jpg",
+      "autore": "James St. John",
+      "licenza": "CC BY 2.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Sulfur_(Italy)_1.jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/zolfo-2.jpg",
+        "autore": "Robert M. Lavinsky",
+        "licenza": "CC BY-SA 3.0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Sulfur-russ-19d.jpg"
+      }
+    ]
+  },
+  {
+    "id": "grafite",
+    "nome": "Grafite",
+    "voce": "Graphite",
+    "tipo": "minerale",
+    "categoria": "Minerale",
+    "famiglia": "Elemento nativo · C",
+    "caratteri": "Grigio-nera, metallica, in lamelle; durezza 1–2, untuosa, sporca le dita e scrive sulla carta.",
+    "fileCommons": "Graphite (Ceylon) 31.jpg",
+    "altriFile": [
+      "Graphite (GeoDIL number - 913).jpg"
+    ],
+    "foto": {
+      "file": "/campionario/grafite.jpg",
+      "autore": "James St. John",
+      "licenza": "CC BY 2.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Graphite_(Ceylon)_31.jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/grafite-2.jpg",
+        "autore": "Darla Sondrol",
+        "licenza": "CC0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Graphite_(GeoDIL_number_-_913).jpg"
+      }
+    ]
+  },
+  {
+    "id": "rame",
+    "nome": "Rame nativo",
+    "voce": "Copper",
+    "tipo": "minerale",
+    "categoria": "Minerale",
+    "famiglia": "Elemento nativo · Cu",
+    "caratteri": "Rosso rame sotto una patina verde o scura; in masse o dendriti, malleabile: si piega senza rompersi.",
+    "fileCommons": "Native copper (GeoDIL number - 844).jpg",
+    "altriFile": [
+      "Native copper (Madison Gold Skarn Deposit, Late Cretaceous, 80 Ma; west of Silver Star, Montana, USA) 1.jpg"
+    ],
+    "foto": {
+      "file": "/campionario/rame.jpg",
+      "autore": "Darla Sondrol",
+      "licenza": "CC0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Native_copper_(GeoDIL_number_-_844).jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/rame-2.jpg",
+        "autore": "James St. John",
+        "licenza": "CC BY 2.0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Native_copper_(Madison_Gold_Skarn_Deposit,_Late_Cretaceous,_80_Ma;_west_of_Silver_Star,_Montana,_USA)_1.jpg"
+      }
+    ]
+  },
+  {
+    "id": "rutilo",
+    "nome": "Rutilo",
+    "voce": "Rutile",
+    "tipo": "minerale",
+    "categoria": "Minerale",
+    "famiglia": "Ossido · TiO₂",
+    "caratteri": "Prismi aciculari striati rosso-bruni o neri, lucentezza adamantina; spesso in aghi dentro il quarzo o geminato a ginocchio.",
+    "fileCommons": "Rutile-231837.jpg",
+    "altriFile": [
+      "Rutile (GeoDIL number - 1562).jpg"
+    ],
+    "foto": {
+      "file": "/campionario/rutilo.jpg",
+      "autore": "Robert M. Lavinsky",
+      "licenza": "CC BY-SA 3.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Rutile-231837.jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/rutilo-2.jpg",
+        "autore": "Nessa Eull",
+        "licenza": "CC0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Rutile_(GeoDIL_number_-_1562).jpg"
+      }
+    ]
+  },
+  {
+    "id": "berillo",
+    "nome": "Berillo",
+    "voce": "Beryl",
+    "tipo": "minerale",
+    "categoria": "Minerale",
+    "famiglia": "Ciclosilicato · Be₃Al₂Si₆O₁₈",
+    "caratteri": "Prismi esagonali verdi (smeraldo), azzurri (acquamarina), gialli o bianchi; durezza 7,5–8. Nelle pegmatiti granitiche.",
+    "fileCommons": "Beryl-148291.jpg",
+    "altriFile": [
+      "Beryl (GeoDIL number - 1865).jpg"
+    ],
+    "foto": {
+      "file": "/campionario/berillo.jpg",
+      "autore": "Robert M. Lavinsky",
+      "licenza": "CC BY-SA 3.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Beryl-148291.jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/berillo-2.jpg",
+        "autore": "Shannon Heinle",
+        "licenza": "CC0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Beryl_(GeoDIL_number_-_1865).jpg"
+      }
+    ]
+  },
+  {
+    "id": "opale",
+    "nome": "Opale",
+    "voce": "Opal",
+    "tipo": "minerale",
+    "categoria": "Minerale",
+    "famiglia": "Silice amorfa idrata · SiO₂·nH₂O",
+    "caratteri": "Silice non cristallina: lucentezza vitrea o cerosa, frattura concoide, durezza 5,5–6,5. Il comune è lattiginoso, il nobile ha giochi di colore.",
+    "fileCommons": "Opal-53714.jpg",
+    "altriFile": [
+      "Precious opal (Quilpie, Queensland, Australia) 2 (29617153490).jpg"
+    ],
+    "foto": {
+      "file": "/campionario/opale.jpg",
+      "autore": "Robert M. Lavinsky",
+      "licenza": "CC BY-SA 3.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Opal-53714.jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/opale-2.jpg",
+        "autore": "James St. John",
+        "licenza": "CC BY 2.0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Precious_opal_(Quilpie,_Queensland,_Australia)_2_(29617153490).jpg"
+      }
+    ]
+  },
+  {
+    "id": "calcedonio",
+    "nome": "Calcedonio (agata)",
+    "voce": "Chalcedony",
+    "tipo": "minerale",
+    "categoria": "Minerale",
+    "famiglia": "Tettosilicato · quarzo microcristallino",
+    "caratteri": "Quarzo in fibre microscopiche: traslucido, ceroso, in croste mammellonari; l'agata è calcedonio a bande concentriche. Durezza 6,5–7.",
+    "fileCommons": "Chalcedony (GeoDIL number - 847).jpg",
+    "altriFile": [
+      "Chalcedony-135095.jpg",
+      "Botryoidal Purple Grape Agate Chalcedony from Indonesia.jpg"
+    ],
+    "foto": {
+      "file": "/campionario/calcedonio.jpg",
+      "autore": "Shannon Heinle",
+      "licenza": "CC0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Chalcedony_(GeoDIL_number_-_847).jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/calcedonio-2.jpg",
+        "autore": "Robert M. Lavinsky",
+        "licenza": "CC BY-SA 3.0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Chalcedony-135095.jpg"
+      },
+      {
+        "file": "/campionario/calcedonio-3.jpg",
+        "autore": "JJ Harrison (https://www.jjharrison.com.au/)",
+        "licenza": "CC BY-SA 4.0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Botryoidal_Purple_Grape_Agate_Chalcedony_from_Indonesia.jpg"
+      }
+    ]
   }
 ]

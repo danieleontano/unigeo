@@ -249,3 +249,17 @@ due settimane di fila salta, il problema non è nel codice.
   actions/cache (niente DB, niente commit). Dati ICS: il Pridoli è sia serie
   sia piano con lo stesso id e Ludlow aveva il tetto sbagliato; lo script ora
   tiene il rango più alto e allinea i tetti ai fratelli, e lo stampa.
+- 2026-10-04 · Campionario da 31 a 141 (110 nuovi: 60 rocce, 50 minerali),
+  ognuno con `categoria` (Magmatica intrusiva/effusiva/piroclastica,
+  Sedimentaria clastica/chimica/organogena, Metamorfica, Minerale): Riconosci
+  filtra per gruppo e sceglie le risposte sbagliate nella stessa categoria;
+  la scala di Mohs prende le foto per id. Foto viste una per una, solo CC
+  BY*/CC0/PD, niente sezioni sottili né gemme tagliate. Lasciati fuori per
+  mancanza di foto buone: marna, calcarenite, calcescisto, prasinite, torba,
+  tillite, granulite, porfido, ialoclastite, troctolite, lawsonite. Pronti
+  da aggiungere se servono: rodocrosite, celestina, crisocolla, cassiterite,
+  wollastonite, cordierite, grossularia. Da far confermare ai docenti:
+  categorie discutibili (calcari micritico/oolitico, dolomia e selce come
+  «chimica», bauxite residuale, kimberlite e carbonatite intrusive, lherzolite
+  e harzburgite tra le intrusive, oficalce metamorfica) e pomice/scoria
+  effusive anziché piroclastiche.
