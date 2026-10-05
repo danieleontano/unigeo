@@ -3,7 +3,9 @@
 // risposta 5 minuti, così la RSNI riceve al massimo una richiesta ogni 5
 // minuti qualunque sia il traffico. La mappa (/terremoti) la chiama e
 // aggiunge gli eventi arrivati dopo l'ultima pubblicazione.
-import { leggiFeed } from "../src/lib/rsni";
+// «.js» anche se il file è .ts: Vercel compila senza impacchettare, e in
+// Node un import senza estensione non si trova.
+import { leggiFeed } from "../src/lib/rsni.js";
 
 export async function GET(): Promise<Response> {
   const eventi = await leggiFeed();

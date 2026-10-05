@@ -4,9 +4,13 @@
 //   il resto       → passa, oppure porta alla pagina d'accesso
 // Di solito il cookie lo mette già la pagina /accesso dal browser; il POST
 // serve solo se JavaScript è spento. Non gira né in locale né su GitHub Pages.
-import { COOKIE_CHIAVE, decidi, impronta, impronte, livelloDa, ritornoSicuro, type Livello } from "./src/lib/accesso";
+import { COOKIE_CHIAVE, decidi, impronta, impronte, livelloDa, ritornoSicuro, type Livello } from "./src/lib/accesso.js";
 
+// Le importazioni locali vanno scritte con «.js»: Vercel non impacchetta il
+// middleware in un file solo, e senza estensione il modulo non si trova
+// (05/10/2026: 500 MIDDLEWARE_INVOCATION_FAILED su ogni pagina).
 export const config = {
+  runtime: "nodejs",
   // Tutto, anche /_astro (dentro ci sono le figure delle lezioni): la pagina
   // d'accesso ha gli stili scritti dentro e non ne ha bisogno.
   matcher: "/:path*",
