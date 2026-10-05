@@ -12,7 +12,7 @@ export interface Strumento {
 
 export const STRUMENTI: Strumento[] = [
   { href: "/campionario", titolo: "Riconosci la pietra", breve: "Campionario", testo: "Rocce e minerali in foto, come la prova pratica", materia: "geologia-1", simbolo: "martello" },
-  { href: "/qap", titolo: "Diagramma QAPF", breve: "QAPF", testo: "Streckeisen completo: dal campione al nome", materia: "geologia-1", simbolo: "triangolo" },
+  { href: "/qap", titolo: "Rocce magmatiche", breve: "Magmatiche", testo: "Il metodo della lezione 5 e i diagrammi delle slide: ultrafemiche, intrusive, effusive, vetrose", materia: "geologia-1", simbolo: "triangolo" },
   { href: "/mohs", titolo: "Scala di Mohs", breve: "Mohs", testo: "Durezza dei minerali e prove con unghia, rame, acciaio, vetro", materia: "geologia-1", simbolo: "cristallo" },
   { href: "/tempo", titolo: "Scala del tempo", breve: "Tempo geologico", testo: "La carta ICS ufficiale, con esercizi base e di dettaglio", materia: "paleontologia", simbolo: "fossile-ammonite" },
   { href: "/tavola", titolo: "Tavola periodica", breve: "Tavola periodica", testo: "Schede degli elementi ed esercizio su nomi e simboli", materia: "chimica", simbolo: "provetta" },

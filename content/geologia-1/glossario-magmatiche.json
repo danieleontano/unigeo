@@ -1,0 +1,63 @@
+{
+  "fonte": "Slide «3. Le rocce magmatiche» (Piazza) e lezioni 4-5 di Geologia 1",
+  "gruppi": [
+    {
+      "titolo": "Come si è formata",
+      "voci": [
+        { "termine": "Magma", "definizione": "Fuso silicatico, più o meno ricco di gas, da cui nascono le rocce magmatiche (o ignee)." },
+        { "termine": "Roccia intrusiva (plutonica)", "definizione": "Il magma resta in profondità e raffredda lentamente: pochi nuclei, cristalli grandi e visibili. Corpi: plutoni, batoliti (oltre 100 km²)." },
+        { "termine": "Roccia effusiva (vulcanica)", "definizione": "Il magma esce in superficie e raffredda in fretta: molti nuclei, cristalli piccoli o vetro." },
+        { "termine": "Roccia subvulcanica", "definizione": "Il magma riempie fratture in profondità e raffredda in modo relativamente lento. Si riconosce con sicurezza solo dai rapporti con le rocce intorno." },
+        { "termine": "Dicco e sill", "definizione": "Corpi intrusivi tabulari: il dicco taglia gli strati (discordante), il sill ci si infila parallelo (concordante)." },
+        { "termine": "Volatili e vescicole", "definizione": "I gas sciolti nel magma (soprattutto acqua e CO₂) si liberano quando la pressione cala; se restano intrappolati nella lava lasciano dei vuoti, le vescicole." }
+      ]
+    },
+    {
+      "titolo": "La tessitura",
+      "voci": [
+        { "termine": "Tessitura", "definizione": "Come sono disposti e come si toccano gli elementi della roccia: cristalli e pasta di fondo. È la prima cosa da guardare." },
+        { "termine": "Olocristallina", "definizione": "Tutta fatta di cristalli di dimensioni discrete, visibili a occhio nudo: raffreddamento lento, roccia intrusiva." },
+        { "termine": "Porfirica", "definizione": "Pochi cristalli grandi (fenocristalli) sparsi in una pasta di fondo di microcristalli o vetro: roccia effusiva. È l'unica effusiva che si classifica a occhio." },
+        { "termine": "Fenocristallo", "definizione": "Cristallo grande, ben visibile, immerso nella pasta di fondo di una roccia porfirica. Si è formato prima, ancora in profondità; nelle effusive le percentuali Q, A, P, F si stimano solo sui fenocristalli." },
+        { "termine": "Pasta di fondo", "definizione": "La parte fine che circonda i fenocristalli: microcristalli o vetro, raffreddati in fretta in superficie." },
+        { "termine": "Microcristallina e criptocristallina", "definizione": "Cristalli piccolissimi (micro) o invisibili anche con la lente (cripto). Senza fenocristalli, a occhio nudo ci si ferma: serve il laboratorio." },
+        { "termine": "Vetrosa", "definizione": "Senza cristalli: il fuso si è solidificato così in fretta, o era così viscoso, da non cristallizzare. Si divide in frammentaria (piroclastiti) e non frammentaria (ossidiana, pomice, scoria)." },
+        { "termine": "Idiomorfo e allotriomorfo", "definizione": "Cristallo con la sua forma propria, a facce nette (idiomorfo), oppure che riempie gli spazi lasciati dagli altri (allotriomorfo). Nel granito i feldspati alcalini sono spesso idiomorfi, il plagioclasio allotriomorfo." }
+      ]
+    },
+    {
+      "titolo": "I minerali e i vertici dei diagrammi",
+      "voci": [
+        { "termine": "Femici (mafici)", "definizione": "Minerali con ferro e magnesio, scuri, dal verde al nero: olivina, pirosseni, anfiboli, biotite, epidoto." },
+        { "termine": "Sialici (felsici)", "definizione": "Minerali con Si, Al, K, Na, senza ferro e magnesio, chiari: quarzo, feldspati alcalini, plagioclasi, feldspatoidi." },
+        { "termine": "Q · quarzo", "definizione": "SiO₂: vertice alto dello Streckeisen. Se lo vedi a occhio nudo, conta almeno il 20%." },
+        { "termine": "A · feldspati alcalini", "definizione": "Feldspati di potassio e sodio (ortoclasio, sanidino, microclino, albite). Spesso tabulari, colorati (rosati), con riflessi «a tavole» per la geminazione." },
+        { "termine": "P · plagioclasi", "definizione": "Feldspati calcico-sodici, bianchi. Ricchi di sodio nelle rocce silicee, di calcio in quelle femiche." },
+        { "termine": "F · feldspatoidi (foidi)", "definizione": "Minerali come i feldspati ma con meno silice (leucite, nefelina, sodalite). Bianchi e tondeggianti. Non stanno mai col quarzo: se ci sono, triangolo inferiore." },
+        { "termine": "Olivina, ortopirosseno, clinopirosseno", "definizione": "I vertici del triangolo delle ultrafemiche. A occhio nudo i due pirosseni si ragionano insieme." },
+        { "termine": "Femico accessorio", "definizione": "Nei diagrammi QAPF i femici non entrano nel conto: si elencano, ma il nome lo decidono Q, A, P, F. Servono solo nelle caselle con più nomi (diorite, gabbro, anortosite)." },
+        { "termine": "Normalizzare a 100", "definizione": "Si tolgono i femici e si riportano Q (o F), A e P a 100. Esempio: Q 30, A 30, P 20 e femici 20 diventano Q 37,5, A 37,5, P 25." }
+      ]
+    },
+    {
+      "titolo": "Composizione e colore",
+      "voci": [
+        { "termine": "Silicee (acide), intermedie, femiche (basiche), ultrafemiche", "definizione": "La serie dello schema di Marshak, dalla più ricca alla più povera di silice. Scendendo cala la silice e salgono ferro, magnesio, densità e indice di colore." },
+        { "termine": "Indice di colore", "definizione": "Percentuale di minerali femici: più è scura la roccia, più è alto. Leucocratica (chiara), mesocratica, melanocratica (scura), ultrafemica. Da usare con cautela: un'ultrafemica di olivina fresca non è nera." },
+        { "termine": "Sovrassatura in silice", "definizione": "C'è tanta silice che tutti i minerali «si sono seduti al tavolo» e ne è avanzata: cristallizza come quarzo. Se vedi quarzo, la roccia è sovrassatura (triangolo superiore, Q ≥ 20%)." },
+        { "termine": "Satura e sottosatura", "definizione": "Satura: la silice basta giusta, il quarzo non si vede (al più sotto il 20%). Sottosatura: ne manca, e al posto dei feldspati compaiono i feldspatoidi (triangolo inferiore)." },
+        { "termine": "Ultrafemica", "definizione": "Roccia con femici al 90% o più: si classifica col triangolo olivina, ortopirosseno, clinopirosseno (dunite, peridotite, pirossenite)." }
+      ]
+    },
+    {
+      "titolo": "Le vetrose",
+      "voci": [
+        { "termine": "Piroclastite (tefra, tufo)", "definizione": "Roccia vetrosa frammentaria: frammenti di lava fusa o già solida lanciati da un'eruzione esplosiva e ricaduti. Si classifica per granulometria, come una sedimentaria clastica." },
+        { "termine": "Blocchi, bombe, lapilli, ceneri", "definizione": "Le classi di grandezza dei frammenti: blocchi e bombe oltre 64 mm (le bombe lanciate ancora fuse, arrotondate), lapilli 2–64 mm, ceneri sotto i 2 mm." },
+        { "termine": "Tefra", "definizione": "Il deposito piroclastico sciolto, non ancora consolidato." },
+        { "termine": "Tufo di caduta e tufo saldato", "definizione": "Tufo di caduta: ceneri ricadute dall'atmosfera. Tufo saldato: il deposito di un flusso piroclastico che scorre lungo i versanti, così caldo da saldarsi." },
+        { "termine": "End member", "definizione": "Il termine estremo di un diagramma: ogni vertice del triangolo è il 100% di un componente." }
+      ]
+    }
+  ]
+}

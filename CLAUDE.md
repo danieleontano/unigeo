@@ -288,3 +288,14 @@ due settimane di fila salta, il problema non è nel codice.
   cartella api/, accanto al sito statico). Niente cron di Vercel: su Hobby
   uno al giorno al massimo. Il deploy su Pages non ha più il cron ogni 30
   minuti; si spegne quando Vercel è confermato.
+- 2026-10-05 · «Diagramma QAPF» diventa «Rocce magmatiche» (/qap, stesso
+  indirizzo), allineato alle slide «3. Le rocce magmatiche» di Piazza (in
+  Downloads di Daniele): il metodo della lezione 5 a domande (tessitura →
+  femici → quarzo/feldspatoidi), ultrafemiche (Ol-Opx-Cpx, Le Maitre 2002),
+  Streckeisen intrusive ED effusive (campi diversi: dacite, latite,
+  basalto/andesite da Q 20 a F 10, tefrite/basanite, foiditi), vetrose
+  (ossidiana/scoria/pomice dalle vescicole; triangolo granulometrico delle
+  piroclastiti; termini genetici della slide 12), esercizio misto e glossario
+  (content/geologia-1/glossario-magmatiche.json). Dati in src/lib/magmatiche.ts;
+  la vista si apre dall'indirizzo (/qap#effusive) per collegarla dalle lezioni.
+  Ogni campo ha anche il nome inglese della slide.

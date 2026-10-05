@@ -1,11 +1,12 @@
 ---
 import Base from "@/layouts/Base.astro";
 import Testata from "@/components/Testata.astro";
-import { Qap } from "@/components/Qap";
+import { Magmatiche, type GruppoGlossario } from "@/components/Magmatiche";
+import glossario from "../../content/geologia-1/glossario-magmatiche.json";
 ---
 
-<Base titolo="Diagramma QAPF" colore="#B5552A">
-  <Testata piana occhiello="Geologia 1 · lezione 5" titolo="Diagramma QAPF" descrizione="Rocce magmatiche con femici sotto il 90%: quarzo o feldspatoidi, feldspati alcalini e plagioclasi riportati a 100." simbolo="triangolo" colore="#B5552A" />
-  <Qap client:load />
-  <p class="mt-6 max-w-prose font-sans text-[0.7rem] text-grafite">Campi e nomi secondo la classificazione IUGS (Streckeisen 1976; Le Maitre et al. 2002). Per l'esame fanno fede i diagrammi dati dal docente.</p>
+<Base titolo="Rocce magmatiche" larghezza="pieno" colore="#B5552A">
+  <Testata piana titolo="Classificare le rocce magmatiche" descrizione="Il metodo della lezione 5 e i diagrammi delle slide: ultrafemiche, Streckeisen per intrusive ed effusive, vetrose." />
+  <Magmatiche client:load glossario={glossario.gruppi as GruppoGlossario[]} />
+  <p class="mt-6 max-w-prose font-sans text-[0.7rem] text-grafite">Dalle slide «3. Le rocce magmatiche» di Geologia 1 (M. Piazza): diagrammi da Le Maitre et al. 2002 e atlas-hornin.sk, piroclastiti da IODP. Per l'esame fanno fede le slide del docente.</p>
 </Base>
