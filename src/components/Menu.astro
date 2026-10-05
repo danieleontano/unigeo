@@ -23,7 +23,7 @@ const attivo = moduloDi(attuale).href;
   <nav class="flex-1 overflow-y-auto px-3 py-2 font-sans">
     <ul class="flex flex-col gap-0.5">
       {MODULI.map((m) => (
-        <li>
+        <li class:list={[m.soloAppunti && "solo-appunti"]}>
           <a href={percorso(m.href)} class="menu-voce" aria-current={attivo === m.href ? "page" : undefined} title={m.titolo}>
             <svg class="h-[19px] w-[19px] shrink-0" aria-hidden="true"><use href={`#${m.simbolo}`} /></svg>
             <span class="menu-etichetta truncate">{m.titolo}</span>
@@ -37,6 +37,10 @@ const attivo = moduloDi(attuale).href;
     <a href={percorso(IMPOSTAZIONI.href)} class="menu-voce" aria-current={attivo === IMPOSTAZIONI.href ? "page" : undefined} title={IMPOSTAZIONI.titolo}>
       <svg class="h-[19px] w-[19px] shrink-0" aria-hidden="true"><use href={`#${IMPOSTAZIONI.simbolo}`} /></svg>
       <span class="menu-etichetta">{IMPOSTAZIONI.titolo}</span>
+    </a>
+    <a href={percorso("/accesso?esci=1")} class="menu-voce solo-con-chiave" title="Esci" data-astro-reload>
+      <svg viewBox="0 0 24 24" class="h-[19px] w-[19px] shrink-0" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h4a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-4M10 16l-4-4 4-4M6 12h10" /></svg>
+      <span class="menu-etichetta">Esci</span>
     </a>
   </div>
 </aside>

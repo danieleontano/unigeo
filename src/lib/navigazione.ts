@@ -8,6 +8,8 @@ export interface Modulo {
   href: string;
   titolo: string;
   simbolo: string;
+  /** Visibile solo con la chiave degli appunti (vedi lib/accesso.ts). */
+  soloAppunti?: boolean;
 }
 
 export interface Scheda {
@@ -19,9 +21,9 @@ export interface Scheda {
 }
 
 export const MODULI: Modulo[] = [
-  { href: "/", titolo: "Home", simbolo: "casa" },
-  { href: "/materie", titolo: "Materie", simbolo: "strati" },
-  { href: "/ripasso", titolo: "Ripasso", simbolo: "ripasso" },
+  { href: "/", titolo: "Home", simbolo: "casa", soloAppunti: true },
+  { href: "/materie", titolo: "Materie", simbolo: "strati", soloAppunti: true },
+  { href: "/ripasso", titolo: "Ripasso", simbolo: "ripasso", soloAppunti: true },
   { href: "/strumenti", titolo: "Strumenti", simbolo: "martello" },
 ];
 

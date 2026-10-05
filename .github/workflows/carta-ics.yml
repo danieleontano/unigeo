@@ -2,7 +2,7 @@ name: Aggiorna la carta ICS
 
 # Ogni lunedì controlla se la Commissione Internazionale di Stratigrafia ha
 # pubblicato una nuova versione della carta; se sì, aggiorna i dati e li
-# committa: Vercel ripubblica il sito da solo.
+# committa e fa ripartire la pubblicazione su GitHub Pages.
 on:
   schedule:
     - cron: "17 6 * * 1"
@@ -10,6 +10,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 jobs:
   aggiorna:
@@ -32,4 +33,7 @@ jobs:
             git add content/tempo/carta-ics.json
             git commit -m "Carta ICS aggiornata alla nuova versione"
             git push
+            gh workflow run deploy.yml --ref main
           fi
+        env:
+          GH_TOKEN: ${{ github.token }}

@@ -1,0 +1,114 @@
+---
+// La porta del sito: chiede la chiave. Pagina autonoma, con stili e script
+// scritti dentro: senza chiave il middleware (middleware.ts) non lascia
+// passare nient'altro, nemmeno i CSS del sito. Il modulo va al middleware.
+import { percorso } from "@/lib/percorsi";
+import { IMPRONTE_PREDEFINITE, SOLO_APPUNTI } from "@/lib/accesso";
+
+const BASE_SITO = import.meta.env.BASE_URL.replace(/\/$/, "");
+---
+
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="theme-color" content="#1b1512" />
+    <link rel="icon" type="image/svg+xml" href={percorso("/favicon.svg")} />
+    <title>Chiave di accesso · UniGeo</title>
+    <style is:inline>
+      :root { color-scheme: dark; }
+      * { box-sizing: border-box; }
+      html, body { margin: 0; min-height: 100%; }
+      body {
+        min-height: 100dvh; display: grid; place-items: center; padding: 24px 16px;
+        background: #1b1512 radial-gradient(ellipse at 50% -10%, rgba(168, 100, 60, 0.28), transparent 60%);
+        color: #efe4d0; font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      }
+      .scheda { width: 100%; max-width: 380px; background: #241c17; border: 1px solid #342a23; border-radius: 16px; padding: 28px 24px 24px; }
+      .marchio { display: flex; align-items: center; gap: 10px; }
+      .marchio img { width: 36px; height: 36px; }
+      .nome { font-family: Georgia, "Times New Roman", serif; font-size: 1.5rem; font-weight: 600; letter-spacing: -0.01em; }
+      .nome span { color: #d98a5c; }
+      .sotto { font-size: 0.72rem; color: #9c8c78; letter-spacing: 0.04em; }
+      h1 { margin: 26px 0 4px; font-family: Georgia, "Times New Roman", serif; font-weight: 500; font-size: 1.6rem; }
+      p.riga { margin: 0 0 18px; color: #ad9d86; font-size: 0.9rem; }
+      label { display: block; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #ad9d86; margin-bottom: 6px; }
+      input[type="password"], input[type="text"] {
+        width: 100%; font: inherit; font-size: 1.05rem; color: #f3ecdd; background: #1b1512; border: 1px solid #3b2f27;
+        border-radius: 10px; padding: 12px 14px; outline: none;
+      }
+      input:focus { border-color: #a8643c; box-shadow: 0 0 0 3px rgba(168, 100, 60, 0.25); }
+      .campo { position: relative; }
+      .mostra { position: absolute; right: 8px; top: 50%; transform: translateY(-50%); background: none; border: 0; color: #9c8c78; font: inherit; font-size: 0.78rem; cursor: pointer; padding: 6px; }
+      button.entra { margin-top: 14px; width: 100%; font: inherit; font-weight: 600; font-size: 0.98rem; color: #fff; background: #c9552a; border: 0; border-radius: 10px; padding: 12px; cursor: pointer; }
+      button.entra:hover { background: #b84b23; }
+      .avviso { display: none; margin: 0 0 14px; padding: 10px 12px; border-radius: 10px; font-size: 0.86rem; line-height: 1.35; }
+      .avviso.errore { background: rgba(201, 85, 42, 0.14); border: 1px solid rgba(201, 85, 42, 0.45); color: #f0b48f; }
+      .avviso.info { background: rgba(168, 100, 60, 0.12); border: 1px solid rgba(168, 100, 60, 0.35); color: #e3b08c; }
+      .avviso.visibile { display: block; }
+    </style>
+  </head>
+  <body>
+    <main class="scheda">
+      <div class="marchio">
+        <img src={percorso("/icone/geologia-1.svg")} alt="" />
+        <div>
+          <div class="nome">Uni<span>Geo</span></div>
+          <div class="sotto">Scienze Geologiche · 1° anno</div>
+        </div>
+      </div>
+      <h1>Chiave di accesso</h1>
+      <p class="riga">Il quaderno di studio è privato.</p>
+      <p id="errore" class="avviso errore" role="alert">Chiave sbagliata.</p>
+      <p id="serve" class="avviso info">Questa parte è negli appunti: serve la chiave degli appunti.</p>
+      <form method="post" action={percorso("/accesso")}>
+        <label for="chiave">Chiave</label>
+        <div class="campo">
+          <input id="chiave" name="chiave" type="password" autocomplete="current-password" autocapitalize="off" autocorrect="off" spellcheck="false" required autofocus />
+          <button type="button" class="mostra" id="mostra">mostra</button>
+        </div>
+        <input type="hidden" name="da" id="da" value="/" />
+        <button type="submit" class="entra">Entra</button>
+      </form>
+    </main>
+    <script is:inline define:vars={{ base: BASE_SITO, impronte: IMPRONTE_PREDEFINITE, soloAppunti: SOLO_APPUNTI }}>
+      // La chiave si controlla qui, nel browser: l'impronta SHA-256 finisce in un
+      // cookie che leggono il controllo di ogni pagina (Base.astro) e, su Vercel,
+      // il middleware. Le regole sono in src/lib/accesso.ts.
+      const q = new URLSearchParams(location.search);
+      const percorsoCookie = base || "/";
+      const sicuro = location.protocol === "https:" ? "; Secure" : "";
+      const scrivi = (valore, durata) => (document.cookie = `unigeo_chiave=${valore}; Path=${percorsoCookie}; Max-Age=${durata}; SameSite=Lax${sicuro}`);
+      if (q.get("esci")) scrivi("", 0);
+      if (q.get("serve") === "appunti") document.getElementById("serve").classList.add("visibile");
+      if (q.get("da")) document.getElementById("da").value = q.get("da");
+      const campo = document.getElementById("chiave");
+      document.getElementById("mostra").addEventListener("click", (e) => {
+        const nascosta = campo.type === "password";
+        campo.type = nascosta ? "text" : "password";
+        e.currentTarget.textContent = nascosta ? "nascondi" : "mostra";
+        campo.focus();
+      });
+      document.querySelector("form").addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const dati = new TextEncoder().encode(`unigeo|${campo.value.trim().toLowerCase()}`);
+        const hash = [...new Uint8Array(await crypto.subtle.digest("SHA-256", dati))].map((b) => b.toString(16).padStart(2, "0")).join("");
+        const livello = hash === impronte.appunti ? "appunti" : hash === impronte.strumenti ? "strumenti" : null;
+        if (!livello) {
+          document.getElementById("serve").classList.remove("visibile");
+          document.getElementById("errore").classList.add("visibile");
+          campo.select();
+          return;
+        }
+        scrivi(hash, 60 * 60 * 24 * 365);
+        let dest = q.get("da") || "/";
+        if (!dest.startsWith("/") || dest.startsWith("//") || dest.startsWith("/accesso")) dest = "/";
+        const p = dest.split(/[?#]/)[0];
+        if (livello === "strumenti" && (p === "/" || soloAppunti.some((x) => p === x || p.startsWith(`${x}/`)))) dest = "/strumenti";
+        location.replace(base + dest);
+      });
+    </script>
+  </body>
+</html>

@@ -2,8 +2,8 @@ name: Archivio terremoti
 
 # Ogni due ore aggiunge all'archivio (content/terremoti/archivio.json) gli
 # eventi del feed RSNI, che ne tiene solo 20. Se ce ne sono di nuovi fa un
-# commit: Vercel ripubblica il sito da solo. Gli eventi tra un giro e l'altro
-# la mappa li prende in diretta da api/sismi.ts.
+# commit e fa ripartire la pubblicazione su GitHub Pages (un push fatto con il
+# token di Actions non la avvia da solo; un workflow_dispatch sì).
 on:
   schedule:
     - cron: "23 */2 * * *"
@@ -11,6 +11,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   group: archivio-terremoti
@@ -36,4 +37,7 @@ jobs:
             git commit -m "Archivio terremoti aggiornato"
             git pull --rebase
             git push
+            gh workflow run deploy.yml --ref main
           fi
+        env:
+          GH_TOKEN: ${{ github.token }}

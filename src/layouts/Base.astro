@@ -6,6 +6,7 @@ import { percorso } from "@/lib/percorsi";
 import Litologie from "@/components/Litologie.astro";
 import Menu from "@/components/Menu.astro";
 import Intestazione from "@/components/Intestazione.astro";
+import { IMPRONTE_PREDEFINITE, SOLO_APPUNTI } from "@/lib/accesso";
 
 interface Props {
   titolo: string;
@@ -23,6 +24,7 @@ interface Props {
 }
 
 const { titolo, descrizione, colore, larghezza, largo, tema = "sottosuolo", nudo = false } = Astro.props;
+const BASE_SITO = import.meta.env.BASE_URL.replace(/\/$/, "");
 const misura = larghezza ?? (largo === false ? "testo" : "largo");
 const LARGHEZZE = { testo: "max-w-3xl", largo: "max-w-6xl", pieno: "max-w-[1500px]" };
 ---
@@ -33,6 +35,7 @@ const LARGHEZZE = { testo: "max-w-3xl", largo: "max-w-6xl", pieno: "max-w-[1500p
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="theme-color" content="#1a1411" />
+    <meta name="robots" content="noindex, nofollow" />
     <link rel="icon" type="image/svg+xml" href={percorso("/favicon.svg")} />
     <link rel="apple-touch-icon" href={percorso("/icone/app-512.png")} />
     <link rel="manifest" href={percorso("/manifest.webmanifest")} />
@@ -44,6 +47,29 @@ const LARGHEZZE = { testo: "max-w-3xl", largo: "max-w-6xl", pieno: "max-w-[1500p
       try {
         if (localStorage.getItem("unigeo.menu") === "rail") document.documentElement.setAttribute("data-menu", "rail");
       } catch {}
+    </script>
+    <script is:inline define:vars={{ base: BASE_SITO, impronte: IMPRONTE_PREDEFINITE, soloAppunti: SOLO_APPUNTI }}>
+      // La chiave d'accesso (lib/accesso.ts), controllata nel browser prima di
+      // disegnare la pagina: senza chiave si va a /accesso; con la chiave degli
+      // strumenti niente appunti. Su GitHub Pages è un velo, non una serratura.
+      function controllaAccesso() {
+        const m = /(?:^|; )unigeo_chiave=([0-9a-f]{64})/.exec(document.cookie);
+        const livello = m && m[1] === impronte.appunti ? "appunti" : m && m[1] === impronte.strumenti ? "strumenti" : null;
+        const html = document.documentElement;
+        if (livello) html.setAttribute("data-livello", livello);
+        else html.removeAttribute("data-livello");
+        let p = base && location.pathname.startsWith(base) ? location.pathname.slice(base.length) : location.pathname;
+        p = p.replace(/\.html$/, "").replace(/\/+$/, "") || "/";
+        const da = encodeURIComponent(p + location.search + location.hash);
+        if (!livello) return location.replace(`${base}/accesso?da=${da}`);
+        if (livello === "strumenti" && p === "/") return location.replace(`${base}/strumenti`);
+        if (livello === "strumenti" && soloAppunti.some((x) => p === x || p.startsWith(`${x}/`))) location.replace(`${base}/accesso?serve=appunti&da=${da}`);
+      }
+      controllaAccesso();
+      if (!window.__unigeoAccesso) {
+        window.__unigeoAccesso = true;
+        document.addEventListener("astro:after-swap", controllaAccesso);
+      }
     </script>
   </head>
   <body class="min-h-dvh lg:flex">

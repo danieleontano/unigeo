@@ -299,3 +299,16 @@ due settimane di fila salta, il problema non è nel codice.
   (content/geologia-1/glossario-magmatiche.json). Dati in src/lib/magmatiche.ts;
   la vista si apre dall'indirizzo (/qap#effusive) per collegarla dalle lezioni.
   Ogni campo ha anche il nome inglese della slide.
+- 2026-10-05 · Chiave di accesso. Daniele vuole il sito privato con due
+  chiavi: «sassi» = solo strumenti, «roccemaledette» = anche gli appunti
+  (lezioni, Libro, quiz, flashcard, ripasso, PDF). Vercel scartato da lui
+  («troppa poca archiviazione»; in realtà il sito pesa ~60 MB, ma la decisione
+  è sua): si resta su GitHub Pages. Pages gratis vuole il repo pubblico e non
+  ha controllo d'accesso, quindi la chiave è un VELO: pagina /accesso, impronta
+  SHA-256 in un cookie, controllo nel browser in testa a ogni pagina
+  (Base.astro), voci di menu nascoste per gli strumenti. Repo e HTML restano
+  leggibili da chi li cerca: detto chiaramente a Daniele, che aveva proposto
+  lui «nascondiamo». Regole in src/lib/accesso.ts; middleware.ts (Vercel)
+  pronto se un giorno si vuole la serratura vera. noindex + robots.txt.
+  I workflow dei terremoti e della carta ICS, dopo il commit, avviano
+  deploy.yml con `gh workflow run` (il push col token di Actions non lo fa).

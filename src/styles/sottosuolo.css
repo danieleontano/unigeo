@@ -266,3 +266,9 @@ html[data-menu-aperto] #velo-menu { display: block; }
 
 /* Usata in molti componenti come scorciatoia di font-sans. */
 .sans { font-family: var(--font-sans); }
+
+/* Accesso con chiave (lib/accesso.ts): chi è entrato con la chiave degli
+   strumenti non vede le voci degli appunti; «Esci» c'è solo con una chiave. */
+html[data-livello="strumenti"] .solo-appunti { display: none !important; }
+.solo-con-chiave { display: none !important; }
+html[data-livello] .solo-con-chiave { display: flex !important; }
