@@ -14,7 +14,7 @@ tag: [rocce magmatiche, laboratorio, riconoscimento, tessitura, Streckeisen]
 
 *"Non c'è trucco, non c'è inganno: sono solo rocce magmatiche."*
 
-- Quattro ore in tutto, oggi e domani, con i campioni visti nelle due lezioni di introduzione. Si prende un campione, si torna al posto, si ragiona, si cambia. Da soli o in gruppo, come si preferisce: in tre (Piazza, Federico e l'assistente) passano tra i banchi.
+- Quattro ore in tutto, lunedì 5 e martedì 6 ottobre, stesso laboratorio, con i campioni visti nelle due lezioni di introduzione. Si prende un campione, si torna al posto, si ragiona, si cambia. Da soli o in gruppo, come si preferisce: in tre (Piazza, Federico e l'assistente) passano tra i banchi.
 - L'obiettivo è **vederne più tipi possibile** e ragionarli tutti con lo stesso metodo. Non è ancora il momento di rocce messe lì per confondere: solo magmatiche.
 - Chi lavora in gruppo "ci metta la testa" comunque: **all'esame si è da soli**, ognuno con le sue rocce, e nessuno interviene in aiuto.
 - Servono **lente e punta**, da oggi.
@@ -25,7 +25,7 @@ Il metodo è quello della lezione 5: tessitura → percentuale di femici → qua
 
 ::campioni{id="granito,granodiorite,tonalite,sienite,monzonite,diorite,gabbro,anortosite,peridotite,dunite,pirossenite,riolite,dacite,andesite,basalto,trachite,fonolite,tefrite,ossidiana,pomice,scoria,tufo,ignimbrite"}
 
-## Le mie schede
+## Schede del 5 ottobre
 
 *Una scheda per campione. Compilare tutte le righe, anche quando la risposta è "non si vede": è un'informazione.*
 
@@ -94,6 +94,75 @@ Il metodo è quello della lezione 5: tessitura → percentuale di femici → qua
 | **Nome** | | |
 | Dubbi / cosa mi ha detto il prof | | |
 
+## Schede del 6 ottobre
+
+*Seconda sessione, stesso metodo: puntare ai tipi non visti il primo giorno.*
+
+### Campione 6
+
+| Passo | Osservazione | Conclusione |
+| --- | --- | --- |
+| Tessitura | | |
+| Indice di colore | | |
+| Quarzo o feldspatoidi | | |
+| Feldspati alcalini vs plagioclasio | | |
+| Femico accessorio | | |
+| HCl | | |
+| **Nome** | | |
+| Dubbi / cosa mi ha detto il prof | | |
+
+### Campione 7
+
+| Passo | Osservazione | Conclusione |
+| --- | --- | --- |
+| Tessitura | | |
+| Indice di colore | | |
+| Quarzo o feldspatoidi | | |
+| Feldspati alcalini vs plagioclasio | | |
+| Femico accessorio | | |
+| HCl | | |
+| **Nome** | | |
+| Dubbi / cosa mi ha detto il prof | | |
+
+### Campione 8
+
+| Passo | Osservazione | Conclusione |
+| --- | --- | --- |
+| Tessitura | | |
+| Indice di colore | | |
+| Quarzo o feldspatoidi | | |
+| Feldspati alcalini vs plagioclasio | | |
+| Femico accessorio | | |
+| HCl | | |
+| **Nome** | | |
+| Dubbi / cosa mi ha detto il prof | | |
+
+### Campione 9
+
+| Passo | Osservazione | Conclusione |
+| --- | --- | --- |
+| Tessitura | | |
+| Indice di colore | | |
+| Quarzo o feldspatoidi | | |
+| Feldspati alcalini vs plagioclasio | | |
+| Femico accessorio | | |
+| HCl | | |
+| **Nome** | | |
+| Dubbi / cosa mi ha detto il prof | | |
+
+### Campione 10
+
+| Passo | Osservazione | Conclusione |
+| --- | --- | --- |
+| Tessitura | | |
+| Indice di colore | | |
+| Quarzo o feldspatoidi | | |
+| Feldspati alcalini vs plagioclasio | | |
+| Femico accessorio | | |
+| HCl | | |
+| **Nome** | | |
+| Dubbi / cosa mi ha detto il prof | | |
+
 ## Cosa ho sbagliato e perché
 
 *Da compilare a fine laboratorio. Gli errori ripetuti sono la lista di ripasso più utile che esista.*
@@ -102,6 +171,6 @@ Il metodo è quello della lezione 5: tessitura → percentuale di femici → qua
 
 ## Da fare
 
-- [ ] Martedì 6 ottobre: seconda sessione, stesso schema. Puntare ai tipi non ancora visti.
+- [ ] Martedì 6 ottobre: seconda sessione, stesso schema (schede 6–10). Puntare ai tipi non ancora visti.
 - [ ] Compilare le schede la sera stessa, finché i campioni sono freschi in testa.
 - [ ] Per il ripasso: quiz della lezione 5 (il metodo) e flashcard dei minerali della lezione 3.
