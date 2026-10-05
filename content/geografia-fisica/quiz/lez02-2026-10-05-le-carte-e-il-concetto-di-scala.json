@@ -1,0 +1,111 @@
+{
+  "lezione": "geografia-fisica/lez02-2026-10-05-le-carte-e-il-concetto-di-scala",
+  "domande": [
+    {
+      "id": "q1",
+      "tipo": "scelta",
+      "testo": "Quali sono i tre aggettivi che definiscono ogni carta geografica?",
+      "opzioni": ["Ridotta, orientata, colorata", "Ridotta, approssimata, simbolica", "Piana, proiettata, quotata", "Equidistante, equivalente, isogonica"],
+      "corretta": 1,
+      "spiegazione": "Ridotta (da cui la scala), approssimata (da cui le deformazioni e le proiezioni) e simbolica (da cui i segni convenzionali).",
+      "ref": "#le-carte-geografiche"
+    },
+    {
+      "id": "q2",
+      "tipo": "scelta",
+      "testo": "Su una carta 1:25.000 misuri 3 cm. A quanto corrispondono sul terreno?",
+      "opzioni": ["75 m", "750 m", "7,5 km", "250 m"],
+      "corretta": 1,
+      "spiegazione": "3 × 25.000 = 75.000 cm = 750 m. Un centimetro al 25.000 sono 250 m.",
+      "ref": "#il-concetto-di-scala"
+    },
+    {
+      "id": "q3",
+      "tipo": "verofalso",
+      "testo": "Una carta 1:50.000 è a scala più grande di una carta 1:25.000.",
+      "corretta": false,
+      "spiegazione": "La scala è un rapporto: 1/50.000 è un numero più piccolo di 1/25.000. Più cresce il denominatore, più la scala è piccola.",
+      "ref": "#il-concetto-di-scala"
+    },
+    {
+      "id": "q4",
+      "tipo": "abbinamento",
+      "testo": "Abbina ogni proprietà di una carta a ciò che conserva.",
+      "coppie": [["isogonica", "gli angoli, cioè le direzioni rispetto al nord"], ["equidistante", "le distanze"], ["equivalente", "le superfici"]],
+      "ref": "#isogoniche-equidistanti-equivalenti"
+    },
+    {
+      "id": "q5",
+      "tipo": "scelta",
+      "testo": "Quanto misura sulla carta il lato di una maglia del reticolato chilometrico su una tavoletta 1:25.000?",
+      "opzioni": ["1 cm", "2,5 cm", "4 cm", "10 cm"],
+      "corretta": 2,
+      "spiegazione": "La maglia è di 1 km reale. Al 25.000 un centimetro sono 250 m, quindi 1 km sono 4 cm. Al 10.000 sarebbero 10 cm.",
+      "ref": "#il-reticolato-chilometrico-una-scala-grafica-gratis"
+    },
+    {
+      "id": "q6",
+      "tipo": "aperta",
+      "testo": "Perché una carta al 10.000 non è semplicemente uno zoom della carta al 25.000 della stessa zona?",
+      "soluzione": "Perché è stata rilevata a quella scala: contiene punti quotati, edifici e dettagli che al 25.000 non sono stati rappresentati e che non compaiono ingrandendo l'altra carta. Allo stesso modo, riducendo di scala le aree piccole spariscono.",
+      "ref": "#passaggio-di-scala-non-è-uno-zoom"
+    },
+    {
+      "id": "q7",
+      "tipo": "scelta",
+      "testo": "Distanza reale tra due punti 2 km, distanza sulla carta 8 cm. Qual è la scala?",
+      "opzioni": ["1:2.500", "1:25.000", "1:250.000", "1:40.000"],
+      "corretta": 1,
+      "spiegazione": "Stessa unità: 2 km = 200.000 cm. 200.000 / 8 = 25.000.",
+      "ref": "#gli-esercizi-sulla-scala"
+    },
+    {
+      "id": "q8",
+      "tipo": "scelta",
+      "testo": "Tra A e B misuri 6 cm su una carta 1:25.000 e 15 cm su una carta di scala sconosciuta. Qual è la seconda scala?",
+      "opzioni": ["1:10.000", "1:62.500", "1:5.000", "1:15.000"],
+      "corretta": 0,
+      "spiegazione": "Distanza reale 6 × 25.000 = 150.000 cm; 150.000 / 15 = 10.000.",
+      "ref": "#gli-esercizi-sulla-scala"
+    },
+    {
+      "id": "q9",
+      "tipo": "aperta",
+      "testo": "Che cosa sono le isobate e in quale tipo di carta si trovano?",
+      "soluzione": "Isolinee che uniscono i punti di uguale profondità del fondale (−10, −20 m…), l'equivalente delle curve di livello per le forme sommerse. Si trovano nelle carte nautiche, prodotte dall'Istituto Idrografico della Marina.",
+      "ref": "#carte-nautiche-catastali-tematiche"
+    },
+    {
+      "id": "q10",
+      "tipo": "verofalso",
+      "testo": "La superficie di un bacino misurata sulla carta coincide con la superficie reale del terreno.",
+      "corretta": false,
+      "spiegazione": "La carta è una proiezione sul piano: la superficie misurata è quella proiettata, minore di quella reale, che è articolata in versanti.",
+      "ref": "#isogoniche-equidistanti-equivalenti"
+    },
+    {
+      "id": "q11",
+      "tipo": "scelta",
+      "testo": "Quale ente ha realizzato le vecchie carte topografiche italiane, come la tavoletta di Rapallo?",
+      "opzioni": ["L'Istituto Idrografico della Marina", "Le Regioni", "L'Istituto Geografico Militare", "Il Catasto"],
+      "corretta": 2,
+      "spiegazione": "L'IGM ha coperto tutto il territorio nazionale tra fine Ottocento e anni Sessanta; dagli anni Settanta l'aggiornamento è passato alle Regioni.",
+      "ref": "#chi-fa-le-carte-in-italia"
+    },
+    {
+      "id": "q12",
+      "tipo": "aperta",
+      "testo": "Qual è la differenza tra coordinate chilometriche e coordinate geografiche, e dove si leggono sulla carta?",
+      "soluzione": "Le chilometriche sono coordinate piane riferite al reticolato chilometrico, lette in basso e a sinistra; le geografiche (latitudine e longitudine) sono coordinate sferiche, angoli in gradi, primi e secondi, lette in alto. Non vanno confuse.",
+      "ref": "#due-famiglie-di-coordinate"
+    },
+    {
+      "id": "q13",
+      "tipo": "verofalso",
+      "testo": "Nello scritto di cartografia una sezione topografica fatta bene vale circa un terzo del punteggio.",
+      "corretta": true,
+      "spiegazione": "Il prof ha detto che vale 10–12 punti su 30: è l'esercizio chiave della prova.",
+      "ref": "#come-si-lavora-in-questo-corso"
+    }
+  ]
+}

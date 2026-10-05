@@ -1,0 +1,111 @@
+{
+  "lezione": "chimica/lez02-2026-10-05-gli-atomi-e-la-teoria-atomica",
+  "domande": [
+    {
+      "id": "q1",
+      "tipo": "scelta",
+      "testo": "Cosa misurò Thomson con il tubo a raggi catodici?",
+      "opzioni": ["La massa dell'elettrone", "La carica dell'elettrone", "Il rapporto carica/massa dell'elettrone", "Il raggio del nucleo"],
+      "corretta": 2,
+      "spiegazione": "Compensando campo elettrico e magnetico fino a non far deviare il fascio, dai loro valori si ricava solo il rapporto carica/massa (−1,76 × 10⁸ C/g). Carica e massa separate arrivano con Millikan.",
+      "ref": "#thomson-e-il-tubo-a-raggi-catodici"
+    },
+    {
+      "id": "q2",
+      "tipo": "scelta",
+      "testo": "Nell'esperimento di Rutherford, perché la maggior parte delle particelle alfa attraversa la lamina d'oro senza deviare?",
+      "opzioni": ["Perché le particelle alfa non hanno carica", "Perché l'atomo è quasi tutto spazio vuoto e la massa è concentrata in un nucleo piccolissimo", "Perché l'oro è molto malleabile", "Perché gli elettroni le respingono"],
+      "corretta": 1,
+      "spiegazione": "Il nucleo è circa 10.000 volte più piccolo dell'atomo: solo le rare alfa che lo centrano vengono rimbalzate, le altre passano.",
+      "ref": "#rutherford-e-il-nucleo"
+    },
+    {
+      "id": "q3",
+      "tipo": "abbinamento",
+      "testo": "Abbina ogni tipo di radiazione al suo comportamento nel campo elettrico.",
+      "coppie": [["alfa", "devia verso la piastra negativa: nuclei di elio 2+"], ["beta", "devia verso la piastra positiva: elettroni emessi dal nucleo"], ["gamma", "non devia: nessuna carica"]],
+      "ref": "#radioattività-e-particelle-alfa-beta-gamma"
+    },
+    {
+      "id": "q4",
+      "tipo": "verofalso",
+      "testo": "Nel calcolo del numero di massa A si contano protoni, neutroni ed elettroni.",
+      "corretta": false,
+      "spiegazione": "A = protoni + neutroni. L'elettrone è circa 1840 volte più leggero del protone e si trascura.",
+      "ref": "#numero-atomico-e-numero-di-massa"
+    },
+    {
+      "id": "q5",
+      "tipo": "scelta",
+      "testo": "Quanti protoni, neutroni ed elettroni ha lo ione ²⁷₁₃Al³⁺?",
+      "opzioni": ["13 p, 14 n, 13 e", "13 p, 14 n, 10 e", "13 p, 27 n, 10 e", "10 p, 14 n, 13 e"],
+      "corretta": 1,
+      "spiegazione": "Z = 13 protoni; neutroni = 27 − 13 = 14; carica 3+ significa tre elettroni in meno: 13 − 3 = 10.",
+      "ref": "#esercizi-fatti-in-aula"
+    },
+    {
+      "id": "q6",
+      "tipo": "scelta",
+      "testo": "Un anione del gruppo 16 contiene 36 elettroni. Di che specie si tratta?",
+      "opzioni": ["S²⁻", "Se²⁻", "Kr", "Te²⁻"],
+      "corretta": 1,
+      "spiegazione": "Il selenio ha Z = 34; con due elettroni in più arriva a 36: Se²⁻. Il kripton ha 36 elettroni ma è neutro e non è nel gruppo 16.",
+      "ref": "#esercizi-fatti-in-aula"
+    },
+    {
+      "id": "q7",
+      "tipo": "aperta",
+      "testo": "Spiega perché uranio-235 e uranio-238 sono isotopi, indicando quanti protoni e neutroni hanno.",
+      "soluzione": "Hanno lo stesso numero di protoni (92, quindi sono entrambi uranio) ma diverso numero di neutroni: 143 nel 235 e 146 nel 238. Stesso Z, diverso A: è la definizione di isotopi.",
+      "ref": "#gli-isotopi"
+    },
+    {
+      "id": "q8",
+      "tipo": "verofalso",
+      "testo": "I processi chimici modificano il nucleo degli atomi.",
+      "corretta": false,
+      "spiegazione": "I processi chimici coinvolgono al massimo gli elettroni, che stanno fuori dal nucleo. Il nucleo si tocca solo con il decadimento radioattivo.",
+      "ref": "#gli-ioni"
+    },
+    {
+      "id": "q9",
+      "tipo": "aperta",
+      "testo": "Che cosa ha di speciale il prozio tra tutti gli isotopi conosciuti, e che cos'è l'acqua pesante?",
+      "soluzione": "Il prozio (idrogeno-1) è l'unico isotopo senza neutroni: solo un protone. L'acqua pesante è acqua fatta con deuterio (idrogeno con un neutrone): ha massa maggiore e proprietà chimiche leggermente diverse; nei reattori fa da moderatore, cioè rallenta i neutroni assorbendone pochissimi.",
+      "ref": "#gli-isotopi"
+    },
+    {
+      "id": "q10",
+      "tipo": "scelta",
+      "testo": "Se la lunghezza d'onda di una radiazione passa da 700 nm a 400 nm, cosa succede alla frequenza e all'energia del fotone?",
+      "opzioni": ["Entrambe diminuiscono", "La frequenza aumenta, l'energia diminuisce", "Entrambe aumentano", "Restano uguali, cambia solo la velocità"],
+      "corretta": 2,
+      "spiegazione": "λ·ν = c con c costante: λ più corta, ν più alta. E = h·ν: frequenza più alta, fotone più energetico. La velocità nel vuoto è sempre c.",
+      "ref": "#la-luce-come-onda"
+    },
+    {
+      "id": "q11",
+      "tipo": "scelta",
+      "testo": "Qual è il significato della legge di Planck sul corpo nero?",
+      "opzioni": ["La luce viaggia a velocità costante nel vuoto", "L'energia viene scambiata a pacchetti discreti, i quanti, non in modo continuo", "Gli elettroni hanno massa trascurabile", "Il nucleo è molto più piccolo dell'atomo"],
+      "corretta": 1,
+      "spiegazione": "E = n·h·ν: l'energia si trasferisce solo in multipli interi di h·ν. È la base della teoria quantistica.",
+      "ref": "#il-corpo-nero-e-il-quanto-di-planck"
+    },
+    {
+      "id": "q12",
+      "tipo": "aperta",
+      "testo": "Nell'effetto fotoelettrico la luce rossa non strappa elettroni dal metallo, la blu sì. Perché questo dimostra la natura corpuscolare della luce?",
+      "soluzione": "Si spiega solo pensando a corpuscoli: un fotone urta un elettrone e lo scalza se ha abbastanza energia (E = h·ν). Il fotone rosso ha frequenza, e quindi energia, sotto la soglia; quello blu sopra. Non conta l'intensità ma l'energia del singolo fotone.",
+      "ref": "#il-fotone-e-leffetto-fotoelettrico"
+    },
+    {
+      "id": "q13",
+      "tipo": "verofalso",
+      "testo": "Il neutrone è stato scoperto da Chadwick bombardando il berillio con particelle alfa.",
+      "corretta": true,
+      "spiegazione": "α + ⁹Be → ¹²C + ¹n + energia. Il neutrone ha massa simile al protone e nessuna carica, e spiega perché l'elio pesa 4 volte l'idrogeno pur avendo solo 2 protoni.",
+      "ref": "#chadwick-e-il-neutrone"
+    }
+  ]
+}

@@ -42,7 +42,6 @@ const VISTE: { id: Vista; nome: string }[] = [
   { id: "prova", nome: "Classifica tu" },
 ];
 
-const numero = (x: number) => x.toLocaleString("it-IT", { maximumFractionDigits: 1 });
 function mescola<T>(xs: T[]): T[] {
   const a = [...xs];
   for (let i = a.length - 1; i > 0; i--) {
