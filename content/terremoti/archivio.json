@@ -1,7 +1,177 @@
 {
  "dal": "2026-10-04T00:00:00.000Z",
- "aggiornato": "2026-10-04T16:07:27.293Z",
+ "aggiornato": "2026-10-05T14:58:24.544Z",
  "eventi": [
+  {
+   "id": "261005123357",
+   "quando": "2026-10-05T12:34:22Z",
+   "magnitudo": 1.3,
+   "regione": "Francia",
+   "lat": 45.657,
+   "lon": 6.405,
+   "profondita": 8.02344,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261005123357"
+  },
+  {
+   "id": "261005090642",
+   "quando": "2026-10-05T09:08:03Z",
+   "magnitudo": 0.4,
+   "regione": "Garfagnana",
+   "lat": 44.142,
+   "lon": 10.557,
+   "profondita": 7.25,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261005090642"
+  },
+  {
+   "id": "261005085121",
+   "quando": "2026-10-05T08:51:47Z",
+   "magnitudo": 2.4,
+   "regione": "Garfagnana",
+   "lat": 44.136,
+   "lon": 10.565,
+   "profondita": 7.95312,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261005085121"
+  },
+  {
+   "id": "261005060044",
+   "quando": "2026-10-05T06:01:18Z",
+   "magnitudo": 1.1,
+   "regione": "Val di Taro",
+   "lat": 44.56,
+   "lon": 9.895,
+   "profondita": 27.2656,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261005060044"
+  },
+  {
+   "id": "261005020746",
+   "quando": "2026-10-05T02:08:02Z",
+   "magnitudo": 1.6,
+   "regione": "Zona Reggio Emilia",
+   "lat": 44.557,
+   "lon": 10.481,
+   "profondita": 24.7109,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261005020746"
+  },
+  {
+   "id": "261005020232",
+   "quando": "2026-10-05T02:04:03Z",
+   "magnitudo": 2.4,
+   "regione": "Zona Reggio Emilia",
+   "lat": 44.57,
+   "lon": 10.47,
+   "profondita": 25.0391,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261005020232"
+  },
+  {
+   "id": "261004170759",
+   "quando": "2026-10-04T17:09:22Z",
+   "magnitudo": 0.6,
+   "regione": "Frignano",
+   "lat": 44.332,
+   "lon": 10.587,
+   "profondita": 20.6328,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261004170759"
+  },
+  {
+   "id": "261004165345",
+   "quando": "2026-10-04T16:54:58Z",
+   "magnitudo": 0.6,
+   "regione": "Zona Reggio Emilia",
+   "lat": 44.532,
+   "lon": 10.755,
+   "profondita": 11.2812,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261004165345"
+  },
+  {
+   "id": "261004084519",
+   "quando": "2026-10-04T08:45:56Z",
+   "magnitudo": 0.5,
+   "regione": "Alpi Pennine",
+   "lat": 45.899,
+   "lon": 6.914,
+   "profondita": 5.86719,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261004084519"
+  },
+  {
+   "id": "261004074911",
+   "quando": "2026-10-04T07:49:55Z",
+   "magnitudo": 0.6,
+   "regione": "Alpi Cozie",
+   "lat": 44.615,
+   "lon": 7.236,
+   "profondita": 6.14844,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261004074911"
+  },
+  {
+   "id": "261004034944",
+   "quando": "2026-10-04T03:50:59Z",
+   "magnitudo": 0.8,
+   "regione": "Alpi Pennine",
+   "lat": 45.876,
+   "lon": 7.017,
+   "profondita": 7.03906,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261004034944"
+  },
+  {
+   "id": "261003181531",
+   "quando": "2026-10-03T18:16:39Z",
+   "magnitudo": 0.7,
+   "regione": "Alpi Cozie",
+   "lat": 44.809,
+   "lon": 6.761,
+   "profondita": 5.70312,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261003181531"
+  },
+  {
+   "id": "261003170928",
+   "quando": "2026-10-03T17:09:45Z",
+   "magnitudo": 0.6,
+   "regione": "Cuneese-Valle Stura",
+   "lat": 44.79,
+   "lon": 7.665,
+   "profondita": 21.7812,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261003170928"
+  },
+  {
+   "id": "261002231754",
+   "quando": "2026-10-02T23:18:21Z",
+   "magnitudo": 1.1,
+   "regione": "Alpi Pennine",
+   "lat": 45.863,
+   "lon": 7.018,
+   "profondita": 6.61719,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261002231754"
+  },
+  {
+   "id": "261002140503",
+   "quando": "2026-10-02T14:06:33Z",
+   "magnitudo": 0.3,
+   "regione": "Riviera di ponente",
+   "lat": 44.094,
+   "lon": 8.135,
+   "profondita": 5.49219,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261002140503"
+  },
+  {
+   "id": "261002121536",
+   "quando": "2026-10-02T12:16:02Z",
+   "magnitudo": 0.3,
+   "regione": "Alpi Cozie",
+   "lat": 44.853,
+   "lon": 6.832,
+   "profondita": 9.47656,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261002121536"
+  },
+  {
+   "id": "261002100508",
+   "quando": "2026-10-02T10:06:12Z",
+   "magnitudo": 1.4,
+   "regione": "Valle del Trebbia",
+   "lat": 44.614,
+   "lon": 9.471,
+   "profondita": 4.4375,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261002100508"
+  },
   {
    "id": "261002084128",
    "quando": "2026-10-02T08:41:54Z",
