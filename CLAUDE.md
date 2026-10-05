@@ -312,3 +312,15 @@ due settimane di fila salta, il problema non è nel codice.
   pronto se un giorno si vuole la serratura vera. noindex + robots.txt.
   I workflow dei terremoti e della carta ICS, dopo il commit, avviano
   deploy.yml con `gh workflow run` (il push col token di Actions non lo fa).
+- 2026-10-05 sera · Daniele ha importato il progetto su Vercel (team
+  gestionale-minerva, https://unigeo-tau.vercel.app). Primo deploy: 500
+  MIDDLEWARE_INVOCATION_FAILED su tutto. Causa: Vercel NON impacchetta
+  middleware.ts né api/*.ts in un file solo; gli import locali senza
+  estensione («./src/lib/accesso») non si risolvono. Regola: negli import di
+  middleware.ts e api/ scrivere «.js» (TypeScript lo risolve sul .ts). Il
+  middleware ora gira su Node.js (runtime "nodejs"; edge è deprecato).
+  Per riprodurre in locale: `.vercel/project.json` con settings
+  framework "astro" e `VERCEL=1 npx vercel build`, poi importare con node i
+  file in `.vercel/output/functions/`. Su Vercel la chiave è una serratura
+  vera (provato: senza cookie esce solo /accesso). Restano pubblici il repo
+  GitHub e la copia su GitHub Pages: da chiudere se Daniele conferma.
