@@ -4,7 +4,6 @@
 //   il resto       → passa, oppure porta alla pagina d'accesso
 // Di solito il cookie lo mette già la pagina /accesso dal browser; il POST
 // serve solo se JavaScript è spento. Non gira né in locale né su GitHub Pages.
-import { next } from "@vercel/functions";
 import { COOKIE_CHIAVE, decidi, impronta, impronte, livelloDa, ritornoSicuro, type Livello } from "./src/lib/accesso";
 
 export const config = {
@@ -14,6 +13,15 @@ export const config = {
 };
 
 const UN_ANNO = 60 * 60 * 24 * 365;
+
+// «Prosegui»: come next() di @vercel/functions, scritto qui. Il pacchetto
+// intero non va importato: il suo indice tira dentro moduli che nel runtime
+// dei middleware non si caricano (05/10/2026: MIDDLEWARE_INVOCATION_FAILED).
+function prosegui(extra: Record<string, string> = {}): Response {
+  const headers = new Headers(extra);
+  headers.set("x-middleware-next", "1");
+  return new Response(null, { headers });
+}
 
 // Non HttpOnly: lo legge anche il controllo nel browser (Base.astro).
 function cookie(nome: string, valore: string, durata: number) {
@@ -37,7 +45,8 @@ function vai(dove: string, request: Request, cookies: string[] = []): Response {
 
 export default async function middleware(request: Request): Promise<Response> {
   const url = new URL(request.url);
-  const tabella = impronte(process.env);
+  const env = (globalThis as { process?: { env?: Record<string, string | undefined> } }).process?.env ?? {};
+  const tabella = impronte(env);
 
   if (url.pathname === "/accesso" && request.method === "POST") {
     const dati = await request.formData().catch(() => null);
@@ -51,7 +60,7 @@ export default async function middleware(request: Request): Promise<Response> {
 
   const livello: Livello | null = livelloDa(leggiCookie(request, COOKIE_CHIAVE), tabella);
   const decisione = decidi(url.pathname, livello);
-  if (decisione.tipo === "passa") return next({ headers: { "X-Robots-Tag": "noindex, nofollow" } });
+  if (decisione.tipo === "passa") return prosegui({ "X-Robots-Tag": "noindex, nofollow" });
   if (decisione.tipo === "vai") return vai(decisione.dove, request);
   const da = url.pathname + url.search;
   return vai(`/accesso?${decisione.motivo === "serve-appunti" ? "serve=appunti&" : ""}da=${encodeURIComponent(da)}`, request);
