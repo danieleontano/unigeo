@@ -1,7 +1,47 @@
 {
  "dal": "2026-10-04T00:00:00.000Z",
- "aggiornato": "2026-10-05T14:58:24.544Z",
+ "aggiornato": "2026-10-06T15:17:52.092Z",
  "eventi": [
+  {
+   "id": "261006032418",
+   "quando": "2026-10-06T03:24:43Z",
+   "magnitudo": 0.9,
+   "regione": "Alpi Cozie",
+   "lat": 44.735,
+   "lon": 6.73,
+   "profondita": 4.32031,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261006032418"
+  },
+  {
+   "id": "261005233324",
+   "quando": "2026-10-05T23:34:39Z",
+   "magnitudo": 0.2,
+   "regione": "Alpi Marittime",
+   "lat": 43.98,
+   "lon": 7.654,
+   "profondita": 5.21094,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261005233324"
+  },
+  {
+   "id": "261005225910",
+   "quando": "2026-10-05T22:59:34Z",
+   "magnitudo": -0.3,
+   "regione": "Alpi Pennine",
+   "lat": 45.897,
+   "lon": 6.93,
+   "profondita": 2.96094,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261005225910"
+  },
+  {
+   "id": "261005174447",
+   "quando": "2026-10-05T17:45:05Z",
+   "magnitudo": 0.5,
+   "regione": "Svizzera",
+   "lat": 46.289,
+   "lon": 7.285,
+   "profondita": 9.52344,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261005174447"
+  },
   {
    "id": "261005123357",
    "quando": "2026-10-05T12:34:22Z",
