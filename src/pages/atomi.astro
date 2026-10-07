@@ -1,0 +1,15 @@
+---
+import Base from "@/layouts/Base.astro";
+import Testata from "@/components/Testata.astro";
+import { Atomi } from "@/components/Atomi";
+import dati from "../../content/chimica/elementi.json";
+
+// Dalla lezione 2 di Chimica (05/10/2026): gli esercizi sugli ioni, gli isotopi
+// e la luce come onda e come fotone. I dati degli elementi sono quelli della Tavola periodica.
+const elementi = dati.elementi.map((e) => ({ z: e.z, simbolo: e.simbolo, nome: e.nome, massa: e.massa, ossidazione: e.ossidazione }));
+---
+
+<Base titolo="Atomi e luce" larghezza="pieno" colore="#6A4C93">
+  <Testata piana titolo="Atomi e luce" descrizione="Protoni, neutroni ed elettroni, isotopi e ioni; la luce come onda e come fotone." />
+  <Atomi client:load elementi={elementi} />
+</Base>

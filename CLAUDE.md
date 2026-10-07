@@ -363,3 +363,11 @@ due settimane di fila salta, il problema non è nel codice.
   (4) Riconosci la pietra: le foto del mosaico mostrano il nome (e la categoria
   al passaggio del mouse) e un clic apre la scheda del campione.
   Dopo aver cambiato lo schema delle materie, svuotare .astro/ (cache dei dati).
+- 2026-10-08 · Strumento nuovo 1/4: «Atomi e luce» (/atomi, Chimica): particelle e
+  ioni (esercizi della lezione 2, dalla specie ai numeri e viceversa, isotopi sì/no),
+  isotopi con massa atomica media (14 elementi, abbondanze NIST: tornano con la
+  tavola), la luce (spettro, λ·ν=c, E=hν, esercizi con numeri come li usa il prof:
+  c=3,00×10⁸, h=6,63×10⁻³⁴), effetto fotoelettrico animato (soglia, intensità).
+  Calcoli in lib/atomi.ts (provati contro i numeri della lezione); `/atomi#luce` apre
+  un modo. Piano di Daniele: dopo Atomi, in ordine: coordinate e fusi, proiezioni
+  deformate, ricerca nell'appunti.

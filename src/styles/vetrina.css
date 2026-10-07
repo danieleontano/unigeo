@@ -138,3 +138,9 @@ html[data-livello="appunti"] .liv-appunti, html[data-livello="strumenti"] .liv-s
 html[data-livello="appunti"] .liv-in-appunti, html[data-livello="strumenti"] .liv-in-strumenti { display: inline; }
 .solo-con-chiave-blocco { display: none; }
 html[data-livello] .solo-con-chiave-blocco { display: block; }
+
+/* Effetto fotoelettrico: il fotone arriva sulla lastra, l'elettrone parte (stesso ciclo). */
+@keyframes fotone-vola { 0% { transform: translate(0, 0); opacity: 1; } 48% { transform: translate(var(--px), var(--py)); opacity: 1; } 50%, 100% { transform: translate(var(--px), var(--py)); opacity: 0; } }
+.fotone { animation: fotone-vola 2.4s linear infinite; }
+@keyframes elettrone-vola { 0%, 48% { transform: translate(0, 0); opacity: 0; } 50% { transform: translate(0, 0); opacity: 1; } 100% { transform: translate(var(--ex), var(--ey)); opacity: 0; } }
+.elettrone { animation: elettrone-vola 2.4s ease-out infinite; }

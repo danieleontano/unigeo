@@ -16,6 +16,7 @@ export const STRUMENTI: Strumento[] = [
   { href: "/mohs", titolo: "Scala di Mohs", breve: "Mohs", testo: "Durezza dei minerali e prove con unghia, rame, acciaio, vetro", materia: "geologia-1", simbolo: "cristallo" },
   { href: "/tempo", titolo: "Scala del tempo", breve: "Tempo geologico", testo: "La carta ICS ufficiale, con esercizi base e di dettaglio", materia: "paleontologia", simbolo: "fossile-ammonite" },
   { href: "/tavola", titolo: "Tavola periodica", breve: "Tavola periodica", testo: "Schede degli elementi ed esercizio su nomi e simboli", materia: "chimica", simbolo: "provetta" },
+  { href: "/atomi", titolo: "Atomi e luce", breve: "Atomi e luce", testo: "Protoni, neutroni, elettroni, isotopi e ioni; luce, fotone ed effetto fotoelettrico", materia: "chimica", simbolo: "provetta" },
   { href: "/cartografia", titolo: "Cartografia di base", breve: "Cartografia", testo: "Concetti e calcoli dello scritto: scala, pendenza, coordinate", materia: "geografia-fisica", simbolo: "bussola" },
   { href: "/profilo", titolo: "Profilo topografico", breve: "Profilo", testo: "Dalle isoipse al profilo, passo per passo", materia: "geografia-fisica", simbolo: "isoipse" },
   { href: "/terremoti", titolo: "Terremoti", breve: "Terremoti", testo: "Gli ultimi eventi della rete sismica UniGe sulla mappa", materia: null, simbolo: "sismogramma" },
