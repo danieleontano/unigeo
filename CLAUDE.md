@@ -371,3 +371,11 @@ due settimane di fila salta, il problema non è nel codice.
   Calcoli in lib/atomi.ts (provati contro i numeri della lezione); `/atomi#luce` apre
   un modo. Piano di Daniele: dopo Atomi, in ordine: coordinate e fusi, proiezioni
   deformate, ricerca nell'appunti.
+- 2026-10-08 · Strumento nuovo 2/4: «Coordinate e fusi» (/coordinate, Geografia):
+  il righello (secondi dalla proporzione, con il bordo disegnato in scala e
+  l'esercizio del punto P della lezione 4: 5,2 cm per primo, 2,8 cm → 32″ →
+  3°12′32″ W di Monte Mario), Monte Mario ↔ Greenwich (12°27′08″: P = 9°14′36″ E),
+  i fusi Gauss-Boaga (9° e 15° E, ±3°, sovrapposizione 30′ attorno ai 12°, città),
+  allenamento a 9 domande. Calcoli in lib/coordinate.ts, provati sui numeri del prof.
+  Da verificare col prof: l'estensione esatta della sovrapposizione (la slide dice
+  solo «30′»); qui è ±15′ attorno ai 12°.

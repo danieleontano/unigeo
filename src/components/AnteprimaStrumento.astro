@@ -102,6 +102,18 @@ const coloreColonna = (c: number) => (c === 1 ? "#e07a4a" : c === 2 ? "#e0b05a" 
   </svg>
 )}
 
+{href === "/coordinate" && (
+  <svg viewBox="0 0 300 150" aria-hidden="true">
+    <rect x="30" y="38" width="240" height="22" fill="#e6d8bd" stroke="#7a6a58" />
+    {Array.from({ length: 7 }, (_, k) => <line x1={30 + (240 * k) / 6} x2={30 + (240 * k) / 6} y1="38" y2={k % 3 === 0 ? 28 : 33} stroke="#c9bba4" stroke-width="1.2" />)}
+    <text x="30" y="80" text-anchor="middle" font-size="11" fill="#c9bba4" font-family="Fraunces, serif">3°12′</text>
+    <text x="270" y="80" text-anchor="middle" font-size="11" fill="#c9bba4" font-family="Fraunces, serif">3°13′</text>
+    <line x1="158" x2="158" y1="38" y2="98" stroke="#e07a4a" stroke-width="2" /><circle cx="158" cy="49" r="4.5" fill="#e07a4a" />
+    <rect x="30" y="112" width="128" height="14" fill="#5b7fb5" opacity="0.7" /><rect x="158" y="112" width="112" height="14" fill="#c9a24f" opacity="0.7" />
+    <text x="94" y="140" text-anchor="middle" font-size="9" fill="#9c8c78" font-family="Poppins, sans-serif">fuso Ovest · 9°</text><text x="214" y="140" text-anchor="middle" font-size="9" fill="#9c8c78" font-family="Poppins, sans-serif">fuso Est · 15°</text>
+  </svg>
+)}
+
 {href === "/profilo" && (
   <svg viewBox="0 0 300 150" aria-hidden="true">
     <g fill="none" stroke="#c98a52" stroke-width="1">

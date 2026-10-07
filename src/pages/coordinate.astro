@@ -1,0 +1,10 @@
+---
+import Base from "@/layouts/Base.astro";
+import Testata from "@/components/Testata.astro";
+import { Coordinate } from "@/components/Coordinate";
+---
+
+<Base titolo="Coordinate e fusi" larghezza="pieno" colore="#3F6E3A">
+  <Testata piana titolo="Coordinate e fusi" descrizione="I secondi dal righello, la longitudine da Monte Mario a Greenwich, i fusi Gauss-Boaga." />
+  <Coordinate client:load />
+</Base>
