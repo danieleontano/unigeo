@@ -28,7 +28,7 @@ const schede = schedeDi(attuale, materie, lettura);
         <path d="M9.5 4.5v15" />
       </svg>
     </button>
-    <p class="min-w-0 truncate font-sans text-sm text-[#9c8c78]">
+    <p class="min-w-0 flex-1 truncate font-sans text-sm text-[#9c8c78]">
       {modulo.href === "/" ? (
         <span class="font-medium text-[#efe4d0]">Home</span>
       ) : (
@@ -39,7 +39,10 @@ const schede = schedeDi(attuale, materie, lettura);
         </>
       )}
     </p>
-    <a href={percorso("/")} class="display ml-auto text-[1.1rem] font-semibold lg:hidden" style="color:#f3ecdd">Uni<span style="color:#d98a5c">Geo</span></a>
+    <a href={percorso("/cerca")} class="tasto-testata solo-appunti flex" aria-label="Cerca negli appunti" title="Cerca negli appunti (premi /)">
+      <svg viewBox="0 0 24 24" class="h-[18px] w-[18px]" aria-hidden="true"><use href="#lente" /></svg>
+    </a>
+    <a href={percorso("/")} class="display text-[1.1rem] font-semibold lg:hidden" style="color:#f3ecdd">Uni<span style="color:#d98a5c">Geo</span></a>
   </header>
   {schede.length > 0 && (
     <nav class="schede-modulo" aria-label={`Sezioni di ${modulo.titolo}`}>
@@ -52,3 +55,18 @@ const schede = schedeDi(attuale, materie, lettura);
     </nav>
   )}
 </div>
+
+<script>
+  // «/» da qualunque pagina porta alla ricerca (solo con la chiave degli appunti).
+  document.addEventListener("keydown", (e) => {
+    if (e.key !== "/" || e.ctrlKey || e.metaKey || e.altKey) return;
+    const t = e.target as HTMLElement | null;
+    if ((t && /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName)) || t?.isContentEditable) return;
+    if (document.documentElement.dataset.livello === "strumenti") return;
+    const a = document.querySelector<HTMLAnchorElement>(".intestazione a[href$='/cerca']");
+    if (a) {
+      e.preventDefault();
+      a.click();
+    }
+  });
+</script>

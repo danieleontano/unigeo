@@ -25,6 +25,7 @@ export const MODULI: Modulo[] = [
   { href: "/materie", titolo: "Materie", simbolo: "strati", soloAppunti: true },
   { href: "/ripasso", titolo: "Ripasso", simbolo: "ripasso", soloAppunti: true },
   { href: "/strumenti", titolo: "Strumenti", simbolo: "martello" },
+  { href: "/cerca", titolo: "Cerca", simbolo: "lente", soloAppunti: true },
 ];
 
 export const IMPOSTAZIONI: Modulo = { href: "/impostazioni", titolo: "Impostazioni", simbolo: "ingranaggio" };
@@ -39,6 +40,7 @@ export function moduloDi(p: string): Modulo | typeof IMPOSTAZIONI {
   if (p === "/") return MODULI[0];
   if (p.startsWith("/materie") || p.startsWith("/quiz") || p.startsWith("/flashcard") || p.startsWith("/pagine")) return MODULI[1];
   if (p.startsWith("/ripasso")) return MODULI[2];
+  if (p.startsWith("/cerca")) return MODULI[4];
   if (p.startsWith("/impostazioni")) return IMPOSTAZIONI;
   return MODULI[3];
 }

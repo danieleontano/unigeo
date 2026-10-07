@@ -45,7 +45,7 @@ export function livelloDa(valoreCookie: string | undefined, tabella: Record<Live
 const LIBERI = ["/accesso", "/robots.txt", "/favicon.svg", "/manifest.webmanifest", "/icone/app-512.png", "/icone/geologia-1.svg"];
 
 /** Le parti con gli appunti: servono la chiave «appunti». */
-export const SOLO_APPUNTI = ["/materie", "/quiz", "/flashcard", "/ripasso", "/pagine", "/pdf"];
+export const SOLO_APPUNTI = ["/materie", "/quiz", "/flashcard", "/ripasso", "/pagine", "/pdf", "/cerca", "/cerca-indice.json"];
 
 /** «/materie/x.html» e «/materie/x/» valgono «/materie/x». */
 export function normalizza(pathname: string): string {

@@ -390,3 +390,14 @@ due settimane di fila salta, il problema non è nel codice.
   con l'area proiettata. Provato: equivalenti 13,75 (reale 14,0), Mercatore 1,33; a 70°
   di spostamento Mercatore 9,6. Prova da 8 domande. `/proiezioni#equalearth` apre una
   proiezione. Formule in lib/proiezioni.ts.
+- 2026-10-08 · Strumento nuovo 4/4: la ricerca (/cerca, voce «Cerca» nel menu, lente
+  nell'intestazione, «/» da qualunque pagina). Indice statico `cerca-indice.json`
+  (pages/cerca-indice.json.ts, 662 voci, 389 KB): una voce per ogni sezione ##/###/####
+  delle lezioni (con l'ancora giusta: tutte le 257 verificate sulle pagine costruite),
+  ogni definizione dei riquadri, il glossario magmatiche, i concetti di cartografia, i
+  141 campioni, i 118 elementi, gli strumenti. Si cerca nel browser (lib/ricerca.ts):
+  tutte le parole devono comparire, titolo > origine > testo, radice italiana
+  («fenocristallo» trova «fenocristalli»), radici corte solo a inizio parola («ioni» non
+  trova «nazioni»), accenti ignorati, filtri per tipo e per materia, `?q=` nell'indirizzo.
+  Contiene il testo delle lezioni: /cerca e /cerca-indice.json sono tra le parti
+  riservate alla chiave «appunti» (SOLO_APPUNTI). Piano di Daniele concluso (1-2-3-5).

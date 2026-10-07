@@ -1,0 +1,14 @@
+---
+import Base from "@/layouts/Base.astro";
+import Testata from "@/components/Testata.astro";
+import { Cerca } from "@/components/Cerca";
+import { tutteLeMaterie } from "@/lib/contenuti";
+
+const materie = (await tutteLeMaterie()).map((m) => ({ id: m.id, nome: m.data.nome, colore: m.data.colore }));
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+---
+
+<Base titolo="Cerca" larghezza="largo">
+  <Testata piana titolo="Cerca" descrizione="Tra le sezioni delle lezioni, le definizioni, i campioni, gli elementi e gli strumenti." />
+  <Cerca client:load materie={materie} base={base} />
+</Base>
