@@ -1,6 +1,7 @@
 ---
-// Griglia uniforme di schede strumento: chip con l'icona nel colore della
-// materia, titolo, una riga. Come le card dei moduli in Minerva.
+// Le tessere degli strumenti: in alto l'anteprima viva (AnteprimaStrumento),
+// sotto materia, titolo e una riga. Usata in Strumenti e nelle pagine materia.
+import AnteprimaStrumento from "@/components/AnteprimaStrumento.astro";
 import { percorso } from "@/lib/percorsi";
 import { tutteLeMaterie } from "@/lib/contenuti";
 import type { Strumento } from "@/lib/strumenti";
@@ -12,17 +13,17 @@ const { strumenti } = Astro.props;
 const materie = new Map((await tutteLeMaterie()).map((m) => [m.id, m.data]));
 ---
 
-<ul class="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-3">
-  {strumenti.map((s) => {
+<ul class="grid grid-cols-1 gap-3.5 sm:grid-cols-2 xl:grid-cols-3">
+  {strumenti.map((s, i) => {
     const m = s.materia ? materie.get(s.materia) : undefined;
     return (
-      <li>
-        <a href={percorso(s.href)} class="pannello scheda scheda-riga group">
-          <span class="chip shrink-0"><svg class="h-6 w-6 transition group-hover:rotate-6" aria-hidden="true"><use href={`#${s.simbolo}`} /></svg></span>
-          <div class="min-w-0">
-            <p class="font-sans text-[0.6rem] font-semibold uppercase tracking-wider" style="color:#9c8c78">{m?.nome.replace(" e cartografia", "") ?? "Per tutte"}</p>
-            <p class="mt-0.5 font-sans text-[0.98rem] font-semibold leading-tight">{s.titolo}</p>
-            <p class="mt-1 text-[0.84rem] leading-snug text-grafite">{s.testo}</p>
+      <li class="sale" style={`--i:${i}`}>
+        <a href={percorso(s.href)} class="pannello strumento group">
+          <div class="strumento-arte"><AnteprimaStrumento href={s.href} /></div>
+          <div class="strumento-corpo">
+            <span class="materia-etichetta">{m?.nome.replace(" e cartografia", "") ?? "Per tutte"}</span>
+            <span class="titolo">{s.titolo}</span>
+            <span class="testo">{s.testo}</span>
           </div>
         </a>
       </li>

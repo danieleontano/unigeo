@@ -324,3 +324,20 @@ due settimane di fila salta, il problema non è nel codice.
   file in `.vercel/output/functions/`. Su Vercel la chiave è una serratura
   vera (provato: senza cookie esce solo /accesso). Restano pubblici il repo
   GitHub e la copia su GitHub Pages: da chiudere se Daniele conferma.
+- 2026-10-06 · Rifacimento grafico «Vetrina» (Daniele: «home banale e piatta,
+  settori troppo caotici, voglio il wow»). Claude Design non si è collegato
+  (403, serve /design-login): si è progettato direttamente nel codice, con
+  screenshot a ogni passo. Idea: le 141 foto del campionario sono il materiale
+  grafico, tenute insieme da una tinta calda (mix-blend-mode multiply + bordi
+  sfumati con mask, così sfondi bianchi/blu/neri spariscono). Home = apertura
+  con il CAMPIONE DEL GIORNO a destra (componenti/CampioneGiorno.tsx; indice
+  del giorno italiano in lib/foto.ts; `/?campione=granito` forza un campione)
+  + nastro dei periodi ICS in fondo + tre tessere vive (anello del ripasso,
+  ultima lezione, mini-mappa RSNI) + le materie coi sassi 3D. Strumenti: ogni
+  tessera ha un'anteprima viva (AnteprimaStrumento.astro, tutta SVG o foto).
+  Stile in src/styles/vetrina.css (dopo sottosuolo.css); `.sale` = entrata
+  scalata con --i. Miniature 640px in public/campionario/mini/ (scripts/
+  miniature.ts, lanciata anche da campionario.ts): riquadri e mosaici usano
+  quelle, il riconoscimento a schermo pieno gli originali.
+  In locale, per gli screenshot senza chiave: `PUBLIC_UNIGEO_APERTO=1 npx astro
+  dev` (disattiva solo il controllo nel browser; in produzione non esiste).

@@ -1,0 +1,27 @@
+---
+// Il nastro dei periodi del Fanerozoico, coi colori ufficiali della carta ICS:
+// dal Cambriano (a sinistra) al Quaternario. Larghezze in radice quadrata della
+// durata, così anche i periodi brevi si vedono. Firma della Home e delle
+// anteprime: porta alla Scala del tempo.
+import carta from "../../content/tempo/carta-ics.json";
+
+interface Props {
+  /** «bordo»: striscia sottile in fondo a un riquadro; «pieno»: riempie il contenitore con le sigle. */
+  forma?: "bordo" | "pieno";
+}
+const { forma = "bordo" } = Astro.props;
+
+const SIGLE: Record<string, string> = { Cambrian: "Cm", Ordovician: "O", Silurian: "S", Devonian: "D", Carboniferous: "C", Permian: "P", Triassic: "Tr", Jurassic: "J", Cretaceous: "K", Paleogene: "Pg", Neogene: "N", Quaternary: "Q" };
+const periodi = carta.unita
+  .filter((u) => u.sopra === "Cenozoic" || u.sopra === "Mesozoic" || u.sopra === "Paleozoic")
+  .filter((u) => u.livello === "periodo" && u.da !== undefined && u.a !== undefined)
+  .sort((a, b) => b.da! - a.da!);
+---
+
+<div class:list={["nastro", forma === "pieno" && "nastro-pieno"]} aria-hidden="true">
+  {periodi.map((p) => (
+    <span style={`--w:${Math.sqrt(p.da! - p.a!).toFixed(2)};background:${p.colore}`} title={`${p.nome} · ${p.da} – ${p.a} Ma`}>
+      {forma === "pieno" && SIGLE[p.id]}
+    </span>
+  ))}
+</div>

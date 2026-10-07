@@ -120,3 +120,7 @@ for (const c of campioni) {
   console.log(`✓ ${c.id}: ${1 + altre.length} foto`);
   writeFileSync(DATI, JSON.stringify(campioni, null, 2) + "\n");
 }
+
+// Le miniature per riquadri e mosaici (scripts/miniature.ts).
+const { generaMiniature } = await import("./miniature.ts");
+console.log(`Miniature: ${await generaMiniature()} nuove.`);

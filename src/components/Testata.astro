@@ -1,8 +1,8 @@
 ---
 // L'apertura di una pagina, come in Minerva. Due trattamenti:
-// - riquadro (HeroModulo): per le aperture dei moduli (Home, Materie, una
-//   materia, Strumenti, Ripasso): occhiello, titolo, una riga, azioni e il
-//   simbolo in filigrana;
+// - riquadro (HeroModulo): per le aperture dei moduli (Materie, una materia,
+//   Strumenti, Ripasso): occhiello, titolo grande, una riga, azioni, gli strati
+//   ondulati nel colore della materia e, se serve, un'«arte» a destra (il sasso);
 // - piana (PageHeader): per le pagine interne a un modulo (gli strumenti),
 //   dove le schede in alto dicono già dove si è: titolo e una riga.
 interface Props {
@@ -27,11 +27,19 @@ const { occhiello, titolo, descrizione, simbolo = "strati", icona, colore, piana
     {Astro.slots.has("default") && <div class="flex flex-wrap gap-2"><slot /></div>}
   </header>
 ) : (
-  <section class="pannello testata mb-6" style={colore ? `--tinta:${colore}` : undefined}>
-    {icona ? <img src={icona} alt="" class="filigrana" /> : <svg class="filigrana" aria-hidden="true"><use href={`#${simbolo}`} /></svg>}
+  <section class="pannello testata sale mb-6" style={colore ? `--tinta:${colore}` : undefined}>
+    <div class="testata-strati" aria-hidden="true">
+      <svg viewBox="0 0 800 260" preserveAspectRatio="none">
+        <path d="M0 120 C 110 80 230 160 380 118 S 640 70 800 112 V260 H0Z" fill="currentColor" opacity="0.07" />
+        <path d="M0 160 C 130 120 250 200 400 158 S 650 118 800 152 V260 H0Z" fill="currentColor" opacity="0.1" />
+        <path d="M0 202 C 150 168 270 236 420 198 S 660 168 800 196 V260 H0Z" fill="currentColor" opacity="0.15" />
+        <path d="M0 238 C 160 214 300 262 440 232 S 680 214 800 234 V260 H0Z" fill="currentColor" opacity="0.22" />
+      </svg>
+    </div>
+    {Astro.slots.has("arte") ? <div class="testata-arte"><slot name="arte" /></div> : icona ? <img src={icona} alt="" class="filigrana" /> : <svg class="filigrana" aria-hidden="true"><use href={`#${simbolo}`} /></svg>}
     {occhiello && <p class="font-sans text-[0.68rem] font-semibold uppercase tracking-[0.16em]" style="color:color-mix(in srgb, var(--tinta, var(--cuoio-chiaro)) 80%, #f3ecdd)">{occhiello}</p>}
-    <h1 class="mt-1 text-[1.9rem] leading-tight sm:text-[2.2rem]">{titolo}</h1>
-    {descrizione && <p class="mt-1 max-w-2xl text-[0.95rem] text-grafite">{descrizione}</p>}
-    {Astro.slots.has("default") && <div class="mt-4 flex flex-wrap gap-2"><slot /></div>}
+    <h1 class="mt-1 text-[2.3rem] leading-[1.02] tracking-tight sm:text-[3.2rem]">{titolo}</h1>
+    {descrizione && <p class="mt-2 max-w-2xl text-[1rem] text-grafite">{descrizione}</p>}
+    {Astro.slots.has("default") && <div class="mt-5 flex flex-wrap gap-2.5"><slot /></div>}
   </section>
 )}

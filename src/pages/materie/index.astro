@@ -1,44 +1,17 @@
 ---
 import Base from "@/layouts/Base.astro";
 import Testata from "@/components/Testata.astro";
-import Campione from "@/components/Campione.astro";
-import Inclina from "@/components/Inclina.astro";
+import SchedeMaterie from "@/components/SchedeMaterie.astro";
 import { percorso } from "@/lib/percorsi";
-import { dataBreve } from "@/lib/date";
-import { contaDefinizioni, lezioniDi, quizDisponibili, tutteLeMaterie } from "@/lib/contenuti";
+import { lezioniDi, tutteLeMaterie } from "@/lib/contenuti";
 
 const materie = await tutteLeMaterie();
 const lezioni = await lezioniDi();
-const quiz = await quizDisponibili();
-const righe = materie.map((m) => {
-  const mie = lezioni.filter((l) => l.id.startsWith(`${m.id}/`));
-  return { m, mie, nQuiz: mie.filter((l) => quiz.has(l.id)).length, nDef: mie.reduce((s, l) => s + contaDefinizioni(l), 0) };
-});
 ---
 
 <Base titolo="Materie">
-  <Testata occhiello="Primo anno · primo semestre" titolo="Materie" descrizione={`${lezioni.length} lezioni in ${materie.length} materie.`} simbolo="strati">
-    <a href={percorso("/pagine/libri-di-testo")} class="bottone bottone-vuoto">Libri di testo</a>
+  <Testata occhiello="Primo anno · primo semestre" titolo="Le materie" descrizione={`${lezioni.length} lezioni in ${materie.length} materie. Ogni sasso porta ai suoi appunti.`} simbolo="strati">
+    <a href={percorso("/pagine/libri-di-testo")} class="bottone bottone-chiaro">Libri di testo</a>
   </Testata>
-
-  <ul class="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
-    {righe.map(({ m, mie, nQuiz, nDef }) => (
-      <li style={`--materia:${m.data.colore}`}>
-        <a href={percorso(`/materie/${m.id}`)} class="pannello scheda group items-center !gap-2 !pb-3 text-center">
-          <div class="flex justify-center pt-2"><Campione colore={m.data.colore} materia={m.id} misura={150} /></div>
-          <p class="display mt-1 text-[1.25rem] leading-tight">{m.data.nome}</p>
-          <p class="w-full truncate text-[0.82rem] text-grafite">{m.data.docenti.length ? m.data.docenti.join(", ") : "Docente da definire"}</p>
-          <div class="mt-auto flex w-full items-end justify-between gap-2 border-t border-filetto pt-2.5 font-sans text-xs text-grafite">
-            <span>
-              <b class="display text-base text-inchiostro">{mie.length}</b> lez.
-              {nQuiz > 0 && <> · <b class="display text-base text-inchiostro">{nQuiz}</b> quiz</>}
-              {nDef > 0 && <> · <b class="display text-base text-inchiostro">{nDef}</b> def.</>}
-            </span>
-            <span class="truncate">{mie.at(-1) ? `ultima ${dataBreve(mie.at(-1)!.data.data).slice(0, 5)}` : "nessuna lezione"}</span>
-          </div>
-        </a>
-      </li>
-    ))}
-  </ul>
-  <Inclina />
+  <SchedeMaterie misura={170} />
 </Base>

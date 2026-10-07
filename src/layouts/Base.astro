@@ -1,6 +1,7 @@
 ---
 import "@/styles/globale.css";
 import "@/styles/sottosuolo.css";
+import "@/styles/vetrina.css";
 import { ClientRouter } from "astro:transitions";
 import { percorso } from "@/lib/percorsi";
 import Litologie from "@/components/Litologie.astro";
@@ -24,6 +25,9 @@ interface Props {
 }
 
 const { titolo, descrizione, colore, larghezza, largo, tema = "sottosuolo", nudo = false } = Astro.props;
+// Solo per lavorare in locale (screenshot senza chiave): si avvia il server con
+// PUBLIC_UNIGEO_APERTO=1. In produzione la variabile non c'è, il cancello resta.
+const APERTO = import.meta.env.PUBLIC_UNIGEO_APERTO === "1";
 const BASE_SITO = import.meta.env.BASE_URL.replace(/\/$/, "");
 const misura = larghezza ?? (largo === false ? "testo" : "largo");
 const LARGHEZZE = { testo: "max-w-3xl", largo: "max-w-6xl", pieno: "max-w-[1500px]" };
@@ -48,11 +52,12 @@ const LARGHEZZE = { testo: "max-w-3xl", largo: "max-w-6xl", pieno: "max-w-[1500p
         if (localStorage.getItem("unigeo.menu") === "rail") document.documentElement.setAttribute("data-menu", "rail");
       } catch {}
     </script>
-    <script is:inline define:vars={{ base: BASE_SITO, impronte: IMPRONTE_PREDEFINITE, soloAppunti: SOLO_APPUNTI }}>
+    <script is:inline define:vars={{ base: BASE_SITO, impronte: IMPRONTE_PREDEFINITE, soloAppunti: SOLO_APPUNTI, aperto: APERTO }}>
       // La chiave d'accesso (lib/accesso.ts), controllata nel browser prima di
       // disegnare la pagina: senza chiave si va a /accesso; con la chiave degli
       // strumenti niente appunti. Su GitHub Pages è un velo, non una serratura.
       function controllaAccesso() {
+        if (aperto) return;
         const m = /(?:^|; )unigeo_chiave=([0-9a-f]{64})/.exec(document.cookie);
         const livello = m && m[1] === impronte.appunti ? "appunti" : m && m[1] === impronte.strumenti ? "strumenti" : null;
         const html = document.documentElement;

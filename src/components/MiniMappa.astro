@@ -1,0 +1,37 @@
+---
+// La mappa piccola dei terremoti RSNI: Nord-Ovest d'Italia, i punti degli ultimi
+// 30 giorni (quelli di oggi pulsano). Disegnata sul server con gli stessi dati
+// di /terremoti: sta nella tessera della Home e nell'anteprima degli strumenti.
+import mappa from "../../content/terremoti/mappa.json";
+import { leggiSismi } from "@/lib/sismi";
+
+interface Props {
+  /** Ritaglio visibile (x y larghezza altezza, nelle coordinate della mappa). */
+  ritaglio?: string;
+}
+const { ritaglio = "150 180 700 500" } = Astro.props;
+
+const dati = await leggiSismi();
+const adesso = dati ? Date.parse(dati.letto) : Date.now();
+const eventi = (dati?.archivio ?? []).filter((e) => Date.parse(e.quando) > adesso - 30 * 86400000);
+const punti = eventi.map((e) => ({
+  x: (e.lon - mappa.bbox.ovest) * mappa.kx,
+  y: (mappa.bbox.nord - e.lat) * mappa.ky,
+  r: 6 + Math.max(0, e.magnitudo + 0.5) * 4.5,
+  recente: adesso - Date.parse(e.quando) < 86400000,
+  m: e.magnitudo,
+}));
+---
+
+<svg viewBox={ritaglio} preserveAspectRatio="xMidYMid slice" class="h-full w-full" aria-hidden="true">
+  <rect x="-100" y="-100" width="1200" height="1000" fill="#1b2326" />
+  <path d={mappa.estero} fill="#2c2520" />
+  <path d={mappa.italia} fill="#3a2f27" stroke="#5c4c3f" stroke-width="1.5" />
+  <path d={mappa.liguria} fill="#5a3f2d" />
+  {punti.sort((a, b) => a.m - b.m).map((p) => (
+    <g>
+      {p.recente && <circle cx={p.x} cy={p.y} r={p.r} fill="none" stroke="#f2c46b" stroke-width="2.5" class="onda-sismica" />}
+      <circle cx={p.x} cy={p.y} r={p.r} fill={p.m >= 2 ? "#e07a4a" : "#f2c46b"} fill-opacity="0.78" stroke="#1a1411" stroke-width="1.5" />
+    </g>
+  ))}
+</svg>

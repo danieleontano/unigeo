@@ -1,22 +1,33 @@
 ---
-// La Home, rifatta dopo l'audit del 04/10/2026: un'apertura, tre scorciatoie
-// (ripasso, ultima lezione, terremoti) e le materie. Strumenti, ripasso
-// completo e mappa hanno le loro pagine: qui non si ripetono.
+// La Home (rifatta il 06/10/2026, «troppo banale e piatta»): un'apertura con la
+// foto del campione del giorno, tre tessere (ripasso, ultima lezione, terremoti)
+// e le materie. Strumenti, mappa e ripasso completo hanno le loro pagine.
 import Base from "@/layouts/Base.astro";
 import SchedeMaterie from "@/components/SchedeMaterie.astro";
+import MiniMappa from "@/components/MiniMappa.astro";
+import NastroTempo from "@/components/NastroTempo.astro";
 import { RipassoBreve } from "@/components/RipassoBreve";
+import { CampioneGiorno, type CampioneVetrina } from "@/components/CampioneGiorno";
 import { Orologio } from "@/components/Orologio";
 import { percorso } from "@/lib/percorsi";
 import { lezioniDi, percorsoLezione, schedeLezioni, tutteLeMaterie } from "@/lib/contenuti";
 import { leggiSismi } from "@/lib/sismi";
 import { dataBreve } from "@/lib/date";
 import { giorniTra, oggiIso } from "@/lib/ripasso";
+import { giornoItaliano, indiceDelGiorno } from "@/lib/foto";
+import campioni from "../../content/campionario/campioni.json";
 
 const schede = await schedeLezioni();
 const materie = await tutteLeMaterie();
 const lezioni = await lezioniDi();
 const sismi = await leggiSismi();
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+
+const vetrina: CampioneVetrina[] = (campioni as { id: string; nome: string; categoria?: string; foto?: { file: string } }[])
+  .filter((c) => c.foto)
+  .map((c) => ({ id: c.id, nome: c.nome, categoria: c.categoria ?? "Campione", file: c.foto!.file }));
+const iniziale = indiceDelGiorno(giornoItaliano(), vetrina.length);
+
 // Il semestre è iniziato martedì 22 settembre 2026 (prima lezione).
 const settimana = Math.max(1, Math.floor(giorniTra("2026-09-21", oggiIso()) / 7) + 1);
 const conLezioni = materie.filter((m) => lezioni.some((l) => l.id.startsWith(`${m.id}/`))).length;
@@ -24,43 +35,49 @@ const ultima = [...lezioni].sort((a, b) => String(b.data.data).localeCompare(Str
 const materiaUltima = ultima && materie.find((m) => ultima.id.startsWith(`${m.id}/`));
 const sisma = sismi?.eventi[0];
 const quando = (iso: string) => new Intl.DateTimeFormat("it-IT", { timeZone: "Europe/Rome", day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" }).format(new Date(iso));
-const freccia = '<svg viewBox="0 0 24 24" class="h-4 w-4 shrink-0 text-grafite transition group-hover:translate-x-0.5" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>';
 ---
 
 <Base titolo="Home" descrizione="Appunti e ripasso del primo anno di Scienze Geologiche.">
-  <section class="pannello testata">
-    <svg class="filigrana" aria-hidden="true"><use href="#strati" /></svg>
-    <Orologio client:load className="font-sans text-[0.7rem] font-semibold tracking-[0.14em] text-[#e3b08c]" />
-    <h1 class="mt-1.5 text-[2.1rem] leading-tight sm:text-[2.5rem]">Ciao, Daniele</h1>
-    <p class="mt-1 text-[0.95rem] text-grafite">Settimana {settimana} del primo semestre · {lezioni.length} lezioni in {conLezioni} materie</p>
+  <section class="eroe sale">
+    <CampioneGiorno client:load campioni={vetrina} iniziale={iniziale} base={base} />
+    <div class="eroe-testo">
+      <Orologio client:load className="font-sans text-[0.72rem] font-semibold tracking-[0.16em] text-[#e3b08c]" />
+      <h1>Ciao, Daniele</h1>
+      <p class="eroe-riga">Settimana {settimana} del primo semestre · {lezioni.length} lezioni in {conLezioni} materie</p>
+      <div class="mt-5 flex flex-wrap gap-2.5">
+        {ultima && <a href={percorso(percorsoLezione(ultima))} class="bottone bottone-lava">Riprendi: lezione {ultima.data.numero}</a>}
+        <a href={percorso("/ripasso")} class="bottone bottone-chiaro">Ripasso</a>
+      </div>
+    </div>
+    <a href={percorso("/tempo")} class="nastro-link" title="Scala del tempo geologico" aria-label="Scala del tempo geologico"><NastroTempo /></a>
   </section>
 
   <div class="mt-4 grid grid-cols-1 gap-3 md:grid-cols-3">
-    <RipassoBreve client:load lezioni={schede} base={base} />
+    <div class="sale" style="--i:1"><RipassoBreve client:load lezioni={schede} base={base} /></div>
 
     {ultima && (
-      <a href={percorso(percorsoLezione(ultima))} class="pannello scheda scheda-riga group !items-center" style={materiaUltima ? `--tinta:${materiaUltima.data.colore}` : undefined}>
-        <span class="chip shrink-0">{materiaUltima ? <img src={percorso(`/icone/${materiaUltima.data.icona}`)} alt="" width="22" height="22" class="h-[22px] w-[22px]" /> : null}</span>
-        <span class="min-w-0 flex-1">
-          <span class="block text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-grafite">Ultima lezione</span>
-          <span class="mt-0.5 block truncate text-[0.95rem] font-medium">{ultima.data.titolo}</span>
-          <span class="block truncate text-xs text-grafite">{materiaUltima?.data.nome} · {dataBreve(ultima.data.data)}</span>
+      <a href={percorso(percorsoLezione(ultima))} class="pannello tessera group sale" style={`--i:2;--tinta:${materiaUltima?.data.colore ?? "#a8643c"}`}>
+        <span class="tessera-numero" aria-hidden="true">{String(ultima.data.numero).padStart(2, "0")}</span>
+        <span class="tessera-banda" aria-hidden="true"></span>
+        <span class="relative min-w-0 flex-1">
+          <span class="tessera-sopra">Ultima lezione</span>
+          <span class="mt-1 block text-[1.02rem] font-medium leading-snug [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:2] overflow-hidden">{ultima.data.titolo}</span>
+          <span class="mt-0.5 block truncate text-xs text-grafite">{materiaUltima?.data.nome} · {dataBreve(ultima.data.data)}</span>
         </span>
-        <Fragment set:html={freccia} />
       </a>
     )}
 
-    <a href={percorso("/terremoti")} class="pannello scheda scheda-riga group !items-center">
-      <span class="chip shrink-0"><svg class="h-5 w-5" aria-hidden="true"><use href="#sismogramma" /></svg></span>
-      <span class="min-w-0 flex-1">
-        <span class="block text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-grafite">La Terra adesso</span>
-        <span class="mt-0.5 block truncate text-[0.95rem] font-medium">{sisma ? `M ${sisma.magnitudo.toLocaleString("it-IT")} · ${sisma.regione}` : "Terremoti nel Nord-Ovest"}</span>
-        <span class="block truncate text-xs text-grafite">{sisma ? `${quando(sisma.quando)} · rete RSNI` : "Mappa RSNI"}</span>
+    <a href={percorso("/terremoti")} class="pannello tessera tessera-mappa group sale" style="--i:3">
+      <span class="relative min-w-0 flex-1">
+        <span class="tessera-sopra">La Terra adesso</span>
+        <span class="display mt-1 block text-[2rem] leading-none">{sisma ? `M ${sisma.magnitudo.toLocaleString("it-IT")}` : "RSNI"}</span>
+        <span class="mt-1 block truncate text-[0.95rem]">{sisma ? sisma.regione : "Terremoti nel Nord-Ovest"}</span>
+        <span class="block truncate text-xs text-grafite">{sisma ? quando(sisma.quando) : "Mappa e archivio"}</span>
       </span>
-      <Fragment set:html={freccia} />
+      <span class="tessera-arte" aria-hidden="true"><MiniMappa /></span>
     </a>
   </div>
 
-  <div class="sezione-titolo"><h2>Materie</h2><a href={percorso("/materie")}>tutte →</a></div>
+  <div class="sezione-titolo"><h2>Le materie</h2><a href={percorso("/materie")}>tutte →</a></div>
   <SchedeMaterie />
 </Base>

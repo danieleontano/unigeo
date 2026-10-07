@@ -6,7 +6,7 @@ titolo: "Laboratorio: riconoscimento delle rocce magmatiche"
 docente: "Michele Piazza, Laura Federico"
 modulo: "Modulo 2 · Geologia stratigrafica"
 fonte: "Istruzioni iniziali dalla registrazione audio; il resto sono le mie schede di riconoscimento"
-nota: "Due pomeriggi di laboratorio in aula, 5 e 6 ottobre, senza teoria. Presenti entrambi i docenti più un assistente. Le schede dei campioni le compilo io: questa lezione è un quaderno di lavoro, non appunti di teoria."
+nota: "Due pomeriggi di laboratorio in aula, 5 e 6 ottobre (fatti entrambi), analoghi tra loro e senza teoria. Presenti entrambi i docenti più un assistente. Le schede dei campioni le compilo io: questa lezione è un quaderno di lavoro, non appunti di teoria."
 tag: [rocce magmatiche, laboratorio, riconoscimento, tessitura, Streckeisen]
 ---
 
@@ -171,6 +171,6 @@ Il metodo è quello della lezione 5: tessitura → percentuale di femici → qua
 
 ## Da fare
 
-- [ ] Martedì 6 ottobre: seconda sessione, stesso schema (schede 6–10). Puntare ai tipi non ancora visti.
+- [x] Martedì 6 ottobre: seconda sessione, stesso schema (schede 6–10). Puntare ai tipi non ancora visti.
 - [ ] Compilare le schede la sera stessa, finché i campioni sono freschi in testa.
 - [ ] Per il ripasso: quiz della lezione 5 (il metodo) e flashcard dei minerali della lezione 3.

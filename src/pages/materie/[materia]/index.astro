@@ -2,6 +2,8 @@
 import Base from "@/layouts/Base.astro";
 import Colonna from "@/components/Colonna.astro";
 import Testata from "@/components/Testata.astro";
+import Campione from "@/components/Campione.astro";
+import Inclina from "@/components/Inclina.astro";
 import SchedeStrumenti from "@/components/SchedeStrumenti.astro";
 import { percorso } from "@/lib/percorsi";
 import { strumentiDi } from "@/lib/strumenti";
@@ -23,11 +25,12 @@ const strumenti = strumentiDi(materia.id);
 ---
 
 <Base titolo={d.nome} colore={d.colore}>
-  <Testata occhiello={d.moduli ? d.moduli.join(" · ") : "Materia"} titolo={d.nome} descrizione={[d.docenti.join(", ") || "Docente da definire", d.esame].filter(Boolean).join(" · ")} icona={percorso(`/icone/${d.icona}`)} colore={d.colore}>
+  <Testata occhiello={d.moduli ? d.moduli.join(" · ") : "Materia"} titolo={d.nome} descrizione={[d.docenti.join(", ") || "Docente da definire", d.esame].filter(Boolean).join(" · ")} colore={d.colore}>
+    <div slot="arte"><Campione colore={d.colore} materia={materia.id} misura={220} /></div>
     {lezioni.length > 0 && <a href={percorso(`/materie/${materia.id}/libro`)} class="bottone bottone-materia">Apri il Libro</a>}
-    {definizioni > 0 && <a href={percorso(`/flashcard/${materia.id}`)} class="bottone bottone-vuoto">Flashcard · {definizioni}</a>}
-    {nQuiz > 0 && <a href={percorso(`/quiz/${materia.id}`)} class="bottone bottone-vuoto">Quiz misto</a>}
-    {nQuiz > 0 && <a href={percorso(`/ripasso#${materia.id}`)} class="bottone bottone-vuoto">Ripasso</a>}
+    {definizioni > 0 && <a href={percorso(`/flashcard/${materia.id}`)} class="bottone bottone-chiaro">Flashcard · {definizioni}</a>}
+    {nQuiz > 0 && <a href={percorso(`/quiz/${materia.id}`)} class="bottone bottone-chiaro">Quiz misto</a>}
+    {nQuiz > 0 && <a href={percorso(`/ripasso#${materia.id}`)} class="bottone bottone-chiaro">Ripasso</a>}
   </Testata>
 
   {lezioni.length === 0 ? (
@@ -70,6 +73,7 @@ const strumenti = strumentiDi(materia.id);
       <SchedeStrumenti strumenti={strumenti} />
     </>
   )}
+  <Inclina />
 </Base>
 
 <script>

@@ -1,42 +1,49 @@
 ---
-// Griglia uniforme delle materie: icona della materia nel chip, nome,
-// docenti, e in basso lezioni, quiz e ultima lezione. Usata in Home e Materie.
+// Le materie come campioni di roccia: un sasso 3D per materia (si inclina col
+// puntatore) su uno sfondo del suo colore, nome, docente, e i numeri. Su
+// telefono diventano righe strette con l'icona. Usata in Home e in Materie.
+import Campione from "@/components/Campione.astro";
+import Inclina from "@/components/Inclina.astro";
 import { percorso } from "@/lib/percorsi";
 import { dataBreve } from "@/lib/date";
 import { contaDefinizioni, lezioniDi, quizDisponibili, tutteLeMaterie } from "@/lib/contenuti";
+
+interface Props {
+  /** Misura del sasso su schermo largo. */
+  misura?: number;
+}
+const { misura = 150 } = Astro.props;
 
 const materie = await tutteLeMaterie();
 const lezioni = await lezioniDi();
 const quiz = await quizDisponibili();
 ---
 
-<ul class="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-3">
-  {materie.map((m) => {
+<ul class="grid grid-cols-1 gap-3 sm:grid-cols-3 xl:grid-cols-5">
+  {materie.map((m, i) => {
     const mie = lezioni.filter((l) => l.id.startsWith(`${m.id}/`));
     const ultima = mie.at(-1);
     const nQuiz = mie.filter((l) => quiz.has(l.id)).length;
     const nDef = mie.reduce((s, l) => s + contaDefinizioni(l), 0);
     return (
-      <li style={`--materia:${m.data.colore};--tinta:${m.data.colore}`}>
-        <a href={percorso(`/materie/${m.id}`)} class="pannello scheda group !py-3 sm:!py-[1.1rem]">
-          <div class="flex items-center gap-3 sm:items-start">
-            <span class="chip shrink-0"><img src={percorso(`/icone/${m.data.icona}`)} alt="" width="28" height="28" class="h-7 w-7" /></span>
-            <div class="min-w-0">
-              <p class="display text-[1.15rem] leading-tight">{m.data.nome}</p>
-              <p class="hidden truncate text-[0.82rem] text-grafite sm:block">{m.data.docenti.length ? m.data.docenti.join(", ") : "Docente da definire"}</p>
-            </div>
-            <span class="ml-auto shrink-0 font-sans text-xs text-grafite sm:hidden">{mie.length} lez.</span>
+      <li class="sale" style={`--materia:${m.data.colore};--tinta:${m.data.colore};--i:${i + 4}`}>
+        <a href={percorso(`/materie/${m.id}`)} class="pannello materia group">
+          <div class="materia-sasso hidden sm:flex"><Campione colore={m.data.colore} materia={m.id} misura={misura} /></div>
+          <span class="shrink-0 sm:hidden"><span class="chip"><img src={percorso(`/icone/${m.data.icona}`)} alt="" width="26" height="26" class="h-[26px] w-[26px]" /></span></span>
+          <div class="materia-testo">
+            <p class="display text-[1.2rem] leading-tight">{m.data.nome}</p>
+            <p class="hidden truncate text-[0.8rem] text-grafite sm:block">{m.data.docenti.length ? m.data.docenti.join(", ") : "Docente da definire"}</p>
           </div>
-          <div class="mt-auto hidden items-end sm:flex justify-between gap-2 border-t border-filetto pt-2.5 font-sans text-xs text-grafite">
-            <span>
-              <b class="display text-base text-inchiostro">{mie.length}</b> lez.
-              {nQuiz > 0 && <> · <b class="display text-base text-inchiostro">{nQuiz}</b> quiz</>}
-              {nDef > 0 && <> · <b class="display text-base text-inchiostro">{nDef}</b> def.</>}
-            </span>
-            <span class="truncate text-right">{ultima ? `ultima ${dataBreve(ultima.data.data).slice(0, 5)}` : "nessuna lezione"}</span>
+          <span class="ml-auto shrink-0 font-sans text-xs text-grafite sm:hidden">{mie.length} lez.</span>
+          <div class="materia-numeri hidden sm:flex">
+            <span><b>{mie.length}</b> lez.</span>
+            {nQuiz > 0 && <span><b>{nQuiz}</b> quiz</span>}
+            {nDef > 0 && <span><b>{nDef}</b> def.</span>}
+            <span class="ml-auto">{ultima ? dataBreve(ultima.data.data).slice(0, 5) : "—"}</span>
           </div>
         </a>
       </li>
     );
   })}
 </ul>
+<Inclina />

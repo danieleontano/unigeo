@@ -1,0 +1,113 @@
+---
+// L'anteprima viva di uno strumento, in cima alla sua tessera: invece di
+// un'icona, una miniatura di ciò che c'è dentro (foto vere, il rombo di
+// Streckeisen, le barre di Mohs, il nastro dei periodi, la tavola, le isoipse,
+// la mappa). Tutto disegnato sul server, senza immagini nuove.
+import MiniMappa from "@/components/MiniMappa.astro";
+import NastroTempo from "@/components/NastroTempo.astro";
+import { percorso } from "@/lib/percorsi";
+import { miniatura } from "@/lib/foto";
+import campioni from "../../content/campionario/campioni.json";
+
+interface Props {
+  href: string;
+}
+const { href } = Astro.props;
+
+const foto = ["granito", "bif", "fluorite"]
+  .map((id) => (campioni as { id: string; nome: string; foto?: { file: string } }[]).find((c) => c.id === id))
+  .filter((c) => c?.foto);
+
+// Mohs: durezze assolute (scala logaritmica) → altezza delle barre.
+const MOHS = [1, 3, 9, 21, 48, 72, 100, 200, 400, 1500].map((d) => Math.log10(d) / Math.log10(1500));
+
+// Tavola periodica: colonne occupate per riga (1–18) e colore per gruppo.
+const RIGHE: number[][] = [[1, 18], [1, 2, 13, 14, 15, 16, 17, 18], [1, 2, 13, 14, 15, 16, 17, 18], Array.from({ length: 18 }, (_, i) => i + 1), Array.from({ length: 18 }, (_, i) => i + 1), Array.from({ length: 18 }, (_, i) => i + 1), Array.from({ length: 18 }, (_, i) => i + 1)];
+const LANT = Array.from({ length: 15 }, (_, i) => i + 3);
+const coloreColonna = (c: number) => (c === 1 ? "#e07a4a" : c === 2 ? "#e0b05a" : c <= 12 ? "#b59a78" : c <= 14 ? "#7fa89a" : c <= 16 ? "#6f9ccf" : c === 17 ? "#a78bd0" : "#d98ab0");
+---
+
+{href === "/campionario" && (
+  <div class="grid h-full grid-cols-3 gap-px bg-[#1b1512]" style="background:#c4976f">
+    {foto.map((c) => <img src={percorso(miniatura(c!.foto!.file))} alt="" loading="lazy" style="mix-blend-mode:multiply" />)}
+  </div>
+)}
+
+{href === "/qap" && (
+  <svg viewBox="0 0 300 150" aria-hidden="true">
+    <polygon points="30,75 150,8 270,75" fill="#e6c59f" />
+    <polygon points="30,75 150,142 270,75" fill="#cfd8c0" />
+    <polygon points="116,28 184,28 150,8" fill="#d6cdbd" />
+    <g stroke="#5a4a3a" stroke-width="1" fill="none">
+      <polygon points="30,75 150,8 270,75 150,142" />
+      <line x1="30" y1="75" x2="270" y2="75" stroke-width="1.6" />
+      <line x1="84" y1="45" x2="216" y2="45" />
+      <line x1="116" y1="28" x2="184" y2="28" />
+      <line x1="54" y1="62" x2="246" y2="62" />
+      <line x1="30" y1="82" x2="270" y2="82" />
+      <line x1="78" y1="110" x2="222" y2="110" />
+      {[10, 35, 65, 90].map((r) => {
+        const x = 30 + (240 * r) / 100;
+        return <line x1={x} y1="75" x2={x + (150 - x) * 0.55} y2={75 - 0.55 * 67} />;
+      })}
+      <line x1="150" y1="82" x2="150" y2="110" />
+    </g>
+    <circle cx="118" cy="52" r="6" fill="#c9552a" stroke="#fff" stroke-width="1.6" />
+  </svg>
+)}
+
+{href === "/mohs" && (
+  <svg viewBox="0 0 300 150" aria-hidden="true">
+    <defs>
+      <linearGradient id="mohs-g" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#6b4530" /><stop offset="1" stop-color="#e07a4a" /></linearGradient>
+    </defs>
+    {MOHS.map((h, i) => <rect x={24 + i * 26} y={128 - h * 104} width="19" height={h * 104 + 2} rx="3" fill="url(#mohs-g)" opacity={0.55 + i * 0.045} />)}
+    <line x1="14" y1="130" x2="286" y2="130" stroke="#5a4a3a" />
+    {MOHS.map((_, i) => <text x={33.5 + i * 26} y="143" text-anchor="middle" font-size="9" fill="#9c8c78" font-family="Poppins, sans-serif">{i + 1}</text>)}
+  </svg>
+)}
+
+{href === "/tempo" && <div class="h-full p-0"><NastroTempo forma="pieno" /></div>}
+
+{href === "/tavola" && (
+  <svg viewBox="0 0 300 150" aria-hidden="true">
+    {RIGHE.map((cols, r) => cols.map((c) => <rect x={6 + (c - 1) * 16.2} y={8 + r * 16} width="14" height="14" rx="2.5" fill={coloreColonna(c)} opacity="0.88" />))}
+    {LANT.map((c) => <rect x={6 + (c - 1) * 16.2} y={8 + 7 * 16 + 6} width="14" height="14" rx="2.5" fill="#d9b86a" opacity="0.88" />)}
+  </svg>
+)}
+
+{href === "/cartografia" && (
+  <svg viewBox="0 0 300 150" aria-hidden="true">
+    <g fill="none" stroke="#c98a52" stroke-width="1.1" transform="rotate(-18 150 72)">
+      {[78, 64, 51, 39, 28, 18, 9].map((rx, i) => <ellipse cx="150" cy="72" rx={rx * 1.9} ry={rx * 0.95} opacity={0.4 + i * 0.09} stroke-width={i % 3 === 0 ? 1.8 : 1} />)}
+    </g>
+    <g font-family="Poppins, sans-serif" font-size="8.5" fill="#9c8c78">
+      <rect x="16" y="130" width="40" height="4" fill="#c9bba4" /><rect x="56" y="130" width="40" height="4" fill="none" stroke="#c9bba4" stroke-width="0.8" />
+      <text x="16" y="126">0</text><text x="96" y="126" text-anchor="end">500 m</text>
+    </g>
+    <path d="M268 40 L274 22 L280 40 L274 36Z" fill="#e07a4a" /><text x="274" y="52" text-anchor="middle" font-size="9" fill="#9c8c78" font-family="Poppins, sans-serif">N</text>
+  </svg>
+)}
+
+{href === "/profilo" && (
+  <svg viewBox="0 0 300 150" aria-hidden="true">
+    <g fill="none" stroke="#c98a52" stroke-width="1">
+      <ellipse cx="82" cy="52" rx="62" ry="36" opacity="0.45" /><ellipse cx="86" cy="50" rx="44" ry="25" opacity="0.6" /><ellipse cx="90" cy="48" rx="27" ry="14" opacity="0.8" /><ellipse cx="93" cy="47" rx="10" ry="5" />
+    </g>
+    <line x1="18" y1="78" x2="150" y2="22" stroke="#e07a4a" stroke-width="2" stroke-linecap="round" />
+    <circle cx="18" cy="78" r="3.5" fill="#e07a4a" /><circle cx="150" cy="22" r="3.5" fill="#e07a4a" />
+    <path d="M14 142 L14 122 C 50 118 70 96 100 84 S 150 98 180 78 S 240 94 286 112 L286 142Z" fill="#c9a77c" opacity="0.5" />
+    <path d="M14 122 C 50 118 70 96 100 84 S 150 98 180 78 S 240 94 286 112" fill="none" stroke="#e3b08c" stroke-width="2" />
+  </svg>
+)}
+
+{href === "/terremoti" && <MiniMappa ritaglio="200 230 640 420" />}
+
+{href === "/ispirazione" && (
+  <svg viewBox="0 0 300 150" aria-hidden="true" style="color:#a8643c">
+    <svg x="14" y="30" width="88" height="88" opacity="0.5"><use href="#fossile-ammonite" /></svg>
+    <svg x="106" y="14" width="96" height="96" opacity="0.85"><use href="#fossile-trilobite" /></svg>
+    <svg x="206" y="40" width="80" height="80" opacity="0.5"><use href="#fossile-felce" /></svg>
+    <g stroke="#3b2f27"><line x1="0" y1="124" x2="300" y2="124" /><line x1="0" y1="134" x2="300" y2="134" opacity="0.6" /><line x1="0" y1="143" x2="300" y2="143" opacity="0.3" /></g>
+  </svg>
+)}

@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { aggiornaStato, useIdratato } from "@/lib/stato";
 import { oggiIso } from "@/lib/ripasso";
 import { Eruzione } from "./Eruzione";
+import { miniatura } from "@/lib/foto";
 
 export interface CampioneFoto {
   id: string;
@@ -154,7 +155,7 @@ export function Riconosci({ campioni, base }: Props) {
               <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5">
                 {qui.map((x) => (
                   <li key={x.id} id={x.id} className="pannello scroll-mt-20 overflow-hidden p-0">
-                    <img src={`${base}${x.foto.file}`} alt={x.nome} loading="lazy" className="aspect-[4/3] w-full object-cover" />
+                    <img src={`${base}${miniatura(x.foto.file)}`} alt={x.nome} loading="lazy" className="aspect-[4/3] w-full object-cover" />
                     <div className="p-3">
                       <p className="display text-[1.05rem] leading-tight">{x.nome}</p>
                       <p className="mt-0.5 font-sans text-[0.68rem] text-grafite">{x.famiglia}</p>
@@ -202,7 +203,7 @@ export function Riconosci({ campioni, base }: Props) {
         <ul className="grid grid-cols-4 gap-1.5 overflow-hidden rounded-[0.85rem]" aria-hidden="true">
           {mosaico.map((x) => (
             <li key={x.id}>
-              <img src={`${base}${x.foto.file}`} alt="" loading="lazy" className="aspect-square w-full object-cover opacity-85 transition hover:opacity-100" />
+              <img src={`${base}${miniatura(x.foto.file)}`} alt="" loading="lazy" className="aspect-square w-full object-cover opacity-85 transition hover:opacity-100" />
             </li>
           ))}
         </ul>
