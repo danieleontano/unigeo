@@ -19,6 +19,7 @@ export const STRUMENTI: Strumento[] = [
   { href: "/atomi", titolo: "Atomi e luce", breve: "Atomi e luce", testo: "Protoni, neutroni, elettroni, isotopi e ioni; luce, fotone ed effetto fotoelettrico", materia: "chimica", simbolo: "provetta" },
   { href: "/cartografia", titolo: "Cartografia di base", breve: "Cartografia", testo: "Concetti e calcoli dello scritto: scala, pendenza, coordinate", materia: "geografia-fisica", simbolo: "bussola" },
   { href: "/coordinate", titolo: "Coordinate e fusi", breve: "Coordinate", testo: "Primi e secondi dal righello, Monte Mario e Greenwich, fusi Gauss-Boaga", materia: "geografia-fisica", simbolo: "bussola" },
+  { href: "/proiezioni", titolo: "Proiezioni deformate", breve: "Proiezioni", testo: "Mercatore, Equal Earth e le altre: cerchietti, Africa e Groenlandia", materia: "geografia-fisica", simbolo: "isoipse" },
   { href: "/profilo", titolo: "Profilo topografico", breve: "Profilo", testo: "Dalle isoipse al profilo, passo per passo", materia: "geografia-fisica", simbolo: "isoipse" },
   { href: "/terremoti", titolo: "Terremoti", breve: "Terremoti", testo: "Gli ultimi eventi della rete sismica UniGe sulla mappa", materia: null, simbolo: "sismogramma" },
   { href: "/ispirazione", titolo: "Ispirazione", breve: "Ispirazione", testo: "Fonti vere dei geologi, fuori dal corso", materia: null, simbolo: "fossile-felce" },

@@ -379,3 +379,14 @@ due settimane di fila salta, il problema non è nel codice.
   allenamento a 9 domande. Calcoli in lib/coordinate.ts, provati sui numeri del prof.
   Da verificare col prof: l'estensione esatta della sovrapposizione (la slide dice
   solo «30′»); qui è ±15′ attorno ai 12°.
+- 2026-10-08 · Strumento nuovo 3/4: «Proiezioni deformate» (/proiezioni, Geografia):
+  otto proiezioni (cilindrica centrale = la lampadina del prof, equidistante,
+  Mercatore, Gall-Peters, sinusoidale, Mollweide, Equal Earth, centrografica polare)
+  sul mondo di Natural Earth 1:110m (content/proiezioni/mondo.json, 61 KB, da
+  scripts/mondo.ts), con i cerchietti di Tissot (cerchi piccoli di 6°), reticolato,
+  chip isogonica/equivalente/equidistante e il confronto Africa/Groenlandia: la
+  Groenlandia si sposta sulla sfera lungo il suo meridiano (spostaSullaSfera: rotazione,
+  non somma di latitudine, che la deformerebbe) e il rapporto apparente si ricalcola
+  con l'area proiettata. Provato: equivalenti 13,75 (reale 14,0), Mercatore 1,33; a 70°
+  di spostamento Mercatore 9,6. Prova da 8 domande. `/proiezioni#equalearth` apre una
+  proiezione. Formule in lib/proiezioni.ts.

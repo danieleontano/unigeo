@@ -1,0 +1,11 @@
+---
+import Base from "@/layouts/Base.astro";
+import Testata from "@/components/Testata.astro";
+import { Proiezioni, type PaeseMondo } from "@/components/Proiezioni";
+import mondo from "../../content/proiezioni/mondo.json";
+---
+
+<Base titolo="Proiezioni" larghezza="pieno" colore="#3F6E3A">
+  <Testata piana titolo="Proiezioni deformate" descrizione="Lo stesso mondo in otto proiezioni: cerchietti, Africa e Groenlandia, e cosa conserva ciascuna." />
+  <Proiezioni client:load paesi={mondo.paesi as PaeseMondo[]} />
+</Base>
