@@ -3,6 +3,7 @@ import Base from "@/layouts/Base.astro";
 import Testata from "@/components/Testata.astro";
 import { Impostazioni } from "@/components/Impostazioni";
 import { tutteLeMaterie } from "@/lib/contenuti";
+import { percorso } from "@/lib/percorsi";
 
 const materie = (await tutteLeMaterie()).map((m) => ({ id: m.id, nome: m.data.nome, colore: m.data.colore }));
 ---
@@ -10,4 +11,11 @@ const materie = (await tutteLeMaterie()).map((m) => ({ id: m.id, nome: m.data.no
 <Base titolo="Impostazioni" larghezza="testo">
   <Testata piana titolo="Impostazioni" simbolo="ingranaggio" />
   <Impostazioni client:load materie={materie} />
+  <section class="pannello solo-con-chiave-blocco mt-4 p-4 sm:p-5">
+    <h2 class="pannello-titolo">Chiave di accesso</h2>
+    <p class="mt-2 text-sm">
+      Sei dentro con la chiave degli <b><span class="liv-in liv-in-appunti">appunti</span><span class="liv-in liv-in-strumenti">strumenti</span></b>. Il browser la ricorda per un anno.
+    </p>
+    <a href={percorso("/accesso?esci=1")} data-astro-reload class="bottone bottone-chiaro mt-3">Cambia chiave o esci</a>
+  </section>
 </Base>

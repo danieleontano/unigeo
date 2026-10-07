@@ -85,21 +85,21 @@
 .tessera-arte svg { transition: transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1); }
 .tessera:hover .tessera-arte svg { transform: scale(1.06); }
 
-/* ---------- Le materie ---------- */
-.materia {
-  display: flex; flex-direction: column; align-items: center; gap: 0.5rem; height: 100%;
-  padding: 1rem 0.9rem 0.9rem; text-align: center; border-radius: 1rem;
-  background: radial-gradient(circle at 50% 30%, color-mix(in srgb, var(--tinta, #a8643c) 30%, #241c17) 0%, #241c17 68%);
-  transition: transform 0.2s, border-color 0.2s;
-}
+/* ---------- Le materie: la foto di un campione, tinta nel colore della materia ---------- */
+.materia { display: flex; flex-direction: column; height: 100%; overflow: hidden; border-radius: 1rem; background: #241c17; transition: transform 0.2s, border-color 0.2s; }
 .materia:hover { transform: translateY(-4px); border-color: color-mix(in srgb, var(--tinta, #a8643c) 60%, #3b2f27); }
-.materia-sasso { align-items: center; justify-content: center; padding-top: 0.2rem; }
-.materia-testo { min-width: 0; width: 100%; }
-.materia-numeri { width: 100%; align-items: baseline; gap: 0.65rem; padding-top: 0.6rem; margin-top: auto; border-top: 1px solid #3b2f27; font-size: 0.74rem; color: #9c8c78; }
+.materia-foto { position: relative; aspect-ratio: 5 / 4; overflow: hidden; isolation: isolate; background: color-mix(in srgb, var(--tinta, #a8643c) 40%, #d9b48f); }
+.materia-foto > img:first-child { width: 100%; height: 100%; object-fit: cover; mix-blend-mode: multiply; transition: transform 1s cubic-bezier(0.2, 0.7, 0.2, 1); }
+.materia:hover .materia-foto > img:first-child { transform: scale(1.06); }
+.materia-foto::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, #241c17 0%, rgba(36, 28, 23, 0.25) 38%, transparent 62%); }
+.materia-chip { position: absolute; left: 0.7rem; top: 0.7rem; z-index: 2; display: flex; align-items: center; justify-content: center; width: 2.4rem; height: 2.4rem; border-radius: 0.65rem; background: #1b1512; border: 1px solid #3b2f27; }
+.materia-didascalia { position: absolute; right: 0.8rem; bottom: 0.55rem; z-index: 2; font-size: 0.6rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #e9d9bf; opacity: 0.85; }
+.materia-testo { min-width: 0; width: 100%; padding: 0.1rem 1rem 0; }
+.materia-numeri { flex-wrap: nowrap; white-space: nowrap; align-items: baseline; gap: 0.6rem; margin: auto 1rem 0; padding: 0.6rem 0 0.85rem; border-top: 1px solid #3b2f27; font-size: 0.74rem; color: #9c8c78; }
 .materia-numeri b { font-family: var(--font-display); font-size: 1.05rem; color: #efe4d0; }
 @media (max-width: 639px) {
-  .materia { flex-direction: row; gap: 0.8rem; padding: 0.7rem 0.9rem; text-align: left; background: #241c17; }
-  .materia-testo { flex: 1; width: auto; }
+  .materia { flex-direction: row; align-items: center; gap: 0.8rem; padding: 0.7rem 0.9rem; }
+  .materia-testo { flex: 1; width: auto; padding: 0; }
   .eroe { min-height: 24rem; }
   .eroe-testo { padding: 1.5rem 1.3rem 2.2rem; }
   .eroe-foto { left: 0; width: 100%; bottom: 38%; -webkit-mask-image: radial-gradient(ellipse 80% 90% at 50% 45%, #000 38%, transparent 100%); mask-image: radial-gradient(ellipse 80% 90% at 50% 45%, #000 38%, transparent 100%); }
@@ -122,10 +122,19 @@
 .strumento-corpo .titolo { font-size: 1.12rem; font-weight: 600; line-height: 1.2; }
 .strumento-corpo .testo { margin-top: 0.15rem; font-size: 0.84rem; line-height: 1.4; color: #ad9d86; }
 
-/* ---------- Apertura di una materia: il sasso a destra ---------- */
-.testata-arte { position: absolute; right: 2rem; top: 50%; z-index: 1; transform: translateY(-50%); }
-@media (max-width: 767px) { .testata-arte { display: none; } }
+/* ---------- Apertura di una materia: la foto del campione a destra, sfumata ---------- */
+.testata-arte { position: absolute; top: 0; right: 0; bottom: 0; z-index: 1; width: 46%; isolation: isolate; background: color-mix(in srgb, var(--tinta, #a8643c) 40%, #d9b48f); -webkit-mask-image: radial-gradient(ellipse 90% 100% at 70% 50%, #000 30%, transparent 100%); mask-image: radial-gradient(ellipse 90% 100% at 70% 50%, #000 30%, transparent 100%); }
+.testata-arte img { width: 100%; height: 100%; object-fit: cover; mix-blend-mode: multiply; }
+@media (max-width: 767px) { .testata-arte { width: 100%; opacity: 0.3; } }
 @media (max-width: 639px) { .strumento-arte { aspect-ratio: 2.5 / 1; } }
 /* Gli strati dietro le testate, nel colore della tinta. */
 .testata-strati { position: absolute; inset: 0; z-index: 0; color: var(--tinta, #a8643c); -webkit-mask-image: linear-gradient(90deg, transparent 20%, #000 80%); mask-image: linear-gradient(90deg, transparent 20%, #000 80%); }
 .testata-strati svg { width: 100%; height: 100%; }
+
+/* La chiave nel menu: dice con quale si è entrati. */
+.liv { display: none; }
+html[data-livello="appunti"] .liv-appunti, html[data-livello="strumenti"] .liv-strumenti { display: block; }
+.liv-in { display: none; }
+html[data-livello="appunti"] .liv-in-appunti, html[data-livello="strumenti"] .liv-in-strumenti { display: inline; }
+.solo-con-chiave-blocco { display: none; }
+html[data-livello] .solo-con-chiave-blocco { display: block; }

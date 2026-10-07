@@ -25,9 +25,10 @@ interface Props {
 }
 
 const { titolo, descrizione, colore, larghezza, largo, tema = "sottosuolo", nudo = false } = Astro.props;
-// Solo per lavorare in locale (screenshot senza chiave): si avvia il server con
-// PUBLIC_UNIGEO_APERTO=1. In produzione la variabile non c'è, il cancello resta.
-const APERTO = import.meta.env.PUBLIC_UNIGEO_APERTO === "1";
+// Solo per fare screenshot in locale: nel server di sviluppo (mai nel sito
+// pubblicato) l'indirizzo con ?aperto salta il cancello. Senza il parametro il
+// cancello c'è anche in locale.
+const APERTO = import.meta.env.DEV;
 const BASE_SITO = import.meta.env.BASE_URL.replace(/\/$/, "");
 const misura = larghezza ?? (largo === false ? "testo" : "largo");
 const LARGHEZZE = { testo: "max-w-3xl", largo: "max-w-6xl", pieno: "max-w-[1500px]" };
@@ -57,7 +58,7 @@ const LARGHEZZE = { testo: "max-w-3xl", largo: "max-w-6xl", pieno: "max-w-[1500p
       // disegnare la pagina: senza chiave si va a /accesso; con la chiave degli
       // strumenti niente appunti. Su GitHub Pages è un velo, non una serratura.
       function controllaAccesso() {
-        if (aperto) return;
+        if (aperto && new URLSearchParams(location.search).has("aperto")) return;
         const m = /(?:^|; )unigeo_chiave=([0-9a-f]{64})/.exec(document.cookie);
         const livello = m && m[1] === impronte.appunti ? "appunti" : m && m[1] === impronte.strumenti ? "strumenti" : null;
         const html = document.documentElement;

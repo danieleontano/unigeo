@@ -1,18 +1,10 @@
 ---
-// Le materie come campioni di roccia: un sasso 3D per materia (si inclina col
-// puntatore) su uno sfondo del suo colore, nome, docente, e i numeri. Su
-// telefono diventano righe strette con l'icona. Usata in Home e in Materie.
-import Campione from "@/components/Campione.astro";
-import Inclina from "@/components/Inclina.astro";
+// Le materie come tessere con la foto di un campione (campo `campione` di
+// materia.json), tinta nel colore della materia: nome, docente e i numeri.
+// Su telefono diventano righe strette con l'icona. Usata in Home e in Materie.
 import { percorso } from "@/lib/percorsi";
-import { dataBreve } from "@/lib/date";
+import { fotoCampione } from "@/lib/campioni";
 import { contaDefinizioni, lezioniDi, quizDisponibili, tutteLeMaterie } from "@/lib/contenuti";
-
-interface Props {
-  /** Misura del sasso su schermo largo. */
-  misura?: number;
-}
-const { misura = 150 } = Astro.props;
 
 const materie = await tutteLeMaterie();
 const lezioni = await lezioniDi();
@@ -22,13 +14,17 @@ const quiz = await quizDisponibili();
 <ul class="grid grid-cols-1 gap-3 sm:grid-cols-3 xl:grid-cols-5">
   {materie.map((m, i) => {
     const mie = lezioni.filter((l) => l.id.startsWith(`${m.id}/`));
-    const ultima = mie.at(-1);
     const nQuiz = mie.filter((l) => quiz.has(l.id)).length;
     const nDef = mie.reduce((s, l) => s + contaDefinizioni(l), 0);
+    const foto = fotoCampione(m.data.campione);
     return (
       <li class="sale" style={`--materia:${m.data.colore};--tinta:${m.data.colore};--i:${i + 4}`}>
         <a href={percorso(`/materie/${m.id}`)} class="pannello materia group">
-          <div class="materia-sasso hidden sm:flex"><Campione colore={m.data.colore} materia={m.id} misura={misura} /></div>
+          <div class="materia-foto hidden sm:block">
+            {foto && <img src={percorso(foto.mini)} alt="" loading="lazy" />}
+            <span class="materia-chip"><img src={percorso(`/icone/${m.data.icona}`)} alt="" width="24" height="24" /></span>
+            {foto && <span class="materia-didascalia">{foto.nome}</span>}
+          </div>
           <span class="shrink-0 sm:hidden"><span class="chip"><img src={percorso(`/icone/${m.data.icona}`)} alt="" width="26" height="26" class="h-[26px] w-[26px]" /></span></span>
           <div class="materia-testo">
             <p class="display text-[1.2rem] leading-tight">{m.data.nome}</p>
@@ -39,11 +35,9 @@ const quiz = await quizDisponibili();
             <span><b>{mie.length}</b> lez.</span>
             {nQuiz > 0 && <span><b>{nQuiz}</b> quiz</span>}
             {nDef > 0 && <span><b>{nDef}</b> def.</span>}
-            <span class="ml-auto">{ultima ? dataBreve(ultima.data.data).slice(0, 5) : "—"}</span>
           </div>
         </a>
       </li>
     );
   })}
 </ul>
-<Inclina />

@@ -22,7 +22,9 @@ const UN_ANNO = 60 * 60 * 24 * 365;
 // intero non va importato: il suo indice tira dentro moduli che nel runtime
 // dei middleware non si caricano (05/10/2026: MIDDLEWARE_INVOCATION_FAILED).
 function prosegui(extra: Record<string, string> = {}): Response {
-  const headers = new Headers(extra);
+  // Le pagine date a chi ha la chiave sono private e legate al cookie: nessuna
+  // cache condivisa (CDN, provider, proxy) deve riproporle a chi non ce l'ha.
+  const headers = new Headers({ "Cache-Control": "private, max-age=0, must-revalidate", Vary: "Cookie", ...extra });
   headers.set("x-middleware-next", "1");
   return new Response(null, { headers });
 }

@@ -38,9 +38,13 @@ const attivo = moduloDi(attuale).href;
       <svg class="h-[19px] w-[19px] shrink-0" aria-hidden="true"><use href={`#${IMPOSTAZIONI.simbolo}`} /></svg>
       <span class="menu-etichetta">{IMPOSTAZIONI.titolo}</span>
     </a>
-    <a href={percorso("/accesso?esci=1")} class="menu-voce solo-con-chiave" title="Esci" data-astro-reload>
-      <svg viewBox="0 0 24 24" class="h-[19px] w-[19px] shrink-0" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h4a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-4M10 16l-4-4 4-4M6 12h10" /></svg>
-      <span class="menu-etichetta">Esci</span>
+    <a href={percorso("/accesso?esci=1")} class="menu-voce solo-con-chiave" title="Cambia chiave o esci" data-astro-reload>
+      <svg viewBox="0 0 24 24" class="h-[19px] w-[19px] shrink-0" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2" /><path d="M8 11V8a4 4 0 0 1 8 0v3" /></svg>
+      <span class="menu-etichetta leading-tight">
+        <span class="liv liv-appunti">Chiave: appunti</span>
+        <span class="liv liv-strumenti">Chiave: strumenti</span>
+        <span class="block text-[0.68rem] font-normal text-[#9c8c78]">cambia o esci</span>
+      </span>
     </a>
   </div>
 </aside>

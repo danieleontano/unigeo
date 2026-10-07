@@ -70,6 +70,8 @@ export function Riconosci({ campioni, base }: Props) {
   const [filtro, setFiltro] = useState<"tutti" | Gruppo>("tutti");
   const [cerca, setCerca] = useState("");
   const [mosaico, setMosaico] = useState<CampioneFoto[]>([]);
+  // Il campione aperto dal mosaico: si va alla sua scheda e la si evidenzia.
+  const [aperto, setAperto] = useState<string | null>(null);
 
   useEffect(() => setMosaico(mescola(campioni).slice(0, 12)), [campioni]);
 
@@ -80,6 +82,12 @@ export function Riconosci({ campioni, base }: Props) {
     setFase("sfoglia");
     requestAnimationFrame(() => document.getElementById(id)?.scrollIntoView({ block: "center" }));
   }, [campioni]);
+
+  useEffect(() => {
+    if (fase !== "sfoglia" || !aperto) return;
+    const t = requestAnimationFrame(() => document.getElementById(aperto)?.scrollIntoView({ block: "center", behavior: "smooth" }));
+    return () => cancelAnimationFrame(t);
+  }, [fase, aperto]);
 
   const pool = useMemo(() => campioni.filter((c) => filtro === "tutti" || gruppoDi(c) === filtro), [campioni, filtro]);
   const trovati = useMemo(() => {
@@ -154,7 +162,7 @@ export function Riconosci({ campioni, base }: Props) {
               </div>
               <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5">
                 {qui.map((x) => (
-                  <li key={x.id} id={x.id} className="pannello scroll-mt-20 overflow-hidden p-0">
+                  <li key={x.id} id={x.id} className={`pannello scroll-mt-20 overflow-hidden p-0 ${aperto === x.id ? "outline outline-2 outline-offset-2 outline-[#a8643c]" : ""}`}>
                     <img src={`${base}${miniatura(x.foto.file)}`} alt={x.nome} loading="lazy" className="aspect-[4/3] w-full object-cover" />
                     <div className="p-3">
                       <p className="display text-[1.05rem] leading-tight">{x.nome}</p>
@@ -200,10 +208,21 @@ export function Riconosci({ campioni, base }: Props) {
             </button>
           </div>
         </div>
-        <ul className="grid grid-cols-4 gap-1.5 overflow-hidden rounded-[0.85rem]" aria-hidden="true">
+        <ul className="grid grid-cols-4 gap-1.5 overflow-hidden rounded-[0.85rem]">
           {mosaico.map((x) => (
             <li key={x.id}>
-              <img src={`${base}${miniatura(x.foto.file)}`} alt="" loading="lazy" className="aspect-square w-full object-cover opacity-85 transition hover:opacity-100" />
+              <button
+                type="button"
+                onClick={() => (setCerca(""), setAperto(x.id), setFase("sfoglia"))}
+                title={`${x.nome} · ${x.categoria}`}
+                className="group relative block w-full overflow-hidden text-left"
+              >
+                <img src={`${base}${miniatura(x.foto.file)}`} alt={x.nome} loading="lazy" className="aspect-square w-full object-cover transition duration-500 group-hover:scale-105" />
+                <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#140f0c]/90 to-transparent px-2 pb-1.5 pt-7 font-sans text-[0.74rem] font-medium leading-tight text-[#f3ecdd]">
+                  {x.nome}
+                  <span className="block text-[0.6rem] font-normal text-[#e3b08c] opacity-0 transition group-hover:opacity-100 group-focus-visible:opacity-100">{x.categoria} →</span>
+                </span>
+              </button>
             </li>
           ))}
         </ul>

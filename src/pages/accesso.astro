@@ -32,8 +32,7 @@ const BASE_SITO = import.meta.env.BASE_URL.replace(/\/$/, "");
       .nome { font-family: Georgia, "Times New Roman", serif; font-size: 1.5rem; font-weight: 600; letter-spacing: -0.01em; }
       .nome span { color: #d98a5c; }
       .sotto { font-size: 0.72rem; color: #9c8c78; letter-spacing: 0.04em; }
-      h1 { margin: 26px 0 4px; font-family: Georgia, "Times New Roman", serif; font-weight: 500; font-size: 1.6rem; }
-      p.riga { margin: 0 0 18px; color: #ad9d86; font-size: 0.9rem; }
+      h1 { margin: 26px 0 18px; font-family: Georgia, "Times New Roman", serif; font-weight: 500; font-size: 1.6rem; }
       label { display: block; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #ad9d86; margin-bottom: 6px; }
       input[type="password"], input[type="text"] {
         width: 100%; font: inherit; font-size: 1.05rem; color: #f3ecdd; background: #1b1512; border: 1px solid #3b2f27;
@@ -60,7 +59,6 @@ const BASE_SITO = import.meta.env.BASE_URL.replace(/\/$/, "");
         </div>
       </div>
       <h1>Chiave di accesso</h1>
-      <p class="riga">Il quaderno di studio è privato.</p>
       <p id="errore" class="avviso errore" role="alert">Chiave sbagliata.</p>
       <p id="serve" class="avviso info">Questa parte è negli appunti: serve la chiave degli appunti.</p>
       <form method="post" action={percorso("/accesso")}>

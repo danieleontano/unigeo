@@ -341,3 +341,25 @@ due settimane di fila salta, il problema non è nel codice.
   quelle, il riconoscimento a schermo pieno gli originali.
   In locale, per gli screenshot senza chiave: `PUBLIC_UNIGEO_APERTO=1 npx astro
   dev` (disattiva solo il controllo nel browser; in produzione non esiste).
+- 2026-10-08 · Ritocchi dopo la prova di Daniele sul sito pubblicato.
+  (1) BUG: nel sito costruito l'indirizzo della Home arriva come «/index» (o
+  «/unigeo/index.html»), non «/»: Menu e Intestazione la scambiavano per
+  Strumenti (voce accesa sbagliata e schede degli strumenti in cima).
+  percorsoPagina() ora toglie anche «/index». In `astro dev` non si vedeva.
+  (2) Sassi 3D delle materie TOLTI («brutti, troppo futuristici»): al loro posto
+  la foto di un campione tinta nel colore della materia (campo `campione` in
+  materia.json; lib/campioni.ts), anche nella testata della materia.
+  Campione.astro e Inclina.astro cancellati.
+  (3) Chiave: ora il menu mostra «Chiave: appunti/strumenti · cambia o esci» e
+  Impostazioni ha il blocco «Chiave di accesso». Tolta la riga «quaderno
+  privato» dalla pagina d'accesso. Il cancello in locale è SEMPRE attivo: per gli
+  screenshot si usa `?aperto` nell'indirizzo (solo in `astro dev`, mai nel sito
+  pubblicato); la vecchia variabile PUBLIC_UNIGEO_APERTO non esiste più. Pagine
+  date a chi ha la chiave: Cache-Control private + Vary: Cookie.
+  Daniele ha detto che in incognito da Chrome il link Vercel NON chiedeva la
+  chiave: non riproducibile (55 richieste curl, Chrome incognito su 4
+  indirizzi e UA iPhone: sempre reindirizzato a /accesso). Chiesto l'indirizzo
+  esatto. Nota: `unigeo.vercel.app` è un altro progetto, non nostro.
+  (4) Riconosci la pietra: le foto del mosaico mostrano il nome (e la categoria
+  al passaggio del mouse) e un clic apre la scheda del campione.
+  Dopo aver cambiato lo schema delle materie, svuotare .astro/ (cache dei dati).

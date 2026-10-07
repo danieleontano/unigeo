@@ -31,7 +31,8 @@ export const IMPOSTAZIONI: Modulo = { href: "/impostazioni", titolo: "Impostazio
 
 /** L'indirizzo senza base, senza .html e senza barra finale: «/materie/geologia-1». */
 export function percorsoPagina(pathname: string, base: string): string {
-  return pathname.replace(base.replace(/\/$/, ""), "").replace(/\.html$/, "").replace(/\/$/, "") || "/";
+  // Nel sito pubblicato la Home arriva come «/index» (o «/unigeo/index.html»): è la Home.
+  return pathname.replace(base.replace(/\/$/, ""), "").replace(/\.html$/, "").replace(/\/index$/, "").replace(/\/$/, "") || "/";
 }
 
 export function moduloDi(p: string): Modulo | typeof IMPOSTAZIONI {

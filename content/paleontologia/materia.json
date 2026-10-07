@@ -3,5 +3,8 @@
   "nome": "Paleontologia",
   "colore": "#1F6F78",
   "icona": "paleontologia.svg",
-  "docenti": ["Antonino Briguglio"]
+  "campione": "calcare-fossilifero",
+  "docenti": [
+    "Antonino Briguglio"
+  ]
 }

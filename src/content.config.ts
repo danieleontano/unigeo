@@ -64,6 +64,8 @@ const materie = defineCollection({
     nome: z.string(),
     colore: z.string().regex(/^#[0-9a-fA-F]{6}$/),
     icona: z.string(),
+    /** Id del campione (campionario) la cui foto rappresenta la materia nei riquadri. */
+    campione: z.string().optional(),
     docenti: z.array(z.string()).default([]),
     moduli: z.array(z.string()).optional(),
     esame: z.string().optional(),

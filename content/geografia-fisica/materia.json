@@ -3,5 +3,8 @@
   "nome": "Geografia fisica e cartografia",
   "colore": "#3F6E3A",
   "icona": "geografia-fisica.svg",
-  "docenti": ["Pierluigi Brandolini"]
+  "campione": "conglomerato",
+  "docenti": [
+    "Pierluigi Brandolini"
+  ]
 }
