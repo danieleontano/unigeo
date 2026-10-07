@@ -1,0 +1,91 @@
+{
+  "lezione": "geografia-fisica/lez03-2026-10-07-scala-in-pratica-forma-della-terra-e-proiezioni",
+  "domande": [
+    {
+      "id": "q1",
+      "tipo": "scelta",
+      "testo": "Tra A e B la distanza reale è 700 m e sulla carta misuri 2,8 cm. Qual è la scala?",
+      "opzioni": [
+        "1:2.500",
+        "1:25.000",
+        "1:250.000",
+        "1:70.000"
+      ],
+      "corretta": 1,
+      "spiegazione": "Stessa unità: 700 m = 70.000 cm; 70.000 / 2,8 = 25.000.",
+      "ref": "#esercizio-in-aula-verificare-la-scala-della-tavoletta"
+    },
+    {
+      "id": "q2",
+      "tipo": "verofalso",
+      "testo": "Fotocopiando al doppio una carta 1:10.000 si ottiene una carta 1:5.000.",
+      "corretta": false,
+      "spiegazione": "È solo un ingrandimento: le informazioni restano quelle rilevate al 10.000. Una carta al 5.000 va realizzata a quella scala.",
+      "ref": "#una-carta-ingrandita-non-cambia-scala"
+    },
+    {
+      "id": "q3",
+      "tipo": "scelta",
+      "testo": "Quale ellissoide adotta la cartografia IGM?",
+      "opzioni": [
+        "WGS84",
+        "L'ellissoide internazionale di Hayford",
+        "L'ellissoide di Boaga",
+        "Il geoide di Gauss"
+      ],
+      "corretta": 1,
+      "spiegazione": "Proposto da Hayford nel 1909 e adottato nel 1924: raggio equatoriale 6378,388 km, polare 6356,912 km, schiacciamento 1/297.",
+      "ref": "#la-forma-della-terra-e-le-proiezioni"
+    },
+    {
+      "id": "q4",
+      "tipo": "scelta",
+      "testo": "Secondo la classificazione per scala, una carta 1:50.000 è:",
+      "opzioni": [
+        "una pianta",
+        "una carta topografica",
+        "una carta corografica",
+        "una carta geografica"
+      ],
+      "corretta": 1,
+      "spiegazione": "Topografiche tra 1:1.000 e 1:150.000; corografiche fino a 1:1.000.000; geografiche oltre. Piante e mappe sopra 1:1.000.",
+      "ref": "#la-forma-della-terra-e-le-proiezioni"
+    },
+    {
+      "id": "q5",
+      "tipo": "verofalso",
+      "testo": "Il geoide e l'ellissoide di rotazione coincidono.",
+      "corretta": false,
+      "spiegazione": "L'ellissoide è un modello geometrico (ellisse ruotata sull'asse minore); il geoide è la superficie reale a potenziale gravitazionale costante, irregolare. Non coincidono.",
+      "ref": "#la-forma-della-terra-e-le-proiezioni"
+    },
+    {
+      "id": "q6",
+      "tipo": "aperta",
+      "testo": "Quali sono le tre famiglie di proiezioni e cosa le distingue?",
+      "soluzione": "Vere o pure (costruzione geometrica con una superficie ausiliaria: prospettiche e di sviluppo), modificate (le precedenti con correzioni per ridurre le deformazioni, come Mercatore) e convenzionali (relazioni matematiche che rispettano uno dei tre requisiti: equidistanza, equivalenza o isogonia).",
+      "ref": "#la-forma-della-terra-e-le-proiezioni"
+    },
+    {
+      "id": "q7",
+      "tipo": "scelta",
+      "testo": "Passando dal 50.000 al 5.000 sullo stesso foglio, cosa succede?",
+      "opzioni": [
+        "Aumenta l'area rappresentata e diminuisce il dettaglio",
+        "Diminuisce l'area rappresentata e aumenta il dettaglio",
+        "Restano uguali, cambia solo il colore",
+        "Aumentano entrambi"
+      ],
+      "corretta": 1,
+      "spiegazione": "A parità di foglio, più la scala è grande più il dettaglio cresce e più l'area rappresentata si riduce: dall'intero promontorio di Portofino ai singoli edifici di San Fruttuoso.",
+      "ref": "#una-carta-ingrandita-non-cambia-scala"
+    },
+    {
+      "id": "q8",
+      "tipo": "aperta",
+      "testo": "Quali sono i parametri dell'ellissoide internazionale adottato dall'IGM e perché QGIS li chiede?",
+      "soluzione": "Ellissoide di Hayford (1909, adottato 1924): raggio equatoriale 6378,388 km, polare 6356,912 km, differenza 21,476 km, schiacciamento 1/297. Il software chiede il sistema di riferimento perché le coordinate e le carte sono costruite su quell'ellissoide: dando il dato sbagliato, i dati estratti sono sbagliati.",
+      "ref": "#la-forma-della-terra-e-le-proiezioni"
+    }
+  ]
+}

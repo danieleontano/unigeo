@@ -1,0 +1,157 @@
+{
+  "lezione": "geografia-fisica/lez04-2026-10-07-mercatore-utm-simboli-e-coordinate-geografiche",
+  "domande": [
+    {
+      "id": "q1",
+      "tipo": "scelta",
+      "testo": "Perché la proiezione cilindrica si dice «diretta»?",
+      "opzioni": [
+        "Perché la lampadina è fuori dal globo",
+        "Perché il cilindro ha l'asse coincidente con l'asse terrestre ed è tangente all'equatore",
+        "Perché proietta direttamente sul piano",
+        "Perché è tangente a un meridiano"
+      ],
+      "corretta": 1,
+      "spiegazione": "È la domanda che il prof ha annunciato. Nella trasversa, invece, il cilindro è ruotato di 90° e tangente a un meridiano.",
+      "ref": "#dalla-cilindrica-a-mercatore"
+    },
+    {
+      "id": "q2",
+      "tipo": "aperta",
+      "testo": "Che cosa ha modificato Mercatore nella proiezione cilindrica, quale proprietà ha ottenuto e perché la sua carta si usa in navigazione?",
+      "soluzione": "Ha ridotto la distanza tra i paralleli alle alte latitudini, così i cerchietti restano cerchi: la carta è isogonica (conforme), mantiene angoli e forme, ma non è equivalente né equidistante (le aree si espandono verso i poli). In navigazione la rotta tra due punti è una retta, la lossodromia, con angolo costante rispetto al Nord.",
+      "ref": "#dalla-cilindrica-a-mercatore"
+    },
+    {
+      "id": "q3",
+      "tipo": "scelta",
+      "testo": "Entro quale fascia la proiezione UTM dà errori trascurabili?",
+      "opzioni": [
+        "1° a est e 1° a ovest del meridiano di tangenza",
+        "3° a est e 3° a ovest del meridiano di tangenza",
+        "6° a est e 6° a ovest",
+        "15° attorno all'equatore"
+      ],
+      "corretta": 1,
+      "spiegazione": "Un fuso di 6° in totale, 3° per lato. Fuori dalla fascia le deformazioni crescono: per questo servono tanti cilindri.",
+      "ref": "#utm-e-gauss-boaga"
+    },
+    {
+      "id": "q4",
+      "tipo": "aperta",
+      "testo": "Perché per l'Italia l'IGM ha usato due fusi e quali sono i meridiani di tangenza?",
+      "soluzione": "L'Italia si estende in longitudine per circa 12°, più dei 6° di un fuso. Si è applicata due volte la proiezione di Gauss con i meridiani di tangenza a 9° e a 15° est di Greenwich (fuso Ovest e fuso Est), con una zona di sovrapposizione di 30′.",
+      "ref": "#utm-e-gauss-boaga"
+    },
+    {
+      "id": "q5",
+      "tipo": "scelta",
+      "testo": "Che cosa ha cambiato Boaga rispetto alla proiezione di Gauss?",
+      "opzioni": [
+        "Ha scelto un cono invece del cilindro",
+        "Ha usato un cilindro leggermente secante, di diametro un po' minore della Terra",
+        "Ha spostato il meridiano fondamentale a Greenwich",
+        "Ha eliminato il secondo fuso"
+      ],
+      "corretta": 1,
+      "spiegazione": "Il cilindro secante riduce ulteriormente le deformazioni sul territorio italiano; ne derivano le coordinate chilometriche Gauss-Boaga, adottate ufficialmente dalla Regione Liguria.",
+      "ref": "#utm-e-gauss-boaga"
+    },
+    {
+      "id": "q6",
+      "tipo": "abbinamento",
+      "testo": "Abbina il simbolo al significato sulla tavoletta IGM.",
+      "coppie": [
+        [
+          "linea tratteggiata nera",
+          "sentiero o mulattiera"
+        ],
+        [
+          "linea puntinata",
+          "limite amministrativo (Stato, regione, comune)"
+        ],
+        [
+          "pallini vuoti sparsi",
+          "copertura vegetale, boschiva o agricola"
+        ],
+        [
+          "pallini con il simbolo dell'olivo",
+          "oliveto"
+        ]
+      ],
+      "ref": "#il-simbolismo-cartografico"
+    },
+    {
+      "id": "q7",
+      "tipo": "verofalso",
+      "testo": "Se sulla carta c'è il simbolo di un corso d'acqua, lì c'è un crinale.",
+      "corretta": false,
+      "spiegazione": "Dove c'è un corso d'acqua c'è una valle (impluvio). Il crinale (displuvio) sta tra due valli. Confonderli è l'errore classico.",
+      "ref": "#il-simbolismo-cartografico"
+    },
+    {
+      "id": "q8",
+      "tipo": "scelta",
+      "testo": "Su quale margine della tavoletta si legge la longitudine?",
+      "opzioni": [
+        "Sui margini laterali, lungo la traccia di meridiano",
+        "Sui margini superiore e inferiore, lungo la traccia di parallelo",
+        "Al centro del foglio",
+        "Sul reticolato chilometrico"
+      ],
+      "corretta": 1,
+      "spiegazione": "La longitudine si misura sull'arco di parallelo; le tracce dei paralleli sono i margini orizzontali. La latitudine, viceversa, sui margini verticali.",
+      "ref": "#le-coordinate-geografiche"
+    },
+    {
+      "id": "q9",
+      "tipo": "scelta",
+      "testo": "A quale meridiano è riferita la longitudine sulle carte IGM come la tavoletta di Rapallo?",
+      "opzioni": [
+        "Greenwich",
+        "Roma Monte Mario",
+        "Il meridiano 9° Est",
+        "Il meridiano di Parigi"
+      ],
+      "corretta": 1,
+      "spiegazione": "Monte Mario sta circa 12°27′08″ a est di Greenwich. La Liguria è a ovest di Roma: la longitudine è «ovest da Monte Mario» e cresce verso ovest.",
+      "ref": "#le-coordinate-geografiche"
+    },
+    {
+      "id": "q10",
+      "tipo": "scelta",
+      "testo": "Un primo di longitudine sul bordo misura 5,2 cm; dal valore 12′ alla verticale del punto misuri 2,6 cm. Quanti secondi?",
+      "opzioni": [
+        "26″",
+        "30″",
+        "32″",
+        "52″"
+      ],
+      "corretta": 1,
+      "spiegazione": "Proporzione 5,2 : 60 = 2,6 : x → x = 60 × 2,6 / 5,2 = 30″. Il punto ha longitudine 3°12′30″.",
+      "ref": "#esercizio-la-longitudine-del-punto-p"
+    },
+    {
+      "id": "q11",
+      "tipo": "aperta",
+      "testo": "Perché nel calcolo delle coordinate si prende sempre il valore inferiore della tacca (12′ e non 13′) e si aggiungono i secondi?",
+      "soluzione": "Perché la coordinata si costruisce come valore intero più frazione, come l'ora: 12 e 32, non 13 meno 28. Prendere il valore superiore obbligherebbe a sottrarre, con più rischio di errore.",
+      "ref": "#esercizio-la-longitudine-del-punto-p"
+    },
+    {
+      "id": "q12",
+      "tipo": "verofalso",
+      "testo": "La lunghezza di un grado di longitudine è costante a tutte le latitudini.",
+      "corretta": false,
+      "spiegazione": "I meridiani convergono ai poli: un grado di longitudine vale circa 111 km all'equatore e 0 ai poli. È un grado di latitudine a essere quasi costante (circa 111 km), e il suo sessantesimo è il miglio marino.",
+      "ref": "#le-coordinate-geografiche"
+    },
+    {
+      "id": "q13",
+      "tipo": "aperta",
+      "testo": "Che cosa raccomanda la risoluzione ONU «Correct the Map» e perché è coerente con la differenza tra carte conformi ed equivalenti?",
+      "soluzione": "Raccomanda, senza vincolo e senza vietare Mercatore, di usare proiezioni equivalenti come la Equal Earth quando si confrontano le superfici. Mercatore è conforme e dilata le aree verso i poli (l'Africa sembra grande come la Groenlandia); una equivalente restituisce i rapporti di superficie. Si sceglie la proiezione in base allo scopo.",
+      "ref": "#mercatore-oggi-la-risoluzione-onu-correct-the-map"
+    }
+  ]
+}
