@@ -1,7 +1,87 @@
 {
  "dal": "2026-10-04T00:00:00.000Z",
- "aggiornato": "2026-10-06T15:17:52.092Z",
+ "aggiornato": "2026-10-07T17:27:59.393Z",
  "eventi": [
+  {
+   "id": "261007094700",
+   "quando": "2026-10-07T09:48:30Z",
+   "magnitudo": 1.1,
+   "regione": "Alpi Cozie",
+   "lat": 44.452,
+   "lon": 7.208,
+   "profondita": 12.3359,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261007094700"
+  },
+  {
+   "id": "261007072238",
+   "quando": "2026-10-07T07:23:36Z",
+   "magnitudo": 0.8,
+   "regione": "Alpi Graie",
+   "lat": 45.639,
+   "lon": 6.962,
+   "profondita": 6.03125,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261007072238"
+  },
+  {
+   "id": "261007065544",
+   "quando": "2026-10-07T06:56:06Z",
+   "magnitudo": 0.2,
+   "regione": "Riviera di ponente",
+   "lat": 43.937,
+   "lon": 7.665,
+   "profondita": 5.77344,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261007065544"
+  },
+  {
+   "id": "261007062655",
+   "quando": "2026-10-07T06:27:40Z",
+   "magnitudo": 1.9,
+   "regione": "Svizzera",
+   "lat": 46.461,
+   "lon": 7.81,
+   "profondita": 7.60156,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261007062655"
+  },
+  {
+   "id": "261007004124",
+   "quando": "2026-10-07T00:43:31Z",
+   "magnitudo": 1.1,
+   "regione": "Val di Taro",
+   "lat": 44.596,
+   "lon": 10.018,
+   "profondita": 16.1328,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261007004124"
+  },
+  {
+   "id": "261006224453",
+   "quando": "2026-10-06T22:46:15Z",
+   "magnitudo": 0.5,
+   "regione": "Alpi Marittime",
+   "lat": 44.28,
+   "lon": 7.376,
+   "profondita": 14.6328,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261006224453"
+  },
+  {
+   "id": "261006174031",
+   "quando": "2026-10-06T17:41:53Z",
+   "magnitudo": 1,
+   "regione": "Francia",
+   "lat": 45.648,
+   "lon": 6.423,
+   "profondita": 8.58594,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261006174031"
+  },
+  {
+   "id": "261006102229",
+   "quando": "2026-10-06T10:23:35Z",
+   "magnitudo": 0.6,
+   "regione": "Garfagnana",
+   "lat": 44.137,
+   "lon": 10.561,
+   "profondita": 2.02344,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261006102229"
+  },
   {
    "id": "261006032418",
    "quando": "2026-10-06T03:24:43Z",
