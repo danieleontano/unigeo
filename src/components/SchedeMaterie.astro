@@ -1,9 +1,9 @@
 ---
-// Le materie come tessere con la foto di un campione (campo `campione` di
-// materia.json), tinta nel colore della materia: nome, docente e i numeri.
+// Le materie come tessere con un oggetto solido in isometrica (OggettoMateria),
+// su fondo nel colore della materia: nome, docente e i numeri.
 // Su telefono diventano righe strette con l'icona. Usata in Home e in Materie.
 import { percorso } from "@/lib/percorsi";
-import { fotoCampione } from "@/lib/campioni";
+import OggettoMateria from "./OggettoMateria.astro";
 import { contaDefinizioni, lezioniDi, quizDisponibili, tutteLeMaterie } from "@/lib/contenuti";
 
 const materie = await tutteLeMaterie();
@@ -16,14 +16,11 @@ const quiz = await quizDisponibili();
     const mie = lezioni.filter((l) => l.id.startsWith(`${m.id}/`));
     const nQuiz = mie.filter((l) => quiz.has(l.id)).length;
     const nDef = mie.reduce((s, l) => s + contaDefinizioni(l), 0);
-    const foto = fotoCampione(m.data.campione);
     return (
       <li class="sale" style={`--materia:${m.data.colore};--tinta:${m.data.colore};--i:${i + 4}`}>
         <a href={percorso(`/materie/${m.id}`)} class="pannello materia group">
           <div class="materia-foto hidden sm:block">
-            {foto && <img src={percorso(foto.mini)} alt="" loading="lazy" />}
-            <span class="materia-chip"><img src={percorso(`/icone/${m.data.icona}`)} alt="" width="24" height="24" /></span>
-            {foto && <span class="materia-didascalia">{foto.nome}</span>}
+            <OggettoMateria id={m.id} />
           </div>
           <span class="shrink-0 sm:hidden"><span class="chip"><img src={percorso(`/icone/${m.data.icona}`)} alt="" width="26" height="26" class="h-[26px] w-[26px]" /></span></span>
           <div class="materia-testo">

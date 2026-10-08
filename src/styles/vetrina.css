@@ -85,15 +85,17 @@
 .tessera-arte svg { transition: transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1); }
 .tessera:hover .tessera-arte svg { transform: scale(1.06); }
 
-/* ---------- Le materie: la foto di un campione, tinta nel colore della materia ---------- */
+/* ---------- Le materie: un oggetto 3D su fondo nel colore della materia ---------- */
 .materia { display: flex; flex-direction: column; height: 100%; overflow: hidden; border-radius: 1rem; background: #241c17; transition: transform 0.2s, border-color 0.2s; }
 .materia:hover { transform: translateY(-4px); border-color: color-mix(in srgb, var(--tinta, #a8643c) 60%, #3b2f27); }
-.materia-foto { position: relative; aspect-ratio: 5 / 4; overflow: hidden; isolation: isolate; background: color-mix(in srgb, var(--tinta, #a8643c) 40%, #d9b48f); }
-.materia-foto > img:first-child { width: 100%; height: 100%; object-fit: cover; mix-blend-mode: multiply; transition: transform 1s cubic-bezier(0.2, 0.7, 0.2, 1); }
-.materia:hover .materia-foto > img:first-child { transform: scale(1.06); }
-.materia-foto::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, #241c17 0%, rgba(36, 28, 23, 0.25) 38%, transparent 62%); }
-.materia-chip { position: absolute; left: 0.7rem; top: 0.7rem; z-index: 2; display: flex; align-items: center; justify-content: center; width: 2.4rem; height: 2.4rem; border-radius: 0.65rem; background: #1b1512; border: 1px solid #3b2f27; }
-.materia-didascalia { position: absolute; right: 0.8rem; bottom: 0.55rem; z-index: 2; font-size: 0.6rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #e9d9bf; opacity: 0.85; }
+.materia-foto { position: relative; aspect-ratio: 5 / 4; overflow: hidden; isolation: isolate; background: linear-gradient(180deg, color-mix(in srgb, var(--tinta, #a8643c) 18%, #ecdcc2) 0%, color-mix(in srgb, var(--tinta, #a8643c) 42%, #d2ad82) 100%); }
+.materia-foto { border-bottom: 1px solid #3b2f27; }
+.materia-foto .oggetto { display: block; width: 100%; height: 100%; }
+.oggetto-solido { transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1); }
+.oggetto-ombra { transform-box: fill-box; transform-origin: center; transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1), opacity 0.35s; }
+.materia:hover .oggetto-solido { transform: translateY(-6px); }
+.materia:hover .oggetto-ombra { transform: scale(0.88); opacity: 0.18; }
+@media (prefers-reduced-motion: reduce) { .oggetto-solido, .oggetto-ombra { transition: none; } }
 .materia-testo { min-width: 0; width: 100%; padding: 0.1rem 1rem 0; }
 .materia-numeri { flex-wrap: nowrap; white-space: nowrap; align-items: baseline; gap: 0.6rem; margin: auto 1rem 0; padding: 0.6rem 0 0.85rem; border-top: 1px solid #3b2f27; font-size: 0.74rem; color: #9c8c78; }
 .materia-numeri b { font-family: var(--font-display); font-size: 1.05rem; color: #efe4d0; }
@@ -122,9 +124,10 @@
 .strumento-corpo .titolo { font-size: 1.12rem; font-weight: 600; line-height: 1.2; }
 .strumento-corpo .testo { margin-top: 0.15rem; font-size: 0.84rem; line-height: 1.4; color: #ad9d86; }
 
-/* ---------- Apertura di una materia: la foto del campione a destra, sfumata ---------- */
-.testata-arte { position: absolute; top: 0; right: 0; bottom: 0; z-index: 1; width: 46%; isolation: isolate; background: color-mix(in srgb, var(--tinta, #a8643c) 40%, #d9b48f); -webkit-mask-image: radial-gradient(ellipse 90% 100% at 70% 50%, #000 30%, transparent 100%); mask-image: radial-gradient(ellipse 90% 100% at 70% 50%, #000 30%, transparent 100%); }
-.testata-arte img { width: 100%; height: 100%; object-fit: cover; mix-blend-mode: multiply; }
+/* ---------- Apertura di una materia: l'oggetto della materia a destra, sfumato ---------- */
+.testata-arte { position: absolute; top: 0; right: 0; bottom: 0; z-index: 1; width: 46%; isolation: isolate; background: linear-gradient(180deg, color-mix(in srgb, var(--tinta, #a8643c) 18%, #ecdcc2) 0%, color-mix(in srgb, var(--tinta, #a8643c) 42%, #d2ad82) 100%); -webkit-mask-image: radial-gradient(ellipse 90% 100% at 70% 50%, #000 30%, transparent 100%); mask-image: radial-gradient(ellipse 90% 100% at 70% 50%, #000 30%, transparent 100%); }
+.testata-arte > div { width: 100%; height: 100%; }
+.testata-arte .oggetto { display: block; width: 100%; height: 100%; }
 @media (max-width: 767px) { .testata-arte { width: 100%; opacity: 0.3; } }
 @media (max-width: 639px) { .strumento-arte { aspect-ratio: 2.5 / 1; } }
 /* Gli strati dietro le testate, nel colore della tinta. */

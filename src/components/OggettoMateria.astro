@@ -1,0 +1,307 @@
+---
+// Un oggetto solido disegnato in prospettiva isometrica per ogni materia, al
+// posto della foto: un blocco di strati (Geologia), un'ammonite sulla lastra
+// (Paleontologia), un mappamondo vero (Geografia fisica), una molecola
+// (Chimica), tre solidi (Matematica). Luce da destra in alto: sopra chiaro,
+// destra media, sinistra scura. Niente alone: solo ombre piene e dure.
+import { decodifica } from "@/lib/proiezioni";
+import mondo from "../../content/proiezioni/mondo.json";
+
+interface Props {
+  /** Id della materia: sceglie il disegno. */
+  id: string;
+}
+const { id } = Astro.props;
+
+const INK = "#26180f";
+/** Scurisce un colore esadecimale: f = 1 invariato, 0 = inchiostro. */
+const ombra = (hex: string, f: number): string => {
+  const n = parseInt(hex.slice(1), 16);
+  const c = [n >> 16, (n >> 8) & 255, n & 255].map((v, i) => {
+    const k = parseInt(INK.slice(1 + i * 2, 3 + i * 2), 16);
+    return Math.round(k + (v - k) * f);
+  });
+  return `#${c.map((v) => v.toString(16).padStart(2, "0")).join("")}`;
+};
+
+// Proiezione isometrica: x e y corrono lungo i due spigoli della base (x verso
+// destra e giù, y verso sinistra e giù), z sale. Lo spigolo di base più lontano
+// sta in (cx, cy).
+const A = 43.3;
+const B = 25;
+const iso = (cx: number, cy: number, s: number) => (x: number, y: number, z: number) => `${(cx + (x - y) * A * s).toFixed(1)},${(cy + (x + y) * B * s - z).toFixed(1)}`;
+
+/** Le tre facce visibili di un parallelepipedo (lato 1 per lato 1, alto h). */
+function scatola(p: (x: number, y: number, z: number) => string, h: number, z0 = 0) {
+  return {
+    sopra: [p(0, 0, z0 + h), p(1, 0, z0 + h), p(1, 1, z0 + h), p(0, 1, z0 + h)].join(" "),
+    sinistra: [p(0, 1, z0), p(1, 1, z0), p(1, 1, z0 + h), p(0, 1, z0 + h)].join(" "),
+    destra: [p(1, 1, z0), p(1, 0, z0), p(1, 0, z0 + h), p(1, 1, z0 + h)].join(" "),
+  };
+}
+
+// ---------- Geologia 1: il blocco con gli strati inclinati ----------
+const strati = (() => {
+  const p = iso(100, 70, 0.95);
+  const H = 56;
+  const d = 40; // di quanto scendono gli strati andando verso destra
+  const Z = [-300, 20, 38, 56, 74, 92, 110, 300];
+  const colori = ["#6b4a35", "#c98f4f", "#a8512f", "#d9bd8a", "#7c5a3f", "#b9733f", "#e0c9a0"];
+  const bande = colori.map((c, i) => ({
+    c,
+    sinistra: [p(0, 1, Z[i]), p(1, 1, Z[i] - d), p(1, 1, Z[i + 1] - d), p(0, 1, Z[i + 1])].join(" "),
+    destra: [p(1, 1, Z[i] - d), p(1, 0, Z[i] - d), p(1, 0, Z[i + 1] - d), p(1, 1, Z[i + 1] - d)].join(" "),
+    sopra: (() => {
+      const x0 = Math.max(0, (Z[i] - H) / d);
+      const x1 = Math.min(1, (Z[i + 1] - H) / d);
+      return x1 > x0 ? [p(x0, 0, H), p(x1, 0, H), p(x1, 1, H), p(x0, 1, H)].join(" ") : "";
+    })(),
+  }));
+  return { faccie: scatola(p, H), bande };
+})();
+
+// ---------- Paleontologia: l'ammonite sulla lastra ----------
+const ammonite = (() => {
+  const p = iso(100, 74, 1.05);
+  const H = 16;
+  const rapporto = 1.9;
+  const b = Math.log(rapporto) / (2 * Math.PI);
+  const a = 4.6;
+  const r = (t: number) => a * Math.exp(b * t);
+  const pt = (rr: number, t: number) => `${(rr * Math.cos(t)).toFixed(2)},${(rr * Math.sin(t)).toFixed(2)}`;
+  const passo = 0.13;
+  const coste: { d: string; chiara: boolean }[] = [];
+  let k = 0;
+  for (let t = 0; t < 6 * Math.PI - passo; t += passo) {
+    coste.push({ d: [pt(r(t), t), pt(r(t + passo), t + passo), pt(r(t + passo) / rapporto, t + passo), pt(r(t) / rapporto, t)].join(" "), chiara: k++ % 2 === 0 });
+  }
+  let esterno = "";
+  for (let t = 0; t <= 6 * Math.PI; t += 0.1) esterno += `${t === 0 ? "M" : "L"}${pt(r(t), t)}`;
+  return { faccie: scatola(p, H), coste, esterno, centro: p(0.5, 0.5, H).split(",").map(Number) };
+})();
+
+// ---------- Geografia fisica: il mappamondo, con i paesi veri ----------
+const globo = (() => {
+  if (id !== "geografia-fisica") return null;
+  const cx = 100, cy = 66, R = 44;
+  const lon0 = (10 * Math.PI) / 180;
+  const lat0 = (32 * Math.PI) / 180;
+  const proietta = (lon: number, lat: number): { x: number; y: number; visibile: boolean } => {
+    const l = (lon * Math.PI) / 180 - lon0;
+    const f = (lat * Math.PI) / 180;
+    const coseno = Math.sin(lat0) * Math.sin(f) + Math.cos(lat0) * Math.cos(f) * Math.cos(l);
+    let x = Math.cos(f) * Math.sin(l);
+    let y = -(Math.cos(lat0) * Math.sin(f) - Math.sin(lat0) * Math.cos(f) * Math.cos(l));
+    if (coseno < 0) {
+      const m = Math.hypot(x, y) || 1;
+      x /= m;
+      y /= m;
+    }
+    return { x: cx + x * R, y: cy + y * R, visibile: coseno >= 0 };
+  };
+  let terre = "";
+  for (const paese of (mondo as { paesi: { n: string; a: number[][] }[] }).paesi) {
+    for (const anello of paese.a) {
+      const pts = decodifica(anello).map(([lo, la]) => proietta(lo, la));
+      if (!pts.some((q) => q.visibile)) continue;
+      let ultimo: { x: number; y: number } | null = null;
+      let d = "";
+      for (const q of pts) {
+        if (ultimo && Math.hypot(q.x - ultimo.x, q.y - ultimo.y) < 0.7) continue;
+        d += `${d ? "L" : "M"}${q.x.toFixed(1)} ${q.y.toFixed(1)}`;
+        ultimo = q;
+      }
+      if (d) terre += `${d}Z`;
+    }
+  }
+  const linee: string[] = [];
+  const traccia = (punti: { x: number; y: number; visibile: boolean }[]) => {
+    let d = "";
+    let aperta = false;
+    for (const q of punti) {
+      if (!q.visibile) {
+        aperta = false;
+        continue;
+      }
+      d += `${aperta ? "L" : "M"}${q.x.toFixed(1)} ${q.y.toFixed(1)}`;
+      aperta = true;
+    }
+    if (d) linee.push(d);
+  };
+  for (let lon = -180; lon < 180; lon += 30) {
+    const v = [];
+    for (let lat = -90; lat <= 90; lat += 5) v.push(proietta(lon, lat));
+    traccia(v);
+  }
+  for (let lat = -60; lat <= 60; lat += 30) {
+    const v = [];
+    for (let lon = -180; lon <= 180; lon += 5) v.push(proietta(lon, lat));
+    traccia(v);
+  }
+  return { cx, cy, R, terre, graticola: linee.join("") };
+})();
+
+// ---------- Matematica: cubo, piramide e sfera ----------
+const solidi = (() => {
+  const s = 0.7;
+  const cubo = (() => {
+    const p = iso(66, 70, s);
+    return scatola(p, 35);
+  })();
+  const piramide = (() => {
+    const p = iso(138, 80, s);
+    const apice = p(0.5, 0.5, 58);
+    return {
+      base: [p(0, 0, 0), p(1, 0, 0), p(1, 1, 0), p(0, 1, 0)].join(" "),
+      sinistra: [p(0, 1, 0), p(1, 1, 0), apice].join(" "),
+      destra: [p(1, 1, 0), p(1, 0, 0), apice].join(" "),
+    };
+  })();
+  return { cubo, piramide };
+})();
+
+// ---------- Chimica: la molecola a palline e bastoncini ----------
+const molecola = {
+  lontani: [
+    { x: 62, y: 40, r: 9, c: "#e6d5b8" },
+    { x: 124, y: 28, r: 11, c: "#7d8f4e" },
+  ],
+  centro: { x: 98, y: 72, r: 18, c: "#7a58a8" },
+  vicini: [
+    { x: 48, y: 104, r: 13, c: "#e6d5b8" },
+    { x: 150, y: 100, r: 13, c: "#c4623a" },
+    { x: 178, y: 66, r: 9, c: "#e6d5b8" },
+  ],
+  legami: [
+    [62, 40, 98, 72],
+    [124, 28, 98, 72],
+    [98, 72, 48, 104],
+    [98, 72, 150, 100],
+    [150, 100, 178, 66],
+  ],
+};
+const uid = `om-${id}`;
+---
+
+<svg viewBox="8 2 184 147" class="oggetto" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id={`${uid}-sfera`} cx="0.36" cy="0.3" r="0.8">
+      <stop offset="0" stop-color="#fff" stop-opacity="0.5"></stop>
+      <stop offset="0.35" stop-color="#fff" stop-opacity="0"></stop>
+      <stop offset="1" stop-color={INK} stop-opacity="0.42"></stop>
+    </radialGradient>
+    {globo && (
+      <>
+        <radialGradient id={`${uid}-mare`} cx="0.36" cy="0.3" r="0.85">
+          <stop offset="0" stop-color="#a7c4bb"></stop>
+          <stop offset="1" stop-color="#5a8582"></stop>
+        </radialGradient>
+        <clipPath id={`${uid}-taglio`}><circle cx={globo.cx} cy={globo.cy} r={globo.R}></circle></clipPath>
+      </>
+    )}
+    {id === "geologia-1" && (
+      <>
+        <clipPath id={`${uid}-sx`}><polygon points={strati.faccie.sinistra}></polygon></clipPath>
+        <clipPath id={`${uid}-dx`}><polygon points={strati.faccie.destra}></polygon></clipPath>
+        <clipPath id={`${uid}-su`}><polygon points={strati.faccie.sopra}></polygon></clipPath>
+      </>
+    )}
+  </defs>
+
+  {id === "geologia-1" && (
+    <>
+      <ellipse class="oggetto-ombra" cx="112" cy="110" rx="60" ry="13" fill={INK} opacity="0.26"></ellipse>
+      <g class="oggetto-solido" stroke={ombra("#6b4a35", 0.5)} stroke-width="1" stroke-linejoin="round">
+        <g clip-path={`url(#${uid}-sx)`}>
+          {strati.bande.map((b) => <polygon points={b.sinistra} fill={b.c} stroke="none"></polygon>)}
+        </g>
+        <polygon points={strati.faccie.sinistra} fill={INK} fill-opacity="0.34"></polygon>
+        <g clip-path={`url(#${uid}-dx)`}>
+          {strati.bande.map((b) => <polygon points={b.destra} fill={b.c} stroke="none"></polygon>)}
+        </g>
+        <polygon points={strati.faccie.destra} fill={INK} fill-opacity="0.13"></polygon>
+        <g clip-path={`url(#${uid}-su)`}>
+          {strati.bande.filter((b) => b.sopra).map((b) => <polygon points={b.sopra} fill={b.c} stroke="none"></polygon>)}
+        </g>
+        <polygon points={strati.faccie.sopra} fill="#fff" fill-opacity="0.1"></polygon>
+      </g>
+    </>
+  )}
+
+  {id === "paleontologia" && (
+    <>
+      <ellipse class="oggetto-ombra" cx="108" cy="118" rx="62" ry="11" fill={INK} opacity="0.26"></ellipse>
+      <g class="oggetto-solido" stroke={ombra("#9e8a72", 0.5)} stroke-width="1" stroke-linejoin="round">
+        <polygon points={ammonite.faccie.sinistra} fill={ombra("#d6c6ad", 0.62)}></polygon>
+        <polygon points={ammonite.faccie.destra} fill={ombra("#d6c6ad", 0.82)}></polygon>
+        <polygon points={ammonite.faccie.sopra} fill="#d6c6ad"></polygon>
+        <g transform={`translate(${ammonite.centro[0]} ${ammonite.centro[1] + 3}) matrix(0.866 0.5 -0.866 0.5 0 0)`}>
+          <path d={`${ammonite.esterno}Z`} fill={INK} fill-opacity="0.45" stroke="none"></path>
+        </g>
+        <g transform={`translate(${ammonite.centro[0]} ${ammonite.centro[1]}) matrix(0.866 0.5 -0.866 0.5 0 0)`} stroke="none">
+          {ammonite.coste.map((c) => <polygon points={c.d} fill={c.chiara ? "#ecdcb8" : "#d3b98a"}></polygon>)}
+          <path d={ammonite.esterno} fill="none" stroke="#8c6d45" stroke-width="1.1"></path>
+        </g>
+      </g>
+    </>
+  )}
+
+  {globo && (
+    <>
+      <ellipse class="oggetto-ombra" cx="100" cy="140" rx="34" ry="6" fill={INK} opacity="0.26"></ellipse>
+      <g class="oggetto-solido">
+        <path d="M100 112 L100 130" stroke="#8a5a34" stroke-width="5"></path>
+        <ellipse cx="100" cy="134" rx="30" ry="7" fill="#6b4a35"></ellipse>
+        <ellipse cx="100" cy="131.5" rx="30" ry="7" fill="#8a5a34"></ellipse>
+        <circle cx={globo.cx} cy={globo.cy} r={globo.R + 5} fill="none" stroke="#b88a4a" stroke-width="2.6"></circle>
+        <circle cx={globo.cx} cy={globo.cy} r={globo.R} fill={`url(#${uid}-mare)`}></circle>
+        <g clip-path={`url(#${uid}-taglio)`}>
+          <path d={globo.graticola} fill="none" stroke="#fff" stroke-opacity="0.3" stroke-width="0.5"></path>
+          <path d={globo.terre} fill="#cdb47e" stroke="#9c8450" stroke-width="0.35" stroke-linejoin="round"></path>
+        </g>
+        <circle cx={globo.cx} cy={globo.cy} r={globo.R} fill={`url(#${uid}-sfera)`}></circle>
+      </g>
+    </>
+  )}
+
+  {id === "chimica" && (
+    <>
+      <ellipse class="oggetto-ombra" cx="100" cy="138" rx="66" ry="8" fill={INK} opacity="0.22"></ellipse>
+      <g class="oggetto-solido">
+        {molecola.lontani.map((s) => (
+          <>
+            <circle cx={s.x} cy={s.y} r={s.r} fill={s.c}></circle>
+            <circle cx={s.x} cy={s.y} r={s.r} fill={`url(#${uid}-sfera)`}></circle>
+          </>
+        ))}
+        {molecola.legami.map(([x1, y1, x2, y2]) => (
+          <>
+            <line x1={x1} y1={y1} x2={x2} y2={y2} stroke="#5b4636" stroke-width="7" stroke-linecap="round"></line>
+            <line x1={x1} y1={y1 - 1} x2={x2} y2={y2 - 1} stroke="#e8dcc4" stroke-width="4" stroke-linecap="round"></line>
+          </>
+        ))}
+        {[molecola.centro, ...molecola.vicini].map((s) => (
+          <>
+            <circle cx={s.x} cy={s.y} r={s.r} fill={s.c}></circle>
+            <circle cx={s.x} cy={s.y} r={s.r} fill={`url(#${uid}-sfera)`}></circle>
+          </>
+        ))}
+      </g>
+    </>
+  )}
+
+  {id === "matematica" && (
+    <>
+      <ellipse class="oggetto-ombra" cx="100" cy="124" rx="76" ry="10" fill={INK} opacity="0.26"></ellipse>
+      <g class="oggetto-solido" stroke={INK} stroke-opacity="0.35" stroke-width="1" stroke-linejoin="round">
+        <polygon points={solidi.cubo.sinistra} fill={ombra("#e0b46c", 0.6)}></polygon>
+        <polygon points={solidi.cubo.destra} fill={ombra("#e0b46c", 0.8)}></polygon>
+        <polygon points={solidi.cubo.sopra} fill="#e0b46c"></polygon>
+        <polygon points={solidi.piramide.sinistra} fill={ombra("#c4623a", 0.62)}></polygon>
+        <polygon points={solidi.piramide.destra} fill={ombra("#c4623a", 0.9)}></polygon>
+        <circle cx="104" cy="106" r="19" fill="#ecdcb8"></circle>
+        <circle cx="104" cy="106" r="19" fill={`url(#${uid}-sfera)`}></circle>
+      </g>
+    </>
+  )}
+</svg>

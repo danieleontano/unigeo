@@ -2,7 +2,7 @@
 import Base from "@/layouts/Base.astro";
 import Colonna from "@/components/Colonna.astro";
 import Testata from "@/components/Testata.astro";
-import { fotoCampione } from "@/lib/campioni";
+import OggettoMateria from "@/components/OggettoMateria.astro";
 import SchedeStrumenti from "@/components/SchedeStrumenti.astro";
 import { percorso } from "@/lib/percorsi";
 import { strumentiDi } from "@/lib/strumenti";
@@ -21,12 +21,11 @@ const d = materia.data;
 const definizioni = lezioni.reduce((s, l) => s + contaDefinizioni(l), 0);
 const nQuiz = lezioni.filter((l) => quiz.has(l.id)).length;
 const strumenti = strumentiDi(materia.id);
-const foto = fotoCampione(d.campione);
 ---
 
 <Base titolo={d.nome} colore={d.colore}>
   <Testata occhiello={d.moduli ? d.moduli.join(" · ") : "Materia"} titolo={d.nome} descrizione={[d.docenti.join(", ") || "Docente da definire", d.esame].filter(Boolean).join(" · ")} colore={d.colore}>
-    {foto && <div slot="arte"><img src={percorso(foto.file)} alt="" /></div>}
+    <div slot="arte"><OggettoMateria id={materia.id} /></div>
     {lezioni.length > 0 && <a href={percorso(`/materie/${materia.id}/libro`)} class="bottone bottone-materia">Apri il Libro</a>}
     {definizioni > 0 && <a href={percorso(`/flashcard/${materia.id}`)} class="bottone bottone-chiaro">Flashcard · {definizioni}</a>}
     {nQuiz > 0 && <a href={percorso(`/quiz/${materia.id}`)} class="bottone bottone-chiaro">Quiz misto</a>}

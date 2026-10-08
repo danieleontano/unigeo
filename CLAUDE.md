@@ -407,3 +407,12 @@ due settimane di fila salta, il problema non è nel codice.
   dell'abbinamento gli asterischi si tolgono).
 - **08/10/2026 — Geografia fisica lezione 5 («Latitudine di P e sistema UTM», Brandolini).**
   Lezione (ricostruita da slide e appunti, non registrata) + quiz da 10 domande; ref verificati.
+- **09/10/2026 — Le materie con un oggetto 3D al posto della foto.** Daniele: «un'icona o
+  qualcosa di 3D, non le pietre di prima». `components/OggettoMateria.astro` disegna in
+  isometrica (SVG, luce da destra, ombre piene, niente alone) un oggetto per materia:
+  blocco di strati inclinati (Geologia 1), ammonite sulla lastra (Paleontologia),
+  mappamondo con i paesi veri di Natural Earth in ortografica (Geografia fisica),
+  molecola a palline e bastoncini (Chimica), cubo+piramide+sfera (Matematica). Usato
+  nelle tessere (`SchedeMaterie`, Home e Materie) e nell'apertura di ogni materia
+  (`.testata-arte`). Il campo `campione` di materia.json non è più usato dalle materie.
+  Un'altra materia = un altro ramo `id === "..."` nel componente.
