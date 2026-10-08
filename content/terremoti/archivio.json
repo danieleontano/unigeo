@@ -1,7 +1,47 @@
 {
  "dal": "2026-10-04T00:00:00.000Z",
- "aggiornato": "2026-10-07T17:27:59.393Z",
+ "aggiornato": "2026-10-08T06:18:56.482Z",
  "eventi": [
+  {
+   "id": "261007202419",
+   "quando": "2026-10-07T20:25:25Z",
+   "magnitudo": 0.4,
+   "regione": "Alpi Cozie",
+   "lat": 44.402,
+   "lon": 7.267,
+   "profondita": 9.07812,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261007202419"
+  },
+  {
+   "id": "261007195122",
+   "quando": "2026-10-07T19:51:50Z",
+   "magnitudo": 0.5,
+   "regione": "Alpi Cozie",
+   "lat": 44.458,
+   "lon": 7.117,
+   "profondita": 5.07031,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261007195122"
+  },
+  {
+   "id": "261007191005",
+   "quando": "2026-10-07T19:10:30Z",
+   "magnitudo": 1.6,
+   "regione": "Alpi Pennine",
+   "lat": 45.902,
+   "lon": 7.16,
+   "profondita": 5.79688,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261007191005"
+  },
+  {
+   "id": "261007152924",
+   "quando": "2026-10-07T15:29:40Z",
+   "magnitudo": 1.6,
+   "regione": "Francia",
+   "lat": 43.656,
+   "lon": 6.644,
+   "profondita": 9.61719,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261007152924"
+  },
   {
    "id": "261007094700",
    "quando": "2026-10-07T09:48:30Z",
