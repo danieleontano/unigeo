@@ -10,8 +10,10 @@ import mondo from "../../content/proiezioni/mondo.json";
 interface Props {
   /** Id della materia: sceglie il disegno. */
   id: string;
+  /** Colore della materia: è l'unico accento dell'oggetto. */
+  colore: string;
 }
-const { id } = Astro.props;
+const { id, colore } = Astro.props;
 
 const INK = "#26180f";
 /** Scurisce un colore esadecimale: f = 1 invariato, 0 = inchiostro. */
@@ -40,13 +42,28 @@ function scatola(p: (x: number, y: number, z: number) => string, h: number, z0 =
   };
 }
 
+/** Miscela due colori esadecimali: t = 0 il primo, 1 il secondo. */
+const mescola = (a: string, b: string, t: number): string => {
+  const x = parseInt(a.slice(1), 16);
+  const y = parseInt(b.slice(1), 16);
+  const c = [16, 8, 0].map((s) => Math.round(((x >> s) & 255) * (1 - t) + ((y >> s) & 255) * t));
+  return `#${c.map((v) => v.toString(16).padStart(2, "0")).join("")}`;
+};
+// La tavolozza del sito: sabbia e cuoio, e il colore della materia come accento.
+const SABBIA = "#e6d3b3";
+const SABBIA2 = "#c9ae86";
+const CUOIO = "#c4693f";
+const BRUNO = "#5e4030";
+/** Il piano d'appoggio: un disco appena più chiaro del fondo, nel colore della materia. */
+const PIANO = mescola("#241c17", colore, 0.34);
+
 // ---------- Geologia 1: il blocco con gli strati inclinati ----------
 const strati = (() => {
   const p = iso(100, 70, 0.95);
   const H = 56;
   const d = 40; // di quanto scendono gli strati andando verso destra
   const Z = [-300, 20, 38, 56, 74, 92, 110, 300];
-  const colori = ["#6b4a35", "#c98f4f", "#a8512f", "#d9bd8a", "#7c5a3f", "#b9733f", "#e0c9a0"];
+  const colori = [BRUNO, "#b5733f", colore, SABBIA2, "#76563e", CUOIO, SABBIA];
   const bande = colori.map((c, i) => ({
     c,
     sinistra: [p(0, 1, Z[i]), p(1, 1, Z[i] - d), p(1, 1, Z[i + 1] - d), p(0, 1, Z[i + 1])].join(" "),
@@ -163,14 +180,14 @@ const solidi = (() => {
 // ---------- Chimica: la molecola a palline e bastoncini ----------
 const molecola = {
   lontani: [
-    { x: 62, y: 40, r: 9, c: "#e6d5b8" },
-    { x: 124, y: 28, r: 11, c: "#7d8f4e" },
+    { x: 62, y: 40, r: 9, c: SABBIA },
+    { x: 124, y: 28, r: 11, c: SABBIA2 },
   ],
-  centro: { x: 98, y: 72, r: 18, c: "#7a58a8" },
+  centro: { x: 98, y: 72, r: 18, c: mescola(colore, "#ffffff", 0.2) },
   vicini: [
-    { x: 48, y: 104, r: 13, c: "#e6d5b8" },
-    { x: 150, y: 100, r: 13, c: "#c4623a" },
-    { x: 178, y: 66, r: 9, c: "#e6d5b8" },
+    { x: 48, y: 104, r: 13, c: SABBIA },
+    { x: 150, y: 100, r: 13, c: CUOIO },
+    { x: 178, y: 66, r: 9, c: SABBIA },
   ],
   legami: [
     [62, 40, 98, 72],
@@ -180,6 +197,7 @@ const molecola = {
     [150, 100, 178, 66],
   ],
 };
+const LASTRA = mescola("#8a7762", colore, 0.22);
 const uid = `om-${id}`;
 ---
 
@@ -193,8 +211,8 @@ const uid = `om-${id}`;
     {globo && (
       <>
         <radialGradient id={`${uid}-mare`} cx="0.36" cy="0.3" r="0.85">
-          <stop offset="0" stop-color="#a7c4bb"></stop>
-          <stop offset="1" stop-color="#5a8582"></stop>
+          <stop offset="0" stop-color={mescola(colore, "#a9bfb4", 0.55)}></stop>
+          <stop offset="1" stop-color={mescola(colore, "#1f2c28", 0.45)}></stop>
         </radialGradient>
         <clipPath id={`${uid}-taglio`}><circle cx={globo.cx} cy={globo.cy} r={globo.R}></circle></clipPath>
       </>
@@ -210,7 +228,8 @@ const uid = `om-${id}`;
 
   {id === "geologia-1" && (
     <>
-      <ellipse class="oggetto-ombra" cx="112" cy="110" rx="60" ry="13" fill={INK} opacity="0.26"></ellipse>
+      <ellipse cx="104" cy="108" rx="82" ry="20" fill={PIANO} fill-opacity="0.55"></ellipse>
+      <ellipse class="oggetto-ombra" cx="112" cy="110" rx="60" ry="13" fill="#120d0a" opacity="0.3"></ellipse>
       <g class="oggetto-solido" stroke={ombra("#6b4a35", 0.5)} stroke-width="1" stroke-linejoin="round">
         <g clip-path={`url(#${uid}-sx)`}>
           {strati.bande.map((b) => <polygon points={b.sinistra} fill={b.c} stroke="none"></polygon>)}
@@ -230,16 +249,17 @@ const uid = `om-${id}`;
 
   {id === "paleontologia" && (
     <>
-      <ellipse class="oggetto-ombra" cx="108" cy="118" rx="62" ry="11" fill={INK} opacity="0.26"></ellipse>
-      <g class="oggetto-solido" stroke={ombra("#9e8a72", 0.5)} stroke-width="1" stroke-linejoin="round">
-        <polygon points={ammonite.faccie.sinistra} fill={ombra("#d6c6ad", 0.62)}></polygon>
-        <polygon points={ammonite.faccie.destra} fill={ombra("#d6c6ad", 0.82)}></polygon>
-        <polygon points={ammonite.faccie.sopra} fill="#d6c6ad"></polygon>
+      <ellipse cx="104" cy="114" rx="84" ry="20" fill={PIANO} fill-opacity="0.55"></ellipse>
+      <ellipse class="oggetto-ombra" cx="108" cy="118" rx="62" ry="11" fill="#120d0a" opacity="0.3"></ellipse>
+      <g class="oggetto-solido" stroke={ombra(LASTRA, 0.4)} stroke-width="1" stroke-linejoin="round">
+        <polygon points={ammonite.faccie.sinistra} fill={ombra(LASTRA, 0.62)}></polygon>
+        <polygon points={ammonite.faccie.destra} fill={ombra(LASTRA, 0.82)}></polygon>
+        <polygon points={ammonite.faccie.sopra} fill={LASTRA}></polygon>
         <g transform={`translate(${ammonite.centro[0]} ${ammonite.centro[1] + 3}) matrix(0.866 0.5 -0.866 0.5 0 0)`}>
           <path d={`${ammonite.esterno}Z`} fill={INK} fill-opacity="0.45" stroke="none"></path>
         </g>
         <g transform={`translate(${ammonite.centro[0]} ${ammonite.centro[1]}) matrix(0.866 0.5 -0.866 0.5 0 0)`} stroke="none">
-          {ammonite.coste.map((c) => <polygon points={c.d} fill={c.chiara ? "#ecdcb8" : "#d3b98a"}></polygon>)}
+          {ammonite.coste.map((c) => <polygon points={c.d} fill={c.chiara ? SABBIA : SABBIA2}></polygon>)}
           <path d={ammonite.esterno} fill="none" stroke="#8c6d45" stroke-width="1.1"></path>
         </g>
       </g>
@@ -248,16 +268,17 @@ const uid = `om-${id}`;
 
   {globo && (
     <>
-      <ellipse class="oggetto-ombra" cx="100" cy="140" rx="34" ry="6" fill={INK} opacity="0.26"></ellipse>
+      <ellipse cx="100" cy="136" rx="56" ry="11" fill={PIANO} fill-opacity="0.55"></ellipse>
+      <ellipse class="oggetto-ombra" cx="100" cy="140" rx="34" ry="6" fill="#120d0a" opacity="0.3"></ellipse>
       <g class="oggetto-solido">
-        <path d="M100 112 L100 130" stroke="#8a5a34" stroke-width="5"></path>
-        <ellipse cx="100" cy="134" rx="30" ry="7" fill="#6b4a35"></ellipse>
-        <ellipse cx="100" cy="131.5" rx="30" ry="7" fill="#8a5a34"></ellipse>
-        <circle cx={globo.cx} cy={globo.cy} r={globo.R + 5} fill="none" stroke="#b88a4a" stroke-width="2.6"></circle>
+        <path d="M100 112 L100 130" stroke={CUOIO} stroke-width="5"></path>
+        <ellipse cx="100" cy="134" rx="30" ry="7" fill={BRUNO}></ellipse>
+        <ellipse cx="100" cy="131.5" rx="30" ry="7" fill={CUOIO}></ellipse>
+        <circle cx={globo.cx} cy={globo.cy} r={globo.R + 5} fill="none" stroke={CUOIO} stroke-width="2.4"></circle>
         <circle cx={globo.cx} cy={globo.cy} r={globo.R} fill={`url(#${uid}-mare)`}></circle>
         <g clip-path={`url(#${uid}-taglio)`}>
           <path d={globo.graticola} fill="none" stroke="#fff" stroke-opacity="0.3" stroke-width="0.5"></path>
-          <path d={globo.terre} fill="#cdb47e" stroke="#9c8450" stroke-width="0.35" stroke-linejoin="round"></path>
+          <path d={globo.terre} fill={SABBIA} stroke={SABBIA2} stroke-width="0.35" stroke-linejoin="round"></path>
         </g>
         <circle cx={globo.cx} cy={globo.cy} r={globo.R} fill={`url(#${uid}-sfera)`}></circle>
       </g>
@@ -266,7 +287,8 @@ const uid = `om-${id}`;
 
   {id === "chimica" && (
     <>
-      <ellipse class="oggetto-ombra" cx="100" cy="138" rx="66" ry="8" fill={INK} opacity="0.22"></ellipse>
+      <ellipse cx="100" cy="130" rx="78" ry="15" fill={PIANO} fill-opacity="0.55"></ellipse>
+      <ellipse class="oggetto-ombra" cx="100" cy="138" rx="66" ry="8" fill="#120d0a" opacity="0.3"></ellipse>
       <g class="oggetto-solido">
         {molecola.lontani.map((s) => (
           <>
@@ -276,8 +298,8 @@ const uid = `om-${id}`;
         ))}
         {molecola.legami.map(([x1, y1, x2, y2]) => (
           <>
-            <line x1={x1} y1={y1} x2={x2} y2={y2} stroke="#5b4636" stroke-width="7" stroke-linecap="round"></line>
-            <line x1={x1} y1={y1 - 1} x2={x2} y2={y2 - 1} stroke="#e8dcc4" stroke-width="4" stroke-linecap="round"></line>
+            <line x1={x1} y1={y1} x2={x2} y2={y2} stroke={BRUNO} stroke-width="7" stroke-linecap="round"></line>
+            <line x1={x1} y1={y1 - 1} x2={x2} y2={y2 - 1} stroke={SABBIA} stroke-width="4" stroke-linecap="round"></line>
           </>
         ))}
         {[molecola.centro, ...molecola.vicini].map((s) => (
@@ -292,14 +314,15 @@ const uid = `om-${id}`;
 
   {id === "matematica" && (
     <>
-      <ellipse class="oggetto-ombra" cx="100" cy="124" rx="76" ry="10" fill={INK} opacity="0.26"></ellipse>
+      <ellipse cx="100" cy="114" rx="88" ry="18" fill={PIANO} fill-opacity="0.55"></ellipse>
+      <ellipse class="oggetto-ombra" cx="100" cy="124" rx="76" ry="10" fill="#120d0a" opacity="0.3"></ellipse>
       <g class="oggetto-solido" stroke={INK} stroke-opacity="0.35" stroke-width="1" stroke-linejoin="round">
-        <polygon points={solidi.cubo.sinistra} fill={ombra("#e0b46c", 0.6)}></polygon>
-        <polygon points={solidi.cubo.destra} fill={ombra("#e0b46c", 0.8)}></polygon>
-        <polygon points={solidi.cubo.sopra} fill="#e0b46c"></polygon>
-        <polygon points={solidi.piramide.sinistra} fill={ombra("#c4623a", 0.62)}></polygon>
-        <polygon points={solidi.piramide.destra} fill={ombra("#c4623a", 0.9)}></polygon>
-        <circle cx="104" cy="106" r="19" fill="#ecdcb8"></circle>
+        <polygon points={solidi.cubo.sinistra} fill={ombra(SABBIA2, 0.6)}></polygon>
+        <polygon points={solidi.cubo.destra} fill={ombra(SABBIA2, 0.8)}></polygon>
+        <polygon points={solidi.cubo.sopra} fill={SABBIA2}></polygon>
+        <polygon points={solidi.piramide.sinistra} fill={ombra(CUOIO, 0.62)}></polygon>
+        <polygon points={solidi.piramide.destra} fill={ombra(CUOIO, 0.9)}></polygon>
+        <circle cx="104" cy="106" r="19" fill={mescola(colore, SABBIA, 0.5)}></circle>
         <circle cx="104" cy="106" r="19" fill={`url(#${uid}-sfera)`}></circle>
       </g>
     </>

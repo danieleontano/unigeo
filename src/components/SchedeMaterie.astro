@@ -20,7 +20,7 @@ const quiz = await quizDisponibili();
       <li class="sale" style={`--materia:${m.data.colore};--tinta:${m.data.colore};--i:${i + 4}`}>
         <a href={percorso(`/materie/${m.id}`)} class="pannello materia group">
           <div class="materia-foto hidden sm:block">
-            <OggettoMateria id={m.id} />
+            <OggettoMateria id={m.id} colore={m.data.colore} />
           </div>
           <span class="shrink-0 sm:hidden"><span class="chip"><img src={percorso(`/icone/${m.data.icona}`)} alt="" width="26" height="26" class="h-[26px] w-[26px]" /></span></span>
           <div class="materia-testo">

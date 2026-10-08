@@ -25,7 +25,7 @@ const strumenti = strumentiDi(materia.id);
 
 <Base titolo={d.nome} colore={d.colore}>
   <Testata occhiello={d.moduli ? d.moduli.join(" · ") : "Materia"} titolo={d.nome} descrizione={[d.docenti.join(", ") || "Docente da definire", d.esame].filter(Boolean).join(" · ")} colore={d.colore}>
-    <div slot="arte"><OggettoMateria id={materia.id} /></div>
+    <div slot="arte"><OggettoMateria id={materia.id} colore={d.colore} /></div>
     {lezioni.length > 0 && <a href={percorso(`/materie/${materia.id}/libro`)} class="bottone bottone-materia">Apri il Libro</a>}
     {definizioni > 0 && <a href={percorso(`/flashcard/${materia.id}`)} class="bottone bottone-chiaro">Flashcard · {definizioni}</a>}
     {nQuiz > 0 && <a href={percorso(`/quiz/${materia.id}`)} class="bottone bottone-chiaro">Quiz misto</a>}

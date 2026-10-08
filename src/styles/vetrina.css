@@ -88,7 +88,7 @@
 /* ---------- Le materie: un oggetto 3D su fondo nel colore della materia ---------- */
 .materia { display: flex; flex-direction: column; height: 100%; overflow: hidden; border-radius: 1rem; background: #241c17; transition: transform 0.2s, border-color 0.2s; }
 .materia:hover { transform: translateY(-4px); border-color: color-mix(in srgb, var(--tinta, #a8643c) 60%, #3b2f27); }
-.materia-foto { position: relative; aspect-ratio: 5 / 4; overflow: hidden; isolation: isolate; background: linear-gradient(180deg, color-mix(in srgb, var(--tinta, #a8643c) 18%, #ecdcc2) 0%, color-mix(in srgb, var(--tinta, #a8643c) 42%, #d2ad82) 100%); }
+.materia-foto { position: relative; aspect-ratio: 5 / 4; overflow: hidden; isolation: isolate; background: radial-gradient(ellipse 80% 70% at 50% 85%, color-mix(in srgb, var(--tinta, #a8643c) 30%, #2d231c) 0%, #241c17 75%); }
 .materia-foto { border-bottom: 1px solid #3b2f27; }
 .materia-foto .oggetto { display: block; width: 100%; height: 100%; }
 .oggetto-solido { transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1); }
@@ -125,7 +125,7 @@
 .strumento-corpo .testo { margin-top: 0.15rem; font-size: 0.84rem; line-height: 1.4; color: #ad9d86; }
 
 /* ---------- Apertura di una materia: l'oggetto della materia a destra, sfumato ---------- */
-.testata-arte { position: absolute; top: 0; right: 0; bottom: 0; z-index: 1; width: 46%; isolation: isolate; background: linear-gradient(180deg, color-mix(in srgb, var(--tinta, #a8643c) 18%, #ecdcc2) 0%, color-mix(in srgb, var(--tinta, #a8643c) 42%, #d2ad82) 100%); -webkit-mask-image: radial-gradient(ellipse 90% 100% at 70% 50%, #000 30%, transparent 100%); mask-image: radial-gradient(ellipse 90% 100% at 70% 50%, #000 30%, transparent 100%); }
+.testata-arte { position: absolute; top: 0; right: 0; bottom: 0; z-index: 1; width: 46%; isolation: isolate; background: none; -webkit-mask-image: radial-gradient(ellipse 90% 100% at 70% 50%, #000 30%, transparent 100%); mask-image: radial-gradient(ellipse 90% 100% at 70% 50%, #000 30%, transparent 100%); }
 .testata-arte > div { width: 100%; height: 100%; }
 .testata-arte .oggetto { display: block; width: 100%; height: 100%; }
 @media (max-width: 767px) { .testata-arte { width: 100%; opacity: 0.3; } }

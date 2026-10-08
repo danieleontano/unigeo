@@ -416,3 +416,7 @@ due settimane di fila salta, il problema non è nel codice.
   nelle tessere (`SchedeMaterie`, Home e Materie) e nell'apertura di ogni materia
   (`.testata-arte`). Il campo `campione` di materia.json non è più usato dalle materie.
   Un'altra materia = un altro ramo `id === "..."` nel componente.
+  Ritocco lo stesso giorno («carini ma staccati dallo stile»): fondo scuro come le altre
+  schede con una luce del colore della materia, oggetti nella tavolozza del sito (sabbia,
+  cuoio, bruno) e il colore della materia come unico accento (prop `colore`), piano
+  d'appoggio al posto del fondo chiaro.
