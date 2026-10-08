@@ -401,3 +401,7 @@ due settimane di fila salta, il problema non è nel codice.
   trova «nazioni»), accenti ignorati, filtri per tipo e per materia, `?q=` nell'indirizzo.
   Contiene il testo delle lezioni: /cerca e /cerca-indice.json sono tra le parti
   riservate alla chiave «appunti» (SOLO_APPUNTI). Piano di Daniele concluso (1-2-3-5).
+- **08/10/2026 — Paleontologia lezione 4 («Sistematica ed evoluzione», Briguglio).**
+  Lezione + quiz da 15 domande inseriti (ref verificati dalla build). I quiz ora rendono in
+  corsivo i `*nomi latini*` tra asterischi (`components/Corsivo.tsx`; nelle tendine
+  dell'abbinamento gli asterischi si tolgono).

@@ -3,6 +3,7 @@ import { aggiornaStato, useIdratato, useStato } from "@/lib/stato";
 import { dopoQuiz, oggiIso } from "@/lib/ripasso";
 import type { Domanda } from "@/content.config";
 import { Eruzione } from "./Eruzione";
+import { Corsivo, senzaAsterischi } from "./Corsivo";
 
 type DomandaQuiz = Domanda & { percorso?: string };
 
@@ -157,7 +158,9 @@ export function Quiz({ idLezione, titolo, colore, domande, percorsoLezione, base
           <ul className="mt-5 divide-y divide-filetto border-y border-filetto text-sm">
             {sbagliate.map((q) => (
               <li key={q.id} className="py-1.5">
-                <span>{q.testo}</span>
+                <span>
+                  <Corsivo t={q.testo} />
+                </span>
                 {q.ref && (
                   <a href={`${base}${q.percorso ?? percorsoLezione}${q.ref}`} className="sans ml-2 text-xs text-materia hover:underline">
                     appunti →
@@ -200,7 +203,9 @@ export function Quiz({ idLezione, titolo, colore, domande, percorsoLezione, base
       </div>
 
       <div key={`${d.id}-${giro}-${fase}`} className={`foglio relative mt-5 p-4 pt-6 sm:p-5 sm:pt-7 ${classeCartellino}`}>
-        <p className="text-lg leading-snug">{d.testo}</p>
+        <p className="text-lg leading-snug">
+          <Corsivo t={d.testo} />
+        </p>
 
         {d.tipo === "scelta" && (
           <ol className="mt-4 space-y-1.5">
@@ -216,7 +221,7 @@ export function Quiz({ idLezione, titolo, colore, domande, percorsoLezione, base
                       st === "giusta" ? "border-muschio bg-muschio/15" : st === "sbagliata" ? "border-lava bg-lava/15" : st === "scelta" ? "border-inchiostro bg-sabbia" : "border-filetto hover:border-grafite"
                     }`}
                   >
-                    {o}
+                    <Corsivo t={o} />
                   </button>
                 </li>
               );
@@ -252,7 +257,9 @@ export function Quiz({ idLezione, titolo, colore, domande, percorsoLezione, base
                 Mostra la soluzione
               </button>
             ) : (
-              <div className="rounded-lg border border-filetto bg-carta p-3 text-[0.95rem]">{d.soluzione}</div>
+              <div className="rounded-lg border border-filetto bg-carta p-3 text-[0.95rem]">
+                <Corsivo t={d.soluzione} />
+              </div>
             )}
             {mostraSoluzione && fase === "domanda" && (
               <div className="mt-3 flex gap-2">
@@ -271,7 +278,9 @@ export function Quiz({ idLezione, titolo, colore, domande, percorsoLezione, base
           <ol className="mt-4 space-y-2">
             {d.coppie.map((c, k) => (
               <li key={k} className="flex items-center gap-2">
-                <span className="w-2/5 shrink-0 text-[0.95rem] font-semibold">{c[0]}</span>
+                <span className="w-2/5 shrink-0 text-[0.95rem] font-semibold">
+                  <Corsivo t={c[0]} />
+                </span>
                 <select
                   disabled={fase === "esito"}
                   value={abbinate[k] ?? ""}
@@ -281,13 +290,13 @@ export function Quiz({ idLezione, titolo, colore, domande, percorsoLezione, base
                   <option value="">…</option>
                   {destre.map((r) => (
                     <option key={r} value={r}>
-                      {r}
+                      {senzaAsterischi(r)}
                     </option>
                   ))}
                 </select>
               </li>
             ))}
-            {fase === "esito" && !giusta && <li className="sans text-xs text-grafite">Giusto: {d.coppie.map((c) => `${c[0]} → ${c[1]}`).join(" · ")}</li>}
+            {fase === "esito" && !giusta && <li className="sans text-xs text-grafite">Giusto: {senzaAsterischi(d.coppie.map((c) => `${c[0]} → ${c[1]}`).join(" · "))}</li>}
           </ol>
         )}
       </div>
@@ -308,7 +317,9 @@ export function Quiz({ idLezione, titolo, colore, domande, percorsoLezione, base
       {fase === "esito" && (
         <div className="mt-4 border-t border-filetto pt-4">
           <p className={`sans text-xs font-semibold uppercase tracking-[0.18em] ${giusta ? "text-muschio" : "text-lava"}`}>{giusta ? "Riconosciuto" : "Crepato"}</p>
-          {d.spiegazione && <p className="mt-1.5 text-[0.95rem]">{d.spiegazione}</p>}
+          {d.spiegazione && <p className="mt-1.5 text-[0.95rem]">
+              <Corsivo t={d.spiegazione} />
+            </p>}
           <div className="mt-3 flex flex-wrap items-center gap-3">
             <button type="button" onClick={avanti} className={pieno}>
               {i + 1 < lista.length ? "Prossimo campione" : "Chiudi"}
