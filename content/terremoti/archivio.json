@@ -1,7 +1,57 @@
 {
  "dal": "2026-10-04T00:00:00.000Z",
- "aggiornato": "2026-10-08T06:18:56.482Z",
+ "aggiornato": "2026-10-08T13:43:59.783Z",
  "eventi": [
+  {
+   "id": "261008084512",
+   "quando": "2026-10-08T08:45:38Z",
+   "magnitudo": 0.6,
+   "regione": "Alpi Pennine",
+   "lat": 45.868,
+   "lon": 6.998,
+   "profondita": 8.51562,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261008084512"
+  },
+  {
+   "id": "261008061459",
+   "quando": "2026-10-08T06:16:31Z",
+   "magnitudo": 0.8,
+   "regione": "Riviera di ponente",
+   "lat": 44.221,
+   "lon": 8.29,
+   "profondita": 5.98438,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261008061459"
+  },
+  {
+   "id": "261008060711",
+   "quando": "2026-10-08T06:08:00Z",
+   "magnitudo": 1.1,
+   "regione": "Francia",
+   "lat": 44.213,
+   "lon": 6.824,
+   "profondita": 8.42188,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261008060711"
+  },
+  {
+   "id": "261008015108",
+   "quando": "2026-10-08T01:51:28Z",
+   "magnitudo": 1.1,
+   "regione": "Costa toscana settentrionale",
+   "lat": 43.665,
+   "lon": 10.199,
+   "profondita": 6.14844,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261008015108"
+  },
+  {
+   "id": "261007213551",
+   "quando": "2026-10-07T21:36:34Z",
+   "magnitudo": 1.4,
+   "regione": "Colline Metallifere",
+   "lat": 43.47,
+   "lon": 10.653,
+   "profondita": 6.00781,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261007213551"
+  },
   {
    "id": "261007202419",
    "quando": "2026-10-07T20:25:25Z",
