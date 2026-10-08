@@ -405,3 +405,5 @@ due settimane di fila salta, il problema non è nel codice.
   Lezione + quiz da 15 domande inseriti (ref verificati dalla build). I quiz ora rendono in
   corsivo i `*nomi latini*` tra asterischi (`components/Corsivo.tsx`; nelle tendine
   dell'abbinamento gli asterischi si tolgono).
+- **08/10/2026 — Geografia fisica lezione 5 («Latitudine di P e sistema UTM», Brandolini).**
+  Lezione (ricostruita da slide e appunti, non registrata) + quiz da 10 domande; ref verificati.
