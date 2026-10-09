@@ -1,26 +1,21 @@
 ---
 materia: geologia-1
-numero: 6
-data: 2026-10-05
-titolo: "Laboratorio: riconoscimento delle rocce magmatiche"
-docente: "Michele Piazza, Laura Federico"
+numero: 7
+data: 2026-10-06
+titolo: "Laboratorio: riconoscimento delle rocce magmatiche (secondo pomeriggio)"
+docente: "Laura Federico"
 modulo: "Modulo 2 · Geologia stratigrafica"
-fonte: "Istruzioni iniziali dalla registrazione audio; il resto sono le mie schede di riconoscimento"
-nota: "Primo pomeriggio di laboratorio in aula, lunedì 5 ottobre; il secondo, martedì 6, è la lezione 7 (stesso schema, presente solo Federico). Senza teoria. Presenti entrambi i docenti più un assistente. Le schede dei campioni le compilo io: questa lezione è un quaderno di lavoro, non appunti di teoria."
+fonte: "Le mie schede di riconoscimento"
+nota: "Secondo pomeriggio di laboratorio in aula, martedì 6 ottobre, uguale a quello del 5 (lezione 6) e senza teoria. Presente solo Laura Federico: Michele Piazza non c'era. Le schede dei campioni le compilo io: questa lezione è un quaderno di lavoro, non appunti di teoria."
 tag: [rocce magmatiche, laboratorio, riconoscimento, tessitura, Streckeisen]
 ---
 
-## Le regole del laboratorio
+## Il laboratorio
 
-*"Non c'è trucco, non c'è inganno: sono solo rocce magmatiche."*
-
-- Quattro ore in tutto, lunedì 5 e martedì 6 ottobre (il secondo pomeriggio è la lezione 7), stesso laboratorio, con i campioni visti nelle due lezioni di introduzione. Si prende un campione, si torna al posto, si ragiona, si cambia. Da soli o in gruppo, come si preferisce: in tre (Piazza, Federico e l'assistente) passano tra i banchi.
-- L'obiettivo è **vederne più tipi possibile** e ragionarli tutti con lo stesso metodo. Non è ancora il momento di rocce messe lì per confondere: solo magmatiche.
-- Chi lavora in gruppo "ci metta la testa" comunque: **all'esame si è da soli**, ognuno con le sue rocce, e nessuno interviene in aiuto.
-- Servono **lente e punta**, da oggi.
+Stesso laboratorio e stesso metodo del 5 ottobre: ogni campione si ragiona per passi, dalla tessitura al nome. Questa volta c'era solo la prof Federico. Puntare ai tipi non visti il primo giorno; **all'esame si è da soli**, ognuno con le sue rocce.
 
 :::nota
-Il metodo è quello della lezione 5: tessitura → percentuale di femici → quarzo o feldspatoidi → rapporto A/P → femico accessorio. Tenere il diagramma di flusso e i triangoli sotto gli occhi.
+Il metodo è quello della lezione 5: tessitura → percentuale di femici → quarzo o feldspatoidi → rapporto A/P → femico accessorio. Tenere il diagramma di flusso e i triangoli sotto gli occhi. Servono **lente e punta**.
 :::
 
 ::campioni{id="granito,granodiorite,tonalite,sienite,monzonite,diorite,gabbro,anortosite,peridotite,dunite,pirossenite,riolite,dacite,andesite,basalto,trachite,fonolite,tefrite,ossidiana,pomice,scoria,tufo,ignimbrite"}
@@ -46,7 +41,7 @@ Il metodo è quello della lezione 5: tessitura → percentuale di femici → qua
 
 *Da compilare a fine laboratorio. Gli errori ripetuti sono la lista di ripasso più utile che esista.*
 
-- 
+-
 
 ## Da fare
 

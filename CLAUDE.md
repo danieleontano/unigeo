@@ -427,3 +427,7 @@ due settimane di fila salta, il problema non è nel codice.
   Lezione + quiz da 15 domande; ref verificati. Comunicazioni: conferenza Doglioni lun 12/10
   ore 17 (Accademia Ligure, Palazzo Ducale), corso sicurezza 8 h ~20–21/10, uscita 28/10,
   prossima lezione giovedì 15/10.
+- **09/10/2026 — Laboratorio di Geologia 1 diviso in due lezioni.** Lezione 6 = lunedì 5/10
+  (Piazza + Federico + assistente), lezione 7 = martedì 6/10 (solo Federico), stesso schema.
+  Per scelta di Daniele in ognuna resta UNA sola «Scheda modello» con i suggerimenti di
+  compilazione; le schede 1–10 vuote sono state tolte.
