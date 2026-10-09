@@ -1,0 +1,204 @@
+{
+  "lezione": "chimica/lez03-2026-10-09-onde-orbitali-e-numeri-quantici",
+  "domande": [
+    {
+      "id": "q1",
+      "tipo": "scelta",
+      "testo": "Secondo il modello di Bohr r_n = n²·r₁, con r₁ = 0,53 Å. Quanto vale il raggio della terza orbita?",
+      "opzioni": [
+        "1,59 Å",
+        "4,77 Å",
+        "0,53 Å",
+        "2,12 Å"
+      ],
+      "corretta": 1,
+      "spiegazione": "r₃ = 3² × 0,53 = 9 × 0,53 = 4,77 Å. Il raggio cresce con il quadrato di n.",
+      "ref": "#dalle-slide-luce-spettri-bohr-e-de-broglie"
+    },
+    {
+      "id": "q2",
+      "tipo": "abbinamento",
+      "testo": "Abbina la serie spettrale dell'idrogeno alla sua regione e alla transizione.",
+      "coppie": [
+        [
+          "Lyman",
+          "ultravioletto, verso n = 1"
+        ],
+        [
+          "Balmer",
+          "visibile, da n > 2 verso n = 2"
+        ],
+        [
+          "Paschen",
+          "infrarosso, da n > 3 verso n = 3"
+        ]
+      ],
+      "ref": "#dalle-slide-luce-spettri-bohr-e-de-broglie"
+    },
+    {
+      "id": "q3",
+      "tipo": "aperta",
+      "testo": "Con la relazione di de Broglie spiega perché una pallina da baseball non mostra un comportamento ondulatorio mentre un elettrone sì. Quali sono i limiti del modello di Bohr?",
+      "soluzione": "λ = h/p: per la pallina (170 g, 40 m/s) la lunghezza d'onda è dell'ordine di 10⁻²⁶ nm, trascurabile; per un elettrone con v ≈ 10⁵ m/s è circa 6 nm, confrontabile con le dimensioni atomiche, quindi l'onda conta. Il modello di Bohr spiega lo spettro dell'idrogeno ma non quelli degli atomi con più elettroni.",
+      "ref": "#dalle-slide-luce-spettri-bohr-e-de-broglie"
+    },
+    {
+      "id": "q4",
+      "tipo": "scelta",
+      "testo": "Nell'atomo di idrogeno E_n = −R_H/n². Quanto vale l'energia del secondo livello?",
+      "opzioni": [
+        "−R_H",
+        "−R_H/2",
+        "−R_H/4",
+        "+R_H/4"
+      ],
+      "corretta": 2,
+      "spiegazione": "Per n = 2 si ha −R_H/4. È maggiore di −R_H perché meno negativa: più alto è n, più alta è l'energia.",
+      "ref": "#energia-dellatomo-di-idrogeno"
+    },
+    {
+      "id": "q5",
+      "tipo": "aperta",
+      "testo": "Perché −R_H/4 è un'energia più alta di −R_H anche se numericamente «più piccola»? E quanta energia serve per passare dal primo al secondo livello?",
+      "soluzione": "Perché le energie sono negative: −R_H/4 è meno negativa di −R_H, quindi maggiore. L'energia necessaria è la differenza tra i due livelli: −R_H/4 − (−R_H) = 3/4 R_H.",
+      "ref": "#energia-dellatomo-di-idrogeno"
+    },
+    {
+      "id": "q6",
+      "tipo": "scelta",
+      "testo": "Quali valori può assumere l per n = 3?",
+      "opzioni": [
+        "1, 2, 3",
+        "0, 1, 2",
+        "0, 1, 2, 3",
+        "−2, −1, 0, 1, 2"
+      ],
+      "corretta": 1,
+      "spiegazione": "l va da 0 a n − 1: per n = 3 sono 0, 1 e 2, cioè orbitali s, p e d.",
+      "ref": "#i-numeri-quantici"
+    },
+    {
+      "id": "q7",
+      "tipo": "scelta",
+      "testo": "Quanti orbitali ci sono in totale nel livello n = 3?",
+      "opzioni": [
+        "3",
+        "6",
+        "9",
+        "18"
+      ],
+      "corretta": 2,
+      "spiegazione": "n² = 9: un 3s, tre 3p e cinque 3d.",
+      "ref": "#i-numeri-quantici"
+    },
+    {
+      "id": "q8",
+      "tipo": "abbinamento",
+      "testo": "Abbina ogni tipo di orbitale al numero di orbitali che esistono in quel sottolivello.",
+      "coppie": [
+        [
+          "s (l = 0)",
+          "1"
+        ],
+        [
+          "p (l = 1)",
+          "3"
+        ],
+        [
+          "d (l = 2)",
+          "5"
+        ],
+        [
+          "f (l = 3)",
+          "7"
+        ]
+      ],
+      "ref": "#gli-orbitali-dalla-lettera-ai-numeri"
+    },
+    {
+      "id": "q9",
+      "tipo": "verofalso",
+      "testo": "L'orbitale 2d esiste.",
+      "corretta": false,
+      "spiegazione": "Per n = 2 l può valere solo 0 o 1 (l ≤ n − 1): esistono 2s e 2p ma non 2d. Esiste invece 4f (n = 4, l = 3, con 7 orbitali).",
+      "ref": "#gli-orbitali-dalla-lettera-ai-numeri"
+    },
+    {
+      "id": "q10",
+      "tipo": "aperta",
+      "testo": "Che significato fisico hanno ψ e ψ²? Perché si parla di probabilità e non di posizione dell'elettrone?",
+      "soluzione": "ψ è l'ampiezza della funzione d'onda: può essere positiva o negativa e da sola non ha significato fisico. ψ² è la probabilità (densità) di trovare l'elettrone in un punto. Per il principio di Heisenberg non si può conoscere con precisione la posizione di una particella piccola e veloce, quindi l'unico parametro che esiste è la probabilità. L'orbitale si disegna di solito con la superficie che racchiude il 95% di probabilità.",
+      "ref": "#che-cosa-significa-la-funzione-donda"
+    },
+    {
+      "id": "q11",
+      "tipo": "scelta",
+      "testo": "A che distanza dal nucleo cade il picco della distribuzione radiale dell'orbitale 1s dell'idrogeno?",
+      "opzioni": [
+        "0,053 Å",
+        "0,53 Å",
+        "5,3 Å",
+        "È nel nucleo"
+      ],
+      "corretta": 1,
+      "spiegazione": "0,53 Å: è lo stesso valore che Bohr aveva ottenuto postulando gli stati energetici, e che esce anche dai calcoli di Schrödinger.",
+      "ref": "#che-cosa-significa-la-funzione-donda"
+    },
+    {
+      "id": "q12",
+      "tipo": "scelta",
+      "testo": "Quanti nodi totali, angolari e radiali ha l'orbitale 3p?",
+      "opzioni": [
+        "2 totali, 1 angolare, 1 radiale",
+        "2 totali, 2 angolari, 0 radiali",
+        "3 totali, 1 angolare, 2 radiali",
+        "1 totale, 1 angolare, 0 radiali"
+      ],
+      "corretta": 0,
+      "spiegazione": "Totali n − 1 = 2; angolari l = 1; radiali n − l − 1 = 1.",
+      "ref": "#i-nodi-degli-orbitali"
+    },
+    {
+      "id": "q13",
+      "tipo": "abbinamento",
+      "testo": "Abbina l'orbitale al numero di nodi radiali.",
+      "coppie": [
+        [
+          "1s",
+          "0"
+        ],
+        [
+          "2s",
+          "1"
+        ],
+        [
+          "3s",
+          "2"
+        ],
+        [
+          "2p",
+          "0"
+        ],
+        [
+          "3d",
+          "0"
+        ]
+      ],
+      "ref": "#i-nodi-degli-orbitali"
+    },
+    {
+      "id": "q14",
+      "tipo": "aperta",
+      "testo": "Qual è la differenza tra nodi angolari e nodi radiali? Dai la regola per contarli e l'esempio dell'orbitale 2p e dell'orbitale 2s.",
+      "soluzione": "I nodi angolari sono piani o coni e il loro numero è l; i nodi radiali sono superfici sferiche e il loro numero è n − l − 1; i totali sono n − 1. 2s ha un nodo, radiale (sfera); 2p ha un nodo, angolare (piano nodale). Hanno lo stesso numero di nodi perché hanno la stessa energia.",
+      "ref": "#i-nodi-degli-orbitali"
+    },
+    {
+      "id": "q15",
+      "tipo": "aperta",
+      "testo": "Che cos'è lo spin, quali valori assume e perché servono quattro numeri quantici per descrivere un elettrone?",
+      "soluzione": "È una proprietà dell'elettrone legata alla risposta a un campo magnetico, come una rotazione oraria o antioraria. Il numero quantico m_s vale +1/2 o −1/2 (freccia su o giù). Oltre a n, l e m_l, che definiscono l'orbitale, serve m_s per descrivere completamente l'elettrone.",
+      "ref": "#lo-spin"
+    }
+  ]
+}

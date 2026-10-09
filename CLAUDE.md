@@ -420,3 +420,6 @@ due settimane di fila salta, il problema non è nel codice.
   schede con una luce del colore della materia, oggetti nella tavolozza del sito (sabbia,
   cuoio, bruno) e il colore della materia come unico accento (prop `colore`), piano
   d'appoggio al posto del fondo chiaro.
+- **09/10/2026 — Chimica lezione 3 («Onde, orbitali e numeri quantici», Solokha).**
+  Lezione + quiz da 15 domande; i primi minuti (slide 22–34) sono ricostruiti dalle slide e
+  segnati come tali nel testo. `Corsivo.tsx` rende anche i pedici scritti `R_H`, `m_s`.
