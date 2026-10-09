@@ -1,7 +1,37 @@
 {
  "dal": "2026-10-04T00:00:00.000Z",
- "aggiornato": "2026-10-09T09:16:54.017Z",
+ "aggiornato": "2026-10-09T17:03:22.074Z",
  "eventi": [
+  {
+   "id": "261009105641",
+   "quando": "2026-10-09T10:57:20Z",
+   "magnitudo": 2.2,
+   "regione": "Costa toscana settentrionale",
+   "lat": 43.431,
+   "lon": 10.379,
+   "profondita": 6.00781,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261009105641"
+  },
+  {
+   "id": "261009104437",
+   "quando": "2026-10-09T10:44:58Z",
+   "magnitudo": 0.3,
+   "regione": "Alpi Pennine",
+   "lat": 45.831,
+   "lon": 7.391,
+   "profondita": 4.88281,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261009104437"
+  },
+  {
+   "id": "261009103742",
+   "quando": "2026-10-09T10:38:00Z",
+   "magnitudo": 3.3,
+   "regione": "Costa toscana settentrionale",
+   "lat": 43.444,
+   "lon": 10.379,
+   "profondita": 13.7422,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261009103742"
+  },
   {
    "id": "261009072207",
    "quando": "2026-10-09T07:23:32Z",
