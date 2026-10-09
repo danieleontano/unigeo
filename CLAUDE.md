@@ -423,3 +423,7 @@ due settimane di fila salta, il problema non è nel codice.
 - **09/10/2026 — Chimica lezione 3 («Onde, orbitali e numeri quantici», Solokha).**
   Lezione + quiz da 15 domande; i primi minuti (slide 22–34) sono ricostruiti dalle slide e
   segnati come tali nel testo. `Corsivo.tsx` rende anche i pedici scritti `R_H`, `m_s`.
+- **09/10/2026 — Paleontologia lezione 5 («Datare le rocce: biozone e fossili guida», Briguglio).**
+  Lezione + quiz da 15 domande; ref verificati. Comunicazioni: conferenza Doglioni lun 12/10
+  ore 17 (Accademia Ligure, Palazzo Ducale), corso sicurezza 8 h ~20–21/10, uscita 28/10,
+  prossima lezione giovedì 15/10.
