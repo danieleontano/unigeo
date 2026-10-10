@@ -431,3 +431,6 @@ due settimane di fila salta, il problema non è nel codice.
   (Piazza + Federico + assistente), lezione 7 = martedì 6/10 (solo Federico), stesso schema.
   Per scelta di Daniele in ognuna resta UNA sola «Scheda modello» con i suggerimenti di
   compilazione; le schede 1–10 vuote sono state tolte.
+- **10/10/2026 — Geologia 1 lezione 8 («Il processo sedimentario», Piazza, 09/10).** Claude Chat
+  l'aveva numerata 7, ma il laboratorio del 06/10 è già la 7: rinumerata 8 (file e id del quiz
+  `lez08-…`). Quiz da 15 domande; prima lezione sulle rocce sedimentarie.
