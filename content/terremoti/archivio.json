@@ -1,7 +1,17 @@
 {
  "dal": "2026-10-04T00:00:00.000Z",
- "aggiornato": "2026-10-11T13:06:13.411Z",
+ "aggiornato": "2026-10-11T19:00:20.987Z",
  "eventi": [
+  {
+   "id": "261011141356",
+   "quando": "2026-10-11T14:15:07Z",
+   "magnitudo": 0.6,
+   "regione": "Riviera di ponente",
+   "lat": 44.227,
+   "lon": 8.3,
+   "profondita": 5.63281,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261011141356"
+  },
   {
    "id": "261011114058",
    "quando": "2026-10-11T11:41:27Z",
