@@ -1,7 +1,107 @@
 {
  "dal": "2026-10-04T00:00:00.000Z",
- "aggiornato": "2026-10-09T17:03:22.074Z",
+ "aggiornato": "2026-10-11T13:06:13.411Z",
  "eventi": [
+  {
+   "id": "261011114058",
+   "quando": "2026-10-11T11:41:27Z",
+   "magnitudo": 2.4,
+   "regione": "Riviera di ponente",
+   "lat": 44.227,
+   "lon": 8.281,
+   "profondita": 8.02344,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261011114058"
+  },
+  {
+   "id": "261011111422",
+   "quando": "2026-10-11T11:15:34Z",
+   "magnitudo": 1,
+   "regione": "Riviera di ponente",
+   "lat": 44.22,
+   "lon": 8.289,
+   "profondita": 8.02344,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261011111422"
+  },
+  {
+   "id": "261011061044",
+   "quando": "2026-10-11T06:11:05Z",
+   "magnitudo": 1.1,
+   "regione": "Riviera di ponente",
+   "lat": 44.229,
+   "lon": 8.287,
+   "profondita": 6.19531,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261011061044"
+  },
+  {
+   "id": "261011060521",
+   "quando": "2026-10-11T06:06:45Z",
+   "magnitudo": 1.2,
+   "regione": "Riviera di ponente",
+   "lat": 44.221,
+   "lon": 8.285,
+   "profondita": 8.14062,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261011060521"
+  },
+  {
+   "id": "261010211111",
+   "quando": "2026-10-10T21:11:38Z",
+   "magnitudo": 0.6,
+   "regione": "Alpi Graie",
+   "lat": 45.721,
+   "lon": 7.115,
+   "profondita": 6.33594,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261010211111"
+  },
+  {
+   "id": "261010190222",
+   "quando": "2026-10-10T19:02:48Z",
+   "magnitudo": 1,
+   "regione": "Riviera di ponente",
+   "lat": 43.947,
+   "lon": 7.677,
+   "profondita": 4.67188,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261010190222"
+  },
+  {
+   "id": "261010160825",
+   "quando": "2026-10-10T16:09:27Z",
+   "magnitudo": 0.6,
+   "regione": "Alpi Cozie",
+   "lat": 44.917,
+   "lon": 6.718,
+   "profondita": 4.92969,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261010160825"
+  },
+  {
+   "id": "261010115621",
+   "quando": "2026-10-10T11:56:47Z",
+   "magnitudo": 0.8,
+   "regione": "Alpi Cozie",
+   "lat": 44.617,
+   "lon": 7.208,
+   "profondita": 14.6328,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261010115621"
+  },
+  {
+   "id": "261010021042",
+   "quando": "2026-10-10T02:11:41Z",
+   "magnitudo": 0.6,
+   "regione": "Costa toscana settentrionale",
+   "lat": 43.654,
+   "lon": 10.181,
+   "profondita": 6.00781,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261010021042"
+  },
+  {
+   "id": "261009194324",
+   "quando": "2026-10-09T19:43:50Z",
+   "magnitudo": 0.9,
+   "regione": "Alpi Pennine",
+   "lat": 45.877,
+   "lon": 7.019,
+   "profondita": 6.54688,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261009194324"
+  },
   {
    "id": "261009105641",
    "quando": "2026-10-09T10:57:20Z",
