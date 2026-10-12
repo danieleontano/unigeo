@@ -1,7 +1,87 @@
 {
  "dal": "2026-10-04T00:00:00.000Z",
- "aggiornato": "2026-10-11T19:00:20.987Z",
+ "aggiornato": "2026-10-12T15:44:41.410Z",
  "eventi": [
+  {
+   "id": "261012073414",
+   "quando": "2026-10-12T07:35:40Z",
+   "magnitudo": 0.5,
+   "regione": "Alpi Pennine",
+   "lat": 46.036,
+   "lon": 7.352,
+   "profondita": 5.96094,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261012073414"
+  },
+  {
+   "id": "261012071159",
+   "quando": "2026-10-12T07:14:04Z",
+   "magnitudo": 0.6,
+   "regione": "Riviera di ponente",
+   "lat": 44.224,
+   "lon": 8.262,
+   "profondita": 7.71875,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261012071159"
+  },
+  {
+   "id": "261012042416",
+   "quando": "2026-10-12T04:25:31Z",
+   "magnitudo": 0.6,
+   "regione": "Alpi Graie",
+   "lat": 45.593,
+   "lon": 6.723,
+   "profondita": 3.94531,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261012042416"
+  },
+  {
+   "id": "261012041743",
+   "quando": "2026-10-12T04:18:09Z",
+   "magnitudo": 1,
+   "regione": "Alpi Marittime",
+   "lat": 43.948,
+   "lon": 7.66,
+   "profondita": 3.89844,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261012041743"
+  },
+  {
+   "id": "261012013158",
+   "quando": "2026-10-12T01:32:23Z",
+   "magnitudo": 0.5,
+   "regione": "Riviera di ponente",
+   "lat": 43.939,
+   "lon": 7.66,
+   "profondita": 4.46094,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261012013158"
+  },
+  {
+   "id": "261011213636",
+   "quando": "2026-10-11T21:38:07Z",
+   "magnitudo": 0.8,
+   "regione": "Alpi Pennine",
+   "lat": 45.911,
+   "lon": 7.013,
+   "profondita": 8.04688,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261011213636"
+  },
+  {
+   "id": "261011175759",
+   "quando": "2026-10-11T17:58:45Z",
+   "magnitudo": 0.7,
+   "regione": "Riviera di ponente",
+   "lat": 44.21,
+   "lon": 8.24,
+   "profondita": 5.63281,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261011175759"
+  },
+  {
+   "id": "261011175506",
+   "quando": "2026-10-11T17:56:12Z",
+   "magnitudo": 0.5,
+   "regione": "Riviera di ponente",
+   "lat": 44.22,
+   "lon": 8.281,
+   "profondita": 8.86719,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261011175506"
+  },
   {
    "id": "261011141356",
    "quando": "2026-10-11T14:15:07Z",
