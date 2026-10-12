@@ -439,3 +439,6 @@ due settimane di fila salta, il problema non è nel codice.
   esercizio: longitudine di A e coordinate di B sono nella lezione del pomeriggio (lez07, da
   inserire). Chiarisce la Gauss-Boaga: 1500 km a 9°, 2520 km a 15°; sulla carta regionale
   convivono i due reticolati (i numeri 517/526/4.908.000 sono UTM).
+- **12/10/2026 — Chimica lezione 4 («Atomi polielettronici e configurazione elettronica», Solokha).**
+  Lezione + quiz da 15 domande, ref verificati; si ferma all'esercizio 7.64 (tre loop
+  nell'audio). All'esame tavola periodica muta. Da inserire: lezioni successive.
