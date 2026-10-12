@@ -18,7 +18,19 @@
     }
   }
 
+  // «Da fare» è chiuso: si apre da solo se l'indirizzo punta dentro (indice, ricerca).
+  function apriSeServe() {
+    const el = location.hash.length > 1 ? document.getElementById(decodeURIComponent(location.hash.slice(1))) : null;
+    const d = el?.closest("details");
+    if (d) {
+      d.open = true;
+      el?.scrollIntoView();
+    }
+  }
+  window.addEventListener("hashchange", apriSeServe);
+
   function avvia() {
+  apriSeServe();
   const salvate = spunteSalvate();
   document.querySelectorAll<HTMLElement>("article.appunti[data-lezione]").forEach((articolo) => {
     const id = articolo.dataset.lezione!;

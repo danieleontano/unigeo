@@ -132,3 +132,22 @@ export function remarkCampioni(opzioni: { base: string; dati: string }) {
     });
   };
 }
+
+// La sezione «Da fare» a fine lezione diventa un <details> chiuso: il titolo resta
+// un vero <h2> (dentro il <summary>), così id, indice e ricerca non cambiano.
+export function remarkDaFare() {
+  return (albero: Root) => {
+    const figli = albero.children;
+    const i = figli.findIndex((n) => n.type === "heading" && n.depth === 2 && testoDi(n).trim().toLowerCase() === "da fare");
+    if (i < 0) return;
+    let j = i + 1;
+    while (j < figli.length) {
+      const n = figli[j];
+      if (n.type === "heading" && n.depth <= 2) break;
+      j++;
+    }
+    const sommario = { type: "paragraph", data: { hName: "summary" }, children: [figli[i]] };
+    const dettagli = { type: "blockquote", data: { hName: "details", hProperties: { className: ["da-fare"] } }, children: [sommario, ...figli.slice(i + 1, j)] };
+    figli.splice(i, j - i, dettagli as never);
+  };
+}

@@ -447,3 +447,11 @@ due settimane di fila salta, il problema non è nel codice.
   domande, ref verificati. Procedure coordinate geografiche/UTM, IGM→regionale (5 e 49),
   Gauss-Boaga (domanda da orale), polari, declinazione (Rapallo 1985: +0°56′, +5′30″/anno),
   fogli/quadranti/tavolette (Rapallo = foglio 83, II SO). Esame: due test + orale breve.
+- **12/10/2026 — Pagina della materia senza ridondanze.** Daniele: colonna stratigrafica,
+  elenco «Lezioni» e Libro mostravano la stessa cosa. Ora la pagina materia ha: hero con UN
+  solo bottone («Apri il Libro · N capitoli», il Libro è l'unico modo di leggere in sequenza)
+  e un pannello «Quiz» (Quiz misto, Flashcard, Ripasso + una riga per lezione con quiz).
+  Colonna stratigrafica e lista lezioni tolte dalla pagina; nel Libro il link di capitolo è
+  «Quiz» (non più «scheda e quiz»). Le pagine singole di lezione restano (ancore dei quiz,
+  ricerca). `## Da fare` a fine lezione è un `<details>` chiuso (`remarkDaFare` in
+  `lib/markdown/riquadri.ts`, si apre da solo se l'indirizzo punta a #da-fare).

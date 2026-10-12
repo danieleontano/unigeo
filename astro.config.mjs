@@ -4,7 +4,7 @@ import react from "@astrojs/react";
 import tailwindcss from "@tailwindcss/vite";
 import { unified } from "@astrojs/markdown-remark";
 import remarkDirective from "remark-directive";
-import { remarkCampioni, remarkFigure, remarkRiquadri, remarkTabelleEtichettate } from "./src/lib/markdown/riquadri.ts";
+import { remarkCampioni, remarkDaFare, remarkFigure, remarkRiquadri, remarkTabelleEtichettate } from "./src/lib/markdown/riquadri.ts";
 import { fileURLToPath } from "node:url";
 
 // Sito statico. Su Vercel (variabile VERCEL presente in build) vive alla
@@ -36,6 +36,7 @@ export default defineConfig({
     processor: unified({ remarkPlugins: [
       remarkDirective,
       remarkRiquadri,
+      remarkDaFare,
       remarkFigure,
       remarkTabelleEtichettate,
       [remarkCampioni, { base: BASE === "/" ? "" : BASE, dati: fileURLToPath(new URL("./content/campionario/campioni.json", import.meta.url)) }],
