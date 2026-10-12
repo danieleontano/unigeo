@@ -442,3 +442,8 @@ due settimane di fila salta, il problema non è nel codice.
 - **12/10/2026 — Chimica lezione 4 («Atomi polielettronici e configurazione elettronica», Solokha).**
   Lezione + quiz da 15 domande, ref verificati; si ferma all'esercizio 7.64 (tre loop
   nell'audio). All'esame tavola periodica muta. Da inserire: lezioni successive.
+- **12/10/2026 — Geografia fisica lezione 7 («Procedure per le coordinate, Gauss-Boaga e
+  declinazione magnetica», Brandolini, pomeriggio).** Continua la lez06. Lezione + quiz da 15
+  domande, ref verificati. Procedure coordinate geografiche/UTM, IGM→regionale (5 e 49),
+  Gauss-Boaga (domanda da orale), polari, declinazione (Rapallo 1985: +0°56′, +5′30″/anno),
+  fogli/quadranti/tavolette (Rapallo = foglio 83, II SO). Esame: due test + orale breve.
