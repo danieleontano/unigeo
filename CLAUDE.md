@@ -434,3 +434,8 @@ due settimane di fila salta, il problema non è nel codice.
 - **10/10/2026 — Geologia 1 lezione 8 («Il processo sedimentario», Piazza, 09/10).** Claude Chat
   l'aveva numerata 7, ma il laboratorio del 06/10 è già la 7: rinumerata 8 (file e id del quiz
   `lez08-…`). Quiz da 15 domande; prima lezione sulle rocce sedimentarie.
+- **12/10/2026 — Geografia fisica lezione 6 («Carte regionali, UTM e coordinate chilometriche»,
+  Brandolini, mattina).** Lezione + quiz da 15 domande, ref verificati. Finisce a metà
+  esercizio: longitudine di A e coordinate di B sono nella lezione del pomeriggio (lez07, da
+  inserire). Chiarisce la Gauss-Boaga: 1500 km a 9°, 2520 km a 15°; sulla carta regionale
+  convivono i due reticolati (i numeri 517/526/4.908.000 sono UTM).

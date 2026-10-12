@@ -1,0 +1,186 @@
+{
+  "lezione": "geografia-fisica/lez06-2026-10-12-carte-regionali-e-coordinate-utm",
+  "domande": [
+    {
+      "id": "q1",
+      "tipo": "scelta",
+      "testo": "Qual è la proiezione di riferimento delle carte IGM e delle carte regionali?",
+      "opzioni": [
+        "Cilindrica diretta di Mercatore",
+        "Cilindrica trasversa di Mercatore (UTM, Gauss)",
+        "Conica di Lambert",
+        "Azimutale polare"
+      ],
+      "corretta": 1,
+      "spiegazione": "È la proiezione cilindrica trasversa di Mercatore: il cilindro è ruotato di 90° e tangente a un meridiano. La domanda esce all'esame, di solito con il disegnino del cilindro.",
+      "ref": "#la-proiezione-di-riferimento"
+    },
+    {
+      "id": "q2",
+      "tipo": "scelta",
+      "testo": "Perché per l'Italia servono due meridiani di tangenza?",
+      "opzioni": [
+        "Perché ha due coste",
+        "Perché si estende per circa 12° di longitudine, e un fuso ne copre 6°",
+        "Perché la proiezione vale solo a nord e a sud",
+        "Per ridurre la scala"
+      ],
+      "corretta": 1,
+      "spiegazione": "La proiezione è valida per 3° a est e 3° a ovest del meridiano di tangenza, cioè 6°. L'Italia ne copre circa 12°: due fusi, con meridiani a 9° e 15° Est.",
+      "ref": "#la-proiezione-di-riferimento"
+    },
+    {
+      "id": "q3",
+      "tipo": "verofalso",
+      "testo": "Nella proiezione UTM il cilindro è tangente all'equatore.",
+      "corretta": false,
+      "spiegazione": "Quella è la cilindrica diretta. Nella UTM il cilindro è trasverso, ruotato di 90°, e tangente a un meridiano (e al suo antimeridiano).",
+      "ref": "#la-proiezione-di-riferimento"
+    },
+    {
+      "id": "q4",
+      "tipo": "aperta",
+      "testo": "Perché al meridiano centrale di un fuso UTM si assegna il valore 500 km e non zero? Cosa significa il 5 davanti ai numeri della carta regionale?",
+      "soluzione": "Perché con zero tutto ciò che sta a ovest del meridiano avrebbe coordinate negative. Il 500 km è un valore convenzionale: un Est di 517 km vuol dire 17 km a est del meridiano centrale (9°), uno di 480 km 20 km a ovest. In Liguria Rapallo sta un po' a est (517–526), il ponente scende sotto i 500.",
+      "ref": "#il-valore-500-km"
+    },
+    {
+      "id": "q5",
+      "tipo": "scelta",
+      "testo": "In UTM, quale valore ha ciascun meridiano centrale, a 9° e a 15°?",
+      "opzioni": [
+        "1500 km e 2520 km",
+        "500 km e 500 km",
+        "500 km e 1500 km",
+        "0 km e 500 km"
+      ],
+      "corretta": 1,
+      "spiegazione": "In UTM entrambi hanno 500 km. I valori 1500 km (9°, fuso Ovest) e 2520 km (15°, fuso Est) sono quelli della Gauss-Boaga.",
+      "ref": "#il-valore-500-km"
+    },
+    {
+      "id": "q6",
+      "tipo": "abbinamento",
+      "testo": "Abbina la caratteristica alla carta.",
+      "coppie": [
+        [
+          "Longitudine riferita a Roma Monte Mario, cresce da est a ovest",
+          "carta IGM"
+        ],
+        [
+          "Longitudine riferita a Greenwich, cresce da ovest a est",
+          "carta regionale"
+        ],
+        [
+          "Coordinate chilometriche scritte come 32T NQ più cifre brevi",
+          "carta IGM"
+        ],
+        [
+          "Distanze complete: Est con il 5 davanti, Nord dall'equatore (4.908.000 m)",
+          "carta regionale"
+        ]
+      ],
+      "ref": "#le-coordinate-chilometriche-nelle-due-carte"
+    },
+    {
+      "id": "q7",
+      "tipo": "scelta",
+      "testo": "Il punto P ha coordinate IGM 32T NQ 2165 1475. Come si scrive sulla carta regionale?",
+      "opzioni": [
+        "Est 21650, Nord 14750",
+        "Est 521650, Nord 4914750",
+        "Est 2165, Nord 1475",
+        "Est 4914750, Nord 521650"
+      ],
+      "corretta": 1,
+      "spiegazione": "All'Est si aggiunge il 5 (500 km) davanti e uno zero in coda; al Nord le cifre dall'equatore (49) davanti e uno zero in coda. È la stessa posizione scritta in un altro modo.",
+      "ref": "#esercizio-scrivere-le-coordinate-di-p-in-due-modi"
+    },
+    {
+      "id": "q8",
+      "tipo": "scelta",
+      "testo": "Perché le coordinate IGM di P hanno 8 cifre e non 10?",
+      "opzioni": [
+        "Perché la carta è piccola",
+        "Perché si arriva alla precisione del decametro (10 m)",
+        "Perché le ultime due cifre non servono mai",
+        "Perché i metri non si misurano"
+      ],
+      "corretta": 1,
+      "spiegazione": "È la convenzione IGM: si approssima al decametro. Per i metri si aggiunge uno zero, che potrebbe essere anche un 5.",
+      "ref": "#esercizio-scrivere-le-coordinate-di-p-in-due-modi"
+    },
+    {
+      "id": "q9",
+      "tipo": "verofalso",
+      "testo": "Nella stringa delle coordinate chilometriche si scrive prima la coordinata Nord e poi la Est.",
+      "corretta": false,
+      "spiegazione": "Prima la Est, poi la Nord. Sembrano invertite, ma è sempre così.",
+      "ref": "#esercizio-inverso-dal-numero-al-punto"
+    },
+    {
+      "id": "q10",
+      "tipo": "scelta",
+      "testo": "Su una carta 1:25.000, a quanti millimetri dalla linea del reticolato sta un punto a 130 m da quella linea?",
+      "opzioni": [
+        "1,3 mm",
+        "5,2 mm",
+        "13 mm",
+        "52 mm"
+      ],
+      "corretta": 1,
+      "spiegazione": "1 mm sulla carta = 25 m: 130 / 25 = 5,2 mm. 870 m sono 34,8 mm, circa 3,5 cm.",
+      "ref": "#esercizio-inverso-dal-numero-al-punto"
+    },
+    {
+      "id": "q11",
+      "tipo": "aperta",
+      "testo": "Come si trova sulla carta il punto 32T NQ 1813 1387?",
+      "soluzione": "Tra le linee 18 e 19 (Est) e 13 e 14 (Nord). Est 18 13: 13 decametri, 130 m a est della linea 18. Nord 13 87: 87 decametri, 870 m a nord della linea 13. Su una carta 1:25.000, 1 mm = 25 m: 130/25 = 5,2 mm dalla linea 18, 870/25 = 34,8 mm, circa 3,5 cm, dalla linea 13. Si segna il punto all'incrocio.",
+      "ref": "#esercizio-inverso-dal-numero-al-punto"
+    },
+    {
+      "id": "q12",
+      "tipo": "scelta",
+      "testo": "Un primo di latitudine sul bordo misura 7,3 cm e il punto A dista 1,8 cm dalla linea dei 21′. Quanti secondi?",
+      "opzioni": [
+        "≈ 8″",
+        "≈ 15″",
+        "≈ 24″",
+        "≈ 41″"
+      ],
+      "corretta": 1,
+      "spiegazione": "60 × 1,8 / 7,3 = 14,8″, che si arrotonda a 15″. Latitudine di A = 44°21′15″ Nord.",
+      "ref": "#i-punti-a-e-b"
+    },
+    {
+      "id": "q13",
+      "tipo": "verofalso",
+      "testo": "All'esame la domanda sulle coordinate vale 4 punti: 2 per le geografiche del punto A e 2 per le UTM del punto B.",
+      "corretta": true,
+      "spiegazione": "I punti verranno piazzati su curve di livello. Il prof ha fatto capire che una coordinata sbagliata resta sbagliata anche se il procedimento è giusto.",
+      "ref": "#i-punti-a-e-b"
+    },
+    {
+      "id": "q14",
+      "tipo": "aperta",
+      "testo": "La carta regionale della slide 21 ha il titolo «Gauss-Boaga» ma i numeri letti a lezione sono UTM. Come si spiega e come si riconoscono le due serie?",
+      "soluzione": "Perché sulla carta regionale ci sono due reticolati, uno Gauss-Boaga e uno UTM (lo dice la legenda del foglio). I numeri 517, 526 e 4.908.000 sono UTM, con 500 km sul meridiano 9°. Quelli Gauss-Boaga del fuso Ovest iniziano con 1 (1.5xx.xxx), con 1500 km a 9° e 2520 km a 15° per il fuso Est.",
+      "ref": "#le-coordinate-chilometriche-nelle-due-carte"
+    },
+    {
+      "id": "q15",
+      "tipo": "scelta",
+      "testo": "Le coordinate Est della zona di Rapallo sulla carta regionale sono comprese tra 517 e 526 km. Che cosa dice della sua posizione rispetto al meridiano centrale (9°)?",
+      "opzioni": [
+        "Che sta a est del meridiano 9°, perché il valore è sopra 500 km",
+        "Che sta a ovest del meridiano 9°",
+        "Che sta esattamente sul meridiano 9°",
+        "Che sta nell'altro fuso"
+      ],
+      "corretta": 0,
+      "spiegazione": "Il 500 km è il valore del meridiano centrale: sopra 500 si è a est, sotto 500 a ovest. Per questo il ponente ligure scende sotto i 500 km.",
+      "ref": "#il-valore-500-km"
+    }
+  ]
+}
