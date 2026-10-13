@@ -1,7 +1,57 @@
 {
  "dal": "2026-10-04T00:00:00.000Z",
- "aggiornato": "2026-10-12T15:44:41.410Z",
+ "aggiornato": "2026-10-13T06:53:58.666Z",
  "eventi": [
+  {
+   "id": "261012164826",
+   "quando": "2026-10-12T16:49:21Z",
+   "magnitudo": 0.5,
+   "regione": "Alpi Pennine",
+   "lat": 45.869,
+   "lon": 6.994,
+   "profondita": 9.14844,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261012164826"
+  },
+  {
+   "id": "261012124938",
+   "quando": "2026-10-12T12:50:17Z",
+   "magnitudo": 0.8,
+   "regione": "Garfagnana",
+   "lat": 44.049,
+   "lon": 10.645,
+   "profondita": 51.8047,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261012124938"
+  },
+  {
+   "id": "261012123441",
+   "quando": "2026-10-12T12:36:23Z",
+   "magnitudo": 0.1,
+   "regione": "Riviera di ponente",
+   "lat": 43.95,
+   "lon": 7.673,
+   "profondita": 4.69531,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261012123441"
+  },
+  {
+   "id": "261012105701",
+   "quando": "2026-10-12T10:57:27Z",
+   "magnitudo": 1.1,
+   "regione": "Alpi Pennine",
+   "lat": 45.919,
+   "lon": 7.048,
+   "profondita": 6.52344,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261012105701"
+  },
+  {
+   "id": "261012104302",
+   "quando": "2026-10-12T10:44:21Z",
+   "magnitudo": 0.5,
+   "regione": "Alpi Graie",
+   "lat": 45.376,
+   "lon": 7.081,
+   "profondita": 9.52344,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261012104302"
+  },
   {
    "id": "261012073414",
    "quando": "2026-10-12T07:35:40Z",
