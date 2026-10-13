@@ -455,3 +455,6 @@ due settimane di fila salta, il problema non è nel codice.
   «Quiz» (non più «scheda e quiz»). Le pagine singole di lezione restano (ancore dei quiz,
   ricerca). `## Da fare` a fine lezione è un `<details>` chiuso (`remarkDaFare` in
   `lib/markdown/riquadri.ts`, si apre da solo se l'indirizzo punta a #da-fare).
+- **13/10/2026 — Geologia 1 lezione 9 («Classificazione delle rocce sedimentarie», Piazza).**
+  Claude Chat l'aveva numerata 8 (come «Il processo sedimentario»): rinumerata 9 (file e id del
+  quiz `lez09-…`). Quiz da 15 domande; campioni del campionario tutti presenti. DPI ritirati.
