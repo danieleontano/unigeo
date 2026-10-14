@@ -1,7 +1,57 @@
 {
  "dal": "2026-10-04T00:00:00.000Z",
- "aggiornato": "2026-10-13T06:53:58.666Z",
+ "aggiornato": "2026-10-14T13:51:24.211Z",
  "eventi": [
+  {
+   "id": "261014122203",
+   "quando": "2026-10-14T12:22:28Z",
+   "magnitudo": 0.7,
+   "regione": "Alpi Cozie",
+   "lat": 44.615,
+   "lon": 7.231,
+   "profondita": 6.14844,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261014122203"
+  },
+  {
+   "id": "261014071539",
+   "quando": "2026-10-14T07:16:04Z",
+   "magnitudo": 1.8,
+   "regione": "Frignano",
+   "lat": 44.454,
+   "lon": 9.989,
+   "profondita": 11.9141,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261014071539"
+  },
+  {
+   "id": "261013155110",
+   "quando": "2026-10-13T15:52:21Z",
+   "magnitudo": 1,
+   "regione": "Riviera di ponente",
+   "lat": 44.221,
+   "lon": 8.28,
+   "profondita": 8.04688,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261013155110"
+  },
+  {
+   "id": "261013153547",
+   "quando": "2026-10-13T15:37:12Z",
+   "magnitudo": 0.6,
+   "regione": "Riviera di ponente",
+   "lat": 44.233,
+   "lon": 8.261,
+   "profondita": 7.64844,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261013153547"
+  },
+  {
+   "id": "261013083903",
+   "quando": "2026-10-13T08:39:29Z",
+   "magnitudo": 0.5,
+   "regione": "Alpi Cozie",
+   "lat": 44.883,
+   "lon": 6.586,
+   "profondita": 2.63281,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261013083903"
+  },
   {
    "id": "261012164826",
    "quando": "2026-10-12T16:49:21Z",
