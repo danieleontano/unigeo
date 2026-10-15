@@ -476,3 +476,7 @@ due settimane di fila salta, il problema non è nel codice.
   trascrizioni audio confrontate, valori numerici incerti segnati con (?). Quiz da 15 domande.
   Esercitazione venerdì 16/10 14–16; uscita 28/10. Da aggiungere al campionario (nota nella
   lezione, servono le foto): encrinite, ammolite, asfaltite, sparite.
+- **15/10/2026 — Geologia 1 lezione 10 («Ruditi, areniti e classificazione dei calcari», Piazza,
+  pomeriggio, slot di Brandolini).** Claude Chat l'aveva numerata 9 (come la lezione del 13/10):
+  rinumerata 10 (file e id del quiz `lez10-…`). Quiz da 15 domande. Registrazione 1 quasi
+  illeggibile; Embry e Klovan lasciato a metà: venerdì 16 riprende dagli alloctoni.
