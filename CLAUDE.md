@@ -471,3 +471,7 @@ due settimane di fila salta, il problema non è nel codice.
   (pomeriggio, solo in parte documentata: audio dei primi minuti + appunti di un compagno):
   reticolo idrografico, impluvi/displuvi, bacino, prova d'esempio 2022/23 (30 punti: profilo
   topografico 10, bacino 5 + area 4). Quiz da 15 domande ciascuna, ref verificati.
+- **15/10/2026 — Paleontologia lezione 6 («Fossilizzazione e tafonomia», Briguglio).** Due
+  trascrizioni audio confrontate, valori numerici incerti segnati con (?). Quiz da 15 domande.
+  Esercitazione venerdì 16/10 14–16; uscita 28/10. Da aggiungere al campionario (nota nella
+  lezione, servono le foto): encrinite, ammolite, asfaltite, sparite.
