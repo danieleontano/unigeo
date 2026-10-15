@@ -3512,5 +3512,120 @@
         "pagina": "https://commons.wikimedia.org/wiki/File:Botryoidal_Purple_Grape_Agate_Chalcedony_from_Indonesia.jpg"
       }
     ]
+  },
+  {
+    "id": "encrinite",
+    "nome": "Encrinite",
+    "voce": "Crinoid",
+    "tipo": "roccia",
+    "categoria": "Sedimentaria organogena",
+    "famiglia": "Sedimentaria carbonatica · bioclastica (crinoidi)",
+    "caratteri": "Calcare fatto quasi solo di placchette e pezzi di stelo di crinoidi: dischetti e cilindretti con un foro centrale, a volte a stella (simmetria pentamera), che danno l'aspetto di un cielo stellato. Cemento calcitico. Effervesce con HCl.",
+    "fileCommons": "Encrinite (crinoidal limestone) (Ft. Payne Limestone, Lower Mississippian; Lake Cumberland, Kentucky, USA) 3 (26311625381).jpg",
+    "altriFile": [
+      "Encrinite (crinoidal limestone) (Ft. Payne Limestone, Lower Mississippian; Lake Cumberland, Kentucky, USA) 6 (30780365863).jpg",
+      "Encrinite (crinoidal limestone) (Ft. Payne Limestone, Lower Mississippian; Lake Cumberland, Kentucky, USA) 9 (31443580272).jpg"
+    ],
+    "foto": {
+      "file": "/campionario/encrinite.jpg",
+      "autore": "James St. John",
+      "licenza": "CC BY 2.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Encrinite_(crinoidal_limestone)_(Ft._Payne_Limestone,_Lower_Mississippian;_Lake_Cumberland,_Kentucky,_USA)_3_(26311625381).jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/encrinite-2.jpg",
+        "autore": "James St. John",
+        "licenza": "CC BY 2.0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Encrinite_(crinoidal_limestone)_(Ft._Payne_Limestone,_Lower_Mississippian;_Lake_Cumberland,_Kentucky,_USA)_6_(30780365863).jpg"
+      },
+      {
+        "file": "/campionario/encrinite-3.jpg",
+        "autore": "James St. John",
+        "licenza": "CC BY 2.0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Encrinite_(crinoidal_limestone)_(Ft._Payne_Limestone,_Lower_Mississippian;_Lake_Cumberland,_Kentucky,_USA)_9_(31443580272).jpg"
+      }
+    ]
+  },
+  {
+    "id": "ammolite",
+    "nome": "Ammolite",
+    "voce": "Ammolite",
+    "tipo": "roccia",
+    "categoria": "Sedimentaria organogena",
+    "famiglia": "Gemma organogena · aragonite del guscio di ammonite",
+    "caratteri": "Guscio fossile di ammonite (Placenticeras, Cretacico superiore) con iridescenza a macchie rosse, verdi, blu e arancio, a placchette che si scheggiano. È l'unica gemma ricavata dai gusci di ammonite. Aragonite: effervesce con HCl.",
+    "fileCommons": "Ammolite from Placenticeras fossil ammonite, Alberta.jpg",
+    "altriFile": [
+      "Ammolite from Placenticeras fossil ammonite (Bearpaw Formation, Upper Cretaceous, 70-75 Ma; mine in St. Mary River Valley, Alberta, Canada) 23.jpg"
+    ],
+    "foto": {
+      "file": "/campionario/ammolite.jpg",
+      "autore": "James St. John",
+      "licenza": "CC BY 2.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Ammolite_from_Placenticeras_fossil_ammonite,_Alberta.jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/ammolite-2.jpg",
+        "autore": "James St. John",
+        "licenza": "CC BY 2.0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Ammolite_from_Placenticeras_fossil_ammonite_(Bearpaw_Formation,_Upper_Cretaceous,_70-75_Ma;_mine_in_St._Mary_River_Valley,_Alberta,_Canada)_23.jpg"
+      }
+    ]
+  },
+  {
+    "id": "asfaltite",
+    "nome": "Asfaltite (gilsonite)",
+    "voce": "Gilsonite",
+    "tipo": "roccia",
+    "categoria": "Sedimentaria organogena",
+    "famiglia": "Sedimentaria organogena · bitume solido",
+    "caratteri": "Bitume solido nero e lucido, fragile, con frattura concoide e polvere bruna; leggero, si scalda e si ammorbidisce, brucia con fumo. Non effervesce con HCl. La gilsonite dello Utah è l'esempio classico; è la stessa famiglia degli asfalti naturali come Rancho La Brea.",
+    "fileCommons": "Gilsonite (uintaite) (asphaltite) (Tertiary; northeastern Utah, USA).jpg",
+    "altriFile": [
+      "Gilsonite (uintaite) (asphaltite dike in the Uinta formation; Bonanza area, Utah, USA) 2.jpg"
+    ],
+    "foto": {
+      "file": "/campionario/asfaltite.jpg",
+      "autore": "James St. John",
+      "licenza": "CC BY 2.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Gilsonite_(uintaite)_(asphaltite)_(Tertiary;_northeastern_Utah,_USA).jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/asfaltite-2.jpg",
+        "autore": "James St. John",
+        "licenza": "CC BY 2.0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Gilsonite_(uintaite)_(asphaltite_dike_in_the_Uinta_formation;_Bonanza_area,_Utah,_USA)_2.jpg"
+      }
+    ]
+  },
+  {
+    "id": "sparite",
+    "nome": "Sparite",
+    "voce": "Calcite",
+    "tipo": "roccia",
+    "categoria": "Sedimentaria chimica",
+    "famiglia": "Sedimentaria carbonatica · cemento spatico",
+    "caratteri": "Calcite in cristalli grandi, chiari e limpidi che riempiono vuoti e pori per precipitazione chimica (cemento o riempimento di cavità, per esempio dopo la dissoluzione di un guscio di aragonite). A occhio: riempimenti bianchi e traslucidi con facce che luccicano; il dettaglio si vede in sezione sottile. Effervesce con HCl.",
+    "fileCommons": "GeopetalCarboniferousNV.jpg",
+    "altriFile": [
+      "Spar cement.jpg"
+    ],
+    "foto": {
+      "file": "/campionario/sparite.jpg",
+      "autore": "Wilson44691",
+      "licenza": "Public domain",
+      "pagina": "https://commons.wikimedia.org/wiki/File:GeopetalCarboniferousNV.jpg"
+    },
+    "altre": [
+      {
+        "file": "/campionario/sparite-2.jpg",
+        "autore": "Rygel, M.C.",
+        "licenza": "CC BY-SA 3.0",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Spar_cement.jpg"
+      }
+    ]
   }
 ]

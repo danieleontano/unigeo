@@ -483,3 +483,8 @@ due settimane di fila salta, il problema non è nel codice.
 - **14/10/2026 — Chimica lezione 5 («Proprietà periodiche», Solokha).** Ricostruita SOLO dalle
   slide (nessun audio, lezione non seguita): non si sa cosa il prof abbia indicato per
   l'esame né quale convenzione usi per l'affinità elettronica. Quiz da 15 domande.
+- **15/10/2026 — Campionario a 145: encrinite, ammolite, asfaltite (gilsonite), sparite.** Foto da
+  Commons con crediti (James St. John, CC BY 2.0; sparite: Wilson44691, pubblico dominio +
+  Rygel, CC BY-SA 3.0; la sparite è una sezione sottile, non un campione a mano). Inseriti con
+  `::campioni` nella lezione di Paleontologia 6 al posto della nota «da aggiungere»;
+  `docs/ISTRUZIONI-CLAUDE-CHAT.md` ora elenca 145 id.

@@ -85,14 +85,14 @@ Regole:
   Meglio titoli semplici, senza simboli. Il sito controlla ogni `ref` e si
   blocca se non esiste.
 
-## Id del campionario (141)
+## Id del campionario (145)
 
 - **Magmatica intrusiva**: granito, diorite, gabbro, peridotite, granodiorite, tonalite, sienite, monzonite, anortosite, dunite, pirossenite, pegmatite, aplite, lamprofiro, sienite-nefelinica, dolerite, lherzolite, harzburgite, kimberlite, carbonatite
 - **Magmatica effusiva**: riolite, andesite, basalto, ossidiana, pomice, scoria, tefrite, trachite, fonolite, dacite, komatiite, lava-a-cuscino
 - **Magmatica piroclastica**: tufo, ignimbrite, lapilli, bomba-vulcanica
 - **Sedimentaria clastica**: conglomerato, breccia, arenaria, arcose, grovacca, siltite, argillite
-- **Sedimentaria chimica**: calcare-micritico, calcare-oolitico, dolomia, travertino, selce, gesso-roccia, salgemma, bauxite, bif
-- **Sedimentaria organogena**: calcare-fossilifero, coquina, radiolarite, lignite, litantrace, antracite, stromatolite, diatomite, creta
+- **Sedimentaria chimica**: calcare-micritico, calcare-oolitico, dolomia, travertino, selce, gesso-roccia, salgemma, bauxite, bif, sparite
+- **Sedimentaria organogena**: calcare-fossilifero, coquina, radiolarite, lignite, litantrace, antracite, stromatolite, diatomite, creta, encrinite, ammolite, asfaltite
 - **Metamorfica**: ardesia, fillade, micascisto, cloritoscisto, scisto-blu, gneiss, augengneiss, marmo, quarzite, anfibolite, serpentinite, eclogite, migmatite, cornubianite, metagabbro, oficalce, skarn, milonite, steatite
 - **Minerale**: quarzo, olivina, biotite, ortoclasio, calcite, gesso, plagioclasio, orneblenda, augite, muscovite, dolomite, microclino, sanidino, albite, labradorite, leucite, nefelina, sodalite, almandino, tormalina, zircone, staurolite, cianite, sillimanite, andalusite, epidoto, clorite, talco, crisotilo, glaucofane, actinolite, tremolite, diopside, enstatite, topazio, corindone, apatite, fluorite, barite, anidrite, halite, aragonite, siderite, magnesite, malachite, azzurrite, magnetite, ematite, goethite, pirite, calcopirite, galena, sfalerite, cinabro, zolfo, grafite, rame, rutilo, berillo, opale, calcedonio
 

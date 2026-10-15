@@ -168,6 +168,8 @@ L'**aragonite** è poco resistente alla diagenesi: con il seppellimento il peso 
 **Sparite**: la "terza forma" di carbonato di calcio, in cristalli grandi e bianchi che riempiono i vuoti **per precipitazione chimica**. I riempimenti dopo la dissoluzione dell'aragonite sono **sparitici**.
 :::
 
+::campioni{id="sparite"}
+
 **Esempio 1: il bivalve tagliato a metà.** Dentro e fuori è un susseguirsi di cristalli di carbonato di calcio: del guscio resta solo la **geometria**, grazie a una **linea nera**, un velo di **micrite organica** deposto direttamente sul guscio poco dopo la morte.
 
 **Esempio 2: l'ammonite tagliata.** Le camere sono connesse dal **sifone**; dentro non è entrato sedimento ma **acqua**, la materia organica si è decomposta, e l'acqua mineralizzata, ricca di **ferro, magnesio e manganese**, ha dato le colorazioni. Il guscio si è sciolto, ma le **linee dei setti** restano.
@@ -190,6 +192,8 @@ La **sequenza degli eventi** è fondamentale.
 ::campioni{id="pirite"}
 
 **Ammolite.** Un'ammonite con una mineralizzazione **madreperlacea** sopra il guscio: strati di madreperla che danno colorazioni belle. È l'unica gemma ricavata dai gusci delle ammoniti e viene commercializzata.
+
+::campioni{id="ammolite"}
 
 :::ndr
 In aula la gemma "prende il nome di ammonite": si chiama **ammolite**.
@@ -253,6 +257,8 @@ La **disarticolazione** può avvenire più volte nel processo: bivalvi, brachiop
 
 **Crinoidi.** Fatti da piccole placchette di carbonato di calcio unite da materia organica: alla morte si sbriciolano e lasciano un'enorme quantità di tasselli. Le rocce fatte quasi solo di questi tasselli si chiamano **encriniti**. Gli steli hanno **simmetria pentamera**: ogni placchetta ha forma di **stella**, e la roccia sembra un "cielo stellato" (le vedremo nel campo di maggio).
 
+::campioni{id="encrinite"}
+
 :::definizione
 **Paratassonomia**: la presenza di un **doppio sistema di catalogazione** degli organismi. Si cerca di evitarla ("se do un nome a un oggetto, deve essere quello"), ma in paleontologia succede a causa della disarticolazione.
 :::
@@ -277,11 +283,9 @@ I fossili eccezionali sono spesso "orrendi" ma contengono moltissime informazion
 
 Come si ottiene la preservazione eccezionale: **torbiere** (Uomo di Tollund, Danimarca), **mummificazione** in ambienti aridi caldi o freddi per disidratazione (di breve durata geologica), **congelamento** (mammut).
 
-**Asfalti di Rancho La Brea** (California): sedimenti molto recenti, ricchi di materia organica, impostati su zone di risorgenza di petrolio, che fungevano da **richiamo** per l'intera catena trofica: piccoli organismi intrappolati, i medi che li volevano mangiare, i grandi predatori, tra cui il parente dello *Smilodon* ("Diego dell'era glaciale"). Nella scala nordamericana è addirittura un piano locale, il **Rancholabreano**.
+**Asfalti di Rancho La Brea** (California): sedimenti molto recenti, ricchi di materia organica, impostati su zone di risorgenza di petrolio, che fungevano da **richiamo** per l'intera catena trofica: piccoli organismi intrappolati, i medi che li volevano mangiare, i grandi predatori, tra cui il parente dello *Smilodon* ("Diego dell'era glaciale"). Nella scala nordamericana è addirittura un piano locale, il **Rancholabreano**. Il bitume solido, per esempio la gilsonite, è la stessa famiglia degli asfalti naturali:
 
-:::nota
-Da aggiungere al campionario: **encrinite**, **ammolite**, **asfalto (asfaltite)**, **sparite**.
-:::
+::campioni{id="asfaltite"}
 
 ## Esercitazione di domani
 
