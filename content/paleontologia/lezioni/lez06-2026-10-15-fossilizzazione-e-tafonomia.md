@@ -4,7 +4,7 @@ numero: 6
 data: 2026-10-15
 titolo: "Fossilizzazione e tafonomia"
 docente: "Antonino Briguglio"
-fonte: "Appunti dalla registrazione audio (due trascrizioni confrontate: Buzz e iPhone) e dalle slide «2_fossilizzazione» (26 pagine)"
+fonte: "Appunti dalla registrazione audio (due trascrizioni confrontate: Buzz e iPhone), dalle slide «2_fossilizzazione» (26 pagine) e dalla foto della slide sull'esercitazione, che non è nelle dispense"
 nota: "Lezione in aula 401, per tutti (GEO e Naturali). Le due trascrizioni sono simili al 91%: dove divergono ho scelto la versione coerente con le slide e con il contesto. Qualche valore numerico sul trasporto è storpiato in entrambe e lo segno con (?). Le note [ndr] sono precisazioni mie."
 tag: [tafonomia, tanatocenosi, tafocenosi, biostratinomia, trasporto, dissoluzione, aragonite, calcite, sparite, modelli e impronte, carbonificazione, disarticolazione, paratassonomia, Lagerstätten]
 ---
@@ -289,18 +289,50 @@ Come si ottiene la preservazione eccezionale: **torbiere** (Uomo di Tollund, Dan
 
 ## Esercitazione di domani
 
-**Venerdì 16 ottobre, 14–16**, solo la fossilizzazione.
+**Venerdì 16 ottobre, 14–16**: "esercitazione libera", solo sulla fossilizzazione. Dalla slide mostrata in aula (non è nelle dispense):
 
-- Sui tavoli ci sono **vassoi di metallo** con una o più **vaschette** e un fossile. Il fossile ha un **codice**, uguale a quello del **cartellino** e del **vassoio**: controllare che il fossile stia nel vassoio giusto.
-- **Non spostare i fossili**: se si vuole guardare qualcosa, ci si avvicina al vassoio. Si sta **in piedi**, con giacche e zaini da parte, girando per l'aula.
-- Circa **30 cassetti**: disarticolazione, modelli, impronte, carbonificazione e un vassoio di **roba non diagenizzata**, attuale e ben preservata.
-- Sulla cattedra ci sono i **fogli** da prendere, **non valutati né da riconsegnare**: due facciate, con sei riquadri per **disegnare i fossili** (uno per tipo di fossilizzazione) e poche informazioni utili per il ripasso. Se ne prende uno solo.
+- **Quando finite potete andare via**; **non ci sono pause**; **non si arriva all'ultimo**: i cassetti sono circa 30 e non è previsto vederli tutti.
+- **Docente e tutor in aula**: **chiedete, descrivete, discutete**.
+- Il **foglio** serve a **fissare le idee** ed è utile per **ripassare prima dell'esame**. Non è valutato né da riconsegnare; ha tre riquadri per facciata, sei in tutto, e se ne prende uno solo.
+
+**Come è fatto il foglio.** Per ogni fossile c'è un riquadro per il **disegno** e quattro domande:
+
+1. **Che organismo è?**
+2. **Di quale materiale è fatto il fossile?**
+3. **Che processi tafonomici ha subito?** Si sceglie tra: **trasporto, abrasione, biocorrosione, predazione, dissoluzione**, e poi **rimineralizzazione, distorsione, disarticolazione, nulla**.
+4. **Posso riconoscere**: **modello interno, modello esterno, impronta, controimpronta**.
+
+**Come si lavora.** Sui tavoli ci sono **vassoi di metallo** con una o più **vaschette** e un fossile. Il fossile ha un **codice**, uguale a quello del **cartellino** e del **vassoio**: controllare che stia nel vassoio giusto. **Non spostare i fossili**: ci si avvicina al vassoio. Si sta **in piedi**, con giacche e zaini da parte, girando per l'aula. Tra i vassoi: disarticolazione, modelli, impronte, carbonificazione e uno di **roba non diagenizzata**, attuale e ben preservata.
+
+### Cosa guardare per ogni voce
+
+*Schema riassuntivo mio, ricavato dalla lezione: non è una slide del prof.*
+
+| Voce del foglio | Cosa cercare sul fossile |
+| --- | --- |
+| **Organismo** | forma generale: una o due valve? spira? raggi? Per ora si ragiona per grandi gruppi (bivalve, gasteropode, ammonite, brachiopode, corallo, riccio…); la sistematica arriva dalla prossima settimana |
+| **Materiale** | aragonite (bivalvi, ammoniti), calcite (coralli paleozoici, ricci, ostriche, alcuni brachiopodi e trilobiti), silicati e fosfati. Segnali di sostituzione: pirite (giallo brillante, pesante), silice (durissima), sparite (cristalli bianchi) |
+| **Trasporto** | disarticolazione, frammentazione, orientazione comune, imbricatura, sorting, accumulo; valve rovesciate |
+| **Abrasione** | superficie graffiata o levigata, rotture con foro evidente (spesso predatori come i decapodi) |
+| **Biocorrosione** | buchi circolari di spugne (*Cliona*), tracce di bivalvi perforanti o di ricci |
+| **Predazione** | fori regolari, cilindrici o conici, di gasteropodi; fori incompiuti |
+| **Dissoluzione** | guscio mancante, solo modello interno o impronta, riempimenti di sparite, linea nera di micrite organica |
+| **Rimineralizzazione** | pirite (ammonite piritizzata), silicizzazione, calcitizzazione, ammolite |
+| **Distorsione** | fossile stirato, schiacciato o spezzato in pezzi allineati |
+| **Disarticolazione** | valve separate, elementi sparsi (per esempio ossicini di crinoidi) |
+| **Nulla** | guscio originale ben conservato; è il caso del vassoio non diagenizzato |
+| **Modelli e impronte** | **modello interno**: riempimento della cavità interna rimasto dopo la dissoluzione del guscio; **impronta**: il vuoto lasciato nella roccia dalla superficie esterna |
+
+:::ndr
+Nell'audio il prof ha parlato solo di **modello interno** e di **impronta esterna**. Sul foglio compaiono anche **modello esterno** e **controimpronta**. Nello schema della slide 26 (in inglese) compaiono *natural mould*, *natural cast* e *internal cast*. Qui il **modello esterno** va inteso come la copia in positivo della superficie esterna, ottenuta riempiendo il vuoto lasciato dal guscio, e la **controimpronta** come la faccia opposta a un'impronta. Come il prof usa esattamente i due termini non l'ho sentito: da chiedere domani in aula.
+:::
 
 ## Da fare
 
-- [ ] Esercitazione di venerdì 16, 14–16: arrivare con l'idea di ricostruire, per ogni fossile, il **processo tafonomico**.
-- [ ] Ripassare con le **due immagini dei libri di testo** (slide 25 e 26).
+- [ ] **Venerdì 16, 14–16**, esercitazione libera: portare **matita, gomma e lente** (se già ce l'hai); non serve vederli tutti, si può uscire quando si è finito.
+- [ ] Prima di andare: rileggere in questo file **Il trasporto**, **Dissoluzione e ricristallizzazione**, **Modelli e impronte** e la tabella di sopra.
+- [ ] Guardare con calma le **due immagini dei libri di testo** (slide 25 e 26): riassumono tutto quello che può succedere al fossile.
+- [ ] Per ogni fossile ragionare in ordine: organismo → materiale → processi tafonomici → modelli e impronte, e **scrivere perché**, non solo segnare le crocette.
 - [ ] Saper distinguere biocenosi, tanatocenosi, tafocenosi e biostratinomia, con un esempio ciascuno.
-- [ ] Rifare a voce la procedura per ricostruire la storia tafonomica di un bivalve con riempimento sparitico.
+- [ ] Chiedere al prof o al tutor come usa **modello esterno** e **controimpronta**.
 - [ ] Segnare l'uscita del **28 ottobre**.
-- [ ] Controllare nel messaggio del prof se venerdì c'è davvero lezione (per i Naturali è incerto).

@@ -488,3 +488,7 @@ due settimane di fila salta, il problema non è nel codice.
   Rygel, CC BY-SA 3.0; la sparite è una sezione sottile, non un campione a mano). Inseriti con
   `::campioni` nella lezione di Paleontologia 6 al posto della nota «da aggiungere»;
   `docs/ISTRUZIONI-CLAUDE-CHAT.md` ora elenca 145 id.
+- **15/10/2026 — Paleontologia lezione 6 aggiornata** con la foto della slide sull'esercitazione di
+  venerdì 16/10 (foglio: organismo, materiale, processi tafonomici, modelli e impronte) e la
+  tabella «cosa guardare per ogni voce». Mantenuti i `::campioni` dei quattro campioni nuovi.
+  Da chiedere in aula: come il prof usa «modello esterno» e «controimpronta».
