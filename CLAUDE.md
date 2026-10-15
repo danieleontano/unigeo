@@ -480,3 +480,6 @@ due settimane di fila salta, il problema non è nel codice.
   pomeriggio, slot di Brandolini).** Claude Chat l'aveva numerata 9 (come la lezione del 13/10):
   rinumerata 10 (file e id del quiz `lez10-…`). Quiz da 15 domande. Registrazione 1 quasi
   illeggibile; Embry e Klovan lasciato a metà: venerdì 16 riprende dagli alloctoni.
+- **14/10/2026 — Chimica lezione 5 («Proprietà periodiche», Solokha).** Ricostruita SOLO dalle
+  slide (nessun audio, lezione non seguita): non si sa cosa il prof abbia indicato per
+  l'esame né quale convenzione usi per l'affinità elettronica. Quiz da 15 domande.
