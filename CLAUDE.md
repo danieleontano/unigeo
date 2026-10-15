@@ -466,3 +466,8 @@ due settimane di fila salta, il problema non è nel codice.
   tutto `/icone/` è raggiungibile senza chiave; il service worker mette in cache le icone per
   sempre (cache first): per cambiarle bisogna cambiare nome ai file o salire `VERSIONE` in
   `public/sw.js` (ora v4). Marchio anche nel menu e nella pagina d'accesso.
+- **14/10/2026 — Geografia fisica lezioni 8 e 9 (Brandolini, 14/10).** Lez 8 (mattina): curve di
+  livello, equidistanza, direttrici/intermedie, pendenza e inclinazione (procedure). Lez 9
+  (pomeriggio, solo in parte documentata: audio dei primi minuti + appunti di un compagno):
+  reticolo idrografico, impluvi/displuvi, bacino, prova d'esempio 2022/23 (30 punti: profilo
+  topografico 10, bacino 5 + area 4). Quiz da 15 domande ciascuna, ref verificati.
