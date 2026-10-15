@@ -458,14 +458,15 @@ due settimane di fila salta, il problema non è nel codice.
 - **13/10/2026 — Geologia 1 lezione 9 («Classificazione delle rocce sedimentarie», Piazza).**
   Claude Chat l'aveva numerata 8 (come «Il processo sedimentario»): rinumerata 9 (file e id del
   quiz `lez09-…`). Quiz da 15 domande; campioni del campionario tutti presenti. DPI ritirati.
-- **15/10/2026 — Marchio e icone nuovi.** La favicon era «tagliata a metà» perché `app-512.png`
-  (apple-touch e manifest) era un PNG troncato/corrotto. Nuovo marchio: blocco di roccia in
-  isometrica con strati nei colori delle cinque materie, sabbia sopra, fondo bruno
-  (`scripts/marchio.ts` genera tutto: `favicon.svg`, `icone/unigeo.svg`, `unigeo-32/192/512.png`,
-  `unigeo-maskable-512.png`, `unigeo-apple-180.png`). Manifest con 3 icone (any + maskable);
-  tutto `/icone/` è raggiungibile senza chiave; il service worker mette in cache le icone per
-  sempre (cache first): per cambiarle bisogna cambiare nome ai file o salire `VERSIONE` in
-  `public/sw.js` (ora v4). Marchio anche nel menu e nella pagina d'accesso.
+- **15/10/2026 — Marchio: resta il sasso a tre strati (quello che a Daniele piace).** La
+  favicon risultava «tagliata a metà» perché `icone/app-512.png` (apple-touch e manifest) era
+  un PNG troncato. Un primo tentativo con un blocco isometrico è stato bocciato («era molto più
+  bello quello di prima»): non cambiare il marchio senza chiedere. `scripts/marchio.ts`
+  rigenera da quel disegno `favicon.svg`, `icone/unigeo.svg` (trasparenti) e i PNG su fondo
+  bruno: `unigeo-32/192/512.png`, `unigeo-maskable-512.png`, `unigeo-apple-180.png`. Manifest
+  con 3 icone (any + maskable); tutto `/icone/` è raggiungibile senza chiave; il service worker
+  tiene le icone in cache per sempre (cache first): per cambiarle cambiare nome ai file o salire
+  `VERSIONE` in `public/sw.js` (ora v4).
 - **14/10/2026 — Geografia fisica lezioni 8 e 9 (Brandolini, 14/10).** Lez 8 (mattina): curve di
   livello, equidistanza, direttrici/intermedie, pendenza e inclinazione (procedure). Lez 9
   (pomeriggio, solo in parte documentata: audio dei primi minuti + appunti di un compagno):
