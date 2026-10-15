@@ -42,7 +42,7 @@ export function livelloDa(valoreCookie: string | undefined, tabella: Record<Live
 }
 
 /** Sempre raggiungibili, anche senza chiave: la pagina d'accesso e poco altro. */
-const LIBERI = ["/accesso", "/robots.txt", "/favicon.svg", "/manifest.webmanifest", "/icone/app-512.png", "/icone/geologia-1.svg"];
+const LIBERI = ["/accesso", "/robots.txt", "/favicon.svg", "/manifest.webmanifest"];
 
 /** Le parti con gli appunti: servono la chiave «appunti». */
 export const SOLO_APPUNTI = ["/materie", "/quiz", "/flashcard", "/ripasso", "/pagine", "/pdf", "/cerca", "/cerca-indice.json"];
@@ -56,7 +56,7 @@ export type Decisione = { tipo: "passa" } | { tipo: "accesso"; motivo?: "serve-a
 
 export function decidi(pathname: string, livello: Livello | null): Decisione {
   const p = normalizza(pathname);
-  if (LIBERI.includes(p)) return { tipo: "passa" };
+  if (LIBERI.includes(p) || p.startsWith("/icone/")) return { tipo: "passa" };
   if (!livello) return { tipo: "accesso" };
   if (livello === "appunti") return { tipo: "passa" };
   // Chiave «strumenti»: la Home (che mostra lezioni e materie) diventa la pagina Strumenti.

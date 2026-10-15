@@ -2,7 +2,7 @@
 // senza rete (treno, aula senza campo). Niente libreria: poche righe.
 //  - asset con hash (/_astro/, font, icone, pdf): cache first, non cambiano mai;
 //  - pagine HTML: network first, con la copia in cache come ripiego.
-const VERSIONE = "unigeo-v3";
+const VERSIONE = "unigeo-v4";
 
 self.addEventListener("install", (e) => {
   e.waitUntil(self.skipWaiting());
