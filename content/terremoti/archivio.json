@@ -1,7 +1,37 @@
 {
  "dal": "2026-10-04T00:00:00.000Z",
- "aggiornato": "2026-10-16T07:19:55.050Z",
+ "aggiornato": "2026-10-16T13:20:49.974Z",
  "eventi": [
+  {
+   "id": "261016053207",
+   "quando": "2026-10-16T05:33:37Z",
+   "magnitudo": 0.9,
+   "regione": "Lunigiana",
+   "lat": 44.338,
+   "lon": 9.886,
+   "profondita": 5.63281,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261016053207"
+  },
+  {
+   "id": "261016024326",
+   "quando": "2026-10-16T02:43:52Z",
+   "magnitudo": 0.7,
+   "regione": "Alpi Pennine",
+   "lat": 45.869,
+   "lon": 7.017,
+   "profondita": 9.71094,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261016024326"
+  },
+  {
+   "id": "261016023922",
+   "quando": "2026-10-16T02:40:27Z",
+   "magnitudo": 0.7,
+   "regione": "Alpi Pennine",
+   "lat": 45.951,
+   "lon": 7.234,
+   "profondita": 5.96094,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261016023922"
+  },
   {
    "id": "261015235244",
    "quando": "2026-10-15T23:53:06Z",
@@ -11,6 +41,26 @@
    "lon": 9.908,
    "profondita": 9.42969,
    "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261015235244"
+  },
+  {
+   "id": "261015200705",
+   "quando": "2026-10-15T20:07:30Z",
+   "magnitudo": 0.5,
+   "regione": "Appennino pistoiese",
+   "lat": 44.152,
+   "lon": 10.898,
+   "profondita": 16.1328,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261015200705"
+  },
+  {
+   "id": "261015102521",
+   "quando": "2026-10-15T10:26:50Z",
+   "magnitudo": 1.2,
+   "regione": "Alpi Pennine",
+   "lat": 45.91,
+   "lon": 6.927,
+   "profondita": 5.82031,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261015102521"
   },
   {
    "id": "261015071919",
