@@ -1,7 +1,17 @@
 {
  "dal": "2026-10-04T00:00:00.000Z",
- "aggiornato": "2026-10-15T11:43:56.421Z",
+ "aggiornato": "2026-10-16T07:19:55.050Z",
  "eventi": [
+  {
+   "id": "261015235244",
+   "quando": "2026-10-15T23:53:06Z",
+   "magnitudo": 1.6,
+   "regione": "Frignano",
+   "lat": 44.473,
+   "lon": 9.908,
+   "profondita": 9.42969,
+   "link": "https://distav.unige.it/rsni/pg-man-loca.php?var1=261015235244"
+  },
   {
    "id": "261015071919",
    "quando": "2026-10-15T07:21:47Z",
