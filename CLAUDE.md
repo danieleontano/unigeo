@@ -492,3 +492,7 @@ due settimane di fila salta, il problema non è nel codice.
   venerdì 16/10 (foglio: organismo, materiale, processi tafonomici, modelli e impronte) e la
   tabella «cosa guardare per ogni voce». Mantenuti i `::campioni` dei quattro campioni nuovi.
   Da chiedere in aula: come il prof usa «modello esterno» e «controimpronta».
+- **16/10/2026 — Geologia 1 lezione 11 («Calcari alloctoni e costituenti dei carbonati», Piazza).**
+  Claude Chat l'aveva numerata 10: rinumerata 11 (file e id del quiz `lez11-…`). Quiz da 15
+  domande. Lunedì 19 si riprende dalle dolomie; uscita 28/10 in zona protetta (niente martello
+  né raccolta); campo di tre giorni a fine aprile (Piana Crixia).
